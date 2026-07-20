@@ -1,0 +1,990 @@
+/* ============================================================
+   overflow — Design System v3
+   Palette:  Light Editorial Cream
+   Type:     Instrument Serif (display) + Inter (body) + JetBrains Mono
+   Source of truth: portfolio-v2/decisions/008-design-system.md
+   ============================================================ */
+
+/* Fonts are loaded via <link> in BaseLayout <head> (faster than @import,
+   which is render-blocking and discovered late). */
+
+/* ── Tokens ─────────────────────────────────────────────── */
+:root {
+  /* Light Editorial Cream — default */
+  --bg:         #FAFAF6;
+  --bg2:        #F1EDE3;
+  --surface:    #EDE7DA;
+  --card:       #F5F0E5;
+  --border:     #DDD3C1;
+  --border2:    #C5B89F;
+  --fg:         #1A140E;
+  --muted:      #7A6E5C;
+  --accent:     #B25814;
+  --accent-d:   #92420C;
+  --btn-hover:  #2a2018;
+  --glow:       rgba(178, 88, 20, 0.08);
+  --warn:       #D97706;
+  --shadow-rgb: 26, 20, 14;
+  --bg-rgb:     250, 250, 246;
+  color-scheme: light;
+
+  /* Typography */
+  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Spacing scale */
+  --sp-xs:   0.5rem;
+  --sp-sm:   1rem;
+  --sp-md:   2rem;
+  --sp-lg:   3rem;
+  --sp-xl:   5rem;
+  --sp-2xl:  7rem;
+  --sp-3xl:  9rem;
+
+  /* Layout */
+  --container-max: 1100px;
+  --container-pad: 2.5rem;
+  --nav-h:         64px;
+
+  /* Motion */
+  --ease:      cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-ui:    180ms;
+  --dur-slow:  700ms;
+
+  /* Radii */
+  --r-sm:  4px;
+  --r-md:  8px;
+  --r-lg:  12px;
+}
+
+/* Dark theme — Warm Editorial */
+[data-theme="dark"] {
+  /* Graphite — neutral charcoal + warm orange accent (reworked from warm brown) */
+  --bg:         #1A1B1E;
+  --bg2:        #212327;
+  --surface:    #262A2E;
+  --card:       #1F2124;
+  --border:     #2E3136;
+  --border2:    #3F4349;
+  --fg:         #ECEAE6;
+  --muted:      #9A9CA0;
+  --accent:     #E0813C;
+  --accent-d:   #BC641F;
+  --btn-hover:  #D5D3CE;
+  --glow:       rgba(224, 129, 60, 0.14);
+  --warn:       #F59E0B;
+  --shadow-rgb: 0, 0, 0;
+  --bg-rgb:     26, 27, 30;
+  color-scheme: dark;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --container-pad: 1.25rem;
+    --sp-2xl: 4.5rem;
+    --sp-3xl: 6rem;
+    --sp-xl:  3rem;
+    --nav-h:  56px;
+  }
+}
+
+/* ── Reset ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--fg);
+  background-color: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+  font-feature-settings: 'cv11', 'ss01';
+}
+
+img, picture, svg { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
+
+::selection { background: var(--fg); color: var(--bg); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: var(--r-sm); }
+
+/* ═══════════════════════════════════════════════════════════
+   PREMIUM MOTION LAYER  (Cuberto-style polish)
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Page-transition curtain ───────────────────────────────── */
+/* The curtain starts COVERING the screen on every page load,
+   then sweeps off the top to reveal the content (motion.ts).
+   On internal link click it sweeps in from the bottom, then we navigate.
+   Initial state intentionally covers — no flash of unstyled content. */
+/* .page-curtain is fully styled inline in BaseLayout.astro to prevent FOUC */
+@media (prefers-reduced-motion: reduce) {
+  .page-curtain { display: none !important; }
+}
+
+
+
+
+
+/* ── Custom cursor — dot + elastic ring ────────────────────── */
+/* Dot follows pointer 1:1; ring lags with elastic damping (motion.ts).
+   mix-blend-mode: difference auto-inverts against any background, so the
+   same cursor works in light and dark themes without theme-specific logic.
+   Hidden on touch / coarse pointer / reduced motion. */
+.cursor {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  /* Below curtain (9999) so it never sits on top of page transitions */
+  z-index: 9998;
+  opacity: 0;
+  mix-blend-mode: difference;
+  transition: opacity 220ms ease;
+  /* Avoid an initial blink at viewport origin before first mousemove */
+  visibility: hidden;
+}
+.cursor.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+.cursor__dot,
+.cursor__ring {
+  position: absolute;
+  top: 0; left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+}
+.cursor__dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: #fff;
+  transition: opacity 200ms ease, transform 180ms var(--ease);
+}
+.cursor__ring {
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 1.5px solid #fff;
+  background: transparent;
+  /* Center for the icon child */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition:
+    width 260ms var(--ease),
+    height 260ms var(--ease),
+    margin 260ms var(--ease),
+    background-color 260ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+}
+/* Arrow icon — only visible in "view" variant.
+   currentColor inherits from .cursor__ring → we flip its color per variant. */
+.cursor__icon {
+  width: 22px;
+  height: 22px;
+  opacity: 0;
+  transform: scale(0.4);
+  transition:
+    opacity 220ms ease,
+    transform 260ms var(--ease);
+  pointer-events: none;
+}
+
+/* ── Variants ──────────────────────────────────────────────── */
+
+/* Plain link / nav item — subtle expand, keep dot */
+.cursor.is-link .cursor__ring {
+  width: 48px;
+  height: 48px;
+  margin: -24px 0 0 -24px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Button / CTA — bigger filled ring, hide dot */
+.cursor.is-button .cursor__ring {
+  width: 60px;
+  height: 60px;
+  margin: -30px 0 0 -30px;
+  background: rgba(255, 255, 255, 0.12);
+}
+.cursor.is-button .cursor__dot {
+  opacity: 0;
+}
+
+/* View — image / project card. Cuberto's signature: big solid blob with arrow.
+   mix-blend-mode is disabled here so the accent reads as actual brand orange,
+   not as an inversion. */
+.cursor.is-view {
+  mix-blend-mode: normal;
+}
+.cursor.is-view .cursor__ring {
+  width: 84px;
+  height: 84px;
+  margin: -42px 0 0 -42px;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.cursor.is-view .cursor__dot {
+  opacity: 0;
+}
+.cursor.is-view .cursor__icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Click feedback — default-state ring contracts. Variant-state rings
+   (link/button/view) keep their own size so the click doesn't fight the
+   variant transition mid-flight. Width/height/margin (not transform: scale)
+   because the ring's transform is owned by the RAF loop. */
+.cursor.is-down:not(.is-link):not(.is-button):not(.is-view) .cursor__ring {
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 -14px;
+}
+
+/* Over text inputs — hide our overlay so the native I-beam (set via
+   html.has-custom-cursor input { cursor: text }) is what the user sees. */
+.cursor.is-text {
+  opacity: 0;
+}
+
+/* When custom cursor is active, hide the native one site-wide.
+   Native text-cursor is restored on inputs to keep typing UX intact. */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+html.has-custom-cursor input,
+html.has-custom-cursor textarea,
+html.has-custom-cursor [contenteditable="true"] {
+  cursor: text !important;
+}
+
+@media (pointer: coarse), (hover: none) {
+  .cursor { display: none !important; }
+  html.has-custom-cursor,
+  html.has-custom-cursor * { cursor: auto !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cursor { display: none !important; }
+}
+
+/* ── Animated link underlines ──────────────────────────────── */
+/* In-prose links (cs__prose, m-phase__what etc.) get a left→right wipe */
+.cs__prose a,
+.h-about__col-body a,
+.a-section__body a {
+  position: relative;
+  text-decoration: none;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 360ms cubic-bezier(0.7, 0, 0.3, 1), color 200ms ease;
+}
+.cs__prose a:hover,
+.h-about__col-body a:hover,
+.a-section__body a:hover { background-size: 100% 1px; }
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+}
+.nav-pill {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 32px;
+  background: var(--bg2);
+  border-radius: 16px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0; /* Hidden until JS initializes it */
+  will-change: width, transform;
+}
+.site-header__nav a {
+  position: relative;
+  z-index: 1;
+  padding: 6px 12px;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--muted);
+  transition: color var(--dur-ui) ease;
+  letter-spacing: -0.01em;
+}
+.site-header__nav a:hover,
+.site-header__nav a[aria-current="page"] {
+  color: var(--fg);
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border2);
+  border-radius: var(--r-sm);
+  padding: 2px;
+  background: var(--bg);
+  position: relative;
+}
+.lang-pill {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  background: var(--fg);
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  will-change: width, transform;
+}
+.lang-switcher__btn {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 4px 8px;
+  border-radius: 2px;
+  line-height: 1;
+  /* No transition — colour is static, only active class changes it */
+}
+.lang-switcher__btn--active {
+  color: var(--bg);
+}
+/* No hover highlight — colour only changes when you actually switch language */
+
+/* ── Card hover refinement ─────────────────────────────────── */
+.g-card { transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 400ms ease, border-color 300ms ease; }
+.g-card:hover { transform: translateY(-4px); }
+.g-card__cover { transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1); }
+.g-card:hover .g-card__cover { transform: scale(1.04); }
+
+/* ── Primary button — enhance hover for magnetic feel ──────── */
+.btn--primary,
+.btn--ghost { will-change: transform; }
+
+/* Skip-to-content link — hidden until keyboard focus */
+.skip-link {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 200;
+  transform: translateY(-130%);
+  background: var(--accent);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-bottom-right-radius: var(--r-sm);
+  transition: transform var(--dur-ui) ease;
+}
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+
+/* ── Typography ─────────────────────────────────────────── */
+.display, h1.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+}
+.heading {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.018em;
+  line-height: 1.08;
+}
+.label, .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.eyebrow {
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+  display: inline-block;
+}
+.mono { font-family: var(--font-mono); }
+
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5.5vw, 5rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+}
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.875rem, 3.5vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.018em;
+  line-height: 1.08;
+}
+h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.375rem, 2vw, 1.875rem);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.18;
+}
+h4 {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+p { color: inherit; max-width: 65ch; }
+
+/* Anti-blog rule (decision 008): no italics in display headings */
+h1 em, h2 em, h3 em,
+.display em, .heading em {
+  font-style: normal;
+}
+
+/* ── Container ──────────────────────────────────────────── */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+.container--narrow { max-width: 720px; }
+.container--wide   { max-width: 1240px; }
+
+.section {
+  padding-top: var(--sp-2xl);
+  padding-bottom: var(--sp-2xl);
+}
+.section--lg {
+  padding-top: var(--sp-3xl);
+  padding-bottom: var(--sp-3xl);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  border: none;
+  margin: 0;
+}
+
+/* ── Buttons ────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  border-radius: var(--r-md);
+  transition: background var(--dur-ui) ease, border-color var(--dur-ui) ease, color var(--dur-ui) ease, transform var(--dur-ui) ease;
+  white-space: nowrap;
+  cursor: pointer;
+  line-height: 1;
+}
+.btn--primary {
+  background: var(--fg);
+  color: var(--bg);
+  border: 1px solid var(--fg);
+}
+.btn--primary:hover {
+  background: var(--btn-hover);
+  border-color: var(--btn-hover);
+}
+.btn--ghost {
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--border2);
+}
+.btn--ghost:hover {
+  border-color: var(--fg);
+  background: var(--bg2);
+}
+.btn--lg { padding: 1rem 1.8rem; font-size: 1rem; }
+.btn--sm { padding: 0.5rem 1rem;  font-size: 0.8125rem; }
+
+/* ── Reveal animation ───────────────────────────────────── */
+/* Defensive default: content is VISIBLE without JS / before IO fires.
+   The hidden initial state is only applied once <html> has .js-ready
+   (set by BaseLayout inline script). This means:
+   - SEO crawlers + headless screenshots see full content
+   - Users with JS disabled see full content
+   - Users with JS see the animated reveal once cards enter viewport */
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+.clip-text {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: top;
+}
+.clip-text > span {
+  display: inline-block;
+  will-change: transform;
+}
+.stagger > * {
+  opacity: 1;
+  transform: none;
+}
+
+html.js-ready .reveal:not(.visible), html.js-ready .stagger:not(.visible) > * {
+  opacity: 0;
+}
+
+/* ── Header / Nav ───────────────────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(var(--bg-rgb), 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-ui) ease;
+}
+.site-header.scrolled {
+  border-bottom-color: var(--border);
+}
+
+/* Reading position is deliberately quiet: it helps orient long case studies
+   without competing with the header or relying on decorative motion. */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 101;
+  height: 2px;
+  pointer-events: none;
+  background: transparent;
+}
+.scroll-progress__bar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+}
+.site-header__inner {
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.site-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+.site-header__logo-img {
+  display: block;
+  height: 26px;
+  width: auto;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  transition: opacity var(--dur-ui) ease, filter var(--dur-ui) ease;
+}
+/* Lift logo color a notch on dark — the PNG is fixed cognac;
+   filter pushes it toward the brighter dark-theme accent. */
+[data-theme="dark"] .site-header__logo-img,
+[data-theme="dark"] .site-footer__brand-logo-img {
+  filter: brightness(1.18) saturate(1.12);
+}
+.site-header__brand:hover .site-header__logo-img {
+  opacity: 0.75;
+}
+@media (max-width: 600px) {
+  .site-header__logo-img { height: 22px; }
+}
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.site-header__nav a {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--muted);
+  transition: color var(--dur-ui) ease;
+  letter-spacing: -0.01em;
+}
+.site-header__nav a:hover,
+.site-header__nav a[aria-current="page"] {
+  color: var(--fg);
+}
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border2);
+  border-radius: var(--r-sm);
+  padding: 2px;
+  background: var(--bg);
+}
+.lang-switcher__btn {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 4px 8px;
+  border-radius: 2px;
+  transition: background var(--dur-ui) ease, color var(--dur-ui) ease;
+  line-height: 1;
+}
+.lang-switcher__btn--active {
+  background: var(--fg);
+  color: var(--bg);
+}
+.lang-switcher__btn:hover:not(.lang-switcher__btn--active) {
+  color: var(--fg);
+}
+
+/* ── Burger button ─────────────────────────────────────── */
+.site-header__burger {
+  display: none;
+  width: 40px;
+  height: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid var(--border2);
+  border-radius: var(--r-sm);
+  background: var(--bg);
+  cursor: pointer;
+  transition: border-color var(--dur-ui) ease;
+  position: relative;
+  z-index: 110;
+}
+/* Mobile overrides MUST come after base burger styles to win the cascade. */
+@media (max-width: 900px) {
+  .site-header__nav { display: none !important; }
+  .site-header__actions .lang-switcher { display: none !important; }
+  .site-header__burger { display: flex !important; }
+}
+.site-header__burger:hover { border-color: var(--fg); }
+.burger-line {
+  width: 18px;
+  height: 1.5px;
+  background: var(--fg);
+  border-radius: 2px;
+  transition: transform var(--dur-ui) ease, opacity var(--dur-ui) ease;
+}
+.site-header__burger--open .burger-line:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.site-header__burger--open .burger-line:nth-child(2) { opacity: 0; }
+.site-header__burger--open .burger-line:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* ── Mobile drawer ──────────────────────────────────────── */
+/* Full-screen takeover on mobile: massive typography fills vertically,
+   slide-in from top with elastic ease so it reads as a deliberate
+   full-viewport overlay (not a top strip). */
+.mobile-drawer {
+  position: fixed;
+  top: var(--nav-h);
+  left: 0;
+  right: 0;
+  /* 100dvh = dynamic viewport, correct under iOS Safari toolbar. */
+  height: calc(100dvh - var(--nav-h));
+  /* Fallback for browsers without dvh */
+  max-height: calc(100vh - var(--nav-h));
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: var(--sp-md) var(--container-pad) var(--sp-lg);
+  z-index: 99;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+  /* Hidden state: slid above the viewport, transparent, not interactive.
+     IMPORTANT: both states must use the SAME transform function. Vite's CSS
+     minifier rewrites `translate3d(0, 0, 0)` → `translateZ(0)` — if the
+     hidden state used `translate3d` and the open state ended up as
+     `translateZ`, the browser couldn't interpolate between the two function
+     names and snapped instead of animating. Using `translateY` for both
+     keeps the function identical and minifier-safe. */
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 280ms ease;
+}
+.mobile-drawer--open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+  transition:
+    transform 460ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 240ms ease;
+}
+@media (min-width: 901px) {
+  /* Force-hide on desktop even if class was toggled by JS before resize. */
+  .mobile-drawer,
+  .mobile-drawer--open {
+    display: none !important;
+  }
+}
+
+.mobile-drawer__nav {
+  display: flex;
+  flex-direction: column;
+}
+.mobile-drawer__link {
+  font-family: var(--font-display);
+  /* Sized so all 5 items + lang/theme fit without scroll on iPhone SE
+     (≈ 611 drawer h). vh-relative padding shrinks on short viewports
+     and grows on tall ones, so the menu adapts without media queries. */
+  font-size: clamp(1.75rem, 7.5vw, 2.75rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  padding: clamp(0.4rem, 1.4vh, 0.95rem) 0;
+  border-bottom: 1px solid var(--border);
+  transition: color var(--dur-ui) ease, padding-left var(--dur-ui) ease;
+  line-height: 1.05;
+}
+.mobile-drawer__link:hover,
+.mobile-drawer__link[aria-current="page"] {
+  color: var(--accent);
+  padding-left: 0.5rem;
+}
+
+.mobile-drawer__lang,
+.mobile-drawer__theme {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.mobile-drawer__lang { margin-top: auto; }
+.mobile-drawer__theme { margin-top: 1rem; }
+.mobile-drawer__lang .lang-switcher {
+  display: inline-flex !important;
+  align-self: flex-start;
+}
+.mobile-drawer__lang .label,
+.mobile-drawer__theme .label {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── Theme toggle ────────────────────────────────────────── */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border2);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--fg);
+  cursor: pointer;
+  transition: border-color var(--dur-ui) ease, background var(--dur-ui) ease, color var(--dur-ui) ease;
+  flex-shrink: 0;
+  padding: 0;
+}
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.theme-toggle__icon {
+  width: 16px;
+  height: 16px;
+  display: none;
+}
+.theme-toggle__icon--sun { display: block; }
+[data-theme="dark"] .theme-toggle__icon--sun { display: none; }
+[data-theme="dark"] .theme-toggle__icon--moon { display: block; }
+
+/* Inline variant (mobile drawer) — full-width pill with label */
+.theme-toggle--inline {
+  width: auto;
+  height: auto;
+  align-self: flex-start;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.theme-toggle__label {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+.site-footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding-top: var(--sp-xl);
+  padding-bottom: var(--sp-md);
+  margin-top: var(--sp-2xl);
+}
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--sp-md);
+  padding-bottom: var(--sp-lg);
+}
+@media (max-width: 768px) {
+  .site-footer__grid { grid-template-columns: 1fr 1fr; gap: var(--sp-md); }
+}
+@media (max-width: 480px) {
+  .site-footer__grid { grid-template-columns: 1fr; }
+}
+.site-footer__brand-logo-img {
+  display: block;
+  height: 28px;
+  width: auto;
+  margin-bottom: 0.9rem;
+}
+.site-footer__brand-desc {
+  /* fg + opacity instead of var(--muted) — meets WCAG AA contrast on footer bg */
+  color: var(--fg);
+  opacity: 0.72;
+  font-size: 0.9375rem;
+  max-width: 34ch;
+  line-height: 1.55;
+}
+.site-footer__col-title {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg);
+  opacity: 0.72;
+  margin-bottom: 1rem;
+}
+.site-footer__col-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.site-footer__col-links a {
+  font-size: 0.9375rem;
+  color: var(--fg);
+  opacity: 0.7;
+  transition: opacity var(--dur-ui) ease, color var(--dur-ui) ease;
+}
+.site-footer__col-links a:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+.site-footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: var(--sp-md);
+  border-top: 1px solid var(--border);
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.site-footer__copy {
+  font-size: 0.8125rem;
+  color: var(--fg);
+  opacity: 0.7;
+}
+
+/* ── Utility ─────────────────────────────────────────────── */
+/* Screen-reader-only: keeps a heading in the a11y tree without visual change. */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.text-muted  { color: var(--muted); }
+.text-accent { color: var(--accent); }
+.text-fg     { color: var(--fg); }
+
+.glow-card {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  transition: border-color var(--dur-ui) ease, transform var(--dur-ui) ease, box-shadow var(--dur-ui) ease;
+}
+.glow-card:hover {
+  border-color: var(--border2);
+  box-shadow: 0 8px 24px rgba(var(--shadow-rgb), 0.04);
+}
+
+/* Hairline — editorial dividers within sections */
+.hairline {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: var(--sp-md) 0;
+}
+
+/* ── Reduced motion ──────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal, .stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  html { scroll-behavior: auto; }
+}

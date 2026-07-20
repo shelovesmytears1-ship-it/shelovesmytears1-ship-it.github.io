@@ -1,0 +1,162 @@
+---
+/**
+ * JSON-LD structured data emitter.
+ *
+ * Per page type:
+ *   - 'website'  → WebSite + Person (creator)
+ *   - 'about'    → Person (detailed)
+ *   - 'case'     → CreativeWork (for case studies)
+ *
+ * BaseLayout emits 'website' by default. Per-page can override via slot.
+ */
+
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  type: 'website' | 'about' | 'case';
+  lang: Lang;
+  /** Required for type='case' — the case entry data */
+  caseData?: {
+    title: string;
+    summary: string;
+    year: string;
+    niche: string;
+    url: string;
+  };
+}
+
+const { type, lang, caseData } = Astro.props;
+
+const SITE_URL = 'https://overflow-web.pl';
+const SITE_NAME = 'overflow';
+
+const inLang = lang === 'ua' ? 'uk' : lang;
+
+/* Localized breadcrumb labels — match nav labels exactly */
+const T_WORK = lang === 'pl' ? 'Prace' : lang === 'en' ? 'Work' : lang === 'ua' ? 'Роботи' : 'Работы';
+const T_HOME = lang === 'pl' ? 'Strona główna' : lang === 'en' ? 'Home' : lang === 'ua' ? 'Головна' : 'Главная';
+
+/* Locale-prefixed work index URL */
+const localePrefix = lang === 'pl' ? '' : `/${lang}`;
+const workIndexUrl = `${SITE_URL}${localePrefix}/work`;
+const homeUrl = `${SITE_URL}${localePrefix}/`;
+
+const person = {
+  '@type': 'Person',
+  '@id': `${SITE_URL}/#daniil-menshov`,
+  name: 'Daniil Menshov',
+  jobTitle: 'Frontend Developer',
+  url: SITE_URL,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Gdańsk',
+    addressCountry: 'PL',
+  },
+  nationality: {
+    '@type': 'Country',
+    name: 'Ukraine',
+  },
+  sameAs: [
+    'https://t.me/zzxvaracaa',
+    'https://www.instagram.com/overflow.web',
+  ],
+  worksFor: {
+    '@type': 'Organization',
+    name: 'overflow',
+    url: SITE_URL,
+  },
+};
+
+let schema: object | object[];
+
+if (type === 'website') {
+  schema = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: SITE_NAME,
+      inLanguage: inLang,
+      creator: person,
+      publisher: person,
+    },
+    {
+      '@context': 'https://schema.org',
+      ...person,
+    },
+  ];
+} else if (type === 'about') {
+  schema = {
+    '@context': 'https://schema.org',
+    ...person,
+    description:
+      lang === 'pl'
+        ? 'Frontend developer z Ukrainy, mieszkam w Polsce. Pracuję sam.'
+        : lang === 'en'
+        ? 'Frontend developer from Ukraine, based in Poland. I work alone.'
+        : lang === 'ua'
+        ? 'Frontend-розробник з України, живу в Польщі. Працюю один.'
+        : 'Frontend-разработчик из Украины, живу в Польше. Работаю один.',
+    knowsAbout: [
+      'Web development',
+      'Astro',
+      'TypeScript',
+      'CSS',
+      'Internationalization',
+      'Performance optimization',
+    ],
+  };
+} else if (type === 'case' && caseData) {
+  schema = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'CreativeWork',
+      name: caseData.title,
+      description: caseData.summary,
+      url: caseData.url,
+      dateCreated: caseData.year,
+      inLanguage: inLang,
+      author: person,
+      creator: person,
+      about: caseData.niche,
+      isPartOf: {
+        '@type': 'WebSite',
+        '@id': `${SITE_URL}/#website`,
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: T_HOME,
+          item: homeUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: T_WORK,
+          item: workIndexUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: caseData.title,
+          item: caseData.url,
+        },
+      ],
+    },
+  ];
+} else {
+  schema = [];
+}
+---
+
+{Array.isArray(schema) ? schema.map((s) => (
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(s)} />
+)) : (
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+)}

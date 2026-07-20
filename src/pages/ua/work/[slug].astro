@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CaseStudyPage from '../../../components/pages/CaseStudyPage.astro';
+
+export async function getStaticPaths() {
+  const cases = await getCollection('cases');
+  return cases.map((c) => ({
+    params: { slug: c.slug },
+    props: { entry: c },
+  }));
+}
+
+const { entry } = Astro.props;
+const lang = 'ua' as const;
+const d = entry.data;
+---
+<BaseLayout
+  title={`${d.title} — overflow`}
+  description={d.summary}
+  ogImage={d.cover}
+  lang={lang}
+>
+  <CaseStudyPage lang={lang} entry={entry} />
+</BaseLayout>

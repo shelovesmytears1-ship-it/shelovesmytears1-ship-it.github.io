@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap (manually generated at src/pages/sitemap.xml.ts)
+Sitemap: https://overflow-web.pl/sitemap.xml

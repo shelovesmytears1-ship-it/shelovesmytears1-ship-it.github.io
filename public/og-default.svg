@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Background: Light Editorial Cream palette -->
+  <rect width="1200" height="630" fill="#FAFAF6"/>
+
+  <!-- Subtle warm grain at edges -->
+  <rect x="0"    y="0" width="40"   height="630" fill="#F1EDE3"/>
+  <rect x="1160" y="0" width="40"   height="630" fill="#F1EDE3"/>
+
+  <!-- Eyebrow (mono, accent) -->
+  <text x="80" y="120"
+        font-family="ui-monospace, 'JetBrains Mono', monospace"
+        font-size="22"
+        font-weight="500"
+        letter-spacing="3"
+        fill="#B25814">
+    STUDIO OF ONE · WEB DEVELOPMENT
+  </text>
+
+  <!-- Wordmark (display serif) -->
+  <text x="80" y="260"
+        font-family="'Instrument Serif', Georgia, serif"
+        font-size="120"
+        font-weight="400"
+        letter-spacing="-3"
+        fill="#1A140E">
+    overflow<tspan fill="#B25814">⁄</tspan>
+  </text>
+
+  <!-- Hairline divider -->
+  <line x1="80" y1="320" x2="500" y2="320" stroke="#DDD3C1" stroke-width="1"/>
+
+  <!-- Tagline (display serif) -->
+  <text x="80" y="400"
+        font-family="'Instrument Serif', Georgia, serif"
+        font-size="56"
+        font-weight="400"
+        letter-spacing="-1"
+        fill="#1A140E">
+    I build websites
+  </text>
+  <text x="80" y="465"
+        font-family="'Instrument Serif', Georgia, serif"
+        font-size="56"
+        font-style="italic"
+        font-weight="400"
+        letter-spacing="-1"
+        fill="#B25814">
+    for business goals.
+  </text>
+
+  <!-- Footer line (mono, muted) -->
+  <text x="80" y="570"
+        font-family="ui-monospace, 'JetBrains Mono', monospace"
+        font-size="18"
+        font-weight="500"
+        letter-spacing="2"
+        fill="#7A6E5C">
+    9 CONCEPT PROJECTS · METHOD-DOCUMENTED · OVERFLOW-WEB.PL
+  </text>
+</svg>

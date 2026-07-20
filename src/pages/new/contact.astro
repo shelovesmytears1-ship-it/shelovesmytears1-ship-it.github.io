@@ -1,0 +1,71 @@
+---
+import NewDirectionLayout from '../../layouts/NewDirectionLayout.astro';
+import { type Lang } from '../../i18n/ui';
+import { getNewDirectionCopy } from '../../data/newDirectionI18n';
+
+interface Props { lang?: Lang; }
+const { lang = 'pl' } = Astro.props as Props;
+const c = getNewDirectionCopy(lang);
+---
+
+<NewDirectionLayout title={c.layout.nav.contact} description={c.contact.lede} current="contact" lang={lang} currentPath="contact">
+  <section class="new-page-hero new-shell">
+    <div class="new-page-hero__grid nd-reveal">
+      <span class="new-meta">04 — {c.layout.nav.contact}</span>
+      <div>
+        <h1 class="new-page-title">{c.contact.title}<br />{c.contact.titleLine} <em>{c.contact.accent}</em></h1>
+        <p class="new-page-lede">{c.contact.lede}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-grid new-shell">
+    <form class="brief nd-reveal" name="new-brief" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="new-brief" />
+      <p hidden><label>{c.contact.honeypot} <input name="bot-field" /></label></p>
+      <label>
+        <span>{c.contact.name}</span>
+        <input name="name" autocomplete="name" required />
+      </label>
+      <label>
+        <span>{c.contact.channel}</span>
+        <input name="contact" autocomplete="email" required placeholder="@nick / email" />
+      </label>
+      <label>
+        <span>{c.contact.type}</span>
+        <select name="type">
+          {c.contact.options.map((option) => <option>{option}</option>)}
+        </select>
+      </label>
+      <label>
+        <span>{c.contact.message}</span>
+        <textarea name="message" rows="6" required placeholder={c.contact.messagePlaceholder}></textarea>
+      </label>
+      <button class="new-button" type="submit">{c.contact.submit} <span aria-hidden="true">↗</span></button>
+    </form>
+
+    <aside class="contact-aside nd-reveal">
+      <span class="new-meta">{c.contact.quickest}</span>
+      <a href="https://t.me/zzxvaracaa" target="_blank" rel="noopener">Telegram <span>↗</span></a>
+      <a href="mailto:overflow.web1@gmail.com">overflow.web1@gmail.com <span>↗</span></a>
+      <p>{c.contact.response}</p>
+    </aside>
+  </section>
+</NewDirectionLayout>
+
+<style>
+  .contact-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr); gap: clamp(3rem, 11vw, 12rem); padding: 0 0 clamp(8rem, 15vw, 14rem); }
+  .brief { display: flex; flex-direction: column; gap: 1.5rem; }
+  .brief label { display: flex; flex-direction: column; gap: .65rem; }
+  .brief label span { color: var(--nd-muted); font-family: var(--nd-mono); font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; }
+  .brief input, .brief select, .brief textarea { width: 100%; padding: 1rem 0; border: 0; border-bottom: 1px solid var(--nd-line); outline: none; color: var(--nd-paper); background: transparent; transition: border-color 180ms ease; }
+  .brief select option { color: var(--nd-ink); }
+  .brief input:focus, .brief select:focus, .brief textarea:focus { border-color: var(--nd-accent); }
+  .brief textarea { resize: vertical; min-height: 9rem; line-height: 1.55; }
+  .brief .new-button { align-self: flex-start; margin-top: 1rem; background: var(--nd-ink); cursor: pointer; }
+  .contact-aside { display: flex; flex-direction: column; align-items: start; gap: 1rem; padding-top: .1rem; }
+  .contact-aside a { display: flex; justify-content: space-between; width: 100%; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--nd-line); font-family: var(--nd-serif); font-size: clamp(1.6rem, 2.4vw, 2.4rem); letter-spacing: -.04em; }
+  .contact-aside a span { color: var(--nd-accent); font-family: var(--nd-sans); font-size: 1rem; }
+  .contact-aside p { margin: .6rem 0 0; color: var(--nd-muted); font-size: .88rem; line-height: 1.6; }
+  @media (max-width: 800px) { .contact-grid { grid-template-columns: 1fr; } }
+</style>

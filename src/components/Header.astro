@@ -1,0 +1,214 @@
+---
+import { useT, localePath, getAllLocales, withBase } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+
+interface Props { lang: Lang; pathname: string; }
+const { lang, pathname } = Astro.props;
+const t = useT(lang);
+const p = (path: string) => localePath(path, lang);
+
+const navLinks = [
+  { href: p('/method'),  label: t('nav.method')  },
+  { href: p('/work'),    label: t('nav.work')    },
+  { href: p('/about'),   label: t('nav.about')   },
+  { href: p('/contact'), label: t('nav.contact') },
+  /* Bots page temporarily removed from nav (files kept for future restore) */
+];
+
+/* Strip locale prefix from pathname to compare against link.href reliably */
+const isActive = (href: string) => {
+  if (href === p('/') && (pathname === '/' || pathname === `/${lang}` || pathname === `/${lang}/`)) return true;
+  return pathname === href || pathname === href + '/' || pathname.startsWith(href + '/');
+};
+
+const locales = getAllLocales(lang, pathname);
+---
+<header class="site-header">
+  <div class="container site-header__inner">
+
+    <a href={p('/')} class="site-header__brand" aria-label="overflow — home">
+      <img
+        src={withBase('/logo.png')}
+        alt="overflow"
+        class="site-header__logo-img"
+        width="284"
+        height="60"
+        decoding="async"
+      />
+    </a>
+
+    <nav class="site-header__nav" aria-label="Main navigation">
+      <div class="nav-pill" aria-hidden="true"></div>
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          aria-current={isActive(link.href) ? 'page' : undefined}
+          class="nav-item"
+        >{link.label}</a>
+      ))}
+    </nav>
+
+    <div class="site-header__actions">
+      <!-- Theme toggle -->
+      <button
+        type="button"
+        class="theme-toggle"
+        id="theme-toggle"
+        aria-label="Switch theme"
+        title="Switch theme"
+      >
+        <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+        <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+
+      <div class="lang-switcher" role="group" aria-label="Language">
+        <div class="lang-pill" aria-hidden="true"></div>
+        {locales.map(loc => (
+          <a
+            href={loc.href}
+            class:list={['lang-switcher__btn', loc.active && 'lang-switcher__btn--active']}
+            aria-current={loc.active ? 'true' : undefined}
+            hreflang={loc.lang === 'ua' ? 'uk' : loc.lang}
+          >{loc.label}</a>
+        ))}
+      </div>
+
+      <!-- Burger button — shown only on mobile via CSS -->
+      <button
+        type="button"
+        class="site-header__burger"
+        id="nav-burger"
+        aria-label="Open menu"
+        aria-controls="mobile-drawer"
+        aria-expanded="false"
+      >
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer — moved OUT of <header> so it's not affected by the
+     header's backdrop-filter (which creates a containing block for
+     position:fixed descendants and breaks the slide-in transition). -->
+<div class="mobile-drawer" id="mobile-drawer" aria-hidden="true" inert>
+  <nav class="mobile-drawer__nav" aria-label="Mobile navigation">
+    {navLinks.map(link => (
+      <a
+        href={link.href}
+        class="mobile-drawer__link"
+        aria-current={isActive(link.href) ? 'page' : undefined}
+      >{link.label}</a>
+    ))}
+  </nav>
+
+  <div class="mobile-drawer__lang">
+    <span class="label">Language</span>
+    <div class="lang-switcher" role="group" aria-label="Language">
+      {locales.map(loc => (
+        <a
+          href={loc.href}
+          class:list={['lang-switcher__btn', loc.active && 'lang-switcher__btn--active']}
+          aria-current={loc.active ? 'true' : undefined}
+          hreflang={loc.lang === 'ua' ? 'uk' : loc.lang}
+        >{loc.label}</a>
+      ))}
+    </div>
+  </div>
+
+  <div class="mobile-drawer__theme">
+    <span class="label">Theme</span>
+    <button type="button" class="theme-toggle theme-toggle--inline" id="theme-toggle-drawer" aria-label="Switch theme">
+      <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+      </svg>
+      <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+      <span class="theme-toggle__label" data-theme-label-light="Light" data-theme-label-dark="Dark">Light</span>
+    </button>
+  </div>
+</div>
+
+<script>
+  /* Mobile drawer toggle */
+  const burger = document.getElementById('nav-burger');
+  const drawer = document.getElementById('mobile-drawer');
+  const html = document.documentElement;
+
+  function setOpen(open: boolean) {
+    if (!burger || !drawer) return;
+    burger.setAttribute('aria-expanded', String(open));
+    drawer.setAttribute('aria-hidden', String(!open));
+    /* inert removes the closed drawer's links from tab order + a11y tree
+       (fixes "aria-hidden element contains focusable descendants"). */
+    (drawer as HTMLElement).inert = !open;
+    drawer.classList.toggle('mobile-drawer--open', open);
+    burger.classList.toggle('site-header__burger--open', open);
+    html.style.overflow = open ? 'hidden' : '';
+    /* Reset internal scroll so the menu always opens at the top —
+       otherwise prior scroll position can leave nav items hidden above. */
+    if (open) drawer.scrollTop = 0;
+  }
+
+  burger?.addEventListener('click', () => {
+    const isOpen = drawer?.classList.contains('mobile-drawer--open');
+    setOpen(!isOpen);
+  });
+
+  /* Close on link click */
+  drawer?.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => setOpen(false));
+  });
+
+  /* Close on Escape */
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer?.classList.contains('mobile-drawer--open')) {
+      setOpen(false);
+    }
+  });
+
+  /* Close if window resizes back to desktop */
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900 && drawer?.classList.contains('mobile-drawer--open')) {
+      setOpen(false);
+    }
+  });
+
+  /* Theme toggle */
+  const themeBtn = document.getElementById('theme-toggle');
+  const themeBtnDrawer = document.getElementById('theme-toggle-drawer');
+
+  function applyTheme(theme: 'light' | 'dark') {
+    html.setAttribute('data-theme', theme);
+    try { localStorage.setItem('theme', theme); } catch (e) { /* private mode */ }
+    /* Update mobile drawer label text */
+    document.querySelectorAll<HTMLElement>('.theme-toggle__label').forEach(el => {
+      const light = el.dataset.themeLabelLight || 'Light';
+      const dark = el.dataset.themeLabelDark || 'Dark';
+      el.textContent = theme === 'dark' ? dark : light;
+    });
+    /* Update meta theme-color */
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', theme === 'dark' ? '#1A1B1E' : '#FAFAF6');
+  }
+
+  function toggleTheme() {
+    const current = html.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  }
+
+  themeBtn?.addEventListener('click', toggleTheme);
+  themeBtnDrawer?.addEventListener('click', toggleTheme);
+
+  /* Sync drawer label on initial paint (the inline pre-script set data-theme already) */
+  applyTheme((html.getAttribute('data-theme') as 'light' | 'dark') || 'light');
+</script>

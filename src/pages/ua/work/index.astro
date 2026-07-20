@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import WorkPage from '../../../components/pages/WorkPage.astro';
+import { useT } from '../../../i18n/ui';
+
+const lang = 'ua' as const;
+const t = useT(lang);
+---
+<BaseLayout title={t('work.h1')} description={t('work.sub')} lang={lang}>
+  <WorkPage lang={lang} />
+</BaseLayout>

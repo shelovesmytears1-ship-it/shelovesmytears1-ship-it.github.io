@@ -1,0 +1,103 @@
+---
+import { getCollection } from 'astro:content';
+import NewDirectionLayout from '../../layouts/NewDirectionLayout.astro';
+import { type Lang, withBase } from '../../i18n/ui';
+import { getNewDirectionCopy, newDirectionPath } from '../../data/newDirectionI18n';
+
+const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
+interface Props { lang?: Lang; }
+const { lang = 'pl' } = Astro.props as Props;
+const c = getNewDirectionCopy(lang);
+const p = (path = '') => withBase(newDirectionPath(lang, path));
+const projectSummary = (project: (typeof cases)[number]) => {
+  const localized = lang === 'ru' ? undefined : project.data.translations?.[lang];
+  return localized?.summary ?? project.data.summary;
+};
+---
+
+<NewDirectionLayout title={`${c.work.title} ${c.work.accent}`} description={c.work.lede} current="work" lang={lang} currentPath="work">
+  <section class="new-page-hero new-shell">
+    <div class="new-page-hero__grid nd-reveal">
+      <span class="new-meta">01 — {c.layout.nav.work}</span>
+      <div>
+        <h1 class="new-page-title">{c.work.title}<br /><em>{c.work.accent}</em></h1>
+        <p class="new-page-lede">{c.work.lede}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="work-list new-shell" aria-label={c.work.listLabel}>
+    {cases.map((project, index) => (
+      <article
+        class:list={['work-row', index % 2 === 1 && 'work-row--reversed', 'nd-reveal']}
+        style={`--project-bg: ${project.data.bg || '#25272a'};`}
+      >
+        <a class="work-row__media" href={p(`work/${project.slug}`)} aria-label={`Open ${project.data.title}`}>
+          {project.data.cover && (
+            <picture>
+              <source
+                type="image/webp"
+                srcset={`${withBase(project.data.cover.replace(/^\/covers\/(.+)\.jpe?g$/i, '/covers/4k/$1.webp'))} 3840w, ${withBase(project.data.cover.replace(/\.jpe?g$/i, '.webp'))} 1280w`}
+                sizes="(min-width: 801px) 65vw, 100vw"
+              />
+              <img src={withBase(project.data.cover)} alt="" width="3840" height="2400" loading="lazy" decoding="async" />
+            </picture>
+          )}
+          <span aria-hidden="true">↗</span>
+        </a>
+        <div class="work-row__info">
+          <span class="new-meta">{String(index + 1).padStart(2, '0')} · {project.data.niche} · {project.data.year}</span>
+          <h2>{project.data.title}</h2>
+          <p>{projectSummary(project)}</p>
+        </div>
+      </article>
+    ))}
+  </section>
+</NewDirectionLayout>
+
+<style>
+  .work-list { padding-bottom: clamp(8rem, 15vw, 14rem); }
+  .work-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.55fr);
+    grid-template-areas: 'media info';
+    gap: clamp(1.5rem, 6vw, 7rem);
+    align-items: start;
+    padding: clamp(2rem, 4vw, 4.5rem) 0;
+    border-top: 1px solid var(--nd-line);
+  }
+  .work-row--reversed {
+    grid-template-areas: 'info media';
+    grid-template-columns: minmax(260px, 0.55fr) minmax(0, 1.45fr);
+  }
+  .work-row:last-child { border-bottom: 1px solid var(--nd-line); }
+  .work-row__media {
+    grid-area: media;
+    position: relative;
+    display: grid;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    place-items: center;
+    background: var(--project-bg);
+    color: inherit;
+    text-decoration: none;
+  }
+  .work-row__media picture, .work-row__media img { display: block; width: 100%; height: 100%; }
+  .work-row__media img { object-fit: contain; object-position: center; }
+  .work-row__media::after { position: absolute; inset: 0; background: linear-gradient(115deg, rgba(18,19,21,.12), transparent 60%); content: ''; pointer-events: none; transition: opacity 250ms ease; }
+  .work-row__media span { position: absolute; right: 14px; bottom: 14px; z-index: 1; display: grid; width: 42px; height: 42px; place-items: center; color: var(--nd-ink); background: var(--nd-paper); border-radius: 50%; opacity: 0; transform: translateY(8px); transition: opacity 220ms ease, transform 220ms ease; }
+  .work-row__media:hover::after, .work-row__media:focus-visible::after { opacity: 0; }
+  .work-row__media:hover span, .work-row__media:focus-visible span { opacity: 1; transform: translateY(0); }
+  .work-row__media:focus-visible { outline: 2px solid var(--nd-accent); outline-offset: 5px; }
+  .work-row__info { grid-area: info; align-self: center; padding-top: 0.2rem; }
+  .work-row h2 { margin: 0.55rem 0 1rem; font-family: var(--nd-serif); font-size: clamp(2rem, 3.2vw, 3.4rem); font-weight: 400; letter-spacing: -0.04em; line-height: .98; overflow-wrap: anywhere; text-wrap: balance; }
+  .work-row p { margin: 0; color: var(--nd-muted); font-size: .9rem; line-height: 1.6; }
+  @media (max-width: 800px) {
+    .work-row, .work-row--reversed {
+      grid-template-columns: 1fr;
+      grid-template-areas: 'media' 'info';
+      gap: 1.15rem;
+    }
+    .work-row__media span { opacity: 1; transform: none; }
+  }
+</style>

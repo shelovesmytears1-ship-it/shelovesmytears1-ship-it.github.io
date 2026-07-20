@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MethodPage from '../../components/pages/MethodPage.astro';
+import { useT } from '../../i18n/ui';
+
+const lang = 'ru' as const;
+const t = useT(lang);
+---
+<BaseLayout title={t('method.h1')} description={t('method.sub')} lang={lang}>
+  <MethodPage lang={lang} />
+</BaseLayout>

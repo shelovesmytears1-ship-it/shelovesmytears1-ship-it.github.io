@@ -1,0 +1,95 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { marked } from 'marked';
+import NewDirectionLayout from '../../../layouts/NewDirectionLayout.astro';
+import { type Lang, withBase } from '../../../i18n/ui';
+import { getNewDirectionCopy, newDirectionPath } from '../../../data/newDirectionI18n';
+
+export interface Props {
+  entry: CollectionEntry<'cases'>;
+  lang?: Lang;
+}
+
+export async function getStaticPaths() {
+  const cases = await getCollection('cases');
+  return cases.map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+
+const { entry, lang = 'pl' } = Astro.props as Props;
+const c = getNewDirectionCopy(lang);
+const p = (path = '') => withBase(newDirectionPath(lang, path));
+const localized = lang === 'ru' ? undefined : entry.data.translations?.[lang];
+const summary = localized?.summary ?? entry.data.summary;
+const result = localized?.result ?? entry.data.result;
+const rawBody = localized?.body?.trim() || entry.body;
+const body = await marked.parse(rawBody);
+---
+
+<NewDirectionLayout title={entry.data.title} description={summary} current="work" lang={lang} currentPath={`work/${entry.slug}`}>
+  <article>
+    <header class="case-hero new-shell">
+      <a class="case-back new-meta" href={p('work')}>← {c.case.allWork}</a>
+      <div class="case-hero__meta new-meta nd-reveal">{entry.data.niche} · {entry.data.year}</div>
+      <h1 class="case-hero__title nd-reveal">{entry.data.title}</h1>
+      <p class="case-hero__summary nd-reveal">{summary}</p>
+      <div class="case-hero__details nd-reveal">
+        <span>{entry.data.technologies.join(' · ')}</span>
+        {entry.data.siteUrl && <a href={entry.data.siteUrl} target="_blank" rel="noopener">{c.case.openSite} ↗</a>}
+      </div>
+    </header>
+
+    {entry.data.cover && (
+      <figure class="case-cover nd-reveal">
+        <picture>
+          <source
+            type="image/webp"
+            srcset={`${withBase(entry.data.cover.replace(/^\/covers\/(.+)\.jpe?g$/i, '/covers/4k/$1.webp'))} 3840w, ${withBase(entry.data.cover.replace(/\.jpe?g$/i, '.webp'))} 1280w`}
+            sizes="(min-width: 1280px) 1200px, 100vw"
+          />
+          <img src={withBase(entry.data.cover)} alt={`${c.case.coverAlt} ${entry.data.title}`} width="3840" height="2400" fetchpriority="high" />
+        </picture>
+      </figure>
+    )}
+
+    <section class="case-content new-shell">
+      <div class="case-content__side nd-reveal">
+        <span class="new-meta">{c.case.context}</span>
+        {result && <p class="case-result">{result}</p>}
+      </div>
+      <div class="case-content__body nd-reveal" set:html={body} />
+    </section>
+
+    <nav class="case-next new-shell" aria-label={c.case.nextAction}>
+      <a class="new-text-link" href={p('work')}>← {c.case.backToWork}</a>
+      <a class="new-text-link" href={p('contact')}>{c.case.similarProject} →</a>
+    </nav>
+  </article>
+</NewDirectionLayout>
+
+<style>
+  .case-hero { padding: clamp(9rem, 18vw, 15rem) 0 clamp(3rem, 7vw, 7rem); }
+  .case-back { display: inline-block; margin-bottom: clamp(4rem, 10vw, 9rem); transition: color 180ms ease; }
+  .case-back:hover { color: var(--nd-paper); }
+  .case-hero__meta { color: var(--nd-accent); }
+  .case-hero__title { max-width: 1050px; margin: 1rem 0 0; font-family: var(--nd-serif); font-size: clamp(4.7rem, 12vw, 12rem); font-weight: 400; letter-spacing: -.055em; line-height: .92; overflow-wrap: anywhere; text-wrap: balance; }
+  .case-hero__summary { max-width: 620px; margin: clamp(3rem, 7vw, 6rem) 0 0 auto; color: var(--nd-muted); font-size: clamp(1rem, 1.45vw, 1.25rem); line-height: 1.65; }
+  .case-hero__details { display: flex; justify-content: space-between; gap: 1rem; margin-top: 1.7rem; margin-left: auto; max-width: 620px; color: var(--nd-muted); font-family: var(--nd-mono); font-size: .67rem; letter-spacing: .06em; text-transform: uppercase; }
+  .case-hero__details a { color: var(--nd-paper); border-bottom: 1px solid var(--nd-accent); }
+  .case-cover { width: min(1560px, calc(100vw - 40px)); margin: 0 auto; background: var(--nd-ink-raised); }
+  .case-cover picture, .case-cover img { display: block; width: 100%; height: auto; }
+  .case-content { display: grid; grid-template-columns: minmax(170px, .7fr) minmax(0, 1.3fr); gap: clamp(2rem, 9vw, 10rem); padding: clamp(6rem, 14vw, 13rem) 0; }
+  .case-content__side { align-self: start; position: sticky; top: 6rem; }
+  .case-result { margin: 1rem 0 0; color: var(--nd-accent); font-family: var(--nd-serif); font-size: 2.2rem; line-height: .95; }
+  .case-content__body { max-width: 700px; color: var(--nd-muted); font-size: 1rem; line-height: 1.75; }
+  .case-content__body :global(h2) { margin: 0 0 1.4rem; color: var(--nd-paper); font-family: var(--nd-serif); font-size: clamp(2.4rem, 4vw, 4.5rem); font-weight: 400; letter-spacing: -.045em; line-height: .98; overflow-wrap: anywhere; text-wrap: balance; }
+  .case-content__body :global(h2:not(:first-child)) { margin-top: 4rem; }
+  .case-content__body :global(p) { margin: 0 0 1.3rem; }
+  .case-content__body :global(ul) { padding-left: 1.1rem; }
+  .case-next { display: flex; justify-content: space-between; gap: 2rem; padding: 0 0 5rem; }
+  @media (max-width: 800px) {
+    .case-hero__summary, .case-hero__details { margin-left: 0; }
+    .case-content { grid-template-columns: 1fr; }
+    .case-content__side { position: static; }
+    .case-next { flex-direction: column; align-items: flex-start; }
+  }
+</style>

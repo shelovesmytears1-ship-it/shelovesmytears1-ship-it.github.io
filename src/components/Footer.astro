@@ -1,0 +1,63 @@
+---
+import { useT, localePath, withBase } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = useT(lang);
+const p = (path: string) => localePath(path, lang);
+---
+<footer class="site-footer">
+  <div class="container">
+
+    <div class="site-footer__grid">
+
+      <!-- Brand column -->
+      <div class="site-footer__brand">
+        <img
+          src={withBase('/logo.png')}
+          alt="overflow"
+          class="site-footer__brand-logo-img"
+          width="284"
+          height="60"
+          decoding="async"
+          loading="lazy"
+        />
+        <p class="site-footer__brand-desc">{t('footer.desc')}</p>
+      </div>
+
+      <!-- Nav column -->
+      <div>
+        <div class="site-footer__col-title">{t('footer.col.nav')}</div>
+        <div class="site-footer__col-links">
+          <a href={p('/method')}>{t('nav.method')}</a>
+          <a href={p('/work')}>{t('nav.work')}</a>
+          <a href={p('/about')}>{t('nav.about')}</a>
+          <a href={p('/contact')}>{t('nav.contact')}</a>
+        </div>
+      </div>
+
+      <!-- Contact column -->
+      <div>
+        <div class="site-footer__col-title">{t('footer.col.contact')}</div>
+        <div class="site-footer__col-links">
+          <a href="https://t.me/zzxvaracaa" target="_blank" rel="noopener">
+            {t('footer.contact.tg')}
+          </a>
+          <a href="mailto:overflow.web1@gmail.com">
+            {t('footer.contact.mail')}
+          </a>
+          <a href="https://www.instagram.com/overflow.web" target="_blank" rel="noopener">
+            {t('footer.contact.ig')}
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <p class="site-footer__copy">{t('footer.copy')}</p>
+    </div>
+
+  </div>
+</footer>

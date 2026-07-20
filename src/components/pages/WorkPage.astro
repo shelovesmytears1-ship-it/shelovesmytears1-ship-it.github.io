@@ -1,0 +1,375 @@
+---
+import { getCollection } from 'astro:content';
+import { useT, localePath, withBase } from '../../i18n/ui';
+import type { Lang } from '../../i18n/ui';
+import { getSummary, nicheLabel, nicheSlug } from '../../data/caseHelpers';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = useT(lang);
+const p = (path: string) => localePath(path, lang);
+
+const allCases = await getCollection('cases');
+const cases = allCases.sort((a, b) => a.data.order - b.data.order);
+
+const filters = [
+  { key: 'all',       label: t('work.filter.all') },
+  { key: 'saas',      label: t('work.filter.saas') },
+  { key: 'ecom',      label: t('work.filter.ecom') },
+  { key: 'services',  label: t('work.filter.services') },
+  { key: 'cultural',  label: t('work.filter.cultural') },
+  { key: 'multipage', label: t('work.filter.multipage') },
+];
+---
+
+<!-- Header -->
+<section class="w-hero">
+  <div class="container w-hero__inner reveal">
+    <span class="eyebrow">{t('work.eyebrow')}</span>
+    <h1 class="w-hero__h1">{t('work.h1')}</h1>
+    <p class="w-hero__sub">{t('work.sub')}</p>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- Filter bar -->
+<section class="w-filters">
+  <div class="container">
+    <div class="w-filters__row" role="tablist" aria-label="Filter projects by niche">
+      {filters.map((f) => (
+        <button
+          type="button"
+          class:list={['w-filter', f.key === 'all' && 'w-filter--active']}
+          data-filter={f.key}
+          aria-pressed={f.key === 'all' ? 'true' : 'false'}
+        >
+          {f.label}
+        </button>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Grid (uses .g-card styles from HomePage — shared component model) -->
+<section class="w-grid-section">
+  <div class="container">
+    <h2 class="sr-only">{t('work.h1')}</h2>
+    <div class="w-grid stagger" id="work-grid">
+      {cases.map((c) => (
+        <a
+          href={p(`/work/${c.slug}`)}
+          class="g-card"
+          data-niche={nicheSlug(c.data.niche)}
+        >
+          <div
+            class="g-card__visual"
+            style={`--g-bg: ${c.data.bg || '#1A1410'}; --g-acc: ${c.data.accent || '#B25814'};`}
+          >
+            {c.data.cover ? (
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset={`${withBase(c.data.cover.replace(/^\/covers\/(.+)\.jpe?g$/i, '/covers/4k/$1.webp'))} 3840w, ${withBase(c.data.cover.replace(/\.jpe?g$/i, '.webp'))} 1280w`}
+                  sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw"
+                />
+                <img
+                  src={withBase(c.data.cover)}
+                  alt={`${c.data.title} hero preview`}
+                  class="g-card__cover"
+                  loading="lazy"
+                  width="3840"
+                  height="2400"
+                />
+              </picture>
+            ) : (
+              <div class="g-card__visual-inner">
+                <div class="g-card__brand mono">{c.data.title.toLowerCase()}</div>
+                <div class="g-card__sketch">
+                  <em class="g-card__bar"></em>
+                  <em class="g-card__line g-card__line--1"></em>
+                  <em class="g-card__line g-card__line--2"></em>
+                  <em class="g-card__pill"></em>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div class="g-card__body">
+            <div class="g-card__meta">
+              <span class="mono g-card__niche">{nicheLabel(c.data.niche, t)}</span>
+              <span class="mono g-card__year">· {c.data.year}</span>
+            </div>
+            <h3 class="g-card__title">{c.data.title}</h3>
+            <p class="g-card__summary">{getSummary(c, lang)}</p>
+            <div class="g-card__footer">
+              <span class="g-card__swatches" aria-hidden="true">
+                <span class="g-card__swatch" style={`background: ${c.data.bg || '#1A1410'};`}></span>
+                <span class="g-card__swatch" style={`background: ${c.data.accent || '#B25814'};`}></span>
+              </span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <p class="w-empty mono" id="work-empty" hidden>
+      <span>0 проектов в этой категории.</span>
+    </p>
+  </div>
+</section>
+
+
+<script>
+  /* Client-side niche filter. SSG keeps all 9 cards in DOM, JS toggles visibility. */
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.w-filter');
+  const cards = document.querySelectorAll<HTMLAnchorElement>('#work-grid .g-card');
+  const empty = document.getElementById('work-empty');
+
+  function applyFilter(filterKey: string) {
+    let visible = 0;
+    cards.forEach((card) => {
+      const matches = filterKey === 'all' || card.dataset.niche === filterKey;
+      (card as HTMLElement).style.display = matches ? '' : 'none';
+      if (matches) visible += 1;
+    });
+    if (empty) {
+      empty.hidden = visible > 0;
+    }
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter || 'all';
+      buttons.forEach((b) => {
+        b.classList.toggle('w-filter--active', b === btn);
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+      });
+      applyFilter(filter);
+    });
+  });
+</script>
+
+
+<style>
+  /* Shared g-card styles intentionally imported via global pattern —
+     the same .g-card class as homepage gallery. Keep DRY. */
+
+  .w-hero {
+    padding-top: var(--sp-xl);
+    padding-bottom: var(--sp-lg);
+  }
+  .w-hero__inner { max-width: 760px; }
+  .w-hero__h1 { margin-top: 0.5rem; margin-bottom: 1.25rem; }
+  .w-hero__sub {
+    font-size: 1.125rem;
+    color: var(--fg);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    max-width: 60ch;
+  }
+
+  /* Filter bar */
+  .w-filters {
+    padding: var(--sp-lg) 0 var(--sp-md);
+  }
+  .w-filters__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .w-filter {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--muted);
+    background: var(--bg);
+    border: 1px solid var(--border2);
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    transition: background var(--dur-ui) ease, border-color var(--dur-ui) ease, color var(--dur-ui) ease;
+    cursor: pointer;
+    letter-spacing: -0.01em;
+  }
+  .w-filter:hover {
+    border-color: var(--fg);
+    color: var(--fg);
+  }
+  .w-filter--active {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+  }
+
+  /* Grid section */
+  .w-grid-section {
+    padding-top: 0;
+    padding-bottom: var(--sp-2xl);
+  }
+  .w-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-md);
+  }
+  @media (max-width: 900px) {
+    .w-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .w-grid { grid-template-columns: 1fr; }
+  }
+
+  .w-empty {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.875rem;
+    padding: var(--sp-xl) 0;
+  }
+
+  /* Shared .g-card styles duplicated from HomePage scope.
+     (Astro component-scoped styles don't inherit across components.) */
+  .g-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    color: var(--fg);
+    transition: border-color var(--dur-ui) ease, transform var(--dur-ui) ease, box-shadow var(--dur-ui) ease;
+  }
+  .g-card:hover {
+    border-color: var(--border2);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(var(--shadow-rgb), 0.05);
+  }
+  .g-card:hover .g-card__title { color: var(--accent); }
+
+  .g-card__visual {
+    /* 16:10 ratio matches standard browser hero screenshots. */
+    background: var(--g-bg);
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+    width: 100%;
+    padding-bottom: 62.5%;
+    aspect-ratio: 16 / 10;
+  }
+  @supports (aspect-ratio: 1) {
+    .g-card__visual { padding-bottom: 0; }
+  }
+  .g-card__cover {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top left;
+    display: block;
+    transition: transform 400ms var(--ease);
+  }
+  .g-card:hover .g-card__cover {
+    transform: scale(1.015);
+  }
+  .g-card__visual-inner {
+    position: absolute;
+    inset: 0;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .g-card__brand {
+    color: var(--g-acc);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: lowercase;
+    opacity: 0.95;
+  }
+  .g-card__sketch {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: flex-start;
+  }
+  .g-card__bar {
+    width: 38%;
+    height: 5px;
+    border-radius: 2px;
+    background: var(--g-acc);
+    opacity: 0.85;
+  }
+  .g-card__line {
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.18);
+  }
+  .g-card__line--1 { width: 70%; }
+  .g-card__line--2 { width: 50%; }
+  .g-card__pill {
+    margin-top: 0.3rem;
+    width: 28%;
+    height: 14px;
+    border-radius: 3px;
+    background: var(--g-acc);
+    opacity: 0.9;
+  }
+  .g-card__visual[style*="#FAFAF8"] .g-card__line,
+  .g-card__visual[style*="#F8F4ED"] .g-card__line,
+  .g-card__visual[style*="#FFFFFF"] .g-card__line,
+  .g-card__visual[style*="#F4F4EE"] .g-card__line,
+  .g-card__visual[style*="#F5F1E8"] .g-card__line,
+  .g-card__visual[style*="#F8F4EC"] .g-card__line {
+    background: rgba(26, 20, 14, 0.15);
+  }
+
+  .g-card__body {
+    padding: 1.25rem 1.35rem 1.35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex: 1;
+  }
+  .g-card__meta {
+    display: flex;
+    gap: 0.35rem;
+    align-items: center;
+    color: var(--muted);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    flex-wrap: wrap;
+  }
+  .g-card__niche { color: var(--accent); }
+  .g-card__title {
+    font-size: 1.5rem;
+    margin: 0.1rem 0 0;
+    transition: color var(--dur-ui) ease;
+  }
+  .g-card__summary {
+    color: var(--muted);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    max-width: none;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: calc(3 * 0.9375rem * 1.55);
+  }
+  .g-card__footer {
+    margin-top: auto;
+    padding-top: 0.6rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .g-card__swatches { display: flex; gap: 0.35rem; }
+  .g-card__swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    display: inline-block;
+  }
+</style>

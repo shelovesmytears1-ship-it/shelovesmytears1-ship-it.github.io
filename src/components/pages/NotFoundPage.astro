@@ -1,0 +1,58 @@
+---
+import { useT, localePath } from '../../i18n/ui';
+import type { Lang } from '../../i18n/ui';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = useT(lang);
+const p = (path: string) => localePath(path, lang);
+---
+
+<section class="nf">
+  <div class="container container--narrow nf__inner">
+    <span class="mono nf__code">404</span>
+    <h1 class="nf__h1">{t('e404.h1')}</h1>
+    <p class="nf__sub">{t('e404.sub')}</p>
+    <div class="nf__ctas">
+      <a href={p('/')} class="btn btn--primary">{t('e404.cta.home')}</a>
+      <a href={p('/work')} class="btn btn--ghost">{t('e404.cta.work')}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .nf {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    padding: var(--sp-xl) 0;
+  }
+  .nf__inner {
+    text-align: center;
+  }
+  .nf__code {
+    font-size: 4rem;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+  .nf__h1 {
+    margin-bottom: 1rem;
+    font-size: clamp(1.875rem, 3vw, 2.5rem);
+  }
+  .nf__sub {
+    color: var(--muted);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    margin: 0 auto 2rem;
+    max-width: 50ch;
+  }
+  .nf__ctas {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+</style>
