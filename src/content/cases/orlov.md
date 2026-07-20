@@ -16,17 +16,15 @@ technologies:
 region:
   - UA
 summary: Personal brand продюсера автоворонок. Chat-mockup в hero против стандартного фото эксперта.
-result: рост 4.2× за 14 дней
 stat:
   value: '4.2×'
-  label: средний рост за 14 дней — конкретное число вместо туманного «I help you grow»
+  label: демо-цифра на макете лендинга — приём «конкретное число вместо туманного I help you grow», а не измеренный результат
 order: 5
 translations:
   pl:
     tagline: Personal brand producenta autofunneli z chat mockupem zamiast standardowego zdjęcia eksperta
     summary: Personal brand producenta autofunneli. Chat-mockup w hero zamiast standardowego zdjęcia eksperta.
-    result: wzrost 4,2× w 14 dni
-    statLabel: średni wzrost w 14 dni — konkretna liczba zamiast mglistego „I help you grow"
+    statLabel: liczba demonstracyjna na makiecie — chwyt „konkretna liczba zamiast mglistego I help you grow", nie zmierzony wynik
     body: |
       ## Kontekst
 
@@ -42,8 +40,7 @@ translations:
   en:
     tagline: Autofunnel producer personal brand — chat mockup instead of the usual expert headshot
     summary: Autofunnel producer personal brand. Chat mockup in hero instead of the standard expert photo.
-    result: growth 4.2× in 14 days
-    statLabel: average growth in 14 days — a concrete number instead of a vague "I help you grow"
+    statLabel: a demo figure on the mockup — the "concrete number instead of a vague I help you grow" device, not a measured result
     body: |
       ## Context
 
@@ -59,8 +56,7 @@ translations:
   ua:
     tagline: Personal brand продюсера автоворонок з chat mockup замість стандартного фото експерта
     summary: Personal brand продюсера автоворонок. Chat-mockup у hero проти стандартного фото експерта.
-    result: зростання 4.2× за 14 днів
-    statLabel: середнє зростання за 14 днів — конкретне число замість туманного «I help you grow»
+    statLabel: демонстративна цифра на макеті — прийом «конкретне число замість туманного I help you grow», а не виміряний результат
     body: |
       ## Контекст
 

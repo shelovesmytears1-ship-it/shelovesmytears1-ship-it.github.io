@@ -16,17 +16,17 @@ technologies:
 region:
   - Premium / International
 summary: Лендинг архитектурного бюро. Editorial + photography-first. Performance budget Lighthouse 90+ в категории, где это редкость.
-result: Lighthouse 90+
+result: 'перф-бюджет: цель Lighthouse 90+'
 stat:
   value: '90+'
-  label: Lighthouse-перформанс в нише, где обычно тяжёлые видео и неоптимизированные фото съедают весь budget
+  label: целевой Lighthouse-перформанс (перф-бюджет концепта) в нише, где обычно тяжёлые видео и неоптимизированные фото съедают весь budget
 order: 4
 translations:
   pl:
     tagline: Lending biura architektonicznego z photo-first podejściem
     summary: Lending biura architektonicznego. Editorial + photography-first. Performance budget Lighthouse 90+ w kategorii, gdzie to rzadkość.
-    result: Lighthouse 90+
-    statLabel: wynik Lighthouse w niszy, gdzie ciężkie wideo i niezoptymalizowane zdjęcia zjadają cały performance budget
+    result: 'budżet wydajności: cel Lighthouse 90+'
+    statLabel: docelowy wynik Lighthouse (budżet wydajności konceptu) w niszy, gdzie ciężkie wideo i niezoptymalizowane zdjęcia zjadają cały performance budget
     body: |
       ## Kontekst
 
@@ -42,7 +42,7 @@ translations:
   en:
     tagline: Architecture bureau landing — photography-first
     summary: Architecture bureau landing. Editorial + photography-first. Performance budget Lighthouse 90+ in a category where that's rare.
-    result: Lighthouse 90+
+    result: 'performance budget: Lighthouse 90+ target'
     statLabel: Lighthouse score in a niche where heavy video and unoptimised photos usually eat the whole performance budget
     body: |
       ## Context
@@ -59,7 +59,7 @@ translations:
   ua:
     tagline: Лендинг архітектурного бюро з photo-first підходом
     summary: Лендинг архітектурного бюро. Editorial + photography-first. Performance budget Lighthouse 90+ у категорії, де це рідкість.
-    result: Lighthouse 90+
+    result: 'перф-бюджет: ціль Lighthouse 90+'
     statLabel: оцінка Lighthouse у ніші, де важкі відео й неоптимізовані фото з'їдають увесь performance budget
     body: |
       ## Контекст
