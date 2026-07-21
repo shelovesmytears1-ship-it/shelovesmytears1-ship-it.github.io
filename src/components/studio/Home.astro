@@ -27,6 +27,15 @@ const galleryItems = allCases.slice(0, 6).map((project) => ({
 const viewLabel: Record<string, string> = { pl: 'Zobacz', ru: 'Смотреть', en: 'View', ua: 'Дивитись' };
 const view = viewLabel[lang] ?? 'View';
 
+// hero footer strip — column labels (the values themselves already live in i18n)
+const heroMetaLabels: Record<string, { services: string; location: string }> = {
+  pl: { services: 'Usługi', location: 'Lokalizacja' },
+  ru: { services: 'Услуги', location: 'Локация' },
+  en: { services: 'Services', location: 'Location' },
+  ua: { services: 'Послуги', location: 'Локація' },
+};
+const hm = heroMetaLabels[lang] ?? heroMetaLabels.en;
+
 type W = { w: string; a: boolean };
 const heroWords: W[] = [
   ...c.home.heroTitle.split(' ').map((w) => ({ w, a: false })),
@@ -54,7 +63,26 @@ const techStack = ['Astro', 'TypeScript', 'GSAP', c.layout.nav.method, 'SEO', 'p
       <a class="btn magnetic" href="#contact" data-cursor>{c.home.heroCta} →</a>
       <a class="btn btn-ghost" href="#work" data-cursor>{c.home.allWork}</a>
     </div>
-    <div class="hero-scroll"><span class="dotline"></span> {c.home.introMeta}</div>
+    <div class="hero-foot">
+      <div class="hero-scroll"><span class="dotline"></span> {c.home.introMeta}</div>
+      <div class="hero-meta">
+        <div class="hero-meta-col">
+          <h3 class="hero-meta-label">{hm.services}</h3>
+          <ul>{c.home.facts.map((f) => (<li>{f}</li>))}</ul>
+        </div>
+        <div class="hero-meta-col">
+          <h3 class="hero-meta-label">{c.about.stackMeta}</h3>
+          <ul>{c.about.stack.slice(0, 3).map((s) => (<li>{s.value}</li>))}</ul>
+        </div>
+        <div class="hero-meta-col">
+          <h3 class="hero-meta-label">{hm.location}</h3>
+          <ul>
+            <li>{c.home.location}</li>
+            <li data-clock data-label="">—</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 

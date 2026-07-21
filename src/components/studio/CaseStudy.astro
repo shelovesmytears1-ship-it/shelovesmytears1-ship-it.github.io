@@ -23,6 +23,15 @@ function parseSections(body: string): Section[] {
     return { heading, html: marked.parse(md, { async: false }) as string };
   });
 }
+// meta-grid column labels (values come from the entry's own frontmatter)
+const metaLabels: Record<string, { stack: string; niche: string; where: string }> = {
+  pl: { stack: 'Stack', niche: 'Branża', where: 'Rok i region' },
+  ru: { stack: 'Стек', niche: 'Ниша', where: 'Год и регион' },
+  en: { stack: 'Stack', niche: 'Industry', where: 'Year & region' },
+  ua: { stack: 'Стек', niche: 'Ніша', where: 'Рік і регіон' },
+};
+const ml = metaLabels[lang] ?? metaLabels.en;
+
 const sections = parseSections(getBody(entry, lang));
 const stat = getStat(entry, lang);
 const result = getResult(entry, lang);
@@ -41,19 +50,51 @@ const next = all[(idx + 1) % all.length];
     <h1 class="disp" data-reveal>{d.title}</h1>
     <p class="cs-tagline" data-reveal>{getSummary(entry, lang)}</p>
     <div class="cs-chips" data-reveal>
-      {d.technologies.length > 0 && <span class="cs-chip">{d.technologies.join(' · ')}</span>}
       {result && <span class="cs-chip cs-chip--accent">→ {result}</span>}
       {d.siteUrl && <a class="cs-chip cs-chip--link" href={d.siteUrl} target="_blank" rel="noopener" data-cursor>{c.case.openSite} ↗</a>}
     </div>
   </header>
 
+  <!-- meta grid: three short columns instead of a prose lead-in -->
+  <div class="wrap cs-meta" data-reveal>
+    <div class="cs-meta-col">
+      <h2 class="cs-meta-label">{ml.stack}</h2>
+      <div class="cs-stripe"></div>
+      <ul>{d.technologies.map((t) => (<li>{t}</li>))}</ul>
+    </div>
+    <div class="cs-meta-col">
+      <h2 class="cs-meta-label">{ml.niche}</h2>
+      <div class="cs-stripe"></div>
+      <ul><li>{d.niche}</li></ul>
+    </div>
+    <div class="cs-meta-col">
+      <h2 class="cs-meta-label">{ml.where}</h2>
+      <div class="cs-stripe"></div>
+      <ul>
+        <li>{d.year}</li>
+        {d.region.map((r) => (<li>{r}</li>))}
+      </ul>
+    </div>
+  </div>
+
   {d.cover && (
     <div class="wrap cs-cover-wrap" data-reveal>
-      <div class="cs-cover" style={`--bg:${d.bg || '#c9c4bb'}`} data-speed="-0.5">
-        <picture>
-          <source type="image/webp" srcset={`${withBase(d.cover.replace(/\.jpe?g$/i, '.webp'))}`} />
-          <img src={withBase(d.cover)} alt={`${d.title} — ${c.case.coverAlt}`} width="3840" height="2400" loading="eager" fetchpriority="high" />
-        </picture>
+      <div class="cs-device">
+        <div class="cs-device-screen">
+          <div class="cs-device-media">
+            <!-- background layer, 120% tall at top:-10% — the extra height can only
+                 be spent on vertical crop, never on width (an <img> with object-fit
+                 would trade it for width and slice the sides) -->
+            <div
+              class="cs-device-inner"
+              data-speed="1.2"
+              role="img"
+              aria-label={`${d.title} — ${c.case.coverAlt}`}
+              style={`background-image:url('${withBase(d.cover)}');background-color:${d.bg || '#c9c4bb'}`}
+            ></div>
+          </div>
+        </div>
+        <div class="cs-device-base" aria-hidden="true"></div>
       </div>
     </div>
   )}
@@ -102,15 +143,28 @@ const next = all[(idx + 1) % all.length];
   .cs-chip--accent{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 40%,var(--line));}
   .cs-chip--link{color:var(--accent);border-color:var(--accent);}
   .cs-chip--link:hover{background:var(--accent);color:var(--on-accent);}
-  .cs-cover-wrap{margin:1.5rem auto 4rem;}
-  /* covers are 1280x800 — cap the frame so we never upscale much past 1:1,
-     and never let it eat a whole tall viewport */
-  .cs-cover{position:relative;overflow:hidden;background:var(--bg);aspect-ratio:16/10;
-    max-width:1120px;max-height:70vh;margin-inline:auto;border-radius:10px;border:1px solid var(--line);}
-  /* exact fit — the whole screenshot stays visible, nothing is cropped.
-     Parallax rides the frame itself (data-speed on .cs-cover), not the image. */
-  .cs-cover picture{position:absolute;inset:0;display:block;}
-  .cs-cover img{width:100%;height:100%;object-fit:contain;object-position:center;}
+  /* ---- meta grid ---- */
+  .cs-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.5rem,4vw,3rem);margin:2.5rem auto 3.5rem;}
+  .cs-meta-label{font-family:var(--mono),monospace;font-weight:400;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
+  .cs-stripe{height:1px;background:var(--line);margin:1.1rem 0 1rem;}
+  .cs-meta ul{list-style:none;}
+  .cs-meta li{font-size:.95rem;line-height:1.8;}
+  @media(max-width:720px){.cs-meta{grid-template-columns:1fr;gap:1.4rem;margin-bottom:2.5rem;}}
+
+  /* ---- laptop mockup ---- */
+  .cs-cover-wrap{margin:0 auto 4.5rem;}
+  .cs-device{width:100%;max-width:1060px;margin-inline:auto;}
+  .cs-device-screen{background:var(--ink);border-radius:16px;padding:11px;box-shadow:0 44px 100px rgba(20,20,26,.24);}
+  .cs-device-media{position:relative;overflow:hidden;border-radius:7px;background:var(--bg);}
+  .cs-device-media::before{content:'';display:block;padding-top:62.5%;} /* 16:10 */
+  .cs-device-inner{position:absolute;left:0;top:-10%;width:100%;height:120%;
+    background-size:cover;background-position:center;will-change:transform;}
+  /* hinge + base */
+  .cs-device-base{position:relative;width:107%;height:13px;margin:0 -3.5%;
+    background:linear-gradient(180deg,#d2cfc8,#a8a49e);border-radius:0 0 11px 11px;}
+  .cs-device-base::after{content:'';position:absolute;left:50%;top:0;transform:translateX(-50%);
+    width:13%;height:5px;background:rgba(20,20,26,.22);border-radius:0 0 6px 6px;}
+  @media(max-width:720px){.cs-device-screen{padding:6px;border-radius:10px;}.cs-device-base{height:9px;}}
   .cs-sec{display:grid;grid-template-columns:7rem 1fr;gap:clamp(1rem,4vw,3rem);padding:clamp(2.5rem,5vw,4rem) 0;border-top:1px solid var(--line);align-items:start;}
   .cs-num{font-size:clamp(2rem,4vw,3.2rem);color:var(--accent);}
   .cs-sec-body{max-width:68ch;}

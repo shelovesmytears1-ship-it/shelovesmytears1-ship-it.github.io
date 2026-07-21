@@ -60,12 +60,12 @@ if (hdr) {
   addEventListener('scroll', onScroll, { passive: true });
 }
 
-/* ---- live local clock ---- */
-const clock = document.getElementById('clock');
-if (clock) {
+/* ---- live local clock (hero strip + footer) ---- */
+const clocks = Array.from(document.querySelectorAll<HTMLElement>('[data-clock]'));
+if (clocks.length) {
   const tick = () => {
     const t = new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
-    clock.textContent = `${clock.dataset.label || ''} ${t}`.trim();
+    clocks.forEach((el) => { el.textContent = `${el.dataset.label || ''} ${t}`.trim(); });
   };
   tick();
   setInterval(tick, 10_000);
