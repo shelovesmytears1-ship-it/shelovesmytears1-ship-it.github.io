@@ -60,6 +60,18 @@ if (hdr) {
   addEventListener('scroll', onScroll, { passive: true });
 }
 
+/* ---- wrap every button label ----
+   .btn::before is the hover fill and paints over anything without a stacking
+   context. A bare text node cannot be raised above it, so labels that were not
+   already wrapped (every non-magnetic button) got covered. Wrap them all. */
+document.querySelectorAll<HTMLElement>('.btn').forEach((b) => {
+  if (b.querySelector('.btn-text')) return;
+  const span = document.createElement('span');
+  span.className = 'btn-text';
+  while (b.firstChild) span.appendChild(b.firstChild);
+  b.appendChild(span);
+});
+
 /* ---- live local clock (hero strip + footer) ---- */
 const clocks = Array.from(document.querySelectorAll<HTMLElement>('[data-clock]'));
 if (clocks.length) {
@@ -69,6 +81,23 @@ if (clocks.length) {
   };
   tick();
   setInterval(tick, 10_000);
+}
+
+/* ---- device videos: play only while on screen, never in the background ---- */
+const vids = Array.from(document.querySelectorAll<HTMLVideoElement>('video[data-inview]'));
+if (vids.length) {
+  const play = (v: HTMLVideoElement) => { if (!reduce) v.play().catch(() => {}); };
+  const vObs = new IntersectionObserver(
+    (entries) => entries.forEach((e) => {
+      const v = e.target as HTMLVideoElement;
+      if (e.isIntersecting) play(v); else v.pause();
+    }),
+    { threshold: 0.25 }
+  );
+  vids.forEach((v) => vObs.observe(v));
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) vids.forEach((v) => v.pause());
+  });
 }
 
 /* ---- hero 3D (lazy chunk, desktop + motion only) ---- */
@@ -326,13 +355,6 @@ if (!reduce && fine) {
   /* ---- magnetic buttons: shell and label pull at different strengths,
          then snap back on an elastic curve ---- */
   document.querySelectorAll<HTMLElement>('.magnetic').forEach((b) => {
-    // wrap the label so it can drift independently of the shell
-    if (!b.querySelector('.btn-text')) {
-      const span = document.createElement('span');
-      span.className = 'btn-text';
-      while (b.firstChild) span.appendChild(b.firstChild);
-      b.appendChild(span);
-    }
     const label = b.querySelector<HTMLElement>('.btn-text');
     const strength = parseFloat(b.dataset.strength || '34');
     const textStrength = parseFloat(b.dataset.strengthText || '16');

@@ -50,6 +50,7 @@ const techStack = ['Astro', 'TypeScript', 'GSAP', c.layout.nav.method, 'SEO', 'p
 <section class="hero">
   <div class="hero-3d" id="hero3d" aria-hidden="true"></div>
   <div class="wrap hero-inner">
+    <div class="hero-lead">
     <p class="eye">{c.home.meta} · {c.home.location}</p>
     <h1>
       {heroWords.map((it, i) => (
@@ -62,6 +63,7 @@ const techStack = ['Astro', 'TypeScript', 'GSAP', c.layout.nav.method, 'SEO', 'p
     <div class="hero-actions" data-reveal>
       <a class="btn magnetic" href="#contact" data-cursor>{c.home.heroCta} →</a>
       <a class="btn btn-ghost" href="#work" data-cursor>{c.home.allWork}</a>
+    </div>
     </div>
     <div class="hero-foot">
       <div class="hero-scroll"><span class="dotline"></span> {c.home.introMeta}</div>

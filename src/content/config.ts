@@ -43,6 +43,16 @@ const cases = defineCollection({
     /** Big number/fact rendered between sections (RU master). Optional. */
     stat:         statSchema,
     cover:        z.string().optional(),
+    /** Screen recording shown inside the laptop instead of the static cover.
+     *  Muted + looping, and only plays while it is on screen. */
+    coverVideo:   z.string().optional(),
+    /** Extra device shots rendered after the cover, in order. Phones in a row
+     *  parallax against each other; laptops render full width. */
+    screens: z.array(z.object({
+      src:   z.string(),
+      kind:  z.enum(['laptop', 'phone']).default('laptop'),
+      video: z.boolean().default(false),
+    })).default([]),
     order:        z.number().default(0),
     /** Every project in v3 is a concept. Schema kept boolean for future real-client cases. */
     concept:      z.boolean().default(true),

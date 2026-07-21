@@ -32,6 +32,15 @@ const metaLabels: Record<string, { stack: string; niche: string; where: string }
 };
 const ml = metaLabels[lang] ?? metaLabels.en;
 
+// retina source for the laptop screen (every case ships a 3840x2400 webp)
+const cover4k = (d.cover || '').replace('/covers/', '/covers/4k/').replace(/\.(jpe?g|webp)$/i, '.webp');
+
+// phones read as a row; laptops each get their own full-width block
+const phones = d.screens.filter((s) => s.kind === 'phone');
+const laptopScreens = d.screens.filter((s) => s.kind === 'laptop');
+const phoneRows: typeof phones[] = [];
+for (let i = 0; i < phones.length; i += 3) phoneRows.push(phones.slice(i, i + 3));
+
 const sections = parseSections(getBody(entry, lang));
 const stat = getStat(entry, lang);
 const result = getResult(entry, lang);
@@ -77,27 +86,66 @@ const next = all[(idx + 1) % all.length];
     </div>
   </div>
 
-  {d.cover && (
+  {(d.cover || d.coverVideo) && (
     <div class="wrap cs-cover-wrap" data-reveal>
-      <div class="cs-device">
-        <div class="cs-device-screen">
-          <div class="cs-device-media">
-            <!-- background layer, 120% tall at top:-10% — the extra height can only
-                 be spent on vertical crop, never on width (an <img> with object-fit
-                 would trade it for width and slice the sides) -->
-            <div
-              class="cs-device-inner"
-              data-speed="1.2"
-              role="img"
-              aria-label={`${d.title} — ${c.case.coverAlt}`}
-              style={`background-image:url('${withBase(d.cover)}');background-color:${d.bg || '#c9c4bb'}`}
-            ></div>
+      <div class="cs-laptop">
+        <div class="cs-laptop-lid">
+          <div class="cs-laptop-screen">
+            <div class="cs-laptop-media">
+              {d.coverVideo ? (
+                <video class="cs-media-video" data-inview src={withBase(d.coverVideo)} muted loop playsinline preload="metadata" aria-label={`${d.title} — ${c.case.coverAlt}`}></video>
+              ) : (
+                <!-- background layer, 120% tall at top:-10% — the extra height can
+                     only be spent on vertical crop, never on width (an <img> with
+                     object-fit would trade it for width and slice the sides) -->
+                <div
+                  class="cs-media-img"
+                  data-speed="1.2"
+                  role="img"
+                  aria-label={`${d.title} — ${c.case.coverAlt}`}
+                  style={`background-image:image-set(url('${withBase(cover4k)}') 2x, url('${withBase(d.cover!)}') 1x);background-color:${d.bg || '#c9c4bb'}`}
+                ></div>
+              )}
+              <span class="cs-laptop-gloss" aria-hidden="true"></span>
+            </div>
           </div>
         </div>
-        <div class="cs-device-base" aria-hidden="true"></div>
+        <div class="cs-laptop-base" aria-hidden="true"><span></span></div>
       </div>
     </div>
   )}
+
+  {phoneRows.map((row) => (
+    <div class="wrap cs-phones" data-reveal>
+      {row.map((s, i) => (
+        <div class="cs-phone" data-speed={i % 2 === 0 ? '1.1' : '-1.1'}>
+          <div class="cs-phone-media">
+            {s.video
+              ? <video class="cs-media-video" data-inview src={withBase(s.src)} muted loop playsinline preload="metadata"></video>
+              : <div class="cs-media-img" style={`background-image:url('${withBase(s.src)}')`}></div>}
+          </div>
+        </div>
+      ))}
+    </div>
+  ))}
+
+  {laptopScreens.map((s) => (
+    <div class="wrap cs-cover-wrap" data-reveal>
+      <div class="cs-laptop">
+        <div class="cs-laptop-lid">
+          <div class="cs-laptop-screen">
+            <div class="cs-laptop-media">
+              {s.video
+                ? <video class="cs-media-video" data-inview src={withBase(s.src)} muted loop playsinline preload="metadata"></video>
+                : <div class="cs-media-img" data-speed="1.2" style={`background-image:url('${withBase(s.src)}')`}></div>}
+              <span class="cs-laptop-gloss" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+        <div class="cs-laptop-base" aria-hidden="true"><span></span></div>
+      </div>
+    </div>
+  ))}
 
   {sections.map((sec, i) => (
     <section class="wrap cs-sec">
@@ -151,20 +199,58 @@ const next = all[(idx + 1) % all.length];
   .cs-meta li{font-size:.95rem;line-height:1.8;}
   @media(max-width:720px){.cs-meta{grid-template-columns:1fr;gap:1.4rem;margin-bottom:2.5rem;}}
 
-  /* ---- laptop mockup ---- */
-  .cs-cover-wrap{margin:0 auto 4.5rem;}
-  .cs-device{width:100%;max-width:1060px;margin-inline:auto;}
-  .cs-device-screen{background:var(--ink);border-radius:16px;padding:11px;box-shadow:0 44px 100px rgba(20,20,26,.24);}
-  .cs-device-media{position:relative;overflow:hidden;border-radius:7px;background:var(--bg);}
-  .cs-device-media::before{content:'';display:block;padding-top:62.5%;} /* 16:10 */
-  .cs-device-inner{position:absolute;left:0;top:-10%;width:100%;height:120%;
+  /* ---- shared media layers ---- */
+  /* 120% tall at top:-10% — spare height can only become vertical crop */
+  .cs-media-img{position:absolute;left:0;top:-10%;width:100%;height:120%;
     background-size:cover;background-position:center;will-change:transform;}
-  /* hinge + base */
-  .cs-device-base{position:relative;width:107%;height:13px;margin:0 -3.5%;
-    background:linear-gradient(180deg,#d2cfc8,#a8a49e);border-radius:0 0 11px 11px;}
-  .cs-device-base::after{content:'';position:absolute;left:50%;top:0;transform:translateX(-50%);
-    width:13%;height:5px;background:rgba(20,20,26,.22);border-radius:0 0 6px 6px;}
-  @media(max-width:720px){.cs-device-screen{padding:6px;border-radius:10px;}.cs-device-base{height:9px;}}
+  .cs-media-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+
+  /* ---- laptop ---- */
+  .cs-cover-wrap{margin:0 auto 4.5rem;}
+  .cs-laptop{width:100%;max-width:1060px;margin-inline:auto;
+    filter:drop-shadow(0 40px 60px rgba(20,20,26,.26));}
+  /* lid: dark aluminium, bright machined rim, slight chin under the screen */
+  .cs-laptop-lid{position:relative;padding:13px 13px 17px;border-radius:19px 19px 6px 6px;
+    background:linear-gradient(180deg,#3c3d44 0%,#24252a 20%,#1a1b20 100%);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.13),inset 0 1px 0 rgba(255,255,255,.24);}
+  /* camera */
+  .cs-laptop-lid::before{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);
+    width:5px;height:5px;border-radius:50%;background:#47484f;box-shadow:inset 0 0 2px #000;}
+  .cs-laptop-screen{border-radius:4px;overflow:hidden;background:#000;}
+  .cs-laptop-media{position:relative;overflow:hidden;background:var(--bg);}
+  .cs-laptop-media::before{content:'';display:block;padding-top:62.5%;} /* 16:10 */
+  /* glass sheen across the panel */
+  .cs-laptop-gloss{position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(104deg,rgba(255,255,255,.15) 0%,rgba(255,255,255,.045) 20%,transparent 44%);}
+  /* base is wider than the lid and tapers, with the finger notch */
+  .cs-laptop-base{position:relative;width:113%;height:15px;margin:0 -6.5%;
+    background:linear-gradient(180deg,#cbc8c1 0%,#aba8a2 42%,#8d8a85 100%);
+    border-radius:3px 3px 13px 13px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.55);}
+  .cs-laptop-base span{position:absolute;left:50%;top:0;transform:translateX(-50%);
+    width:11%;height:6px;border-radius:0 0 7px 7px;
+    background:linear-gradient(180deg,#8a8782,#a6a39d);}
+  @media(max-width:720px){
+    .cs-laptop-lid{padding:6px 6px 9px;border-radius:11px 11px 4px 4px;}
+    .cs-laptop-base{height:9px;}.cs-laptop-lid::before{display:none;}
+  }
+
+  /* ---- phones ---- */
+  .cs-phones{display:flex;justify-content:center;align-items:center;gap:clamp(1rem,4vw,3rem);margin:0 auto 4.5rem;}
+  .cs-phone{position:relative;width:min(248px,28vw);padding:9px;border-radius:34px;
+    background:linear-gradient(180deg,#34353b 0%,#1d1e23 100%);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);
+    filter:drop-shadow(0 28px 50px rgba(20,20,26,.28));will-change:transform;}
+  /* dynamic island */
+  .cs-phone::before{content:'';position:absolute;z-index:2;top:19px;left:50%;transform:translateX(-50%);
+    width:30%;height:19px;border-radius:12px;background:#0b0c0f;}
+  .cs-phone-media{position:relative;overflow:hidden;border-radius:26px;background:#000;}
+  .cs-phone-media::before{content:'';display:block;padding-top:212%;} /* 19.5:9 */
+  .cs-phone .cs-media-img{top:-8%;height:116%;background-position:center top;}
+  @media(max-width:720px){
+    .cs-phones{gap:.8rem;}.cs-phone{width:30vw;padding:5px;border-radius:20px;}
+    .cs-phone-media{border-radius:15px;}.cs-phone::before{display:none;}
+  }
   .cs-sec{display:grid;grid-template-columns:7rem 1fr;gap:clamp(1rem,4vw,3rem);padding:clamp(2.5rem,5vw,4rem) 0;border-top:1px solid var(--line);align-items:start;}
   .cs-num{font-size:clamp(2rem,4vw,3.2rem);color:var(--accent);}
   .cs-sec-body{max-width:68ch;}
