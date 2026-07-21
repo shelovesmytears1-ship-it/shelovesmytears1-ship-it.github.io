@@ -1,3 +1,11 @@
 ---
-return Astro.redirect('/director-cut/', 302);
+import StudioLayout from '../layouts/StudioLayout.astro';
+import Home from '../components/studio/Home.astro';
+import { getNewDirectionCopy } from '../data/newDirectionI18n';
+
+const lang = 'pl' as const;
+const c = getNewDirectionCopy(lang);
 ---
+<StudioLayout title={`overflow — ${c.layout.footer}`} description={c.home.heroBody} lang={lang}>
+  <Home lang={lang} />
+</StudioLayout>

@@ -1,0 +1,117 @@
+---
+import { getCollection } from 'astro:content';
+import { getNewDirectionCopy } from '../../data/newDirectionI18n';
+import { getSummary } from '../../data/caseHelpers';
+import type { Lang } from '../../i18n/ui';
+
+interface Props { lang?: Lang }
+const { lang = 'pl' } = Astro.props;
+const c = getNewDirectionCopy(lang);
+
+const p = (slug: string) => (lang === 'pl' ? `/${slug}/` : `/${lang}/${slug}/`);
+
+const conceptLabel: Record<string, string> = { pl: 'Koncept', ru: 'Концепт', en: 'Concept', ua: 'Концепт' };
+const concept = conceptLabel[lang] ?? 'Concept';
+
+// Top projects by order for the home selection
+const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order).slice(0, 4);
+
+// Hero headline pre-split into words (keeps the accent segment, allows per-word reveal)
+type W = { w: string; a: boolean };
+const heroWords: W[] = [
+  ...c.home.heroTitle.split(' ').map((w) => ({ w, a: false })),
+  ...c.home.heroAccent.split(' ').map((w) => ({ w, a: true })),
+  ...c.home.heroTail.split(' ').map((w) => ({ w, a: false })),
+];
+
+const techStack = ['Astro', 'TypeScript', 'GSAP', c.layout.nav.method, 'SEO', 'performance'];
+---
+
+<!-- HERO -->
+<section class="hero wrap">
+  <p class="eye">{c.home.meta} · {c.home.location}</p>
+  <h1>
+    {heroWords.map((it, i) => (
+      <>
+        <span class="word"><span class={it.a ? 'accent' : ''} style={`transition-delay:${0.045 * i}s`}>{it.w}</span></span>{' '}
+      </>
+    ))}
+  </h1>
+  <p class="hero-sub" data-reveal>{c.home.heroBody}</p>
+  <div class="hero-actions" data-reveal>
+    <a class="btn magnetic" href="#contact" data-cursor>{c.home.heroCta} →</a>
+    <a class="btn btn-ghost" href="#work" data-cursor>{c.home.allWork}</a>
+  </div>
+  <div class="hero-scroll"><span class="dotline"></span> {c.home.introMeta}</div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div>
+    {[0, 1].map(() => (
+      <>{techStack.map((t) => (<><span>{t}</span><b>/</b></>))}</>
+    ))}
+  </div>
+</div>
+
+<!-- WORK -->
+<section id="work" class="sec wrap">
+  <div class="sec-head">
+    <h2 data-reveal>{c.home.workTitle}<br /><em>{c.home.workAccent}</em></h2>
+    <a class="link" href={p('work')} data-cursor data-reveal>{c.home.allWork} ↗</a>
+  </div>
+  <div class="work-list">
+    {cases.map((project, i) => (
+      <a
+        class="work-row"
+        href={p(`work/${project.slug}`)}
+        data-cursor
+        data-reveal
+        data-preview={`linear-gradient(135deg, ${project.data.bg || '#c9c4bb'}, #14141a)`}
+      >
+        <span class="work-no">{String(i + 1).padStart(2, '0')}</span>
+        <div>
+          <div class="work-name">{project.data.title}</div>
+          <div class="work-meta">{project.data.niche} · {project.data.year}</div>
+        </div>
+        <span class="work-tag">{concept} ↗</span>
+      </a>
+    ))}
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="approach" class="sec wrap">
+  <div class="sec-head"><h2 data-reveal>{c.home.processTitle}<br /><em>{c.home.processAccent}</em></h2></div>
+  <div class="steps" data-reveal>
+    {c.home.steps.map((s, i) => (
+      <div class="step">
+        <span class="n">{String(i + 1).padStart(2, '0')}</span>
+        <h3>{s.title}</h3>
+        <p>{s.text}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="sec wrap">
+  <div class="about">
+    <p class="lead" data-reveal>{c.home.aboutBody}</p>
+    <div class="about-side" data-reveal>
+      <b>overflow / Daniil</b><br />Gdańsk, PL · Remote<br />—<br />
+      {c.about.stack.map((s) => (<>{s.value}<br /></>))}
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec wrap contact">
+  <p class="eye" data-reveal>{c.home.contactMeta}</p>
+  <h2 data-reveal style="margin-top:1rem">{c.home.contactTitle} <em>{c.home.contactAccent}</em></h2>
+  <p class="contact-sub" data-reveal>{c.home.contactBody}</p>
+  <div class="contact-row" data-reveal>
+    <a class="btn magnetic" href="https://t.me/zzxvaracaa" target="_blank" rel="noopener" data-cursor>{c.home.contactCta} →</a>
+    <a href="mailto:overflow.web1@gmail.com" data-cursor>overflow.web1@gmail.com</a>
+  </div>
+</section>

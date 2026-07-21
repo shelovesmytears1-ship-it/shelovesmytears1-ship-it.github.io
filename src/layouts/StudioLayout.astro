@@ -1,0 +1,89 @@
+---
+import '../styles/studio.css';
+import { getNewDirectionCopy } from '../data/newDirectionI18n';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang?: Lang;
+  current?: 'work' | 'method' | 'about' | 'contact';
+}
+
+const { title, description, lang = 'pl', current } = Astro.props;
+const c = getNewDirectionCopy(lang);
+const htmlLang = lang === 'ua' ? 'uk' : lang;
+
+const home = lang === 'pl' ? '/' : `/${lang}/`;
+const p = (slug: string) => (lang === 'pl' ? `/${slug}/` : `/${lang}/${slug}/`);
+
+// PL + RU only for now (per decision); infra keeps EN/UA for later.
+const locales: { code: Lang; label: string; href: string }[] = [
+  { code: 'pl', label: 'PL', href: '/' },
+  { code: 'ru', label: 'RU', href: '/ru/' },
+];
+
+const desc = description ?? c.layout.footer;
+const site = 'https://overflow-web.pl';
+const canonical = new URL(Astro.url.pathname, site).href;
+---
+
+<!doctype html>
+<html lang={htmlLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f2ec" />
+    <title>{title}</title>
+    <meta name="description" content={desc} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="pl" href={site + '/'} />
+    <link rel="alternate" hreflang="ru" href={site + '/ru/'} />
+    <link rel="alternate" hreflang="x-default" href={site + '/'} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/BricolageGrotesque-Bold.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/Outfit-Regular.ttf" as="font" type="font/ttf" crossorigin />
+  </head>
+  <body>
+    <a class="skip" href="#main">{c.layout.skip}</a>
+    <div class="cur" aria-hidden="true"><div class="cur-ring"></div><div class="cur-dot"></div></div>
+
+    <header class="hdr">
+      <div class="wrap nav">
+        <a class="brand" href={home} aria-label="overflow">overflow<i>.</i></a>
+        <nav class="nav-links" aria-label={c.layout.mainNavigation}>
+          <a href="#work" aria-current={current === 'work' ? 'page' : undefined} data-cursor>{c.layout.nav.work}</a>
+          <a href="#approach" aria-current={current === 'method' ? 'page' : undefined} data-cursor>{c.layout.nav.method}</a>
+          <a href="#about" aria-current={current === 'about' ? 'page' : undefined} data-cursor>{c.layout.nav.about}</a>
+        </nav>
+        <div class="nav-right">
+          <div class="lang" aria-label={c.layout.languageLabel}>
+            {locales.map((l) => (
+              <a href={l.href} aria-current={l.code === lang ? 'page' : undefined} data-cursor>{l.label}</a>
+            ))}
+          </div>
+          <a class="nav-cta" href="#contact" data-cursor>{c.layout.nav.talk} ↗</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="ftr wrap">
+      <span>© 2026 overflow — Gdańsk</span>
+      <span id="clock" data-label="Local time">Local time —</span>
+      <span>{c.layout.footer}</span>
+    </footer>
+
+    <script>
+      import '../scripts/studio.ts';
+    </script>
+  </body>
+</html>
