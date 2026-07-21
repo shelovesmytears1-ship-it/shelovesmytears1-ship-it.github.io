@@ -75,9 +75,27 @@ const canonical = new URL(Astro.url.pathname, site).href;
             ))}
           </div>
           <a class="nav-cta" href={p('contact')} aria-current={current === 'contact' ? 'page' : undefined} data-cursor data-tname={c.layout.nav.talk}>{c.layout.nav.talk} ↗</a>
+          <button class="burger" id="burger" type="button" aria-label={c.layout.nav.menu} aria-expanded="false" aria-controls="mnav">
+            <span></span><span></span>
+          </button>
         </div>
       </div>
     </header>
+
+    <!-- full-screen menu; the CTA above stays reachable so the money action is
+         never the thing hidden behind a toggle -->
+    <nav class="mnav" id="mnav" aria-label={c.layout.mobileNavigation} inert>
+      <div class="wrap mnav-inner">
+        <a href={p('work')} data-tname={c.layout.nav.work}><span>01</span>{c.layout.nav.work}</a>
+        <a href={p('method')} data-tname={c.layout.nav.method}><span>02</span>{c.layout.nav.method}</a>
+        <a href={p('about')} data-tname={c.layout.nav.about}><span>03</span>{c.layout.nav.about}</a>
+        <a href={p('contact')} data-tname={c.layout.nav.talk}><span>04</span>{c.layout.nav.talk}</a>
+        <div class="mnav-foot">
+          <span data-clock data-label="">—</span>
+          <span>Gdańsk · PL</span>
+        </div>
+      </div>
+    </nav>
 
     <main id="main">
       <slot />

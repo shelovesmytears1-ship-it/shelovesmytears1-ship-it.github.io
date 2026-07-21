@@ -17,8 +17,11 @@
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;background:var(--bg);}
-body{background:var(--bg);color:var(--ink);font-family:var(--body),system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+html{scroll-behavior:smooth;background:var(--bg);
+  -webkit-text-size-adjust:100%;text-size-adjust:100%;}
+body{background:var(--bg);color:var(--ink);font-family:var(--body),system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  /* kill the grey flash on tap; :focus-visible still shows a real ring */
+  -webkit-tap-highlight-color:transparent;}
 a{color:inherit;text-decoration:none;}
 img{display:block;max-width:100%;}
 ::selection{background:var(--accent);color:var(--on-accent);}
@@ -34,7 +37,9 @@ em{font-family:var(--disp);font-style:normal;color:var(--accent);font-weight:var
 .skip:focus{transform:none;}
 
 /* ---- loading screen / page-transition curtain ---- */
-.curtain{position:fixed;left:0;top:0;width:100%;height:100svh;z-index:9998;pointer-events:none;
+/* lvh, not svh: an overlay must cover the LARGEST possible viewport, or the
+   page shows through underneath once the address bar hides */
+.curtain{position:fixed;left:0;top:0;width:100%;height:100vh;height:100lvh;z-index:9998;pointer-events:none;
   transform:translateY(100%);visibility:hidden;}
 html.curtain-on .curtain{visibility:visible;}
 /* covering: sits over the page */
@@ -75,7 +80,11 @@ html.curtain-on .curtain{visibility:visible;}
 body.cursoron{cursor:none;}
 body.cursoron a,body.cursoron button{cursor:none;}
 .cur.hover .cur-ring{width:54px;height:54px;margin:-27px 0 0 -27px;}
-@media(hover:none),(pointer:coarse){.cur{display:none;}body.cursoron{cursor:auto;}}
+/* belt and braces: coarse pointers AND narrow screens never get a fake cursor */
+@media(hover:none),(pointer:coarse),(max-width:820px){
+  .cur,.work-preview,.work-preview-btn{display:none!important;}
+  body.cursoron{cursor:auto;}
+}
 
 /* nav */
 .hdr{position:fixed;top:0;left:0;width:100%;z-index:100;padding:1.15rem 0;transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent;}
@@ -93,6 +102,46 @@ body.cursoron a,body.cursoron button{cursor:none;}
 .nav-cta:hover{background:var(--accent);color:var(--on-accent);border-color:var(--accent);}
 @media(max-width:760px){.nav-links{display:none;}}
 
+/* burger — desktop never sees it */
+.burger{display:none;position:relative;width:44px;min-width:44px;height:44px;margin-right:-8px;
+  background:none;border:0;cursor:pointer;color:inherit;flex:0 0 44px;}
+.burger span{position:absolute;left:11px;width:22px;height:1.5px;background:var(--ink);
+  transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .25s;}
+.burger span:nth-child(1){top:19px;}
+.burger span:nth-child(2){top:25px;}
+body.menu-open .burger span:nth-child(1){transform:translateY(3px) rotate(45deg);}
+body.menu-open .burger span:nth-child(2){transform:translateY(-3px) rotate(-45deg);}
+
+/* full-screen menu */
+.mnav{position:fixed;inset:0;height:100vh;height:100lvh;z-index:120;background:var(--ink);
+  display:flex;align-items:center;pointer-events:none;opacity:0;visibility:hidden;
+  clip-path:inset(0 0 100% 0);
+  transition:clip-path .6s cubic-bezier(.76,0,.24,1),opacity .01s .6s,visibility 0s .6s;}
+body.menu-open .mnav{opacity:1;visibility:visible;pointer-events:auto;clip-path:inset(0 0 0 0);
+  transition:clip-path .6s cubic-bezier(.76,0,.24,1),opacity .01s,visibility 0s;}
+.mnav-inner{display:flex;flex-direction:column;gap:.2rem;width:100%;}
+.mnav a{display:flex;align-items:baseline;gap:1rem;min-height:56px;padding:.4rem 0;
+  font-family:var(--disp),sans-serif;font-weight:var(--disp-w);letter-spacing:var(--disp-ls);
+  font-size:clamp(2.2rem,11vw,3.4rem);line-height:1.1;color:var(--bg);
+  opacity:0;transform:translateY(28px);
+  transition:opacity .5s ease,transform .6s cubic-bezier(.16,1,.3,1);}
+.mnav a span{font-family:var(--mono),monospace;font-size:.8rem;letter-spacing:.16em;
+  color:var(--accent);font-weight:400;}
+body.menu-open .mnav a{opacity:1;transform:none;}
+body.menu-open .mnav a:nth-child(1){transition-delay:.22s;}
+body.menu-open .mnav a:nth-child(2){transition-delay:.28s;}
+body.menu-open .mnav a:nth-child(3){transition-delay:.34s;}
+body.menu-open .mnav a:nth-child(4){transition-delay:.40s;}
+.mnav-foot{display:flex;justify-content:space-between;gap:1rem;margin-top:2.5rem;
+  padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.16);
+  font-family:var(--mono),monospace;font-size:.75rem;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.55);
+  opacity:0;transition:opacity .5s ease .46s;}
+body.menu-open .mnav-foot{opacity:1;}
+body.menu-open{overflow:hidden;}
+@media(max-width:760px){.burger{display:block;}}
+@media(min-width:761px){.mnav{display:none;}}
+
 /* hero — fills the fold; the lead block floats in whatever space the bottom
    strip leaves, so tall viewports get distributed air instead of one big void */
 .hero{position:relative;min-height:100svh;}
@@ -109,7 +158,8 @@ body.cursoron a,body.cursoron button{cursor:none;}
   background:radial-gradient(58% 48% at 80% 42%, color-mix(in srgb,var(--accent) 12%,transparent), transparent 72%);}
 .hero-3d.gl{background:none;}
 .hero-3d canvas{width:100%!important;height:100%!important;display:block;}
-@media(max-width:820px){.hero-3d{display:none;}}
+/* below 821px no WebGL is loaded, but the CSS fallback glow stays so the
+   first screen is never flat empty paper */
 .hero .eye{margin-bottom:1.6rem;}
 .hero h1{font-family:var(--disp),sans-serif;font-weight:var(--disp-w);letter-spacing:var(--disp-ls);line-height:var(--disp-lh);font-size:clamp(2.9rem,8.5vw,8rem);max-width:15ch;}
 .word{display:inline-block;overflow:hidden;vertical-align:top;}
@@ -239,6 +289,64 @@ body.previewing .cur{opacity:0;}
 
 /* footer */
 .ftr{border-top:1px solid var(--line);padding:2.5rem 0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono),monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+
+/* ============================================================
+   MOBILE
+   Targets follow WCAG 2.2 SC 2.5.8 (24px floor) but aim at the
+   Apple/Material consensus of 44px. Nothing is dropped — the vertical
+   rhythm is compressed instead, the way the reference does it.
+   ============================================================ */
+@media(max-width:760px){
+  /* safe areas for notched phones */
+  .wrap{width:calc(100vw - clamp(28px,8vw,44px));
+    padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);}
+  .ftr{padding-bottom:calc(2.5rem + env(safe-area-inset-bottom));}
+
+  /* rhythm: roughly halved */
+  .sec{padding:clamp(3.2rem,8vh,5.5rem) 0;}
+  .sec-head{margin-bottom:2.2rem;}
+  .page-hero{padding:7rem 0 1.5rem;}
+
+  /* legibility floor — nothing under 12px */
+  .eye,.work-no,.nav-cta,.link,.hero-scroll{font-size:.78rem;}
+  .hero-meta-label,.work-meta,.step .n,.ftr,.gallery3d-cap{font-size:.75rem;}
+  .work-tag{font-size:.72rem;}
+  .about-side{font-size:.85rem;}
+
+  /* touch targets */
+  .lang{gap:0;}
+  .lang a{min-width:44px;min-height:44px;display:grid;place-items:center;font-size:.8rem;}
+  .nav-cta{min-height:44px;display:inline-flex;align-items:center;}
+  .brand{min-height:44px;display:inline-flex;align-items:center;}
+  .link{min-height:44px;display:inline-flex;align-items:center;}
+  .contact-row a{min-height:44px;display:inline-flex;align-items:center;}
+  .btn{min-height:48px;}
+  .work-row{padding-block:1.4rem;min-height:64px;}
+
+  /* hero: compact meta so the fold stays about the headline */
+  .hero-inner{padding:5.5rem 0 2rem;}
+  .hero-foot{padding-top:1.8rem;}
+  .hero-meta{gap:1rem;margin-top:1rem;padding-top:1rem;}
+  .hero-meta-col{display:grid;grid-template-columns:auto 1fr;gap:.2rem .9rem;align-items:baseline;}
+  .hero-meta-label{margin-bottom:0;}
+  /* values run inline instead of stacking into three tall blocks */
+  .hero-meta ul{display:flex;flex-wrap:wrap;gap:0 .5rem;}
+  .hero-meta li{font-size:.85rem;line-height:1.5;}
+  .hero-meta li:not(:last-child)::after{content:' ·';color:var(--muted);}
+
+  /* the WebGL hero is desktop-only, but the fold must not be blank —
+     the CSS fallback glow stays */
+  .hero-3d{display:block;}
+}
+
+/* hover styles must not latch on touch */
+@media(hover:none){
+  .btn::before{display:none;}
+  .work-row:hover{padding-left:0;}
+  .step:hover{background:var(--bg);}
+  .btn:hover,.btn-ghost:hover{color:inherit;}
+  .btn-ghost:hover{background:transparent;}
+}
 
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}

@@ -245,9 +245,35 @@ const next = all[(idx + 1) % all.length];
     width:30%;height:19px;border-radius:12px;background:#0b0c0f;}
   .cs-phone-media{position:relative;overflow:hidden;border-radius:26px;background:#000;}
   .cs-phone-media::before{content:'';display:block;padding-top:216.4%;} /* 390x844, matches the capture viewport exactly */
+  /* ---- mobile ----
+     We now have real phone screenshots, so a phone visitor should lead with
+     them: one shot at a readable size in a swipeable, snapping row, with the
+     desktop laptop demoted below it. Three 106px phones showed nothing. */
   @media(max-width:720px){
-    .cs-phones{gap:.8rem;}.cs-phone{width:30vw;padding:5px;border-radius:20px;}
-    .cs-phone-media{border-radius:15px;}.cs-phone::before{display:none;}
+    /* explicit order on every child — a `.cs > *` catch-all ends up with the
+       same specificity as the per-class rules once Astro scopes them, and the
+       catch-all was winning */
+    .cs{display:flex;flex-direction:column;}
+    .cs-back{order:1;}
+    .cs-hero{order:2;}
+    .cs-meta{order:3;}
+    .cs-phones{order:4;}
+    .cs-cover-wrap{order:5;}
+    .cs-sec{order:6;}
+    .cs-next{order:9;}
+
+    .cs-phones{display:flex;justify-content:flex-start;overflow-x:auto;
+      scroll-snap-type:x mandatory;overscroll-behavior-x:contain;
+      gap:1rem;width:100%;padding:0 clamp(1rem,6vw,2rem) .5rem;margin-bottom:3rem;
+      scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+    .cs-phones::-webkit-scrollbar{display:none;}
+    .cs-phone{flex:0 0 66vw;width:66vw;scroll-snap-align:center;
+      padding:6px;border-radius:26px;transform:none!important;}
+    .cs-phone-media{border-radius:20px;}
+    .cs-phone::before{top:13px;height:15px;}
+
+    .cs-cover-wrap{margin-bottom:3rem;}
+    .cs-laptop{transform:none!important;}
   }
   .cs-sec{display:grid;grid-template-columns:7rem 1fr;gap:clamp(1rem,4vw,3rem);padding:clamp(2.5rem,5vw,4rem) 0;border-top:1px solid var(--line);align-items:start;}
   .cs-num{font-size:clamp(2rem,4vw,3.2rem);color:var(--accent);}

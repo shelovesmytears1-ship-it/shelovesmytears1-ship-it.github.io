@@ -60,6 +60,35 @@ if (hdr) {
   addEventListener('scroll', onScroll, { passive: true });
 }
 
+/* ---- mobile menu ----
+   The nav links are display:none under 760px, so without this the Work /
+   Method / About pages are simply unreachable from a phone. */
+const burger = document.getElementById('burger');
+const mnav = document.getElementById('mnav');
+if (burger && mnav) {
+  const setMenu = (open: boolean) => {
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    // keep the closed panel out of the tab order and off screen readers
+    if (open) mnav.removeAttribute('inert');
+    else mnav.setAttribute('inert', '');
+    if (open) mnav.querySelector('a')?.focus({ preventScroll: true });
+  };
+  burger.addEventListener('click', () =>
+    setMenu(burger.getAttribute('aria-expanded') !== 'true')
+  );
+  addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('menu-open')) {
+      setMenu(false);
+      burger.focus();
+    }
+  });
+  // if the viewport grows past the breakpoint the panel must not stay latched
+  matchMedia('(min-width: 761px)').addEventListener('change', (e) => {
+    if (e.matches) setMenu(false);
+  });
+}
+
 /* ---- wrap every button label ----
    .btn::before is the hover fill and paints over anything without a stacking
    context. A bare text node cannot be raised above it, so labels that were not
@@ -140,9 +169,12 @@ if (!reduce) {
      data-speed: >0 lags behind the page, <0 runs ahead of it
      data-rotate: total degrees swept while the element crosses the viewport */
   type PItem = { el: HTMLElement; speed: number; rotate: number; on: boolean };
-  const pItems: PItem[] = Array.from(
+  // desktop only: on a phone the transforms fight the swipeable phone row and
+  // buy nothing, since everything is already one column
+  const wide = matchMedia('(min-width: 821px)').matches;
+  const pItems: PItem[] = (wide ? Array.from(
     document.querySelectorAll<HTMLElement>('[data-speed],[data-rotate]')
-  ).map((el) => ({
+  ) : []).map((el) => ({
     el,
     speed: parseFloat(el.dataset.speed || '0'),
     rotate: parseFloat(el.dataset.rotate || '0'),
