@@ -49,8 +49,8 @@ const next = all[(idx + 1) % all.length];
 
   {d.cover && (
     <div class="wrap cs-cover-wrap" data-reveal>
-      <div class="cs-cover" style={`--bg:${d.bg || '#c9c4bb'}`}>
-        <picture data-speed="1.5">
+      <div class="cs-cover" style={`--bg:${d.bg || '#c9c4bb'}`} data-speed="-0.5">
+        <picture>
           <source type="image/webp" srcset={`${withBase(d.cover.replace(/\.jpe?g$/i, '.webp'))}`} />
           <img src={withBase(d.cover)} alt={`${d.title} — ${c.case.coverAlt}`} width="3840" height="2400" loading="eager" fetchpriority="high" />
         </picture>
@@ -98,9 +98,10 @@ const next = all[(idx + 1) % all.length];
      and never let it eat a whole tall viewport */
   .cs-cover{position:relative;overflow:hidden;background:var(--bg);aspect-ratio:16/10;
     max-width:1120px;max-height:70vh;margin-inline:auto;border-radius:10px;border:1px solid var(--line);}
-  /* taller than the frame so it has room to drift as the page scrolls */
-  .cs-cover picture{position:absolute;top:-8%;left:0;width:100%;height:116%;display:block;}
-  .cs-cover img{width:100%;height:100%;object-fit:cover;object-position:top left;}
+  /* exact fit — the whole screenshot stays visible, nothing is cropped.
+     Parallax rides the frame itself (data-speed on .cs-cover), not the image. */
+  .cs-cover picture{position:absolute;inset:0;display:block;}
+  .cs-cover img{width:100%;height:100%;object-fit:contain;object-position:center;}
   .cs-sec{display:grid;grid-template-columns:7rem 1fr;gap:clamp(1rem,4vw,3rem);padding:clamp(2.5rem,5vw,4rem) 0;border-top:1px solid var(--line);align-items:start;}
   .cs-num{font-size:clamp(2rem,4vw,3.2rem);color:var(--accent);}
   .cs-sec-body{max-width:68ch;}
