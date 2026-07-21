@@ -1,9 +1,8 @@
 /**
- * 3D project gallery — a cylindrical carousel of project covers.
- * Auto-rotates, reacts to the cursor, is drag-spinnable, and a click on the
- * front-most cover opens that case. A DOM caption tracks the front item.
- * Lazy chunk; only inits when the section scrolls into view; paused off-screen
- * and when the tab is hidden. DPR capped.
+ * 3D project gallery — coverflow carousel.
+ * Center card faces camera; adjacent cards fold outward with depth + opacity.
+ * Drag or click side cards to navigate; click front card to open the case.
+ * Lazy chunk; IO-gated; pauses off-screen / hidden tab; DPR capped.
  */
 import * as THREE from 'three';
 
@@ -14,40 +13,51 @@ export function initGallery3D(container: HTMLElement, caption: HTMLElement | nul
   try { items = JSON.parse(container.dataset.items || '[]'); } catch { /* noop */ }
   if (!items.length) return;
 
-  const accent = getComputedStyle(container).getPropertyValue('--accent').trim() || '#2b34ff';
+  const ink = getComputedStyle(container).getPropertyValue('--ink').trim() || '#14141a';
 
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+  const scene  = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
+  camera.position.z = 9;
 
   const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
   renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
   container.appendChild(renderer.domElement);
   container.classList.add('gl');
 
-  const N = items.length;
-  const PW = 2.4, PH = 1.5;                       // plane size (~16:10)
-  const R = Math.max(3.2, (PW * N) / (2 * Math.PI) + 1.2);
-  camera.position.set(0, 0, R + 3.4);
+  // Lighting for subtle card depth
+  scene.add(new THREE.AmbientLight(0xffffff, 0.62));
+  const key = new THREE.DirectionalLight(0xffffff, 0.88);
+  key.position.set(1.5, 2, 5);
+  scene.add(key);
 
-  const group = new THREE.Group();
-  scene.add(group);
+  const N  = items.length;
+  const PW = 3.4, PH = 2.1;
 
   const loader = new THREE.TextureLoader();
-  const planes: THREE.Mesh[] = [];
+  const cards:  THREE.Group[] = [];
+  const planes: THREE.Mesh[]  = [];
+
   items.forEach((it, i) => {
-    const theta = (i / N) * Math.PI * 2;
     const tex = loader.load(it.cover);
     tex.colorSpace = THREE.SRGBColorSpace;
-    const card = new THREE.Group();
-    // frame slightly larger, behind
-    const frame = new THREE.Mesh(new THREE.PlaneGeometry(PW + 0.12, PH + 0.12), new THREE.MeshBasicMaterial({ color: new THREE.Color('#14141a') }));
-    frame.position.z = -0.01;
-    const plane = new THREE.Mesh(new THREE.PlaneGeometry(PW, PH), new THREE.MeshBasicMaterial({ map: tex }));
-    (plane as any).userData = { href: it.href, title: it.title, index: i };
-    card.add(frame); card.add(plane);
-    card.position.set(Math.sin(theta) * R, 0, Math.cos(theta) * R);
-    card.rotation.y = theta;                       // face outward
-    group.add(card);
+
+    const card  = new THREE.Group();
+    const frame = new THREE.Mesh(
+      new THREE.PlaneGeometry(PW + 0.1, PH + 0.1),
+      new THREE.MeshBasicMaterial({ color: new THREE.Color(ink), transparent: true })
+    );
+    frame.position.z = -0.002;
+
+    const plane = new THREE.Mesh(
+      new THREE.PlaneGeometry(PW, PH),
+      new THREE.MeshStandardMaterial({ map: tex, roughness: 0.7, metalness: 0.04, transparent: true })
+    );
+    plane.userData = { href: it.href, title: it.title, index: i };
+
+    card.add(frame);
+    card.add(plane);
+    scene.add(card);
+    cards.push(card);
     planes.push(plane);
   });
 
@@ -55,58 +65,117 @@ export function initGallery3D(container: HTMLElement, caption: HTMLElement | nul
     const w = container.clientWidth, h = container.clientHeight;
     if (!w || !h) return;
     renderer.setSize(w, h, false);
-    camera.aspect = w / h; camera.updateProjectionMatrix();
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
   };
   resize();
   new ResizeObserver(resize).observe(container);
 
-  // interaction: drag to spin + pointer tilt
-  let rot = 0, vel = 0.0016, dragging = false, lastX = 0, tiltY = 0, tTiltY = 0;
-  const canvas = renderer.domElement;
-  canvas.style.touchAction = 'pan-y';
-  canvas.addEventListener('pointerdown', (e) => { dragging = true; lastX = e.clientX; canvas.setPointerCapture(e.pointerId); });
-  addEventListener('pointerup', () => { dragging = false; });
+  // Coverflow keyframes by absolute offset from center
+  const KF = [
+    { xAbs: 0.0, z:  0.0, rotYAbs: 0.00, scale: 1.00, opacity: 1.00 }, // 0 — front
+    { xAbs: 2.7, z: -0.9, rotYAbs: 0.88, scale: 0.79, opacity: 0.58 }, // 1 — adjacent
+    { xAbs: 4.6, z: -1.7, rotYAbs: 1.06, scale: 0.61, opacity: 0.26 }, // 2 — outer
+    { xAbs: 6.2, z: -2.4, rotYAbs: 1.18, scale: 0.48, opacity: 0.00 }, // 3 — hidden
+  ];
+
+  const lp = (a: number, b: number, t: number) => a + (b - a) * t;
+
+  function stateAt(offset: number) {
+    const abs  = Math.abs(offset);
+    const sgn  = offset < 0 ? -1 : 1;
+    const fi   = Math.min(Math.floor(abs), KF.length - 2);
+    const t    = abs - fi;
+    const a = KF[fi], b = KF[fi + 1];
+    return {
+      x:       sgn * lp(a.xAbs,    b.xAbs,    t),
+      z:              lp(a.z,       b.z,       t),
+      rotY: -sgn  * lp(a.rotYAbs, b.rotYAbs, t),
+      scale:          lp(a.scale,   b.scale,   t),
+      opacity:        lp(a.opacity, b.opacity, t),
+    };
+  }
+
+  let targetIdx  = 0;
+  let displayIdx = 0;
+  let dragging = false, lastX = 0, downX = 0, downY = 0;
+
+  const cv = renderer.domElement;
+  cv.style.touchAction = 'pan-y';
+
+  cv.addEventListener('pointerdown', (e) => {
+    dragging = true; lastX = downX = e.clientX; downY = e.clientY;
+    container.style.cursor = 'grabbing';
+    cv.setPointerCapture(e.pointerId);
+  });
+  addEventListener('pointerup', () => {
+    if (!dragging) return;
+    dragging = false;
+    container.style.cursor = '';
+    targetIdx = Math.max(0, Math.min(N - 1, Math.round(targetIdx)));
+  });
   addEventListener('pointermove', (e) => {
-    const r = container.getBoundingClientRect();
-    tTiltY = ((e.clientY - (r.top + r.height / 2)) / r.height) * 0.5;
-    if (dragging) { const dx = e.clientX - lastX; lastX = e.clientX; rot += dx * 0.006; vel = dx * 0.0006; }
+    if (!dragging) return;
+    const dx = e.clientX - lastX; lastX = e.clientX;
+    targetIdx -= dx * 0.007;
+    targetIdx  = Math.max(-0.3, Math.min(N - 0.7, targetIdx));
   });
 
-  // click front-most card
+  // Click: navigate if front card, snap if side card
   const ray = new THREE.Raycaster();
   const ndc = new THREE.Vector2();
-  let downX = 0, downY = 0;
-  canvas.addEventListener('pointerdown', (e) => { downX = e.clientX; downY = e.clientY; });
-  canvas.addEventListener('click', (e) => {
-    if (Math.abs(e.clientX - downX) > 6 || Math.abs(e.clientY - downY) > 6) return; // was a drag
+  cv.addEventListener('click', (e) => {
+    if (Math.abs(e.clientX - downX) > 6 || Math.abs(e.clientY - downY) > 6) return;
     const r = container.getBoundingClientRect();
-    ndc.x = ((e.clientX - r.left) / r.width) * 2 - 1;
+    ndc.x = ((e.clientX - r.left) / r.width)  * 2 - 1;
     ndc.y = -((e.clientY - r.top) / r.height) * 2 + 1;
     ray.setFromCamera(ndc, camera);
     const hit = ray.intersectObjects(planes, false)[0];
-    if (hit) { const href = (hit.object as any).userData.href; if (href) location.href = href; }
+    if (!hit) return;
+    const idx   = (hit.object as any).userData.index as number;
+    const front = Math.round(displayIdx);
+    if (idx === front) { location.href = (hit.object as any).userData.href; }
+    else               { targetIdx = idx; }
   });
 
-  let onScreen = false, frontIndex = -1;
-  new IntersectionObserver((es) => { onScreen = es[0].isIntersecting; if (onScreen) tick(); }, { threshold: 0.05 }).observe(container);
+  let onScreen = false, lastFront = -1, rafId = 0;
+
+  new IntersectionObserver((es) => {
+    onScreen = es[0].isIntersecting;
+    if (onScreen) tick();
+  }, { threshold: 0.05 }).observe(container);
   document.addEventListener('visibilitychange', () => { if (!document.hidden && onScreen) tick(); });
 
-  let raf = 0;
   const render = () => {
-    raf = 0;
-    if (!dragging) { rot += vel; vel += (0.0016 - vel) * 0.02; }
-    group.rotation.y = rot;
-    tiltY += (tTiltY - tiltY) * 0.06;
-    group.rotation.x = tiltY;
+    rafId = 0;
+    displayIdx += (targetIdx - displayIdx) * 0.1;
+    if (Math.abs(displayIdx - targetIdx) < 0.0005) displayIdx = targetIdx;
 
-    // which card is at the front (closest to camera) → caption
-    if (caption) {
-      const step = (Math.PI * 2) / N;
-      let idx = ((-Math.round(rot / step)) % N + N) % N;
-      if (idx !== frontIndex) { frontIndex = idx; caption.textContent = items[idx].title; }
+    for (let i = 0; i < N; i++) {
+      const offset = i - displayIdx;
+      if (Math.abs(offset) >= 3.5) { cards[i].visible = false; continue; }
+      cards[i].visible = true;
+      const s     = stateAt(offset);
+      const order = Math.round(10 - Math.abs(offset) * 2);
+
+      cards[i].position.set(s.x, 0, s.z);
+      cards[i].rotation.y = s.rotY;
+      cards[i].scale.setScalar(s.scale);
+      cards[i].traverse((obj) => {
+        obj.renderOrder = order;
+        if (!(obj as THREE.Mesh).isMesh) return;
+        const m = (obj as THREE.Mesh).material as THREE.Material & { opacity: number };
+        m.opacity    = s.opacity;
+        m.depthWrite = s.opacity > 0.99;
+      });
     }
+
+    const front = ((Math.round(displayIdx) % N) + N) % N;
+    if (front !== lastFront && caption) { lastFront = front; caption.textContent = items[front].title; }
+
     renderer.render(scene, camera);
     if (onScreen && !document.hidden) tick();
   };
-  const tick = () => { if (!raf) raf = requestAnimationFrame(render); };
+
+  const tick = () => { if (!rafId) rafId = requestAnimationFrame(render); };
 }

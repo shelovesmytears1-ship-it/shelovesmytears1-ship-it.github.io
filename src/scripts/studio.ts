@@ -72,7 +72,7 @@ if (hero3d && !reduce && matchMedia('(min-width: 821px)').matches) {
   once.observe(hero3d);
 }
 
-/* ---- 3D project carousel (lazy chunk, desktop + motion only) ---- */
+/* ---- 3D coverflow carousel (lazy chunk, desktop + motion only) ---- */
 const gallery = document.getElementById('gallery3d');
 if (gallery) {
   if (!reduce && matchMedia('(min-width: 821px)').matches) {
@@ -144,25 +144,46 @@ if (!reduce && fine) {
     });
   }
 
-  /* ---- project row hover preview ---- */
+  /* ---- project row hover preview (cover image + "view" pill) ---- */
   const pv = document.createElement('div');
   pv.className = 'work-preview';
+  const pvImg = document.createElement('div');
+  pvImg.className = 'work-preview-img';
+  const pvBtn = document.createElement('span');
+  pvBtn.className = 'work-preview-btn';
+  pv.append(pvImg, pvBtn);
   document.body.appendChild(pv);
+
   document.querySelectorAll<HTMLElement>('[data-preview]').forEach((row) => {
     row.addEventListener('mouseenter', () => {
-      const bg = row.dataset.preview || '';
-      pv.style.background = bg;
-      pv.style.backgroundSize = 'cover';
+      const src = row.dataset.preview;
+      if (!src) return;
+      pvImg.style.backgroundImage = `url('${src}')`;
+      pvBtn.textContent = row.dataset.view || 'View';
       pv.classList.add('show');
+      document.body.classList.add('previewing');
     });
-    row.addEventListener('mouseleave', () => pv.classList.remove('show'));
+    row.addEventListener('mouseleave', () => {
+      pv.classList.remove('show');
+      document.body.classList.remove('previewing');
+    });
   });
-  addEventListener('mousemove', (e) => {
+
+  // lerp-follow so the card trails the cursor instead of snapping to it
+  let px = innerWidth / 2, py = innerHeight / 2, ptx = px, pty = py;
+  addEventListener('mousemove', (e) => { ptx = e.clientX; pty = e.clientY; });
+  const pvLoop = () => {
     if (pv.classList.contains('show')) {
-      pv.style.left = `${e.clientX}px`;
-      pv.style.top = `${e.clientY}px`;
+      px += (ptx - px) * 0.12;
+      py += (pty - py) * 0.12;
+      pv.style.left = `${px}px`;
+      pv.style.top = `${py}px`;
+    } else {
+      px = ptx; py = pty;
     }
-  });
+    requestAnimationFrame(pvLoop);
+  };
+  requestAnimationFrame(pvLoop);
 
   /* ---- magnetic buttons ---- */
   document.querySelectorAll<HTMLElement>('.magnetic').forEach((b) => {

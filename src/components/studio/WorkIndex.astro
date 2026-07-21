@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { getNewDirectionCopy } from '../../data/newDirectionI18n';
+import { withBase } from '../../i18n/ui';
 import type { Lang } from '../../i18n/ui';
 
 interface Props { lang?: Lang }
@@ -10,6 +11,9 @@ const p = (slug: string) => (lang === 'pl' ? `/${slug}/` : `/${lang}/${slug}/`);
 
 const conceptLabel: Record<string, string> = { pl: 'Koncept', ru: 'Концепт', en: 'Concept', ua: 'Концепт' };
 const concept = conceptLabel[lang] ?? 'Concept';
+
+const viewLabel: Record<string, string> = { pl: 'Zobacz', ru: 'Смотреть', en: 'View', ua: 'Дивитись' };
+const view = viewLabel[lang] ?? 'View';
 
 const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
 ---
@@ -28,7 +32,8 @@ const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.dat
         href={p(`work/${project.slug}`)}
         data-cursor
         data-reveal
-        data-preview={`linear-gradient(135deg, ${project.data.bg || '#c9c4bb'}, #14141a)`}
+        data-view={view}
+        data-preview={withBase(project.data.cover || '')}
       >
         <span class="work-no">{String(i + 1).padStart(2, '0')}</span>
         <div>
