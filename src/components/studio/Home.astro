@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { getNewDirectionCopy } from '../../data/newDirectionI18n';
-import { getSummary } from '../../data/caseHelpers';
+import { withBase } from '../../i18n/ui';
 import type { Lang } from '../../i18n/ui';
 
 interface Props { lang?: Lang }
@@ -14,7 +14,14 @@ const conceptLabel: Record<string, string> = { pl: 'Koncept', ru: 'Концеп�
 const concept = conceptLabel[lang] ?? 'Concept';
 
 // Top projects by order for the home selection
-const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order).slice(0, 4);
+const allCases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
+const cases = allCases.slice(0, 4);
+// Featured set for the 3D carousel
+const galleryItems = allCases.slice(0, 6).map((project) => ({
+  cover: withBase(project.data.cover || ''),
+  href: p(`work/${project.slug}`),
+  title: project.data.title,
+}));
 
 // Hero headline pre-split into words (keeps the accent segment, allows per-word reveal)
 type W = { w: string; a: boolean };
@@ -61,6 +68,8 @@ const techStack = ['Astro', 'TypeScript', 'GSAP', c.layout.nav.method, 'SEO', 'p
     <h2 data-reveal>{c.home.workTitle}<br /><em>{c.home.workAccent}</em></h2>
     <a class="link" href={p('work')} data-cursor data-reveal>{c.home.allWork} ↗</a>
   </div>
+  <div id="gallery3d" class="gallery3d" data-items={JSON.stringify(galleryItems)} aria-hidden="true"></div>
+  <p class="gallery3d-cap" id="gallery3d-cap" aria-hidden="true"></p>
   <div class="work-list">
     {cases.map((project, i) => (
       <a

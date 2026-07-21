@@ -1,14 +1,22 @@
 /**
- * Hero 3D — a single faceted "crystal" that drifts and reacts to the cursor.
- * Lazy-imported (separate chunk) and only when the hero is on screen.
- * Performance-guarded: DPR capped, paused off-screen and when the tab is hidden.
- * The accent rim light is read from the current theme's --accent, so the same
- * module themes itself correctly if reused by another direction.
+ * Hero 3D — full-bleed hero canvas in a single WebGL context:
+ *   1) a very subtle animated shader backdrop (paper with a faint drifting
+ *      accent glow toward the top-right), and
+ *   2) a faceted "crystal" (icosahedron + wireframe) on the right that reacts
+ *      to the cursor.
+ * One renderer keeps the cost down. Text sits above via CSS z-index; the
+ * backdrop stays low-contrast so copy remains readable.
+ * Guards: DPR capped, paused off-screen and when the tab is hidden; the CSS
+ * fallback glow covers mobile / reduced-motion (this module isn't loaded there).
  */
 import * as THREE from 'three';
 
 export function initHero3D(container: HTMLElement): void {
-  const accent = getComputedStyle(container).getPropertyValue('--accent').trim() || '#2b34ff';
+  const cs = getComputedStyle(container);
+  const accentHex = cs.getPropertyValue('--accent').trim() || '#2b34ff';
+  const paperHex = cs.getPropertyValue('--bg').trim() || '#f4f2ec';
+  const accent = new THREE.Color(accentHex);
+  const paper = new THREE.Color(paperHex);
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
@@ -17,66 +25,84 @@ export function initHero3D(container: HTMLElement): void {
   const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
   renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
   container.appendChild(renderer.domElement);
-  container.classList.add('gl'); // hide CSS fallback orb
+  container.classList.add('gl');
 
-  // Faceted crystal
-  const geo = new THREE.IcosahedronGeometry(1.4, 1);
+  /* ---- subtle shader backdrop ---- */
+  const bgMat = new THREE.ShaderMaterial({
+    transparent: true,
+    depthWrite: false,
+    uniforms: {
+      uTime: { value: 0 },
+      uAccent: { value: new THREE.Vector3(accent.r, accent.g, accent.b) },
+      uPaper: { value: new THREE.Vector3(paper.r, paper.g, paper.b) },
+    },
+    vertexShader: `varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position, 1.0); }`,
+    fragmentShader: `
+      varying vec2 vUv; uniform float uTime; uniform vec3 uAccent; uniform vec3 uPaper;
+      void main(){
+        vec2 uv = vUv;
+        float w  = sin(uv.x*3.0 + uTime*0.15)*0.5+0.5;
+        float w2 = sin((uv.y+uv.x)*2.2 - uTime*0.11)*0.5+0.5;
+        float flow = mix(w, w2, 0.5);
+        vec2 c = vec2(0.78 + 0.05*sin(uTime*0.1), 0.72);
+        float blob = smoothstep(0.95, 0.15, distance(uv, c));
+        vec3 tint = mix(uPaper, uAccent, 0.14);
+        vec3 col = mix(uPaper, tint, blob * (0.55 + 0.45*flow));
+        gl_FragColor = vec4(col, 1.0);
+      }`,
+  });
+  // fullscreen triangle-ish quad in clip space (vertex shader ignores camera)
+  const bg = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), bgMat);
+  bg.frustumCulled = false;
+  scene.add(bg);
+
+  /* ---- crystal ---- */
+  const crystal = new THREE.Group();
+  const geo = new THREE.IcosahedronGeometry(1.25, 1);
   const mat = new THREE.MeshStandardMaterial({
-    color: new THREE.Color('#1b1b24'),
-    metalness: 0.28,
-    roughness: 0.42,
-    flatShading: true,
+    color: new THREE.Color('#1b1b24'), metalness: 0.28, roughness: 0.42, flatShading: true,
   });
   const mesh = new THREE.Mesh(geo, mat);
-  scene.add(mesh);
-
-  // subtle wireframe overlay for craft/precision feel
-  const wire = new THREE.LineSegments(
+  crystal.add(mesh);
+  crystal.add(new THREE.LineSegments(
     new THREE.WireframeGeometry(geo),
-    new THREE.LineBasicMaterial({ color: new THREE.Color(accent), transparent: true, opacity: 0.16 })
-  );
-  mesh.add(wire);
+    new THREE.LineBasicMaterial({ color: accent, transparent: true, opacity: 0.18 })
+  ));
+  crystal.position.x = 1.7;
+  scene.add(crystal);
 
   scene.add(new THREE.AmbientLight(0xffffff, 0.55));
-  const key = new THREE.DirectionalLight(0xffffff, 1.15);
-  key.position.set(-3, 4, 5);
-  scene.add(key);
-  const rim = new THREE.PointLight(new THREE.Color(accent), 2.4, 20);
-  rim.position.set(3.5, -2, 2);
-  scene.add(rim);
+  const key = new THREE.DirectionalLight(0xffffff, 1.15); key.position.set(-3, 4, 5); scene.add(key);
+  const rim = new THREE.PointLight(accent, 2.4, 20); rim.position.set(3.5, -2, 2); scene.add(rim);
 
   const resize = () => {
     const { clientWidth: w, clientHeight: h } = container;
     if (!w || !h) return;
     renderer.setSize(w, h, false);
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+    // push the crystal further right on wide canvases
+    crystal.position.x = 1.2 + Math.min(camera.aspect, 1.6) * 0.5;
   };
   resize();
   new ResizeObserver(resize).observe(container);
 
-  // pointer influence
   let px = 0, py = 0, tx = 0, ty = 0;
-  addEventListener('mousemove', (e) => {
-    tx = (e.clientX / innerWidth) * 2 - 1;
-    ty = (e.clientY / innerHeight) * 2 - 1;
-  });
+  addEventListener('mousemove', (e) => { tx = (e.clientX / innerWidth) * 2 - 1; ty = (e.clientY / innerHeight) * 2 - 1; });
 
-  // run only when visible + tab active
   let onScreen = true;
   new IntersectionObserver((es) => { onScreen = es[0].isIntersecting; if (onScreen) tick(); }, { threshold: 0.01 }).observe(container);
   document.addEventListener('visibilitychange', () => { if (!document.hidden && onScreen) tick(); });
 
+  const clock = new THREE.Clock();
   let raf = 0;
   const render = () => {
-    px += (tx - px) * 0.05;
-    py += (ty - py) * 0.05;
-    mesh.rotation.y += 0.0032;
-    mesh.rotation.x += 0.0012;
-    mesh.position.x = px * 0.35;
-    mesh.position.y = -py * 0.3;
-    renderer.render(scene, camera);
     raf = 0;
+    px += (tx - px) * 0.05; py += (ty - py) * 0.05;
+    bgMat.uniforms.uTime.value = clock.getElapsedTime();
+    crystal.rotation.y += 0.0032; crystal.rotation.x += 0.0012;
+    crystal.position.y = -py * 0.3;
+    mesh.rotation.z = px * 0.15;
+    renderer.render(scene, camera);
     if (onScreen && !document.hidden) tick();
   };
   const tick = () => { if (!raf) raf = requestAnimationFrame(render); };
