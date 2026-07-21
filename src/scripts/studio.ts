@@ -58,6 +58,20 @@ if (clock) {
   setInterval(tick, 10_000);
 }
 
+/* ---- hero 3D (lazy chunk, desktop + motion only) ---- */
+const hero3d = document.getElementById('hero3d');
+if (hero3d && !reduce && matchMedia('(min-width: 821px)').matches) {
+  const once = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      once.disconnect();
+      import('./hero3d')
+        .then((m) => m.initHero3D(hero3d))
+        .catch(() => {});
+    }
+  }, { threshold: 0.1 });
+  once.observe(hero3d);
+}
+
 /* Everything below is enhancement only. */
 if (!reduce) {
   /* ---- Lenis smooth scroll ---- */
