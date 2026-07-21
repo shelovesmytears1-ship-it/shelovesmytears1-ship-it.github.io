@@ -76,7 +76,7 @@ async function exit(): Promise<void> {
 function labelFor(a: HTMLAnchorElement): string {
   const explicit = a.getAttribute('data-tname');
   if (explicit) return explicit;
-  const name = a.querySelector('.work-name, .cs-next-name');
+  const name = a.querySelector('.work-name, .cs-next-title');
   if (name?.textContent) return name.textContent.trim();
   const text = (a.textContent || '').trim().replace(/\s+/g, ' ');
   return text.length > 24 ? text.slice(0, 24) + '…' : text || 'overflow';

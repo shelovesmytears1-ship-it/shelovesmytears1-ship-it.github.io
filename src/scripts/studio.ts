@@ -131,6 +131,12 @@ if (!reduce) {
     pItems.forEach((p) => pObs.observe(p.el));
   }
 
+  /* Arcs: a wide ellipse peeking through a short window. The window height
+     collapses to 0 as the section takes over the screen, so the curved seam
+     flattens into a straight edge. Absolutely positioned, so resizing it
+     costs no reflow. */
+  const arcs = Array.from(document.querySelectorAll<HTMLElement>('[data-collapse]'));
+
   const applyParallax = () => {
     const vh = innerHeight;
     for (const p of pItems) {
@@ -143,17 +149,43 @@ if (!reduce) {
       p.el.style.transform =
         `translate3d(0,${y.toFixed(2)}px,0)` + (rot ? ` rotate(${rot.toFixed(2)}deg)` : '');
     }
+    for (const el of arcs) {
+      const base = parseFloat(el.dataset.collapse || '0');
+      const top = el.getBoundingClientRect().top;
+      if (top > vh || top < -vh) continue;
+      const p = Math.min(1, Math.max(0, (vh - top) / (vh * 0.55)));
+      el.style.height = `${(base * (1 - p)).toFixed(2)}vh`;
+    }
   };
 
-  /* ---- marquee that reverses with the scroll direction ---- */
+  /* ---- marquee that reverses with the scroll direction ----
+     The strip loops by exactly one unit width, which only looks seamless while
+     the strip is longer than the viewport. Two hardcoded copies were not: one
+     copy measured ~920px against a 1345px viewport, so the tail cleared the
+     screen and left a gap. Clone until the strip outruns the viewport instead. */
   const mq = document.querySelector<HTMLElement>('.marquee');
-  const mqTrack = mq?.querySelector('div') as HTMLElement | undefined;
-  let mqX = 0, mqDir = 1, mqHalf = 0;
-  if (mq && mqTrack) {
-    mq.classList.add('js');
-    const measure = () => { mqHalf = mqTrack.scrollWidth / 2; };
-    measure();
-    new ResizeObserver(measure).observe(mqTrack);
+  const mqTrack = mq?.querySelector<HTMLElement>('.mq-track') ?? null;
+  const mqUnit = mqTrack?.querySelector<HTMLElement>('.mq-unit') ?? null;
+  let mqX = 0, mqDir = 1, mqUnitW = 0;
+
+  const buildMarquee = () => {
+    if (!mqTrack || !mqUnit) return;
+    mqTrack.querySelectorAll('.mq-unit.clone').forEach((n) => n.remove());
+    mqUnitW = mqUnit.getBoundingClientRect().width;
+    if (!mqUnitW) return;
+    const copies = Math.ceil(innerWidth / mqUnitW) + 1;
+    for (let i = 1; i < copies; i++) {
+      const clone = mqUnit.cloneNode(true) as HTMLElement;
+      clone.classList.add('clone');
+      mqTrack.appendChild(clone);
+    }
+  };
+
+  if (mqTrack && mqUnit) {
+    buildMarquee();
+    addEventListener('resize', buildMarquee);
+    // webfonts change the unit width once they land
+    document.fonts?.ready.then(buildMarquee).catch(() => {});
   }
 
   let lastY = 0;
@@ -161,10 +193,10 @@ if (!reduce) {
     lenis.raf(time);
     applyParallax();
 
-    if (mqTrack && mqHalf) {
+    if (mqTrack && mqUnitW) {
       mqX -= 0.55 * mqDir;
-      if (mqX <= -mqHalf) mqX += mqHalf;
-      if (mqX > 0) mqX -= mqHalf;
+      if (mqX <= -mqUnitW) mqX += mqUnitW;
+      if (mqX > 0) mqX -= mqUnitW;
       mqTrack.style.transform = `translate3d(${mqX.toFixed(2)}px,0,0)`;
     }
     requestAnimationFrame(raf);

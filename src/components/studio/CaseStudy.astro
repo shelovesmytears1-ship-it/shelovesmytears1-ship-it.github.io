@@ -74,12 +74,21 @@ const next = all[(idx + 1) % all.length];
     </section>
   ))}
 
-  <section class="wrap cs-next">
-    <a href={p(`work/${next.slug}`)} class="cs-next-link" data-cursor data-reveal>
-      <span class="eye">{c.case.nextAction}</span>
-      <span class="cs-next-name disp">{next.data.title} →</span>
-    </a>
-    <a href={p('contact')} class="btn magnetic" data-cursor data-reveal>{c.method.ctaButton} →</a>
+  <section class="cs-next">
+    <div class="cs-next-arc" data-collapse="9" aria-hidden="true"><span></span></div>
+    <div class="cs-next-inner" data-speed="-1.4">
+      <p class="cs-next-eye">{c.case.nextAction}</p>
+      <a href={p(`work/${next.slug}`)} class="cs-next-link" data-cursor data-tname={next.data.title}>
+        <h2 class="cs-next-title disp">{next.data.title}</h2>
+        <div class="cs-next-window" data-speed="1.9">
+          <div class="cs-next-img" style={`background-image:url('${withBase(next.data.cover || '')}')`}></div>
+        </div>
+      </a>
+      <div class="cs-next-actions">
+        <a href={p('work')} class="btn btn-ghost cs-next-btn" data-cursor>{c.case.allWork} ↗</a>
+        <a href={p('contact')} class="btn magnetic" data-cursor>{c.method.ctaButton} →</a>
+      </div>
+    </div>
   </section>
 </article>
 
@@ -115,9 +124,29 @@ const next = all[(idx + 1) % all.length];
   .cs-stat{margin:2.5rem 0 .5rem;padding:2rem;border:1px solid var(--line);border-radius:12px;background:color-mix(in srgb,var(--accent) 5%,var(--bg));}
   .cs-stat-val{font-size:clamp(3rem,9vw,6rem);color:var(--accent);line-height:.9;}
   .cs-stat-label{font-family:var(--mono),monospace;font-size:.8rem;letter-spacing:.08em;color:var(--muted);margin-top:.8rem;max-width:46ch;line-height:1.5;}
-  .cs-next{display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;padding:clamp(3rem,6vw,5rem) 0;border-top:1px solid var(--line);}
-  .cs-next-link{display:flex;flex-direction:column;gap:.5rem;}
-  .cs-next-name{font-size:clamp(2rem,5vw,3.4rem);transition:color .3s;}
-  .cs-next-link:hover .cs-next-name{color:var(--accent);}
+  /* ---- next case ---- */
+  .cs-next{position:relative;margin-top:clamp(4rem,10vh,7rem);background:var(--ink);overflow:hidden;padding-bottom:clamp(3rem,7vh,5rem);}
+  /* the seam: a very wide, very tall ellipse in paper colour, pushed up so only
+     the bottom of its curve shows through a short window — a shallow arc whose
+     curvature does not swing with viewport width */
+  .cs-next-arc{position:absolute;top:0;left:0;width:100%;height:9vh;overflow:hidden;z-index:2;pointer-events:none;}
+  .cs-next-arc span{position:absolute;left:50%;display:block;width:150%;height:750%;border-radius:50%;background:var(--bg);transform:translate(-50%,-86.666%);}
+  .cs-next-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:clamp(6rem,17vh,11rem);}
+  .cs-next-eye{font-family:var(--mono),monospace;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:color-mix(in srgb,var(--bg) 45%,transparent);}
+  .cs-next-link{display:block;width:100%;}
+  .cs-next-title{font-size:clamp(2.8rem,10vw,8rem);color:var(--bg);margin:.5rem 0 0;transition:opacity .5s cubic-bezier(.7,0,.3,1);}
+  /* short window, taller image sitting low inside it — on hover the cover rises
+     to fill the frame while the title steps back */
+  .cs-next-window{position:relative;width:clamp(11rem,27vw,24rem);margin:1.6rem auto 0;overflow:hidden;}
+  .cs-next-window::before{content:'';display:block;padding-bottom:50%;}
+  .cs-next-img{position:absolute;top:0;left:0;width:100%;padding-bottom:62.5%;background-size:cover;background-position:center top;transform:translateY(28%);transition:transform .5s cubic-bezier(.7,0,.3,1);}
+  .cs-next-link:hover .cs-next-title{opacity:.25;}
+  .cs-next-link:hover .cs-next-img{transform:translateY(0);}
+  .cs-next-actions{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:clamp(2rem,5vh,3.2rem);}
+  /* on the dark panel the fill has to invert the other way */
+  .cs-next-btn{color:var(--bg);border-color:color-mix(in srgb,var(--bg) 28%,transparent);}
+  .cs-next-btn::before{background:var(--bg);}
+  .cs-next-btn:hover{color:var(--ink);}
+  @media(max-width:720px){.cs-next-arc{height:5vh;}}
   @media(max-width:720px){.cs-sec{grid-template-columns:1fr;gap:.6rem;}.cs-num{font-size:1.6rem;}}
 </style>

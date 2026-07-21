@@ -128,12 +128,15 @@ body.cursoron a,body.cursoron button{cursor:none;}
 .hero-scroll .dotline::after{content:'';position:absolute;inset:0;background:var(--accent);animation:slide 2s infinite;}
 @keyframes slide{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 
-/* marquee — JS-driven so it can reverse with the scroll direction */
-.marquee{border-block:1px solid var(--line);padding:1.1rem 0;overflow:hidden;white-space:nowrap;}
-.marquee div{display:inline-block;animation:mq 28s linear infinite;font-family:var(--disp),sans-serif;font-weight:var(--disp-w);font-size:clamp(1.3rem,2.6vw,2.1rem);letter-spacing:-.02em;will-change:transform;}
-.marquee.js div{animation:none;}
-.marquee span{opacity:.35;}.marquee b{color:var(--accent);font-weight:inherit;margin:0 .3em;}
-@keyframes mq{to{transform:translateX(-50%)}}
+/* marquee — JS clones the unit until it outruns the viewport, then loops by
+   exactly one unit width, so the strip can never run out mid-screen */
+.marquee{border-block:1px solid var(--line);padding:1.1rem 0;overflow:hidden;}
+.mq-track{display:flex;width:max-content;will-change:transform;
+  font-family:var(--disp),sans-serif;font-weight:var(--disp-w);
+  font-size:clamp(1.3rem,2.6vw,2.1rem);letter-spacing:-.02em;}
+.mq-unit{display:flex;flex:none;white-space:nowrap;}
+.mq-unit > span{opacity:.35;}
+.mq-unit > b{color:var(--accent);font-weight:inherit;margin:0 .3em;}
 
 /* parallax targets */
 [data-speed]{will-change:transform;}
@@ -163,9 +166,17 @@ html.curtain-on body.curtain-done main{transform:none;}
 .link:hover{color:var(--accent);border-color:var(--accent);}
 
 /* 3D project carousel */
-.gallery3d{position:relative;width:100%;height:min(62vh,580px);margin:.5rem 0 1rem;cursor:grab;overflow:hidden;}
+.gallery3d{position:relative;width:100%;height:min(68vh,620px);margin:.5rem 0 1rem;cursor:grab;overflow:hidden;}
 .gallery3d:active{cursor:grabbing;}
-.gallery3d canvas{width:100%!important;height:100%!important;display:block;}
+.gallery3d canvas{position:relative;z-index:1;width:100%!important;height:100%!important;display:block;}
+/* the project name sits behind the cards, in the same display type as the rest
+   of the page, so the carousel stops reading as a bare widget */
+.gallery3d-title{position:absolute;inset:0;z-index:0;display:grid;place-items:center;
+  pointer-events:none;font-family:var(--disp),sans-serif;font-weight:var(--disp-w);
+  letter-spacing:var(--disp-ls);font-size:clamp(3rem,13vw,11rem);line-height:1;
+  color:var(--ink);opacity:.08;white-space:nowrap;
+  transition:opacity .4s ease,transform .6s cubic-bezier(.16,1,.3,1);}
+.gallery3d-title.swap{opacity:0;transform:translateY(14px);}
 .gallery3d::before,.gallery3d::after{content:'';position:absolute;top:0;bottom:0;width:14%;z-index:2;pointer-events:none;}
 .gallery3d::before{left:0;background:linear-gradient(to right,var(--bg),transparent);}
 .gallery3d::after{right:0;background:linear-gradient(to left,var(--bg),transparent);}

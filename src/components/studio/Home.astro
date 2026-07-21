@@ -21,6 +21,7 @@ const galleryItems = allCases.slice(0, 6).map((project) => ({
   cover: withBase(project.data.cover || ''),
   href:  p(`work/${project.slug}`),
   title: project.data.title,
+  niche: project.data.niche || '',
 }));
 
 const viewLabel: Record<string, string> = { pl: 'Zobacz', ru: 'Смотреть', en: 'View', ua: 'Дивитись' };
@@ -59,10 +60,8 @@ const techStack = ['Astro', 'TypeScript', 'GSAP', c.layout.nav.method, 'SEO', 'p
 
 <!-- MARQUEE -->
 <div class="marquee" aria-hidden="true">
-  <div>
-    {[0, 1].map(() => (
-      <>{techStack.map((t) => (<><span>{t}</span><b>/</b></>))}</>
-    ))}
+  <div class="mq-track">
+    <span class="mq-unit">{techStack.map((t) => (<><span>{t}</span><b>/</b></>))}</span>
   </div>
 </div>
 
@@ -73,7 +72,9 @@ const techStack = ['Astro', 'TypeScript', 'GSAP', c.layout.nav.method, 'SEO', 'p
     <a class="link" href={p('work')} data-cursor data-reveal>{c.home.allWork} ↗</a>
   </div>
 
-  <div id="gallery3d" class="gallery3d" data-items={JSON.stringify(galleryItems)} aria-hidden="true"></div>
+  <div id="gallery3d" class="gallery3d" data-items={JSON.stringify(galleryItems)} aria-hidden="true">
+    <div class="gallery3d-title" id="gallery3d-title"></div>
+  </div>
   <p class="gallery3d-cap" id="gallery3d-cap" aria-hidden="true"></p>
 
   <div class="work-list">
