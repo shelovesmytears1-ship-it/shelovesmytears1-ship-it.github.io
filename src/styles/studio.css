@@ -183,11 +183,12 @@ html.curtain-on body.curtain-done main{transform:none;}
 .work-tag{font-family:var(--mono),monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .6rem;border:1px solid var(--line);border-radius:999px;color:var(--muted);white-space:nowrap;}
 /* work preview — sliding cover strip + trailing "view" pill (two inertia layers) */
 .work-preview,.work-preview-btn{position:fixed;top:0;left:0;z-index:60;pointer-events:none;will-change:transform;}
-.work-preview-inner{width:min(24vw,300px);aspect-ratio:1/1;overflow:hidden;border-radius:4px;opacity:0;transform:translate(-50%,-50%) scale(.72);transition:opacity .45s ease,transform .7s cubic-bezier(.16,1,.3,1);box-shadow:0 36px 90px rgba(20,20,26,.28);}
+/* frame matches the 16:10 covers so nothing gets cropped */
+.work-preview-inner{width:min(30vw,400px);aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:var(--bg);opacity:0;transform:translate(-50%,-50%) scale(.72);transition:opacity .45s ease,transform .7s cubic-bezier(.16,1,.3,1);box-shadow:0 36px 90px rgba(20,20,26,.28);}
 .work-preview.show .work-preview-inner{opacity:1;transform:translate(-50%,-50%) scale(1);}
 /* the whole strip slides — covers scroll past each other like a feed */
 .work-preview-strip{position:absolute;inset:0;will-change:transform;transition:transform .62s cubic-bezier(.65,0,.35,1);}
-.work-preview-strip>div{position:absolute;left:0;width:100%;height:100%;background-size:cover;background-position:center top;}
+.work-preview-strip>div{position:absolute;left:0;width:100%;height:100%;background-size:contain;background-position:center;background-repeat:no-repeat;}
 .work-preview-btn-inner{display:grid;place-items:center;width:82px;height:82px;border-radius:50%;background:var(--accent);color:var(--on-accent);font-family:var(--mono),monospace;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;transform:translate(-50%,-50%) scale(0);transition:transform .55s cubic-bezier(.16,1,.3,1);}
 .work-preview-btn.show .work-preview-btn-inner{transform:translate(-50%,-50%) scale(1);}
 body.previewing .cur{opacity:0;}

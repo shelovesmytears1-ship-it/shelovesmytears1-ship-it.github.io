@@ -246,16 +246,37 @@ if (!reduce && fine) {
       document.body.classList.toggle('previewing', on);
     };
 
-    rows.forEach((row, i) => {
-      row.addEventListener('mouseenter', () => {
-        strip.style.transform = `translateY(${-i * 100}%)`;
-        show(true);
-      });
-      row.addEventListener('mouseleave', () => show(false));
+    let ix = innerWidth / 2, iy = innerHeight / 2, bx = ix, by = iy, mx = ix, my = iy;
+    let current = -1;
+
+    const setRow = (i: number) => {
+      if (i === current) return;
+      current = i;
+      if (i < 0) { show(false); return; }
+      strip.style.transform = `translateY(${-i * 100}%)`;
+      show(true);
+    };
+
+    // Resolve from the pointer position rather than mouseenter/mouseleave: when
+    // the wheel moves rows under a stationary cursor the browser fires no mouse
+    // events at all, which left the strip stuck on the previous project.
+    const syncFromPoint = () => {
+      const el = document.elementFromPoint(mx, my);
+      const row = (el as Element | null)?.closest?.('[data-preview]') as HTMLElement | null;
+      setRow(row ? rows.indexOf(row) : -1);
+    };
+
+    addEventListener('mousemove', (e) => {
+      mx = e.clientX; my = e.clientY;
+      syncFromPoint();
     });
 
-    let ix = innerWidth / 2, iy = innerHeight / 2, bx = ix, by = iy, mx = ix, my = iy;
-    addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
+    let queued = false;
+    addEventListener('scroll', () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => { queued = false; syncFromPoint(); });
+    }, { passive: true });
     const pvLoop = () => {
       if (pv.classList.contains('show')) {
         ix += (mx - ix) * 0.085; iy += (my - iy) * 0.085;
