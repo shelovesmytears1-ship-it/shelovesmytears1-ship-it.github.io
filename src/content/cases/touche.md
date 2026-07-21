@@ -9,6 +9,13 @@ accent: '#1A140E'
 bg: '#F5F0E8'
 siteUrl: https://shelovesmytears1-ship-it.github.io/touche-spa/
 cover: /covers/touche.jpg
+screens:
+  - src: /screens/touche-m1.webp
+    kind: phone
+  - src: /screens/touche-m2.webp
+    kind: phone
+  - src: /screens/touche-m3.webp
+    kind: phone
 technologies:
   - HTML
   - CSS

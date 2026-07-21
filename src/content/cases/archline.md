@@ -9,6 +9,13 @@ accent: '#C8956D'
 bg: '#0F0F0F'
 siteUrl: https://shelovesmytears1-ship-it.github.io/archline-renovation/
 cover: /covers/archline.jpg
+screens:
+  - src: /screens/archline-m1.webp
+    kind: phone
+  - src: /screens/archline-m2.webp
+    kind: phone
+  - src: /screens/archline-m3.webp
+    kind: phone
 technologies:
   - HTML
   - CSS

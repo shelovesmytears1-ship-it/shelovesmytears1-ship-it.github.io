@@ -9,6 +9,13 @@ accent: '#B89B7C'
 bg: '#2B2E33'
 siteUrl: https://shelovesmytears1-ship-it.github.io/prezfull-architecture/
 cover: /covers/prezfull.jpg
+screens:
+  - src: /screens/prezfull-m1.webp
+    kind: phone
+  - src: /screens/prezfull-m2.webp
+    kind: phone
+  - src: /screens/prezfull-m3.webp
+    kind: phone
 technologies:
   - HTML
   - CSS

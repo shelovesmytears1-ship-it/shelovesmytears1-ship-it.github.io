@@ -9,6 +9,13 @@ accent: '#5B7C3D'
 bg: '#F8F4EC'
 siteUrl: https://shelovesmytears1-ship-it.github.io/dzherelo-tea/
 cover: /covers/dzherelo.jpg
+screens:
+  - src: /screens/dzherelo-m1.webp
+    kind: phone
+  - src: /screens/dzherelo-m2.webp
+    kind: phone
+  - src: /screens/dzherelo-m3.webp
+    kind: phone
 technologies:
   - HTML
   - CSS

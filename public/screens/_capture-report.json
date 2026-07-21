@@ -1,0 +1,227 @@
+[
+  {
+    "slug": "archline",
+    "ok": true,
+    "docH": 8418,
+    "stops": [
+      0,
+      1350,
+      2870
+    ],
+    "made": [
+      "archline-m1.webp",
+      "archline-m2.webp",
+      "archline-m3.webp"
+    ]
+  },
+  {
+    "slug": "denty",
+    "ok": true,
+    "docH": 11847,
+    "stops": [
+      0,
+      1350,
+      2870
+    ],
+    "made": [
+      "denty-m1.webp",
+      "denty-m2.webp",
+      "denty-m3.webp"
+    ]
+  },
+  {
+    "slug": "dispersia",
+    "ok": true,
+    "docH": 5648,
+    "stops": [
+      0,
+      1350,
+      2870
+    ],
+    "made": [
+      "dispersia-m1.webp",
+      "dispersia-m2.webp",
+      "dispersia-m3.webp"
+    ]
+  },
+  {
+    "slug": "draft",
+    "ok": true,
+    "docH": 8000,
+    "stops": [
+      0,
+      1350,
+      2870
+    ],
+    "made": [
+      "draft-m1.webp",
+      "draft-m2.webp",
+      "draft-m3.webp"
+    ]
+  },
+  {
+    "slug": "dzherelo",
+    "ok": true,
+    "docH": 16238,
+    "stops": [
+      0,
+      1350,
+      2870
+    ],
+    "made": [
+      "dzherelo-m1.webp",
+      "dzherelo-m2.webp",
+      "dzherelo-m3.webp"
+    ]
+  },
+  {
+    "slug": "essence",
+    "ok": true,
+    "docH": 11698,
+    "stops": [
+      0,
+      1350,
+      2870
+    ],
+    "made": [
+      "essence-m1.webp",
+      "essence-m2.webp",
+      "essence-m3.webp"
+    ]
+  },
+  {
+    "slug": "freshclean",
+    "ok": true,
+    "docH": 9433,
+    "stops": [
+      0,
+      1350,
+      2870
+    ],
+    "made": [
+      "freshclean-m1.webp",
+      "freshclean-m2.webp",
+      "freshclean-m3.webp"
+    ]
+  },
+  {
+    "slug": "interspace",
+    "ok": true,
+    "docH": 9550,
+    "stops": [
+      0,
+      1350,
+      2870
+    ],
+    "made": [
+      "interspace-m1.webp",
+      "interspace-m2.webp",
+      "interspace-m3.webp"
+    ]
+  },
+  {
+    "slug": "modulart",
+    "ok": true,
+    "docH": 15053,
+    "stops": [
+      0,
+      1350,
+      2870
+    ],
+    "made": [
+      "modulart-m1.webp",
+      "modulart-m2.webp",
+      "modulart-m3.webp"
+    ]
+  },
+  {
+    "slug": "orlov",
+    "ok": true,
+    "docH": 16511,
+    "stops": [
+      0,
+      1350,
+      2870
+    ],
+    "made": [
+      "orlov-m1.webp",
+      "orlov-m2.webp",
+      "orlov-m3.webp"
+    ]
+  },
+  {
+    "slug": "prawnik",
+    "ok": true,
+    "docH": 8163,
+    "stops": [
+      0,
+      1350,
+      2870
+    ],
+    "made": [
+      "prawnik-m1.webp",
+      "prawnik-m2.webp",
+      "prawnik-m3.webp"
+    ]
+  },
+  {
+    "slug": "prezfull",
+    "ok": true,
+    "docH": 15459,
+    "stops": [
+      0,
+      1350,
+      2870
+    ],
+    "made": [
+      "prezfull-m1.webp",
+      "prezfull-m2.webp",
+      "prezfull-m3.webp"
+    ]
+  },
+  {
+    "slug": "smm",
+    "ok": true,
+    "docH": 14089,
+    "stops": [
+      0,
+      1350,
+      2870
+    ],
+    "made": [
+      "smm-m1.webp",
+      "smm-m2.webp",
+      "smm-m3.webp"
+    ]
+  },
+  {
+    "slug": "touche",
+    "ok": true,
+    "docH": 7445,
+    "stops": [
+      0,
+      1350,
+      2870
+    ],
+    "made": [
+      "touche-m1.webp",
+      "touche-m2.webp",
+      "touche-m3.webp"
+    ]
+  },
+  {
+    "slug": "wavemetrics",
+    "ok": true,
+    "docH": 13251,
+    "stops": [
+      0,
+      1350,
+      2870
+    ],
+    "made": [
+      "wavemetrics-m1.webp",
+      "wavemetrics-m2.webp",
+      "wavemetrics-m3.webp"
+    ]
+  }
+]

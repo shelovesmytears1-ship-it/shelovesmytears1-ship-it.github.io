@@ -9,6 +9,13 @@ accent: '#C4A882'
 bg: '#FAFAF8'
 siteUrl: https://shelovesmytears1-ship-it.github.io/interspace-exhibition/
 cover: /covers/interspace.jpg
+screens:
+  - src: /screens/interspace-m1.webp
+    kind: phone
+  - src: /screens/interspace-m2.webp
+    kind: phone
+  - src: /screens/interspace-m3.webp
+    kind: phone
 technologies:
   - HTML
   - CSS

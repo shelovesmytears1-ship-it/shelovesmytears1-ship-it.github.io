@@ -9,6 +9,13 @@ accent: '#E8954A'
 bg: '#0D0B08'
 siteUrl: https://shelovesmytears1-ship-it.github.io/draft-landing/
 cover: /covers/draft.jpg
+screens:
+  - src: /screens/draft-m1.webp
+    kind: phone
+  - src: /screens/draft-m2.webp
+    kind: phone
+  - src: /screens/draft-m3.webp
+    kind: phone
 technologies:
   - HTML
   - CSS

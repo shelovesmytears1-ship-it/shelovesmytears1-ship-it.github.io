@@ -9,6 +9,13 @@ accent: '#E89E3A'
 bg: '#111111'
 siteUrl: https://shelovesmytears1-ship-it.github.io/modulart-homes/
 cover: /covers/modulart.jpg
+screens:
+  - src: /screens/modulart-m1.webp
+    kind: phone
+  - src: /screens/modulart-m2.webp
+    kind: phone
+  - src: /screens/modulart-m3.webp
+    kind: phone
 technologies:
   - HTML
   - CSS

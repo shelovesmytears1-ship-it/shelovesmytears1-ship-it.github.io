@@ -9,6 +9,13 @@ accent: '#16A085'
 bg: '#FAFAF8'
 siteUrl: https://shelovesmytears1-ship-it.github.io/freshclean-cleaning/
 cover: /covers/freshclean.jpg
+screens:
+  - src: /screens/freshclean-m1.webp
+    kind: phone
+  - src: /screens/freshclean-m2.webp
+    kind: phone
+  - src: /screens/freshclean-m3.webp
+    kind: phone
 technologies:
   - HTML
   - CSS

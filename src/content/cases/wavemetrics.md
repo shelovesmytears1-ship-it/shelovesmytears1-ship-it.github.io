@@ -9,6 +9,13 @@ accent: '#6B8FE0'
 bg: '#0A0E1A'
 siteUrl: https://shelovesmytears1-ship-it.github.io/wavemetrics-landing/
 cover: /covers/wavemetrics.jpg
+screens:
+  - src: /screens/wavemetrics-m1.webp
+    kind: phone
+  - src: /screens/wavemetrics-m2.webp
+    kind: phone
+  - src: /screens/wavemetrics-m3.webp
+    kind: phone
 technologies:
   - HTML
   - CSS

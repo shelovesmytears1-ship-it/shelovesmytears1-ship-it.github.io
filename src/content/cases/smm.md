@@ -9,6 +9,13 @@ accent: '#FF3314'
 bg: '#F5F5F3'
 siteUrl: https://shelovesmytears1-ship-it.github.io/vanguard-smm/
 cover: /covers/smm.jpg
+screens:
+  - src: /screens/smm-m1.webp
+    kind: phone
+  - src: /screens/smm-m2.webp
+    kind: phone
+  - src: /screens/smm-m3.webp
+    kind: phone
 technologies:
   - HTML
   - Tailwind

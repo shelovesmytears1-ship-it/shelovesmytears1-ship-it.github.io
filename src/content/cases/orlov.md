@@ -9,6 +9,13 @@ accent: '#D4803A'
 bg: '#F5F1E8'
 siteUrl: https://shelovesmytears1-ship-it.github.io/orlov-funnels/
 cover: /covers/orlov.jpg
+screens:
+  - src: /screens/orlov-m1.webp
+    kind: phone
+  - src: /screens/orlov-m2.webp
+    kind: phone
+  - src: /screens/orlov-m3.webp
+    kind: phone
 technologies:
   - HTML
   - CSS

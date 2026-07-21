@@ -9,6 +9,13 @@ accent: '#6B8456'
 bg: '#F4F4EE'
 siteUrl: https://shelovesmytears1-ship-it.github.io/essence-skincare/
 cover: /covers/essence.jpg
+screens:
+  - src: /screens/essence-m1.webp
+    kind: phone
+  - src: /screens/essence-m2.webp
+    kind: phone
+  - src: /screens/essence-m3.webp
+    kind: phone
 technologies:
   - HTML
   - CSS

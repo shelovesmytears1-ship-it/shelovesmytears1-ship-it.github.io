@@ -9,6 +9,13 @@ accent: '#D9C9A8'
 bg: '#0E0E0E'
 siteUrl: https://shelovesmytears1-ship-it.github.io/prawnik-legal/
 cover: /covers/prawnik.jpg
+screens:
+  - src: /screens/prawnik-m1.webp
+    kind: phone
+  - src: /screens/prawnik-m2.webp
+    kind: phone
+  - src: /screens/prawnik-m3.webp
+    kind: phone
 technologies:
   - HTML
   - CSS

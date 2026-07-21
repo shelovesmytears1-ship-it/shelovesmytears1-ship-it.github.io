@@ -88,19 +88,16 @@ const next = all[(idx + 1) % all.length];
 
   {(d.cover || d.coverVideo) && (
     <div class="wrap cs-cover-wrap" data-reveal>
-      <div class="cs-laptop">
+      <div class="cs-laptop" data-speed="-0.45">
         <div class="cs-laptop-lid">
           <div class="cs-laptop-screen">
             <div class="cs-laptop-media">
               {d.coverVideo ? (
                 <video class="cs-media-video" data-inview src={withBase(d.coverVideo)} muted loop playsinline preload="metadata" aria-label={`${d.title} — ${c.case.coverAlt}`}></video>
               ) : (
-                <!-- background layer, 120% tall at top:-10% — the extra height can
-                     only be spent on vertical crop, never on width (an <img> with
-                     object-fit would trade it for width and slice the sides) -->
+                <!-- fills the screen exactly; the shell above carries the parallax -->
                 <div
                   class="cs-media-img"
-                  data-speed="1.2"
                   role="img"
                   aria-label={`${d.title} — ${c.case.coverAlt}`}
                   style={`background-image:image-set(url('${withBase(cover4k)}') 2x, url('${withBase(d.cover!)}') 1x);background-color:${d.bg || '#c9c4bb'}`}
@@ -131,13 +128,13 @@ const next = all[(idx + 1) % all.length];
 
   {laptopScreens.map((s) => (
     <div class="wrap cs-cover-wrap" data-reveal>
-      <div class="cs-laptop">
+      <div class="cs-laptop" data-speed="-0.45">
         <div class="cs-laptop-lid">
           <div class="cs-laptop-screen">
             <div class="cs-laptop-media">
               {s.video
                 ? <video class="cs-media-video" data-inview src={withBase(s.src)} muted loop playsinline preload="metadata"></video>
-                : <div class="cs-media-img" data-speed="1.2" style={`background-image:url('${withBase(s.src)}')`}></div>}
+                : <div class="cs-media-img" style={`background-image:url('${withBase(s.src)}')`}></div>}
               <span class="cs-laptop-gloss" aria-hidden="true"></span>
             </div>
           </div>
@@ -199,10 +196,12 @@ const next = all[(idx + 1) % all.length];
   .cs-meta li{font-size:.95rem;line-height:1.8;}
   @media(max-width:720px){.cs-meta{grid-template-columns:1fr;gap:1.4rem;margin-bottom:2.5rem;}}
 
-  /* ---- shared media layers ---- */
-  /* 120% tall at top:-10% — spare height can only become vertical crop */
-  .cs-media-img{position:absolute;left:0;top:-10%;width:100%;height:120%;
-    background-size:cover;background-position:center;will-change:transform;}
+  /* ---- shared media layers ----
+     Covers are 16:10 and phone shots are 390x844 — each matches its frame
+     ratio exactly, so the layer fills it with zero crop. Parallax rides the
+     device shell instead: any spare height here gets paid for in width by
+     background-size:cover, which is what sliced the sides off before. */
+  .cs-media-img{position:absolute;inset:0;background-size:cover;background-position:center;}
   .cs-media-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
 
   /* ---- laptop ---- */
@@ -245,8 +244,7 @@ const next = all[(idx + 1) % all.length];
   .cs-phone::before{content:'';position:absolute;z-index:2;top:19px;left:50%;transform:translateX(-50%);
     width:30%;height:19px;border-radius:12px;background:#0b0c0f;}
   .cs-phone-media{position:relative;overflow:hidden;border-radius:26px;background:#000;}
-  .cs-phone-media::before{content:'';display:block;padding-top:212%;} /* 19.5:9 */
-  .cs-phone .cs-media-img{top:-8%;height:116%;background-position:center top;}
+  .cs-phone-media::before{content:'';display:block;padding-top:216.4%;} /* 390x844, matches the capture viewport exactly */
   @media(max-width:720px){
     .cs-phones{gap:.8rem;}.cs-phone{width:30vw;padding:5px;border-radius:20px;}
     .cs-phone-media{border-radius:15px;}.cs-phone::before{display:none;}

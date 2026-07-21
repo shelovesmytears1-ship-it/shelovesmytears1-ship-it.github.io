@@ -9,6 +9,13 @@ accent: '#1A1A1A'
 bg: '#FFFFFF'
 siteUrl: https://shelovesmytears1-ship-it.github.io/dispersia-fashion/
 cover: /covers/dispersia.jpg
+screens:
+  - src: /screens/dispersia-m1.webp
+    kind: phone
+  - src: /screens/dispersia-m2.webp
+    kind: phone
+  - src: /screens/dispersia-m3.webp
+    kind: phone
 technologies:
   - Astro
   - TypeScript

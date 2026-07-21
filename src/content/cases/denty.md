@@ -9,6 +9,13 @@ accent: '#00BFA5'
 bg: '#0F1419'
 siteUrl: https://shelovesmytears1-ship-it.github.io/denty-landing/
 cover: /covers/denty.jpg
+screens:
+  - src: /screens/denty-m1.webp
+    kind: phone
+  - src: /screens/denty-m2.webp
+    kind: phone
+  - src: /screens/denty-m3.webp
+    kind: phone
 technologies:
   - HTML
   - Tailwind
