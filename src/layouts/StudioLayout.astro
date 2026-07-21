@@ -1,5 +1,6 @@
 ---
 import '../styles/studio.css';
+import Curtain from '../components/studio/Curtain.astro';
 import { getNewDirectionCopy } from '../data/newDirectionI18n';
 import type { Lang } from '../i18n/ui';
 
@@ -51,18 +52,21 @@ const canonical = new URL(Astro.url.pathname, site).href;
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preload" href="/fonts/BricolageGrotesque-Bold.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="preload" href="/fonts/Outfit-Regular.ttf" as="font" type="font/ttf" crossorigin />
+    <!-- arm the curtain before first paint so navigations never flash -->
+    <script is:inline>document.documentElement.classList.add('curtain-on');</script>
   </head>
   <body>
     <a class="skip" href="#main">{c.layout.skip}</a>
+    <Curtain lang={lang} />
     <div class="cur" aria-hidden="true"><div class="cur-ring"></div><div class="cur-dot"></div></div>
 
     <header class="hdr">
       <div class="wrap nav">
-        <a class="brand" href={home} aria-label="overflow">overflow<i>.</i></a>
+        <a class="brand" href={home} aria-label="overflow" data-tname="overflow">overflow<i>.</i></a>
         <nav class="nav-links" aria-label={c.layout.mainNavigation}>
-          <a href={p('work')} aria-current={current === 'work' ? 'page' : undefined} data-cursor>{c.layout.nav.work}</a>
-          <a href={p('method')} aria-current={current === 'method' ? 'page' : undefined} data-cursor>{c.layout.nav.method}</a>
-          <a href={p('about')} aria-current={current === 'about' ? 'page' : undefined} data-cursor>{c.layout.nav.about}</a>
+          <a href={p('work')} aria-current={current === 'work' ? 'page' : undefined} data-cursor data-tname={c.layout.nav.work}>{c.layout.nav.work}</a>
+          <a href={p('method')} aria-current={current === 'method' ? 'page' : undefined} data-cursor data-tname={c.layout.nav.method}>{c.layout.nav.method}</a>
+          <a href={p('about')} aria-current={current === 'about' ? 'page' : undefined} data-cursor data-tname={c.layout.nav.about}>{c.layout.nav.about}</a>
         </nav>
         <div class="nav-right">
           <div class="lang" aria-label={c.layout.languageLabel}>
@@ -70,7 +74,7 @@ const canonical = new URL(Astro.url.pathname, site).href;
               <a href={l.href} aria-current={l.code === lang ? 'page' : undefined} data-cursor>{l.label}</a>
             ))}
           </div>
-          <a class="nav-cta" href={p('contact')} aria-current={current === 'contact' ? 'page' : undefined} data-cursor>{c.layout.nav.talk} ↗</a>
+          <a class="nav-cta" href={p('contact')} aria-current={current === 'contact' ? 'page' : undefined} data-cursor data-tname={c.layout.nav.talk}>{c.layout.nav.talk} ↗</a>
         </div>
       </div>
     </header>
@@ -79,13 +83,14 @@ const canonical = new URL(Astro.url.pathname, site).href;
       <slot />
     </main>
 
-    <footer class="ftr wrap">
+    <footer class="ftr wrap" data-speed="-1.2">
       <span>© 2026 overflow — Gdańsk</span>
       <span id="clock" data-label="Local time">Local time —</span>
       <span>{c.layout.footer}</span>
     </footer>
 
     <script>
+      import '../scripts/curtain.ts';
       import '../scripts/studio.ts';
     </script>
   </body>

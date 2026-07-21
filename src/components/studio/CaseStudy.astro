@@ -50,7 +50,7 @@ const next = all[(idx + 1) % all.length];
   {d.cover && (
     <div class="cs-cover-wrap" data-reveal>
       <div class="cs-cover" style={`--bg:${d.bg || '#c9c4bb'}`}>
-        <picture>
+        <picture data-speed="1.5">
           <source type="image/webp" srcset={`${withBase(d.cover.replace(/\.jpe?g$/i, '.webp'))}`} />
           <img src={withBase(d.cover)} alt={`${d.title} — ${c.case.coverAlt}`} width="3840" height="2400" loading="eager" fetchpriority="high" />
         </picture>
@@ -94,7 +94,9 @@ const next = all[(idx + 1) % all.length];
   .cs-chip--link{color:var(--accent);border-color:var(--accent);}
   .cs-chip--link:hover{background:var(--accent);color:var(--on-accent);}
   .cs-cover-wrap{margin:1.5rem 0 4rem;}
-  .cs-cover{overflow:hidden;background:var(--bg);aspect-ratio:16/10;}
+  .cs-cover{position:relative;overflow:hidden;background:var(--bg);aspect-ratio:16/10;}
+  /* taller than the frame so it has room to drift as the page scrolls */
+  .cs-cover picture{position:absolute;top:-8%;left:0;width:100%;height:116%;display:block;}
   .cs-cover img{width:100%;height:100%;object-fit:cover;object-position:top left;}
   .cs-sec{display:grid;grid-template-columns:7rem 1fr;gap:clamp(1rem,4vw,3rem);padding:clamp(2.5rem,5vw,4rem) 0;border-top:1px solid var(--line);align-items:start;}
   .cs-num{font-size:clamp(2rem,4vw,3.2rem);color:var(--accent);}

@@ -44,7 +44,7 @@ export function initHero3D(container: HTMLElement): void {
         float w  = sin(uv.x*3.0 + uTime*0.15)*0.5+0.5;
         float w2 = sin((uv.y+uv.x)*2.2 - uTime*0.11)*0.5+0.5;
         float flow = mix(w, w2, 0.5);
-        vec2 c = vec2(0.78 + 0.05*sin(uTime*0.1), 0.72);
+        vec2 c = vec2(0.71 + 0.05*sin(uTime*0.1), 0.70);
         float blob = smoothstep(0.95, 0.15, distance(uv, c));
         vec3 tint = mix(uPaper, uAccent, 0.14);
         vec3 col = mix(uPaper, tint, blob * (0.55 + 0.45*flow));
@@ -75,13 +75,18 @@ export function initHero3D(container: HTMLElement): void {
   const key = new THREE.DirectionalLight(0xffffff, 1.15); key.position.set(-3, 4, 5); scene.add(key);
   const rim = new THREE.PointLight(accent, 2.4, 20); rim.position.set(3.5, -2, 2); scene.add(rim);
 
+  const CRYSTAL_R = 1.32; // icosahedron radius incl. wireframe
+
   const resize = () => {
     const { clientWidth: w, clientHeight: h } = container;
     if (!w || !h) return;
     renderer.setSize(w, h, false);
     camera.aspect = w / h; camera.updateProjectionMatrix();
-    // push the crystal further right on wide canvases
-    crystal.position.x = 1.2 + Math.min(camera.aspect, 1.6) * 0.5;
+    // Keep the crystal fully on screen: clamp against the visible half-width at
+    // its own depth, so it can never bleed past the right edge on wide canvases.
+    const halfW = Math.tan((camera.fov / 2) * (Math.PI / 180)) * camera.position.z * camera.aspect;
+    const maxX = halfW - CRYSTAL_R - 0.42;
+    crystal.position.x = Math.max(0.55, Math.min(1.1 + camera.aspect * 0.3, maxX));
   };
   resize();
   new ResizeObserver(resize).observe(container);

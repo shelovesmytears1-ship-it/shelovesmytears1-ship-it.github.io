@@ -1,0 +1,44 @@
+---
+/**
+ * Loading screen + page-transition curtain (one element does both).
+ *
+ * The curtain is a full-screen panel with a rounded "bulge" above and below it,
+ * so its leading edge reads as liquid rather than as a straight bar — the detail
+ * that makes the Snellenberg transition feel expensive.
+ *
+ * First visit  → greetings cycle through all four locales, ending on this one.
+ * Navigation   → the destination page name is shown while the next page loads.
+ */
+import type { Lang } from '../../i18n/ui';
+
+interface Props { lang?: Lang }
+const { lang = 'pl' } = Astro.props;
+
+const greetings: Record<Lang, string> = {
+  pl: 'Cześć',
+  ru: 'Привет',
+  en: 'Hello',
+  ua: 'Привіт',
+};
+
+// every locale once, current one last so the curtain lands on the visitor's language
+const order = (['pl', 'ru', 'en', 'ua'] as Lang[]).filter((l) => l !== lang);
+const words = [...order.map((l) => greetings[l]), greetings[lang]];
+---
+
+<div class="curtain" id="curtain" aria-hidden="true">
+  <span class="curtain-round curtain-round--top"></span>
+  <div class="curtain-body">
+    <div class="curtain-words" id="curtain-words">
+      {words.map((w, i) => (
+        <span class="curtain-word" data-last={i === words.length - 1 ? '' : undefined}>
+          {w}<i class="curtain-dot"></i>
+        </span>
+      ))}
+    </div>
+    <div class="curtain-words curtain-words--nav" id="curtain-nav">
+      <span class="curtain-word"><span id="curtain-nav-label"></span><i class="curtain-dot"></i></span>
+    </div>
+  </div>
+  <span class="curtain-round curtain-round--bottom"></span>
+</div>
