@@ -144,46 +144,68 @@ if (!reduce && fine) {
     });
   }
 
-  /* ---- project row hover preview (cover image + "view" pill) ---- */
-  const pv = document.createElement('div');
-  pv.className = 'work-preview';
-  const pvImg = document.createElement('div');
-  pvImg.className = 'work-preview-img';
-  const pvBtn = document.createElement('span');
-  pvBtn.className = 'work-preview-btn';
-  pv.append(pvImg, pvBtn);
-  document.body.appendChild(pv);
+  /* ---- project row preview: one strip of every cover that slides between rows.
+         Two layers trail the cursor at different speeds, so they parallax. ---- */
+  const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-preview]'));
+  if (rows.length) {
+    const pv = document.createElement('div');
+    pv.className = 'work-preview';
+    const pvInner = document.createElement('div');
+    pvInner.className = 'work-preview-inner';
+    const strip = document.createElement('div');
+    strip.className = 'work-preview-strip';
 
-  document.querySelectorAll<HTMLElement>('[data-preview]').forEach((row) => {
-    row.addEventListener('mouseenter', () => {
-      const src = row.dataset.preview;
-      if (!src) return;
-      pvImg.style.backgroundImage = `url('${src}')`;
-      pvBtn.textContent = row.dataset.view || 'View';
-      pv.classList.add('show');
-      document.body.classList.add('previewing');
+    rows.forEach((row, i) => {
+      const cell = document.createElement('div');
+      cell.style.top = `${i * 100}%`;
+      cell.style.backgroundImage = `url('${row.dataset.preview}')`;
+      strip.appendChild(cell);
     });
-    row.addEventListener('mouseleave', () => {
-      pv.classList.remove('show');
-      document.body.classList.remove('previewing');
-    });
-  });
+    pvInner.appendChild(strip);
+    pv.appendChild(pvInner);
 
-  // lerp-follow so the card trails the cursor instead of snapping to it
-  let px = innerWidth / 2, py = innerHeight / 2, ptx = px, pty = py;
-  addEventListener('mousemove', (e) => { ptx = e.clientX; pty = e.clientY; });
-  const pvLoop = () => {
-    if (pv.classList.contains('show')) {
-      px += (ptx - px) * 0.12;
-      py += (pty - py) * 0.12;
-      pv.style.left = `${px}px`;
-      pv.style.top = `${py}px`;
-    } else {
-      px = ptx; py = pty;
-    }
+    const pvBtn = document.createElement('div');
+    pvBtn.className = 'work-preview-btn';
+    const pvBtnInner = document.createElement('div');
+    pvBtnInner.className = 'work-preview-btn-inner';
+    pvBtnInner.textContent = rows[0].dataset.view || 'View';
+    pvBtn.appendChild(pvBtnInner);
+
+    document.body.append(pv, pvBtn);
+
+    const show = (on: boolean) => {
+      pv.classList.toggle('show', on);
+      pvBtn.classList.toggle('show', on);
+      document.body.classList.toggle('previewing', on);
+    };
+
+    rows.forEach((row, i) => {
+      row.addEventListener('mouseenter', () => {
+        // slide the whole strip instead of swapping the image
+        strip.style.transform = `translateY(${-i * 100}%)`;
+        show(true);
+      });
+      row.addEventListener('mouseleave', () => show(false));
+    });
+
+    // image window lags further behind than the pill → they separate while moving
+    let ix = innerWidth / 2, iy = innerHeight / 2, bx = ix, by = iy, mx = ix, my = iy;
+    addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
+    const pvLoop = () => {
+      if (pv.classList.contains('show')) {
+        ix += (mx - ix) * 0.085;
+        iy += (my - iy) * 0.085;
+        bx += (mx - bx) * 0.17;
+        by += (my - by) * 0.17;
+      } else {
+        ix = bx = mx; iy = by = my;
+      }
+      pv.style.transform = `translate(${ix}px,${iy}px)`;
+      pvBtn.style.transform = `translate(${bx}px,${by}px)`;
+      requestAnimationFrame(pvLoop);
+    };
     requestAnimationFrame(pvLoop);
-  };
-  requestAnimationFrame(pvLoop);
+  }
 
   /* ---- magnetic buttons ---- */
   document.querySelectorAll<HTMLElement>('.magnetic').forEach((b) => {
