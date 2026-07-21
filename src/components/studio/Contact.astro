@@ -1,0 +1,52 @@
+---
+import { getNewDirectionCopy } from '../../data/newDirectionI18n';
+import type { Lang } from '../../i18n/ui';
+
+interface Props { lang?: Lang }
+const { lang = 'pl' } = Astro.props;
+const c = getNewDirectionCopy(lang);
+const ct = c.contact;
+---
+
+<section class="page-hero wrap">
+  <p class="eye" data-reveal>{c.home.contactMeta}</p>
+  <h1 class="disp contact-title" data-reveal>{ct.title} {ct.titleLine} <em>{ct.accent}</em></h1>
+  <p class="page-lede" data-reveal>{ct.lede}</p>
+</section>
+
+<section class="sec wrap contact-grid">
+  <form class="c-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-reveal>
+    <input type="hidden" name="form-name" value="contact" />
+    <p hidden><label>{ct.honeypot}<input name="bot-field" /></label></p>
+    <label class="c-field"><span>{ct.name}</span><input type="text" name="name" required /></label>
+    <label class="c-field"><span>{ct.channel}</span><input type="text" name="channel" required /></label>
+    <label class="c-field"><span>{ct.type}</span>
+      <select name="type">{ct.options.map((o) => (<option>{o}</option>))}</select>
+    </label>
+    <label class="c-field"><span>{ct.message}</span><textarea name="message" rows="4" placeholder={ct.messagePlaceholder} required></textarea></label>
+    <button class="btn magnetic" type="submit" data-cursor>{ct.submit} →</button>
+  </form>
+
+  <aside class="c-direct" data-reveal>
+    <p class="eye">{ct.quickest}</p>
+    <a class="c-big" href="https://t.me/zzxvaracaa" target="_blank" rel="noopener" data-cursor>Telegram ↗</a>
+    <a class="c-big" href="mailto:overflow.web1@gmail.com" data-cursor>overflow.web1@gmail.com</a>
+    <p class="c-note">{ct.response}</p>
+  </aside>
+</section>
+
+<style>
+  .contact-title{font-size:clamp(2.8rem,9vw,7rem);}
+  .contact-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(2rem,6vw,5rem);align-items:start;}
+  .c-form{display:flex;flex-direction:column;gap:1.2rem;}
+  .c-field{display:flex;flex-direction:column;gap:.4rem;}
+  .c-field span{font-family:var(--mono),monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+  .c-field input,.c-field select,.c-field textarea{font-family:var(--body),sans-serif;font-size:1rem;padding:.8rem 1rem;background:transparent;border:1px solid var(--line);border-radius:8px;color:var(--ink);}
+  .c-field input:focus,.c-field select:focus,.c-field textarea:focus{outline:none;border-color:var(--accent);}
+  .c-form .btn{align-self:flex-start;margin-top:.5rem;}
+  .c-direct{border-top:2px solid var(--accent);padding-top:1.2rem;}
+  .c-big{display:block;font-family:var(--disp),sans-serif;font-weight:var(--disp-w);letter-spacing:var(--disp-ls);font-size:clamp(1.4rem,3vw,2rem);margin:1rem 0;transition:color .25s;}
+  .c-big:hover{color:var(--accent);}
+  .c-note{color:var(--muted);font-size:.9rem;margin-top:1.5rem;}
+  @media(max-width:760px){.contact-grid{grid-template-columns:1fr;}}
+</style>

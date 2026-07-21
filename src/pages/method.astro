@@ -1,11 +1,11 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import MethodPage from '../components/pages/MethodPage.astro';
-import { useT } from '../i18n/ui';
+import StudioLayout from '../layouts/StudioLayout.astro';
+import Method from '../components/studio/Method.astro';
+import { getNewDirectionCopy } from '../data/newDirectionI18n';
 
 const lang = 'pl' as const;
-const t = useT(lang);
+const c = getNewDirectionCopy(lang);
 ---
-<BaseLayout title={t('method.h1')} description={t('method.sub')} lang={lang}>
-  <MethodPage lang={lang} />
-</BaseLayout>
+<StudioLayout title={`overflow — ${c.layout.nav.method}`} description={c.method.lede} lang={lang} current="method">
+  <Method lang={lang} />
+</StudioLayout>

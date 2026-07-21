@@ -1,0 +1,117 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import { marked } from 'marked';
+import { getNewDirectionCopy } from '../../data/newDirectionI18n';
+import { getTagline, getSummary, getBody, getResult, getStat } from '../../data/caseHelpers';
+import { withBase } from '../../i18n/ui';
+import type { Lang } from '../../i18n/ui';
+
+interface Props { lang?: Lang; entry: CollectionEntry<'cases'> }
+const { lang = 'pl', entry } = Astro.props;
+const c = getNewDirectionCopy(lang);
+const d = entry.data;
+const p = (slug: string) => (lang === 'pl' ? `/${slug}/` : `/${lang}/${slug}/`);
+
+type Section = { heading: string; html: string };
+function parseSections(body: string): Section[] {
+  const parts = body.split(/^## /m).map((s) => s.trim()).filter(Boolean);
+  return parts.map((part) => {
+    const nl = part.indexOf('\n');
+    const heading = nl === -1 ? part : part.slice(0, nl).trim();
+    const md = nl === -1 ? '' : part.slice(nl + 1).trim();
+    return { heading, html: marked.parse(md, { async: false }) as string };
+  });
+}
+const sections = parseSections(getBody(entry, lang));
+const stat = getStat(entry, lang);
+const result = getResult(entry, lang);
+
+// next project (by order, wrap around)
+const all = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
+const idx = all.findIndex((x) => x.slug === entry.slug);
+const next = all[(idx + 1) % all.length];
+---
+
+<article class="cs">
+  <div class="wrap cs-back"><a href={p('work')} class="link" data-cursor>← {c.case.allWork}</a></div>
+
+  <header class="wrap cs-hero">
+    <p class="eye" data-reveal>{d.niche} · {d.year}{d.region[0] ? ` · ${d.region.join(' · ')}` : ''}</p>
+    <h1 class="disp" data-reveal>{d.title}</h1>
+    <p class="cs-tagline" data-reveal>{getSummary(entry, lang)}</p>
+    <div class="cs-chips" data-reveal>
+      {d.technologies.length > 0 && <span class="cs-chip">{d.technologies.join(' · ')}</span>}
+      {result && <span class="cs-chip cs-chip--accent">→ {result}</span>}
+      {d.siteUrl && <a class="cs-chip cs-chip--link" href={d.siteUrl} target="_blank" rel="noopener" data-cursor>{c.case.openSite} ↗</a>}
+    </div>
+  </header>
+
+  {d.cover && (
+    <div class="wrap cs-cover-wrap" data-reveal>
+      <div class="cs-cover" style={`--bg:${d.bg || '#c9c4bb'}`}>
+        <picture>
+          <source type="image/webp" srcset={`${withBase(d.cover.replace(/\.jpe?g$/i, '.webp'))}`} />
+          <img src={withBase(d.cover)} alt={`${d.title} — ${c.case.coverAlt}`} width="3840" height="2400" loading="eager" fetchpriority="high" />
+        </picture>
+      </div>
+    </div>
+  )}
+
+  {sections.map((sec, i) => (
+    <section class="wrap cs-sec">
+      <span class="cs-num disp">{String(i + 1).padStart(2, '0')}</span>
+      <div class="cs-sec-body">
+        <h2 class="disp" data-reveal>{sec.heading}</h2>
+        <div class="cs-prose" data-reveal set:html={sec.html} />
+        {stat && i === 0 && (
+          <div class="cs-stat" data-reveal>
+            <div class="cs-stat-val disp">{stat.value}</div>
+            <div class="cs-stat-label">{stat.label}</div>
+          </div>
+        )}
+      </div>
+    </section>
+  ))}
+
+  <section class="wrap cs-next">
+    <a href={p(`work/${next.slug}`)} class="cs-next-link" data-cursor data-reveal>
+      <span class="eye">{c.case.nextAction}</span>
+      <span class="cs-next-name disp">{next.data.title} →</span>
+    </a>
+    <a href={p('contact')} class="btn magnetic" data-cursor data-reveal>{c.method.ctaButton} →</a>
+  </section>
+</article>
+
+<style>
+  .cs-back{padding-top:6.5rem;}
+  .cs-hero{padding:2rem 0 2.5rem;max-width:900px;}
+  .cs-hero h1{font-size:clamp(2.6rem,7vw,6rem);margin:.8rem 0 1.2rem;}
+  .cs-tagline{color:var(--muted);font-size:clamp(1.05rem,1.6vw,1.3rem);max-width:52ch;}
+  .cs-chips{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.6rem;}
+  .cs-chip{font-family:var(--mono),monospace;font-size:.72rem;letter-spacing:.04em;padding:.4rem .8rem;border:1px solid var(--line);border-radius:999px;color:var(--muted);}
+  .cs-chip--accent{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 40%,var(--line));}
+  .cs-chip--link{color:var(--accent);border-color:var(--accent);}
+  .cs-chip--link:hover{background:var(--accent);color:var(--on-accent);}
+  .cs-cover-wrap{margin:1.5rem 0 4rem;}
+  .cs-cover{border-radius:14px;overflow:hidden;background:var(--bg);aspect-ratio:16/10;border:1px solid var(--line);}
+  .cs-cover img{width:100%;height:100%;object-fit:cover;object-position:top left;}
+  .cs-sec{display:grid;grid-template-columns:7rem 1fr;gap:clamp(1rem,4vw,3rem);padding:clamp(2.5rem,5vw,4rem) 0;border-top:1px solid var(--line);align-items:start;}
+  .cs-num{font-size:clamp(2rem,4vw,3.2rem);color:var(--accent);}
+  .cs-sec-body{max-width:68ch;}
+  .cs-sec-body h2{font-size:clamp(1.6rem,3.4vw,2.6rem);margin-bottom:1.4rem;}
+  .cs-prose :global(p){font-size:1.05rem;line-height:1.75;margin-bottom:1.2rem;}
+  .cs-prose :global(p:first-of-type){font-size:1.2rem;color:var(--ink);}
+  .cs-prose :global(strong){font-weight:700;}
+  .cs-prose :global(em){font-family:inherit;font-style:italic;color:var(--accent);}
+  .cs-prose :global(ul),.cs-prose :global(ol){margin:0 0 1.2rem 1.3rem;}
+  .cs-prose :global(li){margin-bottom:.4rem;line-height:1.6;}
+  .cs-stat{margin:2.5rem 0 .5rem;padding:2rem;border:1px solid var(--line);border-radius:12px;background:color-mix(in srgb,var(--accent) 5%,var(--bg));}
+  .cs-stat-val{font-size:clamp(3rem,9vw,6rem);color:var(--accent);line-height:.9;}
+  .cs-stat-label{font-family:var(--mono),monospace;font-size:.8rem;letter-spacing:.08em;color:var(--muted);margin-top:.8rem;max-width:46ch;line-height:1.5;}
+  .cs-next{display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;padding:clamp(3rem,6vw,5rem) 0;border-top:1px solid var(--line);}
+  .cs-next-link{display:flex;flex-direction:column;gap:.5rem;}
+  .cs-next-name{font-size:clamp(2rem,5vw,3.4rem);transition:color .3s;}
+  .cs-next-link:hover .cs-next-name{color:var(--accent);}
+  @media(max-width:720px){.cs-sec{grid-template-columns:1fr;gap:.6rem;}.cs-num{font-size:1.6rem;}}
+</style>

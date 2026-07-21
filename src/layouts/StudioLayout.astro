@@ -18,9 +18,12 @@ const home = lang === 'pl' ? '/' : `/${lang}/`;
 const p = (slug: string) => (lang === 'pl' ? `/${slug}/` : `/${lang}/${slug}/`);
 
 // PL + RU only for now (per decision); infra keeps EN/UA for later.
+// Language switch preserves the current page.
+const bare = Astro.url.pathname.replace(/^\/ru(?=\/|$)/, '') || '/';
+const ruHref = bare === '/' ? '/ru/' : `/ru${bare}`;
 const locales: { code: Lang; label: string; href: string }[] = [
-  { code: 'pl', label: 'PL', href: '/' },
-  { code: 'ru', label: 'RU', href: '/ru/' },
+  { code: 'pl', label: 'PL', href: bare },
+  { code: 'ru', label: 'RU', href: ruHref },
 ];
 
 const desc = description ?? c.layout.footer;
@@ -57,9 +60,9 @@ const canonical = new URL(Astro.url.pathname, site).href;
       <div class="wrap nav">
         <a class="brand" href={home} aria-label="overflow">overflow<i>.</i></a>
         <nav class="nav-links" aria-label={c.layout.mainNavigation}>
-          <a href="#work" aria-current={current === 'work' ? 'page' : undefined} data-cursor>{c.layout.nav.work}</a>
-          <a href="#approach" aria-current={current === 'method' ? 'page' : undefined} data-cursor>{c.layout.nav.method}</a>
-          <a href="#about" aria-current={current === 'about' ? 'page' : undefined} data-cursor>{c.layout.nav.about}</a>
+          <a href={p('work')} aria-current={current === 'work' ? 'page' : undefined} data-cursor>{c.layout.nav.work}</a>
+          <a href={p('method')} aria-current={current === 'method' ? 'page' : undefined} data-cursor>{c.layout.nav.method}</a>
+          <a href={p('about')} aria-current={current === 'about' ? 'page' : undefined} data-cursor>{c.layout.nav.about}</a>
         </nav>
         <div class="nav-right">
           <div class="lang" aria-label={c.layout.languageLabel}>
@@ -67,7 +70,7 @@ const canonical = new URL(Astro.url.pathname, site).href;
               <a href={l.href} aria-current={l.code === lang ? 'page' : undefined} data-cursor>{l.label}</a>
             ))}
           </div>
-          <a class="nav-cta" href="#contact" data-cursor>{c.layout.nav.talk} ↗</a>
+          <a class="nav-cta" href={p('contact')} aria-current={current === 'contact' ? 'page' : undefined} data-cursor>{c.layout.nav.talk} ↗</a>
         </div>
       </div>
     </header>

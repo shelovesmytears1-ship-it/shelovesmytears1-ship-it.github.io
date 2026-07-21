@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import { getNewDirectionCopy } from '../../data/newDirectionI18n';
+import type { Lang } from '../../i18n/ui';
+
+interface Props { lang?: Lang }
+const { lang = 'pl' } = Astro.props;
+const c = getNewDirectionCopy(lang);
+const p = (slug: string) => (lang === 'pl' ? `/${slug}/` : `/${lang}/${slug}/`);
+
+const conceptLabel: Record<string, string> = { pl: 'Koncept', ru: 'Концепт', en: 'Concept', ua: 'Концепт' };
+const concept = conceptLabel[lang] ?? 'Concept';
+
+const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="page-hero wrap">
+  <p class="eye" data-reveal>{c.home.workMeta}</p>
+  <h1 class="disp" data-reveal>{c.work.title} <em>{c.work.accent}</em></h1>
+  <p class="page-lede" data-reveal>{c.work.lede}</p>
+</section>
+
+<section class="sec wrap" aria-label={c.work.listLabel}>
+  <div class="work-list">
+    {cases.map((project, i) => (
+      <a
+        class="work-row"
+        href={p(`work/${project.slug}`)}
+        data-cursor
+        data-reveal
+        data-preview={`linear-gradient(135deg, ${project.data.bg || '#c9c4bb'}, #14141a)`}
+      >
+        <span class="work-no">{String(i + 1).padStart(2, '0')}</span>
+        <div>
+          <div class="work-name">{project.data.title}</div>
+          <div class="work-meta">{project.data.niche} · {project.data.year}</div>
+        </div>
+        <span class="work-tag">{concept} ↗</span>
+      </a>
+    ))}
+  </div>
+</section>

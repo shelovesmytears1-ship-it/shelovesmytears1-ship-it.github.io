@@ -1,0 +1,47 @@
+---
+import { getNewDirectionCopy } from '../../data/newDirectionI18n';
+import type { Lang } from '../../i18n/ui';
+
+interface Props { lang?: Lang }
+const { lang = 'pl' } = Astro.props;
+const c = getNewDirectionCopy(lang);
+const p = (slug: string) => (lang === 'pl' ? `/${slug}/` : `/${lang}/${slug}/`);
+---
+
+<section class="page-hero wrap">
+  <p class="eye" data-reveal>{c.home.processMeta}</p>
+  <h1 class="disp" data-reveal>{c.method.title} <em>{c.method.accent}</em></h1>
+  <p class="page-lede" data-reveal>{c.method.lede}</p>
+</section>
+
+<section class="sec wrap" aria-label={c.method.listLabel}>
+  <ol class="phases">
+    {c.method.phases.map((ph, i) => (
+      <li class="phase" data-reveal>
+        <span class="phase-n disp">{String(i + 1).padStart(2, '0')}</span>
+        <div class="phase-body">
+          <h2 class="disp">{ph.title}</h2>
+          <p>{ph.text}</p>
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>
+
+<section class="sec wrap cta-band">
+  <p class="eye" data-reveal>{c.method.ctaMeta}</p>
+  <h2 class="disp" data-reveal>{c.method.ctaTitle} <em>{c.method.ctaAccent}</em></h2>
+  <a class="btn magnetic" href={p('contact')} data-cursor data-reveal>{c.method.ctaButton} →</a>
+</section>
+
+<style>
+  .phases{list-style:none;display:flex;flex-direction:column;}
+  .phase{display:grid;grid-template-columns:7rem 1fr;gap:clamp(1rem,4vw,3rem);padding:clamp(1.8rem,3.5vw,2.8rem) 0;border-top:1px solid var(--line);align-items:start;}
+  .phase:last-child{border-bottom:1px solid var(--line);}
+  .phase-n{font-size:clamp(2rem,4vw,3.2rem);color:var(--accent);line-height:1;}
+  .phase-body h2{font-size:clamp(1.5rem,3vw,2.4rem);margin-bottom:.6rem;}
+  .phase-body p{color:var(--muted);max-width:60ch;font-size:1.02rem;}
+  .cta-band{text-align:left;}
+  .cta-band h2{font-size:clamp(2.4rem,7vw,5.5rem);margin:1rem 0 2rem;}
+  @media(max-width:720px){.phase{grid-template-columns:1fr;gap:.5rem;}.phase-n{font-size:1.6rem;}}
+</style>
