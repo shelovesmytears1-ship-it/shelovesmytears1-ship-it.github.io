@@ -48,7 +48,7 @@ const next = all[(idx + 1) % all.length];
   </header>
 
   {d.cover && (
-    <div class="cs-cover-wrap" data-reveal>
+    <div class="wrap cs-cover-wrap" data-reveal>
       <div class="cs-cover" style={`--bg:${d.bg || '#c9c4bb'}`}>
         <picture data-speed="1.5">
           <source type="image/webp" srcset={`${withBase(d.cover.replace(/\.jpe?g$/i, '.webp'))}`} />
@@ -93,8 +93,11 @@ const next = all[(idx + 1) % all.length];
   .cs-chip--accent{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 40%,var(--line));}
   .cs-chip--link{color:var(--accent);border-color:var(--accent);}
   .cs-chip--link:hover{background:var(--accent);color:var(--on-accent);}
-  .cs-cover-wrap{margin:1.5rem 0 4rem;}
-  .cs-cover{position:relative;overflow:hidden;background:var(--bg);aspect-ratio:16/10;}
+  .cs-cover-wrap{margin:1.5rem auto 4rem;}
+  /* covers are 1280x800 — cap the frame so we never upscale much past 1:1,
+     and never let it eat a whole tall viewport */
+  .cs-cover{position:relative;overflow:hidden;background:var(--bg);aspect-ratio:16/10;
+    max-width:1120px;max-height:70vh;margin-inline:auto;border-radius:10px;border:1px solid var(--line);}
   /* taller than the frame so it has room to drift as the page scrolls */
   .cs-cover picture{position:absolute;top:-8%;left:0;width:100%;height:116%;display:block;}
   .cs-cover img{width:100%;height:100%;object-fit:cover;object-position:top left;}
