@@ -55,10 +55,18 @@ for (const t of targets) {
     const resp = await page.goto(t.url, { waitUntil: 'networkidle2', timeout: 45000 });
     if (resp && resp.status() >= 400) throw new Error('HTTP ' + resp.status());
     await page.evaluate(() => document.fonts?.ready);
-    await new Promise((r) => setTimeout(r, 1600)); // let entrance settle
+    // let any loader dismiss and the entrance settle
+    await page.waitForFunction(() => {
+      const l = document.querySelector('.loader, #loader, .preloader');
+      return !l || getComputedStyle(l).opacity === '0' || getComputedStyle(l).visibility === 'hidden' || l.classList.contains('hidden');
+    }, { timeout: 8000 }).catch(() => {});
+    await new Promise((r) => setTimeout(r, 2200));
     await page.evaluate(() => window.scrollTo(0, 0));
 
-    const shot = await page.screenshot({ type: 'png', clip: { x: 0, y: 0, width: VW * DPR, height: VH * DPR } });
+    // full viewport — NO clip. Puppeteer clip is in CSS px, so passing
+    // VW*DPR captured twice the viewport and left the rest black/white.
+    // The DPR already doubles the output; the plain shot is 3200x2000.
+    const shot = await page.screenshot({ type: 'png' });
 
     // retina master 3840x2400, then the 1280x800 delivery pair
     await sharp(shot).resize(3840, 2400, { fit: 'cover' }).webp({ quality: 82 }).toFile(path.join(OUT4K, `${t.base}.webp`));
