@@ -10,3 +10,194 @@
 ┃ Local    http://127.0.0.1:4321/
 
 06:10:58 watching for file changes...
+06:11:44 [200] /editorial/ 61ms
+06:12:08 [200] /editorial/ 6ms
+06:12:20 [200] /dark/ 4ms
+06:12:24 [200] /dark/ 4ms
+06:12:30 [200] / 4ms
+06:12:59 [200] /editorial/work/ 5ms
+06:13:15 [200] /editorial/work/touche/ 17ms
+06:13:41 [200] /editorial/work/ 3ms
+06:13:45 [200] /editorial/contact/ 3ms
+06:14:07 [200] /dark/work/ 3ms
+06:14:19 [200] /dark/about/ 5ms
+06:14:25 [200] /dark/ 4ms
+06:14:29 [404] /.well-known/appspecific/com.chrome.devtools.json 3ms
+06:15:42 [200] /editorial/ 3ms
+06:19:30 [200] /editorial/ 3ms
+06:19:57 [watch] src/scripts/studio.ts
+06:19:57 [watch] /src/styles/studio.css
+06:19:57 [200] /editorial/ 5ms
+06:19:57 [200] /dark/ 6ms
+06:19:57 [200] /editorial/ 3ms
+06:19:58 [200] /editorial/ 2ms
+06:19:58 [200] / 2ms
+06:19:58 [200] /dark/ 2ms
+06:20:53 [200] / 3ms
+06:20:57 [200] /editorial/ 3ms
+06:21:01 [200] /dark/ 2ms
+06:21:16 [200] / 2ms
+06:21:20 [200] /editorial/ 3ms
+06:21:23 [200] /dark/ 2ms
+06:21:40 [200] / 4ms
+06:21:42 [200] /editorial/ 2ms
+06:21:44 [200] /dark/ 2ms
+06:23:41 [watch] src/layouts/StudioLayout.astro
+06:23:41 [watch] /src/components/studio/Contact.astro?astro&type=style&index=0&lang.css
+06:23:41 [200] /dark/ 4ms
+06:23:41 [200] /editorial/ 5ms
+06:23:41 [200] /dark/ 3ms
+06:23:42 [200] / 2ms
+06:23:42 [200] /dark/ 2ms
+06:23:42 [200] /editorial/ 2ms
+06:24:21 [200] /dark/contact/ 3ms
+06:24:56 [200] /dark/ 3ms
+06:27:55 [200] / 3ms
+06:28:07 [200] /editorial/ 2ms
+06:28:16 [200] /dark/ 2ms
+06:28:39 [200] /dark/ 4ms
+06:28:43 [200] /dark/ 4ms
+06:33:17 [watch] src/scripts/studio.ts
+06:33:17 [watch] src/styles/studio.css
+06:33:17 [watch] /src/styles/dark.css
+06:33:17 [watch] /src/styles/editorial.css
+06:33:18 [200] /dark/ 9ms
+06:33:18 [200] /editorial/ 9ms
+06:33:18 [200] /editorial/ 10ms
+06:33:18 [200] /dark/ 3ms
+06:33:18 [200] / 3ms
+06:33:18 [200] /dark/ 3ms
+06:33:50 [watch] src/scripts/hero3d.ts
+06:33:51 [200] /dark/ 3ms
+06:33:51 [200] /dark/ 2ms
+06:33:51 [200] /editorial/ 3ms
+06:33:51 [200] /editorial/ 3ms
+06:33:51 [200] / 4ms
+06:33:51 [200] /dark/ 3ms
+06:34:17 [200] /dark/ 2ms
+06:34:52 [200] / 2ms
+06:34:54 [200] /editorial/ 2ms
+06:34:56 [200] /dark/ 2ms
+06:35:41 [watch] /src/styles/studio.css
+06:35:49 [200] / 3ms
+06:35:58 [200] /editorial/ 2ms
+06:36:10 [200] / 2ms
+06:36:12 [200] /editorial/ 2ms
+06:36:14 [200] /dark/ 2ms
+06:36:32 [watch] src/scripts/hero3d.ts
+06:36:32 [200] /editorial/ 4ms
+06:36:32 [200] /dark/ 3ms
+06:36:32 [200] /dark/ 3ms
+06:36:32 [200] /dark/ 3ms
+06:36:32 [200] /dark/ 13ms
+06:36:32 [200] /editorial/ 2ms
+06:36:32 [200] / 2ms
+06:36:58 [200] /dark/ 3ms
+06:43:23 [watch] src/scripts/hero3d.ts
+06:43:23 [watch] src/components/studio/Home.astro
+06:43:24 [200] / 6ms
+06:43:24 [200] /dark/ 12ms
+06:43:24 [200] /editorial/ 12ms
+06:43:24 [200] /editorial/ 12ms
+06:43:24 [200] /dark/ 2ms
+06:43:24 [200] /dark/ 3ms
+06:43:24 [200] /dark/ 4ms
+06:44:06 [watch] src/scripts/gallery3d.ts
+06:44:07 [200] / 4ms
+06:44:07 [200] /dark/ 3ms
+06:44:07 [200] /dark/ 3ms
+06:44:07 [200] /dark/ 3ms
+06:44:07 [200] /editorial/ 2ms
+06:44:07 [200] /editorial/ 2ms
+06:44:07 [200] /dark/ 3ms
+06:44:21 [watch] src/scripts/studio.ts
+06:44:22 [200] /dark/ 4ms
+06:44:22 [200] /editorial/ 3ms
+06:44:22 [200] /dark/ 3ms
+06:44:22 [200] /dark/ 4ms
+06:44:22 [200] / 3ms
+06:44:22 [200] /dark/ 3ms
+06:44:22 [200] /editorial/ 3ms
+06:45:26 [watch] src/styles/studio.css
+06:45:27 [200] /dark/ 5ms
+06:45:27 [200] /editorial/ 5ms
+06:45:27 [200] / 4ms
+06:45:27 [200] /dark/ 6ms
+06:45:27 [200] /dark/ 5ms
+06:45:27 [200] /editorial/ 3ms
+06:45:27 [200] /dark/ 2ms
+06:45:47 [watch] /src/styles/studio.css
+06:46:22 [watch] src/styles/editorial.css
+06:46:22 [watch] src/styles/dark.css
+06:46:23 [200] /dark/ 4ms
+06:46:23 [200] /editorial/ 5ms
+06:46:23 [200] /dark/ 2ms
+06:46:23 [200] /dark/ 3ms
+06:46:23 [200] /editorial/ 3ms
+06:46:23 [200] /dark/ 3ms
+06:46:23 [200] / 3ms
+06:47:53 [200] / 2ms
+06:48:38 [200] /editorial/ 2ms
+06:48:47 [200] /dark/ 2ms
+06:48:53 [200] / 3ms
+06:49:11 [200] /editorial/ 2ms
+06:49:25 [200] /dark/ 2ms
+06:49:51 [200] / 2ms
+06:49:54 [200] /editorial/ 2ms
+06:49:57 [200] /dark/ 2ms
+06:50:10 [200] / 2ms
+15:30:51 [200] / 2ms
+15:54:40 [200] /work/ 16ms
+16:30:20 [watch] src/content/cases/lunea.md
+16:30:20 [watch] src/components/studio/Home.astro
+16:30:20 [200] /dark/ 231ms
+16:30:20 [200] /editorial/ 232ms
+16:30:21 [200] /dark/ 63ms
+16:30:21 [200] /dark/ 4ms
+16:30:21 [200] /editorial/ 7ms
+16:30:21 [200] / 4ms
+16:30:21 [200] /dark/ 8ms
+16:34:54 [200] /new/ 7ms
+16:34:54 [200] /editorial/ 3ms
+16:34:55 [200] /dark/ 4ms
+16:34:55 [200] /new/work/lunea/ 11ms
+16:35:04 [200] /new/ 3ms
+16:35:20 [200] / 3ms
+16:35:33 [200] /editorial/ 5ms
+16:35:34 [200] /dark/ 3ms
+16:35:42 [200] /work/lunea/ 6ms
+16:48:27 [200] /work/lunea/ 3ms
+17:09:02 [200] /work/ 4ms
+17:11:02 [200] /work/interspace/ 3ms
+17:18:14 [watch] src/content/cases/interspace.md
+17:18:15 [200] /work/interspace/ 4ms
+17:18:15 [200] /dark/ 140ms
+17:18:15 [200] /editorial/ 141ms
+17:18:15 [200] /dark/ 16ms
+17:18:15 [200] /dark/ 11ms
+17:19:44 [watch] src/layouts/StudioLayout.astro
+17:19:45 [200] /work/interspace/ 9ms
+17:19:45 [200] /editorial/ 15ms
+17:19:45 [200] /dark/ 17ms
+17:19:45 [200] /dark/ 10ms
+17:19:45 [200] /dark/ 5ms
+17:19:56 [watch] src/styles/studio.css
+17:19:57 [200] /dark/ 10ms
+17:19:57 [200] /editorial/ 20ms
+17:19:57 [200] /dark/ 10ms
+17:19:57 [200] /work/interspace/ 14ms
+17:19:57 [200] /dark/ 6ms
+17:20:21 [watch] src/scripts/studio.ts
+17:20:22 [200] /dark/ 8ms
+17:20:22 [200] /editorial/ 14ms
+17:20:22 [200] /dark/ 18ms
+17:20:22 [200] /dark/ 9ms
+17:20:22 [200] /work/interspace/ 9ms
+17:20:45 [200] / 3ms
+17:21:15 [watch] src/scripts/studio.ts
+17:21:15 [200] / 6ms
+17:21:16 [200] /dark/ 9ms
+17:21:16 [200] /work/interspace/ 12ms
+17:21:16 [200] /dark/ 12ms
+17:21:16 [200] /dark/ 4ms
+17:21:16 [200] /editorial/ 12ms
