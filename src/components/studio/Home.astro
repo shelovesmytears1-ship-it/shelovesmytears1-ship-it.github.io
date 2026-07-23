@@ -127,7 +127,7 @@ const techStack = ['Astro', 'TypeScript', 'Motion system', c.layout.nav.method, 
           <span class="project-frame-id">{String(i + 1).padStart(2, '0')} / {String(galleryItems.length).padStart(2, '0')}</span>
         </span>
         <span class="project-frame-viewport">
-          <img src={project.cover} alt="" loading="lazy" decoding="async" />
+          <img src={project.cover} alt="" width="1280" height="800" loading="lazy" decoding="async" />
         </span>
         <span class="project-frame-caption">
           <strong>{project.title}</strong>
@@ -149,7 +149,7 @@ const techStack = ['Astro', 'TypeScript', 'Motion system', c.layout.nav.method, 
       >
         <span class="work-row-thumb" aria-hidden="true">
           <span class="work-row-thumb-bar"><i></i><i></i><i></i></span>
-          <img src={withBase(project.data.cover || '')} alt="" loading="lazy" decoding="async" />
+          <img src={withBase(project.data.cover || '')} alt="" width="1280" height="800" loading="lazy" decoding="async" />
         </span>
         <span class="work-no">{String(i + 1).padStart(2, '0')}</span>
         <div>

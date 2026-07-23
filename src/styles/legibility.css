@@ -1,0 +1,39 @@
+/* ============================================================
+   Legibility floor — shared by all three directions.
+   The small uppercase mono labels were set between 9.9 and 11.8px per
+   direction; this raises every one of them to a 12px minimum in one place,
+   so Lighthouse stops flagging "font too small" and phone reading is easier.
+   !important is deliberate: it's a cross-cutting accessibility floor that must
+   win over each variant's own (and Astro-scoped) label rules.
+   ============================================================ */
+.work-tag,
+.work-meta,
+.project-frame-id,
+.project-frame-caption small,
+.gallery-mobile-card small,
+.cs-chip,
+.cs-meta-label,
+.cs-next-eye,
+.gallery3d-cap,
+.eye,
+.hero-meta-label,
+.hero-scroll,
+.work-no,
+.step .n,
+.btn-text,
+.nav-links a,
+.lang a,
+.ftr,
+.ftr span {
+  font-size: 12px !important;
+}
+
+/* the case-study chip is also a tap target — give it the 44px height on touch */
+@media (max-width: 767px) {
+  a.cs-chip,
+  a.cs-chip--link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}

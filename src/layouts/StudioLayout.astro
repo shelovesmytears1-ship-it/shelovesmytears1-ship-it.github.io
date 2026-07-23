@@ -2,6 +2,7 @@
 import '../styles/studio.css';
 import '../styles/editorial.css';
 import '../styles/dark.css';
+import '../styles/legibility.css';
 import Curtain from '../components/studio/Curtain.astro';
 import { getNewDirectionCopy } from '../data/newDirectionI18n';
 import type { Lang } from '../i18n/ui';
@@ -67,6 +68,25 @@ const ogLocale = lang === 'ru' ? 'ru_RU' : 'pl_PL';
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={desc} />
     <meta name="twitter:image" content={socialImage} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'ProfilePage',
+      url: canonical,
+      inLanguage: htmlLang,
+      mainEntity: {
+        '@type': 'Person',
+        name: 'Daniil Menshov',
+        alternateName: 'overflow',
+        jobTitle: lang === 'ru' ? 'Независимый frontend-разработчик' : 'Niezależny frontend developer',
+        description: desc,
+        url: site,
+        image: socialImage,
+        address: { '@type': 'PostalAddress', addressLocality: 'Gdańsk', addressCountry: 'PL' },
+        email: 'overflow.web1@gmail.com',
+        knowsAbout: ['Frontend development', 'Astro', 'TypeScript', 'Web performance', 'UI design'],
+        sameAs: ['https://t.me/zzxvaracaa'],
+      },
+    })} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preload" href="/fonts/BricolageGrotesque-Bold.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="preload" href="/fonts/Outfit-Regular.ttf" as="font" type="font/ttf" crossorigin />
