@@ -2,10 +2,12 @@
 import { getNewDirectionCopy } from '../../data/newDirectionI18n';
 import type { Lang } from '../../i18n/ui';
 
-interface Props { lang?: Lang }
-const { lang = 'pl' } = Astro.props;
+interface Props { lang?: Lang; variant?: 'studio' | 'editorial' | 'dark' }
+const { lang = 'pl', variant = 'studio' } = Astro.props;
 const c = getNewDirectionCopy(lang);
-const p = (slug: string) => (lang === 'pl' ? `/${slug}/` : `/${lang}/${slug}/`);
+const segment = variant === 'studio' ? '' : `/${variant}`;
+const root = lang === 'pl' ? segment : `/${lang}${segment}`;
+const p = (slug: string) => `${root}/${slug}/`;
 ---
 
 <section class="page-hero wrap">
@@ -17,7 +19,7 @@ const p = (slug: string) => (lang === 'pl' ? `/${slug}/` : `/${lang}/${slug}/`);
 <section class="sec wrap about-grid">
   <div class="about-essay">
     {c.about.paragraphs.map((par) => (<p data-reveal>{par}</p>))}
-    <a class="btn magnetic" href={p('contact')} data-cursor data-reveal>{c.about.cta} →</a>
+    <a class="btn magnetic" href={p('contact')} data-cursor data-reveal><span class="btn-text">{c.about.cta} →</span></a>
   </div>
   <aside class="about-stack" data-reveal>
     <p class="eye">{c.about.stackMeta}</p>

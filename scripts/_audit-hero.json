@@ -1,0 +1,258 @@
+[
+  {
+    "slug": "archline",
+    "found": true,
+    "tag": "SECTION.hero.p-section",
+    "h": 916,
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "ownBgImage": "none",
+    "gradientLayers": 1,
+    "imageLayers": 0,
+    "media": {
+      "canvas": 0,
+      "video": 0,
+      "svg": 0,
+      "img": 1
+    },
+    "animatedEls": 0,
+    "flat": false
+  },
+  {
+    "slug": "denty",
+    "found": true,
+    "tag": "SECTION.pt-40.pb-24",
+    "h": 1339,
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "ownBgImage": "none",
+    "gradientLayers": 0,
+    "imageLayers": 0,
+    "media": {
+      "canvas": 0,
+      "video": 0,
+      "svg": 0,
+      "img": 0
+    },
+    "animatedEls": 4,
+    "flat": true
+  },
+  {
+    "slug": "dispersia",
+    "found": true,
+    "tag": "SECTION.hero",
+    "h": 1078,
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "ownBgImage": "none",
+    "gradientLayers": 0,
+    "imageLayers": 0,
+    "media": {
+      "canvas": 0,
+      "video": 0,
+      "svg": 0,
+      "img": 1
+    },
+    "animatedEls": 5,
+    "flat": false
+  },
+  {
+    "slug": "draft",
+    "found": true,
+    "tag": "SECTION.",
+    "h": 840,
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "ownBgImage": "none",
+    "gradientLayers": 4,
+    "imageLayers": 0,
+    "media": {
+      "canvas": 0,
+      "video": 0,
+      "svg": 4,
+      "img": 0
+    },
+    "animatedEls": 10,
+    "flat": false
+  },
+  {
+    "slug": "dzherelo",
+    "found": true,
+    "tag": "HEADER.hero",
+    "h": 816,
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "ownBgImage": "none",
+    "gradientLayers": 0,
+    "imageLayers": 0,
+    "media": {
+      "canvas": 0,
+      "video": 0,
+      "svg": 0,
+      "img": 1
+    },
+    "animatedEls": 0,
+    "flat": false
+  },
+  {
+    "slug": "essence",
+    "found": true,
+    "tag": "SECTION.hero",
+    "h": 900,
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "ownBgImage": "none",
+    "gradientLayers": 0,
+    "imageLayers": 0,
+    "media": {
+      "canvas": 0,
+      "video": 0,
+      "svg": 0,
+      "img": 1
+    },
+    "animatedEls": 4,
+    "flat": false
+  },
+  {
+    "slug": "freshclean",
+    "found": true,
+    "tag": "SECTION.hero.section",
+    "h": 860,
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "ownBgImage": "none",
+    "gradientLayers": 0,
+    "imageLayers": 0,
+    "media": {
+      "canvas": 0,
+      "video": 0,
+      "svg": 2,
+      "img": 1
+    },
+    "animatedEls": 0,
+    "flat": false
+  },
+  {
+    "slug": "interspace",
+    "found": true,
+    "tag": "SECTION.hero",
+    "h": 900,
+    "bgColor": "rgb(26, 26, 26)",
+    "ownBgImage": "none",
+    "gradientLayers": 1,
+    "imageLayers": 0,
+    "media": {
+      "canvas": 1,
+      "video": 0,
+      "svg": 1,
+      "img": 0
+    },
+    "animatedEls": 0,
+    "flat": false
+  },
+  {
+    "slug": "modulart",
+    "found": true,
+    "tag": "SECTION.",
+    "h": 947,
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "ownBgImage": "none",
+    "gradientLayers": 1,
+    "imageLayers": 0,
+    "media": {
+      "canvas": 0,
+      "video": 1,
+      "svg": 2,
+      "img": 0
+    },
+    "animatedEls": 8,
+    "flat": false
+  },
+  {
+    "slug": "orlov",
+    "found": true,
+    "tag": "SECTION.hero",
+    "h": 823,
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "ownBgImage": "none",
+    "gradientLayers": 0,
+    "imageLayers": 0,
+    "media": {
+      "canvas": 0,
+      "video": 0,
+      "svg": 0,
+      "img": 0
+    },
+    "animatedEls": 3,
+    "flat": true
+  },
+  {
+    "slug": "prawnik",
+    "found": true,
+    "tag": "SECTION.relative.min-h-[100dvh]",
+    "h": 900,
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "ownBgImage": "none",
+    "gradientLayers": 1,
+    "imageLayers": 0,
+    "media": {
+      "canvas": 0,
+      "video": 0,
+      "svg": 0,
+      "img": 0
+    },
+    "animatedEls": 0,
+    "flat": false
+  },
+  {
+    "slug": "prezfull",
+    "found": false
+  },
+  {
+    "slug": "smm",
+    "found": true,
+    "tag": "SECTION.border-b.border-grid",
+    "h": 765,
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "ownBgImage": "none",
+    "gradientLayers": 0,
+    "imageLayers": 1,
+    "media": {
+      "canvas": 0,
+      "video": 0,
+      "svg": 1,
+      "img": 0
+    },
+    "animatedEls": 0,
+    "flat": false
+  },
+  {
+    "slug": "touche",
+    "found": true,
+    "tag": "SECTION.relative.min-h-[90vh]",
+    "h": 810,
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "ownBgImage": "none",
+    "gradientLayers": 0,
+    "imageLayers": 0,
+    "media": {
+      "canvas": 0,
+      "video": 0,
+      "svg": 0,
+      "img": 1
+    },
+    "animatedEls": 0,
+    "flat": false
+  },
+  {
+    "slug": "wavemetrics",
+    "found": true,
+    "tag": "SECTION.border-b.border-bd",
+    "h": 801,
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "ownBgImage": "none",
+    "gradientLayers": 0,
+    "imageLayers": 0,
+    "media": {
+      "canvas": 0,
+      "video": 0,
+      "svg": 1,
+      "img": 0
+    },
+    "animatedEls": 7,
+    "flat": false
+  }
+]

@@ -2,10 +2,12 @@
 import { getNewDirectionCopy } from '../../data/newDirectionI18n';
 import type { Lang } from '../../i18n/ui';
 
-interface Props { lang?: Lang }
-const { lang = 'pl' } = Astro.props;
+interface Props { lang?: Lang; variant?: 'studio' | 'editorial' | 'dark' }
+const { lang = 'pl', variant = 'studio' } = Astro.props;
 const c = getNewDirectionCopy(lang);
-const p = (slug: string) => (lang === 'pl' ? `/${slug}/` : `/${lang}/${slug}/`);
+const segment = variant === 'studio' ? '' : `/${variant}`;
+const root = lang === 'pl' ? segment : `/${lang}${segment}`;
+const p = (slug: string) => `${root}/${slug}/`;
 ---
 
 <section class="page-hero wrap">
@@ -31,7 +33,7 @@ const p = (slug: string) => (lang === 'pl' ? `/${slug}/` : `/${lang}/${slug}/`);
 <section class="sec wrap cta-band">
   <p class="eye" data-reveal>{c.method.ctaMeta}</p>
   <h2 class="disp" data-reveal>{c.method.ctaTitle} <em>{c.method.ctaAccent}</em></h2>
-  <a class="btn magnetic" href={p('contact')} data-cursor data-reveal>{c.method.ctaButton} →</a>
+  <a class="btn magnetic" href={p('contact')} data-cursor data-reveal><span class="btn-text">{c.method.ctaButton} →</span></a>
 </section>
 
 <style>

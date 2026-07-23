@@ -3,15 +3,17 @@ import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import { marked } from 'marked';
 import { getNewDirectionCopy } from '../../data/newDirectionI18n';
-import { getTagline, getSummary, getBody, getResult, getStat } from '../../data/caseHelpers';
+import { getSummary, getBody } from '../../data/caseHelpers';
 import { withBase } from '../../i18n/ui';
 import type { Lang } from '../../i18n/ui';
 
-interface Props { lang?: Lang; entry: CollectionEntry<'cases'> }
-const { lang = 'pl', entry } = Astro.props;
+interface Props { lang?: Lang; entry: CollectionEntry<'cases'>; variant?: 'studio' | 'editorial' | 'dark' }
+const { lang = 'pl', entry, variant = 'studio' } = Astro.props;
 const c = getNewDirectionCopy(lang);
 const d = entry.data;
-const p = (slug: string) => (lang === 'pl' ? `/${slug}/` : `/${lang}/${slug}/`);
+const segment = variant === 'studio' ? '' : `/${variant}`;
+const root = lang === 'pl' ? segment : `/${lang}${segment}`;
+const p = (slug: string) => `${root}/${slug}/`;
 
 type Section = { heading: string; html: string };
 function parseSections(body: string): Section[] {
@@ -42,9 +44,6 @@ const phoneRows: typeof phones[] = [];
 for (let i = 0; i < phones.length; i += 3) phoneRows.push(phones.slice(i, i + 3));
 
 const sections = parseSections(getBody(entry, lang));
-const stat = getStat(entry, lang);
-const result = getResult(entry, lang);
-
 // next project (by order, wrap around)
 const all = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
 const idx = all.findIndex((x) => x.slug === entry.slug);
@@ -59,7 +58,6 @@ const next = all[(idx + 1) % all.length];
     <h1 class="disp" data-reveal>{d.title}</h1>
     <p class="cs-tagline" data-reveal>{getSummary(entry, lang)}</p>
     <div class="cs-chips" data-reveal>
-      {result && <span class="cs-chip cs-chip--accent">→ {result}</span>}
       {d.siteUrl && <a class="cs-chip cs-chip--link" href={d.siteUrl} target="_blank" rel="noopener" data-cursor>{c.case.openSite} ↗</a>}
     </div>
   </header>
@@ -150,12 +148,6 @@ const next = all[(idx + 1) % all.length];
       <div class="cs-sec-body">
         <h2 class="disp" data-reveal>{sec.heading}</h2>
         <div class="cs-prose" data-reveal set:html={sec.html} />
-        {stat && i === 0 && (
-          <div class="cs-stat" data-reveal>
-            <div class="cs-stat-val disp">{stat.value}</div>
-            <div class="cs-stat-label">{stat.label}</div>
-          </div>
-        )}
       </div>
     </section>
   ))}
@@ -171,14 +163,15 @@ const next = all[(idx + 1) % all.length];
         </div>
       </a>
       <div class="cs-next-actions">
-        <a href={p('work')} class="btn btn-ghost cs-next-btn" data-cursor>{c.case.allWork} ↗</a>
-        <a href={p('contact')} class="btn magnetic" data-cursor>{c.method.ctaButton} →</a>
+        <a href={p('work')} class="btn btn-ghost cs-next-btn" data-cursor><span class="btn-text">{c.case.allWork} ↗</span></a>
+        <a href={p('contact')} class="btn magnetic" data-cursor><span class="btn-text">{c.method.ctaButton} →</span></a>
       </div>
     </div>
   </section>
 </article>
 
 <style>
+  .cs{overflow:clip;}
   .cs-back{padding-top:6.5rem;}
   .cs-hero{padding:2rem 0 2.5rem;max-width:900px;}
   .cs-hero h1{font-size:clamp(2.6rem,7vw,6rem);margin:.8rem 0 1.2rem;}

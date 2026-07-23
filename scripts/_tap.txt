@@ -1,0 +1,147 @@
+﻿
+### archline  (tap 3, type 0)
+  TAP    2x  28x23  a
+  TAP    1x  277x4  input
+
+### denty  (tap 4, type 1)
+  TAP    3x  57x16  a.hover:text-white.transition-colors
+  TAP    1x  146x36  a.btn-mint.bg-mint
+  TYPE   1x  10px    p.text-[10px].text-muted
+
+### dispersia  (tap 16, type 11)
+  TAP   10x  327x23  a
+  TAP    2x  82x18  a.label
+  TAP    1x  119x23  a.h-logo
+  TAP    1x  327x18  a.featured-all.label
+  TAP    1x  131x26  a.f-logo
+  TAP    1x  32x32  button.cd-close
+  TYPE   3x  11px    span.label
+  TYPE   1x  11px    a.featured-all.label
+  TYPE   1x  11px    cite.quote-attr.label
+  TYPE   2x  11px    p.f-col-title
+  TYPE   1x  11px    p.f-concept
+  TYPE   2x  11px    a.label
+  TYPE   1x  11px    p.cd-title
+
+### draft  (tap 12, type 70)
+  TAP    6x  15x21  a
+  TAP    2x  44x36  button.lang-btn
+  TAP    2x  169x33  button.btn.btn-fill
+  TAP    1x  44x36  button.lang-btn.active
+  TAP    1x  335x41  input
+  TYPE  28x  9px    span
+  TYPE   3x  9px    span.label
+  TYPE   4x  10px    span.mono
+  TYPE  24x  10px    div
+  TYPE   1x  11px    button.lang-btn.active
+  TYPE   2x  11px    button.lang-btn
+  TYPE   1x  11px    p
+  TYPE   2x  11px    div.mono
+
+### dzherelo  (tap 15, type 5)
+  TAP    6x  68x18  a
+  TAP    3x  183x39  a.mobile-nav-link
+  TAP    3x  95x33  button.btn.btn-secondary
+  TAP    1x  110x33  a.logo
+  TAP    1x  38x38  button.cart-trigger
+  TAP    1x  40x40  button.cart-drawer-close
+  TYPE   1x  10px    span.cart-count
+  TYPE   3x  10px    button.btn.btn-secondary
+  TYPE   1x  11.5px    p.footer-concept
+
+### essence  (tap 15, type 3)
+  TAP    8x  247x26  a.nav-link
+  TAP    4x  43x21  a.footer-link
+  TAP    2x  24x24  a
+  TAP    1x  98x40  a.nav-logo
+  TYPE   3x  11.2px    div.persona-label
+
+### freshclean  (tap 17, type 0)
+  TAP   10x  42x19  a
+  TAP    4x  13x13  input
+  TAP    1x  112x34  a.nav-logo
+  TAP    1x  40x40  button.nav-burger
+  TAP    1x  335x34  a.footer-logo
+
+### interspace  (tap 20, type 45)
+  TAP    8x  31x31  a.artist-social-link
+  TAP    3x  8x8  button.testimonial-dot
+  TAP    3x  36x36  a
+  TAP    2x  40x40  button.testimonial-btn
+  TAP    1x  35x28  button.lang-switch
+  TAP    1x  30x26  button.hamburger
+  TAP    1x  176x38  a.hero-cta
+  TAP    1x  10x10  button.testimonial-dot.active
+  TYPE   4x  6.8px    div.countdown-label
+  TYPE   1x  8.3px    p.hero-subtitle
+  TYPE   2x  9px    span
+  TYPE   2x  9px    p.parallax-quote-author
+  TYPE   4x  9px    div.timeline-year
+  TYPE   6x  9px    div.exhibit-card-number
+  TYPE   1x  9px    div.footer-copy
+  TYPE   1x  9.8px    button.lang-switch
+
+### modulart  (tap 20, type 61)
+  TAP   17x  41x15  a
+  TAP    2x  82x20  a.nav-logo
+  TAP    1x  153x32  a.nav-cta
+  TYPE   3x  9.6px    span
+  TYPE   4x  9.9px    p.problem-number
+  TYPE   7x  10.4px    span.eyebrow.reveal
+  TYPE   1x  10.4px    span.eyebrow
+  TYPE   3x  10.4px    span.story-column-label
+  TYPE   3x  10.4px    h4
+  TYPE   6x  10.9px    span.step-duration
+  TYPE  14x  10.9px    span.marquee-item
+
+### orlov  (tap 7, type 11)
+  TAP    6x  327x24  a
+  TAP    1x  78x33  a.nav__logo
+  TYPE   1x  11.2px    p.footer__concept
+  TYPE   2x  11.5px    div.compare__tag.mono
+  TYPE   6x  11.5px    span.stack__label
+  TYPE   1x  11.5px    span.plan__tag
+  TYPE   1x  11.5px    span.plan__tag.plan__tag--accent
+
+### prawnik  (tap 11, type 0)
+  TAP    5x  40x28  a.mobile-link.hover:text-gold
+  TAP    2x  225x28  a.text-platinum.hover:text-gold
+  TAP    2x  68x20  a.hover:text-platinum.transition-colors
+  TAP    1x  18x18  input.mt-1.w-[18px]
+  TAP    1x  112x17  a.text-platinum.underline
+
+### prezfull  (tap 15, type 4)
+  TAP    3x  110x34  button.filter-btn
+  TAP    3x  64x16  a.text-xs.uppercase
+  TAP    2x  182x42  a.inline-block.border
+  TAP    2x  311x20  a.text-sm.text-service-body
+  TAP    2x  77x16  a.hover:text-brand-beige.transition-all
+  TAP    1x  129x28  a.text-xl.font-bold
+  TAP    1x  24x24  button.md:hidden.text-brand-beige
+  TAP    1x  73x34  button.filter-btn.active
+  TYPE   1x  10.4px    button.filter-btn.active
+  TYPE   3x  10.4px    button.filter-btn
+
+### smm  (tap 2, type 0)
+  TAP    1x  164x40  button.text-sm.font-semibold
+  TAP    1x  40x40  button.w-10.h-10
+
+### touche  (tap 4, type 1)
+  TAP    2x  102x19  a.hover:text-stone-100.transition-colors
+  TAP    1x  102x32  a.font-serif.text-2xl
+  TAP    1x  24x32  button.md:hidden.text-2xl
+  TYPE   1x  10px    span.absolute.top-6
+
+### wavemetrics  (tap 8, type 53)
+  TAP    5x  27x20  a.hover:text-fg.transition-colors
+  TAP    1x  141x28  a.flex.items-center
+  TAP    1x  102x38  a.btn.btn-fill
+  TAP    1x  343x4  input.w-full.h-1
+  TYPE   1x  9px    text.[object.SVGAnimatedString]
+  TYPE   5x  10px    div.text-[10px].uppercase
+  TYPE   2x  10px    div.text-muted.font-mono
+  TYPE   1x  10px    div.text-accent.font-mono
+  TYPE   3x  10px    span.font-mono.text-[10px]
+  TYPE   1x  10px    p.font-mono.text-[10px]
+  TYPE   1x  10px    span.absolute.-top-3
+  TYPE   1x  11px    div.u.u1

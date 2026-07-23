@@ -24,7 +24,7 @@ const ct = c.contact;
       <select name="type">{ct.options.map((o) => (<option>{o}</option>))}</select>
     </label>
     <label class="c-field"><span>{ct.message}</span><textarea name="message" rows="4" placeholder={ct.messagePlaceholder} required></textarea></label>
-    <button class="btn magnetic" type="submit" data-cursor>{ct.submit} →</button>
+    <button class="btn magnetic" type="submit" data-cursor><span class="btn-text">{ct.submit} →</span></button>
   </form>
 
   <aside class="c-direct" data-reveal>
@@ -42,7 +42,11 @@ const ct = c.contact;
   .c-field{display:flex;flex-direction:column;gap:.4rem;}
   .c-field span{font-family:var(--mono),monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
   .c-field input,.c-field select,.c-field textarea{font-family:var(--body),sans-serif;font-size:1rem;padding:.8rem 1rem;background:transparent;border:1px solid var(--line);border-radius:8px;color:var(--ink);}
-  .c-field input:focus,.c-field select:focus,.c-field textarea:focus{outline:none;border-color:var(--accent);}
+  .c-field input:focus,.c-field select:focus,.c-field textarea:focus{border-color:var(--accent);}
+  .c-field input:focus-visible,.c-field select:focus-visible,.c-field textarea:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+  }
   .c-form .btn{align-self:flex-start;margin-top:.5rem;}
   .c-direct{border-top:2px solid var(--accent);padding-top:1.2rem;}
   .c-big{display:block;font-family:var(--disp),sans-serif;font-weight:var(--disp-w);letter-spacing:var(--disp-ls);font-size:clamp(1.4rem,3vw,2rem);margin:1rem 0;transition:color .25s;}

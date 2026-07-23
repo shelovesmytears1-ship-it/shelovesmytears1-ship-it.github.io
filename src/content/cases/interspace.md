@@ -1,5 +1,5 @@
 ---
-title: Пространство · INTERSPACE
+title: INTERSPACE
 tagline: Иммерсивная выставка современного искусства в NYC с editorial typography и async WebGL
 niche: Cultural / Event
 year: '2026'

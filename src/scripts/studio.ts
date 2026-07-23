@@ -18,10 +18,44 @@ const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
 /* ---- split text into per-word masked tracks (reads as line reveal) ---- */
 function splitInto(el: HTMLElement, cls: string, step: number): void {
-  const words = (el.textContent || '').trim().split(/\s+/);
-  el.innerHTML = words.map((w) => `<span class="${cls}"><span>${w}</span></span>`).join(' ');
-  el.querySelectorAll<HTMLElement>(`.${cls} > span`).forEach((s, i) => {
-    s.style.transitionDelay = `${step * i}s`;
+  type Token = { word?: string; accent?: boolean; br?: boolean };
+  const tokens: Token[] = [];
+  const walk = (node: Node, accent = false): void => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      (node.textContent || '').trim().split(/\s+/).filter(Boolean)
+        .forEach((word) => tokens.push({ word, accent }));
+      return;
+    }
+    if (!(node instanceof HTMLElement)) return;
+    if (node.tagName === 'BR') {
+      tokens.push({ br: true });
+      return;
+    }
+    const nextAccent = accent || node.tagName === 'EM' || node.classList.contains('accent');
+    node.childNodes.forEach((child) => walk(child, nextAccent));
+  };
+  el.childNodes.forEach((node) => walk(node));
+
+  el.replaceChildren();
+  let wordIndex = 0;
+  tokens.forEach((token, index) => {
+    if (token.br) {
+      el.appendChild(document.createElement('br'));
+      el.appendChild(document.createTextNode(' '));
+      return;
+    }
+    const outer = document.createElement('span');
+    outer.className = cls;
+    const inner = document.createElement('span');
+    if (token.accent) inner.className = 'accent';
+    inner.textContent = token.word || '';
+    inner.style.transitionDelay = `${step * wordIndex}s`;
+    wordIndex += 1;
+    outer.appendChild(inner);
+    el.appendChild(outer);
+    if (index < tokens.length - 1 && !tokens[index + 1]?.br) {
+      el.appendChild(document.createTextNode(' '));
+    }
   });
 }
 
@@ -38,19 +72,24 @@ if (!document.getElementById('curtain')) {
   requestAnimationFrame(() => document.body.classList.add('loaded'));
 }
 
-/* ---- scroll reveal (replays on re-entry, like the reference site) ---- */
+/* ---- scroll reveal -------------------------------------------------------
+   Reveal each element once per page load. Re-hiding content after it leaves
+   the viewport made sections blink at IntersectionObserver boundaries,
+   especially while Lenis was still easing the scroll position. The CSS
+   default stays visible; motion-ready is added only after the observer is
+   installed, so a failed/disabled script can never leave content invisible. */
 const io = new IntersectionObserver(
   (entries) => {
     entries.forEach((e) => {
-      // only reset once it is fully clear of the viewport, so it never
-      // re-triggers while the user is still reading it
-      if (e.isIntersecting) e.target.classList.add('in');
-      else if (e.intersectionRatio === 0) e.target.classList.remove('in');
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      io.unobserve(e.target);
     });
   },
-  { threshold: [0, 0.12] }
+  { threshold: 0.08, rootMargin: '0px 0px -32px 0px' }
 );
 document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+document.documentElement.classList.add('motion-ready');
 
 /* ---- sticky nav state ---- */
 const hdr = document.querySelector('.hdr');
@@ -129,16 +168,13 @@ if (vids.length) {
   });
 }
 
-/* ---- hero 3D (lazy chunk, desktop + motion only) ---- */
+/* ---- hero 3D (desktop + motion only) -------------------------------------
+   The hero is above the fold, so start fetching its chunk immediately while
+   the page curtain is still covering the document. The CSS fallback remains
+   visible until hero3d has rendered its first frame. */
 const hero3d = document.getElementById('hero3d');
 if (hero3d && !reduce && matchMedia('(min-width: 821px)').matches) {
-  const once = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
-      once.disconnect();
-      import('./hero3d').then((m) => m.initHero3D(hero3d)).catch(() => {});
-    }
-  }, { threshold: 0.1 });
-  once.observe(hero3d);
+  import('./hero3d').then((m) => m.initHero3D(hero3d)).catch(() => {});
 }
 
 /* ---- 3D coverflow carousel (lazy chunk, desktop + motion only) ---- */
@@ -289,6 +325,7 @@ if (!reduce && fine) {
   document.body.classList.add('cursoron');
   const cur = document.querySelector<HTMLElement>('.cur');
   if (cur) {
+    const labelEl = cur.querySelector<HTMLElement>('.cur-label');
     let cx = innerWidth / 2, cy = innerHeight / 2, tx = cx, ty = cy;
     addEventListener('mousemove', (e) => { tx = e.clientX; ty = e.clientY; });
     const loop = () => {
@@ -298,9 +335,34 @@ if (!reduce && fine) {
       requestAnimationFrame(loop);
     };
     requestAnimationFrame(loop);
-    document.querySelectorAll('[data-cursor]').forEach((el) => {
-      el.addEventListener('mouseenter', () => cur.classList.add('hover'));
-      el.addEventListener('mouseleave', () => cur.classList.remove('hover'));
+
+    // per-locale default verbs for the cursor pill
+    const lang = document.documentElement.lang || 'pl';
+    const view: Record<string, string> = { pl: 'Zobacz', ru: 'Смотреть', en: 'View', ua: 'Дивитись' };
+    const viewWord = view[lang] || view.pl;
+
+    // Resolve the word shown inside the expanding cursor:
+    //  explicit data-cursor text > project link > external link > default arrow
+    const labelFor = (el: HTMLElement): string => {
+      const explicit = (el.dataset.cursor || '').trim();
+      if (explicit) return explicit;
+      const a = el.closest('a') as HTMLAnchorElement | null;
+      const href = a?.getAttribute('href') || '';
+      if (/\/work\/[^/]+/.test(href)) return viewWord;  // a specific case, not the index
+      if (/^https?:/i.test(href) || a?.target === '_blank') return '↗';
+      return '→';
+    };
+
+    document.querySelectorAll<HTMLElement>('[data-cursor]').forEach((el) => {
+      el.addEventListener('mouseenter', () => {
+        const word = labelFor(el);
+        if (labelEl) labelEl.textContent = word;
+        cur.classList.add('hover');
+        cur.classList.toggle('labeled', !!word);
+      });
+      el.addEventListener('mouseleave', () => {
+        cur.classList.remove('hover', 'labeled');
+      });
     });
   }
 
@@ -312,6 +374,16 @@ if (!reduce && fine) {
     pv.className = 'work-preview';
     const pvInner = document.createElement('div');
     pvInner.className = 'work-preview-inner';
+    const pvChrome = document.createElement('div');
+    pvChrome.className = 'work-preview-chrome';
+    pvChrome.innerHTML = '<span class="work-preview-dots"><i></i><i></i><i></i></span>';
+    const pvLabel = document.createElement('span');
+    pvLabel.className = 'work-preview-label';
+    const pvIndex = document.createElement('span');
+    pvIndex.className = 'work-preview-index';
+    pvChrome.append(pvLabel, pvIndex);
+    const pvViewport = document.createElement('div');
+    pvViewport.className = 'work-preview-viewport';
     const strip = document.createElement('div');
     strip.className = 'work-preview-strip';
 
@@ -321,7 +393,8 @@ if (!reduce && fine) {
       cell.style.backgroundImage = `url('${row.dataset.preview}')`;
       strip.appendChild(cell);
     });
-    pvInner.appendChild(strip);
+    pvViewport.appendChild(strip);
+    pvInner.append(pvChrome, pvViewport);
     pv.appendChild(pvInner);
 
     const pvBtn = document.createElement('div');
@@ -347,6 +420,8 @@ if (!reduce && fine) {
       current = i;
       if (i < 0) { show(false); return; }
       strip.style.transform = `translateY(${-i * 100}%)`;
+      pvLabel.textContent = rows[i].querySelector<HTMLElement>('.work-name')?.textContent?.trim() || '';
+      pvIndex.textContent = `${String(i + 1).padStart(2, '0')} / ${String(rows.length).padStart(2, '0')}`;
       show(true);
     };
 

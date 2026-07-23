@@ -1,0 +1,57 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import EditorialLayout from '../../layouts/EditorialLayout.astro';
+import DarkLayout from '../../layouts/DarkLayout.astro';
+import Home from './Home.astro';
+import WorkIndex from './WorkIndex.astro';
+import CaseStudy from './CaseStudy.astro';
+import Method from './Method.astro';
+import About from './About.astro';
+import Contact from './Contact.astro';
+import { getNewDirectionCopy } from '../../data/newDirectionI18n';
+import { getSummary } from '../../data/caseHelpers';
+import type { Lang } from '../../i18n/ui';
+
+type Variant = 'editorial' | 'dark';
+type Page = 'home' | 'work' | 'case' | 'method' | 'about' | 'contact';
+
+interface Props {
+  variant: Variant;
+  lang: Lang;
+  page: Page;
+  entry?: CollectionEntry<'cases'>;
+}
+
+const { variant, lang, page, entry } = Astro.props;
+const c = getNewDirectionCopy(lang);
+const Layout = variant === 'editorial' ? EditorialLayout : DarkLayout;
+const current = page === 'case' ? 'work' : page === 'home' ? undefined : page;
+
+const titles: Record<Exclude<Page, 'case'>, string> = {
+  home: `overflow — ${c.layout.footer}`,
+  work: `overflow — ${c.work.title} ${c.work.accent}`,
+  method: `overflow — ${c.layout.nav.method}`,
+  about: `overflow — ${c.layout.nav.about}`,
+  contact: `overflow — ${c.layout.nav.contact}`,
+};
+
+const descriptions: Record<Exclude<Page, 'case'>, string> = {
+  home: c.home.heroBody,
+  work: c.work.lede,
+  method: c.method.lede,
+  about: c.about.lede,
+  contact: c.contact.lede,
+};
+
+const title = page === 'case' && entry ? `${entry.data.title} — overflow` : titles[page as Exclude<Page, 'case'>];
+const description = page === 'case' && entry ? getSummary(entry, lang) : descriptions[page as Exclude<Page, 'case'>];
+---
+
+<Layout title={title} description={description} lang={lang} current={current}>
+  {page === 'home' && <Home lang={lang} variant={variant} />}
+  {page === 'work' && <WorkIndex lang={lang} variant={variant} />}
+  {page === 'case' && entry && <CaseStudy lang={lang} variant={variant} entry={entry} />}
+  {page === 'method' && <Method lang={lang} variant={variant} />}
+  {page === 'about' && <About lang={lang} variant={variant} />}
+  {page === 'contact' && <Contact lang={lang} />}
+</Layout>

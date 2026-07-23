@@ -1,0 +1,216 @@
+/* ============================================================
+   overflow — Editorial Serif (direction 02)
+   Paper, terracotta and a real editorial typographic hierarchy.
+   ============================================================ */
+
+@font-face{font-family:'Gloock';src:url('/fonts/Gloock-Regular.ttf') format('truetype');font-weight:400;font-display:swap;}
+@font-face{font-family:'Lora';src:url('/fonts/Lora-Variable.ttf') format('truetype');font-weight:400 700;font-display:swap;}
+@font-face{font-family:'Lora';src:url('/fonts/Lora-Italic-Variable.ttf') format('truetype');font-style:italic;font-weight:400 700;font-display:swap;}
+@font-face{font-family:'Newsreader';src:url('/fonts/Newsreader-Variable.ttf') format('truetype');font-weight:300 800;font-display:swap;}
+
+html[data-theme='editorial'],
+body[data-theme='editorial']{
+  --bg:#f1ece2;
+  --ink:#211b16;
+  --muted:#756a5d;
+  --line:rgba(33,27,22,.15);
+  --accent:#b5462a;
+  --on-accent:#f6f1e8;
+  --disp:'Gloock';
+  --disp-w:400;
+  --disp-ls:-.008em;
+  --disp-lh:1.03;
+  --serif:'Lora';
+  --body:'Newsreader';
+  --mono:'DMMono';
+  background:#f1ece2;
+}
+
+body[data-theme='editorial']{
+  font-size:1.0625rem;
+  line-height:1.62;
+  background:
+    radial-gradient(circle at 78% 9%,rgba(181,70,42,.06),transparent 28rem),
+    linear-gradient(rgba(33,27,22,.018) 1px,transparent 1px),
+    var(--bg);
+  background-size:auto,100% 8px,auto;
+}
+
+body[data-theme='editorial'] .wrap{width:min(1320px,calc(100vw - clamp(32px,8vw,144px)));}
+body[data-theme='editorial'] .brand{letter-spacing:-.02em;}
+body[data-theme='editorial'] em,
+body[data-theme='editorial'] .accent{
+  font-family:var(--serif),serif;
+  font-weight:500;
+  font-style:italic;
+  letter-spacing:-.02em;
+  color:var(--accent);
+}
+
+body[data-theme='editorial'] .hdr.scrolled{
+  background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(14px) saturate(.75);
+}
+body[data-theme='editorial'] .nav-links,
+body[data-theme='editorial'] .nav-cta,
+body[data-theme='editorial'] .lang{font-size:.68rem;}
+body[data-theme='editorial'] .nav-cta{
+  border-radius:0;
+  border-color:var(--ink);
+  padding:.7rem 1rem;
+}
+
+body[data-theme='editorial'] .hero{
+  border-bottom:1px solid var(--line);
+}
+body[data-theme='editorial'] .hero h1{
+  max-width:14ch;
+  font-size:clamp(3.4rem,8.6vw,8.8rem);
+  text-wrap:balance;
+}
+body[data-theme='editorial'] .hero-sub,
+body[data-theme='editorial'] .page-lede{
+  max-width:65ch;
+  font-size:clamp(1.08rem,1.5vw,1.3rem);
+  line-height:1.62;
+}
+body[data-theme='editorial'] .hero-meta{
+  grid-template-columns:1.25fr 1fr 1fr;
+}
+body[data-theme='editorial'] .hero-meta li{
+  font-family:var(--serif),serif;
+  font-size:.93rem;
+}
+body[data-theme='editorial'] .hero-3d{
+  background:
+    radial-gradient(circle at 72% 45%,rgba(181,70,42,.1),transparent 24%),
+    radial-gradient(circle at 83% 26%,rgba(33,27,22,.035),transparent 22%);
+}
+
+body[data-theme='editorial'] .btn{
+  min-height:48px;
+  padding:1rem 1.35rem;
+  border-radius:0;
+}
+body[data-theme='editorial'] .btn-ghost{border-color:var(--ink);}
+body[data-theme='editorial'] .cur.hover .cur-ring{background:var(--accent);}
+
+body[data-theme='editorial'] .marquee{
+  color:var(--on-accent);
+  background:var(--accent);
+  border-block:0;
+}
+body[data-theme='editorial'] .mq-track b{color:rgba(246,241,232,.45);}
+
+body[data-theme='editorial'] .sec{
+  padding-block:clamp(6rem,14vh,11rem);
+}
+body[data-theme='editorial'] .sec-head h2{
+  max-width:17ch;
+  font-size:clamp(2.8rem,6.4vw,6rem);
+  text-wrap:balance;
+}
+body[data-theme='editorial'] .page-hero{
+  padding-top:clamp(9rem,17vw,15rem);
+  padding-bottom:clamp(3rem,7vw,6rem);
+  border-bottom:1px solid var(--line);
+}
+body[data-theme='editorial'] .page-hero h1{
+  max-width:14ch;
+  font-size:clamp(3.4rem,9.4vw,8.6rem);
+  text-wrap:balance;
+}
+
+body[data-theme='editorial'] .gallery3d-title{
+  font-family:var(--disp),serif;
+  font-weight:400;
+  letter-spacing:-.015em;
+  color:color-mix(in srgb,var(--ink) 10%,transparent);
+}
+body[data-theme='editorial'] .work-row{
+  grid-template-columns:4.5rem minmax(0,1fr) auto;
+  padding-block:clamp(1.8rem,3.6vw,3rem);
+}
+body[data-theme='editorial'] .work-name{
+  font-weight:400;
+  letter-spacing:-.015em;
+  font-size:clamp(2.2rem,5.5vw,4.7rem);
+}
+body[data-theme='editorial'] .work-tag{
+  border-radius:0;
+  border-color:var(--ink);
+}
+body[data-theme='editorial'] .work-preview-inner{
+  padding:.68rem;
+  border:1px solid var(--ink);
+  border-radius:0;
+  background:#e8dfcf;
+  box-shadow:0 30px 70px rgba(33,27,22,.24),inset 0 0 0 4px #e8dfcf,inset 0 0 0 5px rgba(138,77,53,.45);
+  transform:translate(-50%,-50%) scale(.72) rotate(1.2deg);
+}
+body[data-theme='editorial'] .work-preview-chrome{height:35px;padding-inline:.15rem;color:var(--ink);}
+body[data-theme='editorial'] .work-preview-dots i{width:18px;height:2px;border-radius:0;background:rgba(33,27,22,.26);}
+body[data-theme='editorial'] .work-preview-dots i:first-child{background:var(--accent);}
+body[data-theme='editorial'] .work-preview-viewport{border-radius:0;border-color:rgba(33,27,22,.55);}
+
+body[data-theme='editorial'] .steps{
+  border-top:1px solid var(--line);
+}
+body[data-theme='editorial'] .step{
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  border-left:0;
+  border-top:0;
+  border-radius:0;
+  background:transparent;
+}
+body[data-theme='editorial'] .step:first-child{border-left:1px solid var(--line);}
+body[data-theme='editorial'] .step h3{font-family:var(--serif),serif;font-size:1.35rem;}
+body[data-theme='editorial'] .about .lead{font-family:var(--disp),serif;font-weight:400;}
+
+body[data-theme='editorial'] .cs-prose{
+  font-family:var(--body),serif;
+  max-width:65ch;
+}
+body[data-theme='editorial'] .cs-chip{border-radius:0;}
+body[data-theme='editorial'] .cs-stat{display:none;}
+body[data-theme='editorial'] .c-field input,
+body[data-theme='editorial'] .c-field select,
+body[data-theme='editorial'] .c-field textarea{
+  border-radius:0;
+  border-width:0 0 1px;
+  padding-inline:0;
+}
+
+body[data-theme='editorial'] .ftr{padding-block:3rem;}
+
+@media(max-width:760px){
+  body[data-theme='editorial'] .hero h1{font-size:clamp(3rem,16vw,5.3rem);}
+  body[data-theme='editorial'] .sec-head h2,
+  body[data-theme='editorial'] .contact h2{font-size:clamp(1.9rem,10vw,3rem);}
+  body[data-theme='editorial'] .hero-meta{grid-template-columns:1fr;}
+  body[data-theme='editorial'] .work-row{grid-template-columns:2.4rem minmax(0,1fr);}
+  body[data-theme='editorial'] .steps{border:0;}
+  body[data-theme='editorial'] .step,
+  body[data-theme='editorial'] .step:first-child{border:0;border-top:1px solid var(--line);}
+  body[data-theme='editorial'] .work-row-thumb{
+    padding:.58rem;border:1px solid var(--ink);border-radius:0;background:#e8dfcf;
+    box-shadow:0 16px 34px rgba(33,27,22,.12),inset 0 0 0 3px #e8dfcf,inset 0 0 0 4px rgba(138,77,53,.38);
+  }
+  body[data-theme='editorial'] .work-row-thumb-bar i{width:18px;height:2px;border-radius:0;}
+  body[data-theme='editorial'] .work-row-thumb img{border-radius:0;border-color:rgba(33,27,22,.48);}
+}
+
+@media(max-width:820px){
+  body[data-theme='editorial'] .gallery-mobile{gap:1.25rem;}
+  body[data-theme='editorial'] .gallery-mobile-card{
+    padding:.66rem;border:1px solid var(--ink);border-radius:0;background:#e8dfcf;
+    box-shadow:0 18px 42px rgba(33,27,22,.13),inset 0 0 0 4px #e8dfcf,inset 0 0 0 5px rgba(138,77,53,.42);
+  }
+  body[data-theme='editorial'] .project-frame-chrome{min-height:36px;padding-inline:.15rem;color:var(--ink);}
+  body[data-theme='editorial'] .project-frame-dots i{width:18px;height:2px;border-radius:0;background:rgba(33,27,22,.26);}
+  body[data-theme='editorial'] .project-frame-dots i:first-child{background:var(--accent);}
+  body[data-theme='editorial'] .project-frame-viewport{border-radius:0;border-color:rgba(33,27,22,.5);}
+  body[data-theme='editorial'] .project-frame-caption{border-top:1px solid rgba(33,27,22,.35);margin-top:.65rem;padding-inline:.15rem;}
+  body[data-theme='editorial'] .project-frame-caption strong{font-family:var(--disp),serif;font-weight:400;font-size:1.4rem;}
+}

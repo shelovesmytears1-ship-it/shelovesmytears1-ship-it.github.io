@@ -1,0 +1,15 @@
+---
+import StudioLayout from './StudioLayout.astro';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang?: Lang;
+  current?: 'work' | 'method' | 'about' | 'contact';
+}
+---
+
+<StudioLayout {...Astro.props} variant="editorial">
+  <slot />
+</StudioLayout>

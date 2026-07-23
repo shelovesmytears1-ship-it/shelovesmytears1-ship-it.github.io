@@ -1,0 +1,967 @@
+[
+  {
+    "slug": "archline",
+    "url": "https://shelovesmytears1-ship-it.github.io/archline-renovation/",
+    "title": "Kompleksowe remonty mieszkań pod klucz | ARCHLINE",
+    "niche": "Services",
+    "htmlLang": "pl",
+    "cyr": 0,
+    "lat": 3212,
+    "plDiacritics": 175,
+    "uaOnly": 0,
+    "langGuess": "pl",
+    "titleLen": 49,
+    "desc": "ARCHLINE — kompleksowe wykończenia wnętrz pod klucz w Warsza",
+    "descLen": 162,
+    "ogImage": true,
+    "ogTitle": true,
+    "viewportMeta": true,
+    "favicon": false,
+    "canonical": false,
+    "h1Count": 1,
+    "h1Text": "Remont, któryprzerasta oczekiwania",
+    "h1Px": 72,
+    "sections": 8,
+    "hero": {
+      "tag": "SECTION.hero",
+      "h": 916,
+      "bgColor": "rgba(0, 0, 0, 0)",
+      "bgImage": "linear-gradient(90deg, rgb(6, 6, 6) 0%, rgba(0, 0, 0, 0) 100",
+      "hasMedia": true,
+      "flat": false
+    },
+    "imgs": {
+      "total": 3,
+      "noAlt": 0,
+      "lazy": 0,
+      "noDims": 3
+    },
+    "domNodes": 226,
+    "transferKB": 19499,
+    "requests": 7,
+    "mobile": {
+      "docScrollW": 375,
+      "overflowX": false,
+      "smallTargets": 3,
+      "smallSample": [
+        "INPUT 277x4",
+        "+48 512 408 190 100x23",
+        "FAQ 28x23"
+      ],
+      "tinyText": [],
+      "bleed": [],
+      "pageH": 8545
+    },
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "ok": true
+  },
+  {
+    "slug": "denty",
+    "url": "https://shelovesmytears1-ship-it.github.io/denty-landing/",
+    "title": "Denty — CRM dla gabinetów stomatologicznych",
+    "niche": "B2B SaaS",
+    "htmlLang": "pl",
+    "cyr": 0,
+    "lat": 4265,
+    "plDiacritics": 217,
+    "uaOnly": 0,
+    "langGuess": "pl",
+    "titleLen": 43,
+    "desc": "CRM dla stomatologów, który każdy recepcjonista opanuje w je",
+    "descLen": 165,
+    "ogImage": false,
+    "ogTitle": true,
+    "viewportMeta": true,
+    "favicon": false,
+    "canonical": false,
+    "h1Count": 1,
+    "h1Text": "CRM dla stomatologii,\n          który opanuje\n          każd",
+    "h1Px": 72,
+    "sections": 9,
+    "hero": {
+      "tag": "BODY.bg-night",
+      "h": 6938,
+      "bgColor": "rgb(12, 13, 15)",
+      "bgImage": "none",
+      "hasMedia": true,
+      "flat": false
+    },
+    "imgs": {
+      "total": 0,
+      "noAlt": 0,
+      "lazy": 0,
+      "noDims": 0
+    },
+    "domNodes": 525,
+    "transferKB": 1,
+    "requests": 2,
+    "mobile": {
+      "docScrollW": 375,
+      "overflowX": false,
+      "smallTargets": 4,
+      "smallSample": [
+        "Zacznij bezpłatn 146x36",
+        "Polityka prywatn 108x32",
+        "Regulamin 57x16",
+        "kontakt@denty.pl 98x16"
+      ],
+      "tinyText": [
+        "text-[10px]:10.0"
+      ],
+      "bleed": [
+        "DIV.flex",
+        "SPAN.text-muted",
+        "SPAN.text-white"
+      ],
+      "pageH": 11989
+    },
+    "consoleErrors": [],
+    "ok": true
+  },
+  {
+    "slug": "dispersia",
+    "url": "https://shelovesmytears1-ship-it.github.io/dispersia-fashion/",
+    "title": "DISPERSIA — Form Unbound",
+    "niche": "Multipage",
+    "htmlLang": "pl",
+    "cyr": 0,
+    "lat": 710,
+    "plDiacritics": 36,
+    "uaOnly": 0,
+    "langGuess": "pl",
+    "titleLen": 24,
+    "desc": "Odzież unisex dla tych, którzy noszą ciszę.",
+    "descLen": 43,
+    "ogImage": true,
+    "ogTitle": true,
+    "viewportMeta": true,
+    "favicon": true,
+    "canonical": true,
+    "h1Count": 1,
+    "h1Text": "DISPERSIA",
+    "h1Px": 101,
+    "sections": 5,
+    "hero": {
+      "tag": "SECTION.hero",
+      "h": 1078,
+      "bgColor": "rgba(0, 0, 0, 0)",
+      "bgImage": "none",
+      "hasMedia": true,
+      "flat": false
+    },
+    "imgs": {
+      "total": 6,
+      "noAlt": 0,
+      "lazy": 5,
+      "noDims": 0
+    },
+    "domNodes": 179,
+    "transferKB": 421,
+    "requests": 9,
+    "mobile": {
+      "docScrollW": 375,
+      "overflowX": false,
+      "smallTargets": 16,
+      "smallSample": [
+        "DISPERSIA 119x23",
+        "All pieces → 327x18",
+        "DISPERSIA 131x26",
+        "studio@dispersia 327x23",
+        "@dispersia 327x23"
+      ],
+      "tinyText": [
+        "label:11.0",
+        "featured-all:11.0",
+        "f-col-title:11.0",
+        "f-concept:11.0",
+        "cd-title:11.0"
+      ],
+      "bleed": [
+        "DIV.cd-header",
+        "P.cd-title",
+        "DIV.cd-scroll",
+        "UL.cd-items",
+        "DIV.cd-empty"
+      ],
+      "pageH": 5551
+    },
+    "consoleErrors": [],
+    "ok": true
+  },
+  {
+    "slug": "draft",
+    "url": "https://shelovesmytears1-ship-it.github.io/draft-landing/",
+    "title": "Draft — The meeting ended. The backlog is ready.",
+    "niche": "B2B SaaS",
+    "htmlLang": "en",
+    "cyr": 0,
+    "lat": 3319,
+    "plDiacritics": 0,
+    "uaOnly": 0,
+    "langGuess": "en/other",
+    "titleLen": 48,
+    "desc": "Draft turns product calls into sprint-ready tasks. Connect Z",
+    "descLen": 101,
+    "ogImage": true,
+    "ogTitle": true,
+    "viewportMeta": true,
+    "favicon": false,
+    "canonical": false,
+    "h1Count": 1,
+    "h1Text": "The meeting ended.\n        The backlog\n        is ready.",
+    "h1Px": 60,
+    "sections": 7,
+    "hero": {
+      "tag": "SECTION.",
+      "h": 840,
+      "bgColor": "rgba(0, 0, 0, 0)",
+      "bgImage": "radial-gradient(rgba(232, 149, 74, 0.07), rgba(0, 0, 0, 0) 6",
+      "hasMedia": true,
+      "flat": false
+    },
+    "imgs": {
+      "total": 0,
+      "noAlt": 0,
+      "lazy": 0,
+      "noDims": 0
+    },
+    "domNodes": 468,
+    "transferKB": 1,
+    "requests": 1,
+    "mobile": {
+      "docScrollW": 375,
+      "overflowX": false,
+      "smallTargets": 12,
+      "smallSample": [
+        "Draft\n      BETA 124x26",
+        "EN 44x36",
+        "RU 44x36",
+        "PL 44x36",
+        "Push 4 tasks to  297x33"
+      ],
+      "tinyText": [
+        "SPAN:9.0",
+        "label:10.0",
+        "P:11.0",
+        "mono:11.0",
+        "mono:10.0",
+        "label:9.0"
+      ],
+      "bleed": [
+        "DIV."
+      ],
+      "pageH": 8120
+    },
+    "consoleErrors": [],
+    "ok": true
+  },
+  {
+    "slug": "dzherelo",
+    "url": "https://shelovesmytears1-ship-it.github.io/dzherelo-tea/",
+    "title": "ДЖЕРЕЛО — Колекційний чай прямого імпорту та посуд ручної роботи",
+    "niche": "E-commerce",
+    "htmlLang": "uk",
+    "cyr": 6095,
+    "lat": 98,
+    "plDiacritics": 0,
+    "uaOnly": 449,
+    "langGuess": "ua",
+    "titleLen": 64,
+    "desc": "Преміальний китайський чай та витончений посуд в Україні. Лі",
+    "descLen": 134,
+    "ogImage": true,
+    "ogTitle": true,
+    "viewportMeta": true,
+    "favicon": false,
+    "canonical": false,
+    "h1Count": 1,
+    "h1Text": "Часуповільнитися.",
+    "h1Px": 72,
+    "sections": 9,
+    "hero": {
+      "tag": "DIV.mobile-menu-overlay",
+      "h": 900,
+      "bgColor": "rgb(245, 240, 232)",
+      "bgImage": "none",
+      "hasMedia": false,
+      "flat": true
+    },
+    "imgs": {
+      "total": 10,
+      "noAlt": 1,
+      "lazy": 0,
+      "noDims": 10
+    },
+    "domNodes": 515,
+    "transferKB": 4337,
+    "requests": 9,
+    "mobile": {
+      "docScrollW": 375,
+      "overflowX": false,
+      "smallTargets": 16,
+      "smallSample": [
+        "ДЖЕРЕЛО 110x33",
+        "0 38x38",
+        "BUTTON 24x18",
+        "Колекція чаю 183x39",
+        "Колекція посуду 223x39"
+      ],
+      "tinyText": [
+        "cart-count:10.0",
+        "footer-concept:11.5"
+      ],
+      "bleed": [
+        "DIV.marquee-item",
+        "IMG.teaware-img-cups",
+        "DIV.cart-drawer-header",
+        "H3.",
+        "DIV.cart-drawer-body"
+      ],
+      "pageH": 16453
+    },
+    "consoleErrors": [],
+    "ok": true
+  },
+  {
+    "slug": "essence",
+    "url": "https://shelovesmytears1-ship-it.github.io/essence-skincare/",
+    "title": "Essence — Натуральная косметика для вашей кожи",
+    "niche": "E-commerce",
+    "htmlLang": "ru",
+    "cyr": 2498,
+    "lat": 108,
+    "plDiacritics": 0,
+    "uaOnly": 0,
+    "langGuess": "ru",
+    "titleLen": 46,
+    "desc": "Essence — органическая натуральная косметика. Чистые формулы",
+    "descLen": 103,
+    "ogImage": true,
+    "ogTitle": true,
+    "viewportMeta": true,
+    "favicon": false,
+    "canonical": false,
+    "h1Count": 1,
+    "h1Text": "Кожа, которая сияет изнутри",
+    "h1Px": 64,
+    "sections": 9,
+    "hero": {
+      "tag": "SECTION.hero",
+      "h": 900,
+      "bgColor": "rgba(0, 0, 0, 0)",
+      "bgImage": "none",
+      "hasMedia": true,
+      "flat": false
+    },
+    "imgs": {
+      "total": 10,
+      "noAlt": 0,
+      "lazy": 10,
+      "noDims": 10
+    },
+    "domNodes": 247,
+    "transferKB": 27489,
+    "requests": 9,
+    "mobile": {
+      "docScrollW": 432,
+      "overflowX": false,
+      "smallTargets": 16,
+      "smallSample": [
+        "Essence 98x40",
+        "Каталог 272x26",
+        "О нас 272x26",
+        "Ингредиенты 272x26",
+        "Контакты 272x26"
+      ],
+      "tinyText": [
+        "persona-label:11.2"
+      ],
+      "bleed": [
+        "A.nav-link",
+        "A.btn"
+      ],
+      "pageH": 11758
+    },
+    "consoleErrors": [],
+    "ok": true
+  },
+  {
+    "slug": "freshclean",
+    "url": "https://shelovesmytears1-ship-it.github.io/freshclean-cleaning/",
+    "title": "FreshClean — Profesjonalne sprzątanie w Warszawie | Mieszkania i biura",
+    "niche": "Services",
+    "htmlLang": "pl",
+    "cyr": 0,
+    "lat": 2370,
+    "plDiacritics": 129,
+    "uaOnly": 0,
+    "langGuess": "pl",
+    "titleLen": 70,
+    "desc": "FreshClean — profesjonalny serwis sprzątający w Warszawie. S",
+    "descLen": 132,
+    "ogImage": true,
+    "ogTitle": true,
+    "viewportMeta": true,
+    "favicon": false,
+    "canonical": false,
+    "h1Count": 1,
+    "h1Text": "Czystość, którą poczujesz od pierwszego kroku",
+    "h1Px": 56,
+    "sections": 5,
+    "hero": {
+      "tag": "DIV.mobile-menu",
+      "h": 900,
+      "bgColor": "rgba(255, 255, 255, 0.96)",
+      "bgImage": "none",
+      "hasMedia": false,
+      "flat": true
+    },
+    "imgs": {
+      "total": 5,
+      "noAlt": 0,
+      "lazy": 4,
+      "noDims": 5
+    },
+    "domNodes": 429,
+    "transferKB": 6452,
+    "requests": 8,
+    "mobile": {
+      "docScrollW": 375,
+      "overflowX": false,
+      "smallTargets": 17,
+      "smallSample": [
+        "FreshClean 112x34",
+        "BUTTON 40x40",
+        "INPUT 13x13",
+        "INPUT 13x13",
+        "INPUT 13x13"
+      ],
+      "tinyText": [],
+      "bleed": [],
+      "pageH": 9423
+    },
+    "consoleErrors": [],
+    "ok": true
+  },
+  {
+    "slug": "interspace",
+    "url": "https://shelovesmytears1-ship-it.github.io/interspace-exhibition/",
+    "title": "ПРОСТРАНСТВО — Иммерсивная выставка современного искусства | INTERSPAC",
+    "niche": "Cultural / Event",
+    "htmlLang": "ru",
+    "cyr": 2139,
+    "lat": 239,
+    "plDiacritics": 0,
+    "uaOnly": 0,
+    "langGuess": "ru",
+    "titleLen": 71,
+    "desc": "Иммерсивная выставка современного искусства ПРОСТРАНСТВО / I",
+    "descLen": 160,
+    "ogImage": true,
+    "ogTitle": true,
+    "viewportMeta": true,
+    "favicon": true,
+    "canonical": true,
+    "h1Count": 1,
+    "h1Text": "ПРОСТРАНСТВО",
+    "h1Px": 96,
+    "sections": 8,
+    "hero": {
+      "tag": "DIV.loader",
+      "h": 900,
+      "bgColor": "rgb(26, 26, 26)",
+      "bgImage": "none",
+      "hasMedia": false,
+      "flat": true
+    },
+    "imgs": {
+      "total": 17,
+      "noAlt": 3,
+      "lazy": 17,
+      "noDims": 1
+    },
+    "domNodes": 482,
+    "transferKB": 268,
+    "requests": 5,
+    "mobile": {
+      "docScrollW": 375,
+      "overflowX": false,
+      "smallTargets": 21,
+      "smallSample": [
+        "EN 35x28",
+        "☽ 32x32",
+        "BUTTON 30x26",
+        "Спланировать виз 203x38",
+        "A 31x31"
+      ],
+      "tinyText": [
+        "nav-logo:11.3",
+        "hero-subtitle:8.3",
+        "hero-date:9.8",
+        "countdown-label:6.8",
+        "SPAN:9.0",
+        "section-label:9.8"
+      ],
+      "bleed": [
+        "DIV.marquee-inner",
+        "SPAN.marquee-item",
+        "DIV.parallax-img-wrap",
+        "IMG.parallax-img"
+      ],
+      "pageH": 9411
+    },
+    "consoleErrors": [],
+    "ok": true
+  },
+  {
+    "slug": "modulart",
+    "url": "https://shelovesmytears1-ship-it.github.io/modulart-homes/",
+    "title": "ModulArt — Gotowy dom modułowy w 90 dni | Polska",
+    "niche": "Services",
+    "htmlLang": "pl",
+    "cyr": 0,
+    "lat": 5780,
+    "plDiacritics": 347,
+    "uaOnly": 0,
+    "langGuess": "pl",
+    "titleLen": 48,
+    "desc": "Budujemy domy modułowe pod klucz w 90 dni. Stała cena, indyw",
+    "descLen": 141,
+    "ogImage": true,
+    "ogTitle": true,
+    "viewportMeta": true,
+    "favicon": false,
+    "canonical": false,
+    "h1Count": 1,
+    "h1Text": "Gotowy dom modułowyw 90 dni",
+    "h1Px": 94,
+    "sections": 10,
+    "hero": {
+      "tag": "SECTION.",
+      "h": 947,
+      "bgColor": "rgba(0, 0, 0, 0)",
+      "bgImage": "linear-gradient(rgb(200, 146, 42), rgba(0, 0, 0, 0))",
+      "hasMedia": true,
+      "flat": false
+    },
+    "imgs": {
+      "total": 0,
+      "noAlt": 0,
+      "lazy": 0,
+      "noDims": 0
+    },
+    "domNodes": 461,
+    "transferKB": 14009,
+    "requests": 12,
+    "mobile": {
+      "docScrollW": 375,
+      "overflowX": false,
+      "smallTargets": 20,
+      "smallSample": [
+        "ModulArt 82x20",
+        "Umów konsultację 153x32",
+        "ModulArt 345x23",
+        "+48 600 123 456 98x17",
+        "kontakt@modulart 120x17"
+      ],
+      "tinyText": [
+        "hero-sup:11.2",
+        "SPAN:9.6",
+        "eyebrow:10.4",
+        "problem-number:9.9",
+        "SPAN:11.5",
+        "step-duration:10.9"
+      ],
+      "bleed": [
+        "DIV.hero-bg",
+        "VIDEO.hero-video",
+        "DIV.gallery-item",
+        "DIV.gallery-overlay",
+        "H3."
+      ],
+      "pageH": 15350
+    },
+    "consoleErrors": [],
+    "ok": true
+  },
+  {
+    "slug": "orlov",
+    "url": "https://shelovesmytears1-ship-it.github.io/orlov-funnels/",
+    "title": "Нікіта Орлов — продюсер автоворонок і чат-ботів",
+    "niche": "Services",
+    "htmlLang": "uk",
+    "cyr": 4749,
+    "lat": 600,
+    "plDiacritics": 0,
+    "uaOnly": 403,
+    "langGuess": "ua",
+    "titleLen": 47,
+    "desc": "Будую зв'язку «реклама → бот → прогрів → продаж» для експерт",
+    "descLen": 123,
+    "ogImage": false,
+    "ogTitle": true,
+    "viewportMeta": true,
+    "favicon": true,
+    "canonical": false,
+    "h1Count": 1,
+    "h1Text": "Автоворонки, які окупають трафік за 14 днів.",
+    "h1Px": 72,
+    "sections": 13,
+    "hero": {
+      "tag": "SECTION.hero",
+      "h": 823,
+      "bgColor": "rgba(0, 0, 0, 0)",
+      "bgImage": "none",
+      "hasMedia": false,
+      "flat": true
+    },
+    "imgs": {
+      "total": 0,
+      "noAlt": 0,
+      "lazy": 0,
+      "noDims": 0
+    },
+    "domNodes": 508,
+    "transferKB": 8,
+    "requests": 3,
+    "mobile": {
+      "docScrollW": 375,
+      "overflowX": false,
+      "smallTargets": 7,
+      "smallSample": [
+        "orlov. 78x33",
+        "Як працюю 327x24",
+        "Кейси 327x24",
+        "Тарифи 327x24",
+        "FAQ 327x24"
+      ],
+      "tinyText": [
+        "compare__tag:11.5",
+        "stack__label:11.5",
+        "plan__tag:11.5",
+        "footer__concept:11.2"
+      ],
+      "bleed": [
+        "SPAN."
+      ],
+      "pageH": 16943
+    },
+    "consoleErrors": [],
+    "ok": true
+  },
+  {
+    "slug": "prawnik",
+    "url": "https://shelovesmytears1-ship-it.github.io/prawnik-legal/",
+    "title": "Bezpieczna Rejestracja Firmy w Polsce | Prawnik.Tech",
+    "niche": "Services",
+    "htmlLang": "pl",
+    "cyr": 0,
+    "lat": 3264,
+    "plDiacritics": 148,
+    "uaOnly": 0,
+    "langGuess": "pl",
+    "titleLen": 52,
+    "desc": "Otwieramy firmy bez błędów urzędowych. Kompleksowa rejestrac",
+    "descLen": 116,
+    "ogImage": true,
+    "ogTitle": true,
+    "viewportMeta": true,
+    "favicon": false,
+    "canonical": false,
+    "h1Count": 1,
+    "h1Text": "Twoja firma gotowa do startu. \n                Bez ryzyka i ",
+    "h1Px": 88,
+    "sections": 8,
+    "hero": {
+      "tag": "DIV.fixed",
+      "h": 900,
+      "bgColor": "rgba(0, 0, 0, 0)",
+      "bgImage": "radial-gradient(rgb(237, 237, 237) 1px, rgba(0, 0, 0, 0) 1px",
+      "hasMedia": false,
+      "flat": false
+    },
+    "imgs": {
+      "total": 1,
+      "noAlt": 0,
+      "lazy": 0,
+      "noDims": 1
+    },
+    "domNodes": 335,
+    "transferKB": 416,
+    "requests": 12,
+    "mobile": {
+      "docScrollW": 375,
+      "overflowX": false,
+      "smallTargets": 11,
+      "smallSample": [
+        "Dlaczego my 115x28",
+        "Pakiety 66x28",
+        "Proces 60x28",
+        "Ekspert 68x28",
+        "FAQ 40x28"
+      ],
+      "tinyText": [],
+      "bleed": [
+        "DIV.bg-glow",
+        "DIV.flex",
+        "SPAN."
+      ],
+      "pageH": 8283
+    },
+    "consoleErrors": [],
+    "ok": true
+  },
+  {
+    "slug": "prezfull",
+    "url": "https://shelovesmytears1-ship-it.github.io/prezfull-architecture/",
+    "title": "Prezfull — Architecture & Interior Design Bureau",
+    "niche": "Services",
+    "htmlLang": "en",
+    "cyr": 0,
+    "lat": 6531,
+    "plDiacritics": 0,
+    "uaOnly": 0,
+    "langGuess": "en/other",
+    "titleLen": 48,
+    "desc": "Prezfull — award-winning architecture and interior design bu",
+    "descLen": 138,
+    "ogImage": true,
+    "ogTitle": true,
+    "viewportMeta": true,
+    "favicon": true,
+    "canonical": true,
+    "h1Count": 1,
+    "h1Text": "ArchitectureThat Moves You",
+    "h1Px": 96,
+    "sections": 12,
+    "hero": {
+      "tag": "HEADER.relative",
+      "h": 900,
+      "bgColor": "rgba(0, 0, 0, 0)",
+      "bgImage": "linear-gradient(rgba(26, 29, 32, 0.65), rgba(26, 29, 32, 0.9",
+      "hasMedia": false,
+      "flat": false
+    },
+    "imgs": {
+      "total": 11,
+      "noAlt": 0,
+      "lazy": 11,
+      "noDims": 0
+    },
+    "domNodes": 457,
+    "transferKB": 4817,
+    "requests": 6,
+    "mobile": {
+      "docScrollW": 375,
+      "overflowX": false,
+      "smallTargets": 15,
+      "smallSample": [
+        "Prezfull 129x28",
+        "BUTTON 24x24",
+        "Our Services 182x42",
+        "Start a Project 202x42",
+        "All 73x34"
+      ],
+      "tinyText": [],
+      "bleed": [
+        "DIV.absolute",
+        "P.text-[10rem]"
+      ],
+      "pageH": 15586
+    },
+    "consoleErrors": [],
+    "ok": true
+  },
+  {
+    "slug": "smm",
+    "url": "https://shelovesmytears1-ship-it.github.io/vanguard-smm/",
+    "title": "SMM Vanguard — SMM как точная наука",
+    "niche": "Services",
+    "htmlLang": "ru",
+    "cyr": 4314,
+    "lat": 384,
+    "plDiacritics": 0,
+    "uaOnly": 0,
+    "langGuess": "ru",
+    "titleLen": 35,
+    "desc": "SMM Vanguard — продвижение в соцсетях как точная наука. Конт",
+    "descLen": 173,
+    "ogImage": true,
+    "ogTitle": true,
+    "viewportMeta": true,
+    "favicon": false,
+    "canonical": false,
+    "h1Count": 1,
+    "h1Text": "Архитектура \n          цифрового \n          роста.",
+    "h1Px": 115,
+    "sections": 11,
+    "hero": {
+      "tag": "SECTION.border-b",
+      "h": 765,
+      "bgColor": "rgba(0, 0, 0, 0)",
+      "bgImage": "url(\"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdod",
+      "hasMedia": true,
+      "flat": false
+    },
+    "imgs": {
+      "total": 0,
+      "noAlt": 0,
+      "lazy": 0,
+      "noDims": 0
+    },
+    "domNodes": 448,
+    "transferKB": 3142,
+    "requests": 5,
+    "mobile": {
+      "docScrollW": 375,
+      "overflowX": false,
+      "smallTargets": 2,
+      "smallSample": [
+        "Оставить заявку  164x40",
+        "BUTTON 40x40"
+      ],
+      "tinyText": [],
+      "bleed": [
+        "DIV.animate-marquee",
+        "SPAN.mx-8",
+        "DIV.absolute",
+        "DIV.p-8",
+        "DIV.font-bold"
+      ],
+      "pageH": 14329
+    },
+    "consoleErrors": [],
+    "ok": true
+  },
+  {
+    "slug": "touche",
+    "url": "https://shelovesmytears1-ship-it.github.io/touche-spa/",
+    "title": "Touchè — mobilne SPA z dojazdem | Premium relaks w Twoim domu",
+    "niche": "Services",
+    "htmlLang": "pl",
+    "cyr": 0,
+    "lat": 2043,
+    "plDiacritics": 135,
+    "uaOnly": 0,
+    "langGuess": "pl",
+    "titleLen": 61,
+    "desc": "Touchè Mobile SPA — profesjonalny masaż i rytuały SPA z doja",
+    "descLen": 154,
+    "ogImage": true,
+    "ogTitle": true,
+    "viewportMeta": true,
+    "favicon": false,
+    "canonical": false,
+    "h1Count": 1,
+    "h1Text": "Odkryj sztukę  głębokiego relaksu.",
+    "h1Px": 80,
+    "sections": 6,
+    "hero": {
+      "tag": "SECTION.relative",
+      "h": 810,
+      "bgColor": "rgba(0, 0, 0, 0)",
+      "bgImage": "none",
+      "hasMedia": true,
+      "flat": false
+    },
+    "imgs": {
+      "total": 16,
+      "noAlt": 0,
+      "lazy": 0,
+      "noDims": 16
+    },
+    "domNodes": 219,
+    "transferKB": 4558,
+    "requests": 17,
+    "mobile": {
+      "docScrollW": 375,
+      "overflowX": false,
+      "smallTargets": 4,
+      "smallSample": [
+        "Touchè Spa 102x32",
+        "BUTTON 24x32",
+        "+48 512 760 340 102x19",
+        "kontakt@touche-s 150x19"
+      ],
+      "tinyText": [
+        "absolute:10.0"
+      ],
+      "bleed": [
+        "DIV.marquee-content",
+        "IMG."
+      ],
+      "pageH": 7498
+    },
+    "consoleErrors": [],
+    "ok": true
+  },
+  {
+    "slug": "wavemetrics",
+    "url": "https://shelovesmytears1-ship-it.github.io/wavemetrics-landing/",
+    "title": "Wavemetrics — Предиктивная аналитика для артистов",
+    "niche": "B2B SaaS",
+    "htmlLang": "ru",
+    "cyr": 3528,
+    "lat": 1488,
+    "plDiacritics": 0,
+    "uaOnly": 0,
+    "langGuess": "ru",
+    "titleLen": 49,
+    "desc": "Wavemetrics агрегирует данные Spotify, Apple Music и YouTube",
+    "descLen": 147,
+    "ogImage": true,
+    "ogTitle": true,
+    "viewportMeta": true,
+    "favicon": false,
+    "canonical": false,
+    "h1Count": 1,
+    "h1Text": "Алгоритмы.Не интуиция.",
+    "h1Px": 72,
+    "sections": 11,
+    "hero": {
+      "tag": "SECTION.border-b",
+      "h": 801,
+      "bgColor": "rgba(0, 0, 0, 0)",
+      "bgImage": "none",
+      "hasMedia": true,
+      "flat": false
+    },
+    "imgs": {
+      "total": 0,
+      "noAlt": 0,
+      "lazy": 0,
+      "noDims": 0
+    },
+    "domNodes": 495,
+    "transferKB": 1,
+    "requests": 2,
+    "mobile": {
+      "docScrollW": 392,
+      "overflowX": false,
+      "smallTargets": 7,
+      "smallSample": [
+        "Wavemetrics\n     223x36",
+        "INPUT 327x4",
+        "Платформа 78x20",
+        "Как работает 91x20",
+        "Тарифы 53x20"
+      ],
+      "tinyText": [
+        "ml-2:10.0",
+        "u:11.0",
+        "font-mono:11.0",
+        "text-[10px]:10.0",
+        "text-[11px]:11.0",
+        "mt-3:11.0"
+      ],
+      "bleed": [
+        "SPAN."
+      ],
+      "pageH": 13461
+    },
+    "consoleErrors": [],
+    "ok": true
+  }
+]

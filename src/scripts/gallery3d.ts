@@ -67,6 +67,9 @@ export function initGallery3D(container: HTMLElement, caption: HTMLElement | nul
   const paper  = new THREE.Color(cs.getPropertyValue('--bg').trim() || '#f4f2ec');
   const ink    = new THREE.Color(cs.getPropertyValue('--ink').trim() || '#14141a');
   const accent = new THREE.Color(cs.getPropertyValue('--accent').trim() || '#2b34ff');
+  const theme = document.documentElement.dataset.theme || 'studio';
+  const editorial = theme === 'editorial';
+  const dark = theme === 'dark';
 
   const titleEl = document.getElementById('gallery3d-title');
 
@@ -88,16 +91,34 @@ export function initGallery3D(container: HTMLElement, caption: HTMLElement | nul
 
   const N = items.length;
   const PW = 3.4, PH = 2.125; // 16:10, matching the covers
+  const padX = editorial ? 0.20 : 0.13;
+  const padBottom = editorial ? 0.20 : 0.13;
+  const railH = editorial ? 0.19 : 0.16;
+  const outerW = PW + padX * 2;
+  const outerH = PH + padBottom * 2 + railH;
+  const frameY = (railH - padBottom) * 0.5;
+  const frameColor = dark
+    ? new THREE.Color('#15171b')
+    : editorial
+      ? new THREE.Color('#e4dbca')
+      : new THREE.Color('#faf9f5');
+  const railColor = dark
+    ? new THREE.Color('#202228')
+    : editorial
+      ? new THREE.Color('#d8cbb6')
+      : new THREE.Color('#e8e9f2');
+  const edgeColor = dark ? accent : editorial ? new THREE.Color('#8a4d35') : accent;
 
   const shadowTex = shadowTexture();
-  const frameGeo = new THREE.PlaneGeometry(PW + 0.09, PH + 0.09);
+  const frameGeo = new THREE.PlaneGeometry(outerW, outerH);
+  const viewportGeo = new THREE.PlaneGeometry(PW + 0.025, PH + 0.025);
 
   type Card = {
     group: THREE.Group;
-    frameMat: THREE.MeshBasicMaterial;
     planeMat: THREE.MeshStandardMaterial;
-    edgeMat: THREE.LineBasicMaterial;
     shadowMat: THREE.MeshBasicMaterial;
+    frameLayers: Array<{ mat: THREE.Material & { opacity: number }; base: number }>;
+    accentMat: THREE.LineBasicMaterial;
     lift: number;
     glow: number;
   };
@@ -118,23 +139,70 @@ export function initGallery3D(container: HTMLElement, caption: HTMLElement | nul
     const shadow = new THREE.Mesh(new THREE.PlaneGeometry(PW * 1.45, PH * 1.5), shadowMat);
     shadow.position.set(0, -0.3, -0.08);
 
-    const frameMat = new THREE.MeshBasicMaterial({ color: ink, transparent: true });
+    const frameLayers: Card['frameLayers'] = [];
+    const register = <T extends THREE.Material & { opacity: number }>(mat: T, base: number) => {
+      frameLayers.push({ mat, base });
+      return mat;
+    };
+
+    const frameMat = register(new THREE.MeshBasicMaterial({
+      color: frameColor, transparent: true,
+    }), 1);
     const frame = new THREE.Mesh(frameGeo, frameMat);
-    frame.position.z = -0.002;
+    frame.position.set(0, frameY, -0.012);
 
     const planeMat = new THREE.MeshStandardMaterial({
       map: tex, roughness: 0.7, metalness: 0.04, transparent: true,
     });
     const plane = new THREE.Mesh(new THREE.PlaneGeometry(PW, PH), planeMat);
+    plane.position.z = 0.006;
     plane.userData = { href: it.href, index: i };
 
-    const edgeMat = new THREE.LineBasicMaterial({ color: accent, transparent: true, opacity: 0 });
-    const edge = new THREE.LineSegments(new THREE.EdgesGeometry(frameGeo), edgeMat);
-    edge.position.z = 0.004;
+    const railMat = register(new THREE.MeshBasicMaterial({
+      color: railColor, transparent: true, depthWrite: false,
+    }), dark ? 0.98 : 0.92);
+    const rail = new THREE.Mesh(new THREE.PlaneGeometry(PW, railH), railMat);
+    rail.position.set(0, PH / 2 + railH / 2 + 0.025, 0.004);
 
-    group.add(shadow, frame, plane, edge);
+    const viewportEdgeMat = register(new THREE.LineBasicMaterial({
+      color: dark ? new THREE.Color('#41444c') : ink,
+      transparent: true,
+    }), dark ? 0.82 : editorial ? 0.48 : 0.24);
+    const viewportEdge = new THREE.LineSegments(new THREE.EdgesGeometry(viewportGeo), viewportEdgeMat);
+    viewportEdge.position.z = 0.012;
+
+    const outerEdgeMat = register(new THREE.LineBasicMaterial({
+      color: edgeColor, transparent: true,
+    }), dark ? 0.58 : editorial ? 0.66 : 0.44);
+    const outerEdge = new THREE.LineSegments(new THREE.EdgesGeometry(frameGeo), outerEdgeMat);
+    outerEdge.position.set(0, frameY, 0.002);
+
+    const dotGeo = editorial
+      ? new THREE.PlaneGeometry(0.075, 0.018)
+      : new THREE.CircleGeometry(0.024, 14);
+    const dotStart = -PW / 2 + 0.11;
+    const dotGap = editorial ? 0.12 : 0.075;
+    const dots = new THREE.Group();
+    for (let d = 0; d < 3; d++) {
+      const dotMat = register(new THREE.MeshBasicMaterial({
+        color: d === 0 ? edgeColor : ink,
+        transparent: true,
+        depthWrite: false,
+      }), d === 0 ? 0.9 : dark ? 0.42 : 0.28);
+      const dot = new THREE.Mesh(dotGeo, dotMat);
+      dot.position.set(dotStart + d * dotGap, PH / 2 + railH / 2 + 0.025, 0.012);
+      dots.add(dot);
+    }
+
+    const accentMat = new THREE.LineBasicMaterial({
+      color: accent, transparent: true, opacity: 0,
+    });
+    const accentEdge = new THREE.LineSegments(new THREE.EdgesGeometry(viewportGeo), accentMat);
+    accentEdge.position.z = 0.018;
+
+    group.add(shadow, frame, rail, plane, viewportEdge, outerEdge, dots, accentEdge);
     scene.add(group);
-    cards.push({ group, frameMat, planeMat, edgeMat, shadowMat, lift: 0, glow: 0 });
+    cards.push({ group, planeMat, shadowMat, frameLayers, accentMat, lift: 0, glow: 0 });
     planes.push(plane);
   });
 
@@ -268,11 +336,12 @@ export function initGallery3D(container: HTMLElement, caption: HTMLElement | nul
       c.group.renderOrder = Math.round(20 - abs * 4);
 
       const o = s.opacity;
-      c.frameMat.opacity = o;
       c.planeMat.opacity = o;
       c.planeMat.depthWrite = o > 0.99;
-      c.frameMat.depthWrite = o > 0.99;
-      c.edgeMat.opacity = o * c.glow * 0.95;
+      for (const layer of c.frameLayers) {
+        layer.mat.opacity = o * layer.base;
+      }
+      c.accentMat.opacity = o * (0.18 + c.glow * 0.82);
       // shadow tightens and darkens as the card lifts
       c.shadowMat.opacity = o * (0.5 + c.lift * 0.8);
     }

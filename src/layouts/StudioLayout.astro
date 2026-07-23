@@ -1,22 +1,29 @@
 ---
 import '../styles/studio.css';
+import '../styles/editorial.css';
+import '../styles/dark.css';
 import Curtain from '../components/studio/Curtain.astro';
 import { getNewDirectionCopy } from '../data/newDirectionI18n';
 import type { Lang } from '../i18n/ui';
+
+export type PortfolioVariant = 'studio' | 'editorial' | 'dark';
 
 interface Props {
   title: string;
   description?: string;
   lang?: Lang;
   current?: 'work' | 'method' | 'about' | 'contact';
+  variant?: PortfolioVariant;
 }
 
-const { title, description, lang = 'pl', current } = Astro.props;
+const { title, description, lang = 'pl', current, variant = 'studio' } = Astro.props;
 const c = getNewDirectionCopy(lang);
 const htmlLang = lang === 'ua' ? 'uk' : lang;
+const segment = variant === 'studio' ? '' : `/${variant}`;
 
-const home = lang === 'pl' ? '/' : `/${lang}/`;
-const p = (slug: string) => (lang === 'pl' ? `/${slug}/` : `/${lang}/${slug}/`);
+const root = lang === 'pl' ? segment : `/${lang}${segment}`;
+const home = `${root || ''}/`;
+const p = (slug: string) => `${root}/${slug}/`;
 
 // PL + RU only for now (per decision); infra keeps EN/UA for later.
 // Language switch preserves the current page.
@@ -30,35 +37,52 @@ const locales: { code: Lang; label: string; href: string }[] = [
 const desc = description ?? c.layout.footer;
 const site = 'https://overflow-web.pl';
 const canonical = new URL(Astro.url.pathname, site).href;
+const socialImage = new URL('/og-default.jpg', site).href;
+const themeColor = variant === 'dark' ? '#0e0f12' : variant === 'editorial' ? '#f1ece2' : '#f4f2ec';
+const ogLocale = lang === 'ru' ? 'ru_RU' : 'pl_PL';
 ---
 
 <!doctype html>
-<html lang={htmlLang}>
+<html lang={htmlLang} data-theme={variant}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f4f2ec" />
+    <meta name="theme-color" content={themeColor} />
     <title>{title}</title>
     <meta name="description" content={desc} />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="pl" href={site + '/'} />
-    <link rel="alternate" hreflang="ru" href={site + '/ru/'} />
-    <link rel="alternate" hreflang="x-default" href={site + '/'} />
+    <link rel="alternate" hreflang="pl" href={site + bare} />
+    <link rel="alternate" hreflang="ru" href={site + ruHref} />
+    <link rel="alternate" hreflang="x-default" href={site + bare} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={desc} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="overflow — frontend development for business" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={desc} />
+    <meta name="twitter:image" content={socialImage} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preload" href="/fonts/BricolageGrotesque-Bold.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="preload" href="/fonts/Outfit-Regular.ttf" as="font" type="font/ttf" crossorigin />
+    {variant === 'editorial' && (
+      <>
+        <link rel="preload" href="/fonts/Gloock-Regular.ttf" as="font" type="font/ttf" crossorigin />
+        <link rel="preload" href="/fonts/Newsreader-Variable.ttf" as="font" type="font/ttf" crossorigin />
+      </>
+    )}
     <!-- arm the curtain before first paint so navigations never flash -->
     <script is:inline>document.documentElement.classList.add('curtain-on');</script>
   </head>
-  <body>
+  <body data-theme={variant}>
     <a class="skip" href="#main">{c.layout.skip}</a>
     <Curtain lang={lang} />
-    <div class="cur" aria-hidden="true"><div class="cur-ring"></div><div class="cur-dot"></div></div>
+    <div class="cur" aria-hidden="true"><div class="cur-ring"><span class="cur-label"></span></div></div>
 
     <header class="hdr">
       <div class="wrap nav">
@@ -74,7 +98,7 @@ const canonical = new URL(Astro.url.pathname, site).href;
               <a href={l.href} aria-current={l.code === lang ? 'page' : undefined} data-cursor>{l.label}</a>
             ))}
           </div>
-          <a class="nav-cta" href={p('contact')} aria-current={current === 'contact' ? 'page' : undefined} data-cursor data-tname={c.layout.nav.talk}>{c.layout.nav.talk} ↗</a>
+          <a class="nav-cta" href={p('contact')} aria-current={current === 'contact' ? 'page' : undefined} data-cursor data-tname={c.layout.nav.talk}><span class="btn-text">{c.layout.nav.talk} ↗</span></a>
           <button class="burger" id="burger" type="button" aria-label={c.layout.nav.menu} aria-expanded="false" aria-controls="mnav">
             <span></span><span></span>
           </button>
@@ -92,6 +116,11 @@ const canonical = new URL(Astro.url.pathname, site).href;
         <a href={p('contact')} data-tname={c.layout.nav.talk}><span>04</span>{c.layout.nav.talk}</a>
         <div class="mnav-foot">
           <span data-clock data-label="">—</span>
+          <span class="mnav-lang">
+            {locales.map((l) => (
+              <a href={l.href} aria-current={l.code === lang ? 'page' : undefined}>{l.label}</a>
+            ))}
+          </span>
           <span>Gdańsk · PL</span>
         </div>
       </div>

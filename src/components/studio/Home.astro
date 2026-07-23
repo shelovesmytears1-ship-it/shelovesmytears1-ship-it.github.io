@@ -4,20 +4,28 @@ import { getNewDirectionCopy } from '../../data/newDirectionI18n';
 import { withBase } from '../../i18n/ui';
 import type { Lang } from '../../i18n/ui';
 
-interface Props { lang?: Lang }
-const { lang = 'pl' } = Astro.props;
+interface Props { lang?: Lang; variant?: 'studio' | 'editorial' | 'dark' }
+const { lang = 'pl', variant = 'studio' } = Astro.props;
 const c = getNewDirectionCopy(lang);
 
-const p = (slug: string) => (lang === 'pl' ? `/${slug}/` : `/${lang}/${slug}/`);
+const segment = variant === 'studio' ? '' : `/${variant}`;
+const root = lang === 'pl' ? segment : `/${lang}${segment}`;
+const p = (slug: string) => `${root}/${slug}/`;
 
 const conceptLabel: Record<string, string> = { pl: 'Koncept', ru: 'Концепт', en: 'Concept', ua: 'Концепт' };
 const concept = conceptLabel[lang] ?? 'Concept';
 
 const allCases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
-const cases = allCases.slice(0, 4);
+const pickCases = (slugs: string[]) =>
+  slugs.map((slug) => allCases.find((entry) => entry.slug === slug)).filter(Boolean) as typeof allCases;
+
+// Four different commercial categories and four clearly distinct art directions:
+// product SaaS, cultural experience, premium service and e-commerce.
+const featuredSlugs = ['wavemetrics', 'interspace', 'lunea', 'dzherelo'];
+const cases = pickCases(featuredSlugs);
 
 // Featured set for the 3D coverflow carousel
-const galleryItems = allCases.slice(0, 6).map((project) => ({
+const galleryItems = pickCases([...featuredSlugs, 'prezfull', 'dispersia']).map((project) => ({
   cover: withBase(project.data.cover || ''),
   href:  p(`work/${project.slug}`),
   title: project.data.title,
@@ -43,7 +51,7 @@ const heroWords: W[] = [
   ...c.home.heroTail.split(' ').map((w) => ({ w, a: false })),
 ];
 
-const techStack = ['Astro', 'TypeScript', 'GSAP', c.layout.nav.method, 'SEO', 'performance'];
+const techStack = ['Astro', 'TypeScript', 'Motion system', c.layout.nav.method, 'SEO', 'performance'];
 ---
 
 <!-- HERO — full-bleed section, 3D fills entire viewport -->
@@ -61,8 +69,8 @@ const techStack = ['Astro', 'TypeScript', 'GSAP', c.layout.nav.method, 'SEO', 'p
     </h1>
     <p class="hero-sub" data-reveal>{c.home.heroBody}</p>
     <div class="hero-actions" data-reveal>
-      <a class="btn magnetic" href="#contact" data-cursor>{c.home.heroCta} →</a>
-      <a class="btn btn-ghost" href="#work" data-cursor>{c.home.allWork}</a>
+      <a class="btn magnetic" href="#contact" data-cursor><span class="btn-text">{c.home.heroCta} →</span></a>
+      <a class="btn btn-ghost" href="#work" data-cursor><span class="btn-text">{c.home.allWork}</span></a>
     </div>
     </div>
     <div class="hero-foot">
@@ -107,6 +115,28 @@ const techStack = ['Astro', 'TypeScript', 'GSAP', c.layout.nav.method, 'SEO', 'p
   </div>
   <p class="gallery3d-cap" id="gallery3d-cap" aria-hidden="true"></p>
 
+  <div class="gallery-mobile" role="region" aria-label={c.home.workTitle}>
+    {galleryItems.map((project, i) => (
+      <a
+        class="gallery-mobile-card"
+        href={project.href}
+        aria-label={`${project.title}, ${i + 1} / ${galleryItems.length}`}
+      >
+        <span class="project-frame-chrome" aria-hidden="true">
+          <span class="project-frame-dots"><i></i><i></i><i></i></span>
+          <span class="project-frame-id">{String(i + 1).padStart(2, '0')} / {String(galleryItems.length).padStart(2, '0')}</span>
+        </span>
+        <span class="project-frame-viewport">
+          <img src={project.cover} alt="" loading="lazy" decoding="async" />
+        </span>
+        <span class="project-frame-caption">
+          <strong>{project.title}</strong>
+          <small>{project.niche}</small>
+        </span>
+      </a>
+    ))}
+  </div>
+
   <div class="work-list">
     {cases.map((project, i) => (
       <a
@@ -117,6 +147,10 @@ const techStack = ['Astro', 'TypeScript', 'GSAP', c.layout.nav.method, 'SEO', 'p
         data-view={view}
         data-preview={withBase(project.data.cover || '')}
       >
+        <span class="work-row-thumb" aria-hidden="true">
+          <span class="work-row-thumb-bar"><i></i><i></i><i></i></span>
+          <img src={withBase(project.data.cover || '')} alt="" loading="lazy" decoding="async" />
+        </span>
         <span class="work-no">{String(i + 1).padStart(2, '0')}</span>
         <div>
           <div class="work-name">{project.data.title}</div>
@@ -159,7 +193,7 @@ const techStack = ['Astro', 'TypeScript', 'GSAP', c.layout.nav.method, 'SEO', 'p
   <h2 data-reveal style="margin-top:1rem">{c.home.contactTitle} <em>{c.home.contactAccent}</em></h2>
   <p class="contact-sub" data-reveal>{c.home.contactBody}</p>
   <div class="contact-row" data-reveal>
-    <a class="btn magnetic" href="https://t.me/zzxvaracaa" target="_blank" rel="noopener" data-cursor>{c.home.contactCta} →</a>
+    <a class="btn magnetic" href="https://t.me/zzxvaracaa" target="_blank" rel="noopener" data-cursor><span class="btn-text">{c.home.contactCta} →</span></a>
     <a href="mailto:overflow.web1@gmail.com" data-cursor>overflow.web1@gmail.com</a>
   </div>
 </section>

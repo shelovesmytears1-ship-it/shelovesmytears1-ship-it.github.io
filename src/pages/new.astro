@@ -109,11 +109,11 @@ const projectSummary = (project: (typeof projects)[number]) => {
                 <picture>
                   <source
                     type="image/webp"
-                    srcset={`${withBase(project.data.cover.replace(/^\/covers\/(.+)\.jpe?g$/i, '/covers/4k/$1.webp'))} 3840w, ${withBase(project.data.cover.replace(/\.jpe?g$/i, '.webp'))} 1280w`}
+                    srcset={`${withBase((project.data.cover || '').replace(/^\/covers\/(.+)\.jpe?g$/i, '/covers/4k/$1.webp'))} 3840w, ${withBase((project.data.cover || '').replace(/\.jpe?g$/i, '.webp'))} 1280w`}
                     sizes="(min-width: 921px) 320px, 42vw"
                   />
                   <img
-                    src={withBase(project.data.cover)}
+                    src={withBase(project.data.cover || '')}
                     alt=""
                     width="1280"
                     height="800"

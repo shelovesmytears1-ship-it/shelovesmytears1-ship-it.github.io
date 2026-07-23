@@ -1,0 +1,12 @@
+
+> overflow-portfolio-v3@3.0.0 dev
+> astro dev --host 127.0.0.1
+
+06:10:57 [types] Generated 1ms
+06:10:57 [vite] Re-optimizing dependencies because vite config has changed
+
+ astro  v4.16.19 ready in 142 ms
+
+┃ Local    http://127.0.0.1:4321/
+
+06:10:58 watching for file changes...

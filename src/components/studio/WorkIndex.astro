@@ -4,10 +4,12 @@ import { getNewDirectionCopy } from '../../data/newDirectionI18n';
 import { withBase } from '../../i18n/ui';
 import type { Lang } from '../../i18n/ui';
 
-interface Props { lang?: Lang }
-const { lang = 'pl' } = Astro.props;
+interface Props { lang?: Lang; variant?: 'studio' | 'editorial' | 'dark' }
+const { lang = 'pl', variant = 'studio' } = Astro.props;
 const c = getNewDirectionCopy(lang);
-const p = (slug: string) => (lang === 'pl' ? `/${slug}/` : `/${lang}/${slug}/`);
+const segment = variant === 'studio' ? '' : `/${variant}`;
+const root = lang === 'pl' ? segment : `/${lang}${segment}`;
+const p = (slug: string) => `${root}/${slug}/`;
 
 const conceptLabel: Record<string, string> = { pl: 'Koncept', ru: 'Концепт', en: 'Concept', ua: 'Концепт' };
 const concept = conceptLabel[lang] ?? 'Concept';
