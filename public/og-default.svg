@@ -1,61 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Editable source for og-default.jpg. Studio (production) palette:
+     bg #f4f2ec · ink #14141a · accent #2b34ff. The shipped social image is
+     the rasterised .jpg (fonts baked in); this vector mirrors its layout. -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
-  <!-- Background: Light Editorial Cream palette -->
-  <rect width="1200" height="630" fill="#FAFAF6"/>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4f2ec"/>
+      <stop offset="1" stop-color="#efece3"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.875" cy="0.33" r="0.55">
+      <stop offset="0" stop-color="#2b34ff" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#2b34ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
 
-  <!-- Subtle warm grain at edges -->
-  <rect x="0"    y="0" width="40"   height="630" fill="#F1EDE3"/>
-  <rect x="1160" y="0" width="40"   height="630" fill="#F1EDE3"/>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="0" y="0" width="8" height="630" fill="#2b34ff"/>
 
-  <!-- Eyebrow (mono, accent) -->
-  <text x="80" y="120"
-        font-family="ui-monospace, 'JetBrains Mono', monospace"
-        font-size="22"
-        font-weight="500"
-        letter-spacing="3"
-        fill="#B25814">
-    STUDIO OF ONE · WEB DEVELOPMENT
+  <!-- Eyebrow (mono, tracked) -->
+  <text x="88" y="128"
+        font-family="'DM Mono', ui-monospace, monospace"
+        font-size="22" font-weight="400" letter-spacing="4" fill="#6f6f6b">
+    NIEZALEŻNY FRONTEND DEVELOPER
   </text>
 
-  <!-- Wordmark (display serif) -->
-  <text x="80" y="260"
-        font-family="'Instrument Serif', Georgia, serif"
-        font-size="120"
-        font-weight="400"
-        letter-spacing="-3"
-        fill="#1A140E">
-    overflow<tspan fill="#B25814">⁄</tspan>
+  <!-- Wordmark (grotesque display) + accent fraction slash -->
+  <text x="86" y="268"
+        font-family="'Bricolage Grotesque', system-ui, sans-serif"
+        font-size="118" font-weight="700" letter-spacing="-5" fill="#14141a">
+    overflow<tspan fill="#2b34ff">⁄</tspan>
   </text>
 
-  <!-- Hairline divider -->
-  <line x1="80" y1="320" x2="500" y2="320" stroke="#DDD3C1" stroke-width="1"/>
+  <line x1="88" y1="316.5" x2="560" y2="316.5" stroke="#14141a" stroke-opacity="0.14" stroke-width="1"/>
 
-  <!-- Tagline (display serif) -->
-  <text x="80" y="400"
-        font-family="'Instrument Serif', Georgia, serif"
-        font-size="56"
-        font-weight="400"
-        letter-spacing="-1"
-        fill="#1A140E">
-    I build websites
+  <!-- Tagline (two lines; accent phrase in blue) -->
+  <text x="88" y="408"
+        font-family="'Bricolage Grotesque', system-ui, sans-serif"
+        font-size="62" font-weight="700" letter-spacing="-2" fill="#14141a">
+    Projektuję i tworzę strony,
   </text>
-  <text x="80" y="465"
-        font-family="'Instrument Serif', Georgia, serif"
-        font-size="56"
-        font-style="italic"
-        font-weight="400"
-        letter-spacing="-1"
-        fill="#B25814">
-    for business goals.
+  <text x="88" y="480"
+        font-family="'Bricolage Grotesque', system-ui, sans-serif"
+        font-size="62" font-weight="700" letter-spacing="-2">
+    <tspan fill="#2b34ff">które pracują</tspan><tspan fill="#14141a"> na markę.</tspan>
   </text>
 
-  <!-- Footer line (mono, muted) -->
-  <text x="80" y="570"
-        font-family="ui-monospace, 'JetBrains Mono', monospace"
-        font-size="18"
-        font-weight="500"
-        letter-spacing="2"
-        fill="#7A6E5C">
-    9 CONCEPT PROJECTS · METHOD-DOCUMENTED · OVERFLOW-WEB.PL
+  <!-- Footer (mono) -->
+  <text x="88" y="582"
+        font-family="'DM Mono', ui-monospace, monospace"
+        font-size="18" font-weight="400" letter-spacing="2" fill="#6f6f6b">
+    OVERFLOW-WEB.PL
+  </text>
+  <text x="1112" y="582" text-anchor="end"
+        font-family="'DM Mono', ui-monospace, monospace"
+        font-size="18" font-weight="400" letter-spacing="2" fill="#2b34ff">
+    PL · RU · EN · UA
   </text>
 </svg>
