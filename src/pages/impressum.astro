@@ -1,0 +1,70 @@
+---
+import StudioLayout from '../layouts/StudioLayout.astro';
+---
+<StudioLayout title="Impressum — overflow" description="Legal information for overflow-web.pl" lang="en">
+  <section class="wrap legal-page">
+    <h1>Impressum</h1>
+    <p class="legal-meta">Legal information in accordance with European transparency requirements</p>
+
+    <h2>Service Provider</h2>
+    <p>
+      <strong>Daniil Menshov</strong><br />
+      Operating under: <strong>overflow</strong><br />
+      Independent Frontend Developer<br />
+      Gdańsk, Poland
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Email: <a href="mailto:overflow.web1@gmail.com">overflow.web1@gmail.com</a><br />
+      Telegram: <a href="https://t.me/zzxvaracaa" target="_blank" rel="noopener">@zzxvaracaa</a>
+    </p>
+
+    <h2>Disclaimer</h2>
+    <p>The content of this website has been created with the greatest possible care and to the best of my knowledge. However, I cannot guarantee the accuracy, completeness, and timeliness of the content. As a service provider, I am responsible for my own content on this website in accordance with general law.</p>
+
+    <h2>Copyright</h2>
+    <p>The design, code, and content published on this website are protected by copyright. Any use, reproduction, or distribution not expressly permitted by copyright law requires prior written consent from Daniil Menshov.</p>
+
+    <h2>Dispute Resolution</h2>
+    <p>The European Commission provides an <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">Online Dispute Resolution (ODR) platform</a>. I am not obligated to participate in dispute resolution proceedings before a consumer arbitration board and do not voluntarily do so.</p>
+  </section>
+</StudioLayout>
+
+<style>
+  .legal-page {
+    padding: 10rem 0 6rem;
+    max-width: 72ch;
+  }
+  .legal-page h1 {
+    font-family: var(--disp), sans-serif;
+    font-weight: var(--disp-w);
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    letter-spacing: var(--disp-ls);
+    margin-bottom: 0.5rem;
+  }
+  .legal-meta {
+    color: var(--muted);
+    font-family: var(--mono), monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+  }
+  .legal-page h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 0.7rem;
+  }
+  .legal-page p, .legal-page li {
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 1rem;
+  }
+  .legal-page a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

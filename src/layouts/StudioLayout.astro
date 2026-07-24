@@ -46,14 +46,23 @@ const canonical = new URL(Astro.url.pathname, site).href;
 const socialImage = new URL('/og-default.jpg', site).href;
 const themeColor = variant === 'dark' ? '#0e0f12' : variant === 'editorial' ? '#f1ece2' : '#f4f2ec';
 const ogLocale = lang === 'ru' ? 'ru_RU' : 'pl_PL';
+const adaptiveTheme = variant === 'studio';
+const themeLabels: Record<Lang, { dark: string; light: string }> = {
+  pl: { dark: 'Włącz tryb ciemny', light: 'Włącz tryb jasny' },
+  ru: { dark: 'Включить тёмную тему', light: 'Включить светлую тему' },
+  en: { dark: 'Switch to dark mode', light: 'Switch to light mode' },
+  ua: { dark: 'Увімкнути темну тему', light: 'Увімкнути світлу тему' },
+};
+const themeLabel = themeLabels[lang];
 ---
 
 <!doctype html>
-<html lang={htmlLang} data-theme={variant}>
+<html lang={htmlLang} data-theme={variant} data-theme-adaptive={adaptiveTheme ? 'true' : 'false'}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content={themeColor} />
+    <meta name="color-scheme" content={adaptiveTheme ? 'light dark' : variant === 'dark' ? 'dark' : 'light'} />
     <title>{title}</title>
     <meta name="description" content={desc} />
     <link rel="canonical" href={canonical} />
@@ -103,16 +112,41 @@ const ogLocale = lang === 'ru' ? 'ru_RU' : 'pl_PL';
       </>
     )}
     <!-- arm the curtain before first paint so navigations never flash -->
-    <script is:inline>document.documentElement.classList.add('curtain-on');</script>
+    <script is:inline define:vars={{ adaptiveTheme }}>
+      document.documentElement.classList.add('curtain-on');
+      if (adaptiveTheme) {
+        let savedTheme = null;
+        try {
+          savedTheme = localStorage.getItem('overflow-theme');
+        } catch {}
+        const resolvedTheme =
+          savedTheme === 'studio-dark' || savedTheme === 'dark'
+            ? 'studio-dark'
+            : savedTheme === 'studio'
+              ? 'studio'
+              : matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'studio-dark'
+                : 'studio';
+        document.documentElement.dataset.theme = resolvedTheme;
+        document.documentElement.style.colorScheme = resolvedTheme === 'studio-dark' ? 'dark' : 'light';
+      }
+    </script>
   </head>
   <body data-theme={variant}>
+    {adaptiveTheme && (
+      <script is:inline>
+        document.body.dataset.theme = document.documentElement.dataset.theme || 'studio';
+      </script>
+    )}
     <a class="skip" href="#main">{c.layout.skip}</a>
     <Curtain lang={lang} />
     <div class="cur" aria-hidden="true"><div class="cur-ring"><span class="cur-label"></span></div></div>
 
     <header class="hdr">
       <div class="wrap nav">
-        <a class="brand" href={home} aria-label="overflow" data-tname="overflow">overflow<i>.</i></a>
+        <a class="brand" href={home} aria-label="overflow" data-tname="overflow">
+          <img src="/logo.png" alt="overflow" class="logo-img" width="142" height="30" decoding="async" />
+        </a>
         <nav class="nav-links" aria-label={c.layout.mainNavigation}>
           <a href={p('work')} aria-current={current === 'work' ? 'page' : undefined} data-cursor data-tname={c.layout.nav.work}>{c.layout.nav.work}</a>
           <a href={p('method')} aria-current={current === 'method' ? 'page' : undefined} data-cursor data-tname={c.layout.nav.method}>{c.layout.nav.method}</a>
@@ -124,7 +158,28 @@ const ogLocale = lang === 'ru' ? 'ru_RU' : 'pl_PL';
               <a href={l.href} aria-current={l.code === lang ? 'page' : undefined} data-cursor>{l.label}</a>
             ))}
           </div>
-          <a class="nav-cta" href={p('contact')} aria-current={current === 'contact' ? 'page' : undefined} data-cursor data-tname={c.layout.nav.talk}><span class="btn-text">{c.layout.nav.talk} ↗</span></a>
+          {adaptiveTheme && (
+            <button
+              class="theme-toggle theme-toggle--desktop"
+              type="button"
+              data-theme-toggle
+              data-cursor
+              data-label-dark={themeLabel.dark}
+              data-label-light={themeLabel.light}
+              aria-label={themeLabel.dark}
+              aria-pressed="false"
+              title={themeLabel.dark}
+            >
+              <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.2 15.4A8.4 8.4 0 0 1 8.6 3.8 8.4 8.4 0 1 0 20.2 15.4Z"></path>
+              </svg>
+              <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="3.5"></circle>
+                <path d="M12 2v2.2M12 19.8V22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2 12h2.2M19.8 12H22M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"></path>
+              </svg>
+            </button>
+          )}
+          <a class="nav-cta" href={p('contact')} aria-current={current === 'contact' ? 'page' : undefined} data-cursor data-tname={c.layout.nav.talk}><span class="btn-text">{c.layout.nav.talk} ↗&#xFE0E;</span></a>
           <button class="burger" id="burger" type="button" aria-label={c.layout.nav.menu} aria-expanded="false" aria-controls="mnav">
             <span></span><span></span>
           </button>
@@ -140,6 +195,29 @@ const ogLocale = lang === 'ru' ? 'ru_RU' : 'pl_PL';
         <a href={p('method')} data-tname={c.layout.nav.method}><span>02</span>{c.layout.nav.method}</a>
         <a href={p('about')} data-tname={c.layout.nav.about}><span>03</span>{c.layout.nav.about}</a>
         <a href={p('contact')} data-tname={c.layout.nav.talk}><span>04</span>{c.layout.nav.talk}</a>
+        {adaptiveTheme && (
+          <div class="mnav-theme-row">
+            <button
+              class="theme-toggle theme-toggle--mobile"
+              type="button"
+              data-theme-toggle
+              data-cursor
+              data-label-dark={themeLabel.dark}
+              data-label-light={themeLabel.light}
+              aria-label={themeLabel.dark}
+              aria-pressed="false"
+            >
+              <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.2 15.4A8.4 8.4 0 0 1 8.6 3.8 8.4 8.4 0 1 0 20.2 15.4Z"></path>
+              </svg>
+              <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="3.5"></circle>
+                <path d="M12 2v2.2M12 19.8V22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2 12h2.2M19.8 12H22M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"></path>
+              </svg>
+              <span data-theme-label>{themeLabel.dark}</span>
+            </button>
+          </div>
+        )}
         <div class="mnav-foot">
           <span data-clock data-label="">—</span>
           <span class="mnav-lang">
@@ -160,11 +238,16 @@ const ogLocale = lang === 'ru' ? 'ru_RU' : 'pl_PL';
       <span>© 2026 overflow — Gdańsk</span>
       <span id="clock" data-clock data-label="Local time">Local time —</span>
       <span>{c.layout.footer}</span>
+      <span class="ftr-legal">
+        <a href="/privacy/">Privacy Policy</a>
+        <a href="/impressum/">Impressum</a>
+      </span>
     </footer>
 
     <script>
       import '../scripts/curtain.ts';
       import '../scripts/studio.ts';
+      import '../scripts/theme.ts';
     </script>
   </body>
 </html>

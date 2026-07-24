@@ -173,7 +173,7 @@ if (vids.length) {
    the page curtain is still covering the document. The CSS fallback remains
    visible until hero3d has rendered its first frame. */
 const hero3d = document.getElementById('hero3d');
-if (hero3d && !reduce && matchMedia('(min-width: 821px)').matches) {
+if (hero3d && !reduce) {
   import('./hero3d').then((m) => m.initHero3D(hero3d)).catch(() => {});
 }
 

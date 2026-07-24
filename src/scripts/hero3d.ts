@@ -20,6 +20,8 @@ export function initHero3D(container: HTMLElement): void {
   const variant = document.documentElement.dataset.theme || 'studio';
   const isEditorial = variant === 'editorial';
   const isDark = variant === 'dark';
+  const isStudioDark = variant === 'studio-dark';
+  const isDarkSurface = isDark || isStudioDark;
   const cs = getComputedStyle(container);
   const accentHex = cs.getPropertyValue('--accent').trim() || '#2b34ff';
   const paperHex = cs.getPropertyValue('--bg').trim() || '#f4f2ec';
@@ -44,8 +46,8 @@ export function initHero3D(container: HTMLElement): void {
       uTime: { value: 0 },
       uAccent: { value: new THREE.Vector3(accent.r, accent.g, accent.b) },
       uPaper: { value: new THREE.Vector3(paper.r, paper.g, paper.b) },
-      uStrength: { value: isDark ? 0.15 : isEditorial ? 0.11 : 0.14 },
-      uDark: { value: isDark ? 1 : 0 },
+      uStrength: { value: isDarkSurface ? 0.15 : isEditorial ? 0.11 : 0.14 },
+      uDark: { value: isDarkSurface ? 1 : 0 },
     },
     vertexShader: `varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position, 1.0); }`,
     fragmentShader: `
@@ -138,7 +140,7 @@ export function initHero3D(container: HTMLElement): void {
   } else {
     const geometry = new THREE.IcosahedronGeometry(1.25, 1);
     const material = new THREE.MeshStandardMaterial({
-      color: new THREE.Color('#1b1b24'),
+      color: new THREE.Color(isStudioDark ? '#1b1e30' : '#1b1b24'),
       metalness: 0.28,
       roughness: 0.42,
       flatShading: true,
@@ -152,9 +154,43 @@ export function initHero3D(container: HTMLElement): void {
   }
   scene.add(heroObject);
 
-  scene.add(new THREE.AmbientLight(0xffffff, isDark ? 0.34 : 0.55));
-  const key = new THREE.DirectionalLight(0xffffff, isDark ? 1.5 : 1.15); key.position.set(-3, 4, 5); scene.add(key);
-  const rim = new THREE.PointLight(accent, isDark ? 4.2 : 2.4, 20); rim.position.set(3.5, -2, 2); scene.add(rim);
+  const ambient = new THREE.AmbientLight(0xffffff, isDarkSurface ? 0.34 : 0.55);
+  scene.add(ambient);
+  const key = new THREE.DirectionalLight(0xffffff, isDarkSurface ? 1.5 : 1.15); key.position.set(-3, 4, 5); scene.add(key);
+  const rim = new THREE.PointLight(accent, isDarkSurface ? 4.2 : 2.4, 20); rim.position.set(3.5, -2, 2); scene.add(rim);
+
+  const applyVisualTheme = () => {
+    if (document.documentElement.dataset.theme === 'editorial') return;
+
+    const style = getComputedStyle(container);
+    const nextAccent = new THREE.Color(style.getPropertyValue('--accent').trim() || '#2b34ff');
+    const nextPaper = new THREE.Color(style.getPropertyValue('--bg').trim() || '#f4f2ec');
+    const nextTheme = document.documentElement.dataset.theme;
+    const nextDark = nextTheme === 'dark' || nextTheme === 'studio-dark';
+
+    bgMat.uniforms.uAccent.value.set(nextAccent.r, nextAccent.g, nextAccent.b);
+    bgMat.uniforms.uPaper.value.set(nextPaper.r, nextPaper.g, nextPaper.b);
+    bgMat.uniforms.uStrength.value = nextDark ? 0.15 : 0.14;
+    bgMat.uniforms.uDark.value = nextDark ? 1 : 0;
+
+    heroObject.traverse((object) => {
+      const material = (object as THREE.Mesh).material;
+      if (material instanceof THREE.LineBasicMaterial || material instanceof THREE.PointsMaterial) {
+        material.color.copy(nextAccent);
+      } else if (material instanceof THREE.MeshPhysicalMaterial) {
+        material.emissive.copy(nextAccent);
+      } else if (material instanceof THREE.MeshStandardMaterial) {
+        material.color.set(nextDark ? '#1b1e30' : '#1b1b24');
+      }
+    });
+
+    ambient.intensity = nextDark ? 0.34 : 0.55;
+    key.intensity = nextDark ? 1.5 : 1.15;
+    rim.color.copy(nextAccent);
+    rim.intensity = nextDark ? 4.2 : 2.4;
+    renderer.render(scene, camera);
+  };
+  window.addEventListener('overflow:theme-change', applyVisualTheme);
 
   // Measure the complete composition, including the outer dark-theme
   // particles. The previous hand-written radius ignored them, which let the
@@ -171,6 +207,8 @@ export function initHero3D(container: HTMLElement): void {
   };
   heroObject.rotation.set(baseRotation.x, baseRotation.y, baseRotation.z);
 
+  let baseY = 0;
+
   const resize = () => {
     const { clientWidth: w, clientHeight: h } = container;
     if (!w || !h) return;
@@ -180,14 +218,23 @@ export function initHero3D(container: HTMLElement): void {
     const halfW = halfH * camera.aspect;
     const safeRadius = Math.max(0.001, objectRadius);
     const scale = Math.min(1, (halfH * 0.84) / safeRadius);
-    heroObject.scale.setScalar(scale);
 
-    // Keep a real gutter around the complete rotating composition. Wide
-    // screens place it to the right; tighter canvases pull it toward center.
-    const scaledRadius = safeRadius * scale;
-    const maxX = Math.max(0, halfW - scaledRadius - 0.18);
-    const desiredX = halfW * (isEditorial ? 0.42 : 0.46);
-    heroObject.position.x = Math.min(desiredX, maxX);
+    const isMobile = window.innerWidth <= 820;
+    if (isMobile) {
+      // On mobile, scale down slightly and push halfway off-screen
+      heroObject.scale.setScalar(scale * 0.85);
+      heroObject.position.x = halfW * 0.8;
+      baseY = -halfH * 0.1; // push slightly down
+    } else {
+      heroObject.scale.setScalar(scale);
+      // Keep a real gutter around the complete rotating composition. Wide
+      // screens place it to the right; tighter canvases pull it toward center.
+      const scaledRadius = safeRadius * scale;
+      const maxX = Math.max(0, halfW - scaledRadius - 0.18);
+      const desiredX = halfW * (isEditorial ? 0.42 : 0.46);
+      heroObject.position.x = Math.min(desiredX, maxX);
+      baseY = 0; // reset
+    }
   };
   resize();
   renderer.render(scene, camera);
@@ -223,7 +270,9 @@ export function initHero3D(container: HTMLElement): void {
       heroObject.rotation.y = baseRotation.y + Math.sin(elapsed * 0.22) * 0.2 + px * 0.07;
       heroObject.rotation.x = baseRotation.x + Math.sin(elapsed * 0.17) * 0.065 - py * 0.045;
       heroObject.rotation.z = baseRotation.z + Math.sin(elapsed * 0.13) * 0.035 + px * 0.035;
-      heroObject.position.y = -py * 0.1;
+      heroObject.position.y = baseY - py * 0.1;
+    } else {
+      heroObject.position.y = baseY;
     }
     renderer.render(scene, camera);
     if (onScreen && !document.hidden && motionAllowed) tick();

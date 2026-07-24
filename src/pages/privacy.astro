@@ -1,0 +1,83 @@
+---
+import StudioLayout from '../layouts/StudioLayout.astro';
+---
+<StudioLayout title="Privacy Policy — overflow" description="Privacy Policy for overflow-web.pl" lang="en">
+  <section class="wrap legal-page">
+    <h1>Privacy Policy</h1>
+    <p class="legal-meta">Last Updated: July 2026</p>
+
+    <p>This Privacy Policy explains how your personal information is collected, used, and protected when you visit <strong>overflow-web.pl</strong>.</p>
+    <p>As a freelance frontend developer based in the EU (Gdańsk, Poland), I am committed to protecting your privacy and fully complying with the General Data Protection Regulation (GDPR).</p>
+
+    <h2>1. Data Collection and Usage</h2>
+    <p>This is a static portfolio website designed to be privacy-friendly by default.</p>
+    <ul>
+      <li><strong>No Analytics:</strong> I do not use Google Analytics, Meta Pixels, or any hidden third-party tracking scripts to monitor your behavior on this site.</li>
+      <li><strong>No Forms or Databases:</strong> There are no contact forms, newsletters, or user accounts on this site.</li>
+    </ul>
+
+    <h2>2. Cookies and Local Storage</h2>
+    <p>This website does not use any tracking cookies. It solely uses your browser's <strong>Local Storage</strong> to remember your explicit UI preference:</p>
+    <ul>
+      <li><code>overflow-theme</code> — Remembers whether you selected Light or Dark mode. This data never leaves your browser and is not accessible to me or any third party.</li>
+    </ul>
+
+    <h2>3. Contacting Me</h2>
+    <p>If you choose to contact me via the provided email (<a href="mailto:overflow.web1@gmail.com">overflow.web1@gmail.com</a>) or Telegram (<a href="https://t.me/zzxvaracaa" target="_blank" rel="noopener">@zzxvaracaa</a>), the personal data you voluntarily provide (e.g., your name, email address, message content) will be used solely for the purpose of communicating with you and answering your inquiry. I will not share your data with third parties without your explicit consent.</p>
+
+    <h2>4. Server Logs</h2>
+    <p>My hosting provider may automatically collect standard server access logs for security and performance monitoring. These logs may temporarily contain your IP address, browser type, and timestamp of your visit. This data is processed based on legitimate interest (Art. 6(1)(f) GDPR) and cannot be used to personally identify you.</p>
+
+    <h2>5. Your Rights</h2>
+    <p>Under the GDPR, you have the right to request access to, correction, or deletion of any personal data I might hold. To exercise these rights, email me at <a href="mailto:overflow.web1@gmail.com">overflow.web1@gmail.com</a>.</p>
+  </section>
+</StudioLayout>
+
+<style>
+  .legal-page {
+    padding: 10rem 0 6rem;
+    max-width: 72ch;
+  }
+  .legal-page h1 {
+    font-family: var(--disp), sans-serif;
+    font-weight: var(--disp-w);
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    letter-spacing: var(--disp-ls);
+    margin-bottom: 0.5rem;
+  }
+  .legal-meta {
+    color: var(--muted);
+    font-family: var(--mono), monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+  }
+  .legal-page h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 0.7rem;
+  }
+  .legal-page p, .legal-page li {
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 1rem;
+  }
+  .legal-page ul {
+    padding-left: 1.4rem;
+    margin: 0.6rem 0 1rem;
+  }
+  .legal-page a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .legal-page code {
+    font-family: var(--mono), monospace;
+    font-size: 0.88em;
+    background: var(--line);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+  }
+</style>
