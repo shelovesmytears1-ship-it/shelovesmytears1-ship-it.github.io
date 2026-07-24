@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import CaseStudyPage from '../../../components/pages/CaseStudyPage.astro';
+import StudioLayout from '../../../layouts/StudioLayout.astro';
+import CaseStudy from '../../../components/studio/CaseStudy.astro';
 
 export async function getStaticPaths() {
   const cases = await getCollection('cases');
@@ -15,11 +15,6 @@ const { entry } = Astro.props;
 const lang = 'ua' as const;
 const d = entry.data;
 ---
-<BaseLayout
-  title={`${d.title} — overflow`}
-  description={d.summary}
-  ogImage={d.cover}
-  lang={lang}
->
-  <CaseStudyPage lang={lang} entry={entry} />
-</BaseLayout>
+<StudioLayout title={`${d.title} — overflow`} description={d.summary} lang={lang} current="work">
+  <CaseStudy lang={lang} entry={entry} />
+</StudioLayout>

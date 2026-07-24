@@ -1,15 +1,11 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import HomePage from '../../components/pages/HomePage.astro';
-import { useT } from '../../i18n/ui';
+import StudioLayout from '../../layouts/StudioLayout.astro';
+import Home from '../../components/studio/Home.astro';
+import { getNewDirectionCopy } from '../../data/newDirectionI18n';
 
 const lang = 'en' as const;
-const t = useT(lang);
+const c = getNewDirectionCopy(lang);
 ---
-<BaseLayout
-  title={t('seo.home.title')}
-  description={t('hero.sub')}
-  lang={lang}
->
-  <HomePage lang={lang} />
-</BaseLayout>
+<StudioLayout title={`overflow — ${c.layout.footer}`} description={c.home.heroBody} lang={lang}>
+  <Home lang={lang} />
+</StudioLayout>

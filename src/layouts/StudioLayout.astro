@@ -26,13 +26,18 @@ const root = lang === 'pl' ? segment : `/${lang}${segment}`;
 const home = `${root || ''}/`;
 const p = (slug: string) => `${root}/${slug}/`;
 
-// PL + RU only for now (per decision); infra keeps EN/UA for later.
-// Language switch preserves the current page.
-const bare = Astro.url.pathname.replace(/^\/ru(?=\/|$)/, '') || '/';
-const ruHref = bare === '/' ? '/ru/' : `/ru${bare}`;
+// Every direction is available in PL, RU, EN and UA. Keep the visitor on
+// the equivalent page when they switch language, including a case study.
+const bare = Astro.url.pathname.replace(/^\/(en|ru|ua)(?=\/|$)/, '') || '/';
+const localizedHref = (code: Lang) => {
+  if (code === 'pl') return bare;
+  return bare === '/' ? `/${code}/` : `/${code}${bare}`;
+};
 const locales: { code: Lang; label: string; href: string }[] = [
-  { code: 'pl', label: 'PL', href: bare },
-  { code: 'ru', label: 'RU', href: ruHref },
+  { code: 'pl', label: 'PL', href: localizedHref('pl') },
+  { code: 'ru', label: 'RU', href: localizedHref('ru') },
+  { code: 'en', label: 'EN', href: localizedHref('en') },
+  { code: 'ua', label: 'UA', href: localizedHref('ua') },
 ];
 
 const desc = description ?? c.layout.footer;
@@ -52,9 +57,10 @@ const ogLocale = lang === 'ru' ? 'ru_RU' : 'pl_PL';
     <title>{title}</title>
     <meta name="description" content={desc} />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="pl" href={site + bare} />
-    <link rel="alternate" hreflang="ru" href={site + ruHref} />
-    <link rel="alternate" hreflang="x-default" href={site + bare} />
+    {locales.map((locale) => (
+      <link rel="alternate" hreflang={locale.code === 'ua' ? 'uk' : locale.code} href={site + locale.href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={site + localizedHref('pl')} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={desc} />

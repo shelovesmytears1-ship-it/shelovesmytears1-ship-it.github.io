@@ -1,11 +1,11 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import ContactPage from '../../components/pages/ContactPage.astro';
-import { useT } from '../../i18n/ui';
+import StudioLayout from '../../layouts/StudioLayout.astro';
+import Contact from '../../components/studio/Contact.astro';
+import { getNewDirectionCopy } from '../../data/newDirectionI18n';
 
 const lang = 'ua' as const;
-const t = useT(lang);
+const c = getNewDirectionCopy(lang);
 ---
-<BaseLayout title={t('contact.h1')} description={t('contact.sub')} lang={lang}>
-  <ContactPage lang={lang} />
-</BaseLayout>
+<StudioLayout title={`overflow — ${c.layout.nav.contact}`} description={c.contact.lede} lang={lang} current="contact">
+  <Contact lang={lang} />
+</StudioLayout>

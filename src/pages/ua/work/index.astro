@@ -1,11 +1,11 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import WorkPage from '../../../components/pages/WorkPage.astro';
-import { useT } from '../../../i18n/ui';
+import StudioLayout from '../../../layouts/StudioLayout.astro';
+import WorkIndex from '../../../components/studio/WorkIndex.astro';
+import { getNewDirectionCopy } from '../../../data/newDirectionI18n';
 
 const lang = 'ua' as const;
-const t = useT(lang);
+const c = getNewDirectionCopy(lang);
 ---
-<BaseLayout title={t('work.h1')} description={t('work.sub')} lang={lang}>
-  <WorkPage lang={lang} />
-</BaseLayout>
+<StudioLayout title={`overflow — ${c.work.title} ${c.work.accent}`} description={c.work.lede} lang={lang} current="work">
+  <WorkIndex lang={lang} />
+</StudioLayout>

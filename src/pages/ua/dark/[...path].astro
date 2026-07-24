@@ -1,0 +1,27 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import VariantPage from '../../../components/studio/VariantPage.astro';
+
+type Page = 'work' | 'method' | 'about' | 'contact';
+type Props =
+  | { page: Page; entry?: never }
+  | { page: 'case'; entry: CollectionEntry<'cases'> };
+
+export async function getStaticPaths() {
+  const cases = await getCollection('cases');
+  return [
+    ...(['work', 'method', 'about', 'contact'] as const).map((page) => ({
+      params: { path: page },
+      props: { page },
+    })),
+    ...cases.map((entry) => ({
+      params: { path: `work/${entry.slug}` },
+      props: { page: 'case', entry },
+    })),
+  ];
+}
+
+const props = Astro.props as Props;
+---
+
+<VariantPage variant="dark" lang="ua" page={props.page} entry={props.entry} />
