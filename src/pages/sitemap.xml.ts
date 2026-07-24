@@ -58,10 +58,18 @@ export const GET: APIRoute = async () => {
   const casePaths = cases.map((c) => `/work/${c.slug}`);
   const allPaths = [...staticPaths, ...casePaths];
 
+  // Legal pages — English only, no hreflang alternates
+  const legalPaths = ['/privacy', '/impressum'];
+  const legalEntries = legalPaths.map((path) => `  <url>
+    <loc>${SITE}${path}/</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>`).join('\n');
+
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${allPaths.map((path) => urlEntry(path)).join('\n')}
+${legalEntries}
 </urlset>
 `;
 
