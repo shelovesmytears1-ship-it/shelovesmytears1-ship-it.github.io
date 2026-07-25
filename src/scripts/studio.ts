@@ -112,10 +112,17 @@ if (burger && mnav) {
     if (open) mnav.removeAttribute('inert');
     else mnav.setAttribute('inert', '');
     if (open) mnav.querySelector('a')?.focus({ preventScroll: true });
+    // Lenis drives its own scroll and ignores body{overflow:hidden}; the smooth
+    // layer must be paused explicitly or the page scrolls behind the menu.
+    window.dispatchEvent(new CustomEvent('overflow:menu', { detail: { open } }));
   };
   burger.addEventListener('click', () =>
     setMenu(burger.getAttribute('aria-expanded') !== 'true')
   );
+  document.getElementById('mnav-close')?.addEventListener('click', () => {
+    setMenu(false);
+    burger.focus();
+  });
   mnav.addEventListener('pointerdown', (e) => {
     if (e.target === mnav) setMenu(false);
   });
@@ -203,6 +210,12 @@ if (gallery) {
 if (!reduce) {
   /* ---- Lenis smooth scroll ---- */
   const lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 1 });
+
+  // pause/resume smooth scroll when the mobile menu opens (see setMenu)
+  window.addEventListener('overflow:menu', (e) => {
+    if ((e as CustomEvent<{ open: boolean }>).detail.open) lenis.stop();
+    else lenis.start();
+  });
 
   /* ---- parallax + scroll-scrubbed rotation ----
      data-speed: >0 lags behind the page, <0 runs ahead of it

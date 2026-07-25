@@ -58,6 +58,7 @@ const themeLabels: Record<Lang, { dark: string; light: string }> = {
   ua: { dark: 'Увімкнути темну тему', light: 'Увімкнути світлу тему' },
 };
 const themeLabel = themeLabels[lang];
+const closeLabel = { pl: 'Zamknij menu', ru: 'Закрыть меню', en: 'Close menu', ua: 'Закрити меню' }[lang];
 ---
 
 <!doctype html>
@@ -195,6 +196,9 @@ const themeLabel = themeLabels[lang];
     <!-- full-screen menu; the CTA above stays reachable so the money action is
          never the thing hidden behind a toggle -->
     <nav class="mnav" id="mnav" aria-label={c.layout.mobileNavigation} inert>
+      <button class="mnav-close" id="mnav-close" type="button" aria-label={closeLabel} title={closeLabel}>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      </button>
       <div class="wrap mnav-inner">
         <a href={p('work')} data-tname={c.layout.nav.work}><span>01</span>{c.layout.nav.work}</a>
         <a href={p('method')} data-tname={c.layout.nav.method}><span>02</span>{c.layout.nav.method}</a>
