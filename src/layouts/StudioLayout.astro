@@ -67,6 +67,7 @@ const themeLabel = themeLabels[lang];
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content={themeColor} />
     <meta name="color-scheme" content={adaptiveTheme ? 'light dark' : variant === 'dark' ? 'dark' : 'light'} />
+    {variant !== 'studio' && <meta name="robots" content="noindex, nofollow" />}
     <title>{title}</title>
     <meta name="description" content={desc} />
     <link rel="canonical" href={canonical} />
@@ -87,7 +88,7 @@ const themeLabel = themeLabels[lang];
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={desc} />
     <meta name="twitter:image" content={socialImage} />
-    <script type="application/ld+json" set:html={JSON.stringify({
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'ProfilePage',
       url: canonical,
