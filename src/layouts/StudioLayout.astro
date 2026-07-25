@@ -33,6 +33,10 @@ const localizedHref = (code: Lang) => {
   if (code === 'pl') return bare;
   return bare === '/' ? `/${code}/` : `/${code}${bare}`;
 };
+// Legal pages exist per locale (studio only); keep them locale-aware and
+// never carry the editorial/dark variant segment into the URL.
+const legalRoot = lang === 'pl' ? '' : `/${lang}`;
+const legalHref = (slug: string) => `${legalRoot}/${slug}/`;
 const locales: { code: Lang; label: string; href: string }[] = [
   { code: 'pl', label: 'PL', href: localizedHref('pl') },
   { code: 'ru', label: 'RU', href: localizedHref('ru') },
@@ -239,8 +243,8 @@ const themeLabel = themeLabels[lang];
       <span id="clock" data-clock data-label="Local time">Local time —</span>
       <span>{c.layout.footer}</span>
       <span class="ftr-legal">
-        <a href="/privacy/">Privacy Policy</a>
-        <a href="/impressum/">Impressum</a>
+        <a href={legalHref('privacy')}>{c.legal.privacyNav}</a>
+        <a href={legalHref('impressum')}>{c.legal.impressumNav}</a>
       </span>
     </footer>
 

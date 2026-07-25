@@ -11,9 +11,10 @@ const p = (slug: string) => `${root}/${slug}/`;
 ---
 
 <section class="page-hero wrap">
-  <p class="eye" data-reveal>{c.home.aboutMeta}</p>
+  <p class="eye avail" data-reveal><span class="avail-dot" aria-hidden="true"></span>{c.about.availability}</p>
   <h1 class="disp about-title" data-reveal>{c.about.essayTitle} <em>{c.about.essayAccent}</em></h1>
   <p class="page-lede" data-reveal>{c.about.lede}</p>
+  <p class="about-sign" data-reveal><span class="sign-name">{c.about.name}</span> — {c.about.role}</p>
 </section>
 
 <section class="sec wrap about-grid">
@@ -31,6 +32,22 @@ const p = (slug: string) => `${root}/${slug}/`;
   </aside>
 </section>
 
+<section class="sec wrap about-services">
+  <header class="services-head" data-reveal>
+    <p class="eye">{c.about.servicesMeta}</p>
+    <h2 class="disp">{c.about.servicesTitle} <em>{c.about.servicesAccent}</em></h2>
+  </header>
+  <ol class="services-list">
+    {c.about.services.map((s) => (
+      <li class="service" data-reveal>
+        <span class="service-n">{s.n}</span>
+        <h3 class="service-t">{s.title}</h3>
+        <p class="service-d">{s.text}</p>
+      </li>
+    ))}
+  </ol>
+</section>
+
 <style>
   .about-title{white-space:pre-line;}
   .about-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:clamp(2rem,6vw,5rem);align-items:start;}
@@ -41,5 +58,23 @@ const p = (slug: string) => `${root}/${slug}/`;
   .about-stack li{display:flex;flex-direction:column;gap:.15rem;padding:.7rem 0;border-bottom:1px solid var(--line);}
   .stack-k{font-family:var(--mono),monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
   .stack-v{font-size:.95rem;}
-  @media(max-width:760px){.about-grid{grid-template-columns:1fr;}}
+
+  .avail{display:inline-flex;align-items:center;gap:.5rem;}
+  .avail-dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--accent);animation:availPulse 2.4s ease-out infinite;}
+  @keyframes availPulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 55%,transparent);}70%{box-shadow:0 0 0 .5rem transparent;}100%{box-shadow:0 0 0 0 transparent;}}
+
+  .about-sign{margin-top:1.4rem;font-size:.95rem;color:var(--muted);}
+  .sign-name{color:var(--ink);font-weight:600;}
+
+  .about-services{margin-top:clamp(3rem,8vw,6rem);}
+  .services-head{margin-bottom:clamp(1.8rem,4vw,2.8rem);}
+  .services-head .disp{margin-top:.6rem;}
+  .services-list{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.5rem,4vw,3rem);}
+  .service{border-top:2px solid var(--accent);padding-top:1.1rem;}
+  .service-n{font-family:var(--mono),monospace;font-size:.72rem;letter-spacing:.1em;color:var(--muted);}
+  .service-t{font-size:1.4rem;margin:.5rem 0 .7rem;}
+  .service-d{font-size:1rem;line-height:1.65;color:var(--muted);max-width:34ch;}
+
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr;}.services-list{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.avail-dot{animation:none;}}
 </style>

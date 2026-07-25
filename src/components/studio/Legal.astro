@@ -1,0 +1,38 @@
+---
+import { getNewDirectionCopy } from '../../data/newDirectionI18n';
+import type { Lang } from '../../i18n/ui';
+
+interface Props { lang?: Lang; doc: 'privacy' | 'impressum' }
+const { lang = 'pl', doc } = Astro.props;
+const c = getNewDirectionCopy(lang);
+const L = c.legal[doc];
+const metaLine = doc === 'privacy' ? c.legal.privacy.updated : c.legal.impressum.meta;
+const lead = doc === 'privacy' ? c.legal.privacy.lead : '';
+---
+
+<section class="wrap legal-page">
+  <h1 class="disp" data-reveal>{L.title}</h1>
+  <p class="legal-meta" data-reveal>{metaLine}</p>
+  {lead && <div class="legal-lead" data-reveal set:html={lead} />}
+  {L.sections.map((s) => (
+    <div class="legal-sec" data-reveal>
+      <h2>{s.h}</h2>
+      <Fragment set:html={s.html} />
+    </div>
+  ))}
+</section>
+
+<style>
+  .legal-page{padding:clamp(7rem,14vw,11rem) 0 6rem;max-width:72ch;}
+  .legal-page h1{font-size:clamp(2.2rem,6vw,4rem);margin-bottom:.5rem;}
+  .legal-meta{color:var(--muted);font-family:var(--mono),monospace;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2.5rem;}
+  .legal-lead p{color:var(--ink);line-height:1.8;font-size:1.05rem;margin-bottom:1rem;}
+  .legal-sec{margin-top:2.5rem;}
+  .legal-sec h2{font-size:1.1rem;font-weight:600;margin-bottom:.7rem;}
+  .legal-sec :global(p),.legal-sec :global(li){color:var(--muted);line-height:1.8;font-size:1rem;}
+  .legal-sec :global(p){margin-bottom:.8rem;}
+  .legal-sec :global(ul){padding-left:1.4rem;margin:.6rem 0 1rem;}
+  .legal-sec :global(a),.legal-lead :global(a){color:var(--ink);text-decoration:underline;text-underline-offset:3px;}
+  .legal-sec :global(a):hover,.legal-lead :global(a):hover{color:var(--accent);}
+  .legal-sec :global(code){font-family:var(--mono),monospace;font-size:.88em;background:var(--line);padding:.15em .4em;border-radius:4px;}
+</style>

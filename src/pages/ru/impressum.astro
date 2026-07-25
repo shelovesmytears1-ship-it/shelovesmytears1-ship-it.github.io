@@ -1,9 +1,9 @@
 ---
-import StudioLayout from '../layouts/StudioLayout.astro';
-import Legal from '../components/studio/Legal.astro';
-import { getNewDirectionCopy } from '../data/newDirectionI18n';
+import StudioLayout from '../../layouts/StudioLayout.astro';
+import Legal from '../../components/studio/Legal.astro';
+import { getNewDirectionCopy } from '../../data/newDirectionI18n';
 
-const lang = 'pl' as const;
+const lang = 'ru' as const;
 const c = getNewDirectionCopy(lang);
 ---
 <StudioLayout title={`overflow — ${c.legal.impressumNav}`} description={c.legal.impressum.title} lang={lang}>

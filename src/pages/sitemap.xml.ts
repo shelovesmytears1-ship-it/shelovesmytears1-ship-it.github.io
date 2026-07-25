@@ -11,6 +11,8 @@ import { getCollection } from 'astro:content';
  *   /method
  *   /about
  *   /contact
+ *   /privacy
+ *   /impressum
  */
 
 const SITE = 'https://overflow-web.pl';
@@ -54,22 +56,15 @@ ${xDefault}
 export const GET: APIRoute = async () => {
   const cases = await getCollection('cases');
 
-  const staticPaths = ['/', '/work', '/method', '/about', '/contact'];
+  // Legal pages are now localized in all 4 locales, same as the rest.
+  const staticPaths = ['/', '/work', '/method', '/about', '/contact', '/privacy', '/impressum'];
   const casePaths = cases.map((c) => `/work/${c.slug}`);
   const allPaths = [...staticPaths, ...casePaths];
-
-  // Legal pages — English only, no hreflang alternates
-  const legalPaths = ['/privacy', '/impressum'];
-  const legalEntries = legalPaths.map((path) => `  <url>
-    <loc>${SITE}${path}/</loc>
-    <lastmod>${new Date().toISOString()}</lastmod>
-  </url>`).join('\n');
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${allPaths.map((path) => urlEntry(path)).join('\n')}
-${legalEntries}
 </urlset>
 `;
 
