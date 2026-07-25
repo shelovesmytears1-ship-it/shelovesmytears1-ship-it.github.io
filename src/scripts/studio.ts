@@ -116,6 +116,9 @@ if (burger && mnav) {
   burger.addEventListener('click', () =>
     setMenu(burger.getAttribute('aria-expanded') !== 'true')
   );
+  mnav.addEventListener('pointerdown', (e) => {
+    if (e.target === mnav) setMenu(false);
+  });
   addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && document.body.classList.contains('menu-open')) {
       setMenu(false);
