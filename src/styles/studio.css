@@ -3,11 +3,11 @@
    Self-hosted fonts + design tokens + components
    ============================================================ */
 
-@font-face{font-family:'Bricolage';src:url('/fonts/BricolageGrotesque-Bold.ttf') format('truetype');font-weight:700;font-display:swap;}
-@font-face{font-family:'Bricolage';src:url('/fonts/BricolageGrotesque-Regular.ttf') format('truetype');font-weight:400;font-display:swap;}
-@font-face{font-family:'Outfit';src:url('/fonts/Outfit-Regular.ttf') format('truetype');font-weight:400;font-display:swap;}
-@font-face{font-family:'Outfit';src:url('/fonts/Outfit-Bold.ttf') format('truetype');font-weight:700;font-display:swap;}
-@font-face{font-family:'DMMono';src:url('/fonts/DMMono-Regular.ttf') format('truetype');font-weight:400;font-display:swap;}
+@font-face{font-family:'Bricolage';src:url('/fonts/BricolageGrotesque-Bold.woff2') format('woff2'),url('/fonts/BricolageGrotesque-Bold.ttf') format('truetype');font-weight:700;font-display:swap;}
+@font-face{font-family:'Bricolage';src:url('/fonts/BricolageGrotesque-Regular.woff2') format('woff2'),url('/fonts/BricolageGrotesque-Regular.ttf') format('truetype');font-weight:400;font-display:swap;}
+@font-face{font-family:'Outfit';src:url('/fonts/Outfit-Regular.woff2') format('woff2'),url('/fonts/Outfit-Regular.ttf') format('truetype');font-weight:400;font-display:swap;}
+@font-face{font-family:'Outfit';src:url('/fonts/Outfit-Bold.woff2') format('woff2'),url('/fonts/Outfit-Bold.ttf') format('truetype');font-weight:700;font-display:swap;}
+@font-face{font-family:'DMMono';src:url('/fonts/DMMono-Regular.woff2') format('woff2'),url('/fonts/DMMono-Regular.ttf') format('truetype');font-weight:400;font-display:swap;}
 
 :root{
   --bg:#f4f2ec; --ink:#14141a; --muted:#6f6f6b; --line:rgba(20,20,26,.14);

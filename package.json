@@ -20,6 +20,10 @@
     "@astrojs/check": "^0.9.9",
     "@types/node": "^26.1.1",
     "@types/three": "^0.160.0",
+    "ttf2woff2": "^8.0.1",
     "typescript": "^5.9.3"
+  },
+  "allowScripts": {
+    "ttf2woff2@8.0.1": true
   }
 }
