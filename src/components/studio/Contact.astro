@@ -6,26 +6,40 @@ interface Props { lang?: Lang }
 const { lang = 'pl' } = Astro.props;
 const c = getNewDirectionCopy(lang);
 const ct = c.contact;
+
+const successTitle = { pl: 'Brief wysłany.', ru: 'Бриф отправлен.', en: 'Brief sent.', ua: 'Бриф надіслано.' }[lang];
+const successBody  = { pl: 'Odpiszę w ciągu 24 godzin w dni robocze.', ru: 'Отвечу в течение 24 часов в рабочие дни.', en: "I'll reply within 24 hours on business days.", ua: 'Відповім протягом 24 годин у робочі дні.' }[lang];
+const errorMsg     = { pl: 'Coś poszło nie tak. Napisz bezpośrednio.', ru: 'Что-то пошло не так. Напишите напрямую.', en: 'Something went wrong. Please write directly.', ua: 'Щось пішло не так. Напишіть напряму.' }[lang];
 ---
 
 <section class="page-hero wrap">
+  <span class="pg-ghost" aria-hidden="true">TALK</span>
   <p class="eye" data-reveal>{c.home.contactMeta}</p>
   <h1 class="disp contact-title" data-reveal>{ct.title} {ct.titleLine} <em>{ct.accent}</em></h1>
   <p class="page-lede" data-reveal>{ct.lede}</p>
 </section>
 
 <section class="sec wrap contact-grid">
-  <form class="c-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-reveal>
-    <input type="hidden" name="form-name" value="contact" />
-    <p hidden><label>{ct.honeypot}<input name="bot-field" /></label></p>
-    <label class="c-field"><span>{ct.name}</span><input type="text" name="name" required /></label>
-    <label class="c-field"><span>{ct.channel}</span><input type="text" name="channel" required /></label>
-    <label class="c-field"><span>{ct.type}</span>
-      <select name="type">{ct.options.map((o) => (<option>{o}</option>))}</select>
-    </label>
-    <label class="c-field"><span>{ct.message}</span><textarea name="message" rows="4" placeholder={ct.messagePlaceholder} required></textarea></label>
-    <button class="btn magnetic" type="submit" data-cursor><span class="btn-text">{ct.submit} →</span></button>
-  </form>
+  <div class="c-form-wrap" data-reveal>
+    <form id="c-contact-form" class="c-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact" />
+      <p hidden><label>{ct.honeypot}<input name="bot-field" /></label></p>
+      <label class="c-field"><span>{ct.name}</span><input type="text" name="name" required /></label>
+      <label class="c-field"><span>{ct.channel}</span><input type="text" name="channel" required /></label>
+      <label class="c-field"><span>{ct.type}</span>
+        <select name="type">{ct.options.map((o) => (<option>{o}</option>))}</select>
+      </label>
+      <label class="c-field"><span>{ct.message}</span><textarea name="message" rows="4" placeholder={ct.messagePlaceholder} required></textarea></label>
+      <button class="btn magnetic" type="submit" data-cursor><span class="btn-text">{ct.submit} →</span></button>
+      <p class="c-error" id="c-form-error" hidden>{errorMsg}</p>
+    </form>
+
+    <div class="c-success" id="c-contact-success" hidden aria-live="polite">
+      <span class="c-success__icon" aria-hidden="true">✓</span>
+      <p class="c-success__title">{successTitle}</p>
+      <p class="c-success__body">{successBody}</p>
+    </div>
+  </div>
 
   <aside class="c-direct" data-reveal>
     <p class="eye">{ct.quickest}</p>
@@ -35,9 +49,37 @@ const ct = c.contact;
   </aside>
 </section>
 
+<script>
+  const form = document.getElementById('c-contact-form') as HTMLFormElement | null;
+  const success = document.getElementById('c-contact-success') as HTMLElement | null;
+  const errorEl = document.getElementById('c-form-error') as HTMLElement | null;
+  const btn = form?.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (btn) btn.disabled = true;
+    if (errorEl) errorEl.hidden = true;
+
+    try {
+      const res = await fetch(window.location.pathname, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form) as unknown as Record<string, string>).toString(),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      if (form) form.hidden = true;
+      if (success) success.hidden = false;
+    } catch {
+      if (errorEl) errorEl.hidden = false;
+      if (btn) btn.disabled = false;
+    }
+  });
+</script>
+
 <style>
   .contact-title{font-size:clamp(2.8rem,9vw,7rem);}
   .contact-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(2rem,6vw,5rem);align-items:start;}
+  .c-form-wrap{display:contents;}
   .c-form{display:flex;flex-direction:column;gap:1.2rem;}
   .c-field{display:flex;flex-direction:column;gap:.4rem;}
   .c-field span{font-family:var(--mono),monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
@@ -48,6 +90,11 @@ const ct = c.contact;
     outline-offset:2px;
   }
   .c-form .btn{align-self:flex-start;margin-top:.5rem;}
+  .c-error{color:var(--accent);font-size:.85rem;margin-top:.5rem;}
+  .c-success{display:flex;flex-direction:column;gap:1rem;padding:2.5rem 0;}
+  .c-success__icon{font-size:2.5rem;color:var(--accent);}
+  .c-success__title{font-family:var(--disp),sans-serif;font-size:clamp(1.8rem,5vw,3rem);font-weight:var(--disp-w);letter-spacing:var(--disp-ls);line-height:1.1;}
+  .c-success__body{color:var(--muted);font-size:1rem;}
   .c-direct{border-top:2px solid var(--accent);padding-top:1.2rem;}
   .c-big{display:block;font-family:var(--disp),sans-serif;font-weight:var(--disp-w);letter-spacing:var(--disp-ls);font-size:clamp(1.4rem,3vw,2rem);margin:1rem 0;transition:color .25s;}
   .c-big:hover{color:var(--accent);}
