@@ -8,6 +8,10 @@
 [build.environment]
   NODE_VERSION = "20"
 
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
 # i18n redirects — Netlify-level locale-aware 404 fallback
 # (Astro static SSG doesn't auto-route per-locale 404s)
 [[redirects]]
