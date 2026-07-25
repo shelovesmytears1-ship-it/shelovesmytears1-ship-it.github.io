@@ -70,6 +70,7 @@ export function initGallery3D(container: HTMLElement, caption: HTMLElement | nul
   const theme = document.documentElement.dataset.theme || 'studio';
   const editorial = theme === 'editorial';
   const dark = theme === 'dark';
+  const darkSurface = dark || theme === 'studio-dark';
 
   const titleEl = document.getElementById('gallery3d-title');
 
@@ -97,17 +98,17 @@ export function initGallery3D(container: HTMLElement, caption: HTMLElement | nul
   const outerW = PW + padX * 2;
   const outerH = PH + padBottom * 2 + railH;
   const frameY = (railH - padBottom) * 0.5;
-  const frameColor = dark
+  const frameColor = darkSurface
     ? new THREE.Color('#15171b')
     : editorial
       ? new THREE.Color('#e4dbca')
       : new THREE.Color('#faf9f5');
-  const railColor = dark
+  const railColor = darkSurface
     ? new THREE.Color('#202228')
     : editorial
       ? new THREE.Color('#d8cbb6')
       : new THREE.Color('#e8e9f2');
-  const edgeColor = dark ? accent : editorial ? new THREE.Color('#8a4d35') : accent;
+  const edgeColor = darkSurface ? accent : editorial ? new THREE.Color('#8a4d35') : accent;
 
   const shadowTex = shadowTexture();
   const frameGeo = new THREE.PlaneGeometry(outerW, outerH);
@@ -126,6 +127,11 @@ export function initGallery3D(container: HTMLElement, caption: HTMLElement | nul
   const loader = new THREE.TextureLoader();
   const cards: Card[] = [];
   const planes: THREE.Mesh[] = [];
+  type ColorMaterial = THREE.MeshBasicMaterial | THREE.LineBasicMaterial;
+  const themedMaterials: Array<{
+    material: ColorMaterial;
+    role: 'frame' | 'rail' | 'viewport' | 'edge' | 'dot' | 'accent';
+  }> = [];
 
   items.forEach((it, i) => {
     const tex = loader.load(it.cover);
@@ -148,6 +154,7 @@ export function initGallery3D(container: HTMLElement, caption: HTMLElement | nul
     const frameMat = register(new THREE.MeshBasicMaterial({
       color: frameColor, transparent: true,
     }), 1);
+    themedMaterials.push({ material: frameMat, role: 'frame' });
     const frame = new THREE.Mesh(frameGeo, frameMat);
     frame.position.set(0, frameY, -0.012);
 
@@ -160,20 +167,23 @@ export function initGallery3D(container: HTMLElement, caption: HTMLElement | nul
 
     const railMat = register(new THREE.MeshBasicMaterial({
       color: railColor, transparent: true, depthWrite: false,
-    }), dark ? 0.98 : 0.92);
+    }), darkSurface ? 0.98 : 0.92);
+    themedMaterials.push({ material: railMat, role: 'rail' });
     const rail = new THREE.Mesh(new THREE.PlaneGeometry(PW, railH), railMat);
     rail.position.set(0, PH / 2 + railH / 2 + 0.025, 0.004);
 
     const viewportEdgeMat = register(new THREE.LineBasicMaterial({
-      color: dark ? new THREE.Color('#41444c') : ink,
+      color: darkSurface ? new THREE.Color('#41444c') : ink,
       transparent: true,
-    }), dark ? 0.82 : editorial ? 0.48 : 0.24);
+    }), darkSurface ? 0.82 : editorial ? 0.48 : 0.24);
+    themedMaterials.push({ material: viewportEdgeMat, role: 'viewport' });
     const viewportEdge = new THREE.LineSegments(new THREE.EdgesGeometry(viewportGeo), viewportEdgeMat);
     viewportEdge.position.z = 0.012;
 
     const outerEdgeMat = register(new THREE.LineBasicMaterial({
       color: edgeColor, transparent: true,
-    }), dark ? 0.58 : editorial ? 0.66 : 0.44);
+    }), darkSurface ? 0.58 : editorial ? 0.66 : 0.44);
+    themedMaterials.push({ material: outerEdgeMat, role: 'edge' });
     const outerEdge = new THREE.LineSegments(new THREE.EdgesGeometry(frameGeo), outerEdgeMat);
     outerEdge.position.set(0, frameY, 0.002);
 
@@ -188,7 +198,8 @@ export function initGallery3D(container: HTMLElement, caption: HTMLElement | nul
         color: d === 0 ? edgeColor : ink,
         transparent: true,
         depthWrite: false,
-      }), d === 0 ? 0.9 : dark ? 0.42 : 0.28);
+      }), d === 0 ? 0.9 : darkSurface ? 0.42 : 0.28);
+      themedMaterials.push({ material: dotMat, role: d === 0 ? 'accent' : 'dot' });
       const dot = new THREE.Mesh(dotGeo, dotMat);
       dot.position.set(dotStart + d * dotGap, PH / 2 + railH / 2 + 0.025, 0.012);
       dots.add(dot);
@@ -197,6 +208,7 @@ export function initGallery3D(container: HTMLElement, caption: HTMLElement | nul
     const accentMat = new THREE.LineBasicMaterial({
       color: accent, transparent: true, opacity: 0,
     });
+    themedMaterials.push({ material: accentMat, role: 'accent' });
     const accentEdge = new THREE.LineSegments(new THREE.EdgesGeometry(viewportGeo), accentMat);
     accentEdge.position.z = 0.018;
 
@@ -205,6 +217,30 @@ export function initGallery3D(container: HTMLElement, caption: HTMLElement | nul
     cards.push({ group, planeMat, shadowMat, frameLayers, accentMat, lift: 0, glow: 0 });
     planes.push(plane);
   });
+
+  const applyVisualTheme = () => {
+    if (document.documentElement.dataset.theme === 'editorial') return;
+
+    const style = getComputedStyle(container);
+    const nextPaper = new THREE.Color(style.getPropertyValue('--bg').trim() || '#f4f2ec');
+    const nextInk = new THREE.Color(style.getPropertyValue('--ink').trim() || '#14141a');
+    const nextAccent = new THREE.Color(style.getPropertyValue('--accent').trim() || '#2b34ff');
+    const nextTheme = document.documentElement.dataset.theme;
+    const nextDark = nextTheme === 'dark' || nextTheme === 'studio-dark';
+
+    if (scene.fog instanceof THREE.Fog) scene.fog.color.copy(nextPaper);
+
+    themedMaterials.forEach(({ material, role }) => {
+      if (role === 'frame') material.color.set(nextDark ? '#15171b' : '#faf9f5');
+      else if (role === 'rail') material.color.set(nextDark ? '#202228' : '#e8e9f2');
+      else if (role === 'viewport') material.color.set(nextDark ? '#41444c' : nextInk);
+      else if (role === 'dot') material.color.copy(nextInk);
+      else material.color.copy(nextAccent);
+    });
+
+    renderer.render(scene, camera);
+  };
+  window.addEventListener('overflow:theme-change', applyVisualTheme);
 
   const resize = () => {
     const w = container.clientWidth, h = container.clientHeight;

@@ -21,6 +21,7 @@ const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.dat
 ---
 
 <section class="page-hero wrap">
+  <span class="pg-ghost" aria-hidden="true">WORK</span>
   <p class="eye" data-reveal>{c.home.workMeta}</p>
   <h1 class="disp" data-reveal>{c.work.title} <em>{c.work.accent}</em></h1>
   <p class="page-lede" data-reveal>{c.work.lede}</p>

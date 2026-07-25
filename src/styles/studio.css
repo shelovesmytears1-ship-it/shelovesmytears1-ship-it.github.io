@@ -262,8 +262,31 @@ html.motion-ready [data-reveal]{
 .in .line>span,.line.in>span{transform:translateY(0);}
 
 /* inner-page hero (work/method/about/contact) */
-.page-hero{padding:9rem 0 2rem;}
+.page-hero{padding:9rem 0 2rem;position:relative;overflow:hidden;}
 .page-hero h1{font-size:clamp(2.6rem,8vw,6.5rem);margin:1rem 0 1.4rem;max-width:16ch;}
+
+/* ghost wordmark — huge display text behind each inner-page hero */
+.pg-ghost{
+  position:absolute;
+  bottom:-.12em;
+  left:50%;
+  transform:translateX(-50%);
+  font-family:var(--disp),sans-serif;
+  font-weight:var(--disp-w);
+  letter-spacing:var(--disp-ls);
+  line-height:.9;
+  font-size:clamp(7rem,26vw,20rem);
+  color:var(--ink);
+  opacity:.065;
+  pointer-events:none;
+  user-select:none;
+  white-space:nowrap;
+  z-index:0;
+}
+html[data-theme='studio-dark'] .pg-ghost,
+body[data-theme='studio-dark'] .pg-ghost{opacity:.09;}
+/* content floats above the ghost */
+.page-hero>*:not(.pg-ghost){position:relative;z-index:1;}
 .page-lede{max-width:52ch;color:var(--muted);font-size:clamp(1.05rem,1.6vw,1.3rem);}
 
 .sec{padding:clamp(5rem,12vh,10rem) 0;}
