@@ -78,7 +78,7 @@ function initReveal() {
   const els = document.querySelectorAll(".reveal");
   if (!("IntersectionObserver" in window) || !els.length) { els.forEach(e => e.classList.add("is-in")); return; }
   const io = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
+    entries.forEach((e) => {
       if (e.isIntersecting) { setTimeout(() => e.target.classList.add("is-in"), (e.target.dataset.delay || 0) * 1); io.unobserve(e.target); }
     });
   }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
