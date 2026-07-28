@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kasa — Rozkwit</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html"><span class="brand__mark" data-icon="flower"></span> Rozkwit</a>
+    <div class="nav__spacer"></div>
+    <div class="nav__actions">
+      <span class="badge-test"><span data-icon="shield"></span> Płatność testowa</span>
+      <button class="icon-btn" data-open-cart aria-label="Koszyk"><span data-icon="cart"></span><span class="cart-count" data-cart-count>0</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="page-head"><span class="eyebrow">Krok 2 z 2</span><h1>Dostawa i płatność</h1></div>
+
+  <div class="cart-layout">
+    <form class="checkout-form" id="checkoutForm" novalidate>
+      <div class="notice">
+        <span data-icon="shield"></span>
+        <div><strong>Tryb testowy.</strong> To projekt demonstracyjny — nie pobieramy prawdziwych pieniędzy. Na stronie płatności użyj karty testowej <b>4242&nbsp;4242&nbsp;4242&nbsp;4242</b> (dowolna data i CVC) albo kodu BLIK <b>123456</b>.</div>
+      </div>
+
+      <h2 style="font-size:var(--fs-xl);margin-bottom:16px">Kto zamawia</h2>
+      <div class="form-grid">
+        <div class="field field--full">
+          <label for="email">Twój e-mail (potwierdzenie zamówienia)</label>
+          <input class="input" type="email" id="email" name="email" required placeholder="jan.kowalski@email.pl">
+        </div>
+      </div>
+
+      <h2 style="font-size:var(--fs-xl);margin:28px 0 16px">Adres dostawy</h2>
+      <div class="form-grid">
+        <div class="field"><label for="rname">Imię i nazwisko odbiorcy</label><input class="input" id="rname" name="rname" required placeholder="Anna Nowak"></div>
+        <div class="field"><label for="rphone">Telefon odbiorcy</label><input class="input" type="tel" id="rphone" name="rphone" required placeholder="+48 600 100 200"></div>
+        <div class="field field--full"><label for="street">Ulica i numer</label><input class="input" id="street" name="street" required placeholder="ul. Kwiatowa 12/4"></div>
+        <div class="field"><label for="postal">Kod pocztowy</label><input class="input" id="postal" name="postal" required placeholder="00-001" inputmode="numeric"></div>
+        <div class="field"><label for="city">Miasto</label><input class="input" id="city" name="city" required placeholder="Warszawa"></div>
+        <div class="field"><label for="date">Data dostawy</label><input class="input" type="date" id="date" name="date" required></div>
+        <div class="field">
+          <label for="slot">Godzina dostawy</label>
+          <select class="input" id="slot" name="slot">
+            <option value="9-12">9:00 – 12:00</option>
+            <option value="12-15">12:00 – 15:00</option>
+            <option value="15-18">15:00 – 18:00</option>
+            <option value="18-21" selected>18:00 – 21:00</option>
+          </select>
+        </div>
+        <div class="field field--full">
+          <label for="msg">Bilecik z życzeniami <span style="color:var(--muted);font-weight:400">(opcjonalnie)</span></label>
+          <textarea class="input" id="msg" name="msg" maxlength="200" placeholder="np. Wszystkiego najlepszego!"></textarea>
+        </div>
+      </div>
+
+      <h2 style="font-size:var(--fs-xl);margin:28px 0 12px">Metoda płatności</h2>
+      <p style="color:var(--muted);font-size:var(--fs-sm);margin-bottom:12px">Wybierzesz ją na bezpiecznej stronie Stripe po kliknięciu „Zapłać”.</p>
+      <div class="pay-methods">
+        <span class="pay-method"><b>Karta</b> Visa / Mastercard</span>
+        <span class="pay-method"><b>BLIK</b></span>
+        <span class="pay-method"><b>Przelewy24</b></span>
+      </div>
+
+      <p class="field-error" id="formError" style="color:var(--danger);margin-top:16px;display:none"></p>
+    </form>
+
+    <aside class="summary" id="summary"></aside>
+  </div>
+</main>
+
+<div class="drawer-overlay" data-close-cart></div>
+<aside class="drawer" aria-label="Koszyk">
+  <div class="drawer__head"><h2>Twój koszyk</h2><button class="icon-btn" data-close-cart aria-label="Zamknij" data-icon="close"></button></div>
+  <div class="drawer__body"></div>
+  <div class="drawer__foot">
+    <div class="drawer__row"><span>Razem</span><span class="total" data-cart-total>0 zł</span></div>
+    <a class="btn btn--primary btn--block btn--lg" href="kasa.html">Do kasy</a>
+    <p class="drawer__note">płatność testowa</p>
+  </div>
+</aside>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+function onPageReady() {
+  const today = new Date().toISOString().slice(0, 10);
+  document.getElementById("date").min = today;
+  document.getElementById("date").value = today;
+  renderSummary();
+  if (!Cart.read().length) location.href = "koszyk.html";
+}
+
+function renderSummary() {
+  const items = Cart.read(), sub = Cart.total(), fee = deliveryFee(sub);
+  document.getElementById("summary").innerHTML = `
+    <h2>Twoje zamówienie</h2>
+    ${items.map(i => `<div class="summary__row"><span>${i.qty}× ${i.name} <em style="color:var(--muted)">(${i.sizeLabel})</em></span><strong>${fmtPrice(i.price*i.qty)}</strong></div>`).join("")}
+    <div class="summary__row" style="margin-top:8px"><span>Dostawa${fee===0?" (gratis)":""}</span><strong>${fee===0?"0 zł":fmtPrice(fee)}</strong></div>
+    <div class="summary__total"><span>Razem</span><span class="amt">${fmtPrice(sub+fee)}</span></div>
+    <button class="btn btn--primary btn--block btn--lg" id="payBtn" style="margin-top:20px">Zapłać ${fmtPrice(sub+fee)}</button>
+    <p class="drawer__note" style="margin-top:12px">Bezpieczna płatność Stripe · tryb testowy</p>`;
+  document.getElementById("payBtn").addEventListener("click", pay);
+}
+
+function validate() {
+  const form = document.getElementById("checkoutForm");
+  const required = ["email", "rname", "rphone", "street", "postal", "city", "date"];
+  for (const id of required) {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) { el.focus(); el.style.borderColor = "var(--danger)"; return `Uzupełnij pole: ${el.previousElementSibling.textContent.replace(/\s*\(.*\)/,"")}.`; }
+    el.style.borderColor = "";
+  }
+  const email = document.getElementById("email").value.trim();
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return "Podaj poprawny adres e-mail.";
+  return null;
+}
+
+async function pay() {
+  const err = validate();
+  const errBox = document.getElementById("formError");
+  if (err) { errBox.textContent = err; errBox.style.display = "block"; return; }
+  errBox.style.display = "none";
+
+  const btn = document.getElementById("payBtn");
+  btn.disabled = true; btn.textContent = "Przekierowanie…";
+
+  const form = document.getElementById("checkoutForm");
+  const delivery = Object.fromEntries(new FormData(form).entries());
+  const items = Cart.read().map(i => ({ id: i.id, size: i.size, qty: i.qty }));
+  // keep order snapshot for the confirmation page
+  localStorage.setItem("rozkwit_last_order", JSON.stringify({ items: Cart.read(), delivery, total: orderTotal(), at: Date.now() }));
+
+  try {
+    const res = await fetch("/.netlify/functions/create-checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ items, email: delivery.email, delivery }),
+    });
+    if (!res.ok) throw new Error("fn " + res.status);
+    const data = await res.json();
+    if (data.url) { window.location.href = data.url; return; }
+    throw new Error(data.error || "no url");
+  } catch (e) {
+    // Stripe not configured yet (or static host without functions) → demo confirmation
+    console.info("[Rozkwit] Checkout backend unavailable, using demo confirmation:", e.message);
+    window.location.href = "sukces.html?demo=1";
+  }
+}
+</script>
+</body>
+</html>

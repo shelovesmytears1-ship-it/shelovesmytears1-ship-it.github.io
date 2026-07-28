@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dziękujemy za zamówienie — Rozkwit</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html"><span class="brand__mark" data-icon="flower"></span> Rozkwit</a>
+  </div>
+</header>
+
+<main class="container">
+  <div class="result-page">
+    <div class="result-page__icon result-page__icon--ok"><span data-icon="check"></span></div>
+    <h1>Dziękujemy za zamówienie!</h1>
+    <p id="lead">Twój bukiet jest w rękach florysty. Przed wysyłką prześlemy Ci zdjęcie gotowej kompozycji.</p>
+    <div id="orderBox"></div>
+    <div class="notice" id="demoNote" style="text-align:left;display:none">
+      <span data-icon="shield"></span>
+      <div>To była płatność testowa — żadne środki nie zostały pobrane. W wersji produkcyjnej w tym miejscu potwierdzamy realną transakcję Stripe.</div>
+    </div>
+    <a class="btn btn--primary btn--lg" href="index.html" style="margin-top:8px">Wróć na stronę główną</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__bottom" style="border:0;padding-top:0">
+      <span>© 2026 Rozkwit — projekt demonstracyjny.</span>
+      <span>Płatności w trybie testowym (Stripe).</span>
+    </div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+function onPageReady() {
+  const params = new URLSearchParams(location.search);
+  if (params.get("demo")) document.getElementById("demoNote").style.display = "flex";
+
+  let order = null;
+  try { order = JSON.parse(localStorage.getItem("rozkwit_last_order")); } catch {}
+  if (order && order.items && order.items.length) {
+    const d = order.delivery || {};
+    document.getElementById("orderBox").innerHTML = `
+      <div class="summary" style="text-align:left;max-width:420px;margin:0 auto 28px">
+        <h2>Podsumowanie</h2>
+        ${order.items.map(i => `<div class="summary__row"><span>${i.qty}× ${i.name} <em style="color:var(--muted)">(${i.sizeLabel})</em></span><strong>${fmtPrice(i.price*i.qty)}</strong></div>`).join("")}
+        <div class="summary__total"><span>Razem</span><span class="amt">${fmtPrice(order.total)}</span></div>
+        ${d.rname ? `<div class="summary__row" style="margin-top:12px"><span>Odbiorca</span><strong>${d.rname}</strong></div>` : ""}
+        ${d.date ? `<div class="summary__row"><span>Dostawa</span><strong>${d.date}${d.slot ? ", " + d.slot : ""}</strong></div>` : ""}
+      </div>`;
+  }
+  // order placed → clear the cart
+  Cart.clear();
+  localStorage.removeItem("rozkwit_last_order");
+  updateCartCount(false);
+}
+</script>
+</body>
+</html>

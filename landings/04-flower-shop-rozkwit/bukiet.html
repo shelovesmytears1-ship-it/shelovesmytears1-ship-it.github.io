@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bukiet — Rozkwit</title>
+<meta name="description" content="Szczegóły bukietu. Wybierz rozmiar, datę dostawy i dodaj bilecik z życzeniami.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html"><span class="brand__mark" data-icon="flower"></span> Rozkwit</a>
+    <nav class="nav__links" aria-label="Główna">
+      <a href="sklep.html">Bukiety</a>
+      <a href="sklep.html#okazje">Okazje</a>
+      <a href="index.html#dostawa">Dostawa</a>
+      <a href="index.html#o-nas">O nas</a>
+    </nav>
+    <div class="nav__spacer"></div>
+    <div class="nav__actions">
+      <button class="icon-btn" data-open-cart aria-label="Koszyk"><span data-icon="cart"></span><span class="cart-count" data-cart-count>0</span></button>
+      <button class="burger icon-btn" aria-label="Menu" aria-expanded="false" data-icon="menu"></button>
+    </div>
+  </div>
+  <div class="mobile-menu">
+    <a href="sklep.html">Bukiety</a>
+    <a href="sklep.html#okazje">Okazje</a>
+    <a href="index.html#dostawa">Dostawa</a>
+    <a href="index.html#o-nas">O nas</a>
+    <a class="btn btn--primary btn--block" href="sklep.html">Wybierz bukiet</a>
+  </div>
+</header>
+
+<main class="container">
+  <div class="product" id="product"><!-- rendered by JS --></div>
+
+  <section class="section section--tight">
+    <div class="split section-head" style="max-width:none;align-items:flex-end">
+      <div><span class="eyebrow">Zobacz też</span><h2>Inne bukiety</h2></div>
+      <a class="link-arrow" href="sklep.html">Wszystkie <span data-icon="arrow"></span></a>
+    </div>
+    <div class="grid-cards" id="relatedGrid"></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="index.html"><span class="brand__mark" data-icon="flower"></span> Rozkwit</a>
+        <p>Świeże, ręcznie komponowane bukiety z dostawą tego samego dnia.</p>
+      </div>
+      <div><h4>Sklep</h4><ul><li><a href="sklep.html">Wszystkie bukiety</a></li><li><a href="sklep.html#okazje">Okazje</a></li></ul></div>
+      <div><h4>Pomoc</h4><ul><li><a href="index.html#dostawa">Dostawa</a></li><li><a href="index.html#o-nas">O nas</a></li></ul></div>
+      <div><h4>Kontakt</h4><ul><li><a href="mailto:kontakt@rozkwit.pl">kontakt@rozkwit.pl</a></li><li><a href="tel:+48000000000">+48 000 000 000</a></li></ul></div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Rozkwit — projekt demonstracyjny.</span>
+      <span>Płatności w trybie testowym (Stripe). Realne środki nie są pobierane.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="drawer-overlay" data-close-cart></div>
+<aside class="drawer" aria-label="Koszyk">
+  <div class="drawer__head"><h2>Twój koszyk</h2><button class="icon-btn" data-close-cart aria-label="Zamknij" data-icon="close"></button></div>
+  <div class="drawer__body"></div>
+  <div class="drawer__foot">
+    <div class="drawer__row"><span>Razem</span><span class="total" data-cart-total>0 zł</span></div>
+    <a class="btn btn--primary btn--block btn--lg" href="kasa.html">Do kasy</a>
+    <p class="drawer__note">Dostawa liczona na następnym kroku · płatność testowa</p>
+  </div>
+</aside>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+let current = { size: "standardowy" };
+
+function onPageReady() {
+  const id = new URLSearchParams(location.search).get("id");
+  const p = productById(id) || PRODUCTS[0];
+  current.product = p;
+  document.title = `${p.name} — Rozkwit`;
+  renderProduct(p);
+  // related
+  const rel = document.getElementById("relatedGrid");
+  const others = PRODUCTS.filter(x => x.id !== p.id).slice(0, 4);
+  rel.innerHTML = others.map(productCardHTML).join("");
+  bindProductCards(rel);
+  initReveal();
+}
+
+function renderProduct(p) {
+  const el = document.getElementById("product");
+  const today = new Date().toISOString().slice(0, 10);
+  el.innerHTML = `
+    <div class="product__media reveal">
+      <div class="bouquet-frame">
+        <span class="bouquet-frame__badge">${p.tag || "Świeże dziś"}</span>
+        ${bouquetSVG(p)}
+      </div>
+    </div>
+    <div class="product__info reveal" data-delay="80">
+      <div class="product__crumbs"><a href="sklep.html">Sklep</a> · <a href="sklep.html?okazja=${p.occasions[0]}">${occasionLabel(p.occasions[0])}</a> · ${p.name}</div>
+      <h1 class="product__title">${p.name}</h1>
+      <div class="product__price" id="priceOut">${fmtPrice(p.price)}</div>
+      <p class="product__desc">${p.short}</p>
+
+      <div class="field">
+        <span class="field__label">Rozmiar</span>
+        <div class="size-opts" id="sizeOpts">
+          ${SIZES.map(s => `<button class="size-opt${s.id==="standardowy"?" is-active":""}" data-size="${s.id}">
+            <strong>${s.label}</strong><span>${s.note}</span>${s.delta?`<em>+${s.delta} zł</em>`:`<em>w cenie</em>`}
+          </button>`).join("")}
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="deliveryDate">Data dostawy</label>
+        <input class="input" type="date" id="deliveryDate" min="${today}" value="${today}">
+      </div>
+
+      <div class="field">
+        <label for="cardMsg">Bilecik z życzeniami <span style="color:var(--muted);font-weight:400">(opcjonalnie)</span></label>
+        <textarea class="input" id="cardMsg" maxlength="200" placeholder="np. Wszystkiego najlepszego! Myślę o Tobie."></textarea>
+        <div class="char-count"><span id="charCount">0</span>/200</div>
+      </div>
+
+      <div class="add-row">
+        <button class="btn btn--primary btn--lg" id="addBtn" style="flex:1">Dodaj do koszyka</button>
+        <button class="btn btn--ghost btn--lg" id="buyNow">Kup teraz</button>
+      </div>
+
+      <div class="product__note">
+        <span data-icon="leaf"></span>
+        <span>Świeże, sezonowe kwiaty od lokalnych florystów. Przed wysyłką otrzymasz zdjęcie gotowego bukietu. Świeżość gwarantowana do 7 dni.</span>
+      </div>
+    </div>`;
+
+  document.querySelectorAll("[data-size]").forEach(btn => btn.addEventListener("click", () => {
+    current.size = btn.dataset.size;
+    document.querySelectorAll("[data-size]").forEach(b => b.classList.toggle("is-active", b === btn));
+    const s = SIZES.find(x => x.id === current.size);
+    document.getElementById("priceOut").textContent = fmtPrice(p.price + s.delta);
+  }));
+
+  const msg = document.getElementById("cardMsg");
+  msg.addEventListener("input", () => document.getElementById("charCount").textContent = msg.value.length);
+
+  document.getElementById("addBtn").addEventListener("click", () => { addWithOptions(p); window.__openCart && window.__openCart(); });
+  document.getElementById("buyNow").addEventListener("click", () => { addWithOptions(p); location.href = "kasa.html"; });
+}
+
+function addWithOptions(p) {
+  const s = SIZES.find(x => x.id === current.size) || SIZES[0];
+  const date = document.getElementById("deliveryDate").value;
+  const message = document.getElementById("cardMsg").value.trim();
+  const items = Cart.read();
+  const key = `${p.id}__${s.id}`;
+  const found = items.find(i => i.key === key);
+  if (found) { found.qty += 1; found.date = date; found.message = message; }
+  else items.push({ key, id: p.id, name: p.name, size: s.id, sizeLabel: s.label, price: p.price + s.delta, qty: 1, date, message });
+  Cart.write(items);
+  updateCartCount(true);
+}
+</script>
+</body>
+</html>

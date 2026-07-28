@@ -6,6 +6,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "port": 4321
+    },
+    {
+      "name": "rozkwit",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "serve", "landings/04-flower-shop-rozkwit", "-p", "4210", "--no-clipboard"],
+      "port": 4210
     }
   ]
 }

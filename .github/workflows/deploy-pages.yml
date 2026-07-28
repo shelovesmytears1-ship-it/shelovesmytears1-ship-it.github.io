@@ -49,6 +49,12 @@ jobs:
           mkdir -p dist/original
           cp -R "$RUNNER_TEMP/portfolio-original/dist/." dist/original/
 
+      - name: Add Rozkwit flower shop under /sklep-kwiatowy
+        run: |
+          mkdir -p dist/sklep-kwiatowy
+          cp -R landings/04-flower-shop-rozkwit/. dist/sklep-kwiatowy/
+          rm -f dist/sklep-kwiatowy/serve.json
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bukiety — Rozkwit</title>
+<meta name="description" content="Wszystkie bukiety Rozkwit. Filtruj według okazji, koloru i ceny. Dostawa tego samego dnia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html"><span class="brand__mark" data-icon="flower"></span> Rozkwit</a>
+    <nav class="nav__links" aria-label="Główna">
+      <a href="sklep.html" aria-current="page">Bukiety</a>
+      <a href="sklep.html#okazje">Okazje</a>
+      <a href="index.html#dostawa">Dostawa</a>
+      <a href="index.html#o-nas">O nas</a>
+    </nav>
+    <div class="nav__spacer"></div>
+    <div class="nav__actions">
+      <button class="icon-btn" data-open-cart aria-label="Koszyk"><span data-icon="cart"></span><span class="cart-count" data-cart-count>0</span></button>
+      <button class="burger icon-btn" aria-label="Menu" aria-expanded="false" data-icon="menu"></button>
+    </div>
+  </div>
+  <div class="mobile-menu">
+    <a href="sklep.html">Bukiety</a>
+    <a href="sklep.html#okazje">Okazje</a>
+    <a href="index.html#dostawa">Dostawa</a>
+    <a href="index.html#o-nas">O nas</a>
+    <a class="btn btn--primary btn--block" href="sklep.html">Wybierz bukiet</a>
+  </div>
+</header>
+
+<main class="container">
+  <div class="page-head" id="okazje">
+    <span class="eyebrow">Sklep</span>
+    <h1>Wszystkie bukiety</h1>
+  </div>
+
+  <div class="filters">
+    <div class="filters__group" id="occasionChips">
+      <span class="filters__label">Okazja</span>
+    </div>
+    <div class="filters__group" id="colorChips">
+      <span class="filters__label">Kolor</span>
+    </div>
+    <label class="filters__sort">
+      <select id="sortSelect" aria-label="Sortuj">
+        <option value="pop">Polecane</option>
+        <option value="price-asc">Cena: rosnąco</option>
+        <option value="price-desc">Cena: malejąco</option>
+        <option value="name">Nazwa A–Z</option>
+      </select>
+    </label>
+  </div>
+
+  <p class="result-count" id="resultCount"></p>
+  <div class="grid-cards" id="catalogGrid"></div>
+  <div class="empty-state" id="emptyState" hidden>
+    <p>Brak bukietów spełniających wybrane kryteria.</p>
+    <button class="btn btn--ghost" id="clearFilters" style="margin-top:16px">Wyczyść filtry</button>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="index.html"><span class="brand__mark" data-icon="flower"></span> Rozkwit</a>
+        <p>Świeże, ręcznie komponowane bukiety z dostawą tego samego dnia.</p>
+      </div>
+      <div><h4>Sklep</h4><ul><li><a href="sklep.html">Wszystkie bukiety</a></li><li><a href="sklep.html#okazje">Okazje</a></li></ul></div>
+      <div><h4>Pomoc</h4><ul><li><a href="index.html#dostawa">Dostawa</a></li><li><a href="index.html#o-nas">O nas</a></li></ul></div>
+      <div><h4>Kontakt</h4><ul><li><a href="mailto:kontakt@rozkwit.pl">kontakt@rozkwit.pl</a></li><li><a href="tel:+48000000000">+48 000 000 000</a></li></ul></div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Rozkwit — projekt demonstracyjny.</span>
+      <span>Płatności w trybie testowym (Stripe). Realne środki nie są pobierane.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="drawer-overlay" data-close-cart></div>
+<aside class="drawer" aria-label="Koszyk">
+  <div class="drawer__head"><h2>Twój koszyk</h2><button class="icon-btn" data-close-cart aria-label="Zamknij" data-icon="close"></button></div>
+  <div class="drawer__body"></div>
+  <div class="drawer__foot">
+    <div class="drawer__row"><span>Razem</span><span class="total" data-cart-total>0 zł</span></div>
+    <a class="btn btn--primary btn--block btn--lg" href="kasa.html">Do kasy</a>
+    <p class="drawer__note">Dostawa liczona na następnym kroku · płatność testowa</p>
+  </div>
+</aside>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+const state = { occasion: "all", color: "all", sort: "pop" };
+
+function onPageReady() {
+  const params = new URLSearchParams(location.search);
+  if (params.get("okazja")) state.occasion = params.get("okazja");
+
+  // occasion chips
+  const oc = document.getElementById("occasionChips");
+  oc.insertAdjacentHTML("beforeend", chip("all", "Wszystkie", "occasion") +
+    OCCASIONS.map(o => chip(o.id, o.label, "occasion")).join(""));
+  // color chips
+  const cc = document.getElementById("colorChips");
+  cc.insertAdjacentHTML("beforeend", chip("all", "Wszystkie", "color") +
+    COLORS.map(c => chip(c.id, c.label, "color")).join(""));
+
+  document.querySelectorAll("[data-filter]").forEach(btn =>
+    btn.addEventListener("click", () => {
+      const type = btn.dataset.filter, val = btn.dataset.val;
+      state[type === "occasion" ? "occasion" : "color"] = val;
+      syncChips(); render();
+    }));
+  document.getElementById("sortSelect").addEventListener("change", e => { state.sort = e.target.value; render(); });
+  document.getElementById("clearFilters").addEventListener("click", () => { state.occasion = "all"; state.color = "all"; syncChips(); render(); });
+
+  syncChips(); render();
+}
+
+function chip(val, label, type) {
+  return `<button class="chip" data-filter="${type}" data-val="${val}">${label}</button>`;
+}
+function syncChips() {
+  document.querySelectorAll('[data-filter="occasion"]').forEach(b => b.classList.toggle("is-active", b.dataset.val === state.occasion));
+  document.querySelectorAll('[data-filter="color"]').forEach(b => b.classList.toggle("is-active", b.dataset.val === state.color));
+}
+function render() {
+  let list = PRODUCTS.slice();
+  if (state.occasion !== "all") list = list.filter(p => p.occasions.includes(state.occasion));
+  if (state.color !== "all") list = list.filter(p => p.color === state.color);
+  if (state.sort === "price-asc") list.sort((a, b) => a.price - b.price);
+  else if (state.sort === "price-desc") list.sort((a, b) => b.price - a.price);
+  else if (state.sort === "name") list.sort((a, b) => a.name.localeCompare(b.name, "pl"));
+
+  const grid = document.getElementById("catalogGrid");
+  const empty = document.getElementById("emptyState");
+  const count = document.getElementById("resultCount");
+  grid.innerHTML = list.map(productCardHTML).join("");
+  bindProductCards(grid);
+  empty.hidden = list.length > 0;
+  grid.hidden = list.length === 0;
+  count.textContent = `${list.length} ${plural(list.length, "bukiet", "bukiety", "bukietów")}`;
+  initReveal();
+}
+function plural(n, one, few, many) {
+  if (n === 1) return one;
+  const m10 = n % 10, m100 = n % 100;
+  if (m10 >= 2 && m10 <= 4 && !(m100 >= 12 && m100 <= 14)) return few;
+  return many;
+}
+</script>
+</body>
+</html>

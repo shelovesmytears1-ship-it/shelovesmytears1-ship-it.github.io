@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Koszyk — Rozkwit</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html"><span class="brand__mark" data-icon="flower"></span> Rozkwit</a>
+    <nav class="nav__links" aria-label="Główna">
+      <a href="sklep.html">Bukiety</a>
+      <a href="sklep.html#okazje">Okazje</a>
+      <a href="index.html#dostawa">Dostawa</a>
+      <a href="index.html#o-nas">O nas</a>
+    </nav>
+    <div class="nav__spacer"></div>
+    <div class="nav__actions">
+      <button class="icon-btn" data-open-cart aria-label="Koszyk"><span data-icon="cart"></span><span class="cart-count" data-cart-count>0</span></button>
+      <button class="burger icon-btn" aria-label="Menu" aria-expanded="false" data-icon="menu"></button>
+    </div>
+  </div>
+  <div class="mobile-menu">
+    <a href="sklep.html">Bukiety</a>
+    <a href="sklep.html#okazje">Okazje</a>
+    <a href="index.html#dostawa">Dostawa</a>
+    <a href="index.html#o-nas">O nas</a>
+    <a class="btn btn--primary btn--block" href="sklep.html">Wybierz bukiet</a>
+  </div>
+</header>
+
+<main class="container">
+  <div class="page-head"><span class="eyebrow">Krok 1 z 2</span><h1>Twój koszyk</h1></div>
+  <div class="cart-layout" id="cartLayout">
+    <div class="cart-list" id="cartList"></div>
+    <aside class="summary" id="summary"></aside>
+  </div>
+  <div class="empty-state" id="emptyCart" hidden>
+    <p>Twój koszyk jest pusty.</p>
+    <a class="btn btn--primary" href="sklep.html" style="margin-top:16px">Wybierz bukiet</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__bottom" style="border:0;margin:0;padding-top:0">
+      <span>© 2026 Rozkwit — projekt demonstracyjny.</span>
+      <span>Płatności w trybie testowym (Stripe). Realne środki nie są pobierane.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="drawer-overlay" data-close-cart></div>
+<aside class="drawer" aria-label="Koszyk">
+  <div class="drawer__head"><h2>Twój koszyk</h2><button class="icon-btn" data-close-cart aria-label="Zamknij" data-icon="close"></button></div>
+  <div class="drawer__body"></div>
+  <div class="drawer__foot">
+    <div class="drawer__row"><span>Razem</span><span class="total" data-cart-total>0 zł</span></div>
+    <a class="btn btn--primary btn--block btn--lg" href="kasa.html">Do kasy</a>
+    <p class="drawer__note">Dostawa liczona na następnym kroku · płatność testowa</p>
+  </div>
+</aside>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+function onPageReady() { renderCart(); }
+function onCartChange() { renderCart(); }
+
+function renderCart() {
+  const items = Cart.read();
+  const layout = document.getElementById("cartLayout");
+  const empty = document.getElementById("emptyCart");
+  if (!items.length) { layout.hidden = true; empty.hidden = false; return; }
+  layout.hidden = false; empty.hidden = true;
+
+  document.getElementById("cartList").innerHTML = items.map(i => `
+    <div class="line-item" data-key="${i.key}">
+      <div class="line-item__media">${bouquetSVG(productById(i.id))}</div>
+      <div>
+        <div class="line-item__name">${i.name}</div>
+        <div class="line-item__meta">${i.sizeLabel} · ${fmtPrice(i.price)}${i.date ? " · dostawa " + i.date : ""}</div>
+        ${i.message ? `<div class="line-item__meta">„${i.message}”</div>` : ""}
+        <div class="qty">
+          <button data-dec aria-label="Mniej">${ICON.minus}</button><span>${i.qty}</span><button data-inc aria-label="Więcej">${ICON.plus}</button>
+        </div>
+      </div>
+      <div style="text-align:right;display:flex;flex-direction:column;justify-content:space-between">
+        <div class="line-item__price">${fmtPrice(i.price * i.qty)}</div>
+        <button class="line-item__remove" data-remove>Usuń</button>
+      </div>
+    </div>`).join("");
+
+  bindLineItems(document.getElementById("cartList"));
+
+  const sub = Cart.total(), fee = deliveryFee(sub);
+  document.getElementById("summary").innerHTML = `
+    <h2>Podsumowanie</h2>
+    <div class="summary__row"><span>Wartość bukietów</span><strong>${fmtPrice(sub)}</strong></div>
+    <div class="summary__row"><span>Dostawa${fee === 0 ? " (gratis)" : ""}</span><strong>${fee === 0 ? "0 zł" : fmtPrice(fee)}</strong></div>
+    ${fee > 0 ? `<div class="summary__row"><span>Darmowa dostawa od ${fmtPrice(FREE_DELIVERY)}</span></div>` : ""}
+    <div class="summary__total"><span>Razem</span><span class="amt">${fmtPrice(sub + fee)}</span></div>
+    <a class="btn btn--primary btn--block btn--lg" href="kasa.html" style="margin-top:20px">Przejdź do kasy</a>
+    <a class="btn btn--ghost btn--block" href="sklep.html" style="margin-top:10px">Kontynuuj zakupy</a>`;
+}
+</script>
+</body>
+</html>

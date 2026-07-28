@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rozkwit — świeże bukiety z dostawą tego samego dnia</title>
+<meta name="description" content="Ręcznie komponowane bukiety od lokalnych florystów. Zamów do 21:00 i odbierz dostawę jeszcze dziś. Kwiaty na urodziny, miłość, gratulacje i bez okazji.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <span class="brand__mark" data-icon="flower"></span> Rozkwit
+    </a>
+    <nav class="nav__links" aria-label="Główna">
+      <a href="sklep.html">Bukiety</a>
+      <a href="sklep.html#okazje">Okazje</a>
+      <a href="index.html#dostawa">Dostawa</a>
+      <a href="index.html#o-nas">O nas</a>
+    </nav>
+    <div class="nav__spacer"></div>
+    <div class="nav__actions">
+      <button class="icon-btn" data-open-cart aria-label="Koszyk">
+        <span data-icon="cart"></span>
+        <span class="cart-count" data-cart-count>0</span>
+      </button>
+      <button class="burger icon-btn" aria-label="Menu" aria-expanded="false" data-icon="menu"></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="sklep.html">Bukiety</a>
+    <a href="sklep.html#okazje">Okazje</a>
+    <a href="index.html#dostawa">Dostawa</a>
+    <a href="index.html#o-nas">O nas</a>
+    <a class="btn btn--primary btn--block" href="sklep.html">Wybierz bukiet</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <div class="clock reveal">
+        <span class="clock__dot"></span>
+        <span data-clock-label>Zamów w ciągu</span>&nbsp;<span class="clock__time" data-clock-time>—</span>
+      </div>
+      <h1 class="hero__title reveal" data-delay="60">Świeże bukiety<br>z dostawą <em>jeszcze dziś</em>.</h1>
+      <p class="hero__sub reveal" data-delay="120">Ręcznie komponowane przez lokalnych florystów. Zamów do 21:00 — dostarczymy tego samego dnia, prosto pod drzwi.</p>
+      <div class="hero__cta reveal" data-delay="180">
+        <a class="btn btn--primary btn--lg" href="sklep.html">Wybierz bukiet</a>
+        <a class="link-arrow" href="#dostawa">Jak działa dostawa <span data-icon="arrow"></span></a>
+      </div>
+      <div class="hero__micro reveal" data-delay="220">
+        <span><span data-icon="truck"></span> Dostawa tego samego dnia</span>
+        <span><span data-icon="leaf"></span> Świeżość do 7 dni</span>
+        <span><span data-icon="check"></span> Zdjęcie przed wysyłką</span>
+      </div>
+    </div>
+    <div class="hero__visual reveal" data-delay="120">
+      <div class="bouquet-frame" id="heroBouquet">
+        <span class="bouquet-frame__badge">Bukiet tygodnia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BESTSELLERS ============ -->
+<section class="section" id="bestsellery">
+  <div class="container">
+    <div class="split section-head" style="max-width:none;align-items:flex-end">
+      <div>
+        <span class="eyebrow">Najczęściej wybierane</span>
+        <h2>Bukiety, które kochają nasi klienci</h2>
+      </div>
+      <a class="link-arrow" href="sklep.html">Zobacz wszystkie <span data-icon="arrow"></span></a>
+    </div>
+    <div class="grid-cards" id="bestsellerGrid"></div>
+  </div>
+</section>
+
+<!-- ============ OCCASIONS ============ -->
+<section class="section section--tight" id="okazje" style="background:var(--surface-tint)">
+  <div class="container">
+    <div class="section-head text-center mx-auto">
+      <span class="eyebrow">Na każdą chwilę</span>
+      <h2>Wybierz według okazji</h2>
+      <p>Nie wiesz, co wybrać? Zacznij od powodu — resztę podpowie florysta.</p>
+    </div>
+    <div class="occasions" id="occasionGrid"></div>
+  </div>
+</section>
+
+<!-- ============ HOW DELIVERY WORKS ============ -->
+<section class="section" id="dostawa">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Prosto i bez stresu</span>
+      <h2>Jak działa dostawa</h2>
+      <p>Zamawiasz dziś do 21:00 — bukiet jest u odbiorcy jeszcze tego samego dnia.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step__num">1</div>
+        <h3>Wybierasz bukiet</h3>
+        <p>Komponowany ręcznie ze świeżych, sezonowych kwiatów od lokalnych florystów.</p>
+      </div>
+      <div class="step reveal" data-delay="80">
+        <div class="step__num">2</div>
+        <h3>Ustalasz dostawę</h3>
+        <p>Podajesz adres, datę i godzinę oraz bilecik z życzeniami. Wszystko w kilka minut.</p>
+      </div>
+      <div class="step reveal" data-delay="160">
+        <div class="step__num">3</div>
+        <h3>Dostarczamy dziś</h3>
+        <p>Przed wysyłką dostajesz zdjęcie gotowego bukietu. Kurier dowozi go pod drzwi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT / REVIEWS ============ -->
+<section class="section section--tight" id="o-nas" style="background:var(--surface-tint)">
+  <div class="container">
+    <div class="section-head text-center mx-auto">
+      <span class="eyebrow">Zaufanie</span>
+      <h2>Co mówią nasi klienci</h2>
+    </div>
+    <div class="reviews">
+      <div class="review reveal">
+        <div class="review__stars" aria-label="5 na 5"></div>
+        <p>„Zamówiłam o 18:00, a o 20:30 bukiet był już u mamy. Wyglądał dokładnie jak na zdjęciu.”</p>
+        <div class="review__who">Ania K., Wrocław</div>
+      </div>
+      <div class="review reveal" data-delay="80">
+        <div class="review__stars" aria-label="5 na 5"></div>
+        <p>„Piwonie przetrwały ponad tydzień. Obsługa wysłała zdjęcie przed dostawą — świetny detal.”</p>
+        <div class="review__who">Marek T., Kraków</div>
+      </div>
+      <div class="review reveal" data-delay="160">
+        <div class="review__stars" aria-label="5 na 5"></div>
+        <p>„Najprostsze zamawianie kwiatów, jakie znam. Wybór według okazji naprawdę pomaga.”</p>
+        <div class="review__who">Julia S., Warszawa</div>
+      </div>
+    </div>
+    <p class="concept-note text-center">Rozkwit to projekt demonstracyjny — powyższe opinie są przykładowe i służą prezentacji układu strony.</p>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="section">
+  <div class="container">
+    <div class="bouquet-frame" style="aspect-ratio:auto;background:var(--brand);color:#fff;padding:clamp(40px,6vw,80px);display:grid;place-items:center;text-align:center;box-shadow:var(--shadow-md)">
+      <div style="max-width:52ch">
+        <h2 style="color:#fff;font-size:var(--fs-2xl)">Ktoś zasługuje dziś na kwiaty.</h2>
+        <p style="color:#D6E0D5;margin:16px auto 28px">Zamów do 21:00 i spraw komuś radość jeszcze dzisiaj.</p>
+        <a class="btn btn--primary btn--lg" href="sklep.html">Wybierz bukiet</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="index.html"><span class="brand__mark" data-icon="flower"></span> Rozkwit</a>
+        <p>Świeże, ręcznie komponowane bukiety z dostawą tego samego dnia.</p>
+      </div>
+      <div>
+        <h4>Sklep</h4>
+        <ul>
+          <li><a href="sklep.html">Wszystkie bukiety</a></li>
+          <li><a href="sklep.html#okazje">Okazje</a></li>
+          <li><a href="sklep.html">Bestsellery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Pomoc</h4>
+        <ul>
+          <li><a href="index.html#dostawa">Dostawa</a></li>
+          <li><a href="index.html#dostawa">Płatność</a></li>
+          <li><a href="index.html#o-nas">O nas</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:kontakt@rozkwit.pl">kontakt@rozkwit.pl</a></li>
+          <li><a href="tel:+48000000000">+48 000 000 000</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Rozkwit — projekt demonstracyjny.</span>
+      <span>Płatności w trybie testowym (Stripe). Realne środki nie są pobierane.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ CART DRAWER ============ -->
+<div class="drawer-overlay" data-close-cart></div>
+<aside class="drawer" aria-label="Koszyk">
+  <div class="drawer__head">
+    <h2>Twój koszyk</h2>
+    <button class="icon-btn" data-close-cart aria-label="Zamknij" data-icon="close"></button>
+  </div>
+  <div class="drawer__body"></div>
+  <div class="drawer__foot">
+    <div class="drawer__row"><span>Razem</span><span class="total" data-cart-total>0 zł</span></div>
+    <a class="btn btn--primary btn--block btn--lg" href="kasa.html">Do kasy</a>
+    <p class="drawer__note">Dostawa liczona na następnym kroku · płatność testowa</p>
+  </div>
+</aside>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+function onPageReady() {
+  // hero bouquet
+  const hero = document.getElementById("heroBouquet");
+  if (hero) hero.insertAdjacentHTML("beforeend", bouquetSVG(PRODUCTS[3]));
+  // bestsellers (first 4)
+  const grid = document.getElementById("bestsellerGrid");
+  if (grid) grid.innerHTML = PRODUCTS.slice(0, 4).map(productCardHTML).join("");
+  bindProductCards(grid);
+  // occasions
+  const occ = document.getElementById("occasionGrid");
+  if (occ) occ.innerHTML = OCCASIONS.map(o =>
+    `<a class="occasion reveal" href="sklep.html?okazja=${o.id}"><span data-ico>${ICON.flower}</span><strong>${o.label}</strong><span>${o.note}</span></a>`).join("");
+  // stars
+  document.querySelectorAll(".review__stars").forEach(s => s.innerHTML = ICON.star.repeat(5));
+  initReveal();
+}
+</script>
+</body>
+</html>
