@@ -3,11 +3,14 @@
 // Prices are resolved SERVER-SIDE from the map below — the client only sends
 // {id, size, qty}, so a tampered client price can't change what is charged.
 //
-// Env (Netlify UI → Site settings → Environment variables):
-//   STRIPE_SECRET_KEY = sk_test_...   (Stripe test-mode secret key)
+// Env (Netlify UI → Site settings → Environment variables — a secrets store,
+// never a committed file):
+//   STRIPE_SECRET_KEY = rk_test_...   (PREFER a restricted API key with only
+//                       "Checkout Sessions: write"; a full sk_test_ key also works)
 //   SITE_URL          = https://<your-site>   (optional; used for return URLs)
 //
-// Poland: line items are in PLN; Checkout offers card + BLIK + Przelewy24.
+// Poland: line items are in PLN. Payment methods (card, BLIK, Przelewy24) are
+// enabled in the Dashboard via dynamic payment methods — not hardcoded here.
 // Test data on the Stripe page: card 4242 4242 4242 4242, BLIK code 123456.
 
 import Stripe from 'stripe';
@@ -69,7 +72,7 @@ export async function handler(event: NetlifyEvent) {
   const items = Array.isArray(payload.items) ? payload.items : [];
   if (!items.length) return json(400, { error: 'empty cart' });
 
-  const stripe = new Stripe(key, { apiVersion: '2024-06-20' });
+  const stripe = new Stripe(key, { apiVersion: '2026-06-24.dahlia' as Stripe.StripeConfig['apiVersion'] });
 
   // Build line items from the server catalog (never trust client prices).
   const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
@@ -109,7 +112,9 @@ export async function handler(event: NetlifyEvent) {
   try {
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
-      payment_method_types: ['card', 'blik', 'p24'],
+      // Dynamic payment methods: do NOT hardcode payment_method_types. Card / BLIK /
+      // Przelewy24 are enabled in the Dashboard (Settings → Payment methods) and Stripe
+      // ranks the most relevant ones per customer for maximum conversion.
       line_items,
       customer_email: payload.email,
       locale: 'pl',

@@ -29,13 +29,28 @@ serwerowe — **na Netlify** (`netlify/functions/create-checkout.ts`).
 Na GitHub Pages (statyczny hosting) funkcji nie ma → strona kasy używa
 **trybu demo** (przekierowanie na `sukces.html?demo=1`, bez realnej sesji Stripe).
 
-1. Załóż konto na [dashboard.stripe.com](https://dashboard.stripe.com) i włącz **Test mode**.
-2. Skopiuj **Secret key** (`sk_test_...`).
-3. Netlify → Site settings → Environment variables:
-   - `STRIPE_SECRET_KEY = sk_test_...`
+1. Klucz testowy — dwie drogi:
+   - **Z kontem:** [dashboard.stripe.com](https://dashboard.stripe.com) → **Test mode** →
+     Developers → API keys → utwórz **restricted key** (`rk_test_...`) z uprawnieniem
+     tylko *Checkout Sessions: write* (bezpieczniej niż pełny `sk_test_`).
+   - **Bez rejestracji:** `npm i -g @stripe/cli` → `stripe sandbox create` — od razu
+     dostajesz działające klucze testowe.
+2. Netlify → Site settings → Environment variables:
+   - `STRIPE_SECRET_KEY = rk_test_...` (albo `sk_test_...`)
+   - `STRIPE_WEBHOOK_SECRET = whsec_...` (z webhooka, patrz niżej)
    - (opcjonalnie) `SITE_URL = https://twoja-domena`
-4. Deploy. Kasa wywoła `/.netlify/functions/create-checkout`, dostaniesz sesję Stripe
-   w PLN z metodami **Karta / BLIK / Przelewy24**.
+3. **Metody płatności** (Karta / BLIK / Przelewy24) włącz w Dashboard →
+   Settings → Payment methods. Funkcja **nie** koduje ich na sztywno — używa
+   *dynamic payment methods*, więc Stripe sam pokazuje najlepsze dla klienta.
+4. Deploy. Kasa wywoła `/.netlify/functions/create-checkout` i dostaniesz sesję Stripe w PLN.
+
+### Webhook (potwierdzenie płatności — źródło prawdy)
+Przekierowanie na `sukces.html` to tylko UX; realne potwierdzenie musi iść przez
+**webhook z weryfikacją podpisu** (`netlify/functions/stripe-webhook.ts`).
+Dashboard → Developers → Webhooks → endpoint
+`https://<site>/.netlify/functions/stripe-webhook`, zdarzenia
+`checkout.session.completed` (+ `checkout.session.async_payment_*` dla BLIK/P24).
+Skopiuj `whsec_...` do Netlify env.
 
 ### Dane testowe na stronie Stripe
 - Karta: `4242 4242 4242 4242`, dowolna przyszła data, dowolny CVC.
