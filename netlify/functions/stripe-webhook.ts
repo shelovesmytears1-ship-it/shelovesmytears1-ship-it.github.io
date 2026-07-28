@@ -28,6 +28,48 @@ const json = (status: number, data: unknown) => ({
   body: JSON.stringify(data),
 });
 
+function escapeHtml(s: string): string {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// Durable fulfilment: push the paid order to the florist's Telegram (same bot as
+// the contact form). If Telegram isn't configured, we still log the order so it
+// is never silently lost — and the payment itself always lives in the Stripe
+// Dashboard, which is the ultimate source of truth.
+async function notifyFlorist(session: Stripe.Checkout.Session): Promise<void> {
+  const m = session.metadata ?? {};
+  const amount = session.amount_total != null
+    ? `${(session.amount_total / 100).toFixed(2)} ${(session.currency ?? 'pln').toUpperCase()}`
+    : (m.suma ?? '');
+  const lines = [
+    '🌷 <b>Nowe opłacone zamówienie — Rozkwit</b>',
+    '',
+    m.zamowienie ? `<b>Bukiety:</b> ${escapeHtml(m.zamowienie)}` : '',
+    amount ? `<b>Kwota:</b> ${escapeHtml(amount)}` : '',
+    m.odbiorca ? `<b>Odbiorca:</b> ${escapeHtml(m.odbiorca)}` : '',
+    m.telefon ? `<b>Telefon:</b> ${escapeHtml(m.telefon)}` : '',
+    m.adres ? `<b>Adres:</b> ${escapeHtml(m.adres)}` : '',
+    (m.data || m.godzina) ? `<b>Dostawa:</b> ${escapeHtml([m.data, m.godzina].filter(Boolean).join(', '))}` : '',
+    m.bilecik ? `<b>Bilecik:</b> ${escapeHtml(m.bilecik)}` : '',
+    session.customer_details?.email ? `<b>E-mail:</b> ${escapeHtml(session.customer_details.email)}` : '',
+    `\n<i>Stripe session: ${session.id}</i>`,
+  ].filter(Boolean);
+  const text = lines.join('\n');
+
+  const token = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+  if (!token || !chatId) {
+    console.info('[stripe-webhook] Telegram not configured; order:\n' + text.replace(/<[^>]+>/g, ''));
+    return;
+  }
+  const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'HTML' }),
+  });
+  if (!res.ok) throw new Error('Telegram ' + res.status + ' ' + (await res.text()));
+}
+
 export async function handler(event: NetlifyEvent) {
   if (event.httpMethod !== 'POST') return json(405, { error: 'method not allowed' });
 
@@ -59,11 +101,16 @@ export async function handler(event: NetlifyEvent) {
       case 'checkout.session.completed':
       case 'checkout.session.async_payment_succeeded': {
         const session = stripeEvent.data.object as Stripe.Checkout.Session;
-        // ✅ Paid. This is where real fulfilment goes: mark the order paid, tell the
-        // florist to prepare & deliver the bouquet, send the confirmation e-mail.
-        // Use session.id for idempotency (Stripe may deliver an event more than once).
-        console.info('[stripe-webhook] paid:', session.id, session.amount_total, session.currency,
-          'odbiorca=', session.metadata?.odbiorca, 'data=', session.metadata?.data);
+        // Only fulfil once the money is actually there. Card pays synchronously
+        // (payment_status = 'paid' on completed); BLIK/P24 can be 'unpaid' on
+        // `completed` and settle later via async_payment_succeeded.
+        if (session.payment_status === 'paid' || stripeEvent.type === 'checkout.session.async_payment_succeeded') {
+          // Idempotency: Stripe may deliver an event more than once — in a real DB
+          // you'd upsert on session.id so the florist isn't notified twice.
+          await notifyFlorist(session);
+        } else {
+          console.info('[stripe-webhook] completed but not yet paid (async method pending):', session.id);
+        }
         break;
       }
       case 'checkout.session.async_payment_failed': {

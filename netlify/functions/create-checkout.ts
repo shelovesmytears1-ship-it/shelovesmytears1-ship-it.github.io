@@ -76,6 +76,7 @@ export async function handler(event: NetlifyEvent) {
 
   // Build line items from the server catalog (never trust client prices).
   const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
+  const summaryParts: string[] = [];
   let subtotal = 0;
   for (const it of items) {
     const prod = CATALOG[it.id];
@@ -84,6 +85,7 @@ export async function handler(event: NetlifyEvent) {
     if (!prod) return json(400, { error: `unknown product: ${it.id}` });
     const unit = prod.price + size.delta;
     subtotal += unit * qty;
+    summaryParts.push(`${qty}× ${prod.name} (${size.label})`);
     line_items.push({
       quantity: qty,
       price_data: {
@@ -121,6 +123,8 @@ export async function handler(event: NetlifyEvent) {
       success_url: `${origin}/sukces.html?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/anulowano.html`,
       metadata: {
+        zamowienie: summaryParts.join(', ').slice(0, 480),
+        suma: `${subtotal + fee} zł`,
         odbiorca: d.rname ?? '',
         telefon: d.rphone ?? '',
         adres: [d.street, d.postal, d.city].filter(Boolean).join(', '),
