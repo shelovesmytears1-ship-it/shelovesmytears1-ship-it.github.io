@@ -2,7 +2,9 @@
 # Custom domain: overflow-web.pl (configured in Netlify UI)
 
 [build]
-  command = "npm run build"
+  # Astro build, then drop the Rozkwit flower shop into the publish dir so it is
+  # served at /sklep-kwiatowy/ (its Stripe checkout function runs under /.netlify/functions).
+  command = "npm run build && cp -R landings/04-flower-shop-rozkwit dist/sklep-kwiatowy && rm -f dist/sklep-kwiatowy/serve.json"
   publish = "dist"
 
 [build.environment]
