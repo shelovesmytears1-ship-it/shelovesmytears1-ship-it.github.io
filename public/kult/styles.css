@@ -2142,6 +2142,11 @@ body[data-flavor="burn"] .hero-product-img {
     bottom: 4rem;
     width: clamp(15rem, 34vw, 20rem);
   }
+  .hero-product-stamp {
+    right: auto;
+    left: -50%;
+    top: 48%;
+  }
   .hero-inner { width: min(39rem, 72vw); }
   .hero-drop-index { display: none; }
   .hero-scene__image { object-position: 56% center; }
@@ -2300,10 +2305,10 @@ body[data-flavor="burn"] .hero-product-img {
     top: 10.5rem;
     bottom: 8.5rem;
     width: min(60vw, 17rem);
-    overflow: clip;
+    overflow: visible;
   }
   .hero-product-shell {
-    overflow: clip;
+    overflow: visible;
   }
   .hero-ghost {
     inset: 24% 0 auto 0;
@@ -2317,8 +2322,9 @@ body[data-flavor="burn"] .hero-product-img {
     overflow: clip;
   }
   .hero-product-stamp {
-    right: 18%;
-    top: 40%;
+    right: auto;
+    left: -56%;
+    top: 52%;
     font-size: 0.52rem;
     padding: 0.42rem 0.52rem;
     box-shadow: 0.28rem 0.28rem 0 #070707;
