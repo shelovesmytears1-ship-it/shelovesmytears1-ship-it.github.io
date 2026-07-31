@@ -6,6 +6,18 @@ import { getNewDirectionCopy } from '../../data/newDirectionI18n';
 interface Props { lang?: Lang; }
 const { lang = 'pl' } = Astro.props as Props;
 const c = getNewDirectionCopy(lang);
+const successMessage = {
+  pl: 'Brief wysłany. Odpowiem w ciągu 24 godzin w dni robocze.',
+  ru: 'Бриф отправлен. Отвечу в течение 24 часов в рабочие дни.',
+  en: "Brief sent. I'll reply within 24 hours on business days.",
+  ua: 'Бриф надіслано. Відповім протягом 24 годин у робочі дні.',
+}[lang];
+const errorMessage = {
+  pl: 'Nie udało się wysłać. Napisz bezpośrednio przez Telegram lub email.',
+  ru: 'Не удалось отправить. Напишите напрямую в Telegram или на email.',
+  en: 'Could not send. Please write directly via Telegram or email.',
+  ua: 'Не вдалося надіслати. Напишіть напряму в Telegram або на email.',
+}[lang];
 ---
 
 <NewDirectionLayout title={c.layout.nav.contact} description={c.contact.lede} current="contact" lang={lang} currentPath="contact">
@@ -20,7 +32,7 @@ const c = getNewDirectionCopy(lang);
   </section>
 
   <section class="contact-grid new-shell">
-    <form class="brief nd-reveal" name="new-brief" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <form id="new-brief-form" class="brief nd-reveal" name="new-brief" method="POST">
       <input type="hidden" name="form-name" value="new-brief" />
       <p hidden><label>{c.contact.honeypot} <input name="bot-field" /></label></p>
       <label>
@@ -42,6 +54,7 @@ const c = getNewDirectionCopy(lang);
         <textarea name="message" rows="6" required placeholder={c.contact.messagePlaceholder}></textarea>
       </label>
       <button class="new-button" type="submit">{c.contact.submit} <span aria-hidden="true">↗</span></button>
+      <p class="brief-status" id="new-brief-status" data-success={successMessage} data-error={errorMessage} hidden aria-live="polite"></p>
     </form>
 
     <aside class="contact-aside nd-reveal">
@@ -53,6 +66,39 @@ const c = getNewDirectionCopy(lang);
   </section>
 </NewDirectionLayout>
 
+<script>
+  const form = document.getElementById('new-brief-form') as HTMLFormElement | null;
+  const status = document.getElementById('new-brief-status') as HTMLElement | null;
+  const button = form?.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (button) button.disabled = true;
+    if (status) status.hidden = true;
+
+    try {
+      await fetch('https://ornate-taiyaki-6a1716.netlify.app/.netlify/functions/notify', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form) as unknown as Record<string, string>).toString(),
+      });
+      form.reset();
+      if (status) {
+        status.textContent = status.dataset.success ?? '';
+        status.hidden = false;
+      }
+    } catch {
+      if (status) {
+        status.textContent = status.dataset.error ?? '';
+        status.hidden = false;
+      }
+    } finally {
+      if (button) button.disabled = false;
+    }
+  });
+</script>
+
 <style>
   .contact-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr); gap: clamp(3rem, 11vw, 12rem); padding: 0 0 clamp(8rem, 15vw, 14rem); }
   .brief { display: flex; flex-direction: column; gap: 1.5rem; }
@@ -63,6 +109,7 @@ const c = getNewDirectionCopy(lang);
   .brief input:focus, .brief select:focus, .brief textarea:focus { border-color: var(--nd-accent); }
   .brief textarea { resize: vertical; min-height: 9rem; line-height: 1.55; }
   .brief .new-button { align-self: flex-start; margin-top: 1rem; background: var(--nd-ink); cursor: pointer; }
+  .brief-status { margin: 0; color: var(--nd-muted); font-size: .85rem; line-height: 1.55; }
   .contact-aside { display: flex; flex-direction: column; align-items: start; gap: 1rem; padding-top: .1rem; }
   .contact-aside a { display: flex; justify-content: space-between; width: 100%; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--nd-line); font-family: var(--nd-serif); font-size: clamp(1.6rem, 2.4vw, 2.4rem); letter-spacing: -.04em; }
   .contact-aside a span { color: var(--nd-accent); font-family: var(--nd-sans); font-size: 1rem; }
