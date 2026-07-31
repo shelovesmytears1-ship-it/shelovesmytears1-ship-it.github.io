@@ -263,6 +263,51 @@ if (!reduce) {
     }
   };
 
+  /* ---- scroll-highlight verbs: the column rises, each word ignites at the
+     band, then dissolves behind the Work heading that slides in on top.
+     Driven here (not CSS background-clip) because a fixed-attachment gradient
+     breaks on a transformed layer — the words simply vanished. Desktop only;
+     the CSS hides the whole stage under 820px and in reduced-motion. */
+  const verbsStage = document.querySelector<HTMLElement>('.verbs-stage');
+  const verbsList = verbsStage?.querySelector<HTMLElement>('.verbs-list') ?? null;
+  const verbsHead = verbsStage?.querySelector<HTMLElement>('.verbs-head') ?? null;
+  const verbItems = verbsList
+    ? (Array.from(verbsList.children) as HTMLElement[])
+    : [];
+  const verbsOn = wide && !!verbsStage && !!verbsList && verbItems.length > 0;
+  // BAND matches --vband in studio.css; FADE_* are in word-height units
+  const BAND = 0.55, FADE_IN = 1.4, FADE_OUT = 1.6;
+
+  const driveVerbs = () => {
+    if (!verbsOn || !verbsStage || !verbsList) return;
+    const rect = verbsStage.getBoundingClientRect();
+    const travel = verbsStage.offsetHeight - innerHeight;
+    if (travel <= 0) return;
+    const raw = -rect.top / travel;            // unclamped, can exceed [0,1]
+    const prog = Math.min(1, Math.max(0, raw));
+    const n = verbItems.length;
+    const liH = verbItems[0].getBoundingClientRect().height || 96;
+
+    // slide the column so each word sits on the band at prog = i/(n-1)
+    const offset = innerHeight * BAND - liH * 0.5 - prog * (n - 1) * liH;
+    verbsList.style.transform = `translate3d(0,${offset.toFixed(2)}px,0)`;
+
+    // per-word opacity: fade in from below the band, dissolve out above it
+    for (let i = 0; i < n; i++) {
+      const target = n > 1 ? i / (n - 1) : 0.5;
+      const dist = (prog - target) * (n - 1); // <0 below band, >0 above
+      let a: number;
+      if (dist <= -FADE_IN) a = 0;
+      else if (dist < 0) a = 1 + dist / FADE_IN;
+      else if (dist < FADE_OUT) a = 1 - dist / FADE_OUT;
+      else a = 0;
+      verbItems[i].style.opacity = Math.max(0, Math.min(1, a)).toFixed(3);
+    }
+
+    // heading slides in once the first word is up, out once the stage is passed
+    if (verbsHead) verbsHead.classList.toggle('is-on', raw > 0.08 && raw < 1);
+  };
+
   /* ---- marquee that reverses with the scroll direction ----
      The strip loops by exactly one unit width, which only looks seamless while
      the strip is longer than the viewport. Two hardcoded copies were not: one
@@ -297,6 +342,7 @@ if (!reduce) {
   const raf = (time: number) => {
     lenis.raf(time);
     applyParallax();
+    driveVerbs();
 
     if (mqTrack && mqUnitW) {
       mqX -= 0.55 * mqDir;

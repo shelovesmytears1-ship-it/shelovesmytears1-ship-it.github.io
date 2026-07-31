@@ -112,14 +112,20 @@ const verbsSrText = verbsSrByLang[lang] ?? verbsSrByLang.en;
   </div>
 </section>
 
-<!-- SCROLL-HIGHLIGHT VERBS — sticky word column, each ignites in the accent as
-     it crosses a fixed mid-viewport band. Pure CSS; desktop/tablet only. -->
-<section class="verbs" style={`--count:${verbs.length}`}>
+<!-- SCROLL-HIGHLIGHT VERBS — the column rises as you scroll; each word ignites in
+     the accent crossing a mid-viewport band, then dissolves behind the Work
+     heading that slides in on top. JS-driven (studio.ts); desktop/tablet only. -->
+<section class="verbs-stage" style={`--count:${verbs.length}`}>
   <h2 class="verbs-sr">{verbsSrText}</h2>
-  <div class="verbs-inner">
-    <ul class="verbs-list" aria-hidden="true">
+  <div class="verbs" aria-hidden="true">
+    <ul class="verbs-list">
       {verbs.map((w) => (<li>{w}</li>))}
     </ul>
+  </div>
+  <div class="verbs-head" aria-hidden="true">
+    <div class="wrap">
+      <h2>{c.home.workTitle}<br /><em>{c.home.workAccent}</em></h2>
+    </div>
   </div>
 </section>
 
