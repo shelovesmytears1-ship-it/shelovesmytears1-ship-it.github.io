@@ -242,13 +242,11 @@ const themeLabel = themeLabels[lang];
       <span>© 2026 overflow — Gdańsk</span>
       <span id="clock" data-clock data-label="Local time">Local time —</span>
       <span>{c.layout.footer}</span>
-      <a
-        class="ftr-social"
-        href="https://www.instagram.com/overflow.web"
-        target="_blank"
-        rel="noopener"
-        aria-label="Instagram — @overflow.web (opens in a new tab)"
-      >Instagram @overflow.web ↗</a>
+      <nav class="ftr-contact" aria-label="Direct contact">
+        <a href="https://t.me/zzxvaracaa" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://www.instagram.com/overflow.web" target="_blank" rel="noopener">Instagram</a>
+        <a href="mailto:overflow.web1@gmail.com">overflow.web1@gmail.com</a>
+      </nav>
       <span class="ftr-legal">
         <a href={legalHref('privacy')}>{c.legal.privacyNav}</a>
         <a href={legalHref('impressum')}>{c.legal.impressumNav}</a>
