@@ -133,11 +133,19 @@ if (burger && mnav) {
    context. A bare text node cannot be raised above it, so labels that were not
    already wrapped (every non-magnetic button) got covered. Wrap them all. */
 document.querySelectorAll<HTMLElement>('.btn').forEach((b) => {
-  if (b.querySelector('.btn-text')) return;
-  const span = document.createElement('span');
-  span.className = 'btn-text';
-  while (b.firstChild) span.appendChild(b.firstChild);
-  b.appendChild(span);
+  if (!b.querySelector('.btn-text')) {
+    const span = document.createElement('span');
+    span.className = 'btn-text';
+    while (b.firstChild) span.appendChild(b.firstChild);
+    b.appendChild(span);
+  }
+  /* origin the hover fill at the point where the pointer entered, so it grows
+     out from under the cursor (--fx/--fy consumed by .btn::before) */
+  b.addEventListener('mouseenter', (e) => {
+    const r = b.getBoundingClientRect();
+    b.style.setProperty('--fx', `${e.clientX - r.left}px`);
+    b.style.setProperty('--fy', `${e.clientY - r.top}px`);
+  });
 });
 
 /* ---- live local clock (hero strip + footer) ---- */
