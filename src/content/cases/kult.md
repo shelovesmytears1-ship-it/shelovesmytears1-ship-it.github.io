@@ -8,7 +8,7 @@ tier: 1
 accent: '#D4FF00'
 bg: '#070707'
 siteUrl: https://overflow-web.pl/kult/
-cover: /covers/kult.webp
+cover: /covers/kult-hero.webp
 technologies:
   - HTML
   - CSS
