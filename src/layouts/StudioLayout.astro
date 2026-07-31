@@ -239,18 +239,40 @@ const themeLabel = themeLabels[lang];
     </main>
 
     <footer class="ftr wrap" data-speed="-1.2">
-      <span>© 2026 overflow — Gdańsk</span>
-      <span id="clock" data-clock data-label="Local time">Local time —</span>
-      <span>{c.layout.footer}</span>
-      <nav class="ftr-contact" aria-label="Direct contact">
-        <a href="https://t.me/zzxvaracaa" target="_blank" rel="noopener">Telegram</a>
-        <a href="https://www.instagram.com/overflow.web" target="_blank" rel="noopener">Instagram</a>
-        <a href="mailto:overflow.web1@gmail.com">overflow.web1@gmail.com</a>
-      </nav>
-      <span class="ftr-legal">
-        <a href={legalHref('privacy')}>{c.legal.privacyNav}</a>
-        <a href={legalHref('impressum')}>{c.legal.impressumNav}</a>
-      </span>
+      <div class="ftr-main">
+        <div class="ftr-lead">
+          <span class="ftr-status"><i class="ftr-dot" aria-hidden="true"></i>{c.about.availability}</span>
+          <a class="ftr-cta" href={p('contact')} data-cursor data-tname={c.layout.nav.talk}>{c.layout.nav.talk}<em>.</em></a>
+          <a class="ftr-mail" href="mailto:overflow.web1@gmail.com" data-cursor>overflow.web1@gmail.com</a>
+        </div>
+
+        <div class="ftr-cols">
+          <nav class="ftr-col" aria-label={c.layout.nav.menu}>
+            <span class="ftr-col-label">{c.layout.nav.menu}</span>
+            <a href={p('work')} data-cursor>{c.layout.nav.work}</a>
+            <a href={p('method')} data-cursor>{c.layout.nav.method}</a>
+            <a href={p('about')} data-cursor>{c.layout.nav.about}</a>
+            <a href={p('contact')} data-cursor>{c.layout.nav.contact}</a>
+          </nav>
+          <nav class="ftr-col" aria-label="Social">
+            <span class="ftr-col-label">Social</span>
+            <a href="https://t.me/zzxvaracaa" target="_blank" rel="noopener" data-cursor>Telegram <span class="ftr-arrow" aria-hidden="true">↗</span></a>
+            <a href="https://www.instagram.com/overflow.web" target="_blank" rel="noopener" data-cursor>Instagram <span class="ftr-arrow" aria-hidden="true">↗</span></a>
+            <a href="mailto:overflow.web1@gmail.com" data-cursor>Email <span class="ftr-arrow" aria-hidden="true">↗</span></a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="ftr-bottom">
+        <span class="ftr-copy">© 2026 overflow — {c.layout.footer}</span>
+        <span class="ftr-clock" id="clock" data-clock data-label="Local time">Local time —</span>
+        <span class="ftr-legal">
+          <a href={legalHref('privacy')} data-cursor>{c.legal.privacyNav}</a>
+          <a href={legalHref('impressum')} data-cursor>{c.legal.impressumNav}</a>
+        </span>
+      </div>
+
+      <div class="ftr-mark" aria-hidden="true">overflow<span class="ftr-mark-dot">.</span></div>
     </footer>
 
     <script>

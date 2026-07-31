@@ -132,7 +132,7 @@ if (burger && mnav) {
    .btn::before is the hover fill and paints over anything without a stacking
    context. A bare text node cannot be raised above it, so labels that were not
    already wrapped (every non-magnetic button) got covered. Wrap them all. */
-document.querySelectorAll<HTMLElement>('.btn').forEach((b) => {
+document.querySelectorAll<HTMLElement>('.btn, .nav-cta').forEach((b) => {
   if (!b.querySelector('.btn-text')) {
     const span = document.createElement('span');
     span.className = 'btn-text';
