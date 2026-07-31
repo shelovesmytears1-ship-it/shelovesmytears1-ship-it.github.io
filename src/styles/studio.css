@@ -415,9 +415,10 @@ body.previewing .cur{opacity:0;}
 
 /* footer */
 .ftr{border-top:1px solid var(--line);padding:2.5rem 0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono),monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
-.ftr-social{display:inline-flex;align-items:center;min-height:44px;padding:.65rem .85rem;border:1px solid var(--line);border-radius:999px;color:var(--ink);transition:border-color .25s,color .25s,background-color .25s;}
-.ftr-social:hover{border-color:var(--accent);color:var(--on-accent);background:var(--accent);}
-.ftr-social:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+.ftr-contact{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.ftr-contact a{display:inline-flex;align-items:center;min-height:44px;color:var(--muted);text-transform:none;text-underline-offset:3px;transition:color .25s;}
+.ftr-contact a:hover{color:var(--ink);text-decoration:underline;}
+.ftr-contact a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
 .ftr-legal{display:flex;gap:1.2rem;}
 .ftr-legal a{color:var(--muted);text-underline-offset:3px;}
 .ftr-legal a:hover{color:var(--ink);text-decoration:underline;}
