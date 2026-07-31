@@ -51,7 +51,23 @@ const heroWords: W[] = [
   ...c.home.heroTail.split(' ').map((w) => ({ w, a: false })),
 ];
 
-const techStack = ['Astro', 'TypeScript', 'Motion system', c.layout.nav.method, 'SEO', 'performance'];
+// scroll-highlight "verbs" — what I do, end to end (one person, whole project).
+// Rendered as a sticky column that ignites in the accent as each word crosses a
+// fixed mid-viewport band. Desktop/tablet only — hidden on phones in CSS.
+const verbsByLang: Record<string, string[]> = {
+  pl: ['projektuję.', 'buduję.', 'wdrażam.', 'optymalizuję.', 'utrzymuję.'],
+  ru: ['проектирую.', 'собираю.', 'запускаю.', 'оптимизирую.', 'поддерживаю.'],
+  en: ['design.', 'build.', 'ship.', 'optimise.', 'maintain.'],
+  ua: ['проєктую.', 'збираю.', 'запускаю.', 'оптимізую.', 'підтримую.'],
+};
+const verbs = verbsByLang[lang] ?? verbsByLang.en;
+const verbsSrByLang: Record<string, string> = {
+  pl: 'Projektuję, buduję, wdrażam, optymalizuję i utrzymuję.',
+  ru: 'Проектирую, собираю, запускаю, оптимизирую и поддерживаю.',
+  en: 'I design, build, ship, optimise and maintain.',
+  ua: 'Проєктую, збираю, запускаю, оптимізую і підтримую.',
+};
+const verbsSrText = verbsSrByLang[lang] ?? verbsSrByLang.en;
 ---
 
 <!-- HERO — full-bleed section, 3D fills entire viewport -->
@@ -96,12 +112,16 @@ const techStack = ['Astro', 'TypeScript', 'Motion system', c.layout.nav.method, 
   </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee" aria-hidden="true">
-  <div class="mq-track">
-    <span class="mq-unit">{techStack.map((t) => (<><span>{t}</span><b>/</b></>))}</span>
+<!-- SCROLL-HIGHLIGHT VERBS — sticky word column, each ignites in the accent as
+     it crosses a fixed mid-viewport band. Pure CSS; desktop/tablet only. -->
+<section class="verbs" style={`--count:${verbs.length}`}>
+  <h2 class="verbs-sr">{verbsSrText}</h2>
+  <div class="verbs-inner">
+    <ul class="verbs-list" aria-hidden="true">
+      {verbs.map((w) => (<li>{w}</li>))}
+    </ul>
   </div>
-</div>
+</section>
 
 <!-- WORK -->
 <section id="work" class="sec wrap">
