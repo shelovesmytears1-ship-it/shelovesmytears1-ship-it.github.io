@@ -9,6 +9,13 @@ accent: '#D4FF00'
 bg: '#070707'
 siteUrl: https://overflow-web.pl/kult/
 cover: /covers/kult-hero.webp
+screens:
+  - src: /screens/kult-m1.webp
+    kind: phone
+  - src: /screens/kult-m2.webp
+    kind: phone
+  - src: /screens/kult-m3.webp
+    kind: phone
 technologies:
   - HTML
   - CSS
