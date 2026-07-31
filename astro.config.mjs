@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  // Production deployment: overflow-web.pl via Netlify (root domain, no base path).
+  // Production deployment: overflow-web.pl via GitHub Pages (root domain, no base path).
   site: 'https://overflow-web.pl',
   trailingSlash: 'ignore',
   server: {
