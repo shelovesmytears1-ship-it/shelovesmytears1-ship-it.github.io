@@ -423,9 +423,9 @@ body.previewing .cur{opacity:0;}
 /* footer */
 /* ---- footer: an editorial sign-off — big "let's talk" line, link columns,
    a live meta bar and an oversized wordmark that bleeds off the edges ---- */
-.ftr{position:relative;border-top:1px solid var(--line);margin-top:2rem;padding:5.5rem 0 2.4rem;overflow:hidden;
+.ftr{position:relative;border-top:1px solid var(--line);margin-top:2rem;padding:5.5rem 0 2.4rem;
   font-family:var(--mono),monospace;color:var(--muted);}
-.ftr-main{display:grid;grid-template-columns:1.5fr 1fr;gap:3rem 2rem;align-items:start;}
+.ftr-main{position:relative;z-index:1;display:grid;grid-template-columns:1.5fr 1fr;gap:3rem 2rem;align-items:start;}
 .ftr-lead{display:flex;flex-direction:column;align-items:flex-start;gap:1.4rem;}
 .ftr-status{display:inline-flex;align-items:center;gap:.6rem;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
 .ftr-dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--accent);
@@ -450,7 +450,7 @@ body.previewing .cur{opacity:0;}
 .ftr-col a:hover .ftr-arrow{color:var(--accent);transform:translate(2px,-2px);}
 .ftr-col a:focus-visible,.ftr-mail:focus-visible,.ftr-cta:focus-visible,.ftr-legal a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
 
-.ftr-bottom{display:flex;justify-content:space-between;align-items:center;gap:1rem 1.5rem;flex-wrap:wrap;
+.ftr-bottom{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:1rem 1.5rem;flex-wrap:wrap;
   margin-top:4rem;padding-top:1.6rem;border-top:1px solid var(--line);
   font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
 .ftr-clock{white-space:nowrap;}
@@ -458,7 +458,10 @@ body.previewing .cur{opacity:0;}
 .ftr-legal a{color:var(--muted);text-underline-offset:3px;transition:color .25s;}
 .ftr-legal a:hover{color:var(--ink);text-decoration:underline;}
 
-.ftr-mark{margin-top:2.4rem;font-family:var(--disp),sans-serif;font-weight:var(--disp-w);letter-spacing:-.055em;
+/* clip wrapper: overflow:hidden only here so it never clips the pulse dot
+   (which lives in .ftr-main, a sibling — not inside this element) */
+.ftr-mark-clip{position:absolute;bottom:0;left:0;right:0;z-index:0;overflow:hidden;pointer-events:none;}
+.ftr-mark{font-family:var(--disp),sans-serif;font-weight:var(--disp-w);letter-spacing:-.055em;
   line-height:.8;font-size:clamp(4.5rem,22vw,20rem);color:var(--ink);opacity:.05;
   user-select:none;pointer-events:none;white-space:nowrap;}
 .ftr-mark-dot{color:var(--accent);opacity:1;}
@@ -486,7 +489,7 @@ body.previewing .cur{opacity:0;}
   .ftr{padding:4rem 0 calc(2.4rem + env(safe-area-inset-bottom));}
   .ftr-main{grid-template-columns:1fr;gap:2.6rem;}
   .ftr-bottom{margin-top:2.6rem;flex-direction:column;align-items:flex-start;gap:.9rem;}
-  .ftr-mark{margin-top:1.6rem;font-size:clamp(3.5rem,32vw,9rem);}
+  .ftr-mark{font-size:clamp(3.5rem,32vw,9rem);}
 
   /* rhythm: roughly halved */
   .sec{padding:clamp(3.2rem,8vh,5.5rem) 0;}

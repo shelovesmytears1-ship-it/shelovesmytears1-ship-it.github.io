@@ -117,6 +117,10 @@ const themeLabel = themeLabels[lang];
     )}
     <!-- arm the curtain before first paint so navigations never flash -->
     <script is:inline define:vars={{ adaptiveTheme }}>
+      // Prevent the browser from restoring scroll position — the curtain
+      // covers the seam, so every page load should start at the very top.
+      if (history.scrollRestoration) history.scrollRestoration = 'manual';
+      window.scrollTo(0, 0);
       document.documentElement.classList.add('curtain-on');
       if (adaptiveTheme) {
         let savedTheme = null;
@@ -272,7 +276,9 @@ const themeLabel = themeLabels[lang];
         </span>
       </div>
 
-      <div class="ftr-mark" aria-hidden="true">overflow<span class="ftr-mark-dot">.</span></div>
+      <div class="ftr-mark-clip" aria-hidden="true">
+        <div class="ftr-mark">overflow<span class="ftr-mark-dot">.</span></div>
+      </div>
     </footer>
 
     <script>
