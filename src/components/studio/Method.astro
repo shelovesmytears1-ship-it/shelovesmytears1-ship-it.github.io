@@ -16,27 +16,92 @@ const p = (slug: string) => `${root}/${slug}/`;
   <p class="page-lede" data-reveal>{c.method.lede}</p>
 </section>
 
-<section class="sec wrap" aria-label={c.method.listLabel}>
-  <ol class="phases">
-    {c.method.phases.map((ph, i) => (
-      <li class="phase" data-phase data-reveal>
-        <span class="phase-n disp" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-        <div class="phase-body">
-          <h2 class="disp">{ph.title}</h2>
-          <div class="phase-content">
-            <div class="phase-content-inner">
-              <p>{ph.text}</p>
-              {ph.tags && (
-                <div class="phase-tags">
-                  {ph.tags.map(tag => <span class="phase-tag">{tag}</span>)}
-                </div>
-              )}
+<section class="sec wrap method-process" aria-label={c.method.listLabel}>
+  <div class="method-process-grid">
+    <aside class="process-rail" aria-hidden="true">
+      <div class="process-rail-top">
+        <span class="eye">01 — {String(c.method.phases.length).padStart(2, '0')}</span>
+        <span class="process-rail-current" data-phase-current>01</span>
+      </div>
+      <div class="process-rail-track">
+        <span class="process-rail-fill" data-phase-progress></span>
+        {c.method.phases.map((_, i) => <span class="process-rail-dot" data-phase-dot={i}></span>)}
+      </div>
+      <span class="process-rail-caption">{c.method.resultLabel}</span>
+    </aside>
+
+    <ol class="phases" data-phase-list>
+      {c.method.phases.map((ph, i) => (
+        <li class="phase" data-phase data-phase-index={i} data-reveal>
+          <span class="phase-n disp" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <div class="phase-body">
+            <h2 class="disp">{ph.title}</h2>
+            <div class="phase-content">
+              <div class="phase-content-inner">
+                <p>{ph.text}</p>
+                {ph.result && (
+                  <p class="phase-result">
+                    <span>{c.method.resultLabel}</span>
+                    <strong>{ph.result}</strong>
+                  </p>
+                )}
+                {ph.tags && (
+                  <div class="phase-tags">
+                    {ph.tags.map(tag => <span class="phase-tag">{tag}</span>)}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
+        </li>
+      ))}
+    </ol>
+
+    <aside class="process-visual" aria-hidden="true" data-process-visual data-active="1">
+      <div class="process-visual-head">
+        <span>PROCESS / <b data-visual-index>01</b></span>
+        <span class="process-visual-status"><i></i> LIVE</span>
+      </div>
+      <div class="process-visual-canvas">
+        <div class="process-artifact process-artifact--1" data-artifact="1">
+          <span class="artifact-kicker">BRIEF / 01</span>
+          <span class="artifact-line artifact-line--long"></span>
+          <span class="artifact-line artifact-line--medium"></span>
+          <span class="artifact-line artifact-line--short"></span>
+          <span class="artifact-orb"></span>
+          <span class="artifact-note">goal → audience → limits</span>
         </div>
-      </li>
-    ))}
-  </ol>
+        <div class="process-artifact process-artifact--2" data-artifact="2">
+          <span class="artifact-kicker">DIRECTION / 02</span>
+          <div class="artifact-board"><i></i><i></i><i></i></div>
+          <span class="artifact-line artifact-line--medium"></span>
+          <span class="artifact-line artifact-line--short"></span>
+        </div>
+        <div class="process-artifact process-artifact--3" data-artifact="3">
+          <span class="artifact-kicker">BUILD / 03</span>
+          <span class="artifact-code"><i>&lt;section</i> class=<b>“hero”</b>&gt;</span>
+          <span class="artifact-code artifact-code--muted">design → component → live</span>
+          <span class="artifact-code"><i>/section&gt;</i></span>
+          <span class="artifact-caret"></span>
+        </div>
+        <div class="process-artifact process-artifact--4" data-artifact="4">
+          <span class="artifact-kicker">QUALITY / 04</span>
+          <span class="artifact-check"><i>✓</i> keyboard</span>
+          <span class="artifact-check"><i>✓</i> responsive</span>
+          <span class="artifact-check"><i>✓</i> performance</span>
+          <span class="artifact-check artifact-check--pending"><i>→</i> final pass</span>
+        </div>
+        <div class="process-artifact process-artifact--5" data-artifact="5">
+          <span class="artifact-kicker">LIVE / 05</span>
+          <span class="artifact-url">your-domain.pl</span>
+          <span class="artifact-live-pill"><i></i> deployed</span>
+          <span class="artifact-line artifact-line--medium"></span>
+          <span class="artifact-line artifact-line--short"></span>
+        </div>
+      </div>
+      <p class="process-visual-note">{c.method.visualNote}</p>
+    </aside>
+  </div>
 </section>
 
 <section class="sec wrap cta-band">
@@ -46,23 +111,73 @@ const p = (slug: string) => `${root}/${slug}/`;
 </section>
 
 <style>
-  .phases{list-style:none;display:flex;flex-direction:column; margin: 4rem 0;}
-  .phase{position:relative;padding:clamp(2.5rem,6vw,4rem) 0;border-top:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;transition:opacity .5s ease;opacity:0.25;}
+  .method-process{position:relative;}
+  .method-process-grid{display:grid;grid-template-columns:minmax(110px,.42fr) minmax(0,1.45fr) minmax(220px,.72fr);gap:clamp(1.5rem,3vw,3.5rem);align-items:start;}
+  .process-rail{position:sticky;top:7rem;display:flex;flex-direction:column;gap:1.2rem;padding-top:4rem;}
+  .process-rail-top{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;}
+  .process-rail-current{font-family:var(--mono),monospace;font-size:.75rem;color:var(--accent);}
+  .process-rail-track{position:relative;width:1px;height:21rem;margin-left:.2rem;background:var(--line);}
+  .process-rail-fill{position:absolute;inset:0 0 auto;display:block;width:1px;height:100%;background:var(--accent);transform:scaleY(0);transform-origin:top;transition:transform .55s cubic-bezier(.16,1,.3,1);}
+  .process-rail-dot{position:absolute;left:50%;width:7px;height:7px;border:1px solid var(--muted);border-radius:50%;background:var(--bg);transform:translateX(-50%);transition:background .3s ease,border-color .3s ease,transform .3s ease;}
+  .process-rail-dot:nth-child(2){top:0;}.process-rail-dot:nth-child(3){top:25%;}.process-rail-dot:nth-child(4){top:50%;}.process-rail-dot:nth-child(5){top:75%;}.process-rail-dot:nth-child(6){top:100%;}
+  .process-rail-dot.is-current{border-color:var(--accent);background:var(--accent);transform:translateX(-50%) scale(1.35);}
+  .process-rail-caption{max-width:12ch;color:var(--muted);font-family:var(--mono),monospace;font-size:.62rem;line-height:1.5;text-transform:uppercase;}
+  .phases{list-style:none;display:flex;flex-direction:column;margin:4rem 0;}
+  .phase{position:relative;padding:clamp(2.5rem,6vw,4rem) 0;border-top:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;transition:opacity .5s ease,transform .5s cubic-bezier(.16,1,.3,1);opacity:.2;}
   .phase.is-active{opacity:1;}
   .phase:last-child{border-bottom:1px solid var(--line);}
-  .phase-n{position:absolute;left:-2%;top:50%;transform:translateY(-50%);font-size:clamp(8rem,22vw,20rem);color:var(--accent);opacity:0.04;line-height:1;z-index:-1;pointer-events:none;user-select:none;}
+  .phase-n{position:absolute;left:-2%;top:50%;transform:translateY(-50%) scale(.96);font-size:clamp(8rem,22vw,20rem);color:var(--accent);opacity:.035;line-height:1;z-index:-1;pointer-events:none;user-select:none;transition:opacity .5s ease,transform .6s cubic-bezier(.16,1,.3,1);}
+  .phase.is-active .phase-n{opacity:.1;transform:translateY(-50%) scale(1.04);}
   .phase-body{position:relative;z-index:1;}
-  .phase-body h2{font-size:clamp(1.8rem,4vw,3.2rem);margin-bottom:.5rem;transition:transform .5s cubic-bezier(.16,1,.3,1);}
+  .phase-body h2{font-size:clamp(1.8rem,4vw,3.2rem);margin-bottom:.5rem;transition:transform .5s cubic-bezier(.16,1,.3,1),color .35s ease;}
+  .phase.is-active .phase-body h2{transform:translateX(.35rem);}
   .phase-content{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.16,1,.3,1);}
   .phase.is-active .phase-content{grid-template-rows:1fr;}
   .phase-content-inner{overflow:hidden;}
   .phase-body p{color:var(--muted);max-width:60ch;font-size:1.1rem;margin-bottom:1.5rem;padding-top:.5rem;}
+  .phase-result{display:flex;flex-wrap:wrap;align-items:baseline;gap:.65rem 1rem;margin-bottom:1.5rem!important;padding-top:0!important;}
+  .phase-result span{font-family:var(--mono),monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);}
+  .phase-result strong{font-size:.95rem;font-weight:500;color:var(--ink);}
   .phase-tags{display:flex;flex-wrap:wrap;gap:.6rem;padding-bottom:.5rem;}
   .phase-tag{font-family:var(--mono),monospace;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;padding:.35rem .85rem;border:1px solid color-mix(in srgb,var(--ink) 15%,transparent);border-radius:999px;color:var(--ink);white-space:nowrap;}
+  .process-visual{position:sticky;top:7rem;margin-top:4rem;padding:1rem;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 72%,var(--accent) 4%);overflow:hidden;}
+  .process-visual-head{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-family:var(--mono),monospace;font-size:.62rem;letter-spacing:.08em;}
+  .process-visual-head b{color:var(--accent);font-weight:400;}
+  .process-visual-status{display:flex;align-items:center;gap:.35rem;color:var(--accent);}
+  .process-visual-status i,.artifact-live-pill i{width:5px;height:5px;border-radius:50%;background:var(--accent);display:inline-block;box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 12%,transparent);}
+  .process-visual-canvas{position:relative;height:20rem;margin-top:1.4rem;border:1px solid var(--line);background:radial-gradient(circle at 60% 38%,color-mix(in srgb,var(--accent) 15%,transparent),transparent 58%),color-mix(in srgb,var(--bg) 88%,white 3%);overflow:hidden;}
+  .process-visual-canvas::before,.process-visual-canvas::after{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:2rem 2rem;opacity:.45;mask-image:linear-gradient(to bottom,black,transparent 80%);}
+  .process-visual-canvas::after{inset:50% -20% auto;height:1px;background:var(--accent);background-image:none;opacity:.2;transform:rotate(-14deg);}
+  .process-artifact{position:absolute;inset:1.5rem;display:flex;flex-direction:column;gap:.8rem;opacity:0;transform:translateY(1rem) scale(.98);transition:opacity .35s ease,transform .5s cubic-bezier(.16,1,.3,1);}
+  .process-visual[data-active='1'] .process-artifact--1,.process-visual[data-active='2'] .process-artifact--2,.process-visual[data-active='3'] .process-artifact--3,.process-visual[data-active='4'] .process-artifact--4,.process-visual[data-active='5'] .process-artifact--5{opacity:1;transform:none;}
+  .artifact-kicker{font-family:var(--mono),monospace;font-size:.62rem;letter-spacing:.12em;color:var(--accent);}
+  .artifact-line{height:7px;border-radius:99px;background:color-mix(in srgb,var(--ink) 28%,transparent);display:block;}.artifact-line--long{width:78%;}.artifact-line--medium{width:58%;}.artifact-line--short{width:34%;}
+  .artifact-orb{width:5rem;height:5rem;border-radius:50%;margin:1rem 0 0 auto;background:radial-gradient(circle at 35% 30%,var(--accent),color-mix(in srgb,var(--accent) 16%,transparent) 55%,transparent 72%);box-shadow:0 0 4rem color-mix(in srgb,var(--accent) 20%,transparent);}
+  .artifact-note,.artifact-url{margin-top:auto;color:var(--muted);font-family:var(--mono),monospace;font-size:.62rem;letter-spacing:.04em;}
+  .artifact-board{display:grid;grid-template-columns:1.3fr .8fr;gap:.45rem;height:9rem;margin-top:.6rem;transform:rotate(-4deg);}.artifact-board i{display:block;border:1px solid var(--line);background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 30%,transparent),transparent 58%);}.artifact-board i:nth-child(2){background:linear-gradient(145deg,color-mix(in srgb,var(--ink) 18%,transparent),transparent);}.artifact-board i:nth-child(3){grid-column:1 / -1;background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--accent) 18%,transparent));}
+  .artifact-code{font-family:var(--mono),monospace;font-size:.76rem;color:var(--ink);}.artifact-code i{color:var(--accent);font-style:normal;}.artifact-code b{font-weight:400;color:var(--accent);}.artifact-code--muted{color:var(--muted);margin-top:1.3rem;}.artifact-caret{width:1px;height:1.1rem;background:var(--accent);animation:artifact-blink 1.1s steps(2,end) infinite;}
+  @keyframes artifact-blink{50%{opacity:0;}}
+  .artifact-check{display:flex;align-items:center;gap:.7rem;padding:.7rem 0;border-bottom:1px solid var(--line);font-family:var(--mono),monospace;font-size:.68rem;color:var(--ink);}.artifact-check i{color:var(--accent);font-style:normal;}.artifact-check--pending{color:var(--muted);}
+  .artifact-live-pill{display:flex;align-items:center;gap:.45rem;width:max-content;margin:1.2rem 0 1.3rem;padding:.45rem .7rem;border:1px solid color-mix(in srgb,var(--accent) 50%,transparent);border-radius:999px;color:var(--accent);font-family:var(--mono),monospace;font-size:.62rem;text-transform:uppercase;}
+  .process-visual-note{margin-top:1rem;color:var(--muted);font-size:.78rem;line-height:1.5;}
   .cta-band{text-align:left;}
   .cta-band h2{font-size:clamp(2.4rem,7vw,5.5rem);margin:1rem 0 2rem;}
+  @media(max-width:1080px){
+    .method-process-grid{grid-template-columns:minmax(90px,.35fr) minmax(0,1.65fr);}
+    .process-visual{display:none;}
+  }
   @media(max-width:720px){
+    .method-process-grid{display:block;}
+    .process-rail{display:none;}
     .phase-n{font-size:clamp(6rem, 30vw, 12rem);left: -5%;}
     .phase-body h2{font-size: 1.8rem;}
+    .phase.is-active .phase-body h2{transform:none;}
+    .phase-result{display:block;}
+    .phase-result span,.phase-result strong{display:block;}
+    .phase-result strong{margin-top:.35rem;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .phase,.phase-n,.phase-body h2,.phase-content,.process-rail-fill,.process-rail-dot,.process-artifact{transition-duration:.01ms!important;}
+    .artifact-caret{animation:none;}
   }
 </style>

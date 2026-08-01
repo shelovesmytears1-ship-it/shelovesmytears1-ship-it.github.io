@@ -122,16 +122,48 @@ const io = new IntersectionObserver(
 document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
 document.documentElement.classList.add('motion-ready');
 
-/* ---- phase timeline (method page) ---- */
-const phaseIo = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((e) => {
-      e.target.classList.toggle('is-active', e.isIntersecting);
-    });
-  },
-  { rootMargin: '-30% 0px -30% 0px' }
-);
-document.querySelectorAll('[data-phase]').forEach((el) => phaseIo.observe(el));
+/* ---- phase timeline (method page) -------------------------------------- */
+/* Keep one phase active at a time so the page reads as a route, not as five
+   unrelated accordions. The rail and the small artifact preview are driven by
+   the same index, while the ordered list remains fully usable without JS. */
+const phaseItems = Array.from(document.querySelectorAll<HTMLElement>('[data-phase]'));
+const phaseCurrent = document.querySelector<HTMLElement>('[data-phase-current]');
+const phaseProgress = document.querySelector<HTMLElement>('[data-phase-progress]');
+const phaseDots = Array.from(document.querySelectorAll<HTMLElement>('[data-phase-dot]'));
+const processVisual = document.querySelector<HTMLElement>('[data-process-visual]');
+const visualIndex = document.querySelector<HTMLElement>('[data-visual-index]');
+
+if (phaseItems.length) {
+  const setActivePhase = (index: number) => {
+    const safeIndex = Math.max(0, Math.min(phaseItems.length - 1, index));
+    phaseItems.forEach((item, itemIndex) => item.classList.toggle('is-active', itemIndex === safeIndex));
+    phaseDots.forEach((dot, dotIndex) => dot.classList.toggle('is-current', dotIndex === safeIndex));
+    if (phaseCurrent) phaseCurrent.textContent = String(safeIndex + 1).padStart(2, '0');
+    if (phaseProgress) {
+      const progress = phaseItems.length > 1 ? safeIndex / (phaseItems.length - 1) : 1;
+      phaseProgress.style.transform = `scaleY(${progress})`;
+    }
+    if (processVisual) processVisual.dataset.active = String(safeIndex + 1);
+    if (visualIndex) visualIndex.textContent = String(safeIndex + 1).padStart(2, '0');
+  };
+
+  setActivePhase(0);
+  const phaseIo = new IntersectionObserver(
+    (entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting);
+      if (!visible.length) return;
+      const closest = visible.reduce((best, entry) => {
+        const bestDistance = Math.abs(best.boundingClientRect.top + best.boundingClientRect.height / 2 - innerHeight / 2);
+        const entryDistance = Math.abs(entry.boundingClientRect.top + entry.boundingClientRect.height / 2 - innerHeight / 2);
+        return entryDistance < bestDistance ? entry : best;
+      });
+      const index = Number((closest.target as HTMLElement).dataset.phaseIndex || 0);
+      setActivePhase(index);
+    },
+    { rootMargin: '-38% 0px -38% 0px', threshold: 0 }
+  );
+  phaseItems.forEach((el) => phaseIo.observe(el));
+}
 
 /* ---- sticky nav state ---- */
 const hdr = document.querySelector('.hdr');
