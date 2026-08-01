@@ -2,7 +2,7 @@ import type { Lang } from '../i18n/ui';
 
 export const newDirectionLanguages = ['pl', 'ru', 'en', 'ua'] as const satisfies readonly Lang[];
 
-type Step = { title: string; text: string };
+type Step = { title: string; text: string; tags?: string[] };
 
 type NewDirectionCopy = {
   layout: {
@@ -83,11 +83,11 @@ const copy: Record<Lang, NewDirectionCopy> = {
     method: {
       title: 'Jasny proces.', accent: 'Bez domysłów.', lede: 'Prowadzę projekt osobiście i pokazuję kolejne decyzje po drodze — tak, aby finał nie był niespodzianką.', listLabel: 'Etapy pracy', ctaMeta: 'NA POCZĄTEK WYSTARCZY KRÓTKA ROZMOWA', ctaTitle: 'Masz zadanie?', ctaAccent: 'Ustalmy kierunek.', ctaButton: 'Przejdź do briefu',
       phases: [
-        { title: 'Rozmowa', text: 'Zaczynam od celu, odbiorców i ograniczeń. Dobry projekt nie powstaje od wyboru koloru.' },
-        { title: 'Kierunek', text: 'Układ, treść i ton wizualny ustawiam zanim zacznie się właściwa budowa.' },
-        { title: 'Projektowanie i kod', text: 'Tworzę interfejs responsywny, dostępny i tak lekki, jak wymaga tego zadanie.' },
-        { title: 'Kontrola jakości', text: 'Sprawdzam stronę na realnych szerokościach, klawiaturą i pod kątem szybkości.' },
-        { title: 'Wdrożenie', text: 'Konfiguruję domenę, hosting i podstawy SEO. Strona jest gotowa do pracy, nie tylko do pokazania.' },
+        { title: 'Rozmowa', text: 'Zaczynam od celu, odbiorców i ograniczeń. Dobry projekt nie powstaje od wyboru koloru.', tags: ['Brief', 'Wycena', 'Harmonogram'] },
+        { title: 'Kierunek', text: 'Układ, treść i ton wizualny ustawiam zanim zacznie się właściwa budowa.', tags: ['Moodboard', 'Architektura', 'Kierunek'] },
+        { title: 'Projektowanie i kod', text: 'Tworzę interfejs responsywny, dostępny i tak lekki, jak wymaga tego zadanie.', tags: ['Kod źródłowy', 'Repozytorium', 'RWD'] },
+        { title: 'Kontrola jakości', text: 'Sprawdzam stronę na realnych szerokościach, klawiaturą i pod kątem szybkości.', tags: ['Raport wydajności', 'A11y', 'Testy'] },
+        { title: 'Wdrożenie', text: 'Konfiguruję domenę, hosting i podstawy SEO. Strona jest gotowa do pracy, nie tylko do pokazania.', tags: ['Hosting', 'Domena', 'SEO'] },
       ],
     },
     about: {
@@ -152,11 +152,11 @@ const copy: Record<Lang, NewDirectionCopy> = {
     method: {
       title: 'Ясный процесс.', accent: 'Без догадок.', lede: 'Веду проект лично и показываю решения по ходу работы — чтобы финал не оказался сюрпризом.', listLabel: 'Этапы работы', ctaMeta: 'ДЛЯ НАЧАЛА ДОСТАТОЧНО КОРОТКОГО РАЗГОВОРА', ctaTitle: 'Есть задача?', ctaAccent: 'Определим направление.', ctaButton: 'Перейти к брифу',
       phases: [
-        { title: 'Разговор', text: 'Начинаю с цели, аудитории и ограничений. Хороший проект не начинается с выбора цвета.' },
-        { title: 'Направление', text: 'Структуру, текст и визуальный тон определяю до начала непосредственной разработки.' },
-        { title: 'Дизайн и код', text: 'Делаю адаптивный, доступный интерфейс ровно такой сложности, какая нужна задаче.' },
-        { title: 'Контроль качества', text: 'Проверяю сайт на реальных ширинах, с клавиатурой и по скорости.' },
-        { title: 'Запуск', text: 'Настраиваю домен, хостинг и базовое SEO. Сайт готов работать, а не только выглядеть.' },
+        { title: 'Разговор', text: 'Начинаю с цели, аудитории и ограничений. Хороший проект не начинается с выбора цвета.', tags: ['Бриф', 'Оценка', 'График'] },
+        { title: 'Направление', text: 'Структуру, текст и визуальный тон определяю до начала непосредственной разработки.', tags: ['Мудборд', 'Структура', 'Визуал'] },
+        { title: 'Дизайн и код', text: 'Делаю адаптивный, доступный интерфейс ровно такой сложности, какая нужна задаче.', tags: ['Исходный код', 'Репозиторий', 'Адаптив'] },
+        { title: 'Контроль качества', text: 'Проверяю сайт на реальных ширинах, с клавиатурой и по скорости.', tags: ['Отчет скорости', 'Доступность', 'Тесты'] },
+        { title: 'Запуск', text: 'Настраиваю домен, хостинг и базовое SEO. Сайт готов работать, а не только выглядеть.', tags: ['Хостинг', 'Домен', 'SEO'] },
       ],
     },
     about: {
@@ -221,11 +221,11 @@ const copy: Record<Lang, NewDirectionCopy> = {
     method: {
       title: 'A clear process.', accent: 'No guesswork.', lede: 'I lead the project personally and share decisions along the way, so the final result is never a surprise.', listLabel: 'Work stages', ctaMeta: 'A SHORT CONVERSATION IS ENOUGH TO START', ctaTitle: 'Have a task?', ctaAccent: 'Let’s define the direction.', ctaButton: 'Go to the brief',
       phases: [
-        { title: 'Conversation', text: 'I start with the goal, audience and constraints. A good project does not begin with picking a colour.' },
-        { title: 'Direction', text: 'I set the structure, copy and visual tone before the actual build starts.' },
-        { title: 'Design and code', text: 'I create a responsive, accessible interface with precisely the complexity the task needs.' },
-        { title: 'Quality assurance', text: 'I check the site at real viewport widths, with a keyboard, and for speed.' },
-        { title: 'Launch', text: 'I configure the domain, hosting and SEO basics. The site is ready to work, not merely to be shown.' },
+        { title: 'Conversation', text: 'I start with the goal, audience and constraints. A good project does not begin with picking a colour.', tags: ['Brief', 'Estimate', 'Timeline'] },
+        { title: 'Direction', text: 'I set the structure, copy and visual tone before the actual build starts.', tags: ['Moodboard', 'Structure', 'Visuals'] },
+        { title: 'Design and code', text: 'I create a responsive, accessible interface with precisely the complexity the task needs.', tags: ['Source code', 'Repository', 'Responsive'] },
+        { title: 'Quality assurance', text: 'I check the site at real viewport widths, with a keyboard, and for speed.', tags: ['Speed report', 'Accessibility', 'Testing'] },
+        { title: 'Launch', text: 'I configure the domain, hosting and SEO basics. The site is ready to work, not merely to be shown.', tags: ['Hosting', 'Domain', 'SEO'] },
       ],
     },
     about: {
@@ -290,11 +290,11 @@ const copy: Record<Lang, NewDirectionCopy> = {
     method: {
       title: 'Зрозумілий процес.', accent: 'Без здогадок.', lede: 'Веду проєкт особисто й показую рішення в процесі, щоб фінал не став несподіванкою.', listLabel: 'Етапи роботи', ctaMeta: 'ДЛЯ ПОЧАТКУ ДОСТАТНЬО КОРОТКОЇ РОЗМОВИ', ctaTitle: 'Є завдання?', ctaAccent: 'Визначимо напрямок.', ctaButton: 'Перейти до брифу',
       phases: [
-        { title: 'Розмова', text: 'Починаю з мети, аудиторії та обмежень. Хороший проєкт не починається з вибору кольору.' },
-        { title: 'Напрямок', text: 'Структуру, текст і візуальний тон визначаю до початку безпосередньої розробки.' },
-        { title: 'Дизайн і код', text: 'Створюю адаптивний, доступний інтерфейс рівно тієї складності, яку потребує завдання.' },
-        { title: 'Контроль якості', text: 'Перевіряю сайт на реальних ширинах, клавіатурою та за швидкістю.' },
-        { title: 'Запуск', text: 'Налаштовую домен, хостинг і базове SEO. Сайт готовий працювати, а не лише виглядати.' },
+        { title: 'Розмова', text: 'Починаю з мети, аудиторії та обмежень. Хороший проєкт не починається з вибору кольору.', tags: ['Бриф', 'Оцінка', 'Графік'] },
+        { title: 'Напрямок', text: 'Структуру, текст і візуальний тон визначаю до початку безпосередньої розробки.', tags: ['Мудборд', 'Структура', 'Візуал'] },
+        { title: 'Дизайн і код', text: 'Створюю адаптивний, доступний інтерфейс рівно тієї складності, яку потребує завдання.', tags: ['Вихідний код', 'Репозиторій', 'Адаптив'] },
+        { title: 'Контроль якості', text: 'Перевіряю сайт на реальних ширинах, клавіатурою та за швидкістю.', tags: ['Звіт швидкості', 'Доступність', 'Тести'] },
+        { title: 'Запуск', text: 'Налаштовую домен, хостинг і базове SEO. Сайт готовий працювати, а не лише виглядати.', tags: ['Хостинг', 'Домен', 'SEO'] },
       ],
     },
     about: {

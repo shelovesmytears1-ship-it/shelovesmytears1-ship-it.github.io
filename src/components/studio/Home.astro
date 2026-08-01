@@ -70,6 +70,9 @@ const verbsSrByLang: Record<string, string> = {
 const verbsSrText = verbsSrByLang[lang] ?? verbsSrByLang.en;
 ---
 
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" aria-hidden="true"></div>
+
 <!-- HERO — full-bleed section, 3D fills entire viewport -->
 <section class="hero">
   <div class="hero-3d" id="hero3d" aria-hidden="true"></div>
@@ -118,6 +121,7 @@ const verbsSrText = verbsSrByLang[lang] ?? verbsSrByLang.en;
 <section class="verbs-stage" style={`--count:${verbs.length}`}>
   <h2 class="verbs-sr">{verbsSrText}</h2>
   <div class="verbs" aria-hidden="true">
+    <div class="verbs-ghost-num" id="verbsGhostNum" aria-hidden="true">01</div>
     <ul class="verbs-list">
       {verbs.map((w) => (<li>{w}</li>))}
     </ul>
@@ -187,9 +191,9 @@ const verbsSrText = verbsSrByLang[lang] ?? verbsSrByLang.en;
 <!-- APPROACH -->
 <section id="approach" class="sec wrap">
   <div class="sec-head"><h2 data-reveal>{c.home.processTitle}<br /><em>{c.home.processAccent}</em></h2></div>
-  <div class="steps" data-reveal>
+  <div class="steps">
     {c.home.steps.map((s, i) => (
-      <div class="step">
+      <div class="step" data-reveal style={`transition-delay:${i * 0.12}s`}>
         <span class="n">{String(i + 1).padStart(2, '0')}</span>
         <h3>{s.title}</h3>
         <p>{s.text}</p>
@@ -201,9 +205,10 @@ const verbsSrText = verbsSrByLang[lang] ?? verbsSrByLang.en;
 <!-- ABOUT -->
 <section id="about" class="sec wrap">
   <div class="about">
-    <p class="lead" data-reveal>{c.home.aboutBody}</p>
+    <p class="lead" data-lead>{c.home.aboutBody}</p>
     <div class="about-side" data-reveal>
-      <b>overflow / Daniil</b><br />Gdańsk, PL · Remote<br />—<br />
+      <b class="about-side-brand">overflow / Daniil</b>
+      Gdańsk, PL · Remote<br />
       {c.about.stack.map((s) => (<>{s.value}<br /></>))}
     </div>
   </div>

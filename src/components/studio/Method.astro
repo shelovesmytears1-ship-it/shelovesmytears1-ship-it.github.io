@@ -19,11 +19,20 @@ const p = (slug: string) => `${root}/${slug}/`;
 <section class="sec wrap" aria-label={c.method.listLabel}>
   <ol class="phases">
     {c.method.phases.map((ph, i) => (
-      <li class="phase" data-reveal>
-        <span class="phase-n disp">{String(i + 1).padStart(2, '0')}</span>
+      <li class="phase" data-phase data-reveal>
+        <span class="phase-n disp" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
         <div class="phase-body">
           <h2 class="disp">{ph.title}</h2>
-          <p>{ph.text}</p>
+          <div class="phase-content">
+            <div class="phase-content-inner">
+              <p>{ph.text}</p>
+              {ph.tags && (
+                <div class="phase-tags">
+                  {ph.tags.map(tag => <span class="phase-tag">{tag}</span>)}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </li>
     ))}
@@ -37,13 +46,23 @@ const p = (slug: string) => `${root}/${slug}/`;
 </section>
 
 <style>
-  .phases{list-style:none;display:flex;flex-direction:column;}
-  .phase{display:grid;grid-template-columns:7rem 1fr;gap:clamp(1rem,4vw,3rem);padding:clamp(1.8rem,3.5vw,2.8rem) 0;border-top:1px solid var(--line);align-items:start;}
+  .phases{list-style:none;display:flex;flex-direction:column; margin: 4rem 0;}
+  .phase{position:relative;padding:clamp(2.5rem,6vw,4rem) 0;border-top:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;transition:opacity .5s ease;opacity:0.25;}
+  .phase.is-active{opacity:1;}
   .phase:last-child{border-bottom:1px solid var(--line);}
-  .phase-n{font-size:clamp(2rem,4vw,3.2rem);color:var(--accent);line-height:1;}
-  .phase-body h2{font-size:clamp(1.5rem,3vw,2.4rem);margin-bottom:.6rem;}
-  .phase-body p{color:var(--muted);max-width:60ch;font-size:1.02rem;}
+  .phase-n{position:absolute;left:-2%;top:50%;transform:translateY(-50%);font-size:clamp(8rem,22vw,20rem);color:var(--accent);opacity:0.04;line-height:1;z-index:-1;pointer-events:none;user-select:none;}
+  .phase-body{position:relative;z-index:1;}
+  .phase-body h2{font-size:clamp(1.8rem,4vw,3.2rem);margin-bottom:.5rem;transition:transform .5s cubic-bezier(.16,1,.3,1);}
+  .phase-content{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.16,1,.3,1);}
+  .phase.is-active .phase-content{grid-template-rows:1fr;}
+  .phase-content-inner{overflow:hidden;}
+  .phase-body p{color:var(--muted);max-width:60ch;font-size:1.1rem;margin-bottom:1.5rem;padding-top:.5rem;}
+  .phase-tags{display:flex;flex-wrap:wrap;gap:.6rem;padding-bottom:.5rem;}
+  .phase-tag{font-family:var(--mono),monospace;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;padding:.35rem .85rem;border:1px solid color-mix(in srgb,var(--ink) 15%,transparent);border-radius:999px;color:var(--ink);white-space:nowrap;}
   .cta-band{text-align:left;}
   .cta-band h2{font-size:clamp(2.4rem,7vw,5.5rem);margin:1rem 0 2rem;}
-  @media(max-width:720px){.phase{grid-template-columns:1fr;gap:.5rem;}.phase-n{font-size:1.6rem;}}
+  @media(max-width:720px){
+    .phase-n{font-size:clamp(6rem, 30vw, 12rem);left: -5%;}
+    .phase-body h2{font-size: 1.8rem;}
+  }
 </style>

@@ -16,7 +16,9 @@ import Lenis from 'lenis';
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
+
 /* ---- split text into per-word masked tracks (reads as line reveal) ---- */
+
 function splitInto(el: HTMLElement, cls: string, step: number): void {
   type Token = { word?: string; accent?: boolean; br?: boolean };
   const tokens: Token[] = [];
@@ -67,6 +69,35 @@ document.querySelectorAll<HTMLElement>('.sec-head h2, .page-hero h1, .contact h2
   el.setAttribute('data-reveal', '');
 });
 
+/* ---- about lead: dedicated word-by-word reveal --------------------------
+   A self-contained animation independent of the shared [data-reveal]/.line
+   system: each word fades up with a visible stagger. Its own observer fires
+   at a high threshold, so the motion plays while the paragraph is already in
+   view instead of finishing off-screen. */
+document.querySelectorAll<HTMLElement>('[data-lead]').forEach((el) => {
+  if (reduce) return;
+  const words = (el.textContent || '').trim().split(/\s+/).filter(Boolean);
+  el.replaceChildren();
+  words.forEach((w, i) => {
+    const span = document.createElement('span');
+    span.className = 'lead-word';
+    span.textContent = w;
+    span.style.transitionDelay = `${(i * 0.035).toFixed(3)}s`;
+    el.appendChild(span);
+    if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
+  });
+  el.classList.add('lead-anim');
+  const leadIO = new IntersectionObserver(
+    (entries) => entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      leadIO.unobserve(e.target);
+    }),
+    { threshold: 0.35 }
+  );
+  leadIO.observe(el);
+});
+
 // the curtain owns this on pages that have one
 if (!document.getElementById('curtain')) {
   requestAnimationFrame(() => document.body.classList.add('loaded'));
@@ -90,6 +121,17 @@ const io = new IntersectionObserver(
 );
 document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
 document.documentElement.classList.add('motion-ready');
+
+/* ---- phase timeline (method page) ---- */
+const phaseIo = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((e) => {
+      e.target.classList.toggle('is-active', e.isIntersecting);
+    });
+  },
+  { rootMargin: '-30% 0px -30% 0px' }
+);
+document.querySelectorAll('[data-phase]').forEach((el) => phaseIo.observe(el));
 
 /* ---- sticky nav state ---- */
 const hdr = document.querySelector('.hdr');
@@ -204,6 +246,12 @@ if (gallery) {
   }
 }
 
+/* ---- preview frame: set by the fine block, called inside the main raf ----
+   Keeping both loops in the same rAF chain ensures syncFromPoint always runs
+   AFTER lenis.raf() has advanced the scroll position, so getBoundingClientRect
+   returns the correct viewport coordinates for the current frame. */
+let pvFrameFn: (() => void) | null = null;
+
 /* Everything below is enhancement only. */
 if (!reduce) {
   /* ---- Lenis smooth scroll ---- */
@@ -271,6 +319,7 @@ if (!reduce) {
   const verbsStage = document.querySelector<HTMLElement>('.verbs-stage');
   const verbsList = verbsStage?.querySelector<HTMLElement>('.verbs-list') ?? null;
   const verbsHead = verbsStage?.querySelector<HTMLElement>('.verbs-head') ?? null;
+  const ghostNum = document.getElementById('verbsGhostNum');
   const verbItems = verbsList
     ? (Array.from(verbsList.children) as HTMLElement[])
     : [];
@@ -301,11 +350,34 @@ if (!reduce) {
       else if (dist < 0) a = 1 + dist / FADE_IN;
       else if (dist < FADE_OUT) a = 1 - dist / FADE_OUT;
       else a = 0;
-      verbItems[i].style.opacity = Math.max(0, Math.min(1, a)).toFixed(3);
+      verbItems[i].style.opacity = Math.max(0.08, Math.min(1, a)).toFixed(3);
+    }
+
+    // ghost step number — shows which verb is currently active
+    if (ghostNum) {
+      const activeIdx = Math.round(prog * (n - 1));
+      const next = String(activeIdx + 1).padStart(2, '0');
+      if (ghostNum.textContent !== next) ghostNum.textContent = next;
     }
 
     // heading slides in once the first word is up, out once the stage is passed
     if (verbsHead) verbsHead.classList.toggle('is-on', raw > 0.08 && raw < 1);
+  };
+
+  /* ---- scroll-driven lead color sweep ----
+     Every RAF frame we read each word's viewport position and map it to a
+     0%→100% mix of --muted→--accent via a CSS custom property. No transition
+     delay needed: the 60 fps update IS the animation. */
+  const leadWords = Array.from(document.querySelectorAll<HTMLElement>('.lead-word'));
+  const driveLeadSweep = () => {
+    if (!leadWords.length) return;
+    const band = innerHeight * 0.6;
+    const zone = 72;
+    for (const word of leadWords) {
+      const r = word.getBoundingClientRect();
+      const t = Math.max(0, Math.min(1, (band - (r.top + r.height * 0.5)) / zone + 0.5));
+      word.style.setProperty('--t', `${(t * 100).toFixed(1)}%`);
+    }
   };
 
   /* ---- marquee that reverses with the scroll direction ----
@@ -343,13 +415,47 @@ if (!reduce) {
     lenis.raf(time);
     applyParallax();
     driveVerbs();
+    driveLeadSweep();
+    pvFrameFn?.();
 
+    // Scroll Progress
+    const scrollH = document.documentElement.scrollHeight - innerHeight;
+    const scrollP = scrollH > 0 ? (lenis.scroll || window.scrollY) / scrollH : 0;
+    document.documentElement.style.setProperty('--scroll-p', scrollP.toFixed(4));
+
+    // Velocity Skew
+    const v = lenis.velocity || 0;
+    const skew = Math.max(-10, Math.min(10, v * 0.15));
+    const pvViewport = document.querySelector<HTMLElement>('.work-preview-viewport');
+    if (pvViewport) pvViewport.style.transform = `skewY(${skew.toFixed(2)}deg)`;
+    
+    document.querySelectorAll<HTMLElement>('.gallery-mobile-card').forEach((el) => {
+      el.style.transform = `skewY(${-skew.toFixed(2)}deg)`;
+    });
+
+    // ----- 5. Velocity Marquee -----
     if (mqTrack && mqUnitW) {
-      mqX -= 0.55 * mqDir;
+      const vel = Math.abs(lenis.velocity || 0);
+      const speed = 0.55 + vel * 0.12;
+      const skew = Math.max(-5, Math.min(5, (lenis.velocity || 0) * 0.08));
+      mqX -= speed * mqDir;
       if (mqX <= -mqUnitW) mqX += mqUnitW;
       if (mqX > 0) mqX -= mqUnitW;
-      mqTrack.style.transform = `translate3d(${mqX.toFixed(2)}px,0,0)`;
+      mqTrack.style.transform = `translate3d(${mqX.toFixed(2)}px,0,0) skewX(${skew.toFixed(2)}deg)`;
     }
+
+    // ----- 4. Scroll-to-top ring -----
+    const scrollRingEl = document.querySelector<SVGCircleElement>('.ring-progress');
+    const scrollTopBtn = document.querySelector<HTMLButtonElement>('.scroll-top-btn');
+    const scrollH2 = document.documentElement.scrollHeight - innerHeight;
+    const scrollPct2 = scrollH2 > 0 ? (lenis.scroll || window.scrollY) / scrollH2 : 0;
+    if (scrollRingEl) {
+      const circumference = 289;
+      scrollRingEl.style.strokeDashoffset = String(circumference - circumference * scrollPct2);
+    }
+    if (scrollTopBtn) scrollTopBtn.classList.toggle('is-visible', (lenis.scroll || window.scrollY) > 200);
+
+
     requestAnimationFrame(raf);
   };
   requestAnimationFrame(raf);
@@ -358,6 +464,11 @@ if (!reduce) {
     const dir = scroll > lastY ? 1 : scroll < lastY ? -1 : mqDir;
     mqDir = dir;
     lastY = scroll;
+  });
+
+  // ----- 4. Scroll-to-top click handler -----
+  document.querySelector<HTMLButtonElement>('.scroll-top-btn')?.addEventListener('click', () => {
+    lenis.scrollTo(0, { duration: 1.2 });
   });
 
   // anchor links → smooth scroll via Lenis
@@ -375,6 +486,20 @@ if (!reduce) {
 }
 
 if (!reduce && fine) {
+  /* ---- 3. Glow spotlight behind cursor ---- */
+  const glowEl = document.createElement('div');
+  glowEl.className = 'glow-cursor';
+  document.body.appendChild(glowEl);
+  let gx = innerWidth / 2, gy = innerHeight / 2, gtx = gx, gty = gy;
+  addEventListener('mousemove', (e) => { gtx = e.clientX; gty = e.clientY; });
+  const glowLoop = () => {
+    gx += (gtx - gx) * 0.06;
+    gy += (gty - gy) * 0.06;
+    glowEl.style.transform = `translate(${gx.toFixed(1)}px, ${gy.toFixed(1)}px) translate(-50%, -50%)`;
+    requestAnimationFrame(glowLoop);
+  };
+  requestAnimationFrame(glowLoop);
+
   /* ---- custom cursor ---- */
   document.body.classList.add('cursoron');
   const cur = document.querySelector<HTMLElement>('.cur');
@@ -468,49 +593,65 @@ if (!reduce && fine) {
 
     let ix = innerWidth / 2, iy = innerHeight / 2, bx = ix, by = iy, mx = ix, my = iy;
     let current = -1;
+    let cursorDirty = false;
 
-    const setRow = (i: number) => {
+    const setRow = (i: number, animate: boolean) => {
       if (i === current) return;
+      // Remove JS-driven highlight from the row that was active
+      if (current >= 0) rows[current].classList.remove('preview-active');
       current = i;
       if (i < 0) { show(false); return; }
-      strip.style.transform = `translateY(${-i * 100}%)`;
+      // Highlight the new row — CSS :hover won't update during wheel scroll,
+      // so this class is the single source of truth for the active style
+      rows[i].classList.add('preview-active');
+      if (!animate) {
+        // During scroll: fast snap so the strip doesn't lag behind
+        strip.style.transition = 'transform 0.08s ease';
+        strip.style.transform = `translateY(${-i * 100}%)`;
+        requestAnimationFrame(() => { strip.style.transition = ''; });
+      } else {
+        strip.style.transform = `translateY(${-i * 100}%)`;
+      }
       pvLabel.textContent = rows[i].querySelector<HTMLElement>('.work-name')?.textContent?.trim() || '';
       pvIndex.textContent = `${String(i + 1).padStart(2, '0')} / ${String(rows.length).padStart(2, '0')}`;
       show(true);
     };
 
-    // Resolve from the pointer position rather than mouseenter/mouseleave: when
-    // the wheel moves rows under a stationary cursor the browser fires no mouse
-    // events at all, which left the strip stuck on the previous project.
-    const syncFromPoint = () => {
-      const el = document.elementFromPoint(mx, my);
-      const row = (el as Element | null)?.closest?.('[data-preview]') as HTMLElement | null;
-      setRow(row ? rows.indexOf(row) : -1);
+    // Resolve which row is under the cursor using bounding rects rather than
+    // elementFromPoint — getBoundingClientRect is not affected by how Lenis
+    // internally manages scroll position and always returns current viewport
+    // coordinates. Called from the main raf (after lenis.raf) so the DOM
+    // positions are already updated for the current frame.
+    const syncFromPoint = (animate: boolean) => {
+      let found: HTMLElement | null = null;
+      for (const row of rows) {
+        const r = row.getBoundingClientRect();
+        if (my >= r.top && my <= r.bottom && mx >= r.left && mx <= r.right) {
+          found = row;
+          break;
+        }
+      }
+      setRow(found ? rows.indexOf(found) : -1, animate);
     };
 
     addEventListener('mousemove', (e) => {
       mx = e.clientX; my = e.clientY;
-      syncFromPoint();
+      cursorDirty = true;
     });
 
-    let queued = false;
-    addEventListener('scroll', () => {
-      if (queued) return;
-      queued = true;
-      requestAnimationFrame(() => { queued = false; syncFromPoint(); });
-    }, { passive: true });
-    const pvLoop = () => {
+    pvFrameFn = () => {
+      const didMove = cursorDirty;
+      cursorDirty = false;
+      syncFromPoint(didMove);
       if (pv.classList.contains('show')) {
-        ix += (mx - ix) * 0.085; iy += (my - iy) * 0.085;
-        bx += (mx - bx) * 0.17;  by += (my - by) * 0.17;
+        ix += (mx - ix) * 0.16; iy += (my - iy) * 0.16;
+        bx += (mx - bx) * 0.24;  by += (my - by) * 0.24;
       } else {
         ix = bx = mx; iy = by = my;
       }
       pv.style.transform = `translate(${ix}px,${iy}px)`;
       pvBtn.style.transform = `translate(${bx}px,${by}px)`;
-      requestAnimationFrame(pvLoop);
     };
-    requestAnimationFrame(pvLoop);
   }
 
   /* ---- magnetic buttons: shell and label pull at different strengths,
