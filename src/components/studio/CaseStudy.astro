@@ -308,14 +308,14 @@ const next = all[(idx + 1) % all.length];
   .cs-prose :global(li){margin-bottom:.4rem;line-height:1.6;}
   /* Evidence belongs to the story rail, not to a detached card. The same
      two-column rhythm as `.cs-sec` makes the fact feel authored into the case. */
-  .cs-stat{position:relative;display:grid;grid-template-columns:minmax(12rem,1fr) minmax(0,3fr);gap:clamp(1rem,4vw,3rem);align-items:center;
+  .cs-stat{position:relative;display:grid;grid-template-columns:minmax(12rem,max-content) minmax(0,3fr);gap:clamp(1rem,4vw,3rem);align-items:center;
     margin:clamp(1rem,3vw,2rem) auto clamp(2.5rem,6vw,5rem);padding:clamp(1.75rem,4vw,3.5rem) 0;
     border-block:1px solid var(--line);background:radial-gradient(ellipse 58% 130% at 18% 50%,color-mix(in srgb,var(--accent) 10%,transparent),transparent 76%);overflow:clip;}
   .cs-stat::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;background:var(--accent);transform-origin:top;transform:scaleY(0);transition:transform .8s cubic-bezier(.22,1,.36,1);}
   .cs-stat.in::before{transform:scaleY(1);}
-  .cs-stat-val{position:relative;padding-left:clamp(.75rem,1.6vw,1.5rem);font-size:clamp(3.8rem,8.5vw,8rem);color:var(--accent);line-height:.82;letter-spacing:-.06em;white-space:nowrap;font-variant-numeric:tabular-nums;transform:translate3d(-.15em,.18em,0);opacity:0;transition:transform .9s cubic-bezier(.22,1,.36,1),opacity .7s ease;}
+  .cs-stat-val{position:relative;min-width:0;padding-left:clamp(.75rem,1.6vw,1.5rem);font-size:clamp(3.8rem,8.5vw,8rem);color:var(--accent);line-height:.82;letter-spacing:-.06em;white-space:nowrap;font-variant-numeric:tabular-nums;transform:translate3d(0,.18em,0);opacity:0;transition:transform .9s cubic-bezier(.22,1,.36,1),opacity .7s ease;}
   .cs-stat.in .cs-stat-val{transform:translate3d(0,0,0);opacity:1;}
-  .cs-stat-label{position:relative;max-width:44ch;margin:0;padding-top:.35rem;font-family:var(--mono),monospace;font-size:.78rem;letter-spacing:.08em;color:var(--muted);line-height:1.55;opacity:0;transform:translate3d(1rem,0,0);transition:transform .7s .12s cubic-bezier(.22,1,.36,1),opacity .55s .12s ease;}
+  .cs-stat-label{position:relative;min-width:0;max-width:44ch;margin:0;padding-top:.35rem;font-family:var(--mono),monospace;font-size:.78rem;letter-spacing:.08em;color:var(--muted);line-height:1.55;overflow-wrap:anywhere;opacity:0;transform:translate3d(1rem,0,0);transition:transform .7s .12s cubic-bezier(.22,1,.36,1),opacity .55s .12s ease;}
   .cs-stat.in .cs-stat-label{opacity:1;transform:translate3d(0,0,0);}
   /* ---- next case ---- */
   .cs-next{position:relative;margin-top:clamp(4rem,10vh,7rem);background:var(--ink);overflow:hidden;padding-bottom:clamp(3rem,7vh,5rem);}
