@@ -22,10 +22,12 @@ await fs.mkdir(OUT, { recursive: true });
 
 const files = (await fs.readdir(CASES)).filter((f) => f.endsWith('.md'));
 const targets = [];
+const localBase = process.argv.includes('--local') ? process.argv[process.argv.indexOf('--local') + 1] : null;
 for (const f of files) {
+  const slug = f.replace(/\.md$/, '');
   const raw = await fs.readFile(path.join(CASES, f), 'utf8');
   const m = raw.match(/^siteUrl:\s*(\S+)\s*$/m);
-  if (m) targets.push({ slug: f.replace(/\.md$/, ''), url: m[1] });
+  if (m) targets.push({ slug, url: localBase && slug === 'stepbystep' ? localBase.replace(/\/$/, '') + '/' : m[1] });
 }
 console.log(`sites: ${targets.length}`);
 

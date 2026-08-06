@@ -27,7 +27,7 @@ const localBase = args.includes('--local') ? args[args.indexOf('--local') + 1] :
 // (used for sites not yet deployed, served locally)
 const OVERRIDE = {};
 if (localBase) {
-  // e.g. lunea served from a local static server
+  OVERRIDE.stepbystep = `${localBase.replace(/\/$/, '')}/`;
 }
 
 const VW = 1600, VH = 1000, DPR = 2; // 16:10, retina

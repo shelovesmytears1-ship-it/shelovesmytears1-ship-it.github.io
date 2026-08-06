@@ -12,7 +12,9 @@ const root = lang === 'pl' ? segment : `/${lang}${segment}`;
 const p = (slug: string) => `${root}/${slug}/`;
 
 const conceptLabel: Record<string, string> = { pl: 'Koncept', ru: 'Концепт', en: 'Concept', ua: 'Концепт' };
+const clientLabel: Record<string, string> = { pl: 'Klient', ru: 'Клиент', en: 'Client', ua: 'Клієнт' };
 const concept = conceptLabel[lang] ?? 'Concept';
+const client = clientLabel[lang] ?? 'Client';
 
 const viewLabel: Record<string, string> = { pl: 'Zobacz', ru: 'Смотреть', en: 'View', ua: 'Дивитись' };
 const view = viewLabel[lang] ?? 'View';
@@ -36,13 +38,14 @@ const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.dat
         data-reveal
         data-view={view}
         data-preview={withBase(project.data.cover || '')}
+        data-type={project.data.concept ? 'concept' : 'client'}
       >
         <span class="work-no">{String(i + 1).padStart(2, '0')}</span>
         <div>
           <div class="work-name">{project.data.title}</div>
           <div class="work-meta">{project.data.niche} · {project.data.year}</div>
         </div>
-        <span class="work-tag">{concept} ↗</span>
+        <span class="work-tag">{project.data.concept ? concept : client} ↗</span>
       </a>
     ))}
   </div>

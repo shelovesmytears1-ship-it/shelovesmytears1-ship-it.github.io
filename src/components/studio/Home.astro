@@ -13,7 +13,9 @@ const root = lang === 'pl' ? segment : `/${lang}${segment}`;
 const p = (slug: string) => `${root}/${slug}/`;
 
 const conceptLabel: Record<string, string> = { pl: 'Koncept', ru: 'Концепт', en: 'Concept', ua: 'Концепт' };
+const clientLabel: Record<string, string> = { pl: 'Klient', ru: 'Клиент', en: 'Client', ua: 'Клієнт' };
 const concept = conceptLabel[lang] ?? 'Concept';
+const client = clientLabel[lang] ?? 'Client';
 
 const allCases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
 const pickCases = (slugs: string[]) =>
@@ -21,7 +23,7 @@ const pickCases = (slugs: string[]) =>
 
 // Four different commercial categories and four clearly distinct art directions:
 // product SaaS, cultural experience, premium service and e-commerce.
-const featuredSlugs = ['wavemetrics', 'interspace', 'lunea', 'dzherelo'];
+const featuredSlugs = ['stepbystep', 'wavemetrics', 'interspace', 'lunea'];
 const cases = pickCases(featuredSlugs);
 
 // Featured set for the 3D coverflow carousel
@@ -172,6 +174,7 @@ const verbsSrText = verbsSrByLang[lang] ?? verbsSrByLang.en;
         data-reveal
         data-view={view}
         data-preview={withBase(project.data.cover || '')}
+        data-type={project.data.concept ? 'concept' : 'client'}
       >
         <span class="work-row-thumb" aria-hidden="true">
           <span class="work-row-thumb-bar"><i></i><i></i><i></i></span>
@@ -182,7 +185,7 @@ const verbsSrText = verbsSrByLang[lang] ?? verbsSrByLang.en;
           <div class="work-name">{project.data.title}</div>
           <div class="work-meta">{project.data.niche} · {project.data.year}</div>
         </div>
-        <span class="work-tag">{concept} ↗&#xFE0E;</span>
+        <span class="work-tag">{project.data.concept ? concept : client} ↗&#xFE0E;</span>
       </a>
     ))}
   </div>
