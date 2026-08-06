@@ -7,7 +7,7 @@ palette: WARM-TERRACOTTA-CREAM
 tier: 1
 accent: '#C85B3C'
 bg: '#FBF3EC'
-siteUrl: https://step-by-step-gdansk.pl/
+siteUrl: https://shelovesmytears1-ship-it.github.io/stepbystep/
 cover: /covers/stepbystep.jpg
 screens:
   - src: /screens/stepbystep-m1.webp
@@ -20,9 +20,10 @@ technologies:
   - HTML
   - CSS
   - JavaScript
+role: 'структура страницы · визуальная система · frontend · доступность · запуск'
 region:
   - PL
-summary: Лендинг педагога с 18-летним опытом в Гданьске. Польский язык, подготовка к школе, работа с детьми с ООП. Первый реальный клиентский проект в портфолио — не концепт, а живой сайт на продакшен-домене.
+summary: Лендинг педагога с 18-летним опытом в Гданьске. Польский язык, подготовка к школе, работа с детьми с ООП. Первый реальный клиентский проект в портфолио — не концепт, а опубликованный сайт на GitHub Pages.
 result: 'реальный клиентский лендинг: от брифа до запуска'
 stat:
   value: '18 лет'
@@ -34,6 +35,7 @@ translations:
     tagline: Lending pedagoga w Gdańsku — ciepła terakota, dwujęzyczny PL + RU, formularz → WhatsApp
     summary: Lending pedagoga z 18-letnim doświadczeniem w Gdańsku. Język polski, przygotowanie do szkoły, praca z dziećmi ze SPE. Pierwszy prawdziwy projekt kliencki w portfolio.
     result: 'prawdziwy landing kliencki: od briefu do wdrożenia'
+    role: 'struktura strony · system wizualny · frontend · dostępność · wdrożenie'
     statLabel: lat doświadczenia pedagogicznego klientki — strona musiała dorównać temu poziomowi ekspertyzy
     body: |
       ## Kontekst
@@ -46,11 +48,12 @@ translations:
 
       ## Wynik
 
-      Czysty HTML, CSS i vanilla JS — jedna strona, zero zależności, ładuje się natychmiast. Formularz leadowy wysyła gotową wiadomość do WhatsApp: imię + program + tekst — bez backendu, bez kosztów utrzymania, bez ryzyka że formularz „nie doszedł". Floating WhatsApp button z pulse-animacją, scroll-reveal ze staggerem, modal dyplomów z keyboard trap. Pierwszy projekt w portfolio, który nie jest konceptem — to żywa strona klienta na step-by-step-gdansk.pl, która przyjmuje zapytania i generuje realne leady.
+      Czysty HTML, CSS i vanilla JS — jedna strona, zero zależności, ładuje się natychmiast. Formularz leadowy wysyła gotową wiadomość do WhatsApp: imię + program + tekst — bez backendu, bez kosztów utrzymania, bez ryzyka że formularz „nie doszedł". Floating WhatsApp button z pulse-animacją, scroll-reveal ze staggerem, modal dyplomów z keyboard trap. Pierwszy projekt w portfolio, który nie jest konceptem — to żywa strona klienta opublikowana na GitHub Pages, która przyjmuje zapytania przez WhatsApp.
   en:
     tagline: Educator landing in Gdańsk — warm terracotta, PL + RU dual-language, WhatsApp lead form
     summary: A landing page for a pedagogue with 18 years of experience in Gdańsk. Polish language, school prep, special educational needs. The first real client project in the portfolio.
     result: 'real client landing: from brief to production deployment'
+    role: 'page structure · visual system · frontend · accessibility · launch'
     statLabel: years of the client's teaching experience — the site had to match that level of expertise
     body: |
       ## Context
@@ -63,11 +66,12 @@ translations:
 
       ## The outcome
 
-      Pure HTML, CSS and vanilla JS — a single page, zero dependencies, loads instantly. The lead form sends a pre-filled message to WhatsApp: name + programme + text — no backend, no maintenance cost, no risk of a form that "didn't go through". Floating WhatsApp button with a pulse animation, scroll-reveal with stagger, a diploma modal with keyboard trap. The first project in the portfolio that is not a concept — it's a live client site at step-by-step-gdansk.pl, accepting enquiries and generating real leads.
+      Pure HTML, CSS and vanilla JS — a single page, zero dependencies, loads instantly. The lead form sends a pre-filled message to WhatsApp: name + programme + text — no backend, no maintenance cost, no risk of a form that "didn't go through". Floating WhatsApp button with a pulse animation, scroll-reveal with stagger, a diploma modal with keyboard trap. The first project in the portfolio that is not a concept — it's a live client site published on GitHub Pages, accepting enquiries through WhatsApp.
   ua:
     tagline: Лендинг педагогині в Гданську — тепла теракота, польська + російська, форма → WhatsApp
     summary: Лендинг педагогині з 18-річним досвідом у Гданську. Польська мова, підготовка до школи, робота з дітьми з ООП. Перший реальний клієнтський проєкт у портфоліо.
     result: 'реальний клієнтський лендинг: від брифу до запуску'
+    role: 'структура сторінки · візуальна система · frontend · доступність · запуск'
     statLabel: років педагогічного досвіду клієнтки — сайт мав відповідати цьому рівню експертизи
     body: |
       ## Контекст
@@ -80,7 +84,7 @@ translations:
 
       ## Підсумок
 
-      Чистий HTML, CSS і vanilla JS — одна сторінка, нуль залежностей, завантажується миттєво. Лід-форма надсилає готове повідомлення в WhatsApp: ім'я + програма + текст — без бекенду, без витрат на підтримку, без ризику що форма «не дійшла». Floating WhatsApp кнопка з pulse-анімацією, scroll-reveal зі stagger-ефектом, модалка дипломів із keyboard trap. Перший проєкт у портфоліо, який не є концептом — це живий сайт клієнта на step-by-step-gdansk.pl, який приймає запити й генерує реальні ліди.
+      Чистий HTML, CSS і vanilla JS — одна сторінка, нуль залежностей, завантажується миттєво. Лід-форма надсилає готове повідомлення в WhatsApp: ім'я + програма + текст — без бекенду, без витрат на підтримку, без ризику що форма «не дійшла». Floating WhatsApp кнопка з pulse-анімацією, scroll-reveal зі stagger-ефектом, модалка дипломів із keyboard trap. Перший проєкт у портфоліо, який не є концептом — це живий сайт клієнта, опублікований на GitHub Pages, який приймає запити через WhatsApp.
 ---
 
 ## Контекст
@@ -93,4 +97,4 @@ translations:
 
 ## Итог
 
-Чистый HTML, CSS и vanilla JS — одна страница, ноль зависимостей, грузится мгновенно. Лид-форма отправляет готовое сообщение в WhatsApp: имя + программа + текст — без бекенда, без затрат на поддержку, без риска что форма «не дошла». Floating WhatsApp-кнопка с pulse-анимацией, scroll-reveal со stagger-эффектом, модалка дипломов с keyboard trap. Первый проект в портфолио, который не концепт — это живой сайт клиента на step-by-step-gdansk.pl, принимающий заявки и приносящий реальные лиды.
+Чистый HTML, CSS и vanilla JS — одна страница, ноль зависимостей, грузится мгновенно. Лид-форма отправляет готовое сообщение в WhatsApp: имя + программа + текст — без бекенда, без затрат на поддержку, без риска что форма «не дошла». Floating WhatsApp-кнопка с pulse-анимацией, scroll-reveal со stagger-эффектом, модалка дипломов с keyboard trap. Первый проект в портфолио, который не концепт — это живой сайт клиента, опубликованный на GitHub Pages и принимающий заявки через WhatsApp.

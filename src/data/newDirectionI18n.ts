@@ -43,11 +43,20 @@ type NewDirectionCopy = {
     contactBody: string;
     contactCta: string;
   };
-  work: { title: string; accent: string; lede: string; listLabel: string };
+  work: {
+    title: string;
+    accent: string;
+    lede: string;
+    listLabel: string;
+    clientGroup: string;
+    conceptGroup: string;
+    liveBadge: string;
+    implementationResult: string;
+  };
   method: { title: string; accent: string; lede: string; listLabel: string; resultLabel: string; visualNote: string; phases: Step[]; ctaMeta: string; ctaTitle: string; ctaAccent: string; ctaButton: string };
   about: { availability: string; name: string; role: string; lede: string; label: string; essayTitle: string; essayAccent: string; paragraphs: string[]; servicesMeta: string; servicesTitle: string; servicesAccent: string; services: { n: string; title: string; text: string }[]; stackMeta: string; stackTitle: string; stackAccent: string; stack: { label: string; value: string }[]; cta: string };
   contact: { title: string; titleLine: string; accent: string; lede: string; honeypot: string; name: string; channel: string; type: string; options: string[]; message: string; messagePlaceholder: string; submit: string; quickest: string; response: string };
-  case: { allWork: string; openSite: string; coverAlt: string; context: string; nextAction: string; backToWork: string; similarProject: string };
+  case: { allWork: string; openSite: string; coverAlt: string; context: string; nextAction: string; backToWork: string; similarProject: string; evidence: string };
   legal: {
     privacyNav: string;
     impressumNav: string;
@@ -66,9 +75,9 @@ const copy: Record<Lang, NewDirectionCopy> = {
     },
     home: {
       meta: 'NIEZALEŻNY DEVELOPER', location: 'GDAŃSK · PL / REMOTE',
-      heroTitle: 'Projektuję i tworzę strony,', heroAccent: 'które pracują', heroTail: 'na markę.', heroBody: 'Od pierwszej rozmowy do wdrożenia. Bez pośredników, bez przekazywania projektu między zespołami.', heroCta: 'Opowiedz o projekcie',
+      heroTitle: 'Tworzę strony dla firm i ekspertów,', heroAccent: 'które jasno pokazują wartość', heroTail: 'i prowadzą do działania.', heroBody: 'Landingi, strony wielostronicowe i małe sklepy — od pierwszej rozmowy do wdrożenia. Pracuję osobiście, bez pośredników.', heroCta: 'Opowiedz o projekcie',
       introMeta: '01 — PODEJŚCIE', intro: 'Nie jestem agencją. Prowadzę projekt osobiście — z dbałością o kierunek wizualny, kod i to, co dzieje się po publikacji.', facts: ['Strategia strony', 'Interfejs i frontend', 'Wdrożenie i jakość'],
-      workMeta: '02 — WYBRANE PRACE', workTitle: 'Mniej projektów.', workAccent: 'Więcej charakteru.', workBody: 'Każda praca ma własny kontekst, odbiorców i język wizualny.', openProject: 'Otwórz projekt', allWork: 'Zobacz wszystkie prace',
+      workMeta: '02 — WYBRANE PRACE', workTitle: 'Mniej projektów.', workAccent: 'Więcej charakteru.', workBody: 'Realizacje dla klientów i autorskie koncepty — każdy projekt jest jasno oznaczony.', openProject: 'Otwórz projekt', allWork: 'Zobacz wszystkie prace',
       processMeta: '03 — PROCES', processTitle: 'Jasny proces.', processAccent: 'Bez domysłów.',
       steps: [
         { title: 'Rozmowa', text: 'Ustalamy cel, odbiorców i zakres. Zanim powstanie pierwszy ekran.' },
@@ -79,7 +88,7 @@ const copy: Record<Lang, NewDirectionCopy> = {
       aboutMeta: '04 — O MNIE', aboutBody: 'Samodzielny frontend developer. Pomagam firmom zamienić pomysł, usługę albo produkt w stronę, którą łatwo zrozumieć i chce się otworzyć.', aboutLink: 'Więcej o moim podejściu',
       contactMeta: '05 — KONTAKT', contactTitle: 'Masz projekt?', contactAccent: 'Porozmawiajmy.', contactBody: 'Napisz kilka zdań o zadaniu. Odpowiadam osobiście — z pytaniami albo wstępnym kierunkiem.', contactCta: 'Wypełnij brief',
     },
-    work: { title: 'Wybrane', accent: 'projekty.', lede: 'Różne branże, jedna zasada: strona musi jasno komunikować wartość i dobrze działać w prawdziwym użyciu.', listLabel: 'Lista projektów' },
+    work: { title: 'Wybrane', accent: 'projekty.', lede: 'Różne branże, jedna zasada: strona musi jasno komunikować wartość i dobrze działać w prawdziwym użyciu.', listLabel: 'Lista projektów', clientGroup: 'Realizacje klienckie', conceptGroup: 'Autorskie koncepty', liveBadge: 'Żywa strona klienta', implementationResult: 'Efekt realizacji' },
     method: {
       title: 'Jasny proces.', accent: 'Bez domysłów.', lede: 'Prowadzę projekt osobiście i pokazuję kolejne decyzje po drodze — tak, aby finał nie był niespodzianką.', listLabel: 'Etapy pracy', resultLabel: 'Na wyjściu', visualNote: 'Decyzje są widoczne od pierwszej wiadomości do uruchomienia.', ctaMeta: 'NA POCZĄTEK WYSTARCZY KRÓTKA ROZMOWA', ctaTitle: 'Masz zadanie?', ctaAccent: 'Ustalmy kierunek.', ctaButton: 'Przejdź do briefu',
       phases: [
@@ -91,7 +100,7 @@ const copy: Record<Lang, NewDirectionCopy> = {
       ],
     },
     about: {
-      availability: 'Przyjmuję projekty na jesień 2026', name: 'Daniil Menshov', role: 'niezależny frontend developer z Gdańska',
+      availability: 'Przyjmuję nowe projekty', name: 'Daniil Menshov', role: 'niezależny frontend developer z Gdańska',
       lede: 'Zatrudniasz jedną osobę zamiast łańcucha podwykonawców — i dostajesz stronę, za którą ktoś realnie odpowiada.', label: 'JEDNA OSOBA\nJEDEN ODPOWIEDZIALNY KONTAKT', essayTitle: 'Projekt nie ginie\nmiędzy', essayAccent: 'rolami.',
       paragraphs: ['Nazywam się Daniil Menshov. Jestem niezależnym frontend developerem z Gdańska i prowadzę projekt w całości — od pierwszej rozmowy do publikacji. Dzięki temu strona powstaje szybciej i pozostaje spójna: odpowiada za nią jedna osoba.', 'Nie przekazuję strony od stratega do designera, potem do developera i project managera. Rozmawiasz ze mną, a ja odpowiadam za kierunek, wykonanie i szczegóły wdrożenia — nic nie ginie na styku ról.', 'Najlepiej czuję się w projektach, w których strona ma konkretną rolę: wyjaśnić produkt, uporządkować ofertę, zbudować zaufanie albo pomóc klientowi wykonać następny krok.'],
       servicesMeta: 'USŁUGI', servicesTitle: 'Trzy formaty', servicesAccent: 'pracy.', services: [
@@ -104,7 +113,7 @@ const copy: Record<Lang, NewDirectionCopy> = {
       ], cta: 'Opowiedz o projekcie',
     },
     contact: { title: 'Opowiedz', titleLine: 'o', accent: 'projekcie.', lede: 'Kilka konkretnych zdań wystarczy na start. Odpowiadam osobiście z pytaniami albo wstępnym kierunkiem.', honeypot: 'Nie wypełniaj', name: 'Imię', channel: 'Telegram lub email', type: 'Typ projektu', options: ['Landing page', 'Strona wielostronicowa', 'Sklep / e-commerce', 'Osobista marka', 'Inne'], message: 'O projekcie', messagePlaceholder: 'Cel strony, branża, co ma się zmienić...', submit: 'Wyślij brief', quickest: 'NAJSZYBSZY KONTAKT', response: 'Odpowiadam w ciągu 24 godzin w dni robocze.' },
-    case: { allWork: 'Wszystkie prace', openSite: 'Otwórz stronę', coverAlt: 'Widok strony', context: 'KONTEKST / DECYZJE / EFEKT', nextAction: 'Następna akcja', backToWork: 'Wróć do prac', similarProject: 'Masz podobny projekt?' },
+    case: { allWork: 'Wszystkie prace', openSite: 'Otwórz stronę', coverAlt: 'Widok strony', context: 'KONTEKST / DECYZJE / EFEKT', nextAction: 'Następna akcja', backToWork: 'Wróć do prac', similarProject: 'Masz podobny projekt?', evidence: 'Konkret projektu' },
     legal: {
       privacyNav: 'Polityka prywatności', impressumNav: 'Impressum',
       privacy: {
@@ -135,9 +144,9 @@ const copy: Record<Lang, NewDirectionCopy> = {
     layout: { skip: 'Перейти к содержанию', nav: { work: 'Работы', method: 'Процесс', about: 'Обо мне', contact: 'Контакт', talk: 'Обсудить проект', menu: 'Меню' }, mainNavigation: 'Основная навигация', mobileNavigation: 'Мобильное меню', languageLabel: 'Язык', footer: 'Независимый frontend-разработчик' },
     home: {
       meta: 'НЕЗАВИСИМЫЙ РАЗРАБОТЧИК', location: 'ГДАНЬСК · PL / REMOTE',
-      heroTitle: 'Проектирую и создаю сайты,', heroAccent: 'которые работают', heroTail: 'на бренд.', heroBody: 'От первого разговора до запуска. Без посредников и передачи проекта между командами.', heroCta: 'Рассказать о проекте',
+      heroTitle: 'Создаю сайты для бизнеса и экспертов,', heroAccent: 'которые понятно объясняют ценность', heroTail: 'и ведут к действию.', heroBody: 'Лендинги, многостраничные сайты и небольшие магазины — от первого разговора до запуска. Работаю лично, без посредников.', heroCta: 'Рассказать о проекте',
       introMeta: '01 — ПОДХОД', intro: 'Я не агентство. Веду проект лично — с вниманием к визуальному направлению, коду и тому, что происходит после публикации.', facts: ['Стратегия сайта', 'Интерфейс и frontend', 'Запуск и качество'],
-      workMeta: '02 — ИЗБРАННЫЕ РАБОТЫ', workTitle: 'Меньше проектов.', workAccent: 'Больше характера.', workBody: 'У каждой работы свой контекст, аудитория и визуальный язык.', openProject: 'Открыть проект', allWork: 'Все работы',
+      workMeta: '02 — ИЗБРАННЫЕ РАБОТЫ', workTitle: 'Меньше проектов.', workAccent: 'Больше характера.', workBody: 'Клиентские запуски и авторские концепты — каждый проект обозначен честно.', openProject: 'Открыть проект', allWork: 'Все работы',
       processMeta: '03 — ПРОЦЕСС', processTitle: 'Ясный процесс.', processAccent: 'Без догадок.',
       steps: [
         { title: 'Разговор', text: 'Определяем цель, аудиторию и границы задачи — до первого экрана.' },
@@ -148,7 +157,7 @@ const copy: Record<Lang, NewDirectionCopy> = {
       aboutMeta: '04 — ОБО МНЕ', aboutBody: 'Самостоятельный frontend-разработчик. Помогаю бизнесу превратить идею, услугу или продукт в сайт, который легко понять и хочется открыть.', aboutLink: 'Подробнее о подходе',
       contactMeta: '05 — КОНТАКТ', contactTitle: 'Есть проект?', contactAccent: 'Обсудим.', contactBody: 'Напиши несколько строк о задаче. Отвечу лично — вопросами или первым направлением.', contactCta: 'Заполнить бриф',
     },
-    work: { title: 'Избранные', accent: 'проекты.', lede: 'Разные ниши, один принцип: сайт должен ясно объяснять ценность и хорошо работать в реальном использовании.', listLabel: 'Список проектов' },
+    work: { title: 'Избранные', accent: 'проекты.', lede: 'Разные ниши, один принцип: сайт должен ясно объяснять ценность и хорошо работать в реальном использовании.', listLabel: 'Список проектов', clientGroup: 'Клиентские запуски', conceptGroup: 'Авторские концепты', liveBadge: 'Живой клиентский сайт', implementationResult: 'Результат реализации' },
     method: {
       title: 'Ясный процесс.', accent: 'Без догадок.', lede: 'Веду проект лично и показываю решения по ходу работы — чтобы финал не оказался сюрпризом.', listLabel: 'Этапы работы', resultLabel: 'На выходе', visualNote: 'Решения остаются видимыми от первого сообщения до запуска.', ctaMeta: 'ДЛЯ НАЧАЛА ДОСТАТОЧНО КОРОТКОГО РАЗГОВОРА', ctaTitle: 'Есть задача?', ctaAccent: 'Определим направление.', ctaButton: 'Перейти к брифу',
       phases: [
@@ -160,7 +169,7 @@ const copy: Record<Lang, NewDirectionCopy> = {
       ],
     },
     about: {
-      availability: 'Беру проекты на осень 2026', name: 'Даниил Меньшов', role: 'независимый frontend-разработчик из Гданьска',
+      availability: 'Принимаю новые проекты', name: 'Даниил Меньшов', role: 'независимый frontend-разработчик из Гданьска',
       lede: 'Нанимаешь одного человека вместо цепочки подрядчиков — и получаешь сайт, за который кто-то реально отвечает.', label: 'ОДИН ЧЕЛОВЕК\nОДИН ОТВЕТСТВЕННЫЙ КОНТАКТ', essayTitle: 'Проект не теряется\nмежду', essayAccent: 'ролями.',
       paragraphs: ['Меня зовут Даниил Меньшов. Я независимый frontend-разработчик из Гданьска и веду проект целиком — от первого разговора до публикации. Поэтому сайт выходит быстрее и остаётся цельным: за него отвечает один человек.', 'Я не передаю сайт от стратега дизайнеру, потом разработчику и менеджеру. Ты общаешься со мной, а я отвечаю за направление, реализацию и детали запуска — ничего не теряется на стыке ролей.', 'Лучше всего работаю с проектами, где у сайта есть ясная роль: объяснить продукт, упорядочить предложение, вызвать доверие или помочь клиенту сделать следующий шаг.'],
       servicesMeta: 'УСЛУГИ', servicesTitle: 'Три формата', servicesAccent: 'работы.', services: [
@@ -173,7 +182,7 @@ const copy: Record<Lang, NewDirectionCopy> = {
       ], cta: 'Рассказать о проекте',
     },
     contact: { title: 'Расскажи', titleLine: 'о', accent: 'проекте.', lede: 'Для начала достаточно нескольких конкретных строк. Отвечу лично — с вопросами или первым направлением.', honeypot: 'Не заполняйте', name: 'Имя', channel: 'Telegram или email', type: 'Тип проекта', options: ['Лендинг', 'Многостраничный сайт', 'Магазин / e-commerce', 'Личный бренд', 'Другое'], message: 'О проекте', messagePlaceholder: 'Цель сайта, ниша, что должно измениться...', submit: 'Отправить бриф', quickest: 'САМЫЙ БЫСТРЫЙ КОНТАКТ', response: 'Отвечаю в течение 24 часов в рабочие дни.' },
-    case: { allWork: 'Все работы', openSite: 'Открыть сайт', coverAlt: 'Вид сайта', context: 'КОНТЕКСТ / РЕШЕНИЯ / РЕЗУЛЬТАТ', nextAction: 'Следующее действие', backToWork: 'Вернуться к работам', similarProject: 'Похожий проект?' },
+    case: { allWork: 'Все работы', openSite: 'Открыть сайт', coverAlt: 'Вид сайта', context: 'КОНТЕКСТ / РЕШЕНИЯ / РЕЗУЛЬТАТ', nextAction: 'Следующее действие', backToWork: 'Вернуться к работам', similarProject: 'Похожий проект?', evidence: 'Конкретика проекта' },
     legal: {
       privacyNav: 'Политика конфиденциальности', impressumNav: 'Правовая информация',
       privacy: {
@@ -204,9 +213,9 @@ const copy: Record<Lang, NewDirectionCopy> = {
     layout: { skip: 'Skip to content', nav: { work: 'Work', method: 'Process', about: 'About', contact: 'Contact', talk: 'Let’s talk', menu: 'Menu' }, mainNavigation: 'Main navigation', mobileNavigation: 'Mobile navigation', languageLabel: 'Language', footer: 'Independent frontend developer' },
     home: {
       meta: 'INDEPENDENT DEVELOPER', location: 'GDAŃSK · PL / REMOTE',
-      heroTitle: 'I design and build websites', heroAccent: 'that work', heroTail: 'for your business.', heroBody: 'From the first conversation to launch. No middlemen and no handoffs between teams.', heroCta: 'Tell me about your project',
+      heroTitle: 'I build websites for businesses and experts', heroAccent: 'that explain value clearly', heroTail: 'and lead to action.', heroBody: 'Landing pages, multi-page sites and small online shops — from the first conversation to launch. I work directly, with no middlemen.', heroCta: 'Tell me about your project',
       introMeta: '01 — APPROACH', intro: 'I’m not an agency. I lead each project personally, paying attention to the visual direction, the code, and what happens after launch.', facts: ['Website strategy', 'Interface and frontend', 'Launch and quality'],
-      workMeta: '02 — SELECTED WORK', workTitle: 'Fewer projects.', workAccent: 'More character.', workBody: 'Every project has its own context, audience and visual language.', openProject: 'Open project', allWork: 'View all work',
+      workMeta: '02 — SELECTED WORK', workTitle: 'Fewer projects.', workAccent: 'More character.', workBody: 'Client launches and self-initiated concepts — every project is labelled clearly.', openProject: 'Open project', allWork: 'View all work',
       processMeta: '03 — PROCESS', processTitle: 'A clear process.', processAccent: 'No guesswork.',
       steps: [
         { title: 'Conversation', text: 'We define the goal, audience and scope before the first screen exists.' },
@@ -217,7 +226,7 @@ const copy: Record<Lang, NewDirectionCopy> = {
       aboutMeta: '04 — ABOUT', aboutBody: 'An independent frontend developer. I help businesses turn an idea, service or product into a website that is easy to understand and worth opening.', aboutLink: 'More about my approach',
       contactMeta: '05 — CONTACT', contactTitle: 'Have a project?', contactAccent: 'Let’s talk.', contactBody: 'Send a few lines about the task. I’ll reply personally—with questions or an initial direction.', contactCta: 'Fill in the brief',
     },
-    work: { title: 'Selected', accent: 'projects.', lede: 'Different industries, one principle: a site should communicate value clearly and work well in real use.', listLabel: 'Project list' },
+    work: { title: 'Selected', accent: 'projects.', lede: 'Different industries, one principle: a site should communicate value clearly and work well in real use.', listLabel: 'Project list', clientGroup: 'Client launches', conceptGroup: 'Self-initiated concepts', liveBadge: 'Live client site', implementationResult: 'Implementation result' },
     method: {
       title: 'A clear process.', accent: 'No guesswork.', lede: 'I lead the project personally and share decisions along the way, so the final result is never a surprise.', listLabel: 'Work stages', resultLabel: 'Output', visualNote: 'Decisions stay visible from the first message to launch.', ctaMeta: 'A SHORT CONVERSATION IS ENOUGH TO START', ctaTitle: 'Have a task?', ctaAccent: 'Let’s define the direction.', ctaButton: 'Go to the brief',
       phases: [
@@ -229,7 +238,7 @@ const copy: Record<Lang, NewDirectionCopy> = {
       ],
     },
     about: {
-      availability: 'Taking on projects for autumn 2026', name: 'Daniil Menshov', role: 'an independent frontend developer based in Gdańsk',
+      availability: 'Taking on new projects', name: 'Daniil Menshov', role: 'an independent frontend developer based in Gdańsk',
       lede: 'You hire one person instead of a chain of contractors — and get a website someone is truly accountable for.', label: 'ONE PERSON\nONE RESPONSIBLE CONTACT', essayTitle: 'A project does not get lost\nbetween', essayAccent: 'roles.',
       paragraphs: ['My name is Daniil Menshov. I am an independent frontend developer based in Gdańsk, and I run the whole project — from the first conversation to launch. That means the site ships faster and stays coherent: one person is accountable for it.', 'I do not pass a website from strategist to designer, then to developer and project manager. You speak with me, and I take responsibility for direction, execution and launch details — nothing gets lost between roles.', 'I work best on projects where a website has a clear role: explain a product, organise an offer, build trust or help a customer take the next step.'],
       servicesMeta: 'SERVICES', servicesTitle: 'Three formats', servicesAccent: 'of work.', services: [
@@ -242,7 +251,7 @@ const copy: Record<Lang, NewDirectionCopy> = {
       ], cta: 'Tell me about your project',
     },
     contact: { title: 'Tell me', titleLine: 'about the', accent: 'project.', lede: 'A few specific sentences are enough to start. I’ll reply personally, with questions or an initial direction.', honeypot: 'Do not fill in', name: 'Name', channel: 'Telegram or email', type: 'Project type', options: ['Landing page', 'Multi-page website', 'Shop / e-commerce', 'Personal brand', 'Other'], message: 'About the project', messagePlaceholder: 'Site goal, industry, what should change...', submit: 'Send brief', quickest: 'QUICKEST CONTACT', response: 'I reply within 24 hours on business days.' },
-    case: { allWork: 'All work', openSite: 'Open website', coverAlt: 'Website view', context: 'CONTEXT / DECISIONS / OUTCOME', nextAction: 'Next action', backToWork: 'Back to work', similarProject: 'Have a similar project?' },
+    case: { allWork: 'All work', openSite: 'Open website', coverAlt: 'Website view', context: 'CONTEXT / DECISIONS / OUTCOME', nextAction: 'Next action', backToWork: 'Back to work', similarProject: 'Have a similar project?', evidence: 'Project evidence' },
     legal: {
       privacyNav: 'Privacy Policy', impressumNav: 'Impressum',
       privacy: {
@@ -273,9 +282,9 @@ const copy: Record<Lang, NewDirectionCopy> = {
     layout: { skip: 'Перейти до вмісту', nav: { work: 'Роботи', method: 'Процес', about: 'Про мене', contact: 'Контакт', talk: 'Обговорити проєкт', menu: 'Меню' }, mainNavigation: 'Основна навігація', mobileNavigation: 'Мобільне меню', languageLabel: 'Мова', footer: 'Незалежний frontend-розробник' },
     home: {
       meta: 'НЕЗАЛЕЖНИЙ РОЗРОБНИК', location: 'ГДАНСЬК · PL / REMOTE',
-      heroTitle: 'Проєктую й створюю сайти,', heroAccent: 'які працюють', heroTail: 'на бренд.', heroBody: 'Від першої розмови до запуску. Без посередників і передачі проєкту між командами.', heroCta: 'Розповісти про проєкт',
+      heroTitle: 'Створюю сайти для бізнесу й експертів,', heroAccent: 'які зрозуміло пояснюють цінність', heroTail: 'і ведуть до дії.', heroBody: 'Лендінги, багатосторінкові сайти й невеликі магазини — від першої розмови до запуску. Працюю особисто, без посередників.', heroCta: 'Розповісти про проєкт',
       introMeta: '01 — ПІДХІД', intro: 'Я не агенція. Веду проєкт особисто — з увагою до візуального напрямку, коду і того, що відбувається після публікації.', facts: ['Стратегія сайту', 'Інтерфейс і frontend', 'Запуск і якість'],
-      workMeta: '02 — ВИБРАНІ РОБОТИ', workTitle: 'Менше проєктів.', workAccent: 'Більше характеру.', workBody: 'Кожна робота має власний контекст, аудиторію та візуальну мову.', openProject: 'Відкрити проєкт', allWork: 'Усі роботи',
+      workMeta: '02 — ВИБРАНІ РОБОТИ', workTitle: 'Менше проєктів.', workAccent: 'Більше характеру.', workBody: 'Клієнтські запуски й авторські концепти — кожен проєкт позначено чесно.', openProject: 'Відкрити проєкт', allWork: 'Усі роботи',
       processMeta: '03 — ПРОЦЕС', processTitle: 'Зрозумілий процес.', processAccent: 'Без здогадок.',
       steps: [
         { title: 'Розмова', text: 'Визначаємо мету, аудиторію та межі завдання ще до першого екрана.' },
@@ -286,7 +295,7 @@ const copy: Record<Lang, NewDirectionCopy> = {
       aboutMeta: '04 — ПРО МЕНЕ', aboutBody: 'Самостійний frontend-розробник. Допомагаю бізнесу перетворити ідею, послугу або продукт на сайт, який легко зрозуміти та хочеться відкрити.', aboutLink: 'Більше про мій підхід',
       contactMeta: '05 — КОНТАКТ', contactTitle: 'Є проєкт?', contactAccent: 'Обговорімо.', contactBody: 'Напиши кілька рядків про завдання. Відповім особисто — з питаннями або першим напрямком.', contactCta: 'Заповнити бриф',
     },
-    work: { title: 'Вибрані', accent: 'проєкти.', lede: 'Різні ніші, один принцип: сайт має зрозуміло пояснювати цінність і добре працювати у реальному використанні.', listLabel: 'Список проєктів' },
+    work: { title: 'Вибрані', accent: 'проєкти.', lede: 'Різні ніші, один принцип: сайт має зрозуміло пояснювати цінність і добре працювати у реальному використанні.', listLabel: 'Список проєктів', clientGroup: 'Клієнтські запуски', conceptGroup: 'Авторські концепти', liveBadge: 'Живий клієнтський сайт', implementationResult: 'Результат реалізації' },
     method: {
       title: 'Зрозумілий процес.', accent: 'Без здогадок.', lede: 'Веду проєкт особисто й показую рішення в процесі, щоб фінал не став несподіванкою.', listLabel: 'Етапи роботи', resultLabel: 'Результат', visualNote: 'Рішення залишаються видимими від першого повідомлення до запуску.', ctaMeta: 'ДЛЯ ПОЧАТКУ ДОСТАТНЬО КОРОТКОЇ РОЗМОВИ', ctaTitle: 'Є завдання?', ctaAccent: 'Визначимо напрямок.', ctaButton: 'Перейти до брифу',
       phases: [
@@ -298,7 +307,7 @@ const copy: Record<Lang, NewDirectionCopy> = {
       ],
     },
     about: {
-      availability: 'Беру проєкти на осінь 2026', name: 'Данііл Меньшов', role: 'незалежний frontend-розробник із Гданська',
+      availability: 'Приймаю нові проєкти', name: 'Данііл Меньшов', role: 'незалежний frontend-розробник із Гданська',
       lede: 'Наймаєш одну людину замість ланцюжка підрядників — і отримуєш сайт, за який хтось реально відповідає.', label: 'ОДНА ЛЮДИНА\nОДИН ВІДПОВІДАЛЬНИЙ КОНТАКТ', essayTitle: 'Проєкт не губиться\nміж', essayAccent: 'ролями.',
       paragraphs: ['Мене звати Данііл Меньшов. Я незалежний frontend-розробник із Гданська і веду проєкт цілком — від першої розмови до публікації. Тому сайт виходить швидше й лишається цілісним: за нього відповідає одна людина.', 'Я не передаю сайт від стратега до дизайнера, потім до розробника й менеджера. Ти спілкуєшся зі мною, а я відповідаю за напрямок, реалізацію та деталі запуску — ніщо не губиться на стику ролей.', 'Найкраще працюю з проєктами, де сайт має конкретну роль: пояснити продукт, упорядкувати пропозицію, побудувати довіру або допомогти клієнту зробити наступний крок.'],
       servicesMeta: 'ПОСЛУГИ', servicesTitle: 'Три формати', servicesAccent: 'роботи.', services: [
@@ -311,7 +320,7 @@ const copy: Record<Lang, NewDirectionCopy> = {
       ], cta: 'Розповісти про проєкт',
     },
     contact: { title: 'Розкажи', titleLine: 'про', accent: 'проєкт.', lede: 'Для початку досить кількох конкретних речень. Відповім особисто — із питаннями або першим напрямком.', honeypot: 'Не заповнюйте', name: 'Ім’я', channel: 'Telegram або email', type: 'Тип проєкту', options: ['Лендінг', 'Багатосторінковий сайт', 'Магазин / e-commerce', 'Особистий бренд', 'Інше'], message: 'Про проєкт', messagePlaceholder: 'Мета сайту, ніша, що має змінитися...', submit: 'Надіслати бриф', quickest: 'НАЙШВИДШИЙ КОНТАКТ', response: 'Відповідаю протягом 24 годин у робочі дні.' },
-    case: { allWork: 'Усі роботи', openSite: 'Відкрити сайт', coverAlt: 'Вигляд сайту', context: 'КОНТЕКСТ / РІШЕННЯ / РЕЗУЛЬТАТ', nextAction: 'Наступна дія', backToWork: 'Повернутися до робіт', similarProject: 'Маєш схожий проєкт?' },
+    case: { allWork: 'Усі роботи', openSite: 'Відкрити сайт', coverAlt: 'Вигляд сайту', context: 'КОНТЕКСТ / РІШЕННЯ / РЕЗУЛЬТАТ', nextAction: 'Наступна дія', backToWork: 'Повернутися до робіт', similarProject: 'Маєш схожий проєкт?', evidence: 'Конкретика проєкту' },
     legal: {
       privacyNav: 'Політика конфіденційності', impressumNav: 'Правова інформація',
       privacy: {

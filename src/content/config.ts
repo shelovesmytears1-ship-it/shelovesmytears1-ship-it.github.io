@@ -10,6 +10,8 @@ const localeStrings = z
     statLabel: z.string().optional(),
     /** Optional per-locale tiny "result" line under meta panel. */
     result: z.string().optional(),
+    /** Optional per-locale description of the author's role. */
+    role: z.string().optional(),
   })
   .optional();
 
@@ -40,6 +42,8 @@ const cases = defineCollection({
     summary:      z.string(),
     /** One-line concrete result shown in the meta strip (RU master). Optional. */
     result:       z.string().optional(),
+    /** One-line description of the author's role in the project. Optional. */
+    role:         z.string().optional(),
     /** Big number/fact rendered between sections (RU master). Optional. */
     stat:         statSchema,
     cover:        z.string().optional(),

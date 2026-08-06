@@ -3,7 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import { marked } from 'marked';
 import { getNewDirectionCopy } from '../../data/newDirectionI18n';
-import { getSummary, getBody } from '../../data/caseHelpers';
+import { getSummary, getBody, getResult, getRole, getStat } from '../../data/caseHelpers';
 import { withBase } from '../../i18n/ui';
 import type { Lang } from '../../i18n/ui';
 
@@ -26,11 +26,11 @@ function parseSections(body: string): Section[] {
   });
 }
 // meta-grid column labels (values come from the entry's own frontmatter)
-const metaLabels: Record<string, { stack: string; niche: string; where: string }> = {
-  pl: { stack: 'Stack', niche: 'Branża', where: 'Rok i region' },
-  ru: { stack: 'Стек', niche: 'Ниша', where: 'Год и регион' },
-  en: { stack: 'Stack', niche: 'Industry', where: 'Year & region' },
-  ua: { stack: 'Стек', niche: 'Ніша', where: 'Рік і регіон' },
+const metaLabels: Record<string, { stack: string; niche: string; where: string; role: string }> = {
+  pl: { stack: 'Stack', niche: 'Branża', where: 'Rok i region', role: 'Moja rola' },
+  ru: { stack: 'Стек', niche: 'Ниша', where: 'Год и регион', role: 'Моя роль' },
+  en: { stack: 'Stack', niche: 'Industry', where: 'Year & region', role: 'My role' },
+  ua: { stack: 'Стек', niche: 'Ніша', where: 'Рік і регіон', role: 'Моя роль' },
 };
 const ml = metaLabels[lang] ?? metaLabels.en;
 
@@ -44,6 +44,9 @@ const phoneRows: typeof phones[] = [];
 for (let i = 0; i < phones.length; i += 3) phoneRows.push(phones.slice(i, i + 3));
 
 const sections = parseSections(getBody(entry, lang));
+const result = getResult(entry, lang);
+const role = getRole(entry, lang);
+const stat = getStat(entry, lang);
 // next project (by order, wrap around)
 const all = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
 const idx = all.findIndex((x) => x.slug === entry.slug);
@@ -58,7 +61,13 @@ const next = all[(idx + 1) % all.length];
     <h1 class="disp" data-reveal>{d.title}</h1>
     <p class="cs-tagline" data-reveal>{getSummary(entry, lang)}</p>
     <div class="cs-chips" data-reveal>
+      {!d.concept && <span class="cs-chip cs-chip--client">{c.work.liveBadge}</span>}
       {d.siteUrl && <a class="cs-chip cs-chip--link" href={d.siteUrl} target="_blank" rel="noopener" data-cursor>{c.case.openSite} ↗</a>}
+      {result && (
+        <span class="cs-chip cs-chip--accent">
+          {d.concept ? `${c.work.implementationResult}: ${result}` : result}
+        </span>
+      )}
     </div>
   </header>
 
@@ -82,6 +91,13 @@ const next = all[(idx + 1) % all.length];
         {d.region.map((r) => (<li>{r}</li>))}
       </ul>
     </div>
+    {role && (
+      <div class="cs-meta-col cs-meta-role">
+        <h2 class="cs-meta-label">{ml.role}</h2>
+        <div class="cs-stripe"></div>
+        <p>{role}</p>
+      </div>
+    )}
   </div>
 
   {(d.cover || d.coverVideo) && (
@@ -143,13 +159,21 @@ const next = all[(idx + 1) % all.length];
   ))}
 
   {sections.map((sec, i) => (
-    <section class="wrap cs-sec">
-      <span class="cs-num disp">{String(i + 1).padStart(2, '0')}</span>
-      <div class="cs-sec-body">
-        <h2 class="disp" data-reveal>{sec.heading}</h2>
-        <div class="cs-prose" data-reveal set:html={sec.html} />
-      </div>
-    </section>
+    <>
+      <section class="wrap cs-sec">
+        <span class="cs-num disp">{String(i + 1).padStart(2, '0')}</span>
+        <div class="cs-sec-body">
+          <h2 class="disp" data-reveal>{sec.heading}</h2>
+          <div class="cs-prose" data-reveal set:html={sec.html} />
+        </div>
+      </section>
+      {i === 0 && stat && (
+        <aside class="wrap cs-stat" aria-label={c.case.evidence} data-reveal>
+          <div class="cs-stat-val disp">{stat.value}</div>
+          <p class="cs-stat-label">{stat.label}</p>
+        </aside>
+      )}
+    </>
   ))}
 
   <section class="cs-next">
@@ -179,14 +203,16 @@ const next = all[(idx + 1) % all.length];
   .cs-chips{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.6rem;}
   .cs-chip{font-family:var(--mono),monospace;font-size:.72rem;letter-spacing:.04em;padding:.4rem .8rem;border:1px solid var(--line);border-radius:999px;color:var(--muted);}
   .cs-chip--accent{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 40%,var(--line));}
+  .cs-chip--client{background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--accent);border-color:color-mix(in srgb,var(--accent) 32%,var(--line));}
   .cs-chip--link{color:var(--accent);border-color:var(--accent);}
   .cs-chip--link:hover{background:var(--accent);color:var(--on-accent);}
   /* ---- meta grid ---- */
-  .cs-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.5rem,4vw,3rem);margin:2.5rem auto 3.5rem;}
+  .cs-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr));gap:clamp(1.5rem,4vw,3rem);margin:2.5rem auto 3.5rem;}
   .cs-meta-label{font-family:var(--mono),monospace;font-weight:400;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
   .cs-stripe{height:1px;background:var(--line);margin:1.1rem 0 1rem;}
   .cs-meta ul{list-style:none;}
   .cs-meta li{font-size:.95rem;line-height:1.8;}
+  .cs-meta-role p{max-width:24ch;font-size:.95rem;line-height:1.55;color:var(--ink);}
   @media(max-width:720px){.cs-meta{grid-template-columns:1fr;gap:1.4rem;margin-bottom:2.5rem;}}
 
   /* ---- shared media layers ----
@@ -253,6 +279,8 @@ const next = all[(idx + 1) % all.length];
     .cs-phones{order:4;}
     .cs-cover-wrap{order:5;}
     .cs-sec{order:6;}
+    /* Keep the evidence card at its source position after the first section. */
+    .cs-stat{order:6;}
     .cs-next{order:9;}
 
     .cs-phones{display:flex;justify-content:flex-start;overflow-x:auto;
@@ -278,9 +306,17 @@ const next = all[(idx + 1) % all.length];
   .cs-prose :global(em){font-family:inherit;font-style:italic;color:var(--accent);}
   .cs-prose :global(ul),.cs-prose :global(ol){margin:0 0 1.2rem 1.3rem;}
   .cs-prose :global(li){margin-bottom:.4rem;line-height:1.6;}
-  .cs-stat{margin:2.5rem 0 .5rem;padding:2rem;border:1px solid var(--line);border-radius:12px;background:color-mix(in srgb,var(--accent) 5%,var(--bg));}
-  .cs-stat-val{font-size:clamp(3rem,9vw,6rem);color:var(--accent);line-height:.9;}
-  .cs-stat-label{font-family:var(--mono),monospace;font-size:.8rem;letter-spacing:.08em;color:var(--muted);margin-top:.8rem;max-width:46ch;line-height:1.5;}
+  /* Evidence belongs to the story rail, not to a detached card. The same
+     two-column rhythm as `.cs-sec` makes the fact feel authored into the case. */
+  .cs-stat{position:relative;display:grid;grid-template-columns:minmax(12rem,1fr) minmax(0,3fr);gap:clamp(1rem,4vw,3rem);align-items:center;
+    margin:clamp(1rem,3vw,2rem) auto clamp(2.5rem,6vw,5rem);padding:clamp(1.75rem,4vw,3.5rem) 0;
+    border-block:1px solid var(--line);background:radial-gradient(ellipse 58% 130% at 18% 50%,color-mix(in srgb,var(--accent) 10%,transparent),transparent 76%);overflow:clip;}
+  .cs-stat::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;background:var(--accent);transform-origin:top;transform:scaleY(0);transition:transform .8s cubic-bezier(.22,1,.36,1);}
+  .cs-stat.in::before{transform:scaleY(1);}
+  .cs-stat-val{position:relative;padding-left:clamp(.75rem,1.6vw,1.5rem);font-size:clamp(3.8rem,8.5vw,8rem);color:var(--accent);line-height:.82;letter-spacing:-.06em;white-space:nowrap;font-variant-numeric:tabular-nums;transform:translate3d(-.15em,.18em,0);opacity:0;transition:transform .9s cubic-bezier(.22,1,.36,1),opacity .7s ease;}
+  .cs-stat.in .cs-stat-val{transform:translate3d(0,0,0);opacity:1;}
+  .cs-stat-label{position:relative;max-width:44ch;margin:0;padding-top:.35rem;font-family:var(--mono),monospace;font-size:.78rem;letter-spacing:.08em;color:var(--muted);line-height:1.55;opacity:0;transform:translate3d(1rem,0,0);transition:transform .7s .12s cubic-bezier(.22,1,.36,1),opacity .55s .12s ease;}
+  .cs-stat.in .cs-stat-label{opacity:1;transform:translate3d(0,0,0);}
   /* ---- next case ---- */
   .cs-next{position:relative;margin-top:clamp(4rem,10vh,7rem);background:var(--ink);overflow:hidden;padding-bottom:clamp(3rem,7vh,5rem);}
   /* the seam: a very wide, very tall ellipse in paper colour, pushed up so only
@@ -305,5 +341,13 @@ const next = all[(idx + 1) % all.length];
   .cs-next-btn::before{background:var(--bg);}
   .cs-next-btn:hover{color:var(--ink);}
   @media(max-width:720px){.cs-next-arc{height:5vh;}}
-  @media(max-width:720px){.cs-sec{grid-template-columns:1fr;gap:.6rem;}.cs-num{font-size:1.6rem;}}
+  @media(max-width:720px){
+    .cs-sec{grid-template-columns:1fr;gap:.6rem;}.cs-num{font-size:1.6rem;}
+    .cs-stat{grid-template-columns:1fr;gap:.8rem;margin:1rem auto 2.5rem;padding:1.5rem 0 1.75rem;background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 8%,transparent),transparent 92%);}
+    .cs-stat::before{width:100%;height:3px;transform:scaleX(0);transform-origin:left;}
+    .cs-stat.in::before{transform:scaleX(1);}
+    .cs-stat-val{padding-left:.75rem;font-size:clamp(4.2rem,18vw,7rem);transform:translate3d(0,.2em,0);}
+    .cs-stat-label{max-width:38ch;padding-top:0;transform:translate3d(0,.7rem,0);}
+  }
+  @media(prefers-reduced-motion:reduce){.cs-stat::before,.cs-stat-val,.cs-stat-label{transition:none!important;transform:none!important;opacity:1!important;}}
 </style>

@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { getNewDirectionCopy } from '../../data/newDirectionI18n';
+import { getResult } from '../../data/caseHelpers';
 import { withBase } from '../../i18n/ui';
 import type { Lang } from '../../i18n/ui';
 
@@ -32,6 +33,9 @@ const galleryItems = pickCases([...featuredSlugs, 'prezfull', 'dispersia']).map(
   href:  p(`work/${project.slug}`),
   title: project.data.title,
   niche: project.data.niche || '',
+  region: project.data.region[0] || '',
+  concept: project.data.concept,
+  result: getResult(project, lang),
 }));
 
 const viewLabel: Record<string, string> = { pl: 'Zobacz', ru: 'Смотреть', en: 'View', ua: 'Дивитись' };
@@ -134,7 +138,10 @@ const verbsSrText = verbsSrByLang[lang] ?? verbsSrByLang.en;
 <!-- WORK -->
 <section id="work" class="sec wrap">
   <div class="sec-head">
-    <h2 data-reveal>{c.home.workTitle}<br /><em>{c.home.workAccent}</em></h2>
+    <div class="work-heading">
+      <h2 data-reveal>{c.home.workTitle}<br /><em>{c.home.workAccent}</em></h2>
+      <p class="work-lede" data-reveal>{c.home.workBody}</p>
+    </div>
     <a class="link" href={p('work')} data-cursor data-reveal>{c.home.allWork} ↗&#xFE0E;</a>
   </div>
 
@@ -160,12 +167,18 @@ const verbsSrText = verbsSrByLang[lang] ?? verbsSrByLang.en;
         <span class="project-frame-caption">
           <strong>{project.title}</strong>
           <small>{project.niche}</small>
+          {!project.concept && (
+            <>
+              <span class="project-frame-proof">{c.work.liveBadge}{project.region ? ` · ${project.region}` : ''}</span>
+              {project.result && <span class="project-frame-result">{project.result}</span>}
+            </>
+          )}
         </span>
       </a>
     ))}
   </div>
 
-  <div class="work-list">
+  <div class="work-list home-work-list">
     {cases.map((project, i) => (
       <a
         class="work-row"
@@ -184,6 +197,12 @@ const verbsSrText = verbsSrByLang[lang] ?? verbsSrByLang.en;
         <div>
           <div class="work-name">{project.data.title}</div>
           <div class="work-meta">{project.data.niche} · {project.data.year}</div>
+          {!project.data.concept && (
+            <div class="work-proof">
+              <span>{c.work.liveBadge}{project.data.region[0] ? ` · ${project.data.region[0]}` : ''}</span>
+              {getResult(project, lang) && <span>{getResult(project, lang)}</span>}
+            </div>
+          )}
         </div>
         <span class="work-tag">{project.data.concept ? concept : client} ↗&#xFE0E;</span>
       </a>
@@ -226,4 +245,5 @@ const verbsSrText = verbsSrByLang[lang] ?? verbsSrByLang.en;
     <a class="btn magnetic" href="https://t.me/zzxvaracaa" target="_blank" rel="noopener" data-cursor><span class="btn-text">{c.home.contactCta} →&#xFE0E;</span></a>
     <a href="mailto:overflow.web1@gmail.com" data-cursor>overflow.web1@gmail.com</a>
   </div>
+  <p class="contact-response" data-reveal>{c.contact.response}</p>
 </section>

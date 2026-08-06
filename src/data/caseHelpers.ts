@@ -36,6 +36,12 @@ export function getResult(c: Case, lang: Lang): string | undefined {
   return c.data.translations?.[lang]?.result ?? c.data.result;
 }
 
+/** Get the localized description of the author's role. RU master fallback. */
+export function getRole(c: Case, lang: Lang): string | undefined {
+  if (lang === 'ru') return c.data.role;
+  return c.data.translations?.[lang]?.role ?? c.data.role;
+}
+
 /** Localized stat callout {value, label}. Value is shared; label is per-locale. */
 export function getStat(c: Case, lang: Lang): { value: string; label: string } | undefined {
   if (!c.data.stat) return undefined;

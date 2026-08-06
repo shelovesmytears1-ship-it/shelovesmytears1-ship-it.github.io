@@ -20,6 +20,10 @@ const viewLabel: Record<string, string> = { pl: 'Zobacz', ru: 'Смотреть'
 const view = viewLabel[lang] ?? 'View';
 
 const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
+const groups = [
+  { id: 'client', title: c.work.clientGroup, projects: cases.filter((project) => !project.data.concept) },
+  { id: 'concept', title: c.work.conceptGroup, projects: cases.filter((project) => project.data.concept) },
+].filter((group) => group.projects.length > 0);
 ---
 
 <section class="page-hero wrap">
@@ -28,25 +32,47 @@ const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.dat
   <p class="page-lede" data-reveal>{c.work.lede}</p>
 </section>
 
-<section class="sec wrap" aria-label={c.work.listLabel}>
-  <div class="work-list">
-    {cases.map((project, i) => (
-      <a
-        class="work-row"
-        href={p(`work/${project.slug}`)}
-        data-cursor
-        data-reveal
-        data-view={view}
-        data-preview={withBase(project.data.cover || '')}
-        data-type={project.data.concept ? 'concept' : 'client'}
-      >
-        <span class="work-no">{String(i + 1).padStart(2, '0')}</span>
-        <div>
-          <div class="work-name">{project.data.title}</div>
-          <div class="work-meta">{project.data.niche} · {project.data.year}</div>
-        </div>
-        <span class="work-tag">{project.data.concept ? concept : client} ↗</span>
-      </a>
-    ))}
-  </div>
+<section class="sec wrap work-groups" aria-label={c.work.listLabel}>
+  {groups.map((group) => (
+    <section class="work-group" aria-labelledby={`work-group-${group.id}`}>
+      <header class="work-group-head" data-reveal>
+        <p class="eye">{group.id === 'client' ? client : concept}</p>
+        <h2 id={`work-group-${group.id}`}>{group.title}</h2>
+      </header>
+      <div class="work-list">
+        {group.projects.map((project, i) => (
+          <a
+            class="work-row"
+            href={p(`work/${project.slug}`)}
+            data-cursor
+            data-reveal
+            data-view={view}
+            data-preview={withBase(project.data.cover || '')}
+            data-type={project.data.concept ? 'concept' : 'client'}
+          >
+            <span class="work-no">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <div class="work-name">{project.data.title}</div>
+              <div class="work-meta">{project.data.niche} · {project.data.year}</div>
+            </div>
+            <span class="work-tag">{project.data.concept ? concept : c.work.liveBadge} ↗</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  ))}
 </section>
+
+<style>
+  .work-groups { display: grid; gap: clamp(5rem, 10vw, 9rem); }
+  .work-group-head { display: grid; gap: 0.75rem; margin-bottom: clamp(1.75rem, 4vw, 3rem); }
+  .work-group-head h2 {
+    max-width: 16ch;
+    font-family: var(--disp), sans-serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: var(--disp-w);
+    letter-spacing: var(--disp-ls);
+    line-height: var(--disp-lh);
+    text-wrap: balance;
+  }
+</style>

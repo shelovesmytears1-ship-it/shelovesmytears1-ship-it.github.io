@@ -58,6 +58,13 @@ const themeLabels: Record<Lang, { dark: string; light: string }> = {
   ua: { dark: 'Увімкнути темну тему', light: 'Увімкнути світлу тему' },
 };
 const themeLabel = themeLabels[lang];
+const menuLabels: Record<Lang, { open: string; close: string }> = {
+  pl: { open: 'Menu', close: 'Zamknij menu' },
+  ru: { open: 'Меню', close: 'Закрыть меню' },
+  en: { open: 'Menu', close: 'Close menu' },
+  ua: { open: 'Меню', close: 'Закрити меню' },
+};
+const menuLabel = menuLabels[lang];
 ---
 
 <!doctype html>
@@ -188,16 +195,27 @@ const themeLabel = themeLabels[lang];
             </button>
           )}
           <a class="nav-cta" href={p('contact')} aria-current={current === 'contact' ? 'page' : undefined} data-cursor data-tname={c.layout.nav.talk}><span class="btn-text">{c.layout.nav.talk} ↗&#xFE0E;</span></a>
-          <button class="burger" id="burger" type="button" aria-label={c.layout.nav.menu} aria-expanded="false" aria-controls="mnav">
+          <button
+            class="burger"
+            id="burger"
+            type="button"
+            aria-label={menuLabel.open}
+            aria-expanded="false"
+            aria-controls="mnav"
+            data-menu-open-label={menuLabel.open}
+            data-menu-close-label={menuLabel.close}
+          >
             <span></span><span></span>
           </button>
         </div>
       </div>
     </header>
 
-    <!-- full-screen menu; the CTA above stays reachable so the money action is
-         never the thing hidden behind a toggle -->
+    <!-- full-screen menu; the contact action remains available inside the panel -->
     <nav class="mnav" id="mnav" aria-label={c.layout.mobileNavigation} inert>
+      <button class="mnav-close" id="mnav-close" type="button" aria-label={menuLabel.close}>
+        <span></span><span></span>
+      </button>
       <div class="wrap mnav-inner">
         <a href={p('work')} data-tname={c.layout.nav.work}><span>01</span>{c.layout.nav.work}</a>
         <a href={p('method')} data-tname={c.layout.nav.method}><span>02</span>{c.layout.nav.method}</a>

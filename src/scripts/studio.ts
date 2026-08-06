@@ -178,22 +178,35 @@ if (hdr) {
    Method / About pages are simply unreachable from a phone. */
 const burger = document.getElementById('burger');
 const mnav = document.getElementById('mnav');
+const mnavClose = document.getElementById('mnav-close');
 if (burger && mnav) {
-  const setMenu = (open: boolean) => {
+  const setMenu = (open: boolean, restoreFocus = false) => {
     document.body.classList.toggle('menu-open', open);
     burger.setAttribute('aria-expanded', String(open));
-    // keep the closed panel out of the tab order and off screen readers
-    if (open) mnav.removeAttribute('inert');
-    else mnav.setAttribute('inert', '');
-    if (open) mnav.querySelector('a')?.focus({ preventScroll: true });
+    burger.setAttribute(
+      'aria-label',
+      open
+        ? burger.dataset.menuCloseLabel || burger.getAttribute('aria-label') || 'Close menu'
+        : burger.dataset.menuOpenLabel || burger.getAttribute('aria-label') || 'Menu'
+    );
+    // Keep only the active layer in the tab order and screen-reader tree.
+    if (open) {
+      mnav.removeAttribute('inert');
+      hdr?.setAttribute('inert', '');
+    } else {
+      mnav.setAttribute('inert', '');
+      hdr?.removeAttribute('inert');
+    }
+    if (open) mnavClose?.focus({ preventScroll: true });
+    else if (restoreFocus) burger.focus({ preventScroll: true });
   };
   burger.addEventListener('click', () =>
     setMenu(burger.getAttribute('aria-expanded') !== 'true')
   );
+  mnavClose?.addEventListener('click', () => setMenu(false, true));
   addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && document.body.classList.contains('menu-open')) {
-      setMenu(false);
-      burger.focus();
+      setMenu(false, true);
     }
   });
   // if the viewport grows past the breakpoint the panel must not stay latched
@@ -288,6 +301,14 @@ let pvFrameFn: (() => void) | null = null;
 if (!reduce) {
   /* ---- Lenis smooth scroll ---- */
   const lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 1 });
+  const footer = document.querySelector('.ftr');
+  let footerVisible = false;
+  if (footer) {
+    new IntersectionObserver(
+      ([entry]) => { footerVisible = entry.isIntersecting; },
+      { threshold: 0.01 }
+    ).observe(footer);
+  }
 
   /* ---- parallax + scroll-scrubbed rotation ----
      data-speed: >0 lags behind the page, <0 runs ahead of it
@@ -485,7 +506,11 @@ if (!reduce) {
       const circumference = 289;
       scrollRingEl.style.strokeDashoffset = String(circumference - circumference * scrollPct2);
     }
-    if (scrollTopBtn) scrollTopBtn.classList.toggle('is-visible', (lenis.scroll || window.scrollY) > 200);
+    if (scrollTopBtn) {
+      const showScrollTop = (lenis.scroll || window.scrollY) > 200 && !footerVisible;
+      scrollTopBtn.classList.toggle('is-visible', showScrollTop);
+      scrollTopBtn.classList.toggle('footer-visible', footerVisible);
+    }
 
 
     requestAnimationFrame(raf);
