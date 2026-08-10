@@ -7,7 +7,7 @@ palette: PL-DARK-MINT
 tier: 1
 accent: '#00BFA5'
 bg: '#0F1419'
-siteUrl: https://shelovesmytears1-ship-it.github.io/denty-landing/
+siteUrl: https://overflow-web.pl/denty/
 cover: /covers/denty.jpg
 screens:
   - src: /screens/denty-m1.webp

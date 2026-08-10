@@ -7,7 +7,7 @@ palette: DARK-GLASS
 tier: 1
 accent: '#6B8FE0'
 bg: '#0A0E1A'
-siteUrl: https://shelovesmytears1-ship-it.github.io/wavemetrics-landing/
+siteUrl: https://overflow-web.pl/wavemetrics/
 cover: /covers/wavemetrics.jpg
 screens:
   - src: /screens/wavemetrics-m1.webp

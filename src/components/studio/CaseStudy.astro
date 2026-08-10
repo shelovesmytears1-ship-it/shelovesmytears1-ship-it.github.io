@@ -11,6 +11,7 @@ interface Props { lang?: Lang; entry: CollectionEntry<'cases'>; variant?: 'studi
 const { lang = 'pl', entry, variant = 'studio' } = Astro.props;
 const c = getNewDirectionCopy(lang);
 const d = entry.data;
+const projectUrl = withBase(`/${entry.slug}/`);
 const segment = variant === 'studio' ? '' : `/${variant}`;
 const root = lang === 'pl' ? segment : `/${lang}${segment}`;
 const p = (slug: string) => `${root}/${slug}/`;
@@ -62,7 +63,7 @@ const next = all[(idx + 1) % all.length];
     <p class="cs-tagline" data-reveal>{getSummary(entry, lang)}</p>
     <div class="cs-chips" data-reveal>
       {!d.concept && <span class="cs-chip cs-chip--client">{c.work.liveBadge}</span>}
-      {d.siteUrl && <a class="cs-chip cs-chip--link" href={d.siteUrl} target="_blank" rel="noopener" data-cursor>{c.case.openSite} ↗</a>}
+      {d.siteUrl && <a class="cs-chip cs-chip--link" href={projectUrl} target="_blank" rel="noopener" data-cursor>{c.case.openSite} ↗</a>}
       {result && (
         <span class="cs-chip cs-chip--accent">
           {d.concept ? `${c.work.implementationResult}: ${result}` : result}

@@ -7,7 +7,7 @@ palette: LIGHT-FRESH-GREEN
 tier: 1
 accent: '#16A085'
 bg: '#FAFAF8'
-siteUrl: https://shelovesmytears1-ship-it.github.io/freshclean-cleaning/
+siteUrl: https://overflow-web.pl/freshclean/
 cover: /covers/freshclean.jpg
 screens:
   - src: /screens/freshclean-m1.webp

@@ -11,6 +11,7 @@ import sharp from 'sharp';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { LOCAL_PATH } from './local-sites.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CASES = path.join(ROOT, 'src/content/cases');
@@ -23,11 +24,17 @@ await fs.mkdir(OUT, { recursive: true });
 const files = (await fs.readdir(CASES)).filter((f) => f.endsWith('.md'));
 const targets = [];
 const localBase = process.argv.includes('--local') ? process.argv[process.argv.indexOf('--local') + 1] : null;
+const only = process.argv.slice(2).find((a) => !a.startsWith('--') && !a.startsWith('http'));
+// --local points at the portfolio root; mapped slugs are shot from their own
+// folder there, anything unmapped keeps its live siteUrl.
 for (const f of files) {
   const slug = f.replace(/\.md$/, '');
+  if (only && slug !== only) continue;
   const raw = await fs.readFile(path.join(CASES, f), 'utf8');
   const m = raw.match(/^siteUrl:\s*(\S+)\s*$/m);
-  if (m) targets.push({ slug, url: localBase && slug === 'stepbystep' ? localBase.replace(/\/$/, '') + '/' : m[1] });
+  if (!m) continue;
+  const local = localBase && LOCAL_PATH[slug] ? `${localBase.replace(/\/$/, '')}/${LOCAL_PATH[slug]}/index.html` : null;
+  targets.push({ slug, url: local || m[1] });
 }
 console.log(`sites: ${targets.length}`);
 

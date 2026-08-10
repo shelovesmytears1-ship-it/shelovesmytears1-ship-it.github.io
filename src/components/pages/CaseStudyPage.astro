@@ -16,6 +16,7 @@ const t = useT(lang);
 const p = (path: string) => localePath(path, lang);
 
 const d = entry.data;
+const projectUrl = withBase(`/${entry.slug}/`);
 const caseUrl = new URL(p(`/work/${entry.slug}`), 'https://overflow-web.pl').toString();
 
 /* Split markdown body into sections at every `^## ` heading.
@@ -93,7 +94,7 @@ const statAfterIndex = sections.length > 1 ? 0 : -1;
 
       {d.siteUrl && (
         <div class="cs__chips">
-          <a href={d.siteUrl} target="_blank" rel="noopener" class="cs__chip cs__chip--link mono">
+          <a href={projectUrl} target="_blank" rel="noopener" class="cs__chip cs__chip--link mono">
             {t('case.site')} ↗
           </a>
         </div>

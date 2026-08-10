@@ -1,0 +1,319 @@
+/* ============================================
+   Hero background
+   ============================================ */
+.bg-hero-overlay {
+    background-image:
+        linear-gradient(to bottom, rgba(26, 29, 32, 0.65), rgba(26, 29, 32, 0.90)),
+        url('./images/hero.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* ============================================
+   Typography — letter-spacing utilities
+   (not in Tailwind default scale)
+   ============================================ */
+.tracking-h1 {
+    letter-spacing: -0.04em;
+}
+
+.tracking-h2 {
+    letter-spacing: -0.02em;
+}
+
+/* ============================================
+   Focus indicator — brand-consistent keyboard nav
+   Uses :focus-visible so mouse clicks are unaffected
+   ============================================ */
+.focus-brand:focus-visible {
+    outline: 2px solid #e3dcd2;
+    outline-offset: 3px;
+    border-radius: 1px;
+}
+
+/* ============================================
+   WCAG AA–compliant colour utilities
+   All values tested against their section backgrounds.
+
+   On dark  (#1a1d20, L≈0.009): need text L≥0.22 for 4.5:1
+   On beige (#e3dcd2, L≈0.730): need text L≤0.12 for 4.5:1
+   ============================================ */
+
+/* --- Dark-section text --- */
+
+/* Secondary / muted labels on dark bg  ≈ 5.1:1 */
+.text-nav-muted {
+    color: #9097a2;
+}
+
+/* Body copy on dark bg  ≈ 6.8:1 */
+.text-service-body {
+    color: #b3afa9;
+}
+
+/* Testimonial quote body on dark bg  ≈ 7.8:1 */
+.text-review-body {
+    color: #bfbbb7;
+}
+
+/* Form field labels on dark bg  ≈ 5.5:1 */
+.text-form-label {
+    color: #9da2a9;
+}
+
+/* --- Beige-section text --- */
+
+/* Primary body copy on beige bg  ≈ 6.4:1 */
+.text-body-beige {
+    color: #464951;
+}
+
+/* Secondary body copy on beige bg  ≈ 5.0:1 */
+.text-body-beige-muted {
+    color: #565a62;
+}
+
+/* Labels / captions on beige bg  ≈ 4.6:1 */
+.text-label-beige {
+    color: #5c6069;
+}
+
+/* ============================================
+   Service rows — subtle hover background
+   ============================================ */
+.service-row {
+    transition: background-color 0.2s ease;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border-radius: 2px;
+}
+
+.service-row:hover {
+    background-color: rgba(43, 46, 51, 0.55);
+}
+
+/* ============================================
+   Morphing blobs
+   ============================================ */
+.shape-blob {
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    animation: morph 8s ease-in-out infinite;
+}
+
+.shape-blob-2 {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: morph-2 10s ease-in-out infinite;
+}
+
+@keyframes morph {
+    0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+    34%       { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+    67%       { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+}
+
+@keyframes morph-2 {
+    0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    34%       { border-radius: 30% 70% 70% 30% / 30% 70% 30% 70%; }
+    67%       { border-radius: 50% 50% 30% 70% / 50% 50% 70% 30%; }
+}
+
+/* ============================================
+   Hero scroll indicator
+   ============================================ */
+.scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, #e3dcd2, transparent);
+    animation: scroll-pulse 2s ease-in-out infinite;
+}
+
+@keyframes scroll-pulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50%       { opacity: 0.8; transform: scaleY(1.15); }
+}
+
+/* ============================================
+   Sticky navigation
+   ============================================ */
+#navbar {
+    background: transparent;
+    transition: background 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+#navbar.nav-scrolled {
+    background: rgba(26, 29, 32, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(227, 220, 210, 0.08);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   Scroll-triggered fade-in animations
+   ============================================ */
+.fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   Portfolio filter buttons
+   ============================================ */
+.filter-btn {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border: 1px solid rgba(227, 220, 210, 0.25);
+    color: rgba(244, 244, 244, 0.55);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    border-color: rgba(227, 220, 210, 0.6);
+    color: #e3dcd2;
+}
+
+.filter-btn.active {
+    background: #e3dcd2;
+    color: #1a1d20;
+    border-color: #e3dcd2;
+}
+
+.portfolio-item {
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* ============================================
+   FAQ accordion
+   ============================================ */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    padding-bottom: 0;
+}
+
+.faq-answer.faq-open {
+    max-height: 240px;
+    padding-bottom: 1.25rem;
+}
+
+.faq-question {
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.faq-question:hover {
+    color: #e3dcd2;
+}
+
+.faq-icon {
+    transition: transform 0.25s ease;
+    display: inline-block;
+    font-style: normal;
+}
+
+/* ============================================
+   Contact form inputs
+   ============================================ */
+.form-input {
+    background: #1a1d20;
+    border: 1px solid rgba(227, 220, 210, 0.15);
+    color: #f4f4f4;
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    outline: none;
+    transition: border-color 0.2s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+}
+
+.form-input::placeholder {
+    color: rgba(244, 244, 244, 0.25);
+}
+
+.form-input:focus {
+    border-color: rgba(227, 220, 210, 0.6);
+}
+
+.form-input option {
+    background: #1a1d20;
+    color: #f4f4f4;
+}
+
+/* ============================================
+   Map iframe — dark style to match site palette
+   ============================================ */
+.map-dark {
+    filter: grayscale(100%) invert(92%) contrast(85%) brightness(70%) sepia(15%);
+    opacity: 0.75;
+    transition: opacity 0.3s ease;
+}
+
+.map-dark:hover {
+    opacity: 0.9;
+}
+
+/* ============================================
+   Disable animations for reduced-motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    .shape-blob,
+    .shape-blob-2 {
+        animation: none;
+    }
+
+    .scroll-line {
+        animation: none;
+    }
+
+    .fade-in {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .portfolio-item {
+        transition: none;
+    }
+
+    .faq-answer {
+        transition: none;
+    }
+
+    .bg-hero-overlay {
+        background-attachment: scroll;
+    }
+
+    #navbar {
+        transition: none;
+    }
+}
+
+/* ============================================
+   Mobile fallback: `background-attachment: fixed`
+   ломается на iOS Safari (jank + не работает с
+   touch-scroll). Отключаем для всех тач-устройств
+   и узких экранов.
+   ============================================ */
+@media (max-width: 768px), (hover: none) and (pointer: coarse) {
+    .bg-hero-overlay {
+        background-attachment: scroll;
+    }
+}

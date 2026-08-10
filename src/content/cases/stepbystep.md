@@ -7,7 +7,7 @@ palette: WARM-TERRACOTTA-CREAM
 tier: 1
 accent: '#C85B3C'
 bg: '#FBF3EC'
-siteUrl: https://shelovesmytears1-ship-it.github.io/stepbystep/
+siteUrl: https://overflow-web.pl/stepbystep/
 cover: /covers/stepbystep.jpg
 screens:
   - src: /screens/stepbystep-m1.webp

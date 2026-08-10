@@ -7,7 +7,7 @@ palette: WARM-EDITORIAL
 tier: 1
 accent: '#D4803A'
 bg: '#F5F1E8'
-siteUrl: https://shelovesmytears1-ship-it.github.io/orlov-funnels/
+siteUrl: https://overflow-web.pl/orlov/
 cover: /covers/orlov.jpg
 screens:
   - src: /screens/orlov-m1.webp

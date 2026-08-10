@@ -13,6 +13,7 @@ import sharp from 'sharp';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { LOCAL_PATH } from './local-sites.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CASES = path.join(ROOT, 'src/content/cases');
@@ -27,7 +28,10 @@ const localBase = args.includes('--local') ? args[args.indexOf('--local') + 1] :
 // (used for sites not yet deployed, served locally)
 const OVERRIDE = {};
 if (localBase) {
-  OVERRIDE.stepbystep = `${localBase.replace(/\/$/, '')}/`;
+  // --local points at the portfolio root, so every mapped slug resolves to its
+  // own folder; slugs without a local copy keep their live siteUrl.
+  const base = localBase.replace(/\/$/, '');
+  for (const [slug, rel] of Object.entries(LOCAL_PATH)) OVERRIDE[slug] = `${base}/${rel}/index.html`;
 }
 
 const VW = 1600, VH = 1000, DPR = 2; // 16:10, retina

@@ -23,6 +23,7 @@ const summary = localized?.summary ?? entry.data.summary;
 const result = localized?.result ?? entry.data.result;
 const rawBody = localized?.body?.trim() || entry.body;
 const body = await marked.parse(rawBody);
+const projectUrl = withBase(`/${entry.slug}/`);
 ---
 
 <NewDirectionLayout title={entry.data.title} description={summary} current="work" lang={lang} currentPath={`work/${entry.slug}`}>
@@ -34,7 +35,7 @@ const body = await marked.parse(rawBody);
       <p class="case-hero__summary nd-reveal">{summary}</p>
       <div class="case-hero__details nd-reveal">
         <span>{entry.data.technologies.join(' · ')}</span>
-        {entry.data.siteUrl && <a href={entry.data.siteUrl} target="_blank" rel="noopener">{c.case.openSite} ↗</a>}
+        {entry.data.siteUrl && <a href={projectUrl} target="_blank" rel="noopener">{c.case.openSite} ↗</a>}
       </div>
     </header>
 

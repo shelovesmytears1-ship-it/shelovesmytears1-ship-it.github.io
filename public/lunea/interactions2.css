@@ -1,0 +1,6 @@
+.nav nav a{position:relative;transition:color .25s}.nav nav a:after{content:'';position:absolute;left:0;right:0;bottom:-8px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .3s}.nav nav a:hover{color:#efb2a2}.nav nav a:hover:after{transform:scaleX(1);transform-origin:left}.story,.d-photo{overflow:hidden}.story img,.d-photo img{transition:transform .8s cubic-bezier(.2,.6,.2,1),filter .4s}.story:hover img,.d-photo:hover img{transform:scale(1.025);filter:saturate(1)}.d-photo figcaption{transition:color .25s}.d-photo:hover figcaption{color:var(--wine)}
+
+/* Same original layout, only raised inside the white panel. */
+.intro{padding-top:58px!important;padding-bottom:58px!important;position:relative;border-bottom:1px solid rgba(40,35,31,.72)}
+.intro::after{display:none}
+.night img{transform:none;object-position:center calc(50% + 220px)}

@@ -1,0 +1,26 @@
+/* ---------------------------------------------------------------
+   Mobile accessibility layer — generated, safe to regenerate.
+   WCAG 2.2 asks 24px minimum for tap targets; Apple and Material both
+   settle on 44-48px, which is what this uses. Scoped to the mobile
+   breakpoint so desktop typography and layout are untouched.
+   Range-slider tracks are deliberately excluded: a thin track is correct.
+   --------------------------------------------------------------- */
+@media (max-width: 767px) {
+
+  header a,
+  footer a,
+  nav a,
+  .nav__logo {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .footer__concept, .footer__concept *,
+  .compare__tag, .compare__tag *,
+  .stack__label, .stack__label *,
+  .plan__tag, .plan__tag * {
+    font-size: 12px;
+  }
+
+}

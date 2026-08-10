@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b0c0e">
+  <title>WAVE/METRICS — następny ruch dla zespołu artysty</title>
+  <meta name="description" content="Koncepcyjny workspace, który porządkuje sygnały kampanii i pomaga zespołowi artysty wybrać następny test.">
+  <link rel="stylesheet" href="wave-preview.css">
+</head>
+<body>
+<!--
+THESIS: WAVE/METRICS turns fragmented campaign signals into one explainable next test; it refuses the decorative analytics dashboard and city-bubble map.
+OWN-WORLD: graphite venue darkness, paper-white ledgers, safety orange decisions, cobalt traces, cropped documentary photography, ruled rails and rectangular controls.
+STORY: meet the campaign, follow its evidence, compare three decisions, understand limits, then request a demo around one real question.
+FIRST VIEWPORT: an oversized Polish offer occupies the left while a full-height soundcheck image and live campaign rail prove the product on the right; the primary action sits below the offer.
+FORM: release control room, pinned from the surface brief; direction seed 45d3c1fc.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+-->
+<a class="skip" href="#main">Przejdź do treści</a>
+
+<header class="site-header" id="top">
+  <a class="brand" href="#top" aria-label="WAVE/METRICS — początek">WAVE<span>/</span>METRICS</a>
+  <nav aria-label="Główna nawigacja">
+    <a href="#timeline">Kampania</a>
+    <a href="#desk">Decision desk</a>
+    <a href="#method">Metoda</a>
+  </nav>
+  <a class="header-cta" href="#demo">Ułóż demo</a>
+</header>
+
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <h1 id="hero-title">Nie zgaduj.<br><em>Ustal następny ruch.</em></h1>
+      <p class="hero-lead">WAVE/METRICS łączy sygnały słuchania, kampanii i opcjonalnego ticketingu w jedną chronologię — żeby zespół artysty wiedział, co sprawdzić przed wydaniem budżetu.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#desk">Otwórz decision desk</a>
+        <a class="text-link" href="#method">Jak liczymy pewność</a>
+      </div>
+      <p class="concept-note">Fikcyjny produkt portfolio · wszystkie dane w interfejsie są demonstracyjne</p>
+    </div>
+    <figure class="hero-media">
+      <img src="images/release-control-hero-v2.png" width="1536" height="1024" alt="Artystka i manager analizują kampanię przy scenie podczas próby dźwięku">
+      <figcaption>
+        <span>LIVE CAMPAIGN RAIL</span>
+        <strong>2 sygnały zgodne</strong>
+        <small>1 źródło wymaga odświeżenia</small>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="manifesto" aria-labelledby="manifesto-title">
+    <h2 id="manifesto-title">To nie jest maszyna do przepowiadania hitów.</h2>
+    <div class="manifesto-copy">
+      <p>To miejsce, w którym zespół widzi ten sam przebieg kampanii, rozumie źródło rekomendacji i wybiera test, który można zatrzymać.</p>
+      <dl>
+        <div><dt>Nie obiecujemy</dt><dd>wyniku premiery ani sprzedaży biletów</dd></div>
+        <div><dt>Pokazujemy</dt><dd>dowody, braki, świeżość i poziom pewności</dd></div>
+        <div><dt>Kończymy na</dt><dd>jednym odwracalnym następnym ruchu</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="timeline-section" id="timeline" aria-labelledby="timeline-title">
+    <div class="section-heading">
+      <h2 id="timeline-title">Jedna kampania. Jedna oś czasu.</h2>
+      <p>Nie porównujesz pięciu zakładek. Widzisz, co wydarzyło się przed skokiem, co po nim i które źródło mogło go wywołać.</p>
+    </div>
+    <div class="timeline" role="list" aria-label="Demonstracyjna oś kampanii">
+      <article role="listitem"><time>−21 dni</time><span class="source source-content">CONTENT</span><h3>Teaser A opublikowany</h3><p>Wersja „studio” · 18 s</p></article>
+      <article role="listitem"><time>−17 dni</time><span class="source source-stream">STREAM</span><h3>Powroty rosną</h3><p>+11% tydzień do tygodnia · demo</p></article>
+      <article role="listitem" class="active-event"><time>−14 dni</time><span class="source source-social">SOCIAL</span><h3>Mała grupa wraca częściej</h3><p>Nie największy zasięg — najwyższa retencja</p></article>
+      <article role="listitem"><time>−10 dni</time><span class="source source-ticket">TICKET</span><h3>Lista oczekujących otwarta</h3><p>Źródło opcjonalne · tylko odczyt</p></article>
+      <article role="listitem"><time>Dziś</time><span class="source source-decision">DECISION</span><h3>Sprawdź narrację B</h3><p>Budżet testowy, 72 godziny</p></article>
+    </div>
+  </section>
+
+  <section class="sources" aria-labelledby="sources-title">
+    <div class="section-heading compact">
+      <h2 id="sources-title">Każdy sygnał ma metkę.</h2>
+      <p>Źródło bez czasu odświeżenia i granicy dostępu nie trafia do decyzji.</p>
+    </div>
+    <div class="ledger" role="table" aria-label="Przykładowe źródła danych">
+      <div class="ledger-row ledger-head" role="row"><span role="columnheader">Źródło</span><span role="columnheader">Czytamy</span><span role="columnheader">Świeżość</span><span role="columnheader">Dostęp</span></div>
+      <div class="ledger-row" role="row"><strong role="cell">Streaming</strong><span role="cell">trendy odtworzeń, zapisy, powroty</span><time role="cell">6 h</time><span role="cell" class="access-state">tylko odczyt</span></div>
+      <div class="ledger-row" role="row"><strong role="cell">Social</strong><span role="cell">zagregowane reakcje i retencja</span><time role="cell">2 h</time><span role="cell" class="access-state">tylko odczyt</span></div>
+      <div class="ledger-row is-stale" role="row"><strong role="cell">Ticketing</strong><span role="cell">lista oczekujących i sprzedaż</span><time role="cell">31 h</time><span role="cell">wymaga zgody</span></div>
+      <div class="ledger-row" role="row"><strong role="cell">Campaign</strong><span role="cell">wydatki, kreacje, daty</span><time role="cell">live</time><span role="cell" class="access-state">tylko odczyt</span></div>
+    </div>
+  </section>
+
+  <section class="anatomy" aria-labelledby="anatomy-title">
+    <div class="anatomy-copy">
+      <h2 id="anatomy-title">Rozbierz sygnał, zanim za nim pójdziesz.</h2>
+      <p>Duży skok może być wartościowy, przypadkowy albo kupiony. Dlatego każda obserwacja przechodzi przez cztery warstwy.</p>
+    </div>
+    <div class="signal-stack">
+      <article><span>Obserwacja</span><strong>Powroty po 72 h rosną</strong><small>+11% · dane demonstracyjne</small></article>
+      <article><span>Potwierdzenie</span><strong>Ten sam odbiorca zapisuje teaser</strong><small>2 zgodne źródła</small></article>
+      <article class="uncertain"><span>Brak</span><strong>Nie znamy intencji zakupu</strong><small>ticketing nieaktualny</small></article>
+      <article class="next"><span>Następny test</span><strong>Porównaj narrację B przez 72 h</strong><small>odwracalny · niski koszt</small></article>
+    </div>
+  </section>
+
+  <section class="audiences" aria-labelledby="audiences-title">
+    <div class="section-heading">
+      <h2 id="audiences-title">Zasięg nie mówi, kto naprawdę wraca.</h2>
+      <p>Segmenty jakości porządkują odbiorców według zachowania, nie wielkości profilu. Nazwy i wartości poniżej są demonstracyjne.</p>
+    </div>
+    <div class="audience-bars">
+      <div><span>Aktywni</span><b style="--value:68%">68</b><p>celowo odtwarzają i zapisują</p></div>
+      <div><span>Powracający</span><b style="--value:49%">49</b><p>wrócili po pierwszym kontakcie</p></div>
+      <div><span>Programowani</span><b style="--value:33%">33</b><p>dotarli przez playlistę lub algorytm</p></div>
+      <div><span>Nieznani</span><b style="--value:18%">18</b><p>brakuje ciągłości sygnału</p></div>
+    </div>
+  </section>
+
+  <section class="scenario release-scenario" aria-labelledby="release-title">
+    <div class="scenario-index">RELEASE / EP.02</div>
+    <div class="scenario-copy">
+      <h2 id="release-title">Premiera: skaluj powrót, nie pierwszy skok.</h2>
+      <p>Teaser A wygenerował większy zasięg. Teaser B przyciągnął mniej osób, ale więcej z nich wróciło po 72 godzinach. System proponuje drugą rundę B, zanim zwiększysz budżet.</p>
+      <ul><li>Dowód: retencja w dwóch źródłach</li><li>Brak: efekt organiczny po 7 dniach</li><li>Test: równy budżet, ta sama grupa, 72 h</li></ul>
+    </div>
+    <div class="release-board" aria-label="Porównanie dwóch wersji kampanii">
+      <div class="board-axis"><span>START</span><span>24 H</span><span>72 H</span></div>
+      <div class="trace trace-a"><span>A · studio</span><i></i><b>duży start / szybki spadek</b></div>
+      <div class="trace trace-b"><span>B · backstage</span><i></i><b>mniejszy start / więcej powrotów</b></div>
+      <p>DEMO DATA · wykres ilustruje decyzję, nie wynik rynkowy</p>
+    </div>
+  </section>
+
+  <section class="tour-scenario" aria-labelledby="tour-title">
+    <div class="section-heading compact">
+      <h2 id="tour-title">Trasa: miasto musi zasłużyć na pinezkę.</h2>
+      <p>Ranking nie wynika z jednego indeksu. Każdy rynek pokazuje dowody, braki i gotowość do małego testu.</p>
+    </div>
+    <div class="demand-table" role="table" aria-label="Demonstracyjna tabela popytu w miastach">
+      <div class="demand-row demand-head" role="row"><span role="columnheader">Rynek</span><span role="columnheader">Powroty</span><span role="columnheader">Zapisy</span><span role="columnheader">Lista</span><span role="columnheader">Pewność</span><span role="columnheader">Ruch</span></div>
+      <div class="demand-row" role="row"><strong role="cell">Warszawa</strong><span role="cell">wysokie</span><span role="cell">wysokie</span><span role="cell">brak</span><b role="cell">średnia</b><span role="cell">otwórz listę</span></div>
+      <div class="demand-row best" role="row"><strong role="cell">Poznań</strong><span role="cell">średnie</span><span role="cell">wysokie</span><span role="cell">rosnąca</span><b role="cell">wysoka</b><span role="cell">test 150 miejsc</span></div>
+      <div class="demand-row" role="row"><strong role="cell">Berlin</strong><span role="cell">wysokie</span><span role="cell">niskie</span><span role="cell">brak</span><b role="cell">niska</b><span role="cell">nie rezerwuj</span></div>
+      <div class="demand-row" role="row"><strong role="cell">Praga</strong><span role="cell">niskie</span><span role="cell">średnie</span><span role="cell">brak</span><b role="cell">niska</b><span role="cell">obserwuj</span></div>
+    </div>
+  </section>
+
+  <section class="community-scenario" aria-labelledby="community-title">
+    <div class="community-visual" aria-hidden="true">
+      <span class="orbit orbit-one"></span><span class="orbit orbit-two"></span><span class="orbit orbit-three"></span>
+      <strong>186</strong><small>osób wróciło<br>3 razy</small>
+    </div>
+    <div class="community-copy">
+      <h2 id="community-title">Społeczność: mniejsza grupa może być ważniejsza.</h2>
+      <p>W demonstracyjnym scenariuszu 186 osób wróciło do trzech materiałów i zapisało sesję Q&amp;A. To lepsza podstawa do małego formatu niż 18 000 jednorazowych wyświetleń.</p>
+      <blockquote>„Najpierw zaproś tych, którzy wracają. Dopiero potem kupuj zasięg.”</blockquote>
+    </div>
+  </section>
+
+  <section class="decision-desk" id="desk" aria-labelledby="desk-title">
+    <div class="desk-intro">
+      <h2 id="desk-title">Decision desk</h2>
+      <p>Przełącz cel. Dowody, poziom pewności i kolejka działań zmienią się razem.</p>
+      <div class="mode-tabs" role="tablist" aria-label="Cel decyzji">
+        <button role="tab" aria-selected="true" data-mode="release">Premiera</button>
+        <button role="tab" aria-selected="false" data-mode="tour">Trasa</button>
+        <button role="tab" aria-selected="false" data-mode="community">Społeczność</button>
+      </div>
+    </div>
+    <div class="desk-workspace">
+      <article class="evidence-panel">
+        <div class="panel-meta"><span id="evidenceCode">REL / 02</span><b id="confidence">PEWNOŚĆ: ŚREDNIA</b></div>
+        <h3 id="evidenceTitle">Retencja wersji B utrzymuje się po 72 h.</h3>
+        <ul id="evidenceList"><li><i class="yes"></i>2 źródła pokazują ten sam kierunek</li><li><i class="yes"></i>grupa testowa ma porównywalny rozmiar</li><li><i class="no"></i>brakuje sygnału organicznego po 7 dniach</li></ul>
+        <div class="confidence-scale" aria-label="Pewność 64 na 100"><span style="--confidence:64%"></span></div>
+      </article>
+      <article class="action-panel" aria-live="polite">
+        <span>NASTĘPNY RUCH</span>
+        <h3 id="actionTitle">Puść narrację B jeszcze raz — bez zwiększania budżetu.</h3>
+        <p id="actionText">Ten test rozdzieli efekt kreacji od efektu wydatku i można go zatrzymać po 72 godzinach.</p>
+        <ol id="actionList"><li><b>TERAZ</b>wyrównaj grupę i budżet</li><li><b>PO 72 H</b>porównaj powroty</li><li><b>DECYZJA</b>skaluj tylko po utrzymaniu retencji</li></ol>
+        <button class="copy-button" id="copyAction" type="button">Kopiuj brief decyzji</button>
+      </article>
+    </div>
+  </section>
+
+  <section class="rules" aria-labelledby="rules-title">
+    <div class="section-heading compact">
+      <h2 id="rules-title">Reguła przed rekomendacją.</h2>
+      <p>System nie uruchamia „magicznego score”. Każde działanie przechodzi przez widoczny warunek.</p>
+    </div>
+    <div class="rules-flow">
+      <article><span>JEŚLI</span><h3>Dwa niezależne źródła są zgodne</h3><p>i żadne nie jest starsze niż ustalony próg</p></article>
+      <svg viewBox="0 0 80 24" aria-hidden="true"><path d="M2 12h70m-9-8 9 8-9 8"/></svg>
+      <article><span>ORAZ</span><h3>Brakujący dowód można tanio sprawdzić</h3><p>bez długiego zobowiązania i bez szkody dla danych</p></article>
+      <svg viewBox="0 0 80 24" aria-hidden="true"><path d="M2 12h70m-9-8 9 8-9 8"/></svg>
+      <article class="rule-result"><span>WTEDY</span><h3>Pokaż jeden następny test</h3><p>z limitem czasu, kosztu i warunkiem zatrzymania</p></article>
+    </div>
+  </section>
+
+  <section class="team" aria-labelledby="team-title">
+    <figure><img src="images/artist-team-planning-v2.png" width="1536" height="1024" loading="lazy" alt="Trzyosobowy zespół artysty planuje premierę przy papierowym kalendarzu w sali prób"></figure>
+    <div class="team-copy">
+      <h2 id="team-title">Jedna decyzja. Trzy różne odpowiedzialności.</h2>
+      <div class="roles">
+        <article><b>ARTYSTA</b><h3>Chroni kierunek</h3><p>Widok narracji, reakcji i jakości powrotu.</p></article>
+        <article><b>MANAGEMENT</b><h3>Ustawia próg</h3><p>Budżet, ryzyko, deadline i moment stop.</p></article>
+        <article><b>PARTNER</b><h3>Realizuje test</h3><p>Jeden brief, jedno źródło decyzji, czytelny handoff.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="privacy" aria-labelledby="privacy-title">
+    <div class="privacy-copy">
+      <h2 id="privacy-title">Czytamy sygnały. Nie przejmujemy sterów.</h2>
+      <p>Koncepcja zakłada połączenia tylko do odczytu. Bez publikowania, wypłat, tantiem ani wiadomości do fanów.</p>
+    </div>
+    <div class="access-console" aria-label="Przykładowe ustawienia dostępu">
+      <div><span>Publikowanie treści</span><b class="off">BRAK DOSTĘPU</b></div>
+      <div><span>Tantiemy i wypłaty</span><b class="off">BRAK DOSTĘPU</b></div>
+      <div><span>Zagregowane trendy</span><b class="on">TYLKO ODCZYT</b></div>
+      <div><span>Eksport własnych danych</span><b class="on">DOSTĘPNY</b></div>
+      <button type="button" id="disconnectDemo">Zasymuluj odłączenie źródła</button>
+      <p id="disconnectStatus" role="status"></p>
+    </div>
+  </section>
+
+  <section class="method" id="method" aria-labelledby="method-title">
+    <div class="method-title">
+      <h2 id="method-title">Metoda mówi również: „nie wiemy”.</h2>
+      <p>WAVE/METRICS jest koncepcją produktową, nie działającą usługą analityczną. Poniższe zasady pokazują docelowy standard uczciwości.</p>
+    </div>
+    <div class="method-grid">
+      <article><h3>Confidence to opis dowodów</h3><p>Nie jest prawdopodobieństwem sukcesu. Rośnie, gdy niezależne źródła są zgodne i świeże.</p></article>
+      <article><h3>Brak danych jest stanem</h3><p>Nie uzupełniamy luki estetycznym wykresem. Pokazujemy, czego brakuje i jak to sprawdzić.</p></article>
+      <article><h3>Korelacja nie jest przyczyną</h3><p>Oś czasu pomaga zobaczyć kolejność, ale nie udaje, że sama dowodzi wpływu.</p></article>
+      <article><h3>Człowiek zatwierdza ruch</h3><p>System może uporządkować test. Decyzja, budżet i ryzyko pozostają po stronie zespołu.</p></article>
+    </div>
+    <details><summary>Czy to są prawdziwe dane artysty?</summary><p>Nie. Wszystkie nazwy, wartości, wykresy i rekomendacje na tej stronie są syntetycznym materiałem demonstracyjnym.</p></details>
+    <details><summary>Czy WAVE/METRICS przewiduje hit?</summary><p>Nie. Koncepcja celowo odrzuca taką obietnicę; wspiera małe, wyjaśnialne testy.</p></details>
+    <details><summary>Czy demo łączy się z platformami?</summary><p>Nie. Formularz i interakcje działają lokalnie i niczego nie wysyłają.</p></details>
+  </section>
+
+  <section class="demo-section" id="demo" aria-labelledby="demo-title">
+    <div class="demo-copy">
+      <h2 id="demo-title">Przynieś jedną decyzję. Resztę ułożymy na osi czasu.</h2>
+      <p>Wybierz scenariusz i opisz najbliższy ruch. To lokalny formularz koncepcyjny — dane nie opuszczą przeglądarki.</p>
+    </div>
+    <form id="demoForm" novalidate>
+      <label for="email">E-mail zespołu</label>
+      <input id="email" name="email" type="email" autocomplete="email" placeholder="team@artist.pl" required>
+      <label for="decision">Najbliższa decyzja</label>
+      <select id="decision" name="decision" required><option value="">Wybierz scenariusz</option><option>Premiera</option><option>Trasa</option><option>Społeczność</option></select>
+      <label for="question">Co musi być jasne po demo?</label>
+      <textarea id="question" name="question" rows="3" placeholder="Np. czy otwierać listę oczekujących w Poznaniu?" required></textarea>
+      <button class="button button-primary" type="submit">Przygotuj lokalne demo</button>
+      <p id="formStatus" role="status"></p>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <a class="brand" href="#top">WAVE<span>/</span>METRICS</a>
+  <p>Fictional portfolio concept · synthetic demo data · 2026</p>
+  <a href="#method">Metoda i ograniczenia</a>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="wave-preview.js"></script>
+</body>
+</html>

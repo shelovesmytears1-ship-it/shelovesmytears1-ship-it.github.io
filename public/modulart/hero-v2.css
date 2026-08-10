@@ -1,0 +1,27 @@
+/* The first viewport shows the built object and the cut list as one system. */
+.hero{grid-template-columns:minmax(520px,.88fr) minmax(0,1.12fr);background:var(--paper)}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(44px,5vw,72px) clamp(24px,4vw,58px)}
+.hero-copy h1{font-size:clamp(52px,5.4vw,86px);max-width:8.6ch;line-height:.86}
+.hero-copy>p{max-width:42ch;font-size:clamp(16px,1.25vw,20px);margin:30px 0 34px}
+.hero-copy>a{align-self:flex-start;min-height:52px;display:grid;place-items:center;padding:0 22px;background:var(--red);color:#fff;text-decoration:none;font-weight:600}
+.hero-copy>small{max-width:35ch;padding-top:34px}
+.hero-system{display:grid;grid-template-rows:minmax(0,1fr) 238px;height:calc(100dvh - 70px);min-height:0;padding:0;background:var(--ink);overflow:hidden}
+.hero-system::before,.hero-system::after{content:none}
+.hero-photo{position:relative;min-height:0;overflow:hidden;background:var(--ink)}
+.hero-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 58%}
+.photo-register{position:absolute;left:0;bottom:0;display:grid;grid-template-columns:auto auto;gap:18px;align-items:center;padding:14px 18px;background:var(--paper);color:var(--ink);font-size:10px;border-top:1px solid var(--ink);border-right:1px solid var(--ink)}
+.photo-register span{color:var(--red)}
+.hero-plan{position:relative;min-height:238px;background:#d6d3ca;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:34px 34px;border-top:1px solid var(--ink);overflow:hidden}
+.hero-plan .site-axis{position:absolute;inset:15px 18px auto;display:flex;justify-content:space-between;color:var(--red);font-size:9px;z-index:2;border:0;padding:0}
+.hero-plan .site-axis span:last-child::before{content:none}
+.hero-plan .module{position:absolute;height:86px;border:1px solid var(--ink);padding:10px 12px;display:flex;flex-direction:column;justify-content:space-between;background:var(--paper);z-index:2;box-shadow:none}
+.hero-plan .module b{font:700 clamp(22px,2.4vw,38px)/.85 'Barlow Condensed'}
+.hero-plan .module small{margin:0;color:var(--red);font-size:8px}
+.hero-plan .module-l{left:7%;top:70px;width:43%}
+.hero-plan .module-w{left:47%;top:46px;width:25%;background:#b6bbb5}
+.hero-plan .module-n{left:56%;top:126px;width:36%;background:#c8c3b9}
+.hero-plan .plan-route{position:absolute;left:6%;right:5%;top:112px;height:1px;background:var(--red);transform:rotate(-4deg);transform-origin:left center}
+.hero-system>figcaption{position:absolute;right:18px;bottom:10px;left:auto;max-width:42%;padding:0;background:transparent;border:0;color:#4f5652;text-align:right;font-size:8px;z-index:3}
+@media(max-width:1100px){.hero{grid-template-columns:minmax(430px,.9fr) minmax(0,1.1fr)}.hero-copy h1{font-size:clamp(48px,5.8vw,68px)}.hero-system{grid-template-rows:minmax(0,1fr) 220px}.hero-plan{min-height:220px}.hero-plan .module{height:78px}}
+@media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto}.hero-copy{min-height:min(820px,calc(100dvh - 70px));padding:64px clamp(20px,7vw,64px) 42px}.hero-copy h1{font-size:clamp(58px,9vw,76px)}.hero-copy>small{margin-top:44px}.hero-system{height:auto;min-height:780px;grid-template-rows:500px 280px}.hero-plan{min-height:280px}.hero-plan .module{height:100px}.hero-plan .module-l{top:82px}.hero-plan .module-w{top:54px}.hero-plan .module-n{top:146px}}
+@media(max-width:600px){header .brand{min-height:44px;display:flex;align-items:center}.hero-copy{min-height:auto;padding:58px 18px 44px}.hero-copy h1{font-size:clamp(50px,14vw,64px);max-width:8ch}.hero-copy>p{font-size:16px;margin:25px 0 28px}.hero-copy>small{margin-top:38px}.hero-system{min-height:640px;grid-template-rows:360px 280px}.hero-photo img{object-position:55% 50%}.photo-register{grid-template-columns:1fr;gap:2px;padding:10px 12px}.hero-plan .site-axis{inset-inline:12px;font-size:10px}.hero-plan .module small{font-size:10px}.hero-plan .module-l{left:5%;width:50%}.hero-plan .module-w{left:51%;width:34%}.hero-plan .module-n{left:38%;width:56%}.hero-system>figcaption{right:10px;bottom:8px;max-width:55%;font-size:9px}}

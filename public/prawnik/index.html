@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Prawnik.Tech — demonstracyjny koncept przygotowania do rejestracji firmy w Polsce.">
+  <title>Prawnik.Tech — Teczka decyzyjna</title>
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="prawnik-preview.css">
+  <link rel="stylesheet" href="prawnik-expanded.css">
+</head>
+<body>
+  <a class="skip" href="#main">Przejdź do treści</a>
+  <header class="topbar">
+    <a class="brand" href="#start" aria-label="Prawnik.Tech — strona główna"><span>PT</span>Prawnik.Tech</a>
+    <nav aria-label="Główna nawigacja">
+      <a href="#orientacja">Orientacja</a><a href="#porownanie">Porównanie</a><a href="#zrodla">Źródła</a>
+    </nav>
+    <a class="header-action" href="#orientacja">Otwórz teczkę</a>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="start">
+      <div class="hero-copy">
+        <p class="file-code">TECZKA: START / PL / 2026</p>
+        <h1>Zanim zarejestrujesz firmę, <em>ustal właściwe pytania.</em></h1>
+        <p class="lede">Porządkujemy informacje potrzebne przed wejściem do CEIDG albo S24/KRS. Bez obietnic „bez błędów”, bez zgadywania podatków, bez ukrywania granic odpowiedzialności.</p>
+        <div class="hero-actions"><a class="button primary" href="#orientacja">Przygotuj dossier</a><a class="text-link" href="#porownanie">Najpierw porównaj ścieżki <span aria-hidden="true">→</span></a></div>
+        <p class="disclaimer">Projekt demonstracyjny. Nie stanowi porady prawnej ani podatkowej i nie składa wniosków.</p>
+      </div>
+      <figure class="hero-figure">
+        <img src="case-file-generated.png" alt="Teczki i formularz przygotowany do uzupełnienia na biurku">
+        <figcaption><b>Materiał roboczy</b><span>Najpierw fakty. Potem formularz.</span></figcaption>
+        <div class="stamp" aria-hidden="true">DO USTALENIA</div>
+      </figure>
+    </section>
+
+    <section class="orientation" id="orientacja" aria-labelledby="orientation-title">
+      <div class="section-intro">
+        <p class="file-code">FORMULARZ ORIENTACYJNY A–03</p>
+        <h2 id="orientation-title">Zbuduj teczkę w trzech odpowiedziach.</h2>
+        <p>Nie wybieramy za Ciebie formy prawnej. Tworzymy listę tematów, które warto zweryfikować z księgowym lub prawnikiem.</p>
+      </div>
+      <div class="dossier-shell">
+        <div class="tabs" aria-label="Postęp"><span class="tab active">A / Wspólnicy</span><span class="tab">B / Ryzyko</span><span class="tab">C / Status</span><span class="tab">D / Teczka</span></div>
+        <div class="question-panel" aria-live="polite">
+          <div class="question-head"><span id="stepLabel">Pytanie 1 z 3</span><button id="resetButton" type="button">Wyczyść</button></div>
+          <div class="progress"><span id="progressBar"></span></div>
+          <div id="questionBody"></div>
+          <div class="form-nav"><button class="back" id="backButton" type="button">Wstecz</button><p id="formHint">Wybierz jedną odpowiedź, aby przejść dalej.</p></div>
+        </div>
+        <aside class="file-preview" aria-label="Podgląd teczki">
+          <div class="preview-head"><span>AKTA ROBOCZE</span><span id="caseId">PT—000</span></div>
+          <div id="previewLines"><p>Wspólnicy <b>—</b></p><p>Odpowiedzialność <b>—</b></p><p>Status <b>—</b></p></div>
+          <div class="preview-seal">NIE JEST WNIOSKIEM</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="fact-map" aria-labelledby="facts-title">
+      <div><h2 id="facts-title">Formularz zaczyna się od faktów, których nie wolno zgadywać.</h2><p>Jedna niepewna odpowiedź może zmienić dokumenty, sposób podpisu albo potrzebnego specjalistę. Dossier zostawia brak widoczny.</p></div>
+      <dl><div><dt>Osoby</dt><dd>wspólnicy, reprezentacja, rezydencja, beneficjenci</dd></div><div><dt>Działalność</dt><dd>co firma faktycznie robi, gdzie i dla kogo</dd></div><div><dt>Adres</dt><dd>tytuł do lokalu i adres do doręczeń</dd></div><div><dt>Finanse</dt><dd>kapitał, rachunek, planowane rozliczenia</dd></div><div><dt>Podpis</dt><dd>profil zaufany, podpis kwalifikowany lub pełnomocnictwo</dd></div></dl>
+    </section>
+
+    <section class="comparison" id="porownanie" aria-labelledby="comparison-title">
+      <div class="comparison-head"><h2 id="comparison-title">Dwie ścieżki. Inne konsekwencje.</h2><p>To punkt wyjścia do rozmowy, nie skrót do decyzji.</p></div>
+      <div class="switcher" role="tablist" aria-label="Porównaj formy"><button role="tab" aria-selected="true" aria-controls="pathPanel" data-path="jdg">JDG / CEIDG</button><button role="tab" aria-selected="false" aria-controls="pathPanel" data-path="spzoo">sp. z o.o. / KRS</button></div>
+      <article class="path-panel" id="pathPanel" tabindex="0">
+        <div><span class="path-index" id="pathIndex">CEIDG</span><h3 id="pathTitle">Jednoosobowa działalność gospodarcza</h3><p id="pathSummary">Wpis dotyczy osoby fizycznej prowadzącej działalność we własnym imieniu.</p></div>
+        <dl id="pathFacts"><div><dt>Rejestr</dt><dd>CEIDG</dd></div><div><dt>Do ustalenia</dt><dd>m.in. PKD, forma opodatkowania, ZUS, VAT</dd></div><div><dt>Granica</dt><dd>zobowiązania działalności są związane z przedsiębiorcą</dd></div></dl>
+      </article>
+    </section>
+
+    <section class="documents" aria-labelledby="documents-title"><div><h2 id="documents-title">Dokument ma status, właściciela i źródło.</h2><p>Lista jest orientacyjna. Właściwy komplet zależy od formy, osób, sposobu reprezentacji i aktualnych wymagań rejestru.</p></div><div class="document-register"><article><span>IDENTYFIKACJA</span><b>Dane i dokumenty osób</b><em>DO WERYFIKACJI</em></article><article><span>ADRES</span><b>Tytuł do lokalu / zgoda</b><em>ZALEŻNE OD SPRAWY</em></article><article><span>SPÓŁKA</span><b>Umowa i sposób reprezentacji</b><em>SPECJALISTA</em></article><article><span>PODPIS</span><b>Narzędzie podpisu dla właściwego systemu</b><em>OFICJALNY SYSTEM</em></article></div></section>
+
+    <section class="activity-code" aria-labelledby="activity-title"><div class="code-sheet"><span>OPIS DZIAŁALNOŚCI / ROBOCZY</span><strong>„Tworzenie i utrzymanie oprogramowania dla klientów biznesowych”</strong><p>Opis nie jest kodem PKD. Najpierw zapisujemy realne czynności, przychody i sposób świadczenia usług, a dopiero potem sprawdzamy aktualną klasyfikację.</p></div><div><h2 id="activity-title">Kod ma opisywać działalność, nie ambicję marki.</h2><ol><li><b>Co sprzedajesz?</b><span>produkt, usługa, licencja, pośrednictwo</span></li><li><b>Jak powstaje przychód?</b><span>projekt, abonament, prowizja, handel</span></li><li><b>Gdzie działasz?</b><span>Polska, UE, państwa trzecie</span></li><li><b>Co wymaga sprawdzenia?</b><span>regulacja, zezwolenie, VAT, kasa fiskalna</span></li></ol></div></section>
+
+    <section class="process" aria-labelledby="process-title">
+      <div class="process-copy"><h2 id="process-title">Pomoc kończy się tam, gdzie zaczyna się decyzja zawodowa.</h2><p>Dobry proces nie udaje urzędu ani kancelarii. Pokazuje, kto odpowiada za każdy krok.</p></div>
+      <ol class="ledger">
+        <li><span>01</span><div><h3>Zebranie faktów</h3><p>Ty opisujesz model działalności, wspólników, rezydencję i plan operacyjny.</p></div><b>TY</b></li>
+        <li><span>02</span><div><h3>Weryfikacja decyzji</h3><p>Prawnik i księgowy oceniają skutki prawne oraz podatkowe konkretnej sytuacji.</p></div><b>SPECJALISTA</b></li>
+        <li><span>03</span><div><h3>Złożenie dokumentów</h3><p>Właściwe osoby podpisują i przekazują komplet do oficjalnego systemu.</p></div><b>CEIDG / KRS</b></li>
+        <li><span>04</span><div><h3>Decyzja rejestrowa</h3><p>Termin i wynik zależą od rejestru, kompletności oraz indywidualnej sprawy.</p></div><b>URZĄD / SĄD</b></li>
+      </ol>
+    </section>
+
+    <section class="tax-boundary" aria-labelledby="tax-title"><div><h2 id="tax-title">Rejestracja nie wybiera za Ciebie podatków.</h2><p>Dossier może zebrać pytania, ale skutki zależą od rodzaju przychodu, kosztów, osób, rezydencji i planów. To zakres dla księgowego lub doradcy podatkowego.</p></div><div><p><span>PRZYCHÓD</span>skąd, kiedy i w jakiej walucie</p><p><span>KOSZTY</span>jakie wydatki są rzeczywiście związane z działalnością</p><p><span>VAT</span>kraj, typ klienta i rodzaj świadczenia</p><p><span>ZUS</span>status osoby i inne tytuły ubezpieczenia</p><p><span>WYPŁATA</span>wynagrodzenie, dywidenda lub inny mechanizm po analizie</p></div></section>
+
+    <section class="registry-timeline" aria-labelledby="timeline-title"><h2 id="timeline-title">Proces ma kolejność, nie obietnicę czasu.</h2><ol><li><span>PRZYGOTOWANIE</span><b>fakty, pytania, dokumenty</b><p>bez prognozy terminu urzędu</p></li><li><span>WERYFIKACJA</span><b>prawnik / księgowy</b><p>zakres zależny od sprawy</p></li><li><span>PODPIS</span><b>właściwe osoby</b><p>w narzędziu wymaganym przez system</p></li><li><span>REJESTR</span><b>CEIDG albo KRS/S24</b><p>wynik i czas po stronie instytucji</p></li><li><span>PO WPISIE</span><b>obowiązki operacyjne</b><p>rachunek, rozliczenia, zgłoszenia zależne od sytuacji</p></li></ol></section>
+
+    <section class="foreign-founder" aria-labelledby="foreign-title"><div><h2 id="foreign-title">Założyciel zagraniczny potrzebuje osobnej ścieżki pytań.</h2><p>Obywatelstwo, miejsce zamieszkania, prawo pobytu, identyfikator, podpis i sposób doręczeń mogą zmienić procedurę. Koncepcja nie przesądza uprawnienia do rejestracji.</p></div><div class="foreign-file"><span>DODATEK / FF—01</span><p><b>STATUS POBYTOWY</b><em>do oceny na aktualnych przepisach</em></p><p><b>IDENTYFIKACJA</b><em>PESEL / dokument / tłumaczenie — zależne od sprawy</em></p><p><b>PODPIS</b><em>zgodność z wybranym systemem</em></p><p><b>DORĘCZENIA</b><em>adres i osoba odbierająca korespondencję</em></p></div></section>
+
+    <section class="data-safety" aria-labelledby="data-title"><div><h2 id="data-title">Nie wkładaj dokumentów tożsamości do przypadkowego formularza.</h2><p>Narzędzie demo działa lokalnie i nie prosi o numery dokumentów. Realna usługa potrzebuje minimalizacji danych, bezpiecznego kanału, retencji i informacji o administratorze.</p></div><dl><div><dt>Minimum</dt><dd>zbieraj tylko dane potrzebne na aktualnym etapie</dd></div><div><dt>Kanał</dt><dd>oddziel zwykły kontakt od przekazywania dokumentów</dd></div><div><dt>Dostęp</dt><dd>określ, kto i po co widzi dossier</dd></div><div><dt>Usunięcie</dt><dd>ustal termin i sposób zamknięcia akt</dd></div></dl></section>
+
+    <section class="red-flags" aria-labelledby="flags-title"><h2 id="flags-title">Kiedy prosta orientacja przestaje wystarczać.</h2><div><p><span>WSPÓLNICY</span>spór, nierówny wkład, inwestor lub złożone zasady wyjścia</p><p><span>ZAGRANICA</span>rezydencja, działalność lub klienci w wielu państwach</p><p><span>REGULACJA</span>finanse, zdrowie, transport, edukacja lub działalność koncesjonowana</p><p><span>WŁASNOŚĆ</span>aport, IP, licencje albo aktywa przenoszone do spółki</p><p><span>ODPOWIEDZIALNOŚĆ</span>ryzyko, którego nie da się ocenić w ankiecie</p></div></section>
+
+    <section class="consultation-file" aria-labelledby="consultation-title"><div><h2 id="consultation-title">Na konsultację przynieś pytania, nie gotową odpowiedź.</h2><p>Dobra notatka skraca czas porządkowania faktów i pozwala specjaliście skupić się na konsekwencjach.</p></div><ol><li><b>Model działalności</b><span>co, dla kogo, gdzie i jak sprzedajesz</span></li><li><b>Osoby</b><span>wspólnicy, role, rezydencja, reprezentacja</span></li><li><b>Pieniądze</b><span>przychody, koszty, kapitał i wypłaty</span></li><li><b>Ryzyko</b><span>umowy, odpowiedzialność, regulacja, IP</span></li><li><b>Braki</b><span>lista tego, czego jeszcze nie wiesz</span></li></ol></section>
+
+    <section class="questions" aria-labelledby="questions-title"><div><h2 id="questions-title">Najczęstsze granice tej teczki.</h2><p>Odpowiedzi wyjaśniają działanie portfolio concept, nie zastępują aktualnej procedury ani porady.</p></div><div><details><summary>Czy narzędzie wybiera formę firmy?</summary><p>Nie. Z odpowiedzi tworzy listę tematów do weryfikacji i pokazuje dwa oficjalne kierunki.</p></details><details><summary>Czy składa wniosek?</summary><p>Nie. Nie łączy się z CEIDG, S24 ani KRS i nie przesyła danych.</p></details><details><summary>Czy podaje termin rejestracji?</summary><p>Nie. Czas zależy od wybranej ścieżki, kompletności, podpisów i działania właściwej instytucji.</p></details><details><summary>Czy mogę przesłać skan dokumentu?</summary><p>Nie w tej demonstracji. Realny produkt wymaga osobnego, bezpiecznego kanału i zasad ochrony danych.</p></details></div></section>
+
+    <section class="sources" id="zrodla" aria-labelledby="sources-title">
+      <div><h2 id="sources-title">Oficjalne źródło jest częścią procesu.</h2><p>Procedury i wymagania mogą się zmieniać. Przed działaniem sprawdź aktualne informacje u źródła.</p></div>
+      <div class="source-links">
+        <a href="https://biznes.gov.pl/" target="_blank" rel="noreferrer"><span>CEIDG i informacje dla przedsiębiorców</span><b>Biznes.gov.pl ↗</b></a>
+        <a href="https://www.gov.pl/web/sprawiedliwosc/s24-rejestracja-spolki-inne-wnioski" target="_blank" rel="noreferrer"><span>Rejestracja spółki i inne wnioski</span><b>Portal S24 ↗</b></a>
+        <a href="https://www.gov.pl/web/sprawiedliwosc/krajowy-rejestr-sadowy4" target="_blank" rel="noreferrer"><span>Krajowy Rejestr Sądowy</span><b>Gov.pl ↗</b></a>
+      </div>
+    </section>
+  </main>
+  <footer><a class="brand" href="#start"><span>PT</span>Prawnik.Tech</a><p>Portfolio concept · informacja, nie porada · 2026</p></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="prawnik-preview.js"></script>
+</body>
+</html>

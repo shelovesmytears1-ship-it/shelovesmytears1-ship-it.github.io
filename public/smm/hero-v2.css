@@ -1,0 +1,28 @@
+/* A broadcast poster joined to a physical 14-day rundown. */
+.hero{grid-template-columns:minmax(0,1.08fr) minmax(430px,.92fr);isolation:isolate}
+.hero-main{display:flex;flex-direction:column;justify-content:center;padding:clamp(42px,5vw,66px) clamp(24px,6vw,92px);overflow:hidden}
+.hero-main::before{content:'SYGNAŁ';position:absolute;right:-.08em;top:50%;transform:translateY(-53%);font:800 clamp(140px,19vw,310px)/.78 'Barlow Condensed';letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1px #27303c;writing-mode:vertical-rl;pointer-events:none;z-index:-1}
+.hero-main::after{content:'HIPOTEZA  /  EMISJA  /  OBSERWACJA  /  DECYZJA';left:clamp(24px,6vw,92px);bottom:22px;color:#7d8794}
+.hero h1{font-size:clamp(62px,6.4vw,100px);max-width:7.8ch;position:relative;z-index:1}
+.hero-main>p{max-width:56ch;margin:28px 0 32px;position:relative;z-index:1}
+.hero-main>.button{align-self:flex-start;position:relative;z-index:1}
+.cue{position:relative;justify-content:flex-start;padding:clamp(26px,3.2vw,52px);overflow:hidden;background:#1b222d}
+.cue::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 49.8%,#303a47 50%,transparent 50.2%);opacity:.55;pointer-events:none}
+.cue-top{position:relative;z-index:2;padding-bottom:16px;border-bottom:1px solid #44505f}
+.cue-number{position:relative;z-index:1;display:flex;align-items:flex-end;gap:18px;margin:clamp(24px,4vh,40px) 0 12px;color:var(--orange)}
+.cue-number strong{font:800 clamp(128px,13vw,220px)/.68 'Barlow Condensed';letter-spacing:-.04em}
+.cue-number span{max-width:7ch;padding-bottom:9px;font:700 13px/1 'Barlow Condensed';letter-spacing:.08em;color:#c6ced6}
+.cue .timecode{position:relative;z-index:2;margin:14px 0 30px;background:rgba(17,21,28,.72)}
+.cue .timecode span{padding:16px 18px 14px}
+.cue .timecode span:last-child{padding-left:18px;padding-right:18px}
+.cue-copy{position:relative;z-index:2;display:grid;grid-template-columns:.82fr 1fr;gap:24px;align-items:end;padding-top:26px;border-top:2px solid #f1eee4}
+.cue-copy h2{font-size:clamp(38px,3.7vw,58px);margin:0}
+.cue-copy p{margin:0;color:#b8c1cb}
+.program-buttons{position:relative;z-index:2;margin-top:auto;padding-top:30px;display:grid;grid-template-columns:repeat(3,1fr)}
+.program-buttons button{min-height:68px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;padding:12px;border-color:#4b5665;text-align:left}
+.program-buttons button span{font:700 12px 'Barlow Condensed'}
+.program-buttons button small{font:500 10px Manrope,sans-serif;color:#929dab}
+.program-buttons button.on small{color:#dce4ff}
+@media(max-width:1100px){.hero{grid-template-columns:1fr 1fr}.hero h1{font-size:clamp(62px,7vw,88px)}.cue-copy{grid-template-columns:1fr}.cue-copy p{max-width:44ch}.cue-number strong{font-size:150px}}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hero-main{min-height:calc(100dvh - 72px)}.hero h1{font-size:clamp(70px,12vw,108px)}.cue{min-height:720px}.cue-number strong{font-size:clamp(150px,28vw,230px)}.cue-copy{grid-template-columns:.72fr 1fr}}
+@media(max-width:600px){header .logo{min-height:44px;display:flex;align-items:center}.hero-main{min-height:calc(100dvh - 64px);padding:48px 18px 70px}.hero h1{font-size:clamp(51px,14.5vw,60px);line-height:.88;max-width:none}.hero-main>p{font-size:16px;line-height:1.5;margin:24px 0 28px}.hero-main::before{font-size:170px;right:-26px}.hero-main::after{left:18px;bottom:18px;font-size:10px}.cue{min-height:680px;padding:28px 18px}.cue-number{margin-top:30px}.cue-copy{grid-template-columns:1fr;gap:14px;padding-top:22px}.cue-copy h2{font-size:44px;max-width:10ch}.program-buttons{padding-top:24px}.program-buttons button{min-height:72px;padding:10px 8px}.program-buttons button small{font-size:9px}.cue .timecode{margin-bottom:24px}.cue .timecode span,.cue .timecode span:last-child{padding:12px 10px}}

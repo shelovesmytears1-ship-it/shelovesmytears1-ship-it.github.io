@@ -7,7 +7,7 @@ palette: WARM-DARK-INTERIOR
 tier: 1
 accent: '#C8956D'
 bg: '#0F0F0F'
-siteUrl: https://shelovesmytears1-ship-it.github.io/archline-renovation/
+siteUrl: https://overflow-web.pl/archline/
 cover: /covers/archline.jpg
 screens:
   - src: /screens/archline-m1.webp

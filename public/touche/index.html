@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Touché — demonstracyjna strona mobilnego rytuału relaksacyjnego w domu.">
+  <title>Touché — rytuał przyjeżdża do Ciebie</title>
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="touche-preview.css">
+  <link rel="stylesheet" href="touche-expanded.css">
+</head>
+<body>
+<!--
+DESIGN CONTRACT
+Thesis: Usługa mobilna zyskuje zaufanie przez dopasowanie, logistykę, higienę i jasne granice, nie przez obietnice zdrowotne.
+Composition: Arrival Tray. Sekcje układają dotyk, czas, tkaninę, przestrzeń i zgodę jak elementy przygotowanej tacy.
+Depth: Ciepłe warstwy, fotografie o dotykowej fakturze, jeden miękki cień pod fizyczną tacą.
+Typography: Italiana prowadzi spokojny rytm; DM Sans odpowiada za instrukcje i decyzje.
+Color: Warm shell, aubergine, muted rose, brass. Bez generycznej zieleni wellness.
+Signature: Karta rytuału łączy preferencje z logistyką przyjazdu i może zostać skopiowana.
+Avoid: Medyczne roszczenia, liście jako ozdoba, fake testimonials, hotelowy luksus, urgency i kartoteka rounded cards.
+-->
+<a class="skip" href="#main">Przejdź do treści</a>
+<header><a class="brand" href="#top">Touché</a><button class="menu-button" type="button" aria-expanded="false" aria-controls="siteNav">Menu</button><nav id="siteNav" aria-label="Nawigacja"><a href="#choose">Dobierz rytuał</a><a href="#menu">Menu</a><a href="#arrival">Wizyta</a><a href="#booking">Kontakt</a></nav><a href="#booking">Przygotuj rezerwację</a></header>
+<main id="main">
+  <section class="hero" id="top"><figure><img src=".img/Hero Section.webp" alt="Stół do masażu przygotowany w domowym salonie" width="1600" height="900"></figure><div><h1>Rytuał przyjeżdża do Ciebie. Dom zostaje domem.</h1><p>Mobilny masaż i pielęgnacja ciała z jasnym przebiegiem wizyty, przygotowaniem przestrzeni i możliwością dobrania intensywności.</p><a href="#choose">Dobierz swoją godzinę ciszy</a><small>Portfolio concept · usługa relaksacyjna, nie medyczna</small></div></section>
+
+  <section class="home-promise"><h2>Nie budujemy gabinetu w Twoim salonie.</h2><div><p>Potrzebujemy bezpiecznego miejsca na stół, dostępu do łazienki i chwili bez pośpiechu. Światło, zapach i dźwięk dopasowujemy do domu, zamiast przykrywać go scenografią.</p><dl><div><dt>Przywozimy</dt><dd>sprzęt, czyste tekstylia, podkład i uzgodniony kosmetyk</dd></div><div><dt>Ty wybierasz</dt><dd>ciszę lub muzykę, intensywność i obszary pomijane</dd></div><div><dt>Dom zachowuje</dt><dd>swój rytm, prywatność i znajome otoczenie</dd></div></dl></div></section>
+
+  <section class="choose" id="choose"><div class="choose-head"><h2>Najpierw wybierz, jak chcesz czuć się podczas rytuału.</h2><p>Selektor nie diagnozuje i nie zastępuje konsultacji medycznej. Przy przeciwwskazaniach zapytaj lekarza przed rezerwacją.</p></div><div class="tray"><form id="ritualForm"><fieldset><legend>Intensywność dotyku</legend><label><input type="radio" name="pressure" value="soft" checked><span>delikatna</span></label><label><input type="radio" name="pressure" value="medium"><span>średnia</span></label><label><input type="radio" name="pressure" value="deep"><span>wyraźna</span></label></fieldset><fieldset><legend>Czas</legend><label><input type="radio" name="duration" value="60" checked><span>60 minut</span></label><label><input type="radio" name="duration" value="90"><span>90 minut</span></label></fieldset><fieldset><legend>Atmosfera</legend><label><input type="radio" name="mood" value="quiet" checked><span>cisza</span></label><label><input type="radio" name="mood" value="sound"><span>spokojna muzyka</span></label></fieldset><button type="submit">Ułóż wizytę</button></form><article aria-live="polite"><span>KARTA RYTUAŁU / DEMO</span><h3 id="ritualTitle">Dotyk Ukojenia · 60 min</h3><p id="ritualText">Płynny, delikatny rytm i spokojne tempo. Bez rozmowy poza krótkim ustaleniem komfortu.</p><dl><div><dt>Przyjazd</dt><dd>15 min przed rytuałem</dd></div><div><dt>Potrzebujesz</dt><dd>około 2 × 3 m wolnej przestrzeni</dd></div><div><dt>Przywozimy</dt><dd>stół, czyste tekstylia, podkład i olej</dd></div><div><dt>Orientacyjnie</dt><dd id="ritualPrice">260 zł · portfolio demo</dd></div></dl><button id="copyRitual" type="button">Kopiuj kartę</button></article></div></section>
+
+  <section class="menu" id="menu"><div><h2>Trzy rytuały. Każdy z inną dynamiką.</h2><p>Intensywność potwierdzamy przed rozpoczęciem i można ją zmienić w trakcie.</p></div><article><span>Dotyk miękki</span><h3>Dotyk Ukojenia</h3><p>Płynna, delikatna praca dla osób, które chcą zwolnić i odpocząć.</p><b>60 / 90 min</b></article><article><span>Dotyk średni</span><h3>Równowaga</h3><p>Spokojne tempo i więcej uwagi dla wybranych obszarów ciała.</p><b>60 / 90 min</b></article><article><span>Dotyk wyraźny</span><h3>Głębszy Rytm</h3><p>Wyraźniejszy ucisk w granicach komfortu; nadal usługa relaksacyjna.</p><b>90 min</b></article></section>
+
+  <section class="pressure-language"><div><h2>Intensywność ma język, nie skalę bólu.</h2><p>„Mocniej” i „delikatniej” można powiedzieć w każdej chwili. Komfort nie jest testem wytrzymałości.</p></div><div class="pressure-scale"><article><b>Delikatna</b><span>powolny, miękki rytm</span><em>dobry wybór, gdy priorytetem jest wyciszenie</em></article><article><b>Średnia</b><span>stabilny, wyczuwalny nacisk</span><em>z możliwością pracy spokojniej na wybranych obszarach</em></article><article><b>Wyraźna</b><span>głębszy kontakt bez przekraczania komfortu</span><em>nie jest terapią ani leczeniem bólu</em></article></div></section>
+
+  <section class="atmosphere"><figure><img src=".img/Atmosphere.webp" alt="Świece ustawione na kamiennej tacy" width="900" height="1200" loading="lazy"></figure><div><h2>Atmosfera nie musi udawać hotelu.</h2><p>Wystarczy ciepłe pomieszczenie, chwila bez powiadomień i miejsce na bezpieczne rozłożenie stołu.</p></div><figure><img src=".img/Softness of fabrics.webp" alt="Czyste białe tekstylia przygotowane do rytuału" width="900" height="1200" loading="lazy"></figure></section>
+
+  <section class="space-check"><div><h2>Przygotuj miejsce, nie scenografię.</h2><p>Zaznacz elementy, żeby sprawdzić gotowość przestrzeni. To lokalna checklista, niczego nie wysyła.</p></div><form id="spaceForm"><label><input type="checkbox"><span>około 2 × 3 m wolnej podłogi</span></label><label><input type="checkbox"><span>ciepłe pomieszczenie bez przeciągu</span></label><label><input type="checkbox"><span>dostęp do łazienki i bieżącej wody</span></label><label><input type="checkbox"><span>wyciszony telefon i domofon na czas rytuału</span></label><p id="spaceStatus" role="status">Przestrzeń: 0 z 4 punktów gotowe.</p></form></section>
+
+  <section class="arrival" id="arrival"><div><h2>Od dzwonka do ciszy, bez niespodzianek.</h2><p>Wizyta ma własny rytm i jasne granice.</p></div><ol><li><span>−15</span><b>Przyjazd</b><p>wniesienie i przygotowanie stołu</p></li><li><span>−05</span><b>Ustalenie komfortu</b><p>intensywność, obszary pomijane, przeciwwskazania</p></li><li><span>00</span><b>Rytuał</b><p>czas usługi liczony od rozpoczęcia</p></li><li><span>+10</span><b>Złożenie przestrzeni</b><p>pakowanie sprzętu i krótka informacja po wizycie</p></li></ol></section>
+
+  <section class="arrival-tray"><div><h2>Wszystko, co dotyka skóry, ma swoje miejsce.</h2><p>Taca przyjazdu porządkuje sprzęt, tekstylia, kosmetyk i wybory atmosfery przed rozpoczęciem.</p></div><figure><img src=".img/Marquee Gallery.webp" alt="Olej spływający na gładkie kamienie w ciepłym świetle" width="900" height="1200" loading="lazy"><figcaption>kosmetyk uzgodniony przed użyciem</figcaption></figure><ul><li><b>Stół</b><span>stabilny, rozkładany i przygotowany na miejscu</span></li><li><b>Tekstylia</b><span>świeży komplet dla jednej wizyty</span></li><li><b>Podkład</b><span>jednorazowy lub przygotowany zgodnie z zakresem usługi</span></li><li><b>Kosmetyk</b><span>skład i zapach potwierdzone przed rytuałem</span></li></ul></section>
+
+  <section class="hygiene"><h2>Higiena jest protokołem, nie obietnicą w stopce.</h2><dl><div><dt>Przed wizytą</dt><dd>czysty komplet tekstyliów i przygotowane akcesoria</dd></div><div><dt>Między wizytami</dt><dd>stół i powierzchnie kontaktowe dezynfekowane</dd></div><div><dt>Na miejscu</dt><dd>higiena dłoni przed rozpoczęciem i po zakończeniu</dd></div><div><dt>Po wizycie</dt><dd>tekstylia zabezpieczone do osobnego transportu</dd></div></dl></section>
+
+  <section class="boundaries"><figure><img src=".img/RelaxFace.webp" alt="Spokojna twarz osoby odpoczywającej z zamkniętymi oczami" width="900" height="1200" loading="lazy"></figure><div><h2>Zgoda nie kończy się po rozpoczęciu.</h2><p>Możesz zmienić intensywność, poprosić o pominięcie obszaru, przerwać rytuał albo zrezygnować z zapachu czy muzyki.</p><div class="boundary-notes"><p><b>Przed wizytą</b> zgłoś ciążę, infekcję, gorączkę, świeży uraz, zabieg lub stan wymagający konsultacji.</p><p><b>W razie wątpliwości</b> skonsultuj możliwość skorzystania z usługi z lekarzem przed rezerwacją.</p><p><b>Zakres</b> Touché oferuje relaks, nie diagnozę, fizjoterapię ani leczenie bólu.</p></div></div></section>
+
+  <section class="coverage"><div><h2>Najpierw adres. Potem obietnica przyjazdu.</h2><p>Demonstracyjna koncepcja zakłada wizyty w Warszawie. Dokładny zasięg, czas dojazdu i ewentualny koszt trzeba potwierdzić dla konkretnego adresu.</p></div><div class="coverage-map" aria-label="Schematyczna mapa weryfikacji dojazdu"><span>ADRES</span><i></i><span>TRASA</span><i></i><span>PARKOWANIE / WEJŚCIE</span><i></i><strong>POTWIERDZENIE</strong></div></section>
+
+  <section class="faq"><div><h2>Najczęstsze pytania przed wizytą.</h2><p>Jeśli odpowiedź zależy od zdrowia, adresu lub warunków w domu, potwierdzamy ją indywidualnie.</p></div><div><details open><summary>Czy muszę mieć własny stół?</summary><p>Nie. Stół i podstawowe wyposażenie przyjeżdżają z osobą wykonującą usługę.</p></details><details><summary>Czy mogę wybrać kosmetyk bez zapachu?</summary><p>Tak, dostępność i skład trzeba potwierdzić przed wizytą, szczególnie przy alergiach i wrażliwej skórze.</p></details><details><summary>Czy usługa pomoże na ból?</summary><p>Touché nie diagnozuje ani nie leczy. Przy bólu, urazie lub niepokojących objawach właściwa jest konsultacja medyczna.</p></details><details><summary>Czy zwierzę może zostać w pokoju?</summary><p>Dla bezpieczeństwa sprzętu i spokoju rytuału najlepiej przygotować zwierzęciu wygodne miejsce w innym pomieszczeniu.</p></details></div></section>
+
+  <section class="booking-summary"><figure><img src=".img/Booking Visual.webp" alt="Przygotowanie wyposażenia do mobilnej wizyty masażu" width="1500" height="2000" loading="lazy"></figure><div><h2>Przed terminem potwierdzamy cztery rzeczy.</h2><ol><li>wybrany rytuał i czas;</li><li>adres, wejście i możliwość zaparkowania;</li><li>przeciwwskazania oraz kosmetyk;</li><li>warunki przygotowania przestrzeni.</li></ol><p>Dopiero pełne potwierdzenie oznacza uzgodnioną wizytę.</p></div></section>
+
+  <section class="booking" id="booking"><div><h2>Przygotuj wizytę, zanim wybierzesz termin.</h2><p>Formularz lokalny. Nie wysyła danych i nie rezerwuje terminu.</p></div><form id="bookingForm"><label>Dzielnica lub okolica<input required placeholder="np. Mokotów"></label><label>Preferowany dzień<input required placeholder="np. sobota po 17"></label><label>E-mail<input type="email" required placeholder="ty@email.pl"></label><label>Ważna informacja<textarea placeholder="np. schody, parking, brak zapachu"></textarea></label><button>Przygotuj zapytanie</button><p id="status" role="status"></p></form></section>
+</main>
+<footer><a class="brand" href="#top">Touché</a><p>Mobile SPA portfolio concept · Warszawa · 2026</p></footer>
+<script src="touche-preview.js"></script>
+</body>
+</html>

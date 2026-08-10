@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="SMM Vanguard — laboratorium 14-dniowych testów treści zakończonych decyzją.">
+  <title>SMM Vanguard — rejestr sygnału</title>
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="smm-preview.css">
+  <link rel="stylesheet" href="smm-expanded.css">
+  <link rel="stylesheet" href="hero-v2.css">
+</head>
+<body>
+<!--
+DESIGN CONTRACT
+Thesis: Treść przechodzi przez sterownię, rejestr i decyzję; strona pokazuje operacyjny system, nie obiecuje zasięgu.
+Composition: Broadcast desk + logging paper. Sekcje zmieniają topologię między konsolą, rejestrem, matrycą i stołem przeglądu.
+Depth: Płaskie warstwy tonalne, ostre reguły, bez szkła, gradientów i dekoracyjnych wykresów.
+Typography: Barlow Condensed odpowiada za komunikaty emisyjne, Manrope za instrukcje i dane jakościowe.
+Color: Midnight control room, warm paper, cobalt signal ink, acid-orange live marker.
+Signature: Każdy przykład kończy się polem DECYZJA; timecode i znaczniki są funkcjonalne, nie dekoracyjne.
+Avoid: SaaS dashboard, neon cyberpunk, fake metrics, agencyjne kafelki, stock portraits, gwarancje algorytmiczne.
+-->
+<a class="skip" href="#main">Przejdź do treści</a>
+<header>
+  <a class="logo" href="#start"><i aria-hidden="true"></i>SMM VANGUARD</a>
+  <button class="menu-button" type="button" aria-expanded="false" aria-controls="siteNav">Menu</button>
+  <nav id="siteNav" aria-label="Nawigacja">
+    <a href="#test">Zbuduj test</a><a href="#metoda">Metoda</a><a href="#program">Program</a><a href="#kontakt">Kontakt</a>
+  </nav>
+  <a class="head-cta" href="#test">Nowy sygnał</a>
+</header>
+<main id="main">
+  <section class="hero" id="start">
+    <div class="hero-main">
+      <h1>Treść to <em>hipoteza.</em> Feed odpowiada sygnałem.</h1>
+      <p>Projektuj publikacje jak eksperyment: jedna premisa, mierzalny sygnał, konkretna decyzja. Bez kultu algorytmu i metryk wyjętych z kontekstu.</p>
+      <a class="button" href="#test">Zaprogramuj test</a>
+    </div>
+    <aside class="cue" aria-label="Karta programu">
+      <div class="cue-top"><span>PROGRAM / 014</span><b>SYMULACJA</b></div>
+      <div class="cue-number" aria-hidden="true"><strong>14</strong><span>DNI / JEDEN TEST</span></div>
+      <div class="timecode" aria-hidden="true"><span>00</span><i>:</i><span>14</span><i>:</i><span>00</span></div>
+      <div class="cue-copy"><h2 id="cueTitle">Premisa przed formatem</h2><p id="cueText">Najpierw zapisz, co ma zmienić się w głowie odbiorcy. Dopiero potem wybierz rolkę, karuzelę albo post.</p></div>
+      <div class="program-buttons" aria-label="Etap programu"><button class="on" data-cue="0" aria-pressed="true"><span>PREMISA</span><small>co zmieniamy</small></button><button data-cue="1" aria-pressed="false"><span>FORMAT</span><small>jak emitujemy</small></button><button data-cue="2" aria-pressed="false"><span>SYGNAŁ</span><small>co obserwujemy</small></button></div>
+    </aside>
+  </section>
+
+  <section class="manifesto">
+    <h2>Publikacja nie jest jeszcze eksperymentem.</h2>
+    <div><p>Eksperyment ma pytanie, kontrolowany zakres, okno obserwacji i moment zamknięcia. Bez tego nawet wysoki wynik pozostaje ciekawostką.</p><blockquote>„Co dokładnie zrobimy inaczej po tych czternastu dniach?”</blockquote><p>Jeżeli odpowiedzi nie da się zapisać przed emisją, test nie jest gotowy.</p></div>
+  </section>
+
+  <section class="composer" id="test">
+    <div class="intro"><h2>Zbuduj test, który da się zakończyć decyzją.</h2><p>Wybierz cel i kanał. Dostaniesz kartę 14-dniowego eksperymentu, nie prognozę wyniku.</p></div>
+    <div class="console">
+      <form id="testForm">
+        <fieldset><legend>Co ma się zmienić?</legend>
+          <label><input type="radio" name="goal" value="attention" checked><span><b>Uwaga</b> właściwe osoby zatrzymują się przy treści</span></label>
+          <label><input type="radio" name="goal" value="intent"><span><b>Intencja</b> odbiorcy przechodzą do oferty lub profilu</span></label>
+          <label><input type="radio" name="goal" value="trust"><span><b>Zaufanie</b> odbiorcy zapisują lub wracają do materiału</span></label>
+        </fieldset>
+        <fieldset><legend>Gdzie emitujesz?</legend><div class="channel-grid">
+          <label><input type="radio" name="channel" value="instagram" checked><span>Instagram</span></label>
+          <label><input type="radio" name="channel" value="tiktok"><span>TikTok</span></label>
+          <label><input type="radio" name="channel" value="linkedin"><span>LinkedIn</span></label>
+        </div></fieldset>
+        <button class="generate" type="submit"><span>GENERUJ KARTĘ TESTU</span><small>14 dni · dane własne · jedna decyzja</small></button>
+      </form>
+      <article class="test-card" id="testCard" aria-live="polite">
+        <div class="card-head"><span>KARTA TESTU / 014</span><b>SYMULACJA</b></div>
+        <h3>Test zatrzymania na konkretnym problemie.</h3>
+        <dl><div><dt>Hipoteza</dt><dd>Jeśli zaczniemy od rozpoznawalnego napięcia, właściwi odbiorcy częściej zatrzymają materiał.</dd></div><div><dt>Formaty</dt><dd>3 krótkie wideo · 2 karuzele · 1 post odpowiedzi</dd></div><div><dt>Sygnał główny</dt><dd>utrzymanie uwagi w pierwszej części materiału</dd></div><div><dt>Decyzja / dzień 14</dt><dd>skaluj premisę, zmień otwarcie albo zamknij test</dd></div></dl>
+        <button id="copyCard" type="button">KOPIUJ KARTĘ</button>
+      </article>
+    </div>
+  </section>
+
+  <section class="signal-ladder" aria-labelledby="ladder-title">
+    <div><h2 id="ladder-title">Nie każda liczba opisuje ten sam etap.</h2><p>Sygnał wybierasz do zmiany, której oczekujesz. Zasięg nie zastąpi intencji, a zapis nie jest automatycznie sprzedażą.</p></div>
+    <ol><li><b>UWAGA</b><span>czy właściwa osoba zatrzymała materiał?</span><em>obserwuj otwarcie i utrzymanie</em></li><li><b>INTENCJA</b><span>czy wykonała następny krok?</span><em>obserwuj jakościowe przejścia</em></li><li><b>ZAUFANIE</b><span>czy wróciła lub pogłębiła temat?</span><em>obserwuj zapisy, powroty i pytania</em></li></ol>
+  </section>
+
+  <section class="method" id="metoda">
+    <div class="method-title"><h2>Pięć przełączeń. Jedna zamknięta pętla.</h2><p>Nie produkujemy contentu. Podejmujemy decyzje i zostawiamy ślad, który da się ocenić.</p></div>
+    <ol><li><span>01</span><div><h3>Premisa</h3><p>Jedno napięcie odbiorcy, opisane jego językiem.</p></div></li><li><span>02</span><div><h3>Format</h3><p>Nośnik dobrany do sposobu odbioru, nie do trendu.</p></div></li><li><span>03</span><div><h3>Dystrybucja</h3><p>Jasny rytm, warianty otwarcia i kontrolowana próba.</p></div></li><li><span>04</span><div><h3>Sygnał</h3><p>Jedna główna miara plus kontekst jakościowy.</p></div></li><li><span>05</span><div><h3>Decyzja</h3><p>Skaluj, iteruj albo zatrzymaj, z zapisanym powodem.</p></div></li></ol>
+  </section>
+
+  <section class="observation-log">
+    <div><h2>Najpierw obserwacja. Potem interpretacja.</h2><p>Przełącz dzień przeglądu i zobacz, co wolno zapisać bez dopowiadania historii.</p></div>
+    <div class="log-panel"><div class="log-tabs" aria-label="Dzień przeglądu"><button class="active" aria-pressed="true" data-day="3">DZIEŃ 03</button><button aria-pressed="false" data-day="7">DZIEŃ 07</button><button aria-pressed="false" data-day="14">DZIEŃ 14</button></div><div id="logContent" class="log-sheet" aria-live="polite"><article class="log-entry is-active"><b>OBSERWACJA</b><p>Pierwsze sekundy zatrzymują uwagę, ale niewiele osób przechodzi dalej.</p><b>NIE WIEMY JESZCZE</b><p>Czy problem leży w obietnicy dalszej części, czy w niedopasowanej grupie.</p><b>NASTĘPNY RUCH</b><p>Nie skaluj. Zachowaj premisę i przygotuj drugi wariant rozwinięcia.</p></article><article class="log-entry"><b>OBSERWACJA</b><p>Drugi wariant utrzymuje uwagę dłużej, a pytania dotyczą tego samego etapu procesu.</p><b>NIE WIEMY JESZCZE</b><p>Czy pytania przełożą się na intencję po dodaniu konkretnego następnego kroku.</p><b>NASTĘPNY RUCH</b><p>Zostaw otwarcie. Doprecyzuj przejście do materiału pogłębiającego.</p></article><article class="log-entry"><b>OBSERWACJA</b><p>Wariant B powtarza jakościowy sygnał w dwóch formatach, wariant A go nie powtarza.</p><b>NIE WIEMY JESZCZE</b><p>Czy efekt utrzyma się w kolejnym segmencie odbiorców.</p><b>NASTĘPNY RUCH</b><p>Skaluj premisę ostrożnie. Zamknij wariant A i zapisz nowy test segmentu.</p></article></div></div>
+  </section>
+
+  <section class="hypothesis-anatomy">
+    <div class="formula"><span>JEŚLI</span><strong>nazwiemy konkretne napięcie</strong><span>TO</span><strong>właściwe osoby zatrzymają się dłużej</strong><span>PONIEWAŻ</span><strong>rozpoznają własną sytuację</strong></div>
+    <div><h2>Hipoteza łączy zmianę, odbiorcę i powód.</h2><p>„Zróbmy więcej rolek” opisuje produkcję. Hipoteza opisuje spodziewaną zmianę zachowania i daje się podważyć.</p><ul><li>jedna zmienna do przetestowania;</li><li>jeden segment odbiorcy;</li><li>jeden sygnał główny;</li><li>jedna reguła zamknięcia.</li></ul></div>
+  </section>
+
+  <section class="format-matrix">
+    <div><h2>Premisa zostaje. Nośnik się zmienia.</h2><p>Format jest zmienną wykonawczą. Matryca pomaga sprawdzić tę samą myśl bez udawania, że każda publikacja jest osobną strategią.</p></div>
+    <div class="matrix" role="table" aria-label="Przykładowa matryca formatów"><div role="row"><b role="columnheader">OTWARCIE</b><b role="columnheader">WIDEO</b><b role="columnheader">KARUZELA</b><b role="columnheader">POST</b></div><div role="row"><span>napięcie</span><span>scena problemu</span><span>diagnoza krok po kroku</span><span>teza + przykład</span></div><div role="row"><span>kontrargument</span><span>odpowiedź do kamery</span><span>mit / korekta</span><span>krótka analiza</span></div><div role="row"><span>dowód</span><span>przejście procesu</span><span>artefakt roboczy</span><span>notatka z decyzji</span></div></div>
+  </section>
+
+  <section class="review-ritual">
+    <div><h2>Dzień 14 ma godzinę rozpoczęcia i wynik.</h2><p>Przegląd nie jest rozmową o tym, czy komuś „podobał się content”. To krótki rytuał operacyjny.</p></div>
+    <ol><li><time>00:00</time><b>Odczytaj hipotezę</b><span>bez zmieniania jej po wyniku</span></li><li><time>00:07</time><b>Zbierz sygnały</b><span>liczby i jakościowe reakcje osobno</span></li><li><time>00:20</time><b>Nazwij ograniczenia</b><span>czego ten test nie potwierdza</span></li><li><time>00:32</time><b>Zapisz decyzję</b><span>skaluj / iteruj / stop</span></li></ol>
+  </section>
+
+  <section class="curriculum" id="program">
+    <div><h2>Program kończy się systemem decyzji.</h2><p>Każda część zostawia działający artefakt w Twoim procesie.</p></div>
+    <div class="curr-list"><button aria-expanded="true"><span>Ustalanie premisy</span><b>BRIEF TESTOWY</b></button><p>Segment, napięcie, obietnica poznawcza i dowód na jednej stronie.</p><button aria-expanded="false"><span>Projektowanie emisji</span><b>MATRYCA FORMATÓW</b></button><p hidden>Zmiana otwarcia i nośnika bez zmiany samej hipotezy.</p><button aria-expanded="false"><span>Czytanie sygnału</span><b>REJESTR OBSERWACJI</b></button><p hidden>Oddzielenie wyniku publikacji od wzoru, który warto dalej sprawdzać.</p><button aria-expanded="false"><span>Domykanie pętli</span><b>PROTOKÓŁ DECYZJI</b></button><p hidden>Jasne „skaluj / iteruj / stop” z powodem i następną hipotezą.</p></div>
+  </section>
+
+  <section class="toolkit">
+    <h2>Cztery narzędzia. Żadnego pustego certyfikatu.</h2>
+    <div><article><b>Brief testowy</b><p>Problem, odbiorca, zmienna i oczekiwany sygnał.</p></article><article><b>Matryca emisji</b><p>Formaty, warianty otwarcia i rytm publikacji.</p></article><article><b>Rejestr sygnału</b><p>Obserwacje oddzielone od interpretacji.</p></article><article><b>Protokół decyzji</b><p>Wynik testu i powód następnego ruchu.</p></article></div>
+  </section>
+
+  <section class="operating-modes">
+    <div><h2>Jedna metoda, dwa rytmy pracy.</h2><p>Freelancer potrzebuje ostrej granicy testu. Zespół potrzebuje dodatkowo właściciela decyzji i wspólnego przeglądu.</p></div>
+    <div class="mode"><article><h3>Solo / freelancer</h3><ul><li>jedna aktywna hipoteza;</li><li>krótki rejestr po każdej emisji;</li><li>30 minut na decyzję w dniu 14.</li></ul></article><article><h3>Mały zespół</h3><ul><li>właściciel testu i właściciel danych;</li><li>wspólna definicja sygnału;</li><li>45 minut na przegląd bez przesuwania bramki.</li></ul></article></div>
+  </section>
+
+  <section class="fit">
+    <div class="fit-yes"><h2>To jest dla Ciebie, jeśli…</h2><ul><li>publikujesz, ale nie masz wspólnego języka oceny;</li><li>potrzebujesz procesu niezależnego od kanału;</li><li>akceptujesz, że dobry test może zakończyć się „stop”.</li></ul></div>
+    <div class="fit-no"><h2>Nie będzie pasować, jeśli…</h2><ul><li>szukasz gwarantowanych zasięgów;</li><li>chcesz kopiować formaty bez własnej premisy;</li><li>traktujesz liczbę publikacji jako strategię.</li></ul></div>
+  </section>
+
+  <section class="faq">
+    <div><h2>Pytania przed pierwszą emisją.</h2><p>Program uczy procesu. Nie zastępuje danych marki, decyzji biznesowej ani znajomości odbiorcy.</p></div>
+    <div><details open><summary>Czy 14 dni zawsze wystarczy?</summary><p>Nie. To demonstracyjne okno pracy. Długość testu trzeba dopasować do częstotliwości emisji i skali dostępnych danych.</p></details><details><summary>Czy dostanę gotowe pomysły na posty?</summary><p>Formaty wynikają z premisy i sposobu odbioru. Program nie sprzedaje uniwersalnej biblioteki trendów.</p></details><details><summary>Czy metoda gwarantuje wzrost?</summary><p>Nie. Ma poprawić jakość decyzji i pozwolić szybciej odróżniać sygnał od przypadku.</p></details><details><summary>Czy można pracować na kilku kanałach?</summary><p>Tak, ale pierwszy test powinien ograniczać liczbę zmiennych. Kanały można porównywać w kolejnych pętlach.</p></details></div>
+  </section>
+
+  <section class="apply" id="kontakt">
+    <div><h2>Przynieś jeden problem. Wyjdź z pierwszą kartą testu.</h2><p>Demonstracyjny formularz portfolio, niczego nie wysyła.</p></div>
+    <form id="applyForm"><label>E-mail roboczy<input type="email" required placeholder="ty@marka.pl"></label><label>Największe napięcie<textarea required placeholder="Co publikujecie, ale nadal trudno wam ocenić?"></textarea></label><button type="submit">PRZYGOTUJ ZGŁOSZENIE</button><p id="applyStatus" role="status"></p></form>
+  </section>
+</main>
+<footer><a class="logo" href="#start"><i aria-hidden="true"></i>SMM VANGUARD</a><p>CONCEPT / 2026 · bez fikcyjnych wyników</p></footer>
+<div class="toast" id="toast" role="status"></div>
+<script src="smm-preview.js"></script>
+</body>
+</html>

@@ -7,7 +7,7 @@ palette: WARM-CEREMONIAL
 tier: 1
 accent: '#5B7C3D'
 bg: '#F8F4EC'
-siteUrl: https://shelovesmytears1-ship-it.github.io/dzherelo-tea/
+siteUrl: https://overflow-web.pl/dzherelo/
 cover: /covers/dzherelo.jpg
 screens:
   - src: /screens/dzherelo-m1.webp

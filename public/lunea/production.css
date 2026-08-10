@@ -1,0 +1,69 @@
+/* Production pass: accessibility, responsive crops and stable motion. */
+html{scroll-padding-top:76px}
+body{overflow-x:hidden}
+body.menu-open{overflow:hidden}
+img{max-width:100%}
+a,button,summary,input,select{touch-action:manipulation}
+.skip-link{position:fixed;z-index:100;top:12px;left:12px;padding:12px 16px;background:var(--paper);color:var(--ink);transform:translateY(-180%);transition:transform .2s}
+.skip-link:focus{transform:none}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+.menu-trigger,.menu-close,.split-controls button,.hero-pause{min-width:44px;min-height:44px}
+.menu-panel[aria-hidden="true"]{visibility:hidden;transition:transform .5s cubic-bezier(.77,0,.18,1),visibility 0s linear .5s}
+.menu-panel[aria-hidden="false"]{visibility:visible;transition:transform .5s cubic-bezier(.77,0,.18,1)}
+.hero-slides{background:#28231f}
+.hero-slides img{will-change:opacity;transform:translateZ(0)}
+.hero-controls{position:absolute;right:4vw;bottom:58px;z-index:2;display:flex;align-items:center;gap:12px}
+.hero-dots{display:flex;gap:6px}
+.hero-dot{width:20px;height:20px;padding:0;border:0;background:transparent;cursor:pointer;position:relative}
+.hero-dot::after{content:"";position:absolute;left:3px;right:3px;top:9px;height:1px;background:rgba(255,255,255,.48);transition:background .2s,transform .2s}
+.hero-dot[aria-current="true"]::after{background:#fff;transform:scaleX(1.45)}
+.hero-pause{display:grid;place-items:center;border:1px solid rgba(255,255,255,.62);border-radius:999px;background:rgba(28,23,19,.18);backdrop-filter:blur(8px);color:#fff;font:9px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:0 14px;cursor:pointer;transition:background .2s}
+.hero-pause:hover{background:rgba(28,23,19,.5)}
+.menu-panel nav a:active,.hero-pause:active,.split-controls button:active,.estimator button:active{opacity:.68}
+.split-kicker,.split-description,.split-meta,.archive-head>p:last-child,.archive-rail figcaption{color:#5e5650}
+.estimator input,.estimator select{min-height:44px}
+.estimator input:focus,.estimator select:focus{border-bottom-color:#fff;box-shadow:0 1px 0 #fff}
+.form-status{grid-column:1/3;min-height:1.3em;margin:0;font-size:12px;color:#fff}
+dialog:focus{outline:0}
+
+@media(max-width:760px){
+  html{scroll-padding-top:64px}
+  body{font-size:16px!important}
+  .hero{height:82svh!important;min-height:590px!important}
+  .hero-slides img{object-fit:cover!important;object-position:58% center!important}
+  .hero-slides img:nth-child(2){object-position:52% center!important}
+  .hero-slides img:nth-child(3){object-position:60% center!important}
+  .hero-shade{background:linear-gradient(180deg,rgba(20,17,13,.13) 20%,rgba(20,17,13,.72) 100%)!important}
+  .hero-copy{bottom:104px!important}
+  .hero-scroll{bottom:26px!important}
+  .hero-controls{right:5vw;bottom:20px}
+  .hero-dots{display:none}
+  .hero-pause{min-height:40px;min-width:40px;padding:0 12px}
+  .menu-panel{height:100dvh;padding-top:calc(100px + env(safe-area-inset-top))}
+  .menu-panel nav a{min-height:54px}
+  .menu-image img{height:128px}
+  .details{padding-top:84px!important;padding-bottom:88px!important}
+  .gallery-wall:has(.split-stage) .split-stage{min-height:72svh!important;background:#211b18}
+  .split-image{position:absolute!important;inset:0!important;display:block!important;height:100%!important;object-fit:cover!important;opacity:0}
+  .split-image.is-active{opacity:1}
+  .split-controls button{width:44px;height:44px}
+  .archive-rail{scroll-snap-type:x proximity;overscroll-behavior-x:contain}
+  .archive-rail figure{scroll-snap-align:start}
+  .estimator form{display:grid!important;grid-template-columns:1fr!important}
+  .estimator form>*{grid-column:1!important}
+  dialog{width:calc(100% - 32px);padding:38px 28px}
+}
+
+@media(max-width:420px){
+  .hero{height:80svh!important;min-height:560px!important}
+  .hero h1{font-size:clamp(42px,12.2vw,52px)!important;line-height:.9!important}
+  .hero-copy{bottom:104px!important}
+  .hero-scroll{font-size:9px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .story:hover img,.d-photo:hover img,.gallery-card:hover img,.archive-rail figure:hover img{transform:none}
+  .hero-slides img,.split-image{transition:none!important}
+}

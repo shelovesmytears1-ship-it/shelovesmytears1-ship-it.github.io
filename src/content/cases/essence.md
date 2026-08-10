@@ -7,7 +7,7 @@ palette: PL-SAGE-ORGANIC
 tier: 1
 accent: '#6B8456'
 bg: '#F4F4EE'
-siteUrl: https://shelovesmytears1-ship-it.github.io/essence-skincare/
+siteUrl: https://overflow-web.pl/essence/
 cover: /covers/essence.jpg
 screens:
   - src: /screens/essence-m1.webp

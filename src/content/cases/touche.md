@@ -7,7 +7,7 @@ palette: PREMIUM-EDITORIAL-CREAM
 tier: 1
 accent: '#1A140E'
 bg: '#F5F0E8'
-siteUrl: https://shelovesmytears1-ship-it.github.io/touche-spa/
+siteUrl: https://overflow-web.pl/touche/
 cover: /covers/touche.jpg
 screens:
   - src: /screens/touche-m1.webp

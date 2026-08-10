@@ -1,0 +1,45 @@
+body{overflow-x:clip;scrollbar-color:var(--wine) var(--cream)}body::-webkit-scrollbar{width:12px}body::-webkit-scrollbar-track{background:var(--cream)}body::-webkit-scrollbar-thumb{background:var(--wine);border:3px solid var(--cream)}.menu-button{display:none}.hero h1,.manifesto h2,.morning h2,.ceremony h2,.guest-journey h2,.budget h2,.responsibility h2,.week h2,.faq h2{font:400 clamp(50px,6vw,90px)/.98 Italiana,serif;letter-spacing:-.02em;margin:0;text-wrap:balance}.manifesto,.morning,.ceremony,.guest-journey,.budget,.responsibility,.week,.faq{padding:clamp(82px,9vw,140px) clamp(20px,5vw,76px)}.day-tabs button[aria-pressed=true]{background:var(--wine);color:white}.day-tabs button[aria-pressed=true]:focus-visible{outline-color:var(--night)}
+.manifesto{background:var(--wine);color:white;display:grid;grid-template-columns:1fr .9fr;gap:9vw}.manifesto h2{font-size:clamp(54px,7vw,102px);max-width:9ch}.manifesto>div{align-self:end}.manifesto>div>p{max-width:60ch;color:#f0cdd0}.manifesto blockquote{font:400 clamp(30px,3.6vw,52px)/1 Italiana;margin:42px 0;padding-left:26px;border-left:1px solid #e2aab0}
+.morning{display:grid;grid-template-columns:1fr .62fr .62fr;gap:20px;align-items:end}.morning>div{padding-right:6vw}.morning h2{font-size:clamp(50px,6vw,86px)}.morning>div>p{color:#5e5a56;max-width:54ch}.morning dl{margin:40px 0 0;border-top:1px solid var(--line)}.morning dl div{display:grid;grid-template-columns:100px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--line)}.morning dt{font:400 20px Italiana;color:var(--wine)}.morning dd{margin:0}.morning figure{margin:0}.morning figure:nth-of-type(1){transform:translateY(-60px)}.morning img{width:100%;height:66vh;object-fit:cover}.morning figure:nth-of-type(2) img{height:52vh}
+.ceremony{padding:0;display:grid;grid-template-columns:1.12fr .88fr;background:#ded5c7}.ceremony figure{margin:0;min-height:850px}.ceremony img{width:100%;height:100%;object-fit:cover}.ceremony>div{padding:clamp(72px,8vw,120px);align-self:center}.ceremony h2{font-size:clamp(52px,6vw,88px)}.ceremony>div>p{max-width:56ch}.ceremony ol{list-style:none;padding:0;margin:42px 0 0;border-top:1px solid var(--line)}.ceremony li{display:grid;grid-template-columns:105px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--line)}.ceremony b{font:400 20px Italiana;color:var(--wine)}
+.guest-journey{background:var(--night);color:white;display:grid;grid-template-columns:.72fr 1.28fr;gap:8vw}.guest-journey h2{font-size:clamp(50px,6vw,86px)}.guest-journey>div p{color:#c8cfda;max-width:48ch}.guest-journey ol{list-style:none;padding:0;margin:0;border-top:1px solid #3e485d}.guest-journey li{display:grid;grid-template-columns:100px 1fr;gap:20px;padding:21px 0;border-bottom:1px solid #3e485d}.guest-journey b{font:400 22px Italiana;color:#e7aeb2}.guest-journey span{color:#d3d9e2}
+.budget{display:grid;grid-template-columns:.72fr 1.28fr;gap:8vw;background:#ded5c7}.budget h2{font-size:clamp(50px,6vw,86px)}.budget>div:first-child p{max-width:50ch;color:#5e5a56}.budget-lines{border-top:1px solid #a79d90}.budget-lines article{display:grid;grid-template-columns:.8fr 1.2fr;gap:22px;padding:21px 0;border-bottom:1px solid #a79d90}.budget-lines b{font:400 23px Italiana;color:var(--wine)}.budget-lines span{color:#595550}.budget-lines small{display:block;margin-top:20px;color:#5e5a56}
+.responsibility{background:var(--cream)}.responsibility>div:first-child{display:grid;grid-template-columns:1fr .5fr;gap:8vw;align-items:end}.responsibility h2{font-size:clamp(52px,6.4vw,94px)}.responsibility>div:first-child p{color:#5e5a56;max-width:50ch}.responsibility-table{margin-top:56px;border-top:1px solid var(--line)}.responsibility-table>div{display:grid;grid-template-columns:.7fr repeat(3,1fr);border-bottom:1px solid var(--line)}.responsibility-table span,.responsibility-table b{padding:18px 20px;border-right:1px solid var(--line)}.responsibility-table b{font-size:11px;color:var(--wine)}.responsibility-table span:first-child{font-weight:600}
+.process ol{grid-template-columns:repeat(5,1fr)}
+.week{padding:0;display:grid;grid-template-columns:1.05fr .95fr}.week figure{margin:0;min-height:820px}.week img{width:100%;height:100%;object-fit:cover}.week>div{padding:clamp(72px,8vw,120px);align-self:center}.week h2{font-size:clamp(50px,5.8vw,82px)}.week>div>p{color:#5e5a56}.week ul{list-style:none;margin:40px 0 0;padding:0;border-top:1px solid var(--line)}.week li{display:grid;grid-template-columns:90px 1fr;gap:18px;padding:17px 0;border-bottom:1px solid var(--line)}.week b{color:var(--wine);font-size:12px}
+.faq{display:grid;grid-template-columns:.72fr 1.28fr;gap:8vw;background:#ded5c7}.faq h2{font-size:clamp(50px,6vw,86px)}.faq>div:first-child p{color:#5e5a56;max-width:48ch}.faq>div:last-child{border-top:1px solid #a79d90}.faq details{border-bottom:1px solid #a79d90}.faq summary{list-style:none;position:relative;padding:22px 44px 22px 0;display:block;font:400 26px Italiana}.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:'+';position:absolute;right:7px;color:var(--wine);font-size:30px}.faq details[open] summary::after{content:'−'}.faq details p{padding:0 44px 24px 0;margin:0;color:#5e5a56;max-width:68ch}
+.brief input,.brief select{font-size:16px}.brief label{color:#403c38}.brief :focus-visible{outline-color:var(--wine)}
+@media(max-width:900px){header{height:auto;min-height:76px;flex-wrap:wrap}.menu-button{display:block;margin-left:auto;min-height:44px;padding:0 15px;border:1px solid white;background:transparent;color:white}.talk{display:none}header nav{display:none;width:100%;margin:0;padding:2px 0 18px;flex-direction:column;gap:8px}header nav[data-open='true']{display:flex}.manifesto,.ceremony,.guest-journey,.budget,.faq,.week{grid-template-columns:1fr}.morning{grid-template-columns:1fr 1fr}.morning>div{grid-column:1/-1}.morning figure:nth-of-type(1){transform:none}.responsibility>div:first-child{grid-template-columns:1fr}.responsibility-table{overflow-x:auto}.responsibility-table>div{min-width:780px}.process ol{grid-template-columns:1fr 1fr}.week figure,.ceremony figure{min-height:620px}}
+@media(max-width:600px){.hero h1,.manifesto h2,.morning h2,.ceremony h2,.guest-journey h2,.budget h2,.responsibility h2,.week h2,.faq h2{font-size:clamp(45px,13vw,53px)}.manifesto,.morning,.guest-journey,.budget,.responsibility,.faq{padding-left:18px;padding-right:18px}.morning{grid-template-columns:1fr}.morning img,.morning figure:nth-of-type(2) img{height:58vh}.ceremony>div,.week>div{padding:64px 18px}.guest-journey li,.budget-lines article{grid-template-columns:1fr;gap:6px}.process ol{grid-template-columns:1fr}.week figure,.ceremony figure{min-height:520px}.night img{object-position:center}.day-tabs{grid-template-columns:repeat(5,72px);overflow-x:auto}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+@media(max-width:600px){.day-stage,.day-stage figure,.day-stage aside{width:100%;min-width:0}.day-tabs{width:100%;max-width:100%}}
+@media(max-width:600px){.scope,.scope>*{width:100%;min-width:0}.scope summary{flex-wrap:wrap}.scope summary span{width:100%}}
+html,body{overflow-x:hidden}
+
+/* Width-driven images must keep their intrinsic ratio; the HTML width/height
+   attributes would otherwise act as a presentational height and squash them. */
+img{height:auto}
+.stories img{height:auto}
+/* True ratios leave the row uneven, so the frames hang off a shared baseline
+   with the landscape one lifted, instead of a void under the right column. */
+@media(min-width:901px){.stories{align-items:end}.story-copy{align-self:start}.tall{margin-top:0!important}.stories .wide{margin-bottom:clamp(48px,6vw,110px)}}
+
+/* Day stage: all five states are stacked in one cell, so the block reserves the
+   tallest state once and a time change only crossfades — no layout shift. */
+.day-stage figure{overflow:hidden}
+.day-frames{position:absolute;inset:0}
+.day-frame{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s ease}
+.day-frame.is-active{opacity:1}
+.day-stage figcaption{display:grid;justify-items:start;z-index:2}
+.day-stage figcaption span{grid-area:1/1;opacity:0;transition:opacity .3s ease}
+.day-stage figcaption span.is-active{opacity:1}
+.day-copy{display:grid}
+.day-panel{grid-area:1/1;opacity:0;visibility:hidden;transition:opacity .45s ease,visibility .45s}
+.day-panel.is-active{opacity:1;visibility:visible}
+.day-panel>span{display:block;color:var(--wine);font-size:12px}
+.day-panel p{margin:0;color:#66615d}
+
+/* Keep the couple—not the empty dance floor—as the hero focal point. */
+.hero-photo img{object-position:82% center}
+@media(max-width:900px){.hero-photo{min-height:56vh}.hero-photo img{object-position:78% center}}
+@media(max-width:600px){.hero-photo{min-height:54vh}.hero-photo img{object-position:76% center}.hero-copy{padding-top:58px}}

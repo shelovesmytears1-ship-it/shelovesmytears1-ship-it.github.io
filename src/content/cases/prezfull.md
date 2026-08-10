@@ -7,7 +7,7 @@ palette: EDITORIAL-WARM-PHOTO
 tier: 1
 accent: '#B89B7C'
 bg: '#2B2E33'
-siteUrl: https://shelovesmytears1-ship-it.github.io/prezfull-architecture/
+siteUrl: https://overflow-web.pl/prezfull/
 cover: /covers/prezfull.jpg
 screens:
   - src: /screens/prezfull-m1.webp

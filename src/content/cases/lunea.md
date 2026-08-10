@@ -7,7 +7,7 @@ palette: EDITORIAL-WARM
 tier: 1
 accent: '#B77968'
 bg: '#F6F1E9'
-siteUrl: https://shelovesmytears1-ship-it.github.io/lunea-wedding-atelier/
+siteUrl: https://overflow-web.pl/lunea/
 cover: /covers/lunea.jpg
 screens:
   - src: /screens/lunea-m1.webp

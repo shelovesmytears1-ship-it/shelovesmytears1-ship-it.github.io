@@ -7,7 +7,7 @@ palette: WARM-DARK
 tier: 1
 accent: '#E8954A'
 bg: '#0D0B08'
-siteUrl: https://shelovesmytears1-ship-it.github.io/draft-landing/
+siteUrl: https://overflow-web.pl/draft/
 cover: /covers/draft.jpg
 screens:
   - src: /screens/draft-m1.webp

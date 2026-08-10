@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Denty — koncepcyjny CRM porządkujący kontakt gabinetu stomatologicznego z pacjentem.">
+  <meta name="color-scheme" content="light">
+  <title>Denty | Spokojny przebieg wizyty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="hero-generated.png" fetchpriority="high">
+  <link rel="stylesheet" href="denty-preview.css">
+  <script defer src="denty-preview.js"></script>
+</head>
+<body>
+  <!--
+    THESIS: Opieka nad pacjentem jest czytelnym przebiegiem, nie kolekcją wykresów i obietnic.
+    OWN-WORLD: Kliniczne światło, mineralna biel, precyzyjny kobalt, granatowy tekst i arkusze przebiegu wizyty.
+    STORY: Właściciel gabinetu rozumie drogę pacjenta, widzi przykładowy dzień recepcji i uruchamia lokalne demo kontaktu.
+    FIRST VIEWPORT: Obietnica operacyjnego spokoju stoi obok prawdziwego gabinetu i zwartego arkusza jednej wizyty.
+    FORM: Clinical case sheet; established Denty direction, seed 56ddcf7d.
+    FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+  -->
+  <a class="skip-link" href="#main">Przejdź do treści</a>
+
+  <header class="site-header">
+    <a class="brand" href="#main" aria-label="Denty — strona główna">
+      <img src="favicon.svg" width="28" height="28" alt="">
+      <span>Denty</span>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-nav" data-menu-button><span data-menu-label>Menu</span></button>
+    <nav class="primary-nav" id="primary-nav" aria-label="Główna nawigacja" data-navigation>
+      <a href="#workflow">Przebieg wizyty</a>
+      <a href="#reception">Dzień recepcji</a>
+      <a href="#scope">Zakres</a>
+      <a class="nav-action" href="#demo">Zobacz demo</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title">Gabinet działa płynnie.<br>Pacjent to czuje.</h1>
+        <p>Denty porządkuje kontakt od zapisu do opieki po wizycie — bez dokładania kolejnego chaosu recepcji.</p>
+        <a class="primary-action" href="#workflow">Zobacz przebieg wizyty</a>
+        <span class="concept-note">Projekt koncepcyjny / bez deklarowanych wdrożeń</span>
+      </div>
+
+      <div class="hero-media">
+        <img src="hero-generated.png" width="1536" height="1024" alt="Jasny gabinet stomatologiczny przygotowany do przyjęcia pacjenta">
+        <article class="visit-sheet" aria-label="Przykładowy arkusz wizyty">
+          <div class="sheet-head"><strong>Wizyta / przykład</strong><span>10:30</span></div>
+          <p class="patient-name">Pacjentka A.K.</p>
+          <ol>
+            <li class="is-complete"><span>Zapis</span><time>pon. 09:12</time></li>
+            <li class="is-complete"><span>Potwierdzenie</span><time>wt. 10:30</time></li>
+            <li class="is-current"><span>Wizyta</span><time>śr. 10:30</time></li>
+            <li><span>Opieka po</span><time>do wysłania</time></li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+    <section class="promise" aria-labelledby="promise-title">
+      <h2 id="promise-title">Technologia nie ma brzmieć głośniej niż recepcja.</h2>
+      <div class="promise-copy"><p>Denty porządkuje pracę wokół wizyty. Nie diagnozuje, nie wysyła wiadomości bez reguły i nie zastępuje rozmowy wtedy, gdy potrzebny jest człowiek.</p><dl><div><dt>Jedno źródło</dt><dd>stan kontaktu i następne zadanie</dd></div><div><dt>Jawna zgoda</dt><dd>kanał kontaktu wybrany przez pacjenta</dd></div><div><dt>Minimalna treść</dt><dd>tylko to, co potrzebne do obsługi wizyty</dd></div></dl></div>
+    </section>
+
+    <section class="workflow" id="workflow" aria-labelledby="workflow-title">
+      <div class="section-intro">
+        <h2 id="workflow-title">Jedna wizyta.<br>Cztery spokojne etapy.</h2>
+        <p>Recepcja widzi, co już wydarzyło się w kontakcie z pacjentem i co wymaga reakcji. Poniższy przebieg jest demonstracją interfejsu.</p>
+      </div>
+
+      <div class="journey-tabs" role="tablist" aria-label="Etapy wizyty">
+        <button type="button" role="tab" aria-selected="true" aria-controls="journey-panel" data-journey-tab="Zapis" data-title="Nowy termin trafia do wspólnej kolejki" data-copy="Recepcja zapisuje źródło kontaktu, preferowaną godzinę i krótką notatkę bez przełączania między arkuszami." data-status="Termin utworzony">Zapis</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="journey-panel" tabindex="-1" data-journey-tab="Potwierdzenie" data-title="Pacjent dostaje jasną prośbę o decyzję" data-copy="Wiadomość przypomina o terminie i pozwala oznaczyć odpowiedź. Treść oraz kanał pozostają pod kontrolą gabinetu." data-status="Oczekuje na odpowiedź">Potwierdzenie</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="journey-panel" tabindex="-1" data-journey-tab="Wizyta" data-title="Recepcja widzi aktualny stan dnia" data-copy="Przyjęcie, opóźnienie i zakończenie wizyty są widoczne w jednym rytmie pracy, bez udawania dokumentacji medycznej." data-status="Pacjent na miejscu">Wizyta</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="journey-panel" tabindex="-1" data-journey-tab="Opieka po" data-title="Kontakt nie kończy się przy wyjściu" data-copy="Zespół może zaplanować instrukcję po wizycie albo przypomnienie o kolejnym kontakcie — jako zadanie, nie automatyczną obietnicę." data-status="Zadanie zaplanowane">Opieka po</button>
+      </div>
+
+      <article class="journey-panel" id="journey-panel" role="tabpanel" aria-live="polite">
+        <div class="journey-number" aria-hidden="true" data-journey-number>01</div>
+        <div>
+          <p class="journey-status" data-journey-status>Termin utworzony</p>
+          <h3 data-journey-title>Nowy termin trafia do wspólnej kolejki</h3>
+          <p data-journey-copy>Recepcja zapisuje źródło kontaktu, preferowaną godzinę i krótką notatkę bez przełączania między arkuszami.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="intake" aria-labelledby="intake-title">
+      <div><h2 id="intake-title">Pierwszy telefon zostawia czytelny ślad.</h2><p>Skrypt rozmowy nie zastępuje uważności. Pomaga zebrać ten sam podstawowy kontekst i przekazać go dalej bez przepisywania.</p></div>
+      <div class="intake-sheet"><div><span>ŹRÓDŁO</span><strong>Telefon</strong></div><div><span>PREFEROWANY KONTAKT</span><strong>SMS · zgoda zapisana</strong></div><div><span>CEL</span><strong>Umówienie konsultacji</strong></div><div><span>NASTĘPNY KROK</span><strong>Wyślij termin do potwierdzenia</strong></div><p>Dane demonstracyjne · bez informacji klinicznych</p></div>
+    </section>
+
+    <section class="message-lab" aria-labelledby="message-title">
+      <div class="message-copy"><h2 id="message-title">Przypomnienie ma być dyskretne i łatwe do odwołania.</h2><p>Treść ogranicza się do terminu, miejsca i sposobu odpowiedzi. Kanał wynika z zapisanej preferencji, a pacjent zawsze może zrezygnować.</p></div>
+      <div class="message-preview"><div class="phone-head"><span>DENTY / PRZYKŁAD</span><time>09:42</time></div><p>Dzień dobry. Przypominamy o wizycie w środę o 10:30. Odpowiedz TAK, ZMIEŃ lub ZREZYGNUJ.</p><div class="message-actions"><button type="button" data-message="TAK">TAK</button><button type="button" data-message="ZMIEŃ">ZMIEŃ</button><button type="button" data-message="ZREZYGNUJ">ZREZYGNUJ</button></div><small id="messageStatus" role="status">Lokalna demonstracja — wiadomość nie jest wysyłana.</small></div>
+    </section>
+
+    <section class="readiness" aria-labelledby="readiness-title">
+      <div class="section-intro"><h2 id="readiness-title">Przed wizytą liczy się gotowość, nie liczba powiadomień.</h2><p>Recepcja widzi tylko elementy potrzebne do organizacji przyjęcia. Brakujący krok staje się zadaniem z właścicielem, a nie czerwonym alarmem bez kontekstu.</p></div>
+      <div class="readiness-line"><div class="ready"><b>Termin</b><span>potwierdzony</span></div><div class="ready"><b>Kanał</b><span>zgoda SMS</span></div><div class="pending"><b>Dokument</b><span>do uzupełnienia</span></div><div><b>Przyjęcie</b><span>śr. 10:30</span></div></div>
+    </section>
+
+    <section class="reception" id="reception" aria-labelledby="reception-title">
+      <div class="reception-copy">
+        <h2 id="reception-title">Dzień recepcji bez zgadywania.</h2>
+        <p>Przykładowy widok łączy plan dnia z kolejką kontaktu. Dane są demonstracyjne i nie przedstawiają prawdziwych pacjentów.</p>
+      </div>
+
+      <div class="desk-demo" aria-label="Przykładowy plan dnia recepcji">
+        <div class="desk-toolbar"><strong>Środa / plan dnia</strong><span>Dane przykładowe</span></div>
+        <div class="desk-grid">
+          <div class="time-column"><span>09:00</span><span>10:00</span><span>11:00</span><span>12:00</span><span>13:00</span></div>
+          <div class="chair-column"><strong>Gabinet A</strong><div class="appointment cobalt">A.K. / kontrola<small>potwierdzona</small></div><div class="appointment mint">M.R. / higienizacja<small>na miejscu</small></div></div>
+          <div class="chair-column"><strong>Gabinet B</strong><div class="appointment pale">P.S. / konsultacja<small>czeka na odpowiedź</small></div><div class="appointment cobalt lower">E.W. / zabieg<small>potwierdzona</small></div></div>
+          <aside class="contact-queue"><strong>Do kontaktu</strong><p><span>3</span> potwierdzenia</p><p><span>2</span> odpowiedzi</p><p><span>1</span> zadanie po wizycie</p></aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="recovery" aria-labelledby="recovery-title">
+      <div><h2 id="recovery-title">Brak odpowiedzi też jest stanem.</h2><p>Zamiast automatycznie ponawiać kontakt, Denty proponuje recepcji spokojną kolejkę: sprawdź preferencję, wybierz człowieka i zakończ próbę po ustalonym limicie.</p></div>
+      <ol><li><time>48 H</time><strong>Przypomnienie w wybranym kanale</strong><span>oczekuje</span></li><li><time>24 H</time><strong>Telefon recepcji, jeśli ustalono</strong><span>do decyzji</span></li><li><time>STOP</time><strong>Nie wysyłaj kolejnych wiadomości</strong><span>limit kontaktu</span></li></ol>
+    </section>
+
+    <section class="aftercare" aria-labelledby="aftercare-title">
+      <div class="aftercare-copy"><h2 id="aftercare-title">Opieka po wizycie zaczyna się od właściwego handoffu.</h2><p>Lekarz określa treść zaleceń. Recepcja widzi jedynie, czy zadanie komunikacyjne zostało przygotowane, przekazane i zamknięte.</p></div>
+      <div class="handoff"><span class="done">LEKARZ<small>treść zatwierdzona</small></span><i aria-hidden="true"></i><span class="current">RECEPCJA<small>wyślij wybranym kanałem</small></span><i aria-hidden="true"></i><span>PACJENT<small>potwierdzenie odbioru</small></span></div>
+    </section>
+
+    <section class="team-scene" aria-labelledby="team-title">
+      <figure><img src="images/morning-huddle-v2.png" width="1536" height="1024" loading="lazy" alt="Recepcjonistka i asystentka planują dzień pracy przy grafiku wizyt"></figure>
+      <div><h2 id="team-title">Poranny plan jest krótki, bo stan dnia jest wspólny.</h2><p>Każda rola czyta ten sam przebieg, ale widzi inne zadanie. Recepcja prowadzi kontakt, asysta przygotowuje przyjęcie, lekarz zatwierdza treść medyczną.</p><ul><li><b>Recepcja</b> kontakt i termin</li><li><b>Asysta</b> gotowość gabinetu</li><li><b>Lekarz</b> decyzja kliniczna</li></ul></div>
+    </section>
+
+    <section class="capabilities" aria-labelledby="capabilities-title">
+      <h2 id="capabilities-title">Mniej przełączania.<br>Więcej ciągłości.</h2>
+      <div class="case-rows">
+        <article><h3>Kontakt ma kontekst</h3><p>Przy wiadomości widać termin, poprzednią odpowiedź i kolejne zadanie — bez szukania po kilku kanałach.</p><span>Wspólna oś kontaktu</span></article>
+        <article><h3>Automatyzacja ma granice</h3><p>Gabinet ustala treść, kanał i moment wysyłki. Denty pokazuje stan, ale nie udaje samodzielnej decyzji medycznej.</p><span>Kontrola po stronie zespołu</span></article>
+        <article><h3>Dzień kończy się domknięciem</h3><p>Kolejka pokazuje brakujące potwierdzenia i zaplanowany kontakt po wizycie, zamiast kolejnego wykresu bez działania.</p><span>Zadania zamiast statystyk</span></article>
+      </div>
+    </section>
+
+    <section class="privacy-sheet" aria-labelledby="privacy-title">
+      <div><h2 id="privacy-title">Minimum danych w każdym komunikacie.</h2><p>Demonstracyjny model dostępu oddziela organizację wizyty od treści klinicznej. Zespół widzi tylko to, czego potrzebuje do swojego zadania.</p></div>
+      <div class="permission-table"><div><span>Recepcja</span><b>termin · kontakt · status</b><em>bez notatek klinicznych</em></div><div><span>Asysta</span><b>gotowość · gabinet · czas</b><em>bez danych rozliczeniowych</em></div><div><span>Lekarz</span><b>pełny kontekst wizyty</b><em>według uprawnień placówki</em></div><div><span>Eksport</span><b>kontrolowany przez gabinet</b><em>koncepcja, nie aktywna integracja</em></div></div>
+    </section>
+
+    <section class="scope" id="scope" aria-labelledby="scope-title">
+      <h2 id="scope-title">Porządkuje kontakt.<br>Nie zastępuje leczenia.</h2>
+      <div class="scope-columns">
+        <div><h3>Denty organizuje</h3><ul><li>przebieg kontaktu z pacjentem</li><li>potwierdzenia i statusy odpowiedzi</li><li>zadania recepcji przed i po wizycie</li><li>przykładowy plan pracy zespołu</li></ul></div>
+        <div><h3>Denty nie deklaruje</h3><ul><li>prowadzenia dokumentacji medycznej</li><li>stawiania diagnoz lub zaleceń</li><li>gotowych integracji bez wdrożenia</li><li>mierzalnych efektów u fikcyjnych klientów</li></ul></div>
+      </div>
+    </section>
+
+    <section class="method" aria-labelledby="method-title">
+      <div><h2 id="method-title">Najpierw reguła gabinetu. Potem automatyzacja.</h2><p>Wersja portfolio pokazuje sposób myślenia, nie gotowy system medyczny. Każdy kanał, harmonogram i uprawnienie wymaga realnego wdrożenia, podstawy prawnej i konfiguracji placówki.</p></div>
+      <details><summary>Czy Denty prowadzi dokumentację medyczną?</summary><p>Nie. Koncepcja skupia się na organizacji kontaktu i nie deklaruje funkcji EDM.</p></details><details><summary>Czy wiadomości są naprawdę wysyłane?</summary><p>Nie. Wszystkie interakcje na tej stronie działają wyłącznie lokalnie.</p></details><details><summary>Czy dane przedstawiają prawdziwych pacjentów?</summary><p>Nie. Inicjały, terminy i statusy są syntetycznym materiałem demonstracyjnym.</p></details>
+    </section>
+
+    <section class="demo" id="demo" aria-labelledby="demo-title">
+      <div><h2 id="demo-title">Zobacz spokojny przebieg pracy.</h2><p>Formularz pokazuje lokalny stan interakcji. Dane nie są wysyłane ani zapisywane.</p></div>
+      <form data-demo-form novalidate>
+        <label for="demo-email">E-mail służbowy</label>
+        <div class="form-control"><input id="demo-email" name="email" type="email" autocomplete="email" placeholder="recepcja@gabinet.pl" required aria-describedby="demo-help demo-status"><button type="submit">Uruchom demo</button></div>
+        <p id="demo-help">Lokalna demonstracja — bez wysyłki.</p>
+        <p id="demo-status" class="form-status" role="status" aria-live="polite" data-demo-status></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer"><a class="brand" href="#main"><img src="favicon.svg" width="24" height="24" alt=""><span>Denty</span></a><p>Koncepcyjny CRM dla gabinetu stomatologicznego. Marka, interfejs i dane demonstracyjne powstały na potrzeby portfolio.</p><a href="#main">Do góry</a></footer>
+</body>
+</html>

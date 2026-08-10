@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Концепт сайту Нікіти Орлова: аудит і перебудова автоворонок та чат-ботів.">
+  <title>Нікіта Орлов — діагностика та збірка воронок</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="orlov-preview.css">
+</head>
+<body>
+  <!--
+  THESIS: Орлов не продає «ще одного бота» — він знаходить, де шлях втрачає контекст і гроші, та перебудовує саме цю ділянку; сторінка відмовляється від гарантій і growth-dashboard театру.
+  OWN-WORLD: Матове вугільне поле, теплі аркуші доказів, червоний маршрут, калька, кнопки-штампи, стислі промислові заголовки та моноширинні позначки.
+  STORY: Побачити розрив, локалізувати його короткою діагностикою, зрозуміти формат роботи й залишити тестовий контакт.
+  FIRST VIEWPORT: Ліворуч — приклеєний білий вердикт і CTA; праворуч — реальна стіна розбору з червоним маршрутом та видимим розривом.
+  FORM: The Leak Room, pinned forensic-wall direction; direction seed ab7078e7.
+  FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+  -->
+  <a class="skip" href="#diagnostic">До діагностики</a>
+  <header class="header">
+    <a class="logo" href="#top" aria-label="На початок">ORLOV<span>/ funnel systems</span></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav" data-menu-button>Меню <i aria-hidden="true"></i></button>
+    <nav id="nav" data-nav aria-label="Головна навігація">
+      <a href="#diagnostic">Діагностика</a>
+      <a href="#work">Робота</a>
+      <a href="#proof">Докази</a>
+      <a class="nav-cta" href="#contact">Запросити розбір</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <img src="hero-generated.png" alt="Робоча стіна з картою воронки, роздруківками, нотатками та червоним маршрутом.">
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-paper">
+        <p class="concept">Портфоліо-концепт · дані потребують верифікації</p>
+        <h1 id="hero-title">Не будуйте бота,<br>поки не знаєте,<br><em>де саме тече.</em></h1>
+        <p>Розбираю шлях від реклами до розмови з менеджером. Знаходжу втрату контексту, пріоритезую зміни й збираю воронку без обіцянок «гарантованого ROMI».</p>
+        <div class="hero-actions">
+          <a class="button button-red" href="#diagnostic">Знайти ймовірний розрив</a>
+          <a class="plain-link" href="#work">Як проходить робота →</a>
+        </div>
+      </div>
+      <div class="break-pin" aria-hidden="true"><span>РОЗРИВ</span><strong>?</strong></div>
+    </section>
+
+    <section class="premise">
+      <p>Трафік — не воронка.</p>
+      <p>Бот — не стратегія.</p>
+      <p>Карта має показати, що людина знала, відчувала й робила на кожному кроці.</p>
+    </section>
+
+    <section class="leak-types" aria-labelledby="leak-types-title">
+      <div class="section-lead">
+        <h2 id="leak-types-title">Воронка рідко ламається в одному місці.</h2>
+        <p>Одна й та сама цифра «мало заявок» може означати чотири різні проблеми. Спочатку розділяємо симптоми, і лише потім обираємо інструмент.</p>
+      </div>
+      <div class="leak-ledger">
+        <article><strong>Не той вхід</strong><p>Реклама обіцяє одне, а перша дія веде в інший контекст.</p><span>Дивимось: повідомлення → перший екран</span></article>
+        <article><strong>Зависока ціна кроку</strong><p>Людину просять думати, писати або довіряти раніше, ніж вона готова.</p><span>Дивимось: CTA → очікуваний результат</span></article>
+        <article><strong>Стертий намір</strong><p>Сценарій однаковий для всіх і не зберігає причину звернення.</p><span>Дивимось: питання → гілки → вихід</span></article>
+        <article><strong>Втрачена передача</strong><p>Менеджер отримує контакт без відповідей, очікувань і наступного кроку.</p><span>Дивимось: CRM → SLA → власник</span></article>
+      </div>
+    </section>
+
+    <section class="diagnostic" id="diagnostic" aria-labelledby="diagnostic-title">
+      <div class="diagnostic-copy">
+        <h2 id="diagnostic-title">Покажіть симптом.<br>Карта знайде місце для перевірки.</h2>
+        <p>Три питання формують стартову гіпотезу. Це демонстрація логіки розбору, а не автоматичний аудит і не бізнес-порада.</p>
+      </div>
+
+      <div class="case-wall" data-diagnostic>
+        <div class="journey" aria-label="Шлях ліда">
+          <div class="route-line" aria-hidden="true"><span data-route-progress></span></div>
+          <button class="route-node is-active" type="button" data-node="attention"><span>Реклама</span><small>контекст входу</small></button>
+          <button class="route-node" type="button" data-node="promise"><span>Офер</span><small>обіцянка</small></button>
+          <button class="route-node" type="button" data-node="dialogue"><span>Діалог</span><small>кваліфікація</small></button>
+          <button class="route-node" type="button" data-node="handoff"><span>Продаж</span><small>передача</small></button>
+        </div>
+
+        <form class="diagnostic-form" data-diagnostic-form>
+          <fieldset>
+            <legend>Де ви бачите проблему зараз?</legend>
+            <label><input type="radio" name="symptom" value="attention" checked><span>Клікають мало або не ті люди</span></label>
+            <label><input type="radio" name="symptom" value="promise"><span>Переходять, але не починають діалог</span></label>
+            <label><input type="radio" name="symptom" value="dialogue"><span>Починають, але не доходять до заявки</span></label>
+            <label><input type="radio" name="symptom" value="handoff"><span>Заявки є, але продажі слабкі</span></label>
+          </fieldset>
+          <fieldset>
+            <legend>Що у вас уже вимірюється?</legend>
+            <label><input type="radio" name="data" value="events" checked><span>Події та конверсії по кроках</span></label>
+            <label><input type="radio" name="data" value="top"><span>Тільки кліки й фінальні заявки</span></label>
+            <label><input type="radio" name="data" value="none"><span>Майже нічого</span></label>
+          </fieldset>
+          <fieldset>
+            <legend>Хто відповідає після заявки?</legend>
+            <label><input type="radio" name="handoff" value="owner" checked><span>Є конкретний менеджер і SLA</span></label>
+            <label><input type="radio" name="handoff" value="mixed"><span>По-різному, залежить від дня</span></label>
+          </fieldset>
+        </form>
+
+        <aside class="verdict" aria-live="polite">
+          <div class="verdict-head"><span>Стартова гіпотеза</span><span data-verdict-id>F-01</span></div>
+          <h3 data-verdict-title>Перевірити відповідність реклами першому екрану</h3>
+          <p data-verdict-copy>Порівняйте обіцянку в оголошенні з першою дією воронки. Розрив часто виникає ще до бота: людина приходить по одному, а бачить інше.</p>
+          <div class="verdict-check"><span>На розбір:</span><strong data-verdict-check>креативи · офер · перший екран · джерела</strong></div>
+          <a class="button button-red" href="#contact">Запросити ручний розбір</a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="observation" aria-labelledby="observation-title">
+      <div class="observation-copy">
+        <h2 id="observation-title">Не «падає конверсія». Ось що ми реально бачили.</h2>
+        <p>Робочий розбір починається з фактів, які можна відтворити. Інтерпретації йдуть окремо, щоб не видати припущення за причину.</p>
+      </div>
+      <div class="observation-sheet" role="table" aria-label="Приклад журналу спостережень">
+        <div class="observation-row observation-head" role="row"><span>Крок</span><span>Спостереження</span><span>Статус</span></div>
+        <div class="observation-row" role="row"><span>AD → LP</span><strong>У креативі «аудит», на сторінці — «безкоштовна консультація»</strong><em>зафіксовано</em></div>
+        <div class="observation-row" role="row"><span>LP → BOT</span><strong>Після CTA немає пояснення, скільки триватиме сценарій</strong><em>зафіксовано</em></div>
+        <div class="observation-row" role="row"><span>BOT → CRM</span><strong>Відповідь про бюджет не передається в картку ліда</strong><em>перевірити</em></div>
+        <div class="observation-row" role="row"><span>CRM → SALES</span><strong>Час першої відповіді не має одного власника</strong><em>перевірити</em></div>
+      </div>
+      <p class="concept-note">Приклад структури, не реальні дані клієнта.</p>
+    </section>
+
+    <section class="work" id="work" aria-labelledby="work-title">
+      <div class="work-intro">
+        <h2 id="work-title">Спочатку карта.<br>Потім збірка.</h2>
+        <p>Один відповідальний за логіку від першого повідомлення до передачі в продаж. Підрядники підключаються лише там, де потрібна окрема спеціалізація.</p>
+      </div>
+      <div class="work-sequence">
+        <article><span>AUDIT</span><h3>Відновити реальний шлях</h3><p>Джерела трафіку, повідомлення, події, CRM, діалоги менеджерів і точки, де зникає контекст.</p><small>Вихід: карта втрат і список даних, яких бракує</small></article>
+        <article><span>LOGIC</span><h3>Вибрати найважливіший розрив</h3><p>Гіпотези ранжуються за впливом, доказовістю та вартістю перевірки — не за ефектністю інструмента.</p><small>Вихід: пріоритетний сценарій і критерій успіху</small></article>
+        <article><span>BUILD</span><h3>Переписати й зібрати ділянку</h3><p>Офер, повідомлення, кваліфікація, лендинг, бот, аналітика й передача в CRM як один ланцюг.</p><small>Вихід: робочий маршрут і документація</small></article>
+        <article><span>LEARN</span><h3>Запустити та зафіксувати урок</h3><p>Після запуску — не «магічний ROMI», а перевірка обраного критерію та наступне рішення.</p><small>Вихід: журнал змін і наступний пріоритет</small></article>
+      </div>
+    </section>
+
+    <section class="handoff" aria-labelledby="handoff-title">
+      <div class="handoff-title-wrap">
+        <h2 id="handoff-title">Лід не має починати історію вдруге.</h2>
+        <p>Передача в продаж — окремий продукт усередині воронки. Вона повинна переносити не лише телефон, а й контекст рішення.</p>
+      </div>
+      <div class="handoff-route">
+        <article><span>01</span><h3>Намір</h3><p>З якої обіцянки прийшла людина і що саме хоче змінити.</p></article>
+        <article><span>02</span><h3>Кваліфікація</h3><p>Відповіді, що справді змінюють наступний крок, а не заповнюють CRM.</p></article>
+        <article><span>03</span><h3>Очікування</h3><p>Що станеться далі, хто відповість і в який робочий проміжок.</p></article>
+        <article><span>04</span><h3>Власник</h3><p>Одна відповідальна роль, видимий статус і правило повернення.</p></article>
+      </div>
+    </section>
+
+    <section class="boundaries" aria-labelledby="boundaries-title">
+      <h2 id="boundaries-title">Що збирається разом. Що не маскується ботом.</h2>
+      <div class="boundary-columns">
+        <div><h3>У контурі роботи</h3><ul><li>офер і послідовність повідомлень</li><li>логіка кваліфікації та гілок</li><li>лендинг або потрібний фрагмент</li><li>події, CRM-поля та передача</li><li>критерій перевірки після запуску</li></ul></div>
+        <div><h3>Потрібне окреме рішення</h3><ul><li>відсутній попит на продукт</li><li>неузгоджена економіка пропозиції</li><li>немає команди для обробки заявок</li><li>юридичні та privacy-вимоги</li><li>повна заміна CRM або data warehouse</li></ul></div>
+      </div>
+    </section>
+
+    <section class="measurement" aria-labelledby="measurement-title">
+      <div class="measurement-statement"><h2 id="measurement-title">Одна зміна.<br>Один критерій.<br>Один журнал.</h2></div>
+      <div class="measurement-plan">
+        <article><span>До запуску</span><strong>Фіксуємо базову поведінку</strong><p>Період, сегмент, маршрут, визначення події та прогалини в даних.</p></article>
+        <article><span>Під час</span><strong>Не змішуємо кілька причин</strong><p>Виносимо одну гіпотезу в контрольований фрагмент шляху.</p></article>
+        <article><span>Після</span><strong>Записуємо рішення, не перемогу</strong><p>Залишити, повернути, переробити або зібрати більше доказів.</p></article>
+      </div>
+    </section>
+
+    <section class="collaboration" aria-labelledby="collaboration-title">
+      <div class="collaboration-copy"><h2 id="collaboration-title">Розбір потребує доступу, а не презентації.</h2><p>Щоб відновити шлях, потрібні люди, які бачать його з різних боків. Нижче — мінімальний склад робочої кімнати.</p></div>
+      <div class="role-matrix">
+        <div><strong>Власник продукту</strong><span>ціна рішення, межі оферу</span></div>
+        <div><strong>Маркетинг</strong><span>джерела, креативи, кампанії</span></div>
+        <div><strong>Продажі</strong><span>якість лідів, заперечення, SLA</span></div>
+        <div><strong>Орлов</strong><span>карта, гіпотеза, логіка, збірка</span></div>
+      </div>
+      <p class="collaboration-note">Не обов’язково збирати всіх на кожну зустріч. Важливо, щоб їхні дані не суперечили одне одному мовчки.</p>
+    </section>
+
+    <section class="formats" aria-labelledby="formats-title">
+      <h2 id="formats-title">Два способи почати.</h2>
+      <div class="format-grid">
+        <article>
+          <div class="format-head"><span>Окремий етап</span><strong>від 35 000 ₴</strong></div>
+          <h3>Аудит і карта воронки</h3>
+          <p>Для проєкту, де вже є трафік, бот або CRM, але немає спільної картини втрат.</p>
+          <ul><li>карта поточного шляху</li><li>пріоритетні гіпотези</li><li>план перевірок і вимірювання</li><li>зустріч із розбором</li></ul>
+          <small>У вихідному брифі: 5–7 днів. Ціну та строк перевірити перед публікацією.</small>
+        </article>
+        <article class="format-main">
+          <div class="format-head"><span>Повний цикл</span><strong>від 140 000 ₴</strong></div>
+          <h3>Від діагностики до запуску</h3>
+          <p>Коли потрібно не лише знайти розрив, а перебудувати весь пов’язаний фрагмент.</p>
+          <ul><li>усе з аудиту</li><li>сценарії, тексти, бот і лендинг</li><li>CRM та наскрізні події</li><li>запуск, передача й супровід</li></ul>
+          <small>У вихідному брифі: 4–6 тижнів. Склад уточнюється після аудиту.</small>
+        </article>
+      </div>
+    </section>
+
+    <section class="case-file" aria-labelledby="case-file-title">
+      <div class="case-index"><span>CASE / TEMPLATE</span><strong>Як виглядає доказовий кейс</strong></div>
+      <div class="case-file-copy">
+        <h2 id="case-file-title">Не «зробили +47%». Спочатку покажіть, що змінилось.</h2>
+        <p>Публічний кейс має дозволити читачеві відрізнити внесок роботи від сезонності, бюджету чи іншої команди. Поки матеріалів немає, сайт чесно показує структуру майбутнього доказу.</p>
+      </div>
+      <div class="case-anatomy">
+        <article><span>A</span><strong>Контекст</strong><p>Продукт, сегмент, період і вихідний маршрут.</p></article>
+        <article><span>B</span><strong>Розрив</strong><p>Спостереження, дані та відхилені альтернативи.</p></article>
+        <article><span>C</span><strong>Втручання</strong><p>Що змінили, а що навмисно залишили сталим.</p></article>
+        <article><span>D</span><strong>Наслідок</strong><p>Критерій, джерело, обмеження й наступне рішення.</p></article>
+      </div>
+    </section>
+
+    <section class="proof" id="proof" aria-labelledby="proof-title">
+      <div>
+        <h2 id="proof-title">Результат — це папка доказів, а не велика цифра.</h2>
+        <p>У вихідній версії є сильні кейси та відгуки, але для публічного сайту їм бракує посилань і матеріалів. Цей блок перетворює проблему на конкретний список заміни.</p>
+      </div>
+      <div class="evidence-file">
+        <div class="evidence-row"><span>До запуску додати</span><strong>скриншот джерела метрики</strong><i>обов’язково</i></div>
+        <div class="evidence-row"><span>До запуску додати</span><strong>період, бюджет і базову точку</strong><i>обов’язково</i></div>
+        <div class="evidence-row"><span>До запуску додати</span><strong>роль Орлова в результаті</strong><i>обов’язково</i></div>
+        <div class="evidence-row"><span>До запуску додати</span><strong>посилання або контакт для верифікації</strong><i>за згодою</i></div>
+        <div class="evidence-row is-ready"><span>Вже є в концепті</span><strong>метод, формат, межі й робочий процес</strong><i>показано</i></div>
+      </div>
+    </section>
+
+    <section class="questions" aria-labelledby="questions-title">
+      <div><h2 id="questions-title">Питання до початку.</h2><p>Короткі відповіді на те, що зазвичай з’ясовується вже після невдалого «давайте просто зробимо бота».</p></div>
+      <div class="question-list">
+        <details><summary>Чи можна почати без аналітики?</summary><p>Так, але першим результатом буде план вимірювання і список невідомого. Без цього причини не можна називати фактами.</p></details>
+        <details><summary>Чи обов’язково перебудовувати всю воронку?</summary><p>Ні. Робота навмисно звужується до фрагмента, де є достатньо доказів і впливу.</p></details>
+        <details><summary>Хто пише тексти й збирає інтеграції?</summary><p>У повному форматі це входить у погоджений контур. Окремі спеціалісти підключаються там, де потрібна профільна експертиза.</p></details>
+        <details><summary>Коли можна говорити про результат?</summary><p>Після погодженого періоду спостереження, з джерелом даних, базовою точкою й описаними обмеженнями.</p></details>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div><h2 id="contact-title">Покажіть карту.<br>Я поставлю незручні питання.</h2><p>Локальна форма портфоліо: дані нікуди не надсилаються і не зберігаються.</p></div>
+      <form data-form novalidate>
+        <label for="name">Ім’я</label><input id="name" name="name" autocomplete="name" required placeholder="Як до вас звертатися">
+        <label for="contact-field">Telegram або email</label><input id="contact-field" name="contact" required placeholder="@username або you@team.com">
+        <label for="symptom">Де, на вашу думку, губиться шлях?</label><textarea id="symptom" name="symptom" rows="3" placeholder="Один симптом — без презентації на 20 слайдів"></textarea>
+        <button class="button button-paper" type="submit">Запросити тестовий розбір</button>
+        <p class="form-message" data-form-message>Демо не відправляє дані.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer><span>ORLOV / FUNNEL SYSTEMS</span><p>Портфоліо-концепт · комерційні дані потребують перевірки</p><a href="#top">На початок ↑</a></footer>
+  <script src="a11y-floor.js"></script>
+  <script src="orlov-preview.js"></script>
+</body>
+</html>

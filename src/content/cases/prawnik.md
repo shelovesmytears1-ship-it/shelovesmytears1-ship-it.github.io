@@ -7,7 +7,7 @@ palette: DARK-LEGAL-PREMIUM
 tier: 1
 accent: '#D9C9A8'
 bg: '#0E0E0E'
-siteUrl: https://shelovesmytears1-ship-it.github.io/prawnik-legal/
+siteUrl: https://overflow-web.pl/prawnik/
 cover: /covers/prawnik.jpg
 screens:
   - src: /screens/prawnik-m1.webp

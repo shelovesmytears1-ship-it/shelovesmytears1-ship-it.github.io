@@ -1,0 +1,8 @@
+.menu-close{display:none}
+@media (min-width:761px){.menu-trigger,.menu-panel{display:none!important}}
+@media (max-width:760px){
+  .menu-trigger{display:grid!important}
+  .nav nav,.nav-contact{display:none!important}
+  .menu-panel{display:block!important}
+  .menu-close{display:grid;place-items:center;position:absolute;top:20px;right:20px;width:42px;height:42px;border:1px solid currentColor;border-radius:50%;background:transparent;color:var(--ink);font-size:28px;line-height:1;cursor:pointer;z-index:3}
+}

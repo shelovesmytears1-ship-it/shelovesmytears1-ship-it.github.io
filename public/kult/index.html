@@ -1,473 +1,265 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KULT — Energy for the Underground</title>
-  <meta name="description" content="KULT is not a beverage. Limited drop. 800 units." />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Epilogue:ital,wght@0,400;0,500;0,700;0,900;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-
-  <link rel="stylesheet" href="styles.css?v=stamp-clear" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="KULT Drop 001, an underground energy drink campaign concept.">
+  <meta name="color-scheme" content="dark">
+  <title>KULT | Drop 001 campaign concept</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Epilogue:wght@400;500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="assets/kult-zine-collage.png" fetchpriority="high">
+  <link rel="stylesheet" href="kult-preview.css">
+  <link rel="stylesheet" href="kult-expanded.css">
+  <script defer src="kult-preview.js"></script>
 </head>
 <body>
+  <!--
+    THESIS: KULT is presented as a finished underground campaign, not a fabricated storefront.
+    OWN-WORLD: Acid lime, cobalt and magenta print fields; black stage; torn-paper dossier surfaces; condensed display type.
+    STORY: Meet Drop 001, inspect the finished campaign materials, then distinguish built work from explored directions.
+    FIRST VIEWPORT: Copy occupies a black left field; the can stands on acid lime; campaign collage and release block close the right edge.
+    FORM: A release dossier assembled as a physical campaign artifact, extending the approved KULT direction.
+    FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+  -->
+  <a class="skip-link" href="#main">Skip to campaign</a>
 
-  <!-- Film grain overlay -->
-  <div class="grain" aria-hidden="true"></div>
+  <header class="site-header" data-header>
+    <a class="wordmark" href="#main" aria-label="KULT home">KULT</a>
 
-  <!-- Custom cursor (desktop only) -->
-  <div class="cursor" id="cursor" aria-hidden="true"></div>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-navigation" data-menu-button>
+      <span data-menu-label>Menu</span>
+    </button>
 
-  <!-- ─── HEADER ─────────────────────────────────── -->
-  <header class="site-header" id="site-header">
-    <a href="#" class="logo" aria-label="KULT home">KULT</a>
-    <nav aria-label="Main">
-      <a href="#drop" class="nav-link">DROP</a>
-      <a href="#culture" class="nav-link">ABOUT</a>
-      <a href="#join" class="btn btn--outline mag-btn">GET NOTIFIED</a>
+    <nav class="primary-navigation" id="primary-navigation" aria-label="Primary navigation" data-navigation>
+      <a href="#drop">Drop 001</a>
+      <a href="#formula">Formula</a>
+      <a href="#culture">Culture</a>
+      <a href="#notify">Notify me</a>
+      <span class="concept-label">Portfolio concept</span>
     </nav>
   </header>
 
-  <!-- ─── HERO ──────────────────────────────────── -->
-  <section class="hero" id="hero" aria-label="Hero">
-    <div class="hero-scene" aria-hidden="true">
-      <img class="hero-scene__image" src="assets/kult-hero-campaign.webp" width="1672" height="941" alt="" />
-      <div class="hero-scene__wash"></div>
-    </div>
-    <div class="hero-ghost" aria-hidden="true">KULT</div>
-
-    <div class="hero-intro-curtain" aria-hidden="true">
-      <i></i><i></i><i></i><i></i><i></i>
-    </div>
-    <div class="hero-flash" aria-hidden="true"></div>
-
-    <p class="hero-eyebrow">DROP 001 — 800 UNITS — NOW LIVE</p>
-
-    <h1 class="hero-title" id="hero-title">
-      <span class="ht-line ht-line--1">DIE</span>
-      <span class="ht-line ht-line--2">ORDINARY</span>
-    </h1>
-
-    <div class="hero-inner">
-      <div class="hero-foot">
-        <p class="hero-desc">Energy drink. Limited drop.<br>Not for everyone. Definitely not for them.</p>
-        <a href="#drop" class="btn btn--accent mag-btn">GET THE DROP →</a>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title">
+          <span class="hero-brand">KULT</span>
+          <span class="hero-statement">Energy for the underground.</span>
+        </h1>
+        <p class="hero-description">Drop 001 brings a dry citrus bite, zero sugar and 200 mg caffeine into one uncompromising can.</p>
+        <a class="hero-action" href="#drop">Explore Drop 001</a>
       </div>
-      <div class="flavor-switcher" aria-label="Flavor theme switcher">
-        <button class="flavor-chip is-active" type="button" data-flavor="black" data-accent="#D4FF00" data-accent-rgb="212,255,0" aria-pressed="true">BLACK</button>
-        <button class="flavor-chip" type="button" data-flavor="void" data-accent="#9B72CF" data-accent-rgb="155,114,207" aria-pressed="false">VOID</button>
-        <button class="flavor-chip" type="button" data-flavor="burn" data-accent="#FF2D00" data-accent-rgb="255,45,0" aria-pressed="false">BURN</button>
-      </div>
-    </div>
 
-    <div class="hero-drop-index" aria-hidden="true">
-      <span>CAMPAIGN / 001</span>
-      <span>ACCESS / PUBLIC</span>
-      <span>STATUS / LIVE</span>
-    </div>
-
-    <figure class="hero-product-stage">
-      <div class="hero-product-shell">
-        <div class="can-glow" aria-hidden="true"></div>
-        <img class="hero-product-echo hero-product-echo--acid" src="assets/kult-hero-can-cutout.png" width="864" height="1821" alt="" aria-hidden="true" />
-        <img class="hero-product-echo hero-product-echo--red" src="assets/kult-hero-can-cutout.png" width="864" height="1821" alt="" aria-hidden="true" />
-        <img
-          id="hero-product"
-          class="hero-product-img"
-          src="assets/kult-hero-can-cutout.png"
-          width="864"
-          height="1821"
-          alt="Black KULT energy drink can with an acid-lime wrapped label"
-        />
-        <div class="hero-product-gleam" aria-hidden="true"></div>
-        <div class="hero-product-stamp" aria-hidden="true">NO MASS DROP</div>
-      </div>
-      <figcaption class="sr-only">KULT black energy drink can.</figcaption>
-    </figure>
-
-    <div class="hero-edge-copy" aria-hidden="true">
-      <span>200MG</span>
-      <span>ZERO SUGAR</span>
-      <span>500ML</span>
-    </div>
-
-    <!-- Marquee strip -->
-    <div class="marquee-wrap" aria-hidden="true">
-      <div class="marquee">
-        <div class="marquee-content">
-          <span>KULT ENERGY</span><span class="sep">×</span>
-          <span>LIMITED DROP</span><span class="sep">×</span>
-          <span>800 UNITS</span><span class="sep">×</span>
-          <span>DIE ORDINARY</span><span class="sep">×</span>
-          <span>KULT ENERGY</span><span class="sep">×</span>
-          <span>LIMITED DROP</span><span class="sep">×</span>
-          <span>800 UNITS</span><span class="sep">×</span>
-          <span>DIE ORDINARY</span><span class="sep">×</span>
+      <div class="hero-stage" aria-label="KULT Drop 001 release board">
+        <div class="product-field">
+          <span class="product-field-word" aria-hidden="true">KULT</span>
+          <figure class="can-stage">
+            <img src="assets/kult-hero-can-cutout.png" width="972" height="2048" alt="Black KULT energy drink can with an acid-lime label">
+          </figure>
         </div>
-        <div class="marquee-content" aria-hidden="true">
-          <span>KULT ENERGY</span><span class="sep">×</span>
-          <span>LIMITED DROP</span><span class="sep">×</span>
-          <span>800 UNITS</span><span class="sep">×</span>
-          <span>DIE ORDINARY</span><span class="sep">×</span>
-          <span>KULT ENERGY</span><span class="sep">×</span>
-          <span>LIMITED DROP</span><span class="sep">×</span>
-          <span>800 UNITS</span><span class="sep">×</span>
-          <span>DIE ORDINARY</span><span class="sep">×</span>
+        <figure class="culture-frame">
+          <img src="assets/kult-zine-collage.png" width="1536" height="1024" alt="Xerox-style KULT campaign collage with cans, torn posters and acid-lime graphics">
+        </figure>
+        <div class="release-card">
+          <strong>Drop 001</strong>
+          <span>Limited campaign concept</span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ─── MANIFESTO ────────────────────────────── -->
-  <section class="manifesto" aria-label="Manifesto">
-    <p class="manifesto-big">THIS ISN'T AN<br>ENERGY DRINK.</p>
-    <p class="manifesto-accent">IT'S A DECLARATION.</p>
-    <p class="manifesto-body">Packed with 200mg of natural caffeine, zero synthetic junk, and enough edge to get you through anything. No wellness pitch. No yoga-mat energy. Just KULT.</p>
-  </section>
+    <section class="release-dossier" id="drop" aria-labelledby="dossier-title">
+      <figure class="dossier-visual">
+        <img src="assets/kult-hero-can.png" width="1024" height="1536" loading="lazy" alt="Close-up campaign portrait of the black KULT Drop 001 can">
+        <figcaption>Drop 001 / finished campaign asset</figcaption>
+      </figure>
 
-  <section class="cult-rules" aria-label="Cult rules">
-    <div class="cult-rules__head">
-      <p class="section-kicker">CULT RULES / DROP CODE</p>
-      <p>Five things before the can touches your hand.</p>
-    </div>
-    <ol class="rule-list">
-      <li class="rule-line"><span>01</span><strong>NO MASS DROP.</strong></li>
-      <li class="rule-line"><span>02</span><strong>NO WELLNESS PITCH.</strong></li>
-      <li class="rule-line"><span>03</span><strong>NO SECOND CHANCE.</strong></li>
-      <li class="rule-line"><span>04</span><strong>NO COMPROMISE.</strong></li>
-      <li class="rule-line"><span>05</span><strong>NO THEM.</strong></li>
-    </ol>
-  </section>
+      <div class="dossier-sheet">
+        <h2 id="dossier-title">The release dossier.</h2>
+        <p class="dossier-intro">KULT is a fictional brand campaign. The can, identity and Drop 001 world are the finished design; commerce and customer proof are intentionally absent.</p>
 
-  <!-- ─── DROP / PRODUCTS ──────────────────────── -->
-  <section class="kinetic-stats" aria-label="Product stats">
-    <div class="kstat">
-      <span class="kstat-num" data-count-to="200">0</span>
-      <span class="kstat-label">MG CAFFEINE</span>
-    </div>
-    <div class="kstat">
-      <span class="kstat-num" data-count-to="0">0</span>
-      <span class="kstat-label">SUGAR</span>
-    </div>
-    <div class="kstat">
-      <span class="kstat-num" data-count-to="500">0</span>
-      <span class="kstat-label">ML CAN</span>
-    </div>
-    <div class="kstat">
-      <span class="kstat-num" data-count-to="1" data-pad="3">000</span>
-      <span class="kstat-label">DROP</span>
-    </div>
-  </section>
-
-  <section class="formula" aria-label="Formula grid">
-    <div class="formula-head">
-      <p class="section-kicker">FORMULA / NO SOFT LAUNCH</p>
-      <h2 class="formula-title">WHAT'S<br>INSIDE.</h2>
-    </div>
-    <div class="formula-grid">
-      <article class="formula-tile"><span>200MG</span><strong>CAFFEINE</strong></article>
-      <article class="formula-tile"><span>1000MG</span><strong>TAURINE</strong></article>
-      <article class="formula-tile"><span>B12</span><strong>VITAMIN</strong></article>
-      <article class="formula-tile"><span>250MG</span><strong>L-CARNITINE</strong></article>
-      <article class="formula-tile"><span>16MG</span><strong>NIACIN</strong></article>
-      <article class="formula-tile"><span>0G</span><strong>SUGAR</strong></article>
-      <article class="formula-tile"><span>500ML</span><strong>CAN</strong></article>
-      <article class="formula-tile"><span>001</span><strong>DROP</strong></article>
-      <article class="formula-tile"><span>800</span><strong>UNITS</strong></article>
-    </div>
-  </section>
-
-  <section class="drop" id="drop" aria-label="Products">
-    <div class="drop-header">
-      <h2 class="drop-title">DROP 001</h2>
-      <div class="drop-cd-wrap">
-        <span class="cd-label">CLOSES IN</span>
-        <div class="cd-timer" id="cd-timer" role="timer" aria-label="Drop countdown">
-          <div class="cd-unit"><span class="cd-num" id="cd-h">23</span><span class="cd-lbl">HRS</span></div>
-          <span class="cd-sep" aria-hidden="true">:</span>
-          <div class="cd-unit"><span class="cd-num" id="cd-m">47</span><span class="cd-lbl">MIN</span></div>
-          <span class="cd-sep" aria-hidden="true">:</span>
-          <div class="cd-unit"><span class="cd-num" id="cd-s">12</span><span class="cd-lbl">SEC</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="fomo-ticker" aria-live="polite">
-      <span id="fomo-units">127 UNITS LEFT</span>
-      <span>3 SOLD IN LAST 10 MIN</span>
-      <span>DROP CLOSES IN <b id="fomo-time">23:47:12</b></span>
-    </div>
-
-    <div class="products">
-
-      <article class="product product--black" aria-label="KULT BLACK" data-drop-flavor="Original acid-lime / 200mg" data-drop-stock="347 units left" data-flavor="black" style="--variant-accent: #D4FF00; --variant-rgb: 212,255,0;">
-        <div class="product-can-wrap">
-          <img class="product-can-img" src="assets/kult-hero-can-cutout.png" width="864" height="1821" alt="KULT BLACK can" loading="lazy" />
-        </div>
-        <div class="product-body">
-          <div class="product-badge">ORIGINAL</div>
-          <h3 class="product-name">KULT BLACK</h3>
-          <p class="product-desc">The original formula. 200mg natural caffeine. The one that started everything.</p>
-          <div class="product-stock">
-            <span class="stock-num">347</span>
-            <span class="stock-label">UNITS LEFT</span>
+        <dl class="dossier-ledger">
+          <div>
+            <dt>Built</dt>
+            <dd>Identity, can design and the complete Drop 001 campaign.</dd>
           </div>
-          <button class="btn btn--product mag-btn" type="button">ADD TO DROP →</button>
-        </div>
-      </article>
-
-      <article class="product product--hot product--void" aria-label="KULT VOID" data-drop-flavor="Zero sugar void grape / 200mg" data-drop-stock="128 units left" data-flavor="void" style="--variant-accent: #9B72CF; --variant-rgb: 155,114,207;">
-        <div class="product-hot-tag">SELLING FAST</div>
-        <div class="product-can-wrap">
-          <img class="product-can-img product-can-img--void" src="assets/kult-hero-can-cutout.png" width="864" height="1821" alt="KULT VOID can" loading="lazy" />
-        </div>
-        <div class="product-body">
-          <div class="product-badge product-badge--accent">ZERO SUGAR</div>
-          <h3 class="product-name">KULT VOID</h3>
-          <p class="product-desc">Zero sugar. Same energy. For those who want the cult without the calories.</p>
-          <div class="product-stock">
-            <span class="stock-num">128</span>
-            <span class="stock-label">UNITS LEFT</span>
+          <div>
+            <dt>Explored</dt>
+            <dd>BLACK, VOID and BURN as future product directions.</dd>
           </div>
-          <button class="btn btn--product mag-btn" type="button">ADD TO DROP →</button>
-        </div>
-      </article>
-
-      <article class="product product--burn" aria-label="KULT BURN" data-drop-flavor="Pre-workout burn spice / 400mg" data-drop-stock="512 units left" data-flavor="burn" style="--variant-accent: #FF2D00; --variant-rgb: 255,45,0;">
-        <div class="product-can-wrap">
-          <img class="product-can-img product-can-img--burn" src="assets/kult-hero-can-cutout.png" width="864" height="1821" alt="KULT BURN can" loading="lazy" />
-        </div>
-        <div class="product-body">
-          <div class="product-badge">PRE-WORKOUT</div>
-          <h3 class="product-name">KULT BURN</h3>
-          <p class="product-desc">400mg. Pre-workout intensity. For the session you've been putting off.</p>
-          <div class="product-stock">
-            <span class="stock-num">512</span>
-            <span class="stock-label">UNITS LEFT</span>
+          <div>
+            <dt>Not claimed</dt>
+            <dd>Prices, availability, customer results or invented scarcity.</dd>
           </div>
-          <button class="btn btn--product mag-btn" type="button">ADD TO DROP →</button>
+        </dl>
+      </div>
+    </section>
+
+    <section class="flavor-wall" aria-labelledby="flavor-title">
+      <div class="flavor-heading">
+        <h2 id="flavor-title">Three directions.<br>One release world.</h2>
+        <p>BLACK is the finished Drop 001 language. VOID and BURN are clearly marked campaign explorations, built to test how far the system can stretch.</p>
+      </div>
+
+      <div class="poster-selector" role="tablist" aria-label="Flavor direction posters">
+        <button type="button" role="tab" aria-selected="true" aria-controls="poster-black" id="tab-black" data-poster-tab="black">Black</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="poster-void" id="tab-void" tabindex="-1" data-poster-tab="void">Void</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="poster-burn" id="tab-burn" tabindex="-1" data-poster-tab="burn">Burn</button>
+      </div>
+
+      <div class="poster-stage" data-poster-stage>
+        <article class="flavor-poster flavor-poster--black" role="tabpanel" id="poster-black" aria-labelledby="tab-black" data-poster="black">
+          <div class="poster-type" aria-hidden="true">Black</div>
+          <img src="assets/kult-hero-can-cutout.png" width="972" height="2048" loading="lazy" alt="KULT Drop 001 black can on acid-lime poster field">
+          <div class="poster-copy">
+            <h3>Black</h3>
+            <p>Dry citrus / mineral finish</p>
+            <span>Finished Drop 001 direction</span>
+          </div>
+        </article>
+
+        <article class="flavor-poster flavor-poster--void" role="tabpanel" id="poster-void" aria-labelledby="tab-void" data-poster="void" hidden>
+          <div class="poster-type" aria-hidden="true">Void</div>
+          <img src="assets/kult-hero-can-cutout.png" width="972" height="2048" loading="lazy" alt="KULT can placed in a cobalt and black VOID campaign exploration">
+          <div class="poster-copy">
+            <h3>Void</h3>
+            <p>Cold berry / dry finish</p>
+            <span>Illustrative campaign direction</span>
+          </div>
+        </article>
+
+        <article class="flavor-poster flavor-poster--burn" role="tabpanel" id="poster-burn" aria-labelledby="tab-burn" data-poster="burn" hidden>
+          <div class="poster-type" aria-hidden="true">Burn</div>
+          <img src="assets/kult-hero-can-cutout.png" width="972" height="2048" loading="lazy" alt="KULT can placed in a hot-magenta BURN campaign exploration">
+          <div class="poster-copy">
+            <h3>Burn</h3>
+            <p>Bitter orange / pepper edge</p>
+            <span>Illustrative campaign direction</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="formula-strip" id="formula" aria-labelledby="formula-title">
+      <h2 id="formula-title">Formula without mythology.</h2>
+      <div class="formula-line">
+        <div><strong>Dry citrus</strong><span>Taste direction</span></div>
+        <div><strong>Zero sugar</strong><span>Drop 001 specification</span></div>
+        <div><strong>200 mg</strong><span>Caffeine per concept can</span></div>
+      </div>
+      <p>The campaign describes a product concept, not health or performance outcomes. No unsupported benefits are implied.</p>
+    </section>
+
+    <section class="taste-signal" aria-labelledby="taste-title">
+      <div class="taste-copy">
+        <h2 id="taste-title">Taste starts dry.<br>Ends mineral.</h2>
+        <p>Drop 001 is positioned away from candy sweetness. The language is directional and conceptual, not a laboratory sensory claim.</p>
+      </div>
+      <div class="taste-track" aria-label="Conceptual Drop 001 taste progression">
+        <div><strong>Open</strong><span>Citrus peel</span></div>
+        <div><strong>Middle</strong><span>Dry acid line</span></div>
+        <div><strong>Finish</strong><span>Mineral edge</span></div>
+        <p>Concept taste map / no consumer-test claim</p>
+      </div>
+    </section>
+
+    <section class="can-anatomy" id="anatomy" aria-labelledby="anatomy-title">
+      <div class="can-blueprint">
+        <span class="note note-one">01 / BLACK FIELD</span>
+        <span class="note note-two">02 / ACID LABEL</span>
+        <span class="note note-three">03 / DROP CODE</span>
+        <img src="assets/kult-hero-can-cutout.png" width="972" height="2048" loading="lazy" alt="KULT Drop 001 can isolated for a packaging hierarchy diagram">
+      </div>
+      <div class="anatomy-copy">
+        <h2 id="anatomy-title">The can works at club distance.</h2>
+        <p>The system is built for low light and fast recognition: one black mass, one acid band, one compressed wordmark and only the information the release needs.</p>
+        <dl><div><dt>Front read</dt><dd>KULT owns the full label field.</dd></div><div><dt>Secondary read</dt><dd>Energy and 200 mg remain factual concept specifications.</dd></div><div><dt>Drop logic</dt><dd>Color and code can change without rebuilding the brand.</dd></div></dl>
+      </div>
+    </section>
+
+    <section class="release-kit" aria-labelledby="kit-title">
+      <div class="kit-copy"><h2 id="kit-title">One drop.<br>Four physical traces.</h2><p>The campaign expands through objects people can actually encounter. This is a design-deliverables map, not evidence of a real launch.</p></div>
+      <figure><img src="assets/kult-release-kit.webp" width="2048" height="1365" loading="lazy" alt="KULT release kit with can, posters, shirt, stickers and xerox textures"><figcaption>Release kit / portfolio concept</figcaption></figure>
+      <ol><li><b>Can</b><span>primary product artifact</span></li><li><b>Poster</b><span>street-scale campaign field</span></li><li><b>Zine</b><span>portable release dossier</span></li><li><b>Motion cut</b><span>short-format graphic sequence</span></li></ol>
+    </section>
+
+    <section class="culture-insert" id="culture" aria-labelledby="culture-title">
+      <figure class="culture-photo">
+        <img src="assets/kult-hero-campaign.webp" width="1680" height="945" loading="lazy" alt="Dim industrial corridor used as the visual setting for the KULT campaign">
+      </figure>
+      <div class="culture-copy">
+        <h2 id="culture-title">Built after dark.</h2>
+        <p>KULT borrows the visual pressure of pasted club bills, backstage corridors and black technical clothing. It is a designed campaign world—not borrowed community proof.</p>
+        <blockquote>“The city is the media surface.”</blockquote>
+        <span>Campaign positioning line</span>
+      </div>
+    </section>
+
+    <section class="media-surface" id="media" aria-labelledby="media-title">
+      <div class="paste-wall" aria-hidden="true"><span>KULT</span><span>DROP 001</span><span>DRY / ZERO / 200</span><span>AFTER DARK</span></div>
+      <div><h2 id="media-title">The city is the media surface.</h2><p>A placement system built from scale, repetition and interruption. No fake venues or event partnerships are attached to the concept.</p><ul><li><b>Flypost wall</b><span>one word, one can, one release code</span></li><li><b>Backstage sheet</b><span>formula and campaign credits</span></li><li><b>Vertical motion</b><span>poster logic translated into cuts</span></li></ul></div>
+    </section>
+
+    <section class="material-archive" aria-labelledby="archive-title">
+      <div><h2 id="archive-title">Print errors become the texture.</h2><p>The visual language comes from overprint, toner drag, torn edges and hard crops. Effects stay tied to physical reproduction instead of generic digital noise.</p></div>
+      <div class="archive-samples"><article class="sample-lime"><b>ACID OVERPRINT</b><span>Primary release signal</span></article><article class="sample-blue"><b>COBALT PLATE</b><span>Exploration ink</span></article><article class="sample-magenta"><b>MAGENTA MISREGISTER</b><span>Exploration ink</span></article><article class="sample-paper"><b>XEROX PAPER</b><span>Information surface</span></article></div>
+    </section>
+
+    <section class="drop-two" aria-labelledby="drop-two-title">
+      <div class="drop-two-copy">
+        <h2 id="drop-two-title">Drop 002<br>changes the signal.</h2>
+        <p>A red-label packaging study that tests a harsher branch of the KULT system. Presented as a teaser concept, not a scheduled release.</p>
+        <span>Concept study / no release date</span>
+      </div>
+      <div class="drop-two-stage">
+        <span aria-hidden="true">002</span>
+        <img src="assets/kult-drop002-cutout.png" width="972" height="2048" loading="lazy" alt="Black and red KULT Drop 002 concept can">
+      </div>
+    </section>
+
+    <section class="stretch-tests" aria-labelledby="stretch-title">
+      <div><h2 id="stretch-title">The system bends.<br>It does not dissolve.</h2><p>Future directions can change heat, color and pacing while three anchors remain fixed.</p></div>
+      <div class="stretch-register"><p><b>WORDMARK</b><span>same compressed ownership</span><em>LOCKED</em></p><p><b>BLACK MASS</b><span>same shelf-distance silhouette</span><em>LOCKED</em></p><p><b>DROP CODE</b><span>new number, new signal color</span><em>VARIABLE</em></p></div>
+    </section>
+
+    <section class="claim-boundary" id="claims" aria-labelledby="boundary-title">
+      <div class="warning-sheet"><strong>200 mg</strong><span>Caffeine per concept can</span><small>A portfolio specification only; it carries no performance claim.</small></div>
+      <div><h2 id="boundary-title">Product energy, clearly bounded.</h2><p>The campaign does not promise focus, endurance, status or belonging. Any real product launch would require final formula verification, compliant labeling and market-specific safety information.</p><ul><li>Health outcomes are outside the concept.</li><li>Ingredient benefits remain unclaimed.</li><li>The caffeine figure is information, not encouragement.</li></ul></div>
+    </section>
+
+    <section class="concept-faq" aria-labelledby="faq-title">
+      <div><h2 id="faq-title">Read the concept without the fake lore.</h2><p>The strongest campaign world is still transparent about what exists and what does not.</p></div>
+      <div><details open><summary>Can I buy Drop 001?</summary><p>No. KULT is a fictional identity, packaging and campaign project presented for portfolio review.</p></details><details><summary>Are BLACK, VOID and BURN real flavors?</summary><p>BLACK is the finished Drop 001 direction. VOID and BURN are clearly labeled visual and taste-positioning explorations.</p></details><details><summary>Is Drop 002 scheduled?</summary><p>No. It is a packaging study with no launch date, stock or availability claim.</p></details><details><summary>Are the formula claims production-ready?</summary><p>No. Any real release would require formulation, testing, legal review and final compliant labeling.</p></details></div>
+    </section>
+
+    <section class="notify-section" id="notify" aria-labelledby="notify-title">
+      <div class="notify-copy">
+        <h2 id="notify-title">Keep the signal.</h2>
+        <p>Try the signup interaction in this local portfolio preview. No email is stored or sent.</p>
+      </div>
+
+      <form class="notify-form" data-notify-form novalidate>
+        <label for="notify-email">Email address</label>
+        <div class="notify-control">
+          <input id="notify-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" required aria-describedby="notify-help notify-status">
+          <button type="submit">Run demo signup</button>
         </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ─── REVERSED MARQUEE ─────────────────────── -->
-  <div class="marquee-wrap marquee-wrap--accent" aria-hidden="true">
-    <div class="marquee marquee--reverse">
-      <div class="marquee-content">
-        <span>200MG NATURAL CAFFEINE</span><span class="sep">×</span>
-        <span>ZERO SYNTHETIC JUNK</span><span class="sep">×</span>
-        <span>UNDERGROUND BRAND</span><span class="sep">×</span>
-        <span>NOT FOR EVERYONE</span><span class="sep">×</span>
-        <span>200MG NATURAL CAFFEINE</span><span class="sep">×</span>
-        <span>ZERO SYNTHETIC JUNK</span><span class="sep">×</span>
-        <span>UNDERGROUND BRAND</span><span class="sep">×</span>
-        <span>NOT FOR EVERYONE</span><span class="sep">×</span>
-      </div>
-      <div class="marquee-content" aria-hidden="true">
-        <span>200MG NATURAL CAFFEINE</span><span class="sep">×</span>
-        <span>ZERO SYNTHETIC JUNK</span><span class="sep">×</span>
-        <span>UNDERGROUND BRAND</span><span class="sep">×</span>
-        <span>NOT FOR EVERYONE</span><span class="sep">×</span>
-        <span>200MG NATURAL CAFFEINE</span><span class="sep">×</span>
-        <span>ZERO SYNTHETIC JUNK</span><span class="sep">×</span>
-        <span>UNDERGROUND BRAND</span><span class="sep">×</span>
-        <span>NOT FOR EVERYONE</span><span class="sep">×</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ─── CULTURE / BENTO ──────────────────────── -->
-  <section class="culture" id="culture" aria-label="Culture">
-    <div class="culture-head">
-      <div>
-        <p class="section-kicker">XEROXED / SOUR / LIMITED</p>
-        <h2 class="culture-title">UNDERGROUND<br>CULTURE.</h2>
-      </div>
-      <p class="culture-lede">The drop is built like a flyer wall: product, noise, receipts, and a little too much caffeine.</p>
-    </div>
-    <figure class="culture-media">
-      <img src="assets/kult-zine-collage.png" width="1536" height="1024" alt="KULT zine collage with cans, torn posters, and acid-lime drop graphics" loading="lazy" />
-    </figure>
-    <div class="bento">
-      <div class="bento-cell bento-quote">
-        <blockquote>"THE BRAND THEY DON'T WANT YOU TO KNOW ABOUT."</blockquote>
-      </div>
-      <div class="bento-cell bento-stat">
-        <span class="stat-num">200mg</span>
-        <span class="stat-label">Natural Caffeine</span>
-      </div>
-      <div class="bento-cell bento-stat">
-        <span class="stat-num">0g</span>
-        <span class="stat-label">Synthetic Junk</span>
-      </div>
-      <div class="bento-cell bento-text">
-        <p>Not brewed<br>in a lab.<br>Born in a<br>basement.</p>
-      </div>
-      <div class="bento-cell bento-tag">
-        <span class="big-tag">LIMITED</span>
-        <span class="big-tag-sub">DROP 001</span>
-      </div>
-      <div class="bento-cell bento-wide">
-        <p class="bento-big-text">DRINK DIFFERENT.<br>OR DON'T DRINK AT ALL.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── HORIZONTAL SCROLL (pinned) ───────────── -->
-  <section class="hscroll" id="hscroll" aria-label="Manifesto reel">
-    <div class="hscroll-track" id="hscroll-track">
-      <div class="hpanel">
-        <span class="hpanel-idx">01</span>
-        <p class="hpanel-text">DRINK<br>DIFFERENT.</p>
-      </div>
-      <div class="hpanel hpanel--accent">
-        <span class="hpanel-idx">02</span>
-        <p class="hpanel-text">OR DON'T<br>DRINK AT ALL.</p>
-      </div>
-      <div class="hpanel">
-        <span class="hpanel-idx">03</span>
-        <p class="hpanel-text">MADE FOR<br>THE FEW.</p>
-      </div>
-      <div class="hpanel hpanel--outline">
-        <span class="hpanel-idx">04</span>
-        <p class="hpanel-text">NEVER<br>FOR THEM.</p>
-      </div>
-      <div class="hpanel hpanel--product">
-        <span class="hpanel-idx">05</span>
-        <div class="hpanel-can-shot">
-          <img src="assets/kult-hero-can-cutout.png" width="864" height="1821" alt="Close-up of KULT can" loading="lazy" />
-        </div>
-        <p class="hpanel-stat">200MG</p>
-      </div>
-      <div class="hpanel hpanel--outline hpanel--final">
-        <span class="hpanel-idx">06</span>
-        <p class="hpanel-text">NEVER<br>FOR THEM.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── UGC ──────────────────────────────────── -->
-  <section class="underground-pass" aria-label="Underground pass">
-    <div class="pass-shell" id="pass-shell">
-      <div class="pass-copy">
-        <p class="section-kicker">ACCESS RESTRICTED</p>
-        <h2 class="pass-title">UNDERGROUND<br>PASS</h2>
-        <p class="pass-desc">Drop 002 lives behind a fake door. Type anything. The ritual is the point.</p>
-      </div>
-      <form class="pass-form" id="pass-form">
-        <label class="sr-only" for="pass-code">Access code</label>
-        <input id="pass-code" class="pass-input" type="text" autocomplete="off" placeholder="ENTER CODE" />
-        <button class="btn btn--accent mag-btn" type="submit">UNLOCK</button>
+        <p id="notify-help">Local interaction demo. Your address never leaves this page.</p>
+        <p class="notify-status" id="notify-status" role="status" aria-live="polite" data-notify-status></p>
       </form>
-      <div class="pass-teaser" id="pass-teaser" aria-live="polite">
-        <img src="assets/kult-drop002-cutout.png" width="864" height="1821" alt="Blurred teaser can for KULT Drop 002" loading="lazy" />
-        <div>
-          <span class="section-kicker">DROP 002 TEASER</span>
-          <p>NEW CAN. WRONG CROWD. EARLY ACCESS SOON.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <div class="drop-modal" id="drop-modal" hidden aria-hidden="true">
-    <button class="drop-modal__close" type="button" aria-label="Close drop detail">CLOSE</button>
-    <div class="drop-modal__panel" role="dialog" aria-modal="true" aria-labelledby="drop-modal-title">
-      <div class="drop-modal__visual"></div>
-      <div class="drop-modal__copy">
-        <p class="section-kicker" id="drop-modal-meta">DROP 001</p>
-        <h2 id="drop-modal-title">KULT BLACK</h2>
-        <p id="drop-modal-desc">The original formula. 200mg natural caffeine.</p>
-        <div class="drop-modal__stats">
-          <span id="drop-modal-flavor">Original acid-lime / 200mg</span>
-          <span id="drop-modal-stock">347 units left</span>
-        </div>
-        <a href="#join" class="btn btn--accent mag-btn">GET NOTIFIED -></a>
-      </div>
-    </div>
-  </div>
-
-  <section class="ugc" aria-label="Community">
-    <h2 class="ugc-title">THEY SAID IT,<br>NOT US.</h2>
-    <div class="ugc-grid">
-      <div class="ugc-card">
-        <p class="ugc-quote">"bro kult hits different no cap. cancelled my gym membership and replaced it with this."</p>
-        <span class="ugc-handle">@streetkid_99</span>
-      </div>
-      <div class="ugc-card ugc-card--accent">
-        <p class="ugc-quote">"finally an energy drink that doesn't pretend to be healthy. take notes, everyone."</p>
-        <span class="ugc-handle">@midnight.run</span>
-      </div>
-      <div class="ugc-card">
-        <p class="ugc-quote">"third can today. zero regrets. send help but make it kult."</p>
-        <span class="ugc-handle">@666frequencies</span>
-      </div>
-      <div class="ugc-card">
-        <p class="ugc-quote">"bought 12 units of kult void. this is fine. everything is fine."</p>
-        <span class="ugc-handle">@voidwalker.zero</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── FINAL CTA ────────────────────────────── -->
-  <section class="final-cta" id="join" aria-label="Join the drop">
-    <div class="fct-bg-text" aria-hidden="true">KULT</div>
-    <div class="fct-content">
-      <h2 class="fct-title">
-        <span class="fct-word">DON'T</span>
-        <span class="fct-word fct-accent">MISS</span>
-        <span class="fct-word">THE DROP.</span>
-      </h2>
-      <p class="fct-desc">Drop 001 ends soon. Join the list. We don't follow up twice.</p>
-      <form class="join-form" id="join-form" novalidate>
-        <input type="email" class="join-input" placeholder="YOUR@EMAIL.COM" required aria-label="Email for drop notification" />
-        <button type="submit" class="btn btn--accent mag-btn">NOTIFY ME →</button>
-      </form>
-      <p class="join-legal">No spam. One email per drop. Unsubscribe anytime.</p>
-    </div>
-  </section>
-
-  <!-- ─── FOOTER ───────────────────────────────── -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div>
-        <div class="footer-logo">KULT</div>
-        <div class="footer-tag">DIE ORDINARY</div>
-      </div>
-      <nav class="footer-links" aria-label="Social">
-        <a href="#" class="footer-link">Instagram</a>
-        <a href="#" class="footer-link">Twitter</a>
-        <a href="#" class="footer-link">TikTok</a>
-      </nav>
-      <p class="footer-legal">© 2025 KULT ENERGY — UI/UX DEMO</p>
-    </div>
+  <footer class="site-footer">
+    <a class="footer-mark" href="#main">KULT</a>
+    <p>Fictional energy-drink identity and campaign concept created for portfolio review.</p>
+    <nav aria-label="Footer navigation">
+      <a href="#drop">Drop 001</a>
+      <a href="#formula">Formula</a>
+      <a href="#culture">Culture</a>
+    </nav>
   </footer>
-
-  <!-- GSAP loaded after first render for LCP compliance -->
-  <script>
-    window.addEventListener('load', function () {
-      var s1 = document.createElement('script');
-      s1.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js';
-      s1.onload = function () {
-        var s2 = document.createElement('script');
-        s2.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js';
-        s2.onload = function () {
-          var s3 = document.createElement('script');
-          s3.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js';
-          s3.onload = function () {
-            if (typeof initGSAP === 'function') initGSAP();
-          };
-          document.head.appendChild(s3);
-        };
-        document.head.appendChild(s2);
-      };
-      document.head.appendChild(s1);
-    });
-  </script>
-  <script src="app.js"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@ palette: EDITORIAL-CREAM-GOLD
 tier: 1
 accent: '#C4A882'
 bg: '#FAFAF8'
-siteUrl: https://shelovesmytears1-ship-it.github.io/interspace-exhibition/
+siteUrl: https://overflow-web.pl/interspace/
 cover: /covers/interspace.jpg
 screens:
   - src: /screens/interspace-m1.webp
