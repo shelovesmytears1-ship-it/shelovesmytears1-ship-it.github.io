@@ -35,20 +35,6 @@ jobs:
       - name: Build Studio Light, Editorial Serif and Refined Dark
         run: npm run build
 
-      - name: Restore the original portfolio snapshot
-        run: git worktree add "$RUNNER_TEMP/portfolio-original" 4a6098e
-
-      - name: Build the original portfolio under /original
-        working-directory: ${{ runner.temp }}/portfolio-original
-        run: |
-          npm ci
-          npx astro build --base /original
-
-      - name: Add the original portfolio to the Pages artifact
-        run: |
-          mkdir -p dist/original
-          cp -R "$RUNNER_TEMP/portfolio-original/dist/." dist/original/
-
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
