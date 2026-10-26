@@ -22,7 +22,8 @@ technologies:
 region:
   - PL
 summary: Лендинг mobile SPA-сервиса в PL. Premium editorial italic accent на ключевых словах, spacious magazine layout без stock-wellness фото.
-order: 15
+order: 7
+concept: true
 translations:
   pl:
     tagline: Lending mobilnego SPA — premium editorial italic, spacious magazine layout

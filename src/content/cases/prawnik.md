@@ -22,7 +22,8 @@ technologies:
 region:
   - PL
 summary: Лендинг регистрации бизнеса в Польше (JDG / Spółka z o.o.). Premium dark + italic accent для B2B legal tone.
-order: 12
+order: 17
+concept: true
 translations:
   pl:
     tagline: Lending rejestracji firmy w Polsce — premium dark z italic akcentem

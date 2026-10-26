@@ -23,7 +23,8 @@ technologies:
 region:
   - PL
 summary: CRM для стоматологий. Анти-конвенция в нише — dark+mint там где все делают white+blue.
-order: 1
+order: 6
+concept: true
 translations:
   pl:
     tagline: CRM dla stomatologii z ciemną paletą wbrew konwencji niszy

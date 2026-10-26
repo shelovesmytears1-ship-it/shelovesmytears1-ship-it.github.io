@@ -27,7 +27,8 @@ result: 1 экран вместо 4
 stat:
   value: '+14'
   label: дней прогноза вперёд — артист принимает решение по тренду, а не по истории
-order: 2
+order: 9
+concept: true
 translations:
   pl:
     tagline: Analityka dla niezależnych muzyków z precyzyjnymi liczbami zamiast jaskrawych dashboardów

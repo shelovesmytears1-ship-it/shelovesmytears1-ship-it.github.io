@@ -25,7 +25,8 @@ region:
   - NYC
   - Bilingual (RU + EN)
 summary: Иммерсивная выставка современного искусства. Editorial typography + WebGL подгружается async — никакой блокировки рендера.
-order: 6
+order: 13
+concept: true
 translations:
   pl:
     tagline: Wystawa immersywna sztuki współczesnej w NYC z editorial typography i async WebGL

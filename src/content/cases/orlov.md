@@ -26,7 +26,8 @@ summary: Personal brand продюсера автоворонок. Chat-mockup �
 stat:
   value: '4.2×'
   label: демо-цифра на макете лендинга — приём «конкретное число вместо туманного I help you grow», а не измеренный результат
-order: 5
+order: 12
+concept: true
 translations:
   pl:
     tagline: Personal brand producenta autofunneli z chat mockupem zamiast standardowego zdjęcia eksperta

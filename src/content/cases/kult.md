@@ -28,7 +28,8 @@ result: 3 вкусовых состояния в одном лендинге
 stat:
   value: '3'
   label: визуальные темы продукта — BLACK, VOID и BURN
-order: 0
+order: 8
+concept: true
 translations:
   pl:
     tagline: Koncept limitowanego dropu napoju energetycznego w estetyce undergroundowej kampanii

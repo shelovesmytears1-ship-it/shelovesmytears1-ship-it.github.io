@@ -24,7 +24,8 @@ region:
   - PL
 summary: Дом не продаётся как готовый пакет. ModulArt ведёт от первой схемы через ограничения участка к понятному составу проекта.
 result: система решений вместо каталога моделей
-order: 13
+order: 5
+concept: true
 translations:
   pl:
     tagline: Konfigurator domu modułowego oparty na układzie, działce i odpowiedzialności

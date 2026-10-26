@@ -23,7 +23,8 @@ technologies:
 region:
   - PL
 summary: Лендинг клининговой компании в Варшаве. Cost calculator в hero (60 секунд), реальное фото интерьера вместо stock «уборщица улыбается».
-order: 11
+order: 3
+concept: true
 translations:
   pl:
     tagline: Lending sprzątania w Warszawie — kalkulator kosztów i hero z wnętrzem, nie stock-foto

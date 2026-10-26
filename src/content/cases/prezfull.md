@@ -27,7 +27,8 @@ result: 'перф-бюджет: цель Lighthouse 90+'
 stat:
   value: '90+'
   label: целевой Lighthouse-перформанс (перф-бюджет концепта) в нише, где обычно тяжёлые видео и неоптимизированные фото съедают весь budget
-order: 4
+order: 11
+concept: true
 translations:
   pl:
     tagline: Lending biura architektonicznego z photo-first podejściem

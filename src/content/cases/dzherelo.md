@@ -23,7 +23,8 @@ technologies:
 region:
   - UA
 summary: E-commerce премиум чая. Quiz «подбор по состоянию» вместо стандартного каталога. UA-локализация.
-order: 8
+order: 15
+concept: true
 translations:
   pl:
     tagline: E-commerce premium herbaty z quizem „dobór po stanie" zamiast standardowego katalogu

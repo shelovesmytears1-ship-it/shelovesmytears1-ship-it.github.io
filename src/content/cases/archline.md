@@ -23,7 +23,8 @@ technologies:
 region:
   - PL
 summary: Лендинг ремонта квартир в Польше. Dark interior фото + калькулятор стоимости + 3 пакета (косметический / капитальный / проектантский).
-order: 10
+order: 2
+concept: true
 translations:
   pl:
     tagline: Lending remontów mieszkań w Polsce — ciemne foto wnętrz i kalkulator kosztów

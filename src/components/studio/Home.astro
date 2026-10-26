@@ -24,11 +24,11 @@ const pickCases = (slugs: string[]) =>
 
 // Four different commercial categories and four clearly distinct art directions:
 // product SaaS, cultural experience, premium service and e-commerce.
-const featuredSlugs = ['stepbystep', 'wavemetrics', 'interspace', 'lunea'];
+const featuredSlugs = ['edtech', 'stepbystep', 'archline', 'freshclean'];
 const cases = pickCases(featuredSlugs);
 
 // Featured set for the 3D coverflow carousel
-const galleryItems = pickCases([...featuredSlugs, 'prezfull', 'dispersia']).map((project) => ({
+const galleryItems = pickCases([...featuredSlugs, 'schedulehub', 'modulart']).map((project) => ({
   cover: withBase(project.data.cover || ''),
   href:  p(`work/${project.slug}`),
   title: project.data.title,

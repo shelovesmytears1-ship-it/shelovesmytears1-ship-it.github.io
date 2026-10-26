@@ -28,7 +28,8 @@ result: 43,5 → 2,6 МБ изображений
 stat:
   value: '−94%'
   label: веса изображений без потери визуального масштаба
-order: 16
+order: 19
+concept: true
 translations:
   pl:
     tagline: Wedding atelier, w którym atmosfera i spokojny scenariusz są ważniejsze niż szablonowa „idealność”

@@ -27,7 +27,8 @@ result: backlog за 2 минуты
 stat:
   value: '2 мин'
   label: после окончания встречи backlog в Linear уже собран
-order: 3
+order: 10
+concept: true
 translations:
   pl:
     tagline: AI dla product teamów — spotkania → gotowe zadania w Linear

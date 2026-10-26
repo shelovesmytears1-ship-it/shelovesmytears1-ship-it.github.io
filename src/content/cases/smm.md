@@ -24,7 +24,8 @@ region:
   - PL
 summary: Контент становится гипотезой, а лента отвечает сигналом. Система определяет предпосылку, формат и наблюдаемый эффект до публикации.
 result: 14-дневный протокол тестирования контента
-order: 14
+order: 18
+concept: true
 translations:
   pl:
     tagline: Rejestr sygnału do projektowania publikacji jak kontrolowanych eksperymentów

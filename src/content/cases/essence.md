@@ -23,7 +23,8 @@ technologies:
 region:
   - International
 summary: E-commerce натуральной косметики. Sage palette + organic photography против яркой «beauty industry» эстетики.
-order: 7
+order: 14
+concept: true
 translations:
   pl:
     tagline: E-commerce naturalnej kosmetyki z paletą sage wbrew jaskrawej estetyce branży beauty

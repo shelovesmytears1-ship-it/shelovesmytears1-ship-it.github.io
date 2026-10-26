@@ -24,7 +24,8 @@ region:
   - RU
   - EN
 summary: Multipage премиум одежды. PL/RU/EN, editorial verticals + shop. Минимал без stock-fashion фото.
-order: 9
+order: 16
+concept: true
 translations:
   pl:
     tagline: Multipage premium odzieży z editorial verticals i integracją shop bez stock-fashion zdjęć
