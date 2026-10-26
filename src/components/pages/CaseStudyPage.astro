@@ -16,7 +16,7 @@ const t = useT(lang);
 const p = (path: string) => localePath(path, lang);
 
 const d = entry.data;
-const projectUrl = withBase(`/${entry.slug}/`);
+const projectUrl = d.siteUrl || withBase(`/${entry.slug}/`);
 const caseUrl = new URL(p(`/work/${entry.slug}`), 'https://overflow-web.pl').toString();
 
 /* Split markdown body into sections at every `^## ` heading.

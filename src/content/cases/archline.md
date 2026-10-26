@@ -7,7 +7,7 @@ palette: WARM-DARK-INTERIOR
 tier: 1
 accent: '#C8956D'
 bg: '#0F0F0F'
-siteUrl: https://overflow-web.pl/archline/
+siteUrl: https://archline-showcase.vercel.app
 cover: /covers/archline.jpg
 screens:
   - src: /screens/archline-m1.webp

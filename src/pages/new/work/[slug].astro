@@ -23,7 +23,7 @@ const summary = localized?.summary ?? entry.data.summary;
 const result = localized?.result ?? entry.data.result;
 const rawBody = localized?.body?.trim() || entry.body;
 const body = await marked.parse(rawBody);
-const projectUrl = withBase(`/${entry.slug}/`);
+const projectUrl = entry.data.siteUrl || withBase(`/${entry.slug}/`);
 ---
 
 <NewDirectionLayout title={entry.data.title} description={summary} current="work" lang={lang} currentPath={`work/${entry.slug}`}>

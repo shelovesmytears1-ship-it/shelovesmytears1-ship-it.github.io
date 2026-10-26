@@ -7,7 +7,7 @@ palette: PREMIUM-EDITORIAL-CREAM
 tier: 1
 accent: '#1A140E'
 bg: '#F5F0E8'
-siteUrl: https://overflow-web.pl/touche/
+siteUrl: https://touche-showcase.vercel.app
 cover: /covers/touche.jpg
 screens:
   - src: /screens/touche-m1.webp
