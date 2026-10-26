@@ -22,8 +22,8 @@ result: 'живая система бронирования: интеракти�
 stat:
   value: '2 клика'
   label: до подтверждения визита — конверсионный флоу без лишних шагов
-order: 4
-concept: true
+order: 1
+concept: false
 translations:
   pl:
     tagline: System rezerwacji online dla branży usługowej — wybór terminów, synchronizacja i powiadomienia
