@@ -7,7 +7,7 @@ palette: ASSEMBLY-PAPER-RED
 tier: 1
 accent: '#E6432F'
 bg: '#EDE9DD'
-siteUrl: https://overflow-web.pl/modulart/
+siteUrl: https://modulart-showcase.vercel.app
 cover: /covers/modulart-hero.jpg
 screens:
   - src: /screens/modulart-m1.webp
