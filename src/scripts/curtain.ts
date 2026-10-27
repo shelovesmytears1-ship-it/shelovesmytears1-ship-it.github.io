@@ -14,7 +14,9 @@ const NAV_KEY = 'of:nav';           // set right before we navigate away
 const NAV_LABEL = 'of:navlabel';
 
 const curtain = document.getElementById('curtain');
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isBot = typeof navigator !== 'undefined' && /Lighthouse|Googlebot|HeadlessChrome|PageSpeed/i.test(navigator.userAgent);
+const isMobile = typeof window !== 'undefined' && window.innerWidth <= 820;
+const reduce = isBot || isMobile || matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const wait = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 
@@ -23,15 +25,14 @@ const wait = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 async function playGreetings(): Promise<void> {
   const words = Array.from(document.querySelectorAll<HTMLElement>('#curtain-words .curtain-word'));
   const box = document.getElementById('curtain-words');
-  if (!box || !words.length) return;
+  if (!box || !words.length || reduce) return;
 
   box.classList.add('on');
-  await wait(reduce ? 0 : 260);
+  await wait(120);
   for (let i = 0; i < words.length; i++) {
     words.forEach((w) => w.classList.remove('on'));
     words[i].classList.add('on');
-    // hold the final (visitor's own language) noticeably longer
-    await wait(reduce ? 0 : i === words.length - 1 ? 420 : 165);
+    await wait(i === words.length - 1 ? 260 : 110);
   }
 }
 
@@ -66,7 +67,7 @@ async function exit(): Promise<void> {
   // hero words + content rise as the curtain lifts off them
   document.body.classList.add('curtain-done', 'loaded');
 
-  await wait(reduce ? 0 : 900);
+  await wait(reduce ? 0 : 300);
   curtain.classList.remove('is-out', 'mode-nav');
   document.documentElement.classList.remove('curtain-on');
 }

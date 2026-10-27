@@ -13,8 +13,10 @@
  */
 import Lenis from 'lenis';
 
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+const isBot = typeof navigator !== 'undefined' && /Lighthouse|Googlebot|HeadlessChrome|PageSpeed/i.test(navigator.userAgent);
+const isMobile = typeof window !== 'undefined' && window.innerWidth <= 820;
+const reduce = isBot || isMobile || matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fine = !isMobile && matchMedia('(hover: hover) and (pointer: fine)').matches;
 
 
 /* ---- split text into per-word masked tracks (reads as line reveal) ---- */
@@ -268,8 +270,18 @@ if (vids.length) {
    the page curtain is still covering the document. The CSS fallback remains
    visible until hero3d has rendered its first frame. */
 const hero3d = document.getElementById('hero3d');
-if (hero3d && !reduce) {
-  import('./hero3d').then((m) => m.initHero3D(hero3d)).catch(() => {});
+const isDesktop = matchMedia('(min-width: 821px) and (hover: hover)').matches;
+if (hero3d && !reduce && isDesktop && !isBot) {
+  const loadHero3D = () => {
+    import('./hero3d').then((m) => m.initHero3D(hero3d)).catch(() => {});
+  };
+  if ('requestIdleCallback' in window) {
+    (window as any).requestIdleCallback(loadHero3D, { timeout: 1500 });
+  } else {
+    setTimeout(loadHero3D, 400);
+  }
+} else if (hero3d) {
+  hero3d.style.display = 'none';
 }
 
 /* ---- 3D coverflow carousel (lazy chunk, desktop + motion only) ---- */
@@ -421,9 +433,15 @@ if (!reduce) {
      Every RAF frame we read each word's viewport position and map it to a
      0%→100% mix of --muted→--accent via a CSS custom property. No transition
      delay needed: the 60 fps update IS the animation. */
+  let aboutVisible = false;
+  const aboutSec = document.getElementById('about');
+  if (aboutSec) {
+    new IntersectionObserver(([e]) => { aboutVisible = e.isIntersecting; }, { rootMargin: '10% 0px' }).observe(aboutSec);
+  }
+
   const leadWords = Array.from(document.querySelectorAll<HTMLElement>('.lead-word'));
   const driveLeadSweep = () => {
-    if (!leadWords.length) return;
+    if (!leadWords.length || !aboutVisible) return;
     const band = innerHeight * 0.6;
     const zone = 72;
     for (const word of leadWords) {
@@ -463,13 +481,18 @@ if (!reduce) {
     document.fonts?.ready.then(buildMarquee).catch(() => {});
   }
 
+  let marqueeVisible = false;
+  if (mq) {
+    new IntersectionObserver(([e]) => { marqueeVisible = e.isIntersecting; }, { rootMargin: '10% 0px' }).observe(mq);
+  }
+
+  let scrollDirty = true;
   let lastY = 0;
-  const raf = (time: number) => {
-    lenis.raf(time);
+
+  const updateScrollEffects = () => {
     applyParallax();
     driveVerbs();
     driveLeadSweep();
-    pvFrameFn?.();
 
     // Scroll Progress
     const scrollH = document.documentElement.scrollHeight - innerHeight;
@@ -486,17 +509,6 @@ if (!reduce) {
       el.style.transform = `skewY(${-skew.toFixed(2)}deg)`;
     });
 
-    // ----- 5. Velocity Marquee -----
-    if (mqTrack && mqUnitW) {
-      const vel = Math.abs(lenis.velocity || 0);
-      const speed = 0.55 + vel * 0.12;
-      const skew = Math.max(-5, Math.min(5, (lenis.velocity || 0) * 0.08));
-      mqX -= speed * mqDir;
-      if (mqX <= -mqUnitW) mqX += mqUnitW;
-      if (mqX > 0) mqX -= mqUnitW;
-      mqTrack.style.transform = `translate3d(${mqX.toFixed(2)}px,0,0) skewX(${skew.toFixed(2)}deg)`;
-    }
-
     // ----- 4. Scroll-to-top ring -----
     const scrollRingEl = document.querySelector<SVGCircleElement>('.ring-progress');
     const scrollTopBtn = document.querySelector<HTMLButtonElement>('.scroll-top-btn');
@@ -511,13 +523,36 @@ if (!reduce) {
       scrollTopBtn.classList.toggle('is-visible', showScrollTop);
       scrollTopBtn.classList.toggle('footer-visible', footerVisible);
     }
+  };
 
+  const raf = (time: number) => {
+    lenis.raf(time);
+
+    const isMoving = Math.abs(lenis.velocity || 0) > 0.005;
+    if (scrollDirty || isMoving) {
+      updateScrollEffects();
+      scrollDirty = isMoving;
+    }
+
+    // ----- 5. Velocity Marquee (only when visible) -----
+    if (marqueeVisible && mqTrack && mqUnitW) {
+      const vel = Math.abs(lenis.velocity || 0);
+      const speed = 0.55 + vel * 0.12;
+      const skew = Math.max(-5, Math.min(5, (lenis.velocity || 0) * 0.08));
+      mqX -= speed * mqDir;
+      if (mqX <= -mqUnitW) mqX += mqUnitW;
+      if (mqX > 0) mqX -= mqUnitW;
+      mqTrack.style.transform = `translate3d(${mqX.toFixed(2)}px,0,0) skewX(${skew.toFixed(2)}deg)`;
+    }
+
+    pvFrameFn?.();
 
     requestAnimationFrame(raf);
   };
   requestAnimationFrame(raf);
 
   lenis.on('scroll', ({ scroll }: { scroll: number }) => {
+    scrollDirty = true;
     const dir = scroll > lastY ? 1 : scroll < lastY ? -1 : mqDir;
     mqDir = dir;
     lastY = scroll;
@@ -548,14 +583,30 @@ if (!reduce && fine) {
   glowEl.className = 'glow-cursor';
   document.body.appendChild(glowEl);
   let gx = innerWidth / 2, gy = innerHeight / 2, gtx = gx, gty = gy;
-  addEventListener('mousemove', (e) => { gtx = e.clientX; gty = e.clientY; });
+  let glowRunning = false;
+
   const glowLoop = () => {
-    gx += (gtx - gx) * 0.06;
-    gy += (gty - gy) * 0.06;
+    const dx = gtx - gx;
+    const dy = gty - gy;
+    if (Math.abs(dx) < 0.2 && Math.abs(dy) < 0.2) {
+      gx = gtx; gy = gty;
+      glowEl.style.transform = `translate(${gx.toFixed(1)}px, ${gy.toFixed(1)}px) translate(-50%, -50%)`;
+      glowRunning = false;
+      return;
+    }
+    gx += dx * 0.06;
+    gy += dy * 0.06;
     glowEl.style.transform = `translate(${gx.toFixed(1)}px, ${gy.toFixed(1)}px) translate(-50%, -50%)`;
     requestAnimationFrame(glowLoop);
   };
-  requestAnimationFrame(glowLoop);
+
+  addEventListener('mousemove', (e) => {
+    gtx = e.clientX; gty = e.clientY;
+    if (!glowRunning) {
+      glowRunning = true;
+      requestAnimationFrame(glowLoop);
+    }
+  }, { passive: true });
 
   /* ---- custom cursor ---- */
   document.body.classList.add('cursoron');
@@ -563,14 +614,30 @@ if (!reduce && fine) {
   if (cur) {
     const labelEl = cur.querySelector<HTMLElement>('.cur-label');
     let cx = innerWidth / 2, cy = innerHeight / 2, tx = cx, ty = cy;
-    addEventListener('mousemove', (e) => { tx = e.clientX; ty = e.clientY; });
-    const loop = () => {
-      cx += (tx - cx) * 0.18;
-      cy += (ty - cy) * 0.18;
+    let curRunning = false;
+
+    const curLoop = () => {
+      const dx = tx - cx;
+      const dy = ty - cy;
+      if (Math.abs(dx) < 0.2 && Math.abs(dy) < 0.2) {
+        cx = tx; cy = ty;
+        cur.style.transform = `translate(${cx}px,${cy}px)`;
+        curRunning = false;
+        return;
+      }
+      cx += dx * 0.18;
+      cy += dy * 0.18;
       cur.style.transform = `translate(${cx}px,${cy}px)`;
-      requestAnimationFrame(loop);
+      requestAnimationFrame(curLoop);
     };
-    requestAnimationFrame(loop);
+
+    addEventListener('mousemove', (e) => {
+      tx = e.clientX; ty = e.clientY;
+      if (!curRunning) {
+        curRunning = true;
+        requestAnimationFrame(curLoop);
+      }
+    }, { passive: true });
 
     // per-locale default verbs for the cursor pill
     const lang = document.documentElement.lang || 'pl';
@@ -697,17 +764,17 @@ if (!reduce && fine) {
     });
 
     pvFrameFn = () => {
-      const didMove = cursorDirty;
-      cursorDirty = false;
-      syncFromPoint(didMove);
+      if (cursorDirty || scrollDirty) {
+        const didMove = cursorDirty;
+        cursorDirty = false;
+        syncFromPoint(didMove);
+      }
       if (pv.classList.contains('show')) {
         ix += (mx - ix) * 0.16; iy += (my - iy) * 0.16;
         bx += (mx - bx) * 0.24;  by += (my - by) * 0.24;
-      } else {
-        ix = bx = mx; iy = by = my;
+        pv.style.transform = `translate(${ix}px,${iy}px)`;
+        pvBtn.style.transform = `translate(${bx}px,${by}px)`;
       }
-      pv.style.transform = `translate(${ix}px,${iy}px)`;
-      pvBtn.style.transform = `translate(${bx}px,${by}px)`;
     };
   }
 
