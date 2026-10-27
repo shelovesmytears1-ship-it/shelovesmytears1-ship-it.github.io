@@ -1,0 +1,321 @@
+---
+import StudioLayout from '../layouts/StudioLayout.astro';
+
+const lang = 'pl' as const;
+---
+
+<StudioLayout title="overflow — Formularz wdrożeniowy (Start zlecenia)" description="Oficjalny formularz startowy wdrożenia strony www dla wykonawców i firm usługowych." lang={lang}>
+  <section class="page-hero wrap">
+    <span class="pg-ghost" aria-hidden="true">START</span>
+    <p class="eye">FORMULARZ WDROŻENIA</p>
+    <h1 class="disp contact-title">Uruchomienie strony <em>One-Page.</em></h1>
+    <p class="page-lede">Wypełnij poniższe dane (zajmuje ok. 3 minut). Na tej podstawie przygotowujemy układ strony, podpinamy domenę i uruchamiamy projekt w 4–5 dni.</p>
+  </section>
+
+  <section class="sec wrap" style="max-width: 860px; margin-inline: auto;">
+    <div class="brief-card">
+      <form id="brief-form" class="brief-form">
+        <!-- Sekcja 1: Dane firmy -->
+        <div class="brief-group">
+          <h2 class="brief-heading"><span>01</span> Dane firmy i kontakt</h2>
+          <label class="b-field">
+            <span>Nazwa firmy lub imię i nazwisko wykonawcy *</span>
+            <input type="text" id="b-name" name="name" required placeholder="np. Usługi Gazowe i Hydrauliczne Jan Kowalski" />
+          </label>
+          <div class="b-row">
+            <label class="b-field">
+              <span>Numer telefonu (do WhatsApp i na stronę) *</span>
+              <input type="tel" id="b-phone" name="phone" required placeholder="np. +48 123 456 789" />
+            </label>
+            <label class="b-field">
+              <span>Adres e-mail *</span>
+              <input type="email" id="b-email" name="email" required placeholder="twoj@email.pl" />
+            </label>
+          </div>
+          <label class="b-field">
+            <span>Miasto i rejon działania *</span>
+            <input type="text" id="b-city" name="city" required placeholder="np. Gdańsk, Gdynia, Sopot + okolice do 30 km" />
+          </label>
+        </div>
+
+        <!-- Sekcja 2: Oferta i usługi -->
+        <div class="brief-group">
+          <h2 class="brief-heading"><span>02</span> Usługi, cennik i certyfikaty</h2>
+          <label class="b-field">
+            <span>Główne usługi i orientacyjny cennik *</span>
+            <textarea id="b-services" name="services" rows="4" required placeholder="Wypisz w punktach, np.:&#10;1. Montaż i wymiana kotłów gazowych — od 1 500 zł&#10;2. Podłączenie płyt gazowych z pieczątką do gwarancji — 200 zł&#10;3. Próby szczelności i audyty instalacji&#10;4. Pogotowie awaryjne"></textarea>
+          </label>
+          <label class="b-field">
+            <span>Uprawnienia, certyfikaty lub atuty firmy</span>
+            <input type="text" id="b-certs" name="certs" placeholder="np. Uprawnienia gazowe SEP G3, autoryzowany instalator Bosch i Viessmann, 12 lat na rynku" />
+          </label>
+          <label class="b-field">
+            <span>Preferowana nazwa domeny internetowej</span>
+            <input type="text" id="b-domain" name="domain" placeholder="np. instalacje-kowalski.pl lub gazownik-gdansk.pl" />
+          </label>
+          <label class="b-field">
+            <span>Zdjęcia z realizacji i logo (link do Dysku Google / chmury)</span>
+            <input type="url" id="b-photos" name="photos" placeholder="Wklej link do folderu ze zdjęciami lub zaznacz, że prześlesz na WhatsApp" />
+            <small class="b-hint">Zdjęcia możesz też po prostu podesłać bezpośrednio na nasz WhatsApp po wysłaniu formularza.</small>
+          </label>
+        </div>
+
+        <!-- Sekcja 3: Warunki umowy -->
+        <div class="brief-group">
+          <h2 class="brief-heading"><span>03</span> Warunki zlecenia i rozliczenia</h2>
+          <div class="terms-box">
+            <h3 class="terms-title">Podsumowanie warunków współpracy (One-Page pod klucz):</h3>
+            <ul class="terms-list">
+              <li><strong>Cena kompletna:</strong> 1 490 zł (bez żadnych ukrytych kosztów ani miesięcznych abonamentów za stronę).</li>
+              <li><strong>Zadatek 50/50:</strong> 50% zadatku na start prac (745 zł), druga połowa (745 zł) dopiero po pełnym wdrożeniu i akceptacji strony na Twoim telefonie.</li>
+              <li><strong>Czas realizacji:</strong> 4–5 dni roboczych od momentu przekazania materiałów.</li>
+              <li><strong>Gwarancja i jakość:</strong> W cenie domena .pl, darmowy i szybki hosting na zawsze, optymalizacja pod smartfony (97+ PageSpeed) oraz 2 tury bezpłatnych poprawek.</li>
+            </ul>
+          </div>
+
+          <label class="b-checkbox">
+            <input type="checkbox" id="b-terms" name="terms" required />
+            <span><strong>Akceptuję powyższe warunki zlecenia</strong> i zamawiam wdrożenie strony w kwocie 1 490 zł (rozliczenie 50/50).</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn magnetic b-submit" data-cursor>
+          <span class="btn-text">Zatwierdź zlecenie i przejdź do wdrożenia →</span>
+        </button>
+      </form>
+
+      <!-- Ekran sukcesu -->
+      <div id="brief-success" class="brief-success" hidden>
+        <div class="success-icon">✓</div>
+        <h2 class="disp">Zgłoszenie zostało pomyślnie przyjęte!</h2>
+        <p class="success-lead">Dziękujemy za złożenie zamówienia. Dane zostały zarejestrowane w Overflow Web.</p>
+        
+        <div class="success-box">
+          <h3>Kolejny krok — wpłata zadatku (50% = 745 zł):</h3>
+          <p>Abyśmy mogli od razu zarezerwować domenę i rozpocząć składanie strony, prosimy o wpłatę zadatku:</p>
+          <div class="pay-details">
+            <p><strong>Odbiorca:</strong> Overflow Web — Daniil</p>
+            <p><strong>Tytuł przelewu:</strong> Zadatek na wdrożenie strony — <span id="pay-name">[Nazwa]</span></p>
+            <p><strong>BLIK na numer:</strong> +48 731 927 061 (lub przelew tradycyjny)</p>
+          </div>
+        </div>
+
+        <a id="wa-confirm-btn" href="#" target="_blank" rel="noopener" class="btn magnetic" style="margin-top: 2rem;">
+          <span class="btn-text">Napisz na WhatsApp i potwierdź start →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .brief-card {
+      background: var(--surface, color-mix(in srgb, var(--ink) 4%, transparent));
+      border: 1px solid var(--line, rgba(0, 0, 0, 0.1));
+      border-radius: 16px;
+      padding: clamp(1.5rem, 4vw, 3rem);
+    }
+    .brief-group {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--line, rgba(0, 0, 0, 0.08));
+    }
+    .brief-group:last-of-type {
+      border-bottom: none;
+      margin-bottom: 1.5rem;
+    }
+    .brief-heading {
+      font-family: var(--disp), sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .brief-heading span {
+      font-family: var(--mono), monospace;
+      font-size: 0.85rem;
+      color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+    }
+    .b-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .b-field span {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .b-field input, .b-field textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--line, rgba(0,0,0,0.15));
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+    }
+    .b-field input:focus, .b-field textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .b-hint {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+    .b-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 600px) {
+      .b-row { grid-template-columns: 1fr; }
+    }
+    .terms-box {
+      background: color-mix(in srgb, var(--accent) 6%, var(--bg));
+      border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .terms-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--ink);
+    }
+    .terms-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .terms-list li::before {
+      content: "✓ ";
+      color: var(--accent);
+      font-weight: bold;
+    }
+    .b-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      cursor: pointer;
+      font-size: 0.92rem;
+      line-height: 1.45;
+      user-select: none;
+    }
+    .b-checkbox input {
+      margin-top: 0.2rem;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent);
+    }
+    .b-submit {
+      width: 100%;
+      padding: 1.1rem;
+      font-size: 1.05rem;
+      text-align: center;
+      justify-content: center;
+    }
+    .brief-success {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 2rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 1.5rem;
+    }
+    .success-lead {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+    .success-box {
+      background: color-mix(in srgb, var(--accent) 8%, var(--bg));
+      border: 1px dashed var(--accent);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: left;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .success-box h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .pay-details {
+      margin-top: 1rem;
+      font-family: var(--mono), monospace;
+      font-size: 0.88rem;
+      line-height: 1.8;
+      background: var(--bg);
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+    }
+  </style>
+
+  <script>
+    const form = document.getElementById('brief-form') as HTMLFormElement;
+    const success = document.getElementById('brief-success');
+    const payName = document.getElementById('pay-name');
+    const waBtn = document.getElementById('wa-confirm-btn') as HTMLAnchorElement;
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const name = fd.get('name') as string;
+      const phone = fd.get('phone') as string;
+      const email = fd.get('email') as string;
+      const city = fd.get('city') as string;
+      const services = fd.get('services') as string;
+      const certs = fd.get('certs') as string;
+      const domain = fd.get('domain') as string;
+      const photos = fd.get('photos') as string;
+
+      // Update success screen
+      if (payName) payName.textContent = name;
+
+      // Format WhatsApp message
+      const msg = `Cześć Daniil! Wypełniłem formularz wdrożeniowy na stronie Overflow Web.\n\n` +
+        `*Firma / Wykonawca:* ${name}\n` +
+        `*Telefon:* ${phone}\n` +
+        `*E-mail:* ${email}\n` +
+        `*Miasto:* ${city}\n` +
+        `*Usługi:* ${services}\n` +
+        (certs ? `*Uprawnienia:* ${certs}\n` : '') +
+        (domain ? `*Domena:* ${domain}\n` : '') +
+        (photos ? `*Zdjęcia/Logo:* ${photos}\n` : '') +
+        `\n*Akceptuję warunki umowy (1 490 zł, 50% zadatku na start).* Czekam na potwierdzenie startu!`;
+
+      if (waBtn) {
+        waBtn.href = `https://wa.me/48731927061?text=${encodeURIComponent(msg)}`;
+      }
+
+      form.style.display = 'none';
+      if (success) success.hidden = false;
+      window.scrollTo({ top: 100, behavior: 'smooth' });
+    });
+  </script>
+</StudioLayout>
