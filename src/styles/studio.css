@@ -17,11 +17,11 @@
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;background:var(--bg);overflow-x:hidden;
+html{scroll-behavior:smooth;background:var(--bg);overflow-x:clip;
   -webkit-text-size-adjust:100%;text-size-adjust:100%;}
 /* overflow-x:clip (not hidden) contains horizontal overflow WITHOUT turning
    body into a scroll container — so position:sticky descendants keep working */
-body{background:var(--bg);color:var(--ink);font-family:var(--body),system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+body{background:var(--bg);color:var(--ink);font-family:var(--body),system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip;
   -webkit-tap-highlight-color:transparent;}
 .scroll-progress {
   position: fixed;
