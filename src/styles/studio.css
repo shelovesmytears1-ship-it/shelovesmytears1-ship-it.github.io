@@ -17,11 +17,11 @@
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;background:var(--bg);overflow-x:clip;
+html{scroll-behavior:smooth;background:var(--bg);overflow-x:hidden;
   -webkit-text-size-adjust:100%;text-size-adjust:100%;}
 /* overflow-x:clip (not hidden) contains horizontal overflow WITHOUT turning
    body into a scroll container — so position:sticky descendants keep working */
-body{background:var(--bg);color:var(--ink);font-family:var(--body),system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip;
+body{background:var(--bg);color:var(--ink);font-family:var(--body),system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
   -webkit-tap-highlight-color:transparent;}
 .scroll-progress {
   position: fixed;
@@ -51,7 +51,7 @@ em{font-family:var(--disp);font-style:normal;color:var(--accent);font-weight:var
 /* ---- loading screen / page-transition curtain ---- */
 /* lvh, not svh: an overlay must cover the LARGEST possible viewport, or the
    page shows through underneath once the address bar hides */
-.curtain{position:fixed;left:0;top:0;width:100%;height:100vh;height:100lvh;z-index:9998;pointer-events:none;
+.curtain{position:fixed;left:0;top:0;width:100%;height:100vh;height:100lvh;z-index:9998;pointer-events:none;overflow:hidden;
   transform:translateY(100%);visibility:hidden;}
 html.curtain-on .curtain{visibility:visible;}
 /* covering: sits over the page */
