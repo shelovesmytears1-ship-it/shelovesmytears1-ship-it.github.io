@@ -308,6 +308,7 @@ if (gallery) {
    AFTER lenis.raf() has advanced the scroll position, so getBoundingClientRect
    returns the correct viewport coordinates for the current frame. */
 let pvFrameFn: (() => void) | null = null;
+let scrollDirty = true;
 
 /* Everything below is enhancement only. */
 if (!reduce) {
@@ -486,7 +487,7 @@ if (!reduce) {
     new IntersectionObserver(([e]) => { marqueeVisible = e.isIntersecting; }, { rootMargin: '10% 0px' }).observe(mq);
   }
 
-  let scrollDirty = true;
+  scrollDirty = true;
   let lastY = 0;
 
   const updateScrollEffects = () => {

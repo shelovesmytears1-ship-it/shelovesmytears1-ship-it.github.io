@@ -28,11 +28,11 @@ async function playGreetings(): Promise<void> {
   if (!box || !words.length || reduce) return;
 
   box.classList.add('on');
-  await wait(120);
+  await wait(reduce ? 0 : 200);
   for (let i = 0; i < words.length; i++) {
     words.forEach((w) => w.classList.remove('on'));
     words[i].classList.add('on');
-    await wait(i === words.length - 1 ? 260 : 110);
+    await wait(reduce ? 0 : i === words.length - 1 ? 400 : 160);
   }
 }
 
@@ -67,7 +67,7 @@ async function exit(): Promise<void> {
   // hero words + content rise as the curtain lifts off them
   document.body.classList.add('curtain-done', 'loaded');
 
-  await wait(reduce ? 0 : 300);
+  await wait(reduce ? 0 : 900);
   curtain.classList.remove('is-out', 'mode-nav');
   document.documentElement.classList.remove('curtain-on');
 }

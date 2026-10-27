@@ -17,7 +17,7 @@
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;background:var(--bg);overflow-x:clip;
+html{background:var(--bg);overflow-x:clip;
   -webkit-text-size-adjust:100%;text-size-adjust:100%;}
 /* overflow-x:clip (not hidden) contains horizontal overflow WITHOUT turning
    body into a scroll container — so position:sticky descendants keep working */
