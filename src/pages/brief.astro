@@ -225,6 +225,7 @@ const lang = 'pl' as const;
       accent-color: var(--accent);
     }
     .b-submit {
+      --fd: 2800px !important;
       width: 100%;
       padding: 1.1rem;
       font-size: 1.05rem;
@@ -294,19 +295,27 @@ const lang = 'pl' as const;
       const domain = fd.get('domain') as string;
       const photos = fd.get('photos') as string;
 
-      // Send background notification to Telegram
+      // Send submission directly to overflow.web1@gmail.com
       try {
-        const payload = new URLSearchParams({
-          name: `${name} [Brief 1490 zł]`,
-          channel: `Tel: ${phone} | Email: ${email}`,
-          type: `Wdrożenie One-Page (Miasto: ${city})`,
-          message: `Usługi:\n${services}\n\nUprawnienia: ${certs || 'Brak'}\nDomena: ${domain || 'Brak'}\nZdjęcia: ${photos || 'Na WhatsApp'}\nWarunki 50/50 (1490 zł): Zaakceptowano`,
-        });
-        fetch('https://ornate-taiyaki-6a1716.netlify.app/.netlify/functions/notify', {
+        const payload = {
+          _subject: `Nowy brief wdrożeniowy One-Page (1 490 zł) — ${name}`,
+          Klient: name,
+          Telefon: phone,
+          Email: email,
+          Miasto: city,
+          Uslugi: services,
+          Uprawnienia: certs || 'Brak',
+          Domena: domain || 'Brak',
+          Zdjecia: photos || 'Zostaną przesłane na WhatsApp',
+          Umowa_Warunki_50_50: 'Zaakceptowano (1 490 zł, zadatek 745 zł)',
+        };
+        fetch('https://formsubmit.co/ajax/overflow.web1@gmail.com', {
           method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: payload.toString(),
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify(payload),
         }).catch(() => {});
       } catch {}
 

@@ -234,6 +234,8 @@ document.querySelectorAll<HTMLElement>('.btn, .nav-cta').forEach((b) => {
     const r = b.getBoundingClientRect();
     b.style.setProperty('--fx', `${e.clientX - r.left}px`);
     b.style.setProperty('--fy', `${e.clientY - r.top}px`);
+    const d = Math.ceil(Math.hypot(r.width, r.height) * 2.5);
+    b.style.setProperty('--fd', `${Math.max(d, 1200)}px`);
   });
 });
 
