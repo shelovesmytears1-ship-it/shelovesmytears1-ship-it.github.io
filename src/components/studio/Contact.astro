@@ -62,11 +62,26 @@ const errorMsg     = { pl: 'Coś poszło nie tak. Napisz bezpośrednio.', ru: '�
     if (errorEl) errorEl.hidden = true;
 
     try {
-      await fetch('https://ornate-taiyaki-6a1716.netlify.app/.netlify/functions/notify', {
+      const fd = new FormData(form!);
+      const cName = fd.get('name') || '';
+      const cChannel = fd.get('channel') || '';
+      const cType = fd.get('type') || '';
+      const cMsg = fd.get('message') || '';
+
+      const tgText = `⚡ <b>NOWE ZAPYTANIE ZE STRONY</b>\n\n` +
+        `👤 <b>Imię:</b> ${cName}\n` +
+        `📞 <b>Kontakt:</b> ${cChannel}\n` +
+        `🎯 <b>Typ projektu:</b> ${cType}\n\n` +
+        `💬 <b>Wiadomość:</b>\n${cMsg}`;
+
+      await fetch('https://api.telegram.org/bot9268064724:AAFb0yXWLH2DmssGfsCbW_bibew0NoJ_Lws/sendMessage', {
         method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(new FormData(form) as unknown as Record<string, string>).toString(),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: '1327146718',
+          text: tgText,
+          parse_mode: 'HTML',
+        }),
       });
       if (form) form.hidden = true;
       if (success) success.hidden = false;

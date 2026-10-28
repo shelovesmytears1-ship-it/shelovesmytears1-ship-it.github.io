@@ -295,27 +295,27 @@ const lang = 'pl' as const;
       const domain = fd.get('domain') as string;
       const photos = fd.get('photos') as string;
 
-      // Send submission directly to overflow.web1@gmail.com
+      // Send submission directly to Telegram Bot (@qweqweqweqqq_bot)
       try {
-        const payload = {
-          _subject: `Nowy brief wdrożeniowy One-Page (1 490 zł) — ${name}`,
-          Klient: name,
-          Telefon: phone,
-          Email: email,
-          Miasto: city,
-          Uslugi: services,
-          Uprawnienia: certs || 'Brak',
-          Domena: domain || 'Brak',
-          Zdjecia: photos || 'Zostaną przesłane na WhatsApp',
-          Umowa_Warunki_50_50: 'Zaakceptowano (1 490 zł, zadatek 745 zł)',
-        };
-        fetch('https://formsubmit.co/ajax/overflow.web1@gmail.com', {
+        const tgText = `🔥 <b>NOWA ZGŁOSZENIE / BRIEF (1 490 zł)</b>\n\n` +
+          `👤 <b>Klient / Firma:</b> ${name}\n` +
+          `📞 <b>Telefon:</b> ${phone}\n` +
+          `✉️ <b>E-mail:</b> ${email}\n` +
+          `📍 <b>Miasto:</b> ${city}\n\n` +
+          `🛠 <b>Usługi i cennik:</b>\n${services}\n\n` +
+          (certs ? `📜 <b>Certyfikaty:</b> ${certs}\n` : '') +
+          (domain ? `🌐 <b>Domena:</b> ${domain}\n` : '') +
+          (photos ? `📸 <b>Zdjęcia/Logo:</b> ${photos}\n` : '') +
+          `\n✅ <b>Warunki umowy 50/50:</b> Zaakceptowano (1 490 zł, zadatek 745 zł)`;
+
+        fetch('https://api.telegram.org/bot9268064724:AAFb0yXWLH2DmssGfsCbW_bibew0NoJ_Lws/sendMessage', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-          },
-          body: JSON.stringify(payload),
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: '1327146718',
+            text: tgText,
+            parse_mode: 'HTML',
+          }),
         }).catch(() => {});
       } catch {}
 
