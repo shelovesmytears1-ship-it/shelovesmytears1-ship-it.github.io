@@ -14,11 +14,8 @@
     gsap.registerPlugin(ScrollTrigger);
 
     if (window.Lenis && !lite) {
-      var lenis = new Lenis({ lerp: 0.085, smoothWheel: true });
-      lenis.on("scroll", ScrollTrigger.update);
-      gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
-      gsap.ticker.lagSmoothing(0);
-      document.documentElement.classList.add("has-lenis");
+      // Lenis disabled completely: keep fast native scroll
+      document.documentElement.classList.add("has-native-scroll");
     }
 
     if (lite) {

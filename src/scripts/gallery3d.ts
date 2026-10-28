@@ -16,7 +16,7 @@
  */
 import * as THREE from 'three';
 
-type Item = { cover: string; href: string; title: string; niche?: string };
+type Item = { cover: string; href: string; title: string; niche?: string; typeLabel?: string };
 
 /** Card pose by absolute offset from the front slot. */
 const KF = [
