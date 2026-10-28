@@ -294,6 +294,22 @@ const lang = 'pl' as const;
       const domain = fd.get('domain') as string;
       const photos = fd.get('photos') as string;
 
+      // Send background notification to Telegram
+      try {
+        const payload = new URLSearchParams({
+          name: `${name} [Brief 1490 zł]`,
+          channel: `Tel: ${phone} | Email: ${email}`,
+          type: `Wdrożenie One-Page (Miasto: ${city})`,
+          message: `Usługi:\n${services}\n\nUprawnienia: ${certs || 'Brak'}\nDomena: ${domain || 'Brak'}\nZdjęcia: ${photos || 'Na WhatsApp'}\nWarunki 50/50 (1490 zł): Zaakceptowano`,
+        });
+        fetch('https://ornate-taiyaki-6a1716.netlify.app/.netlify/functions/notify', {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: payload.toString(),
+        }).catch(() => {});
+      } catch {}
+
       // Update success screen
       if (payName) payName.textContent = name;
 
