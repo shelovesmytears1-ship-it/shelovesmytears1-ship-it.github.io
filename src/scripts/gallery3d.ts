@@ -296,7 +296,7 @@ export function initGallery3D(container: HTMLElement, caption: HTMLElement | nul
       titleEl.classList.add('swap');
       clearTimeout(swapTimer);
       swapTimer = window.setTimeout(() => {
-        titleEl.textContent = items[i].title;
+        titleEl.textContent = `${items[i].title} · ${items[i].typeLabel}`;
         titleEl.classList.remove('swap');
       }, 200);
     }

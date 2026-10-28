@@ -9,18 +9,9 @@
   <link rel="stylesheet" href="smm-preview.css">
   <link rel="stylesheet" href="smm-expanded.css">
   <link rel="stylesheet" href="hero-v2.css">
-</head>
+<meta name="robots" content="noindex, follow"></head>
 <body>
-<!--
-DESIGN CONTRACT
-Thesis: Treść przechodzi przez sterownię, rejestr i decyzję; strona pokazuje operacyjny system, nie obiecuje zasięgu.
-Composition: Broadcast desk + logging paper. Sekcje zmieniają topologię między konsolą, rejestrem, matrycą i stołem przeglądu.
-Depth: Płaskie warstwy tonalne, ostre reguły, bez szkła, gradientów i dekoracyjnych wykresów.
-Typography: Barlow Condensed odpowiada za komunikaty emisyjne, Manrope za instrukcje i dane jakościowe.
-Color: Midnight control room, warm paper, cobalt signal ink, acid-orange live marker.
-Signature: Każdy przykład kończy się polem DECYZJA; timecode i znaczniki są funkcjonalne, nie dekoracyjne.
-Avoid: SaaS dashboard, neon cyberpunk, fake metrics, agencyjne kafelki, stock portraits, gwarancje algorytmiczne.
--->
+
 <a class="skip" href="#main">Przejdź do treści</a>
 <header>
   <a class="logo" href="#start"><i aria-hidden="true"></i>SMM VANGUARD</a>
@@ -32,19 +23,27 @@ Avoid: SaaS dashboard, neon cyberpunk, fake metrics, agencyjne kafelki, stock po
 </header>
 <main id="main">
   <section class="hero" id="start">
-    <div class="hero-main">
-      <h1>Treść to <em>hipoteza.</em> Feed odpowiada sygnałem.</h1>
+  <div class="hero-lab">
+    <div class="hero-register"><span class="reg-brand"><i aria-hidden="true"></i>SMM VANGUARD / SIGNAL LAB</span><span>PLIK 014 · 14 DNI</span></div>
+    <div class="hero-statement">
+      <h1>Treść to <em>hipoteza.</em><br class="hero-break"> Feed odpowiada <em>sygnałem.</em></h1>
       <p>Projektuj publikacje jak eksperyment: jedna premisa, mierzalny sygnał, konkretna decyzja. Bez kultu algorytmu i metryk wyjętych z kontekstu.</p>
-      <a class="button" href="#test">Zaprogramuj test</a>
     </div>
-    <aside class="cue" aria-label="Karta programu">
-      <div class="cue-top"><span>PROGRAM / 014</span><b>SYMULACJA</b></div>
-      <div class="cue-number" aria-hidden="true"><strong>14</strong><span>DNI / JEDEN TEST</span></div>
-      <div class="timecode" aria-hidden="true"><span>00</span><i>:</i><span>14</span><i>:</i><span>00</span></div>
-      <div class="cue-copy"><h2 id="cueTitle">Premisa przed formatem</h2><p id="cueText">Najpierw zapisz, co ma zmienić się w głowie odbiorcy. Dopiero potem wybierz rolkę, karuzelę albo post.</p></div>
-      <div class="program-buttons" aria-label="Etap programu"><button class="on" data-cue="0" aria-pressed="true"><span>PREMISA</span><small>co zmieniamy</small></button><button data-cue="1" aria-pressed="false"><span>FORMAT</span><small>jak emitujemy</small></button><button data-cue="2" aria-pressed="false"><span>SYGNAŁ</span><small>co obserwujemy</small></button></div>
-    </aside>
-  </section>
+    <div class="hero-actions"><a class="button" href="#test">Zaprogramuj test</a><a class="hero-textlink" href="#metoda">Zobacz metodę <span aria-hidden="true">→</span></a></div>
+    <div class="signal-ruler" aria-hidden="true">
+      <span>HIPOTEZA / EMISJA / OBSERWACJA / DECYZJA</span>
+      <div class="signal-line"><i></i><i></i><i></i><i></i></div>
+    </div>
+  </div>
+  <aside class="cue" aria-label="Karta programu">
+    <div class="cue-top"><span>TEST / 014</span><span>STATUS: GOTOWY</span></div>
+    <div class="cue-number"><strong>14</strong><span>DNI<br>JEDEN TEST</span><small>00:14:00</small></div>
+    <div class="cue-copy"><h2 id="cueTitle">Premisa przed formatem</h2><p id="cueText">Najpierw zapisz, co ma zmienić się w głowie odbiorcy. Dopiero potem wybierz rolkę, karuzelę albo post.</p></div>
+    <div class="cue-trace" aria-hidden="true"><div class="trace-head"><span>SYGNAŁ / 14 DNI</span><span>D01 → D14</span></div><div class="trace-chart"><i style="--h:18%"></i><i style="--h:32%"></i><i style="--h:24%"></i><i style="--h:46%"></i><i style="--h:38%"></i><i style="--h:60%"></i><i style="--h:44%"></i><i style="--h:72%"></i><i style="--h:58%"></i><i style="--h:86%"></i><i style="--h:64%"></i><i style="--h:52%"></i><i style="--h:78%"></i><i style="--h:94%"></i></div><div class="trace-days"><span>PREMISA</span><span>EMISJA</span><span>OBSERWACJA</span><span>DECYZJA</span></div></div>
+    <div class="program-buttons" aria-label="Etap programu"><button class="on" data-cue="0" aria-pressed="true"><span>PREMISA</span><small>co zmieniamy</small></button><button data-cue="1" aria-pressed="false"><span>FORMAT</span><small>jak emitujemy</small></button><button data-cue="2" aria-pressed="false"><span>SYGNAŁ</span><small>co obserwujemy</small></button></div>
+    <div class="cue-foot"><span>PREMISA → FORMAT → SYGNAŁ</span><span>v.01</span></div>
+  </aside>
+</section>
 
   <section class="manifesto">
     <h2>Publikacja nie jest jeszcze eksperymentem.</h2>
@@ -139,5 +138,27 @@ Avoid: SaaS dashboard, neon cyberpunk, fake metrics, agencyjne kafelki, stock po
 <footer><a class="logo" href="#start"><i aria-hidden="true"></i>SMM VANGUARD</a><p>CONCEPT / 2026 · bez fikcyjnych wyników</p></footer>
 <div class="toast" id="toast" role="status"></div>
 <script src="smm-preview.js"></script>
+<div class="ov-badge" id="ov-badge">
+  <a class="ov-badge__main" href="https://overflow-web.pl/work/smm/">
+    <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
+  </a>
+  <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
+</div>
+<style>
+.ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.ov-badge a{color:inherit;text-decoration:none}
+.ov-badge__main{display:flex;align-items:center;gap:5px}
+.ov-badge__mark{font-weight:700;letter-spacing:-.02em}
+.ov-badge__dot{opacity:.45}
+.ov-badge__type{opacity:.7}
+.ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
+.ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
+@media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
+@media print{.ov-badge{display:none}}
+</style>
+<!-- ov-badge-init -->
+<script>
+(function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
+</script>
 </body>
 </html>

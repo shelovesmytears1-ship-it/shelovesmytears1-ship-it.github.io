@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="ARCHLINE — koncepcyjny dziennik remontu z zakresem, odbiorami i kontrolą zmian."><title>ARCHLINE — remont zapisany krok po kroku</title><link rel="stylesheet" href="arch-preview.css"><link rel="stylesheet" href="arch-expanded.css"></head>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="ARCHLINE — koncepcyjny dziennik remontu z zakresem, odbiorami i kontrolą zmian."><title>ARCHLINE — remont zapisany krok po kroku</title><link rel="stylesheet" href="arch-preview.css"><link rel="stylesheet" href="arch-expanded.css"><meta name="robots" content="noindex, follow"></head>
 <body><a class="skip" href="#main">Przejdź do treści</a><header><a class="brand" href="#top">ARCHLINE</a><nav><a href="#estimate">Zakres</a><a href="#checkpoints">Odbiory</a><a href="#compare">Przed / po</a></nav><a href="#contact">Omów mieszkanie</a></header>
 <main id="main">
 <section class="hero" id="top"><div><span>DZIENNIK / MIESZKANIE / 2026</span><h1>Remont widać nie tylko po efekcie. Widać go po decyzjach.</h1><p>Projekt, kosztorys, kolejność prac i odbiory zapisane tak, żeby było wiadomo: co robimy, kto odpowiada i co może zmienić budżet.</p><a href="#estimate">Zbuduj zakres orientacyjny</a></div><figure><img src="images/hero.webp" alt="Wykończone nowoczesne wnętrze"><figcaption>REALIZACJA KONCEPCYJNA · WARSZAWA</figcaption></figure></section>
@@ -17,4 +17,26 @@
 <section class="responsibility" aria-labelledby="responsibility-title"><div><h2 id="responsibility-title">Kto dostarcza decyzję, zanim ekipa czeka.</h2><p>Plan odpowiedzialności odróżnia koordynację od akceptacji i pokazuje, kiedy potrzebny jest specjalista branżowy.</p></div><div><p><span>ARCHLINE</span>koordynacja, zapisy, kontrola zakresu</p><p><span>WŁAŚCICIEL</span>budżet, materiały, zmiany funkcjonalne</p><p><span>PROJEKTANT</span>dokumentacja i odpowiedzi projektowe</p><p><span>BRANŻYSTA</span>pomiary, próby i odbiory specjalistyczne</p></div></section>
 <section class="questions" aria-labelledby="questions-title"><div><h2 id="questions-title">Pytania przed wejściem na budowę.</h2><p>Odpowiedzi opisują logikę koncepcji, nie stanowią warunków usługi.</p></div><div><details><summary>Czy kalkulator jest ofertą?</summary><p>Nie. Pokazuje orientacyjny przedział na podstawie trzech założeń i nie uwzględnia stanu odkrytego, projektu ani cen dostawców.</p></details><details><summary>Kiedy zmienia się budżet?</summary><p>Po udokumentowanej zmianie zakresu, odkryciu stanu niezgodnego z założeniami lub aktualizacji potwierdzonych cen i terminów.</p></details><details><summary>Dlaczego odbiorów jest kilka?</summary><p>Bo instalacji i hydroizolacji nie można rzetelnie ocenić po zamknięciu kolejnych warstw.</p></details><details><summary>Co przygotować do rozmowy?</summary><p>Rzut, lokalizację, etap inwestycji, zdjęcia stanu i priorytety budżetowe. Formularz poniżej działa wyłącznie lokalnie.</p></details></div></section>
 <section class="contact" id="contact"><div><h2>Rozmowa zaczyna się od rzutu i stanu mieszkania.</h2><p>Formularz lokalny — niczego nie wysyła.</p></div><form id="contactForm"><label>E-mail<input type="email" required placeholder="ty@email.pl"></label><label>Etap<select required><option value="">Wybierz</option><option>Przed odbiorem</option><option>Stan deweloperski</option><option>Remont mieszkania</option></select></label><button>Przygotuj rozmowę</button><p id="status" role="status"></p></form></section>
-</main><footer><a class="brand" href="#top">ARCHLINE</a><p>Renovation portfolio concept · 2026</p></footer><script src="arch-preview.js"></script></body></html>
+</main><footer><a class="brand" href="#top">ARCHLINE</a><p>Renovation portfolio concept · 2026</p></footer><script src="arch-preview.js"></script><div class="ov-badge" id="ov-badge">
+  <a class="ov-badge__main" href="https://overflow-web.pl/work/archline/">
+    <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
+  </a>
+  <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
+</div>
+<style>
+.ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.ov-badge a{color:inherit;text-decoration:none}
+.ov-badge__main{display:flex;align-items:center;gap:5px}
+.ov-badge__mark{font-weight:700;letter-spacing:-.02em}
+.ov-badge__dot{opacity:.45}
+.ov-badge__type{opacity:.7}
+.ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
+.ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
+@media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
+@media print{.ov-badge{display:none}}
+</style>
+<!-- ov-badge-init -->
+<script>
+(function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
+</script>
+</body></html>

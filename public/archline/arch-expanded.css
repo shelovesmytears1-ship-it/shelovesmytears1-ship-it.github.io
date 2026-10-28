@@ -12,3 +12,21 @@ body{overflow-x:clip;scrollbar-color:var(--orange) var(--paper)}body::-webkit-sc
 .questions{background:var(--ink);color:white;display:grid;grid-template-columns:.75fr 1.25fr;gap:8vw}.questions>div:first-child p{max-width:50ch;color:#cbd3dd}.questions>div:last-child{border-top:1px solid #627083}.questions details{border-bottom:1px solid #627083}.questions summary{cursor:pointer;list-style:none;position:relative;padding:22px 44px 22px 0;font:500 22px Oswald;text-transform:uppercase}.questions summary::-webkit-details-marker{display:none}.questions summary::after{content:'+';position:absolute;right:8px;color:#ff8d64;font-size:26px}.questions details[open] summary::after{content:'−'}.questions details p{max-width:65ch;margin:0;padding:0 44px 22px 0;color:#cbd3dd}
 @media(max-width:900px){.scope,.demolition,.wet-zone,.materials,.changes,.responsibility,.questions{grid-template-columns:1fr}.site-photo{min-height:620px}.install-log p{grid-template-columns:.5fr 1fr}.install-log em{grid-column:2}.material-register article{grid-template-columns:60px 1fr}.material-register article p,.material-register article em{grid-column:2}.schedule-track article{grid-template-columns:120px 1fr}.schedule-track i{grid-column:2;width:100%!important}}
 @media(max-width:600px){.hero h1,.estimate h2,.checkpoints h2,.compare h2,.risk h2,.contact h2,.scope h2,.demolition h2,.installations h2,.wet-zone h2,.materials h2,.schedule h2,.changes h2,.responsibility h2,.questions h2{font-size:clamp(44px,13vw,54px)}.scope,.installations,.wet-zone,.materials,.schedule,.changes,.responsibility,.questions{padding-left:18px;padding-right:18px}.scope-sheet article,.demolition dl div,.install-log p,.wet-zone li,.material-register article,.schedule-track article,.responsibility>div:last-child p{grid-template-columns:1fr;gap:6px}.install-log em,.material-register article p,.material-register article em,.schedule-track i{grid-column:1}.site-photo{min-height:480px}.demolition>div:last-child{padding:65px 18px}.wet-zone li::before{display:none}.material-register article em{justify-self:start}.change-note{padding:28px 20px}}
+
+
+/* HERO: construction ledger — text band + wide site strip */
+.hero{display:block;min-height:0;border-bottom:1px solid var(--line)}
+.hero>div{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(250px,.55fr);grid-template-rows:auto auto auto;column-gap:clamp(28px,5vw,78px);align-items:end;padding:clamp(32px,5.5vw,72px) clamp(20px,6vw,88px) clamp(32px,5vw,62px)}
+.hero>div>span{grid-column:1/-1;grid-row:1;color:var(--orange);letter-spacing:.12em}
+.hero h1{grid-column:1;grid-row:2/4;margin:18px 0 0;max-width:15ch;font-size:clamp(44px,7.4vw,118px);line-height:.86}
+.hero p{grid-column:2;grid-row:2;margin:0;max-width:34ch;justify-self:start}
+.hero>div>a{grid-column:2;grid-row:3;justify-self:start;margin-top:24px}
+.hero figure{margin:0;height:clamp(300px,46svh,540px);position:relative;overflow:hidden}
+.hero img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:900px){
+  .hero>div{display:flex;flex-direction:column;align-items:flex-start;padding:32px 18px 28px}
+  .hero h1{font-size:clamp(42px,12vw,60px);margin:14px 0 18px;max-width:100%}
+  .hero p{max-width:100%}
+  .hero>div>a{margin-top:20px}
+  .hero figure{height:46svh;min-height:300px}
+}

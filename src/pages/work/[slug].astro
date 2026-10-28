@@ -12,6 +12,6 @@ const { entry } = Astro.props;
 const lang = 'pl' as const;
 const d = entry.data;
 ---
-<StudioLayout title={`${d.title} — overflow`} description={d.summary} lang={lang} current="work">
+<StudioLayout title={`${d.title} — overflow`} description={d.translations?.pl?.summary ?? d.summary} lang={lang} current="work">
   <CaseStudy lang={lang} entry={entry} />
 </StudioLayout>

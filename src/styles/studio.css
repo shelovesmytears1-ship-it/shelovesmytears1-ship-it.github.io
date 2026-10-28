@@ -480,8 +480,9 @@ body.previewing .work-row:not(.preview-active):hover .work-tag{background:transp
 body.previewing .cur{opacity:0;}
 .cur{transition:opacity .3s;}
 @media(max-width:760px){
-  .work-row{grid-template-columns:auto 1fr;}
-  .work-tag{display:none;}
+  .work-row{grid-template-columns:auto 1fr;align-items:start;}
+  .work-no{padding-top:.45rem;}
+  .work-row .work-tag{display:none;}
   .work-preview{display:none;}
   .work-row-thumb{
     display:block;grid-column:1/-1;width:100%;margin:0 0 .4rem;padding:.38rem;

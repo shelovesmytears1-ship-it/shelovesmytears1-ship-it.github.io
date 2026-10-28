@@ -10,19 +10,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preload" as="image" href="hero-generated.png" fetchpriority="high">
+  <link rel="preload" as="image" href="hero-generated.webp" fetchpriority="high">
   <link rel="stylesheet" href="denty-preview.css">
   <script defer src="denty-preview.js"></script>
-</head>
+<meta name="robots" content="noindex, follow"></head>
 <body>
-  <!--
-    THESIS: Opieka nad pacjentem jest czytelnym przebiegiem, nie kolekcją wykresów i obietnic.
-    OWN-WORLD: Kliniczne światło, mineralna biel, precyzyjny kobalt, granatowy tekst i arkusze przebiegu wizyty.
-    STORY: Właściciel gabinetu rozumie drogę pacjenta, widzi przykładowy dzień recepcji i uruchamia lokalne demo kontaktu.
-    FIRST VIEWPORT: Obietnica operacyjnego spokoju stoi obok prawdziwego gabinetu i zwartego arkusza jednej wizyty.
-    FORM: Clinical case sheet; established Denty direction, seed 56ddcf7d.
-    FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
-  -->
+  
   <a class="skip-link" href="#main">Przejdź do treści</a>
 
   <header class="site-header">
@@ -49,7 +42,7 @@
       </div>
 
       <div class="hero-media">
-        <img src="hero-generated.png" width="1536" height="1024" alt="Jasny gabinet stomatologiczny przygotowany do przyjęcia pacjenta">
+        <img src="hero-generated.webp" width="1536" height="1024" alt="Jasny gabinet stomatologiczny przygotowany do przyjęcia pacjenta">
         <article class="visit-sheet" aria-label="Przykładowy arkusz wizyty">
           <div class="sheet-head"><strong>Wizyta / przykład</strong><span>10:30</span></div>
           <p class="patient-name">Pacjentka A.K.</p>
@@ -134,7 +127,7 @@
     </section>
 
     <section class="team-scene" aria-labelledby="team-title">
-      <figure><img src="images/morning-huddle-v2.png" width="1536" height="1024" loading="lazy" alt="Recepcjonistka i asystentka planują dzień pracy przy grafiku wizyt"></figure>
+      <figure><img src="images/morning-huddle-v2.webp" width="1536" height="1024" loading="lazy" alt="Recepcjonistka i asystentka planują dzień pracy przy grafiku wizyt"></figure>
       <div><h2 id="team-title">Poranny plan jest krótki, bo stan dnia jest wspólny.</h2><p>Każda rola czyta ten sam przebieg, ale widzi inne zadanie. Recepcja prowadzi kontakt, asysta przygotowuje przyjęcie, lekarz zatwierdza treść medyczną.</p><ul><li><b>Recepcja</b> kontakt i termin</li><li><b>Asysta</b> gotowość gabinetu</li><li><b>Lekarz</b> decyzja kliniczna</li></ul></div>
     </section>
 
@@ -177,5 +170,27 @@
   </main>
 
   <footer class="site-footer"><a class="brand" href="#main"><img src="favicon.svg" width="24" height="24" alt=""><span>Denty</span></a><p>Koncepcyjny CRM dla gabinetu stomatologicznego. Marka, interfejs i dane demonstracyjne powstały na potrzeby portfolio.</p><a href="#main">Do góry</a></footer>
+<div class="ov-badge" id="ov-badge">
+  <a class="ov-badge__main" href="https://overflow-web.pl/work/denty/">
+    <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
+  </a>
+  <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
+</div>
+<style>
+.ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.ov-badge a{color:inherit;text-decoration:none}
+.ov-badge__main{display:flex;align-items:center;gap:5px}
+.ov-badge__mark{font-weight:700;letter-spacing:-.02em}
+.ov-badge__dot{opacity:.45}
+.ov-badge__type{opacity:.7}
+.ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
+.ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
+@media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
+@media print{.ov-badge{display:none}}
+</style>
+<!-- ov-badge-init -->
+<script>
+(function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
+</script>
 </body>
 </html>

@@ -9,16 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="orlov-preview.css">
-</head>
+<meta name="robots" content="noindex, follow"></head>
 <body>
-  <!--
-  THESIS: Орлов не продає «ще одного бота» — він знаходить, де шлях втрачає контекст і гроші, та перебудовує саме цю ділянку; сторінка відмовляється від гарантій і growth-dashboard театру.
-  OWN-WORLD: Матове вугільне поле, теплі аркуші доказів, червоний маршрут, калька, кнопки-штампи, стислі промислові заголовки та моноширинні позначки.
-  STORY: Побачити розрив, локалізувати його короткою діагностикою, зрозуміти формат роботи й залишити тестовий контакт.
-  FIRST VIEWPORT: Ліворуч — приклеєний білий вердикт і CTA; праворуч — реальна стіна розбору з червоним маршрутом та видимим розривом.
-  FORM: The Leak Room, pinned forensic-wall direction; direction seed ab7078e7.
-  FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
-  -->
+  
   <a class="skip" href="#diagnostic">До діагностики</a>
   <header class="header">
     <a class="logo" href="#top" aria-label="На початок">ORLOV<span>/ funnel systems</span></a>
@@ -33,7 +26,7 @@
 
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
-      <img src="hero-generated.png" alt="Робоча стіна з картою воронки, роздруківками, нотатками та червоним маршрутом.">
+      <img src="hero-generated.webp" alt="Робоча стіна з картою воронки, роздруківками, нотатками та червоним маршрутом.">
       <div class="hero-shade" aria-hidden="true"></div>
       <div class="hero-paper">
         <p class="concept">Портфоліо-концепт · дані потребують верифікації</p>
@@ -254,5 +247,27 @@
   <footer><span>ORLOV / FUNNEL SYSTEMS</span><p>Портфоліо-концепт · комерційні дані потребують перевірки</p><a href="#top">На початок ↑</a></footer>
   <script src="a11y-floor.js"></script>
   <script src="orlov-preview.js"></script>
+<div class="ov-badge" id="ov-badge">
+  <a class="ov-badge__main" href="https://overflow-web.pl/work/orlov/">
+    <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
+  </a>
+  <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
+</div>
+<style>
+.ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.ov-badge a{color:inherit;text-decoration:none}
+.ov-badge__main{display:flex;align-items:center;gap:5px}
+.ov-badge__mark{font-weight:700;letter-spacing:-.02em}
+.ov-badge__dot{opacity:.45}
+.ov-badge__type{opacity:.7}
+.ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
+.ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
+@media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
+@media print{.ov-badge{display:none}}
+</style>
+<!-- ov-badge-init -->
+<script>
+(function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
+</script>
 </body>
 </html>

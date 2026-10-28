@@ -32,3 +32,22 @@ header{min-height:76px;display:flex;align-items:center;padding:0 clamp(20px,5vw,
 #viewCode,#viewTitle,#viewText,#viewDecision{display:grid;align-items:center}
 #viewCode>span,#viewTitle>span,#viewText>span,#viewDecision>span{grid-area:1/1;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s}
 #viewCode>span.is-active,#viewTitle>span.is-active,#viewText>span.is-active,#viewDecision>span.is-active{opacity:1;visibility:visible}
+
+
+/* HERO: full-bleed architecture canvas */
+.hero{position:relative;display:block;min-height:calc(100svh - 76px);overflow:hidden;background:#111}
+.hero figure{position:absolute;inset:0;margin:0;min-height:0}
+.hero figure img{width:100%;height:100%;object-fit:cover}
+.hero figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,8,.18) 0%,rgba(8,8,8,0) 36%,rgba(8,8,8,.76) 100%)}
+.hero-copy{position:relative;z-index:2;min-height:calc(100svh - 76px);justify-content:flex-end;padding:clamp(28px,6vw,88px);color:#f2efe8}
+.hero h1{color:#f2efe8;max-width:13ch}
+.hero p{color:rgba(242,239,232,.86)}
+.hero-copy>a{color:#f2efe8;border-color:rgba(242,239,232,.55)}
+.hero figcaption{z-index:3;left:auto;right:clamp(18px,4vw,56px);bottom:clamp(18px,4vw,56px);max-width:320px;background:rgba(245,242,235,.92)}
+@media(max-width:900px){
+  .hero{min-height:80svh}
+  .hero-copy{min-height:80svh;padding:24px 18px 44px}
+  .hero h1{font-size:clamp(38px,11vw,54px);max-width:100%}
+  .hero p{margin:18px 0 22px}
+  .hero figcaption{display:none}
+}

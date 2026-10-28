@@ -50,6 +50,10 @@ const groups = [
             data-preview={withBase(project.data.cover || '')}
             data-type={project.data.concept ? 'concept' : 'client'}
           >
+            <span class="work-row-thumb" aria-hidden="true">
+              <span class="work-row-thumb-bar"><i></i><i></i></span>
+              <img src={withBase(project.data.cover || '')} alt="" loading="lazy" decoding="async" />
+            </span>
             <span class="work-no">{String(i + 1).padStart(2, '0')}</span>
             <div>
               <div class="work-name">{project.data.title}</div>

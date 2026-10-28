@@ -9,16 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="draft-preview.css">
-</head>
+<meta name="robots" content="noindex, follow"></head>
 <body>
-  <!--
-  THESIS: Draft is an editorial handoff from conversation to accountable work, refusing the AI-SaaS dashboard that hides judgment behind automation.
-  OWN-WORLD: Bright newsprint, carbon ink, signal-orange markup, pale-blue confirmation slips, condensed headlines, timestamped source notation, and clipped paper geometry.
-  STORY: Understand the cost of lost decisions, verify a suggestion against its source, edit or reject it, then confirm it into a backlog rail.
-  FIRST VIEWPORT: A full-bleed photographed worktable carries the offer, transcript, and cut slips; the orange primary action opens the live workshop below.
-  FORM: The Cut Room, pinned editorial-worktable direction; direction seed 9fb7f168.
-  FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
-  -->
+  
   <a class="skip-link" href="#workshop">Skip to transcript workshop</a>
 
   <header class="site-header" data-header>
@@ -39,7 +32,7 @@
 
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
-      <img class="hero-photo" src="hero-generated.png" alt="Editorial worktable with a synthetic meeting transcript, cut paper tasks and orange annotations.">
+      <img class="hero-photo" src="hero-generated.webp" alt="Editorial worktable with a synthetic meeting transcript, cut paper tasks and orange annotations.">
       <div class="hero-wash" aria-hidden="true"></div>
       <div class="hero-copy">
         <h1 id="hero-title">Meetings contain work.<br><em>Draft makes it editable.</em></h1>
@@ -253,5 +246,27 @@
 
   <script src="a11y-floor.js"></script>
   <script src="draft-preview.js"></script>
+<div class="ov-badge" id="ov-badge">
+  <a class="ov-badge__main" href="https://overflow-web.pl/work/draft/">
+    <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
+  </a>
+  <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
+</div>
+<style>
+.ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.ov-badge a{color:inherit;text-decoration:none}
+.ov-badge__main{display:flex;align-items:center;gap:5px}
+.ov-badge__mark{font-weight:700;letter-spacing:-.02em}
+.ov-badge__dot{opacity:.45}
+.ov-badge__type{opacity:.7}
+.ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
+.ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
+@media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
+@media print{.ov-badge{display:none}}
+</style>
+<!-- ov-badge-init -->
+<script>
+(function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
+</script>
 </body>
 </html>

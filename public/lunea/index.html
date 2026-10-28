@@ -8,22 +8,13 @@
   <link rel="icon" href="favicon.svg">
   <link rel="stylesheet" href="lunea-preview.css">
   <link rel="stylesheet" href="lunea-expanded.css">
-</head>
+<meta name="robots" content="noindex, follow"></head>
 <body>
-<!--
-DESIGN CONTRACT
-Thesis: Atmosfera jest widocznym skutkiem niewidzialnej produkcji; dzień prowadzi gości zmianami światła i tempa.
-Composition: A Day Held in Light. Fotograficzny esej przechodzi od papieru poranka do granatu nocy.
-Depth: Jedna uniesiona partytura dnia; pozostałe sekcje płaskie, prowadzone kadrem i kolorem.
-Typography: Italiana buduje emocjonalny rytm, DM Sans utrzymuje spokój instrukcji i zakresu.
-Color: Cream, ink, oxblood wine, midnight blue. Bez generic luxury beige i złotych ornamentów.
-Signature: Pięć pór dnia zmienia fotografię oraz konkretną notatkę produkcyjną.
-Avoid: Kartoteka usług, agencyjne statystyki, fikcyjne pary/opinie, obietnica perfekcji, décor-only positioning.
--->
+
 <a class="skip" href="#main">Przejdź do treści</a>
 <header><a href="#top" class="brand">LUNEA</a><button class="menu-button" type="button" aria-expanded="false" aria-controls="siteNav">Menu</button><nav id="siteNav" aria-label="Nawigacja"><a href="#dzien">Wasz dzień</a><a href="#historie">Historie</a><a href="#wspolpraca">Współpraca</a><a href="#brief">Kontakt</a></nav><a href="#brief" class="talk">Porozmawiajmy</a></header>
 <main id="main">
-  <section class="hero" id="top"><div class="hero-photo"><img src="assets/hero-evening.webp" alt="Para w wieczornym świetle podczas przyjęcia" width="1200" height="900"></div><div class="hero-copy"><h1>Wasz dzień nie potrzebuje scenariusza. Potrzebuje <em>rytmu.</em></h1><p>Projektujemy i produkujemy autorskie wesela w Polsce, od pierwszej rozmowy do chwili, kiedy plan przestaje być potrzebny.</p><a href="#dzien">Zobacz, jak płynie dzień <span>↓</span></a></div></section>
+  <section class="hero" id="top"><div class="hero-photo"><img src="assets/hero-evening.webp" alt="Para w wieczornym świetle podczas przyjęcia" width="1400" height="788" fetchpriority="high"></div><div class="hero-copy"><p class="hero-kicker">WESELA AUTORSKIE / POLSKA / 2026</p><h1>Wasz dzień nie potrzebuje scenariusza. Potrzebuje <em>rytmu.</em></h1><p>Projektujemy i produkujemy autorskie wesela w Polsce, od pierwszej rozmowy do chwili, kiedy plan przestaje być potrzebny.</p><a href="#dzien">Zobacz, jak płynie dzień <span>↓</span></a></div><div class="hero-reel" aria-label="Migawki z realizacji"><figure><img src="assets/gallery-bouquet.webp" alt="Bukiet ślubny w ciepłym świetle" width="1120" height="1400" decoding="async"><figcaption>01 / CEREMONIA</figcaption></figure><figure><img src="assets/gallery-ballroom.webp" alt="Sala weselna przygotowana do przyjęcia" width="1400" height="933" decoding="async"><figcaption>02 / PRZYJĘCIE</figcaption></figure><figure><img src="assets/evening-dance.webp" alt="Taniec pary młodej podczas przyjęcia" width="1400" height="643" decoding="async"><figcaption>03 / TANIEC</figcaption></figure></div></section>
 
   <section class="manifesto"><h2>Nie dekorujemy dla zdjęcia.</h2><div><p>Projektujemy atmosferę, którą pamięta się przez temperaturę światła, dźwięk rozmów i sposób, w jaki przestrzeń prowadzi gości.</p><blockquote>Piękny kadr trwa sekundę. Dobry rytm utrzymuje cały dzień.</blockquote><p>Za każdym spokojnym przejściem stoją decyzje o dostawcach, czasie, dźwięku, serwisie i odpowiedzialności.</p></div></section>
 
@@ -55,5 +46,27 @@ Avoid: Kartoteka usług, agencyjne statystyki, fikcyjne pary/opinie, obietnica p
 </main>
 <footer><a class="brand" href="#top">LUNEA</a><p>Autorskie wesela · Polska · portfolio concept 2026</p></footer>
 <script src="lunea-preview.js"></script>
+<div class="ov-badge" id="ov-badge">
+  <a class="ov-badge__main" href="https://overflow-web.pl/work/lunea/">
+    <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
+  </a>
+  <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
+</div>
+<style>
+.ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.ov-badge a{color:inherit;text-decoration:none}
+.ov-badge__main{display:flex;align-items:center;gap:5px}
+.ov-badge__mark{font-weight:700;letter-spacing:-.02em}
+.ov-badge__dot{opacity:.45}
+.ov-badge__type{opacity:.7}
+.ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
+.ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
+@media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
+@media print{.ov-badge{display:none}}
+</style>
+<!-- ov-badge-init -->
+<script>
+(function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
+</script>
 </body>
 </html>

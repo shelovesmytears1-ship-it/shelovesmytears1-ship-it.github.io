@@ -7,7 +7,7 @@
   <title>Essence — mniej, ale wiadomo po co</title>
   <link rel="stylesheet" href="essence-preview.css">
   <link rel="stylesheet" href="essence-expanded.css">
-</head>
+<meta name="robots" content="noindex, follow"></head>
 <body>
   <a class="skip" href="#main">Przejdź do treści</a>
   <header>
@@ -20,7 +20,7 @@
   <main id="main">
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero-copy"><h1 id="hero-title">Mniej kroków. Więcej jasności.</h1><p>Kosmetyki do prostego rytuału, z czytelną funkcją każdego składnika i kolejnością, którą da się utrzymać także w gorszy dzień.</p><a href="#ritual">Zbuduj swój rytuał</a><small>Koncept portfolio · nie diagnozuje skóry</small></div>
-      <figure><img src="assets/images/hero-essence-v2.png" alt="Neutralne opakowania koncepcyjnej pielęgnacji Essence na tle prasowanych roślin"><figcaption><b>FORMUŁA 01</b><span>nawilżenie · komfort · prostota</span></figcaption></figure>
+      <figure><img src="assets/images/hero-essence-v2.webp" alt="Neutralne opakowania koncepcyjnej pielęgnacji Essence na tle prasowanych roślin"><figcaption><b>FORMUŁA 01</b><span>nawilżenie · komfort · prostota</span></figcaption></figure>
     </section>
 
     <section class="position" aria-labelledby="position-title">
@@ -104,5 +104,27 @@
   <footer><a class="brand" href="#top">ESSENCE</a><p>Skincare portfolio concept · 2026 · brak sprzedaży</p></footer>
   <div class="toast" id="toast" role="status"></div>
   <script src="essence-preview.js"></script>
+<div class="ov-badge" id="ov-badge">
+  <a class="ov-badge__main" href="https://overflow-web.pl/work/essence/">
+    <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
+  </a>
+  <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
+</div>
+<style>
+.ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.ov-badge a{color:inherit;text-decoration:none}
+.ov-badge__main{display:flex;align-items:center;gap:5px}
+.ov-badge__mark{font-weight:700;letter-spacing:-.02em}
+.ov-badge__dot{opacity:.45}
+.ov-badge__type{opacity:.7}
+.ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
+.ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
+@media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
+@media print{.ov-badge{display:none}}
+</style>
+<!-- ov-badge-init -->
+<script>
+(function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
+</script>
 </body>
 </html>

@@ -8,7 +8,7 @@
   <link rel="icon" href="favicon.svg">
   <link rel="stylesheet" href="prawnik-preview.css">
   <link rel="stylesheet" href="prawnik-expanded.css">
-</head>
+<meta name="robots" content="noindex, follow"></head>
 <body>
   <a class="skip" href="#main">Przejdź do treści</a>
   <header class="topbar">
@@ -29,7 +29,7 @@
         <p class="disclaimer">Projekt demonstracyjny. Nie stanowi porady prawnej ani podatkowej i nie składa wniosków.</p>
       </div>
       <figure class="hero-figure">
-        <img src="case-file-generated.png" alt="Teczki i formularz przygotowany do uzupełnienia na biurku">
+        <img src="case-file-generated.webp" alt="Teczki i formularz przygotowany do uzupełnienia na biurku">
         <figcaption><b>Materiał roboczy</b><span>Najpierw fakty. Potem formularz.</span></figcaption>
         <div class="stamp" aria-hidden="true">DO USTALENIA</div>
       </figure>
@@ -111,5 +111,27 @@
   <footer><a class="brand" href="#start"><span>PT</span>Prawnik.Tech</a><p>Portfolio concept · informacja, nie porada · 2026</p></footer>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="prawnik-preview.js"></script>
+<div class="ov-badge" id="ov-badge">
+  <a class="ov-badge__main" href="https://overflow-web.pl/work/prawnik/">
+    <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
+  </a>
+  <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
+</div>
+<style>
+.ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.ov-badge a{color:inherit;text-decoration:none}
+.ov-badge__main{display:flex;align-items:center;gap:5px}
+.ov-badge__mark{font-weight:700;letter-spacing:-.02em}
+.ov-badge__dot{opacity:.45}
+.ov-badge__type{opacity:.7}
+.ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
+.ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
+@media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
+@media print{.ov-badge{display:none}}
+</style>
+<!-- ov-badge-init -->
+<script>
+(function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
+</script>
 </body>
 </html>

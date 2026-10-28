@@ -1,14 +1,27 @@
-<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="ModulArt — demonstracyjny konfigurator stałego domu modułowego, działki i zakresu projektu."><title>ModulArt — dom złożony z decyzji</title><link rel="stylesheet" href="mod-preview.css"><link rel="stylesheet" href="mod-expanded.css"><link rel="stylesheet" href="hero-v2.css"></head><body>
-<!--
-THESIS: Dom modułowy jest konfiguracją powiązaną z działką i odpowiedzialnością, nie katalogowym skrótem do szybkiej budowy.
-OWN-WORLD: Papier rysunkowy, sosnowa czerń, czerwień konstrukcyjna, stalowe rejestry i moduły planu.
-STORY: Od potrzeb i układu przez działkę, produkcję, transport i odbiory do przygotowanej rozmowy.
-FIRST VIEWPORT: Teza i działanie po lewej, pełnoskalowa wizualizacja modelu po prawej; bez pływających kart.
-FORM: Assembly Line / Cut List, pinned direction; seed 2ab88551.
-FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
--->
+<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="ModulArt — demonstracyjny konfigurator stałego domu modułowego, działki i zakresu projektu."><title>ModulArt — dom złożony z decyzji</title><link rel="stylesheet" href="mod-preview.css"><link rel="stylesheet" href="mod-expanded.css"><link rel="stylesheet" href="hero-v2.css"><meta name="robots" content="noindex, follow"></head><body>
+
 <a class="skip" href="#main">Przejdź do treści</a><header><a class="brand" href="#top">MODUL/ART</a><button class="menu-button" type="button" aria-expanded="false" aria-controls="siteNav" data-menu>Menu</button><nav id="siteNav" data-nav><a href="#build">Układ</a><a href="#readiness">Działka</a><a href="#sequence">Proces</a></nav><a href="#contact">Sprawdź projekt</a></header><main id="main">
-<section class="hero" id="top"><div class="hero-copy"><h1>Dom składa się z modułów. Projekt: z decyzji.</h1><p>Najpierw układ, działka i zakres odpowiedzialności. Dopiero potem termin, cena i produkcja.</p><a href="#build">Złóż pierwszy układ</a><small>Wartości, modele i zakresy są demonstracyjne.</small></div><figure class="hero-system" aria-label="Koncepcyjny dom modułowy oraz demonstracyjny układ jego stref"><div class="hero-photo"><img src="images/hero.webp" alt="Koncepcyjny stały dom modułowy w leśnym otoczeniu" width="2048" height="1143" fetchpriority="high"><div class="photo-register"><span>OBIEKT / KONCEPCJA</span><b>M-03 / 74 M²*</b></div></div><div class="hero-plan"><div class="site-axis"><span>UKŁAD / M-03</span><span>DZIAŁKA DO WERYFIKACJI*</span></div><div class="module module-l"><b>LIVING</b><small>32 M²*</small></div><div class="module module-n"><b>NIGHT</b><small>28 M²*</small></div><div class="module module-w"><b>WORK</b><small>14 M²*</small></div><div class="plan-route" aria-hidden="true"></div></div><figcaption>*WIZUALIZACJA I UKŁAD DEMONSTRACYJNE. PROJEKT WYMAGA DOSTOSOWANIA DO DZIAŁKI.</figcaption></figure></section>
+<section class="hero" id="top">
+  <picture class="hero-media">
+    <source media="(max-width:600px)" srcset="images/hero-mobile.webp">
+    <img src="images/hero.webp" alt="Koncepcyjny stały dom modułowy w leśnym otoczeniu" width="1400" height="781" fetchpriority="high">
+  </picture>
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="hero-frame">
+    <div class="hero-register"><span>MODULART / SYSTEM M-03</span><span>KONCEPCJA / 74 M²*</span></div>
+    <div class="hero-copy"><h1>Dom składa się z modułów. <em>Projekt: z decyzji.</em></h1><p>Najpierw układ, działka i zakres odpowiedzialności. Dopiero potem termin, cena i produkcja.</p></div>
+    <div class="hero-rail">
+      <div class="rail-total"><span>UKŁAD / M-03</span><strong>74 m²*</strong><small>3 moduły / 2 sypialnie</small></div>
+      <div class="rail-modules">
+        <a href="#build"><span>01</span><b>LIVING</b><small>32 m²*</small></a>
+        <a href="#build"><span>02</span><b>NIGHT</b><small>28 m²*</small></a>
+        <a href="#build"><span>03</span><b>WORK</b><small>14 m²*</small></a>
+      </div>
+      <a class="rail-cta" href="#build">Złóż pierwszy układ <span aria-hidden="true">→</span></a>
+    </div>
+    <p class="hero-note">*Wizualizacja i układ demonstracyjne. Projekt wymaga dostosowania do działki.</p>
+  </div>
+</section>
 
 <section class="builder" id="build"><div class="builder-head"><h2>Dodaj przestrzeń tylko wtedy, gdy ma zadanie.</h2><p>Konfigurator jest demonstracją. Powierzchnia i zakres cenowy są orientacyjne, bez działki, przyłączy, transportu i formalności.</p></div><div class="machine"><div class="controls"><button data-module="living"><b>+ LIVING</b><span>kuchnia, jadalnia, salon · 32 m²</span></button><button data-module="night"><b>+ NIGHT</b><span>2 sypialnie, łazienka · 28 m²</span></button><button data-module="work"><b>+ WORK</b><span>gabinet / gościnny · 14 m²</span></button><button id="reset" class="reset">Wyczyść układ</button><p id="moduleStatus" role="status">Układ zawiera 2 moduły.</p></div><div class="plan"><div class="plan-top"><span>RZUT ROBOCZY / M‑<b id="count">02</b></span><span>SKALA POGLĄDOWA</span></div><div id="modules" aria-live="polite"></div><div class="plan-meta"><p><small>POWIERZCHNIA</small><b id="area">60 m²</b></p><p><small>UŻYTKOWNICY</small><b id="people">2–4 osoby</b></p><p><small>RANGE / DEMO</small><b id="price">540–690 tys. zł</b></p></div></div></div></section>
 
@@ -37,4 +50,26 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <section class="questions" aria-labelledby="questions-title"><div><h2 id="questions-title">Pytania przed wyborem modelu.</h2><p>Odpowiedzi opisują logikę konceptu, nie realne warunki sprzedaży.</p></div><div><details><summary>Czy dom może stanąć na każdej działce?</summary><p>Nie. Plan miejscowy lub warunki zabudowy, grunt, dostęp, media i lokalne wymogi muszą zostać sprawdzone.</p></details><details><summary>Czy cena z konfiguratora jest ofertą?</summary><p>Nie. To ilustracyjny zakres oparty wyłącznie na powierzchni modułów i bez kosztów zależnych od działki.</p></details><details><summary>Czy produkcja zawsze trwa 90 dni?</summary><p>Nie podajemy takiej obietnicy. Harmonogram można ustalać dopiero po projekcie, decyzjach, formalnościach i potwierdzeniu dostępności.</p></details><details><summary>Czy modułowy znaczy mobilny?</summary><p>Ten koncept dotyczy stałego budynku. Transport modułów jest etapem budowy, nie obietnicą późniejszego przenoszenia domu.</p></details></div></section>
 
 <section class="contact" id="contact"><div><h2>Przynieś działkę i potrzeby, nie gotowy katalog marzeń.</h2><p>Formularz lokalny: niczego nie wysyła.</p></div><form id="contactForm"><label>Lokalizacja<input required placeholder="gmina / miejscowość"></label><label>Status działki<select required><option value="">Wybierz</option><option>Mam działkę</option><option>Analizuję zakup</option><option>Dopiero szukam</option></select></label><button>Przygotuj rozmowę</button><p id="status" role="status"></p></form></section>
-</main><footer><a class="brand" href="#top">MODUL/ART</a><p>Modular home portfolio concept · 2026</p></footer><script src="mod-preview.js"></script></body></html>
+</main><footer><a class="brand" href="#top">MODUL/ART</a><p>Modular home portfolio concept · 2026</p></footer><script src="mod-preview.js"></script><div class="ov-badge" id="ov-badge">
+  <a class="ov-badge__main" href="https://overflow-web.pl/work/modulart/">
+    <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
+  </a>
+  <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
+</div>
+<style>
+.ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.ov-badge a{color:inherit;text-decoration:none}
+.ov-badge__main{display:flex;align-items:center;gap:5px}
+.ov-badge__mark{font-weight:700;letter-spacing:-.02em}
+.ov-badge__dot{opacity:.45}
+.ov-badge__type{opacity:.7}
+.ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
+.ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
+@media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
+@media print{.ov-badge{display:none}}
+</style>
+<!-- ov-badge-init -->
+<script>
+(function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
+</script>
+</body></html>

@@ -489,8 +489,8 @@ body *::after {
   background-size: 38% 100%;
   background-position: -120% 50%;
   mix-blend-mode: screen;
-  -webkit-mask: url('assets/kult-hero-can-cutout.png') bottom center / auto 100% no-repeat;
-  mask: url('assets/kult-hero-can-cutout.png') bottom center / auto 100% no-repeat;
+  -webkit-mask: url('assets/kult-hero-can-cutout.webp') bottom center / auto 100% no-repeat;
+  mask: url('assets/kult-hero-can-cutout.webp') bottom center / auto 100% no-repeat;
   animation: hero-gleam-sweep 1.05s ease-in-out 1.15s both;
 }
 

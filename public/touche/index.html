@@ -8,22 +8,13 @@
   <link rel="icon" href="favicon.svg">
   <link rel="stylesheet" href="touche-preview.css">
   <link rel="stylesheet" href="touche-expanded.css">
-</head>
+<meta name="robots" content="noindex, follow"></head>
 <body>
-<!--
-DESIGN CONTRACT
-Thesis: Usługa mobilna zyskuje zaufanie przez dopasowanie, logistykę, higienę i jasne granice, nie przez obietnice zdrowotne.
-Composition: Arrival Tray. Sekcje układają dotyk, czas, tkaninę, przestrzeń i zgodę jak elementy przygotowanej tacy.
-Depth: Ciepłe warstwy, fotografie o dotykowej fakturze, jeden miękki cień pod fizyczną tacą.
-Typography: Italiana prowadzi spokojny rytm; DM Sans odpowiada za instrukcje i decyzje.
-Color: Warm shell, aubergine, muted rose, brass. Bez generycznej zieleni wellness.
-Signature: Karta rytuału łączy preferencje z logistyką przyjazdu i może zostać skopiowana.
-Avoid: Medyczne roszczenia, liście jako ozdoba, fake testimonials, hotelowy luksus, urgency i kartoteka rounded cards.
--->
+
 <a class="skip" href="#main">Przejdź do treści</a>
 <header><a class="brand" href="#top">Touché</a><button class="menu-button" type="button" aria-expanded="false" aria-controls="siteNav">Menu</button><nav id="siteNav" aria-label="Nawigacja"><a href="#choose">Dobierz rytuał</a><a href="#menu">Menu</a><a href="#arrival">Wizyta</a><a href="#booking">Kontakt</a></nav><a href="#booking">Przygotuj rezerwację</a></header>
 <main id="main">
-  <section class="hero" id="top"><figure><img src=".img/Hero Section.webp" alt="Stół do masażu przygotowany w domowym salonie" width="1600" height="900"></figure><div><h1>Rytuał przyjeżdża do Ciebie. Dom zostaje domem.</h1><p>Mobilny masaż i pielęgnacja ciała z jasnym przebiegiem wizyty, przygotowaniem przestrzeni i możliwością dobrania intensywności.</p><a href="#choose">Dobierz swoją godzinę ciszy</a><small>Portfolio concept · usługa relaksacyjna, nie medyczna</small></div></section>
+  <section class="hero" id="top"><figure><img src=".img/Hero Section.webp" alt="Stół do masażu przygotowany w domowym salonie" width="1600" height="900" fetchpriority="high"></figure><div class="hero-copy"><h1>Rytuał przyjeżdża do Ciebie. Dom zostaje domem.</h1><p>Mobilny masaż i pielęgnacja ciała z jasnym przebiegiem wizyty, przygotowaniem przestrzeni i możliwością dobrania intensywności.</p><a href="#choose">Dobierz swoją godzinę ciszy</a><small>Portfolio concept · usługa relaksacyjna, nie medyczna</small></div><div class="hero-menu" aria-label="Menu rytuałów"><p>MENU / 2026</p><a href="#menu"><span>01</span><b>Dotyk Ukojenia</b><small>60 / 90 min</small></a><a href="#menu"><span>02</span><b>Równowaga</b><small>60 / 90 min</small></a><a href="#menu"><span>03</span><b>Głębszy Rytm</b><small>90 min</small></a></div></section>
 
   <section class="home-promise"><h2>Nie budujemy gabinetu w Twoim salonie.</h2><div><p>Potrzebujemy bezpiecznego miejsca na stół, dostępu do łazienki i chwili bez pośpiechu. Światło, zapach i dźwięk dopasowujemy do domu, zamiast przykrywać go scenografią.</p><dl><div><dt>Przywozimy</dt><dd>sprzęt, czyste tekstylia, podkład i uzgodniony kosmetyk</dd></div><div><dt>Ty wybierasz</dt><dd>ciszę lub muzykę, intensywność i obszary pomijane</dd></div><div><dt>Dom zachowuje</dt><dd>swój rytm, prywatność i znajome otoczenie</dd></div></dl></div></section>
 
@@ -55,5 +46,27 @@ Avoid: Medyczne roszczenia, liście jako ozdoba, fake testimonials, hotelowy luk
 </main>
 <footer><a class="brand" href="#top">Touché</a><p>Mobile SPA portfolio concept · Warszawa · 2026</p></footer>
 <script src="touche-preview.js"></script>
+<div class="ov-badge" id="ov-badge">
+  <a class="ov-badge__main" href="https://overflow-web.pl/work/touche/">
+    <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
+  </a>
+  <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
+</div>
+<style>
+.ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.ov-badge a{color:inherit;text-decoration:none}
+.ov-badge__main{display:flex;align-items:center;gap:5px}
+.ov-badge__mark{font-weight:700;letter-spacing:-.02em}
+.ov-badge__dot{opacity:.45}
+.ov-badge__type{opacity:.7}
+.ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
+.ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
+@media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
+@media print{.ov-badge{display:none}}
+</style>
+<!-- ov-badge-init -->
+<script>
+(function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
+</script>
 </body>
 </html>

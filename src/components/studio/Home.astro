@@ -28,7 +28,7 @@ const featuredSlugs = ['edtech', 'schedulehub', 'stepbystep', 'archline'];
 const cases = pickCases(featuredSlugs);
 
 // Featured set for the 3D coverflow carousel
-const galleryItems = pickCases([...featuredSlugs, 'schedulehub', 'modulart']).map((project) => ({
+const galleryItems = pickCases(['edtech', 'schedulehub', 'stepbystep', 'archline', 'modulart', 'kult']).map((project) => ({
   cover: withBase(project.data.cover || ''),
   href:  p(`work/${project.slug}`),
   title: project.data.title,
@@ -36,6 +36,7 @@ const galleryItems = pickCases([...featuredSlugs, 'schedulehub', 'modulart']).ma
   region: project.data.region[0] || '',
   concept: project.data.concept,
   result: getResult(project, lang),
+  typeLabel: project.data.concept ? concept : client,
 }));
 
 const viewLabel: Record<string, string> = { pl: 'Zobacz', ru: 'Смотреть', en: 'View', ua: 'Дивитись' };
@@ -166,6 +167,7 @@ const verbsSrText = verbsSrByLang[lang] ?? verbsSrByLang.en;
         </span>
         <span class="project-frame-caption">
           <strong>{project.title}</strong>
+          <span class="work-tag">{project.typeLabel}</span>
           <small>{project.niche}</small>
           {!project.concept && (
             <>
@@ -242,7 +244,7 @@ const verbsSrText = verbsSrByLang[lang] ?? verbsSrByLang.en;
   <h2 data-reveal style="margin-top:1rem">{c.home.contactTitle} <em>{c.home.contactAccent}</em></h2>
   <p class="contact-sub" data-reveal>{c.home.contactBody}</p>
   <div class="contact-row" data-reveal>
-    <a class="btn magnetic" href="https://t.me/zzxvaracaa" target="_blank" rel="noopener" data-cursor><span class="btn-text">{c.home.contactCta} →&#xFE0E;</span></a>
+    <a class="btn magnetic" href={p('contact')} data-cursor><span class="btn-text">{c.home.contactCta} →&#xFE0E;</span></a>
     <a href="mailto:overflow.web1@gmail.com" data-cursor>overflow.web1@gmail.com</a>
   </div>
   <p class="contact-response" data-reveal>{c.contact.response}</p>
