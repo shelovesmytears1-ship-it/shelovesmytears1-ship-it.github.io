@@ -1,10 +1,83 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="7.5" fill="#0D0E15"/>
-  <rect x="0.5" y="0.5" width="31" height="31" rx="7" fill="none" stroke="rgba(255,255,255,0.08)"/>
-  <!-- Faceted isometric polyhedron with cobalt accent facet -->
-  <polygon points="16,6 25,12 25,20 16,26 7,20 7,12" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linejoin="round"/>
-  <polygon points="16,6 25,12 16,16" fill="rgba(255,255,255,0.15)" stroke="#FFFFFF" stroke-width="1.6"/>
-  <polygon points="7,12 16,6 16,16" fill="rgba(255,255,255,0.08)" stroke="#FFFFFF" stroke-width="1.6"/>
-  <polygon points="16,16 25,12 25,20 16,26" fill="#2B55FF" stroke="#2B55FF" stroke-width="1.6" stroke-linejoin="round"/>
-  <polygon points="7,12 16,16 16,26 7,20" fill="rgba(43,85,255,0.3)" stroke="#FFFFFF" stroke-width="1.6" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <!-- Dark Squircle Background -->
+    <linearGradient id="v1-tile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#12131C"/>
+      <stop offset="100%" stop-color="#0A0B10"/>
+    </linearGradient>
+
+    <!-- Top-Left Diffuse Key Light (Specular Highlight) -->
+    <linearGradient id="v1-high-key" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.38"/>
+      <stop offset="100%" stop-color="#CAD3E8" stop-opacity="0.14"/>
+    </linearGradient>
+
+    <!-- Mid Tone Facets -->
+    <linearGradient id="v1-mid-key" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.05"/>
+    </linearGradient>
+
+    <!-- Lower-Left Occlusion / Shadow Facets -->
+    <linearGradient id="v1-shadow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#55607A" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#080A10" stop-opacity="0.45"/>
+    </linearGradient>
+
+    <!-- Vibrant Electric Cobalt Primary Facet Gradient -->
+    <linearGradient id="v1-cobalt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5B82FF"/>
+      <stop offset="50%" stop-color="#2B55FF"/>
+      <stop offset="100%" stop-color="#1230B8"/>
+    </linearGradient>
+
+    <!-- Transition Cobalt Bounce Facet -->
+    <linearGradient id="v1-cobalt-subtle" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3A64FF"/>
+      <stop offset="100%" stop-color="#1B3CBF"/>
+    </linearGradient>
+
+    <!-- Radial Bloom behind Cobalt Accent -->
+    <radialGradient id="v1-bloom" cx="78%" cy="65%" r="55%">
+      <stop offset="0%" stop-color="#2B55FF" stop-opacity="0.45"/>
+      <stop offset="60%" stop-color="#2B55FF" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#2B55FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Squircle Base Tile -->
+  <rect width="32" height="32" rx="7.5" fill="url(#v1-tile)"/>
+  <rect x="0.5" y="0.5" width="31" height="31" rx="7" fill="none" stroke="#FFFFFF" stroke-opacity="0.09"/>
+
+  <!-- Subtle Ambient Glow -->
+  <circle cx="21" cy="18" r="8" fill="url(#v1-bloom)"/>
+
+  <!-- 10 Mathematical 3D Facets (Zero-Gap Seamless Tessellation) -->
+  <g shape-rendering="geometricPrecision">
+    <!-- Top-Left High Key Facet -->
+    <polygon points="16,5.8 21.46,12.85 10.54,12.85" fill="url(#v1-high-key)"/>
+    <polygon points="16,5.8 10.54,12.85 7.17,10.9" fill="url(#v1-high-key)"/>
+    
+    <!-- Top-Right Mid Key Facet -->
+    <polygon points="16,5.8 24.83,10.9 21.46,12.85" fill="url(#v1-mid-key)"/>
+    
+    <!-- Central Facet -->
+    <polygon points="10.54,12.85 21.46,12.85 16,22.3" fill="url(#v1-mid-key)"/>
+    
+    <!-- Shadow Side (Lower Left) -->
+    <polygon points="7.17,10.9 10.54,12.85 7.17,21.1" fill="url(#v1-shadow)"/>
+    <polygon points="10.54,12.85 7.17,21.1 16,22.3" fill="url(#v1-shadow)"/>
+    <polygon points="16,22.3 7.17,21.1 16,26.2" fill="url(#v1-shadow)"/>
+
+    <!-- Primary Electric Cobalt Facets (Rim-Light Accents) -->
+    <polygon points="24.83,10.9 24.83,21.1 21.46,12.85" fill="url(#v1-cobalt)"/>
+    <polygon points="21.46,12.85 16,22.3 24.83,21.1" fill="url(#v1-cobalt)"/>
+    <polygon points="16,22.3 16,26.2 24.83,21.1" fill="url(#v1-cobalt-subtle)"/>
+  </g>
+
+  <!-- Unified Precision Wireframe Overlay -->
+  <path d="M 16,5.8 L 24.83,10.9 L 24.83,21.1 L 16,26.2 L 7.17,21.1 L 7.17,10.9 Z M 10.54,12.85 L 21.46,12.85 L 16,22.3 Z M 16,5.8 L 10.54,12.85  M 16,5.8 L 21.46,12.85 M 7.17,10.9 L 10.54,12.85 L 7.17,21.1 M 24.83,10.9 L 21.46,12.85 L 24.83,21.1 M 10.54,12.85 L 16,22.3 L 21.46,12.85 M 7.17,21.1 L 16,22.3 L 24.83,21.1 M 16,22.3 L 16,26.2" fill="none" stroke="#FFFFFF" stroke-opacity="0.65" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <!-- Glowing Cobalt Wireframe Accent on Rim Edge -->
+  <path d="M 21.46,12.85 L 24.83,21.1 L 16,22.3 Z" fill="none" stroke="#7AA2FF" stroke-width="1.4" stroke-linejoin="round"/>
 </svg>
