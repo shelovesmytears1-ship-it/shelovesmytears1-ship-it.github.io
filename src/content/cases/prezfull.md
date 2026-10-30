@@ -1,12 +1,12 @@
 ---
 title: Prezfull
-tagline: Лендинг архитектурного бюро с photo-first подходом
+tagline: Архитектурное бюро с editorial-сеткой, живым чертежом и калькулятором объёма проекта
 niche: Services
 year: '2026'
-palette: EDITORIAL-WARM-PHOTO
+palette: EDITORIAL-WARM-PAPER
 tier: 1
-accent: '#B89B7C'
-bg: '#2B2E33'
+accent: '#495340'
+bg: '#FAF5F0'
 siteUrl: https://overflow-web.pl/prezfull/
 cover: /covers/prezfull.jpg
 screens:
@@ -22,75 +22,75 @@ technologies:
   - JavaScript
 region:
   - Premium / International
-summary: Лендинг архитектурного бюро. Editorial + photography-first. Performance budget Lighthouse 90+ в категории, где это редкость.
-result: 'перф-бюджет: цель Lighthouse 90+'
+summary: Архитектурное ателье (Warsaw / Zürich). Тёплая бумажная editorial-сетка, ступенчатый пиксельный срез фасада, интерактивный чертёж и расчёт бюджета с прямой передачей в бриф.
+result: 'перф-бюджет: Lighthouse 95+ без тяжёлого видео'
 stat:
-  value: '90+'
-  label: целевой Lighthouse-перформанс (перф-бюджет концепта) в нише, где обычно тяжёлые видео и неоптимизированные фото съедают весь budget
-order: 11
+  value: '95+'
+  label: целевой Lighthouse-перформанс при полной архитектурной витрине, интерактивном чертеже и калькуляторе стадий проектирования
+order: 99
 concept: true
 translations:
   pl:
-    tagline: Lending biura architektonicznego z photo-first podejściem
-    summary: Lending biura architektonicznego. Editorial + photography-first. Performance budget Lighthouse 90+ w kategorii, gdzie to rzadkość.
-    result: 'budżet wydajności: cel Lighthouse 90+'
-    statLabel: docelowy wynik Lighthouse (budżet wydajności konceptu) w niszy, gdzie ciężkie wideo i niezoptymalizowane zdjęcia zjadają cały performance budget
+    tagline: Atelier architektoniczne z siatką editorial, interaktywnym rzutem i estymatorem zakresu
+    summary: Atelier architektoniczne (Warszawa / Zurych). Ciepła papierowa siatka editorial, schodkowy pikselowy wykrój fasady, interaktywny rzut aksonometryczny i kalkulator budżetu połączony z briefem.
+    result: 'budżet wydajności: Lighthouse 95+ bez ciężkiego wideo'
+    statLabel: wynik Lighthouse przy pełnej witrynie architektonicznej, interaktywnym rzucie aksonometrycznym i kalkulatorze faz projektowych
     body: |
       ## Kontekst
 
-      Lending biura architektonicznego z segmentu premium — luxury residential i boutique commercial, klient z budżetem od 500 000 €. Większość takich stron zaczyna od manifestu: długi tekst o „filozofii przestrzeni", wideo-tło, mega-menu — i dopiero potem prace. Ale klient z takim budżetem najpierw chce zobaczyć gotowe obiekty, a manifest przeczyta później, jeśli go ujmą. Trzeba było odwrócić kolejność.
+      Strona dla pracowni architektonicznej z segmentu prywatnych rezydencji i obiektów komercyjnych (budżety od 500 000 €). Klienci z tego segmentu oczekują natychmiastowego dowodu dojrzałości warsztatowej: proporcji, światła, detalu materiałowego oraz przejrzystego procesu wyceny i etapowania inwestycji.
 
       ## Rozwiązanie
 
-      Photography-first: strona główna zaczyna się od zdjęcia gotowego obiektu, nie od tekstu. Tekst podporządkowany obrazowi — krótkie podpisy, editorialowy layout jak w magazynie architektonicznym (parzyste bloki „zdjęcie + komentarz"). Paleta — ciemnoszare tło i ciepły akcent tan, żeby wspierać zdjęcia, a nie z nimi konkurować. Nawigacja minimalna — cztery strony zamiast dwunastu: mniej ścieżek, większy odsetek docierających do kontaktu.
+      Zbudowaliśmy jasną, redakcyjną kompozycję na ciepłym papierowym tle (`#FAF5F0`) z cienkimi liniami osiowymi `1px` i charakterystycznym schodkowo-pikselowym wykrojem nieba nad bryłą `Pavilion Horyzont`. Drugi ekran łączy manifest głównego architekta z interaktywną witryną pięciu typologii (`Commercial`, `Apartment complex`, `Apartments`, `Offices`, `Houses`) bez skoków wysokości layoutu. Poniżej znajdują się asymetryczne monografie obiektów, aksonometryczny rzut techniczny z przełączaniem warstw konstrukcyjnych oraz interaktywny kalkulator powierzchni i etapów (`Stages 01–05`), który jednym kliknięciem przenosi parametry prosto do formularza briefu.
 
       ## Wynik
 
-      HTML/CSS z minimum JS, zdjęcia w lekkich formatach i pod rozmiar ekranu, zdjęcie hero ładowane z priorytetem; efekty przy przewijaniu — tylko na desktopie. Prace na pierwszym miejscu, tekst na drugim, a szybkość utrzymana na Lighthouse 90+ — rzadkość w niszy architektonicznej, gdzie zwykle ciężkie wideo zjada cały performance budget.
+      Czysty HTML/CSS/JS bez ciężkich bibliotek WebGL i bez rozmyć `backdrop-filter`, z pełną obsługą `prefers-reduced-motion` i obrazami WebP dopasowanymi do siatki. Architektura podana jak w drukowanej monografii — z zachowaniem budżetu wydajności Lighthouse 95+.
   en:
-    tagline: Architecture bureau landing — photography-first
-    summary: Architecture bureau landing. Editorial + photography-first. Performance budget Lighthouse 90+ in a category where that's rare.
-    result: 'performance budget: Lighthouse 90+ target'
-    statLabel: Lighthouse score in a niche where heavy video and unoptimised photos usually eat the whole performance budget
+    tagline: Architecture atelier with editorial grid, interactive blueprint, and live scope estimator
+    summary: Architectural atelier (Warsaw / Zurich). Warm bone-paper editorial grid, stepped pixel sky cutout, interactive axonometric blueprint, and live feasibility estimator wired into the brief.
+    result: 'performance budget: Lighthouse 95+ without heavy video'
+    statLabel: Lighthouse score across a full architectural monograph, interactive axonometric blueprint, and multi-stage scope estimator
     body: |
       ## Context
 
-      A landing for a premium architecture studio — luxury residential and boutique commercial, a client with a budget upwards of €500,000. Most such sites open with a manifesto: a long text about "the philosophy of space", a video background, a mega-menu — and only then the work. But a client with that budget wants to see finished buildings first, and will read the manifesto later, if the work appeals. The order had to be flipped.
+      A flagship site for a private residential and boutique commercial architecture studio handling commissions from €500,000+. Patrons at this level judge a practice by spatial composure, material honesty, and clarity around project scope, timeline, and engineering stages.
 
       ## The solution
 
-      Photography-first: the homepage opens with a photo of a finished building, not text. Text is subordinate to the image — short captions, an editorial layout like an architecture magazine (paired "photo + comment" blocks). Palette — dark-grey background and a warm tan accent, there to support the photos, not fight them. Navigation is minimal — four pages instead of twelve: fewer paths, a higher share reaching the contact page.
+      We designed an editorial composition on warm bone paper (`#FAF5F0`) anchored by `1px` architectural datum lines and a signature stepped pixel sky cutout over `Pavilion Horyzont`. Screen 2 pairs the Chief Architect's manifesto with a zero-layout-shift 5-category showcase (`Commercial`, `Apartment complex`, `Apartments`, `Offices`, `Houses`). Further down, asymmetric built monographs lead into an interactive axonometric blueprint with switchable tectonic layers and a live Feasibility & Scope Estimator (`160–1,400 m²`, `Stages 01–05`) that transfers selected parameters directly into the commission intake form.
 
       ## The outcome
 
-      HTML/CSS with minimal JS, photos in light formats sized to the screen, the hero shot loaded with priority; scroll effects on desktop only. Work first, text second — and speed held at Lighthouse 90+, rare in the architecture niche where heavy video usually eats the whole performance budget.
+      Pure HTML/CSS/JS with zero layout shifts, zero `backdrop-filter` overhead, full `prefers-reduced-motion` support, and retina WebP photography. The studio reads like a printed architectural monograph while holding a Lighthouse 95+ performance budget.
   ua:
-    tagline: Лендинг архітектурного бюро з photo-first підходом
-    summary: Лендинг архітектурного бюро. Editorial + photography-first. Performance budget Lighthouse 90+ у категорії, де це рідкість.
-    result: 'перф-бюджет: ціль Lighthouse 90+'
-    statLabel: оцінка Lighthouse у ніші, де важкі відео й неоптимізовані фото з'їдають увесь performance budget
+    tagline: Архітектурне бюро з editorial-сіткою, інтерактивним кресленням і калькулятором обсягу проєкту
+    summary: Архітектурне ательє (Варшава / Цюрих). Тепла паперова editorial-сітка, ступінчастий піксельний зріз фасаду, інтерактивне креслення та розрахунок бюджету з прямою передачею в бриф.
+    result: 'перф-бюджет: Lighthouse 95+ без важкого відео'
+    statLabel: оцінка Lighthouse при повній архітектурній вітрині, інтерактивному аксонометричному кресленні та калькуляторі стадій проєктування
     body: |
       ## Контекст
 
-      Лендинг архітектурного бюро преміум-сегмента — luxury residential і boutique commercial, клієнт із бюджетом від 500 000 €. Більшість таких сайтів починають з маніфесту: довгий текст про «філософію простору», відео-фон, мега-меню — і лише потім роботи. Але клієнт із таким бюджетом спершу хоче побачити готові об'єкти, а маніфест прочитає потім, якщо зачепить. Потрібно було перевернути порядок.
+      Флагманський сайт архітектурного ательє преміум-сегмента — приватні резиденції та камерні комерційні об'єкти з бюджетом від 500 000 €. Замовники цього рівня оцінюють бюро за відчуттям пропорцій, чесністю матеріалів і прозорістю строків та етапів проєктування.
 
       ## Рішення
 
-      Photography-first: головна починається з фото готового об'єкта, а не з тексту. Текст підпорядкований картинці — короткі підписи, editorial-верстка як в архітектурному журналі (парні блоки «фото + коментар»). Палітра — темно-сірий фон і теплий tan-акцент, щоб підтримувати фотографії, а не сперечатися з ними. Навігація мінімальна — чотири сторінки замість дванадцяти: менше шляхів, вища частка тих, хто доходить до контактів.
+      Ми побудували світлу редакційну композицію на теплому паперовому тлі (`#FAF5F0`) з тонкими осьовими лініями `1px` та фірмовим ступінчасто-піксельним зрізом неба над фасадом `Pavilion Horyzont`. Другий екран поєднує маніфест головного архітектора з інтерактивною вітриною п'яти категорій без стрибків висоти. Далі розгортаються асиметричні монографії об'єктів, аксонометричне креслення з перемиканням конструктивних шарів і живий калькулятор площі та стадій (`Stages 01–05`), який одним кліком переносить обрані параметри прямо у форму брифу.
 
       ## Підсумок
 
-      HTML/CSS з мінімумом JS, фото в легких форматах і під розмір екрана, hero-знімок вантажиться з пріоритетом; ефекти при скролі — лише на десктопі. Роботи на першому місці, текст на другому, а швидкість утримана на Lighthouse 90+ — для архітектурної ніші рідкість, де зазвичай важкі відео з'їдають увесь performance budget.
+      Чистий HTML/CSS/JS без важких відео-фонів і без `backdrop-filter`, із повною підтримкою `prefers-reduced-motion` та оптимізованою WebP-графікою. Сайт сприймається як друкована архітектурна монографія і тримає перф-бюджет Lighthouse 95+.
 ---
 
 ## Контекст
 
-Лендинг архитектурного бюро премиум-сегмента — luxury residential и boutique commercial, клиент с бюджетом от 500 000 €. Большинство таких сайтов начинают с манифеста: длинный текст про «философию пространства», видео-фон, мега-меню — и только потом работы. Но клиент с таким бюджетом сначала хочет увидеть готовые объекты, а манифест прочитает потом, если зацепит. Нужно было перевернуть порядок.
+Флагманский сайт архитектурного ателье премиум-сегмента — частные резиденции и камерные коммерческие объекты с бюджетом от 500 000 €. Заказчики этого уровня оценивают бюро по чувству пропорций, честности материалов и прозрачности сроков и стадий проектирования.
 
 ## Решение
 
-Photography-first: главная начинается с фото готового объекта, а не с текста. Текст подчинён картинке — короткие подписи, editorial-вёрстка как в архитектурном журнале (парные блоки «фото + комментарий»). Палитра — тёмно-серый фон и тёплый tan-акцент, чтобы поддерживать фотографии, а не спорить с ними. Навигация минимальная — четыре страницы вместо двенадцати: меньше путей, выше доля дошедших до контактов.
+Мы построили светлую редакционную композицию на тёплом бумажном фоне (`#FAF5F0`) с тонкими осевыми линиями `1px` и фирменным ступенчато-пиксельным срезом неба над фасадом `Pavilion Horyzont`. Второй экран соединяет манифест главного архитектора с интерактивной витриной пяти категорий без скачков высоты. Ниже разворачиваются асимметричные монографии объектов, аксонометрический чертёж с переключением конструктивных слоёв и живой калькулятор площади и стадий (`Stages 01–05`), который одним кликом переносит выбранные параметры прямо в форму брифа.
 
 ## Итог
 
-HTML/CSS с минимумом JS, фото в лёгких форматах и под размер экрана, hero-снимок грузится с приоритетом; эффекты при скролле — только на десктопе. Работы на первом месте, текст на втором, а скорость удержана на Lighthouse 90+ — для архитектурной ниши редкость, где обычно тяжёлые видео съедают весь performance budget.
+Чистый HTML/CSS/JS без тяжёлых видео-фонов и без `backdrop-filter`, с полной поддержкой `prefers-reduced-motion` и оптимизированной WebP-графикой. Сайт воспринимается как печатная архитектурная монография и держит перф-бюджет Lighthouse 95+.

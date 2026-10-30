@@ -1,0 +1,119 @@
+:root {
+  /* ==========================================================================
+     ESSENCE DESIGN SYSTEM TOKENS
+     Paleta молочно-оливковая, Inter typography, tactile editorial rhythm
+     ========================================================================== */
+
+  /* Palette */
+  --essence-olive: #70715a;
+  --essence-olive-dark: #555743;
+  --essence-olive-deep: #3d3e2f;
+  --essence-olive-soft: #85866f;
+  --essence-olive-subtle: rgba(112, 113, 90, 0.09);
+  --essence-olive-badge: rgba(112, 113, 90, 0.14);
+
+  --essence-paper: #f7f6f1;
+  --essence-paper-alt: #f1f0eb;
+  --essence-paper-warm: #faf9f5;
+  --essence-card: #ecece7;
+  --essence-card-hover: #e5e5de;
+  --essence-card-border: #deded6;
+
+  --essence-ink: #292b26;
+  --essence-ink-secondary: #52534c;
+  --essence-ink-tertiary: #75766b;
+  --essence-ink-muted: #9c9d92;
+
+  --essence-border: #dcdcd3;
+  --essence-border-subtle: #e6e6df;
+  --essence-border-dark: #b8b8ab;
+  --essence-white: #ffffff;
+  --essence-error: #8b3028;
+
+  /* Typography */
+  --essence-font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Font sizes */
+  --essence-font-size-2xs: 10px;
+  --essence-font-size-xs: 11px;
+  --essence-font-size-sm: 12px;
+  --essence-font-size-base: 13px;
+  --essence-font-size-body: 14px;
+  --essence-font-size-md: 16px;
+  --essence-font-size-lg: 18px;
+  --essence-font-size-xl: 22px;
+  --essence-font-size-2xl: 28px;
+  --essence-font-size-3xl: 36px;
+  --essence-font-size-4xl: 46px;
+
+  /* Line heights */
+  --essence-lh-none: 1;
+  --essence-lh-tight: 1.08;
+  --essence-lh-snug: 1.25;
+  --essence-lh-normal: 1.5;
+  --essence-lh-relaxed: 1.62;
+
+  /* Letter spacing */
+  --essence-tracking-tight: -0.035em;
+  --essence-tracking-snug: -0.02em;
+  --essence-tracking-normal: 0;
+  --essence-tracking-wide: 0.06em;
+  --essence-tracking-eyebrow: 0.12em;
+  --essence-tracking-brand: 0.2em;
+
+  /* Font weights */
+  --essence-weight-normal: 400;
+  --essence-weight-medium: 500;
+  --essence-weight-semibold: 600;
+  --essence-weight-bold: 700;
+
+  /* Grid & Spacing */
+  --essence-container-max: 1440px;
+  --essence-gutter-wide: 44px;
+  --essence-gutter-compact: 20px;
+  --essence-gutter: var(--essence-gutter-wide);
+
+  --essence-section-space-wide: 112px;
+  --essence-section-space-compact: 68px;
+  --essence-section-space: var(--essence-section-space-wide);
+
+  --essence-product-columns-wide: 3;
+  --essence-product-columns-compact: 1;
+  --essence-product-columns: var(--essence-product-columns-wide);
+
+  --essence-display-wide: 46px;
+  --essence-display-compact: 28px;
+  --essence-display: var(--essence-display-wide);
+  --essence-display-weight: 500;
+  --essence-display-tracking: -0.035em;
+
+  /* Radii */
+  --essence-radius-xs: 2px;
+  --essence-radius-sm: 4px;
+  --essence-radius-md: 8px;
+  --essence-radius-lg: 12px;
+  --essence-radius-pill: 9999px;
+  --essence-button-radius: var(--essence-radius-md);
+
+  /* Shadows */
+  --essence-shadow-subtle: 0 4px 20px rgba(41, 43, 38, 0.04);
+  --essence-shadow-card: 0 10px 30px rgba(41, 43, 38, 0.05);
+
+  /* Transitions */
+  --essence-transition-fast: 160ms cubic-bezier(0.16, 1, 0.3, 1);
+  --essence-transition-normal: 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --essence-gutter: var(--essence-gutter-compact);
+    --essence-display: var(--essence-display-compact);
+    --essence-section-space: var(--essence-section-space-compact);
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --essence-product-columns: var(--essence-product-columns-compact);
+  }
+}

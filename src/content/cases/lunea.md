@@ -5,8 +5,8 @@ niche: Wedding atelier
 year: '2026'
 palette: EDITORIAL-WARM
 tier: 1
-accent: '#B77968'
-bg: '#F6F1E9'
+accent: '#B8976C'
+bg: '#FBF9F5'
 siteUrl: https://overflow-web.pl/lunea/
 cover: /covers/lunea.jpg
 screens:
@@ -28,7 +28,7 @@ result: 43,5 → 2,6 МБ изображений
 stat:
   value: '−94%'
   label: веса изображений без потери визуального масштаба
-order: 19
+order: 99
 concept: true
 translations:
   pl:

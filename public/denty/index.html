@@ -3,194 +3,1215 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Denty — koncepcyjny CRM porządkujący kontakt gabinetu stomatologicznego z pacjentem.">
+  <meta name="description" content="Denty — Nowoczesny system operacyjny dla klinik stomatologicznych. Prowadzenie kliniki znów staje się czystą przyjemnością. Harmonogram foteli, diagram 3D, autopilot SMS i pełna zgodność z systemem P1.">
   <meta name="color-scheme" content="light">
-  <title>Denty | Spokojny przebieg wizyty</title>
+  <title>Denty | Spraw, by prowadzenie kliniki znów było przyjemnością</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preload" as="image" href="hero-generated.webp" fetchpriority="high">
-  <link rel="stylesheet" href="denty-preview.css">
-  <script defer src="denty-preview.js"></script>
-<meta name="robots" content="noindex, follow"></head>
-<body>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Urbanist:wght@500;600;700;800&display=swap" rel="stylesheet">
   
-  <a class="skip-link" href="#main">Przejdź do treści</a>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
 
-  <header class="site-header">
-    <a class="brand" href="#main" aria-label="Denty — strona główna">
-      <img src="favicon.svg" width="28" height="28" alt="">
-      <span>Denty</span>
-    </a>
-    <button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-nav" data-menu-button><span data-menu-label>Menu</span></button>
-    <nav class="primary-nav" id="primary-nav" aria-label="Główna nawigacja" data-navigation>
-      <a href="#workflow">Przebieg wizyty</a>
-      <a href="#reception">Dzień recepcji</a>
-      <a href="#scope">Zakres</a>
-      <a class="nav-action" href="#demo">Zobacz demo</a>
-    </nav>
+  <!-- ==========================================================================
+       TOP NAVIGATION: Clean Full-Width Bar (Sunbeam Specification)
+       ========================================================================== -->
+  <header class="sunbeam-header">
+    <div class="sunbeam-header-inner">
+      <a href="#" class="sunbeam-brand" aria-label="Denty Strona Główna">
+        <span class="brand-mascot-dot"></span>
+        <span class="brand-text">Denty</span>
+      </a>
+
+      <nav class="sunbeam-nav-links">
+       <a href="#moduly" class="sunbeam-nav-link">Moduły</a>
+       <a href="#kalkulator" class="sunbeam-nav-link">Kalkulator ROI</a>
+       <a href="#cennik" class="sunbeam-nav-link">Cennik</a>
+       <a href="#opinie" class="sunbeam-nav-link">Opinie</a>
+       <a href="#faq" class="sunbeam-nav-link">FAQ</a>
+     </nav>
+
+      <div class="sunbeam-nav-actions">
+        <a href="#demo" class="sunbeam-pill-subtle" data-open-demo>Zaloguj</a>
+        <a href="#demo" class="sunbeam-pill-dark" data-open-demo>
+          <span class="pill-icon-circle">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </span>
+          <span>Wypróbuj za darmo</span>
+        </a>
+      </div>
+    </div>
   </header>
 
-  <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <h1 id="hero-title">Gabinet działa płynnie.<br>Pacjent to czuje.</h1>
-        <p>Denty porządkuje kontakt od zapisu do opieki po wizycie — bez dokładania kolejnego chaosu recepcji.</p>
-        <a class="primary-action" href="#workflow">Zobacz przebieg wizyty</a>
-        <span class="concept-note">Projekt koncepcyjny / bez deklarowanych wdrożeń</span>
+  <main id="main-content">
+    <!-- ==========================================================================
+         SCREEN 1: Strict 100vh Hero Lock on Desktop (2560x1310 & 1920x1080)
+         With Sunbeam Playful Floating Mascots & Lavender Stage Frame
+         ========================================================================== -->
+    <section class="hero-screen-1" id="hero">
+      
+      <!-- Floating Sunbeam Playful Characters around Headline -->
+      <div class="hero-mascots-wrap" aria-hidden="true">
+        <!-- Top Left: Lime-green serrated smiling sun mascot -->
+        <img src="assets/sun_green_mascot.png" alt="" class="hero-mascot mascot-sun-left">
+        <!-- Top Center: Soft blue blur orb -->
+        <img src="assets/blue_orb.png" alt="" class="hero-mascot mascot-orb-top">
+        <!-- Top Right: Pastel pink rainbow arch mascot -->
+        <img src="assets/pink_rainbow_mascot.png" alt="" class="hero-mascot mascot-rainbow-right">
+        <!-- Bottom Left: Mint green diamond -->
+        <img src="assets/mint_diamond.png" alt="" class="hero-mascot mascot-diamond-left">
+        <!-- Bottom Right: Blue smiling crescent mascot -->
+        <img src="assets/blue_crescent_mascot.png" alt="" class="hero-mascot mascot-crescent-right">
       </div>
 
-      <div class="hero-media">
-        <img src="hero-generated.webp" width="1536" height="1024" alt="Jasny gabinet stomatologiczny przygotowany do przyjęcia pacjenta">
-        <article class="visit-sheet" aria-label="Przykładowy arkusz wizyty">
-          <div class="sheet-head"><strong>Wizyta / przykład</strong><span>10:30</span></div>
-          <p class="patient-name">Pacjentka A.K.</p>
-          <ol>
-            <li class="is-complete"><span>Zapis</span><time>pon. 09:12</time></li>
-            <li class="is-complete"><span>Potwierdzenie</span><time>wt. 10:30</time></li>
-            <li class="is-current"><span>Wizyta</span><time>śr. 10:30</time></li>
-            <li><span>Opieka po</span><time>do wysłania</time></li>
-          </ol>
-        </article>
-      </div>
-    </section>
-
-    <section class="promise" aria-labelledby="promise-title">
-      <h2 id="promise-title">Technologia nie ma brzmieć głośniej niż recepcja.</h2>
-      <div class="promise-copy"><p>Denty porządkuje pracę wokół wizyty. Nie diagnozuje, nie wysyła wiadomości bez reguły i nie zastępuje rozmowy wtedy, gdy potrzebny jest człowiek.</p><dl><div><dt>Jedno źródło</dt><dd>stan kontaktu i następne zadanie</dd></div><div><dt>Jawna zgoda</dt><dd>kanał kontaktu wybrany przez pacjenta</dd></div><div><dt>Minimalna treść</dt><dd>tylko to, co potrzebne do obsługi wizyty</dd></div></dl></div>
-    </section>
-
-    <section class="workflow" id="workflow" aria-labelledby="workflow-title">
-      <div class="section-intro">
-        <h2 id="workflow-title">Jedna wizyta.<br>Cztery spokojne etapy.</h2>
-        <p>Recepcja widzi, co już wydarzyło się w kontakcie z pacjentem i co wymaga reakcji. Poniższy przebieg jest demonstracją interfejsu.</p>
-      </div>
-
-      <div class="journey-tabs" role="tablist" aria-label="Etapy wizyty">
-        <button type="button" role="tab" aria-selected="true" aria-controls="journey-panel" data-journey-tab="Zapis" data-title="Nowy termin trafia do wspólnej kolejki" data-copy="Recepcja zapisuje źródło kontaktu, preferowaną godzinę i krótką notatkę bez przełączania między arkuszami." data-status="Termin utworzony">Zapis</button>
-        <button type="button" role="tab" aria-selected="false" aria-controls="journey-panel" tabindex="-1" data-journey-tab="Potwierdzenie" data-title="Pacjent dostaje jasną prośbę o decyzję" data-copy="Wiadomość przypomina o terminie i pozwala oznaczyć odpowiedź. Treść oraz kanał pozostają pod kontrolą gabinetu." data-status="Oczekuje na odpowiedź">Potwierdzenie</button>
-        <button type="button" role="tab" aria-selected="false" aria-controls="journey-panel" tabindex="-1" data-journey-tab="Wizyta" data-title="Recepcja widzi aktualny stan dnia" data-copy="Przyjęcie, opóźnienie i zakończenie wizyty są widoczne w jednym rytmie pracy, bez udawania dokumentacji medycznej." data-status="Pacjent na miejscu">Wizyta</button>
-        <button type="button" role="tab" aria-selected="false" aria-controls="journey-panel" tabindex="-1" data-journey-tab="Opieka po" data-title="Kontakt nie kończy się przy wyjściu" data-copy="Zespół może zaplanować instrukcję po wizycie albo przypomnienie o kolejnym kontakcie — jako zadanie, nie automatyczną obietnicę." data-status="Zadanie zaplanowane">Opieka po</button>
-      </div>
-
-      <article class="journey-panel" id="journey-panel" role="tabpanel" aria-live="polite">
-        <div class="journey-number" aria-hidden="true" data-journey-number>01</div>
-        <div>
-          <p class="journey-status" data-journey-status>Termin utworzony</p>
-          <h3 data-journey-title>Nowy termin trafia do wspólnej kolejki</h3>
-          <p data-journey-copy>Recepcja zapisuje źródło kontaktu, preferowaną godzinę i krótką notatkę bez przełączania między arkuszami.</p>
+      <div class="hero-header-block">
+        <!-- Social Proof Stars -->
+        <div class="hero-social-proof">
+          <span class="proof-stars">★★★★★</span>
+          <span class="proof-text">140+ Klinik w Polsce</span>
         </div>
-      </article>
-    </section>
 
-    <section class="intake" aria-labelledby="intake-title">
-      <div><h2 id="intake-title">Pierwszy telefon zostawia czytelny ślad.</h2><p>Skrypt rozmowy nie zastępuje uważności. Pomaga zebrać ten sam podstawowy kontekst i przekazać go dalej bez przepisywania.</p></div>
-      <div class="intake-sheet"><div><span>ŹRÓDŁO</span><strong>Telefon</strong></div><div><span>PREFEROWANY KONTAKT</span><strong>SMS · zgoda zapisana</strong></div><div><span>CEL</span><strong>Umówienie konsultacji</strong></div><div><span>NASTĘPNY KROK</span><strong>Wyślij termin do potwierdzenia</strong></div><p>Dane demonstracyjne · bez informacji klinicznych</p></div>
-    </section>
+        <!-- Main Display Headline -->
+        <h1 class="hero-title">
+          <span>Spraw, by prowadzenie kliniki</span>
+          <span>znów było przyjemnością</span>
+        </h1>
 
-    <section class="message-lab" aria-labelledby="message-title">
-      <div class="message-copy"><h2 id="message-title">Przypomnienie ma być dyskretne i łatwe do odwołania.</h2><p>Treść ogranicza się do terminu, miejsca i sposobu odpowiedzi. Kanał wynika z zapisanej preferencji, a pacjent zawsze może zrezygnować.</p></div>
-      <div class="message-preview"><div class="phone-head"><span>DENTY / PRZYKŁAD</span><time>09:42</time></div><p>Dzień dobry. Przypominamy o wizycie w środę o 10:30. Odpowiedz TAK, ZMIEŃ lub ZREZYGNUJ.</p><div class="message-actions"><button type="button" data-message="TAK">TAK</button><button type="button" data-message="ZMIEŃ">ZMIEŃ</button><button type="button" data-message="ZREZYGNUJ">ZREZYGNUJ</button></div><small id="messageStatus" role="status">Lokalna demonstracja — wiadomość nie jest wysyłana.</small></div>
-    </section>
+        <!-- Subtitle -->
+        <p class="hero-subtitle">
+          Kompletny system dla nowoczesnych klinik stomatologicznych:<br>
+          recepcja, diagram zębowy 3D, autopilot SMS i rozliczenia w jednym miejscu.
+        </p>
 
-    <section class="readiness" aria-labelledby="readiness-title">
-      <div class="section-intro"><h2 id="readiness-title">Przed wizytą liczy się gotowość, nie liczba powiadomień.</h2><p>Recepcja widzi tylko elementy potrzebne do organizacji przyjęcia. Brakujący krok staje się zadaniem z właścicielem, a nie czerwonym alarmem bez kontekstu.</p></div>
-      <div class="readiness-line"><div class="ready"><b>Termin</b><span>potwierdzony</span></div><div class="ready"><b>Kanał</b><span>zgoda SMS</span></div><div class="pending"><b>Dokument</b><span>do uzupełnienia</span></div><div><b>Przyjęcie</b><span>śr. 10:30</span></div></div>
-    </section>
+        <!-- Centered Sunbeam CTA Buttons -->
+        <div class="hero-cta-group">
+          <a href="#demo" class="sunbeam-pill-dark hero-btn-main" data-open-demo>
+            <span class="pill-icon-circle">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </span>
+            <span>Wypróbuj za darmo</span>
+          </a>
+          <a href="#demo" class="sunbeam-pill-subtle hero-btn-sec" data-open-demo>
+            <span>Umów prezentację</span>
+          </a>
+        </div>
 
-    <section class="reception" id="reception" aria-labelledby="reception-title">
-      <div class="reception-copy">
-        <h2 id="reception-title">Dzień recepcji bez zgadywania.</h2>
-        <p>Przykładowy widok łączy plan dnia z kolejką kontaktu. Dane są demonstracyjne i nie przedstawiają prawdziwych pacjentów.</p>
-      </div>
-
-      <div class="desk-demo" aria-label="Przykładowy plan dnia recepcji">
-        <div class="desk-toolbar"><strong>Środa / plan dnia</strong><span>Dane przykładowe</span></div>
-        <div class="desk-grid">
-          <div class="time-column"><span>09:00</span><span>10:00</span><span>11:00</span><span>12:00</span><span>13:00</span></div>
-          <div class="chair-column"><strong>Gabinet A</strong><div class="appointment cobalt">A.K. / kontrola<small>potwierdzona</small></div><div class="appointment mint">M.R. / higienizacja<small>na miejscu</small></div></div>
-          <div class="chair-column"><strong>Gabinet B</strong><div class="appointment pale">P.S. / konsultacja<small>czeka na odpowiedź</small></div><div class="appointment cobalt lower">E.W. / zabieg<small>potwierdzona</small></div></div>
-          <aside class="contact-queue"><strong>Do kontaktu</strong><p><span>3</span> potwierdzenia</p><p><span>2</span> odpowiedzi</p><p><span>1</span> zadanie po wizycie</p></aside>
+        <!-- Sunbeam Module Switcher Tabs (Outline SVG icons, soft pill active, no numbers) -->
+        <div class="sunbeam-tabs-bar" role="tablist" aria-label="Wybierz moduł systemu">
+          <button class="sunbeam-tab active" data-tab="tab-schedule" type="button" role="tab" aria-selected="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>Harmonogram</span>
+          </button>
+          <button class="sunbeam-tab" data-tab="tab-diagram" type="button" role="tab" aria-selected="false">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.5 2 6 4.5 6 7.5c0 2 .8 4.2 1.5 6.5.6 2.1 1.5 5 1.5 8 0 0 1.5-1 3-1s3 1 3 1c0-3 .9-5.9 1.5-8 .7-2.3 1.5-4.5 1.5-6.5C18 4.5 15.5 2 12 2z"></path></svg>
+            <span>Diagram 3D</span>
+          </button>
+          <button class="sunbeam-tab" data-tab="tab-sms" type="button" role="tab" aria-selected="false">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            <span>Autopilot SMS</span>
+          </button>
+          <button class="sunbeam-tab" data-tab="tab-plan" type="button" role="tab" aria-selected="false">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="6" y1="8" x2="6" y2="8"></line><line x1="10" y1="8" x2="18" y2="8"></line><line x1="6" y1="12" x2="18" y2="12"></line><line x1="6" y1="16" x2="14" y2="16"></line></svg>
+            <span>Rozliczenia</span>
+          </button>
+          <button class="sunbeam-tab" data-tab="tab-analytics" type="button" role="tab" aria-selected="false">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            <span>Analityka</span>
+          </button>
         </div>
       </div>
-    </section>
 
-    <section class="recovery" aria-labelledby="recovery-title">
-      <div><h2 id="recovery-title">Brak odpowiedzi też jest stanem.</h2><p>Zamiast automatycznie ponawiać kontakt, Denty proponuje recepcji spokojną kolejkę: sprawdź preferencję, wybierz człowieka i zakończ próbę po ustalonym limicie.</p></div>
-      <ol><li><time>48 H</time><strong>Przypomnienie w wybranym kanale</strong><span>oczekuje</span></li><li><time>24 H</time><strong>Telefon recepcji, jeśli ustalono</strong><span>do decyzji</span></li><li><time>STOP</time><strong>Nie wysyłaj kolejnych wiadomości</strong><span>limit kontaktu</span></li></ol>
-    </section>
+      <!-- Sunbeam Vibrant Lavender Gradient Stage Frame -->
+      <div class="sunbeam-stage-frame">
+        <div class="os-stage-window">
+          
+          <!-- Sunbeam Left Icon Sidebar -->
+          <aside class="os-icon-sidebar" aria-label="Nawigacja boczna Denty">
+            <div class="os-brand-icon">
+              <span>!</span>
+            </div>
+            <div class="os-nav-icons">
+              <button class="os-nav-btn active" data-tab="tab-schedule" title="Harmonogram" type="button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+              </button>
+              <button class="os-nav-btn" data-tab="tab-schedule" title="Kalendarz" type="button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              </button>
+              <button class="os-nav-btn" data-tab="tab-diagram" title="Diagram Zębowy 3D" type="button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.5 2 6 4.5 6 7.5c0 2 .8 4.2 1.5 6.5.6 2.1 1.5 5 1.5 8 0 0 1.5-1 3-1s3 1 3 1c0-3 .9-5.9 1.5-8 .7-2.3 1.5-4.5 1.5-6.5C18 4.5 15.5 2 12 2z"></path></svg>
+              </button>
+              <button class="os-nav-btn" data-tab="tab-sms" title="Autopilot SMS" type="button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              </button>
+              <button class="os-nav-btn" data-tab="tab-plan" title="Rozliczenia i Finanse" type="button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="6" y1="8" x2="6" y2="8"></line><line x1="10" y1="8" x2="18" y2="8"></line><line x1="6" y1="12" x2="18" y2="12"></line><line x1="6" y1="16" x2="14" y2="16"></line></svg>
+              </button>
+              <button class="os-nav-btn" data-tab="tab-analytics" title="Analityka Kliniki" type="button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              </button>
+            </div>
+            <div class="os-sidebar-bottom">
+              <span class="os-user-avatar">TB</span>
+            </div>
+          </aside>
 
-    <section class="aftercare" aria-labelledby="aftercare-title">
-      <div class="aftercare-copy"><h2 id="aftercare-title">Opieka po wizycie zaczyna się od właściwego handoffu.</h2><p>Lekarz określa treść zaleceń. Recepcja widzi jedynie, czy zadanie komunikacyjne zostało przygotowane, przekazane i zamknięte.</p></div>
-      <div class="handoff"><span class="done">LEKARZ<small>treść zatwierdzona</small></span><i aria-hidden="true"></i><span class="current">RECEPCJA<small>wyślij wybranym kanałem</small></span><i aria-hidden="true"></i><span>PACJENT<small>potwierdzenie odbioru</small></span></div>
-    </section>
+          <!-- Main Application Window Area -->
+          <div class="os-main-content">
+            <!-- App Header Bar -->
+            <div class="stage-app-header">
+              <div class="app-header-left">
+                <span class="app-clinic-title">Klinika Stomatologiczna Denty Mokotów</span>
+                <span class="app-breadcrumbs">/ Warszawa • 3 Fotele</span>
+                <span class="app-badge-live">LIVE SYNC</span>
+              </div>
+              <div class="app-header-right">
+                <span class="app-status-text">Aktywne fotele: <strong>3/3</strong></span>
+                <button class="app-btn-action" data-open-demo type="button">+ Nowa wizyta</button>
+              </div>
+            </div>
 
-    <section class="team-scene" aria-labelledby="team-title">
-      <figure><img src="images/morning-huddle-v2.webp" width="1536" height="1024" loading="lazy" alt="Recepcjonistka i asystentka planują dzień pracy przy grafiku wizyt"></figure>
-      <div><h2 id="team-title">Poranny plan jest krótki, bo stan dnia jest wspólny.</h2><p>Każda rola czyta ten sam przebieg, ale widzi inne zadanie. Recepcja prowadzi kontakt, asysta przygotowuje przyjęcie, lekarz zatwierdza treść medyczną.</p><ul><li><b>Recepcja</b> kontakt i termin</li><li><b>Asysta</b> gotowość gabinetu</li><li><b>Lekarz</b> decyzja kliniczna</li></ul></div>
-    </section>
+            <!-- Viewport with 5 Dynamic Panels -->
+            <div class="stage-viewport">
+              
+              <!-- ============================================================
+                   PANEL 1: Harmonogram Gabinetów
+                   ============================================================ -->
+              <div class="stage-panel active" id="tab-schedule">
+                <div class="schedule-grid-wrap">
+                  <div class="schedule-sidebar">
+                    <div class="sidebar-title">Gabinety i Fotele</div>
+                    <div class="chair-selector-list">
+                      <button class="chair-pill-btn active" data-chair="all" type="button">
+                        <div>
+                          <div class="chair-name">Wszystkie fotele</div>
+                          <div class="chair-spec">3 gabinety zabiegowe</div>
+                        </div>
+                        <span class="chair-status-dot"></span>
+                      </button>
+                      <button class="chair-pill-btn" data-chair="chair-1" type="button">
+                        <div>
+                          <div class="chair-name">Fotel 1 — Chirurgia</div>
+                          <div class="chair-spec">Dr n. med. M. Janicki</div>
+                        </div>
+                        <span class="chair-status-dot"></span>
+                      </button>
+                      <button class="chair-pill-btn" data-chair="chair-2" type="button">
+                        <div>
+                          <div class="chair-name">Fotel 2 — Endodoncja</div>
+                          <div class="chair-spec">Lek. dent. A. Nowicka</div>
+                        </div>
+                        <span class="chair-status-dot"></span>
+                      </button>
+                      <button class="chair-pill-btn" data-chair="chair-3" type="button">
+                        <div>
+                          <div class="chair-name">Fotel 3 — Higienizacja</div>
+                          <div class="chair-spec">Mgr P. Wiśniewska</div>
+                        </div>
+                        <span class="chair-status-dot"></span>
+                      </button>
+                    </div>
 
-    <section class="capabilities" aria-labelledby="capabilities-title">
-      <h2 id="capabilities-title">Mniej przełączania.<br>Więcej ciągłości.</h2>
-      <div class="case-rows">
-        <article><h3>Kontakt ma kontekst</h3><p>Przy wiadomości widać termin, poprzednią odpowiedź i kolejne zadanie — bez szukania po kilku kanałach.</p><span>Wspólna oś kontaktu</span></article>
-        <article><h3>Automatyzacja ma granice</h3><p>Gabinet ustala treść, kanał i moment wysyłki. Denty pokazuje stan, ale nie udaje samodzielnej decyzji medycznej.</p><span>Kontrola po stronie zespołu</span></article>
-        <article><h3>Dzień kończy się domknięciem</h3><p>Kolejka pokazuje brakujące potwierdzenia i zaplanowany kontakt po wizycie, zamiast kolejnego wykresu bez działania.</p><span>Zadania zamiast statystyk</span></article>
+                    <div class="schedule-quick-kpi">
+                      <div class="kpi-mini-item">
+                        <span class="kpi-mini-label">Obłożenie dzisiaj</span>
+                        <strong class="kpi-mini-val">94.8%</strong>
+                      </div>
+                      <div class="kpi-mini-item">
+                        <span class="kpi-mini-label">Odzyskane z SMS</span>
+                        <strong class="kpi-mini-val" style="color:#0D7A5F;">+1 680 zł</strong>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 3 Chair Columns -->
+                  <div class="schedule-columns">
+                    <!-- Chair 1 -->
+                    <div class="chair-column" data-chair="chair-1">
+                      <div class="chair-col-header">
+                        <div>
+                          <div class="chair-col-title">Fotel 1 • Chirurgia</div>
+                          <div class="chair-col-dr">Dr Janicki</div>
+                        </div>
+                        <div class="chair-header-actions"><button class="btn-back-all-chairs" data-show-all-chairs type="button">← Wszystkie fotele</button><span class="slot-badge green">W fotelu</span></div>
+                      </div>
+                      <div class="chair-col-slots">
+                        <div class="slot-card in-progress">
+                          <div class="slot-time"><span>10:00 - 11:00</span><span>60m</span></div>
+                          <div class="slot-patient">Michał Pawlak</div>
+                          <div class="slot-proc">Implantacja Straumann BLX 2.4</div>
+                          <span class="slot-badge green">Zabieg w toku</span>
+                        </div>
+                        <div class="slot-card confirmed">
+                          <div class="slot-time"><span>11:15 - 12:30</span><span>75m</span></div>
+                          <div class="slot-patient">Anna Kowalczyk</div>
+                          <div class="slot-proc">Ekstrakcja chirurgiczna 3.8</div>
+                          <span class="slot-badge green">Potwierdzona SMS</span>
+                        </div>
+                        <div class="slot-card confirmed">
+                          <div class="slot-time"><span>13:00 - 14:00</span><span>60m</span></div>
+                          <div class="slot-patient">Piotr Zieliński</div>
+                          <div class="slot-proc">Konsultacja implantologiczna + CBCT</div>
+                          <span class="slot-badge green">Karta wczytana</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Chair 2 -->
+                    <div class="chair-column" data-chair="chair-2">
+                      <div class="chair-col-header">
+                        <div>
+                          <div class="chair-col-title">Fotel 2 • Endodoncja</div>
+                          <div class="chair-col-dr">Dr Nowicka</div>
+                        </div>
+                        <div class="chair-header-actions"><button class="btn-back-all-chairs" data-show-all-chairs type="button">← Wszystkie fotele</button><span class="slot-badge green">Zgodnie z planem</span></div>
+                      </div>
+                      <div class="chair-col-slots">
+                        <div class="slot-card confirmed">
+                          <div class="slot-time"><span>10:00 - 11:30</span><span>90m</span></div>
+                          <div class="slot-patient">Katarzyna Dąbrowska</div>
+                          <div class="slot-proc">Leczenie pod mikroskopem 1.6</div>
+                          <span class="slot-badge green">RTG załączone</span>
+                        </div>
+                        <div class="slot-card empty-rescue">
+                          <div class="slot-time"><span>11:45 - 12:45</span><span style="color:#D97706;">⚡ ODZYSKANE</span></div>
+                          <div class="slot-patient">Tomasz Brzeziński</div>
+                          <div class="slot-proc">Wypełnienie kompozytowe MOD</div>
+                          <span class="slot-badge amber">Autopilot SMS (4 min)</span>
+                        </div>
+                        <div class="slot-card confirmed">
+                          <div class="slot-time"><span>13:15 - 14:45</span><span>90m</span></div>
+                          <div class="slot-patient">Ewa Majewska</div>
+                          <div class="slot-proc">Powtórne leczenie kanałowe 4.6</div>
+                          <span class="slot-badge green">Potwierdzona SMS</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Chair 3 -->
+                    <div class="chair-column" data-chair="chair-3">
+                      <div class="chair-col-header">
+                        <div>
+                          <div class="chair-col-title">Fotel 3 • Higienizacja</div>
+                          <div class="chair-col-dr">Mgr Wiśniewska</div>
+                        </div>
+                        <div class="chair-header-actions"><button class="btn-back-all-chairs" data-show-all-chairs type="button">← Wszystkie fotele</button><span class="slot-badge green">100% obłożenia</span></div>
+                      </div>
+                      <div class="chair-col-slots">
+                        <div class="slot-card in-progress">
+                          <div class="slot-time"><span>10:00 - 10:45</span><span>45m</span></div>
+                          <div class="slot-patient">Grzegorz Wójcik</div>
+                          <div class="slot-proc">Pakiet GBT EMS + Piaskowanie</div>
+                          <span class="slot-badge green">W fotelu</span>
+                        </div>
+                        <div class="slot-card confirmed">
+                          <div class="slot-time"><span>11:00 - 11:45</span><span>45m</span></div>
+                          <div class="slot-patient">Natalia Król</div>
+                          <div class="slot-proc">Higienizacja przedortodontyczna</div>
+                          <span class="slot-badge green">Potwierdzona SMS</span>
+                        </div>
+                        <div class="slot-card confirmed">
+                          <div class="slot-time"><span>12:15 - 13:00</span><span>45m</span></div>
+                          <div class="slot-patient">Jakub Adamski</div>
+                          <div class="slot-proc">Wybielanie Beyond Polus</div>
+                          <span class="slot-badge green">Kwalifikacja OK</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ============================================================
+                   PANEL 2: Diagram Zębowy 3D & EDM (DENSE, ZERO-HOLE DENTAL UI)
+                   ============================================================ -->
+              <div class="stage-panel" id="tab-diagram">
+                <div class="tooth-panel-rich-wrap">
+                  
+                  <!-- Left Mini Palette: Modes & Diagnostic Legend -->
+                  <div class="tooth-left-palette">
+                    <div class="palette-group-title">Tryb Odontogramu</div>
+                    <div class="palette-modes">
+                      <button class="palette-mode-btn active" type="button">FDI Dorosłych (32)</button>
+                      <button class="palette-mode-btn" type="button">Periodontologia</button>
+                      <button class="palette-mode-btn" type="button">ICDAS Próchnica</button>
+                      <button class="palette-mode-btn" type="button">Protetyka CAD/CAM</button>
+                    </div>
+
+                    <div class="palette-group-title" style="margin-top:14px;">Legenda Statusu</div>
+                    <div class="palette-legend-list">
+                      <div class="legend-item"><span class="legend-dot green"></span> Zdrowe (21)</div>
+                      <div class="legend-item"><span class="legend-dot purple"></span> Wypełnienia (4)</div>
+                      <div class="legend-item"><span class="legend-dot amber"></span> Korony / Mosty (3)</div>
+                      <div class="legend-item"><span class="legend-dot red"></span> Caries K02.1 (2)</div>
+                      <div class="legend-item"><span class="legend-dot teal"></span> Implant Straumann (1)</div>
+                      <div class="legend-item"><span class="legend-dot gray"></span> Zatrzymane (1)</div>
+                    </div>
+
+                    <div class="palette-p1-chip">
+                      <span class="p1-icon">✓</span> Pełna zgodność z EDM P1
+                    </div>
+                  </div>
+
+                  <!-- Center: Full Anatomical Dental Arch Stage (Upper & Lower Arch) -->
+                  <div class="tooth-center-stage">
+                    <div class="arch-top-bar">
+                      <div class="arch-bar-left">
+                        <span class="arch-title-badge">ODONTOGRAM FDI</span>
+                        <span class="arch-patient-sub">Tomasz Brzeziński · Szczęka Górna & Żuchwa</span>
+                      </div>
+                      <div class="arch-bar-actions">
+                        <span class="arch-chip-active">Aktywny ząb: <strong>16 (Trzonowiec)</strong></span>
+                      </div>
+                    </div>
+
+                    <!-- Upper Arch: Teeth 18 to 11 | 21 to 28 -->
+                    <div class="arch-block">
+                      <div class="arch-label-row">
+                        <span>Łuk Górny (Szczęka) — Prawa strona</span>
+                        <span>Lewa strona</span>
+                      </div>
+                      <div class="teeth-row-anatomical">
+                        <!-- Upper Right 18-11 -->
+                        <div class="tooth-cell" data-tooth="18">
+                          <span class="tooth-nr">18</span>
+                          <svg class="tooth-svg" viewBox="0 0 32 44" fill="none">
+                            <path d="M6 10 C6 4, 26 4, 26 10 C26 18, 22 36, 19 42 C16 42, 16 30, 16 30 C16 30, 16 42, 13 42 C10 36, 6 18, 6 10 Z" fill="#F4F8F6" stroke="#94A3B8" stroke-width="1.5"/>
+                            <circle cx="16" cy="14" r="3" fill="#10B981"/>
+                          </svg>
+                          <span class="tooth-state-pill green">Zdrowy</span>
+                        </div>
+                        <div class="tooth-cell decay" data-tooth="17">
+                          <span class="tooth-nr">17</span>
+                          <svg class="tooth-svg" viewBox="0 0 32 44" fill="none">
+                            <path d="M5 10 C5 4, 27 4, 27 10 C27 18, 23 36, 20 42 C16 42, 16 28, 16 28 C16 28, 16 42, 12 42 C9 36, 5 18, 5 10 Z" fill="#FFE4E6" stroke="#F43F5E" stroke-width="1.5"/>
+                            <rect x="11" y="11" width="10" height="7" rx="2" fill="#E11D48"/>
+                          </svg>
+                          <span class="tooth-state-pill red">Caries</span>
+                        </div>
+                        <div class="tooth-cell selected" data-tooth="16">
+                          <span class="tooth-nr">16</span>
+                          <svg class="tooth-svg" viewBox="0 0 32 44" fill="none">
+                            <path d="M4 10 C4 3, 28 3, 28 10 C28 18, 24 38, 21 42 C16 42, 16 28, 16 28 C16 28, 16 42, 11 42 C8 38, 4 18, 4 10 Z" fill="#EDE9FE" stroke="#8B5CF6" stroke-width="2"/>
+                            <polygon points="10,9 22,9 20,17 12,17" fill="#7C3AED"/>
+                          </svg>
+                          <span class="tooth-state-pill purple">MOD</span>
+                        </div>
+                        <div class="tooth-cell" data-tooth="15">
+                          <span class="tooth-nr">15</span>
+                          <svg class="tooth-svg" viewBox="0 0 28 42" fill="none">
+                            <path d="M5 10 C5 4, 23 4, 23 10 C23 18, 19 36, 16 40 C14 40, 14 26, 14 26 C14 26, 14 40, 12 40 C9 36, 5 18, 5 10 Z" fill="#F4F8F6" stroke="#94A3B8" stroke-width="1.5"/>
+                          </svg>
+                          <span class="tooth-state-pill green">Zdrowy</span>
+                        </div>
+                        <div class="tooth-cell endo" data-tooth="14">
+                          <span class="tooth-nr">14</span>
+                          <svg class="tooth-svg" viewBox="0 0 28 42" fill="none">
+                            <path d="M5 10 C5 4, 23 4, 23 10 C23 18, 19 36, 14 40 C9 36, 5 18, 5 10 Z" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
+                            <line x1="14" y1="12" x2="14" y2="36" stroke="#D97706" stroke-width="2"/>
+                          </svg>
+                          <span class="tooth-state-pill amber">Endo</span>
+                        </div>
+                        <div class="tooth-cell" data-tooth="13">
+                          <span class="tooth-nr">13</span>
+                          <svg class="tooth-svg" viewBox="0 0 26 42" fill="none">
+                            <path d="M4 12 C4 4, 22 4, 22 12 C22 20, 16 38, 13 41 C10 38, 4 20, 4 12 Z" fill="#F4F8F6" stroke="#94A3B8" stroke-width="1.5"/>
+                          </svg>
+                          <span class="tooth-state-pill green">Zdrowy</span>
+                        </div>
+                        <div class="tooth-cell" data-tooth="12">
+                          <span class="tooth-nr">12</span>
+                          <svg class="tooth-svg" viewBox="0 0 24 40" fill="none">
+                            <path d="M4 12 C4 4, 20 4, 20 12 C20 20, 14 36, 12 39 C10 36, 4 20, 4 12 Z" fill="#F4F8F6" stroke="#94A3B8" stroke-width="1.5"/>
+                          </svg>
+                          <span class="tooth-state-pill green">Zdrowy</span>
+                        </div>
+                        <div class="tooth-cell crown" data-tooth="11">
+                          <span class="tooth-nr">11</span>
+                          <svg class="tooth-svg" viewBox="0 0 26 40" fill="none">
+                            <path d="M4 12 C4 4, 22 4, 22 12 C22 20, 16 36, 13 39 C10 36, 4 20, 4 12 Z" fill="#FEF9C3" stroke="#CA8A04" stroke-width="1.5"/>
+                            <rect x="6" y="8" width="14" height="10" rx="2" fill="#EAB308"/>
+                          </svg>
+                          <span class="tooth-state-pill amber">Korona</span>
+                        </div>
+
+                        <!-- Midline separator -->
+                        <div class="arch-midline"></div>
+
+                        <!-- Upper Left 21-28 -->
+                        <div class="tooth-cell crown" data-tooth="21">
+                          <span class="tooth-nr">21</span>
+                          <svg class="tooth-svg" viewBox="0 0 26 40" fill="none">
+                            <path d="M4 12 C4 4, 22 4, 22 12 C22 20, 16 36, 13 39 C10 36, 4 20, 4 12 Z" fill="#FEF9C3" stroke="#CA8A04" stroke-width="1.5"/>
+                            <rect x="6" y="8" width="14" height="10" rx="2" fill="#EAB308"/>
+                          </svg>
+                          <span class="tooth-state-pill amber">Korona</span>
+                        </div>
+                        <div class="tooth-cell" data-tooth="22">
+                          <span class="tooth-nr">22</span>
+                          <svg class="tooth-svg" viewBox="0 0 24 40" fill="none">
+                            <path d="M4 12 C4 4, 20 4, 20 12 C20 20, 14 36, 12 39 C10 36, 4 20, 4 12 Z" fill="#F4F8F6" stroke="#94A3B8" stroke-width="1.5"/>
+                          </svg>
+                          <span class="tooth-state-pill green">Zdrowy</span>
+                        </div>
+                        <div class="tooth-cell" data-tooth="23">
+                          <span class="tooth-nr">23</span>
+                          <svg class="tooth-svg" viewBox="0 0 26 42" fill="none">
+                            <path d="M4 12 C4 4, 22 4, 22 12 C22 20, 16 38, 13 41 C10 38, 4 20, 4 12 Z" fill="#F4F8F6" stroke="#94A3B8" stroke-width="1.5"/>
+                          </svg>
+                          <span class="tooth-state-pill green">Zdrowy</span>
+                        </div>
+                        <div class="tooth-cell implant" data-tooth="24">
+                          <span class="tooth-nr">24</span>
+                          <svg class="tooth-svg" viewBox="0 0 28 42" fill="none">
+                            <path d="M5 10 C5 4, 23 4, 23 10 C23 18, 19 36, 14 40 C9 36, 5 18, 5 10 Z" fill="#CCFBF1" stroke="#0D9488" stroke-width="1.5"/>
+                            <line x1="8" y1="20" x2="20" y2="20" stroke="#0F766E" stroke-width="2"/>
+                            <line x1="10" y1="26" x2="18" y2="26" stroke="#0F766E" stroke-width="2"/>
+                            <line x1="12" y1="32" x2="16" y2="32" stroke="#0F766E" stroke-width="2"/>
+                          </svg>
+                          <span class="tooth-state-pill teal">Implant</span>
+                        </div>
+                        <div class="tooth-cell" data-tooth="25">
+                          <span class="tooth-nr">25</span>
+                          <svg class="tooth-svg" viewBox="0 0 28 42" fill="none">
+                            <path d="M5 10 C5 4, 23 4, 23 10 C23 18, 19 36, 14 40 C9 36, 5 18, 5 10 Z" fill="#F4F8F6" stroke="#94A3B8" stroke-width="1.5"/>
+                          </svg>
+                          <span class="tooth-state-pill green">Zdrowy</span>
+                        </div>
+                        <div class="tooth-cell" data-tooth="26">
+                          <span class="tooth-nr">26</span>
+                          <svg class="tooth-svg" viewBox="0 0 32 44" fill="none">
+                            <path d="M4 10 C4 3, 28 3, 28 10 C28 18, 24 38, 21 42 C16 42, 16 28, 16 28 C16 28, 16 42, 11 42 C8 38, 4 18, 4 10 Z" fill="#F4F8F6" stroke="#94A3B8" stroke-width="1.5"/>
+                          </svg>
+                          <span class="tooth-state-pill green">Zdrowy</span>
+                        </div>
+                        <div class="tooth-cell decay" data-tooth="27">
+                          <span class="tooth-nr">27</span>
+                          <svg class="tooth-svg" viewBox="0 0 32 44" fill="none">
+                            <path d="M5 10 C5 4, 27 4, 27 10 C27 18, 23 36, 20 42 C16 42, 16 28, 16 28 C16 28, 16 42, 12 42 C9 36, 5 18, 5 10 Z" fill="#FFE4E6" stroke="#F43F5E" stroke-width="1.5"/>
+                            <circle cx="16" cy="14" r="4" fill="#E11D48"/>
+                          </svg>
+                          <span class="tooth-state-pill red">Ubytek</span>
+                        </div>
+                        <div class="tooth-cell" data-tooth="28">
+                          <span class="tooth-nr">28</span>
+                          <svg class="tooth-svg" viewBox="0 0 32 44" fill="none">
+                            <path d="M6 10 C6 4, 26 4, 26 10 C26 18, 22 36, 16 42 C10 36, 6 18, 6 10 Z" fill="#F1F5F9" stroke="#94A3B8" stroke-dasharray="3 2" stroke-width="1.5"/>
+                          </svg>
+                          <span class="tooth-state-pill gray">Zatrzym.</span>
+                        </div>
+                      </div>
+                    </div>
+
+                                        <!-- Lower Arch: Teeth 48 to 41 | 31 to 38 -->
+                    <div class="arch-block" style="margin-top:8px;">
+                      <div class="arch-label-row">
+                        <span>Łuk Dolny (Żuchwa) — Prawa strona</span>
+                        <span>Lewa strona</span>
+                      </div>
+                      <div class="teeth-row-anatomical">
+                        <!-- Lower Teeth Row -->
+                        <div class="tooth-cell" data-tooth="48">
+                          <span class="tooth-nr">48</span>
+                          <svg class="tooth-svg" viewBox="0 0 32 44" fill="none"><path d="M6 34 C6 40, 26 40, 26 34 C26 26, 22 8, 19 2 C16 2, 16 14, 16 14 C16 14, 16 2, 13 2 C10 8, 6 26, 6 34 Z" fill="#F1F5F9" stroke="#94A3B8" stroke-dasharray="3 2" stroke-width="1.5"/></svg>
+                          <span class="tooth-state-pill gray">Ekstrakcja</span>
+                        </div>
+                        <div class="tooth-cell crown" data-tooth="47">
+                          <span class="tooth-nr">47</span>
+                          <svg class="tooth-svg" viewBox="0 0 32 44" fill="none"><path d="M5 34 C5 40, 27 40, 27 34 C27 26, 23 8, 20 2 C16 2, 16 16, 16 16 C16 16, 16 2, 12 2 C9 8, 5 26, 5 34 Z" fill="#FEF9C3" stroke="#CA8A04" stroke-width="1.5"/><rect x="8" y="24" width="16" height="10" rx="2" fill="#EAB308"/></svg>
+                          <span class="tooth-state-pill amber">Most</span>
+                        </div>
+                        <div class="tooth-cell" data-tooth="46">
+                          <span class="tooth-nr">46</span>
+                          <svg class="tooth-svg" viewBox="0 0 32 44" fill="none"><path d="M4 34 C4 41, 28 41, 28 34 C28 26, 24 6, 21 2 C16 2, 16 16, 16 16 C16 16, 16 2, 11 2 C8 6, 4 26, 4 34 Z" fill="#EDE9FE" stroke="#8B5CF6" stroke-width="1.5"/><polygon points="10,35 22,35 20,27 12,27" fill="#7C3AED"/></svg>
+                          <span class="tooth-state-pill purple">Wypełn.</span>
+                        </div>
+                        <div class="tooth-cell" data-tooth="45">
+                          <span class="tooth-nr">45</span>
+                          <svg class="tooth-svg" viewBox="0 0 28 42" fill="none"><path d="M5 32 C5 38, 23 38, 23 32 C23 24, 19 6, 14 2 C9 6, 5 24, 5 32 Z" fill="#F4F8F6" stroke="#94A3B8" stroke-width="1.5"/></svg>
+                          <span class="tooth-state-pill green">Zdrowy</span>
+                        </div>
+                        <div class="tooth-cell" data-tooth="44">
+                          <span class="tooth-nr">44</span>
+                          <svg class="tooth-svg" viewBox="0 0 28 42" fill="none"><path d="M5 32 C5 38, 23 38, 23 32 C23 24, 19 6, 14 2 C9 6, 5 24, 5 32 Z" fill="#F4F8F6" stroke="#94A3B8" stroke-width="1.5"/></svg>
+                          <span class="tooth-state-pill green">Zdrowy</span>
+                        </div>
+                        <div class="tooth-cell" data-tooth="43">
+                          <span class="tooth-nr">43</span>
+                          <svg class="tooth-svg" viewBox="0 0 26 42" fill="none"><path d="M4 30 C4 38, 22 38, 22 30 C22 22, 16 4, 13 1 C10 4, 4 22, 4 30 Z" fill="#F4F8F6" stroke="#94A3B8" stroke-width="1.5"/></svg>
+                          <span class="tooth-state-pill green">Zdrowy</span>
+                        </div>
+                        <div class="tooth-cell" data-tooth="42">
+                          <span class="tooth-nr">42</span>
+                          <svg class="tooth-svg" viewBox="0 0 24 40" fill="none"><path d="M4 28 C4 36, 20 36, 20 28 C20 20, 14 4, 12 1 C10 4, 4 20, 4 28 Z" fill="#F4F8F6" stroke="#94A3B8" stroke-width="1.5"/></svg>
+                          <span class="tooth-state-pill green">Zdrowy</span>
+                        </div>
+                        <div class="tooth-cell" data-tooth="41">
+                          <span class="tooth-nr">41</span>
+                          <svg class="tooth-svg" viewBox="0 0 24 40" fill="none"><path d="M4 28 C4 36, 20 36, 20 28 C20 20, 14 4, 12 1 C10 4, 4 20, 4 28 Z" fill="#F4F8F6" stroke="#94A3B8" stroke-width="1.5"/></svg>
+                          <span class="tooth-state-pill green">Zdrowy</span>
+                        </div>
+                        <div class="arch-midline"></div>
+                        <div class="tooth-cell" data-tooth="31">
+                          <span class="tooth-nr">31</span>
+                          <svg class="tooth-svg" viewBox="0 0 24 40" fill="none"><path d="M4 28 C4 36, 20 36, 20 28 C20 20, 14 4, 12 1 C10 4, 4 20, 4 28 Z" fill="#F4F8F6" stroke="#94A3B8" stroke-width="1.5"/></svg>
+                          <span class="tooth-state-pill green">Zdrowy</span>
+                        </div>
+                        <div class="tooth-cell" data-tooth="32">
+                          <span class="tooth-nr">32</span>
+                          <svg class="tooth-svg" viewBox="0 0 24 40" fill="none"><path d="M4 28 C4 36, 20 36, 20 28 C20 20, 14 4, 12 1 C10 4, 4 20, 4 28 Z" fill="#F4F8F6" stroke="#94A3B8" stroke-width="1.5"/></svg>
+                          <span class="tooth-state-pill green">Zdrowy</span>
+                        </div>
+                        <div class="tooth-cell" data-tooth="33">
+                          <span class="tooth-nr">33</span>
+                          <svg class="tooth-svg" viewBox="0 0 26 42" fill="none"><path d="M4 30 C4 38, 22 38, 22 30 C22 22, 16 4, 13 1 C10 4, 4 22, 4 30 Z" fill="#F4F8F6" stroke="#94A3B8" stroke-width="1.5"/></svg>
+                          <span class="tooth-state-pill green">Zdrowy</span>
+                        </div>
+                        <div class="tooth-cell" data-tooth="34">
+                          <span class="tooth-nr">34</span>
+                          <svg class="tooth-svg" viewBox="0 0 28 42" fill="none"><path d="M5 32 C5 38, 23 38, 23 32 C23 24, 19 6, 14 2 C9 6, 5 24, 5 32 Z" fill="#EDE9FE" stroke="#8B5CF6" stroke-width="1.5"/><circle cx="14" cy="30" r="3" fill="#7C3AED"/></svg>
+                          <span class="tooth-state-pill purple">Wypełn.</span>
+                        </div>
+                        <div class="tooth-cell" data-tooth="35">
+                          <span class="tooth-nr">35</span>
+                          <svg class="tooth-svg" viewBox="0 0 28 42" fill="none"><path d="M5 32 C5 38, 23 38, 23 32 C23 24, 19 6, 14 2 C9 6, 5 24, 5 32 Z" fill="#F4F8F6" stroke="#94A3B8" stroke-width="1.5"/></svg>
+                          <span class="tooth-state-pill green">Zdrowy</span>
+                        </div>
+                        <div class="tooth-cell endo" data-tooth="36">
+                          <span class="tooth-nr">36</span>
+                          <svg class="tooth-svg" viewBox="0 0 32 44" fill="none"><path d="M4 34 C4 41, 28 41, 28 34 C28 26, 24 6, 21 2 C16 2, 16 16, 16 16 C16 16, 16 2, 11 2 C8 6, 4 26, 4 34 Z" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/><line x1="16" y1="32" x2="16" y2="8" stroke="#D97706" stroke-width="2"/></svg>
+                          <span class="tooth-state-pill amber">Endo</span>
+                        </div>
+                        <div class="tooth-cell" data-tooth="37">
+                          <span class="tooth-nr">37</span>
+                          <svg class="tooth-svg" viewBox="0 0 32 44" fill="none"><path d="M5 34 C5 40, 27 40, 27 34 C27 26, 23 8, 20 2 C16 2, 16 16, 16 16 C16 16, 16 2, 12 2 C9 8, 5 26, 5 34 Z" fill="#F4F8F6" stroke="#94A3B8" stroke-width="1.5"/></svg>
+                          <span class="tooth-state-pill green">Zdrowy</span>
+                        </div>
+                        <div class="tooth-cell" data-tooth="38">
+                          <span class="tooth-nr">38</span>
+                          <svg class="tooth-svg" viewBox="0 0 32 44" fill="none"><path d="M6 34 C6 40, 26 40, 26 34 C26 26, 22 8, 19 2 C16 2, 16 14, 16 14 C16 14, 16 2, 13 2 C10 8, 6 26, 6 34 Z" fill="#F4F8F6" stroke="#94A3B8" stroke-width="1.5"/></svg>
+                          <span class="tooth-state-pill green">Zdrowy</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Bottom Treatment Stages (Sunbeam Style) -->
+                    <div class="arch-stages-row">
+                      <span class="stages-title">Etapy Planu:</span>
+                      <div class="stage-step done">1. Diagnostyka CBCT ✓</div>
+                      <div class="stage-step active">2. Odbudowa Zęba 16 (Dziś)</div>
+                      <div class="stage-step future">3. Endo Ząb 14</div>
+                      <div class="stage-step future">4. Korony 11/21</div>
+                    </div>
+                  </div>
+
+                  <!-- Right Sidebar: Comprehensive Medical Record (EDM) -->
+                  <div class="tooth-right-edm">
+                    <div class="edm-patient-head">
+                      <div class="edm-avatar">TB</div>
+                      <div class="edm-p-meta">
+                        <strong>Tomasz Brzeziński</strong>
+                        <span>PESEL: 89041209876 · #DEN-4891</span>
+                      </div>
+                    </div>
+
+                    <div class="edm-details-box">
+                      <div class="edm-row">
+                        <span class="edm-k">Wybrany ząb:</span>
+                        <strong class="edm-v" style="color:var(--status-purple);">16 • Górny Prawy Trzonowiec</strong>
+                      </div>
+                      <div class="edm-row">
+                        <span class="edm-k">Rozpoznanie:</span>
+                        <span class="edm-v">K02.1 Próchnica głęboka MOD</span>
+                      </div>
+                      <div class="edm-row">
+                        <span class="edm-k">Procedura:</span>
+                        <span class="edm-v">Rekonstrukcja estetyczna Empress</span>
+                      </div>
+                      <div class="edm-row">
+                        <span class="edm-k">Wycena zabiegu:</span>
+                        <strong class="edm-v" style="color:#0D7A5F;">420 PLN</strong>
+                      </div>
+                    </div>
+
+                    <!-- Mini RVG X-ray preview card -->
+                    <div class="edm-rvg-card">
+                      <div class="rvg-header">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path></svg>
+                        <span>Część zdjęciowa: Cyfrowy rentgen RVG (12.04.2025)</span>
+                      </div>
+                      <div class="rvg-visual">
+                        <div class="rvg-scan-box">
+                          <span class="rvg-marker">Ząb 16 [MOD]</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="edm-actions">
+                      <button class="btn-edm-primary" type="button">Wystaw e-Receptę P1</button>
+                      <button class="btn-edm-subtle" type="button">Plan leczenia PDF</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- ============================================================
+                   PANEL 3: Autopilot SMS & Lista Rezerwowa
+                   ============================================================ -->
+              <div class="stage-panel" id="tab-sms">
+                <div class="sms-panel-wrap">
+                  <div class="phone-mockup">
+                    <div class="phone-header">
+                      <span>SMS • Denty Autopilot</span>
+                      <span style="color:var(--status-emerald);">● Aktywny</span>
+                    </div>
+                    <div class="phone-messages">
+                      <div class="msg-bubble bot">
+                        Dzień dobry Panie Tomaszu! Zwolniło się dziś okienko u Dr Nowickiej o 11:45 (Fotel 2). Czy chce Pan zająć ten termin? Odpisz TAK, a zarezerwujemy wizytę.
+                        <div class="msg-time">10:12</div>
+                      </div>
+                      <div class="msg-bubble patient">
+                        TAK, będę na pewno! Dziękuję za informację.
+                        <div class="msg-time">10:16</div>
+                      </div>
+                      <div class="msg-bubble bot">
+                        Świetnie! Wizyta została potwierdzona na godz. 11:45. Czeka na Pana gabinet nr 2. Do zobaczenia!
+                        <div class="msg-time">10:16</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="schedule-sidebar">
+                    <div class="sidebar-title">Inteligentna Lista Rezerwowa</div>
+                    <p style="font-size:12px;color:var(--text-secondary);margin-bottom:12px;">
+                      Gdy pacjent odwoła wizytę, Denty natychmiast wysyła ofertę do kolejnych 3 chętnych pacjentów o tym samym profilu zabiegowym.
+                    </p>
+                    <div class="rescue-stats-box">
+                      <div class="rescue-stat-num">91.4%</div>
+                      <div class="rescue-stat-label">Odzyskanych wolnych okienek bez udziału recepcjonistki</div>
+                    </div>
+                    <div style="margin-top:auto;">
+                      <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">Średni czas wypełnienia luki:</div>
+                      <strong style="font-size:16px;color:var(--text-ink);">4 minuty 18 sekund</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ============================================================
+                   PANEL 4: Rozliczenia & Finanse
+                   ============================================================ -->
+              <div class="stage-panel" id="tab-plan">
+                <div class="billing-panel-wrap">
+                  <div class="billing-table-head">
+                    <div style="display:flex;align-items:center;gap:8px;">
+                      <span>Ostatnie rozliczenia zabiegów</span>
+                      <span class="telemetry-chip">Zsynchronizowano z drukarką fiskalną</span>
+                    </div>
+                    <div class="billing-filter-pills" style="display:flex;gap:6px;">
+                      <button class="billing-pill active" data-filter="all" type="button">Wszystkie (3)</button>
+                      <button class="billing-pill" data-filter="paid" type="button">Opłacone (3)</button>
+                      <button class="billing-pill" data-filter="pending" type="button">Oczekujące (0)</button>
+                    </div>
+                  </div>
+                  <div class="billing-rows-list">
+                    <div class="billing-row">
+                      <div>
+                        <strong>Michał Pawlak</strong>
+                        <div style="font-size:11px;color:var(--text-muted);">Implantacja Straumann BLX 2.4 • Dr Janicki</div>
+                      </div>
+                      <div style="text-align:right;">
+                        <span style="font-weight:700;">4 200 PLN</span>
+                        <div style="font-size:11px;color:var(--status-emerald);">Opłacono (Karta)</div>
+                      </div>
+                    </div>
+                    <div class="billing-row">
+                      <div>
+                        <strong>Anna Kowalczyk</strong>
+                        <div style="font-size:11px;color:var(--text-muted);">Chirurgiczna ekstrakcja 3.8 • Dr Janicki</div>
+                      </div>
+                      <div style="text-align:right;">
+                        <span style="font-weight:700;">650 PLN</span>
+                        <div style="font-size:11px;color:var(--status-emerald);">Opłacono (BLIK)</div>
+                      </div>
+                    </div>
+                    <div class="billing-row">
+                      <div>
+                        <strong>Grzegorz Wójcik</strong>
+                        <div style="font-size:11px;color:var(--text-muted);">Pakiet GBT EMS + Piaskowanie • Mgr Wiśniewska</div>
+                      </div>
+                      <div style="text-align:right;">
+                        <span style="font-weight:700;">380 PLN</span>
+                        <div style="font-size:11px;color:var(--status-emerald);">Opłacono (Karta)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ============================================================
+                   PANEL 5: Analityka Kliniki
+                   ============================================================ -->
+              <div class="stage-panel" id="tab-analytics">
+                <div class="analytics-panel-wrap">
+                  <div class="analytics-filter-row" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                    <span style="font-size:12.5px;font-weight:700;color:#0F172A;">Kluczowe wskaźniki efektywności (KPI)</span>
+                    <div class="analytics-pills" style="display:flex;gap:6px;">
+                      <button class="analytics-pill active" type="button">Dzisiaj</button>
+                      <button class="analytics-pill" type="button">Ten tydzień</button>
+                      <button class="analytics-pill" type="button">Ten miesiąc</button>
+                    </div>
+                  </div>
+                  <div class="analytics-kpi-grid">
+                    <div class="analytics-card">
+                      <span class="kpi-label">Średnie obłożenie fotela</span>
+                      <strong class="kpi-val">94.8%</strong>
+                      <span class="kpi-trend">+18.2% vs tradycyjne programy</span>
+                    </div>
+                    <div class="analytics-card">
+                      <span class="kpi-label">Spadek no-show</span>
+                      <strong class="kpi-val" style="color:var(--status-emerald);">-88%</strong>
+                      <span class="kpi-trend">Dzięki dwukrotnemu SMS z potwierdzeniem</span>
+                    </div>
+                    <div class="analytics-card">
+                      <span class="kpi-label">Odzyskany przychód / m-c</span>
+                      <strong class="kpi-val" style="color:#D97706;">+7 420 zł</strong>
+                      <span class="kpi-trend">Z automatycznej listy rezerwowej</span>
+                    </div>
+                  </div>
+                  <div class="analytics-chair-utilization" style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:#475569;margin-top:auto;">
+                    <span><strong>Obłożenie foteli (Dziś):</strong></span>
+                    <span>Fotel 1 (Chirurgia): <strong style="color:#0D7A5F;">96%</strong></span>
+                    <span>Fotel 2 (Endodoncja): <strong style="color:#0D7A5F;">92%</strong></span>
+                    <span>Fotel 3 (Higienizacja): <strong style="color:#0D7A5F;">98%</strong></span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Complete Terminal Footer / Status Bar (Sunbeam Spec) -->
+            <div class="stage-app-footer">
+              <div class="app-footer-left">
+                <span class="status-indicator-dot online"></span>
+                <span class="app-sync-title">System P1 (e-Recepta, e-Skierowanie, EDM):</span>
+                <strong class="app-sync-ok">Aktywny (100%)</strong>
+                <span class="app-sync-dim">• Synchronizacja: przed chwilą</span>
+              </div>
+              <div class="app-footer-right">
+                <span class="app-footer-pill">Szyfrowanie AES-256</span>
+                <span class="app-footer-pill">NFZ / RODO</span>
+                <span class="app-footer-ver">v2.4.1</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="privacy-sheet" aria-labelledby="privacy-title">
-      <div><h2 id="privacy-title">Minimum danych w każdym komunikacie.</h2><p>Demonstracyjny model dostępu oddziela organizację wizyty od treści klinicznej. Zespół widzi tylko to, czego potrzebuje do swojego zadania.</p></div>
-      <div class="permission-table"><div><span>Recepcja</span><b>termin · kontakt · status</b><em>bez notatek klinicznych</em></div><div><span>Asysta</span><b>gotowość · gabinet · czas</b><em>bez danych rozliczeniowych</em></div><div><span>Lekarz</span><b>pełny kontekst wizyty</b><em>według uprawnień placówki</em></div><div><span>Eksport</span><b>kontrolowany przez gabinet</b><em>koncepcja, nie aktywna integracja</em></div></div>
-    </section>
+    <!-- ==========================================================================
+         SCREEN 2: Sunbeam 3-Column Bento Specification Container
+         ========================================================================== -->
+    <section class="sunbeam-bento-section" id="moduly">
+      <div class="sunbeam-bento-container">
+        
+        <!-- Bento Card 1: Save Time (Wide Card with Tilted Task Cards) -->
+        <div class="bento-card bento-card-wide reveal-init">
+          <div class="bento-card-left">
+            <div class="bento-char-badge">
+              <img src="assets/bento_char_1.png" alt="Mascot" width="38" height="38">
+            </div>
+            <div class="bento-copy">
+              <h3 class="bento-title">Zaoszczędź 12h tygodniowo</h3>
+              <p class="bento-desc">Zautomatyzuj potwierdzenia SMS, elektroniczną dokumentację medyczną (EDM) i rozliczenia prowizji lekarzy w jednym kliknięciu.</p>
+            </div>
+          </div>
+          <div class="bento-card-visual">
+            <img src="assets/bento_tasks_cloud.jpg" alt="Zadania i terminy" class="bento-tasks-img">
+          </div>
+        </div>
 
-    <section class="scope" id="scope" aria-labelledby="scope-title">
-      <h2 id="scope-title">Porządkuje kontakt.<br>Nie zastępuje leczenia.</h2>
-      <div class="scope-columns">
-        <div><h3>Denty organizuje</h3><ul><li>przebieg kontaktu z pacjentem</li><li>potwierdzenia i statusy odpowiedzi</li><li>zadania recepcji przed i po wizycie</li><li>przykładowy plan pracy zespołu</li></ul></div>
-        <div><h3>Denty nie deklaruje</h3><ul><li>prowadzenia dokumentacji medycznej</li><li>stawiania diagnoz lub zaleceń</li><li>gotowych integracji bez wdrożenia</li><li>mierzalnych efektów u fikcyjnych klientów</li></ul></div>
+        <!-- Bento Card 2: Win More Clients -->
+        <div class="bento-card reveal-init">
+          <div class="bento-char-badge">
+            <img src="assets/bento_char_2.png" alt="Mascot" width="38" height="38">
+          </div>
+          <div class="bento-copy">
+            <h3 class="bento-title">Więcej lojalnych pacjentów</h3>
+            <p class="bento-desc">Odzyskuj 9 na 10 odwołanych wizyt dzięki autopilotowi SMS zintegrowanemu z inteligentną listą rezerwową.</p>
+          </div>
+          <div class="bento-card-preview">
+            <img src="assets/bento_deals_preview.png" alt="Deals pipeline preview" class="bento-deals-img">
+          </div>
+        </div>
+
+        <!-- Bento Card 3: Stay in Control -->
+        <div class="bento-card reveal-init">
+          <div class="bento-char-badge">
+            <img src="assets/sun_green_mascot.png" alt="Mascot" width="38" height="38">
+          </div>
+          <div class="bento-copy">
+            <h3 class="bento-title">Pełna kontrola nad kliniką</h3>
+            <p class="bento-desc">Analityka obłożenia foteli, rentowności procedur stomatologicznych i czasu pracy personelu w czasie rzeczywistym.</p>
+          </div>
+          <div class="bento-card-preview">
+            <img src="assets/bento_insights_preview.png" alt="Insights preview" class="bento-insights-img">
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Proof Logos Section -->
+      <div class="sunbeam-social-proof" id="kliniki">
+        <h4 class="social-proof-heading">140+ Klinik Stomatologicznych w Polsce korzysta z Denty OS</h4>
+        <div class="clinical-logos-row">
+          <div class="clinic-logo-item">✦ StomaCare Warszawa</div>
+          <div class="clinic-logo-item">✦ DentalPro Wilanów</div>
+          <div class="clinic-logo-item">✦ RoyalDent Mokotów</div>
+          <div class="clinic-logo-item">✦ Esthetic Dental Clinic</div>
+          <div class="clinic-logo-item">✦ WhiteSmile Kraków</div>
+          <div class="clinic-logo-item">✦ ProDent Gdańsk</div>
+        </div>
       </div>
     </section>
 
-    <section class="method" aria-labelledby="method-title">
-      <div><h2 id="method-title">Najpierw reguła gabinetu. Potem automatyzacja.</h2><p>Wersja portfolio pokazuje sposób myślenia, nie gotowy system medyczny. Każdy kanał, harmonogram i uprawnienie wymaga realnego wdrożenia, podstawy prawnej i konfiguracji placówki.</p></div>
-      <details><summary>Czy Denty prowadzi dokumentację medyczną?</summary><p>Nie. Koncepcja skupia się na organizacji kontaktu i nie deklaruje funkcji EDM.</p></details><details><summary>Czy wiadomości są naprawdę wysyłane?</summary><p>Nie. Wszystkie interakcje na tej stronie działają wyłącznie lokalnie.</p></details><details><summary>Czy dane przedstawiają prawdziwych pacjentów?</summary><p>Nie. Inicjały, terminy i statusy są syntetycznym materiałem demonstracyjnym.</p></details>
+    <!-- ==========================================================================
+         CHAPTER 03: INTERACTIVE DENTAL ARCH & TREATMENT PLANNER DEEP-DIVE
+         ========================================================================== -->
+    <!-- ==========================================================================
+         CHAPTER 04: ROI CALCULATOR
+         ========================================================================== -->
+        <!-- ==========================================================================
+         CHAPTER 04: LUXURY SAAS ROI CALCULATOR
+         ========================================================================== -->
+    <section class="section-deep-dive" id="kalkulator" style="background:#FAF9F5;">
+      <div class="container-narrow">
+        <div class="section-kicker reveal-init">KALKULATOR RENTOWNOŚCI</div>
+        <h2 class="section-heading reveal-init">Ile Twoja klinika zyska z Denty w skali roku?</h2>
+        <p class="section-subtext reveal-init">
+          Przesuwaj suwaki, aby zobaczyć, ile pieniędzy odzyskasz dzięki automatyzacji recepcji i autopilotowi SMS.
+        </p>
+
+        <div class="luxury-calc-grid reveal-init">
+          <!-- Left Column: Inputs Card -->
+          <div class="calc-inputs-card">
+            <!-- Preset Chips -->
+            <div class="calc-preset-row">
+              <button type="button" class="calc-preset-chip" data-preset="small">Mały gabinet (1-2)</button>
+              <button type="button" class="calc-preset-chip active" data-preset="medium">Klinika (3-5)</button>
+              <button type="button" class="calc-preset-chip" data-preset="large">Duża sieć (6+)</button>
+            </div>
+
+            <!-- Group 1: Chairs -->
+            <div class="calc-group">
+              <div class="calc-label-row">
+                <span class="calc-label-text">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                  Liczba foteli zabiegowych
+                </span>
+                <span class="calc-val-pill" id="val-chairs">3 fotele</span>
+              </div>
+              <input type="range" class="calc-range-input" min="1" max="10" value="3" step="1" id="calc-chairs">
+              <div class="calc-subrange"><span>1 fotel</span><span>10 foteli</span></div>
+            </div>
+
+            <!-- Group 2: Average visit price -->
+            <div class="calc-group">
+              <div class="calc-label-row">
+                <span class="calc-label-text">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                  Średnia wartość wizyty
+                </span>
+                <span class="calc-val-pill" id="val-price">350 zł</span>
+              </div>
+              <input type="range" class="calc-range-input" min="150" max="1200" value="350" step="25" id="calc-price">
+              <div class="calc-subrange"><span>150 zł</span><span>1 200 zł</span></div>
+            </div>
+
+            <!-- Group 3: Missed visits -->
+            <div class="calc-group">
+              <div class="calc-label-row">
+                <span class="calc-label-text">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                  Odwołane / puste wizyty w tyg.
+                </span>
+                <span class="calc-val-pill" id="val-missed">8 wizyt</span>
+              </div>
+              <input type="range" class="calc-range-input" min="2" max="30" value="8" step="1" id="calc-missed">
+              <div class="calc-subrange"><span>2 wizyty</span><span>30 wizyt</span></div>
+            </div>
+          </div>
+
+          <!-- Right Column: Results Card -->
+          <div class="calc-results-card">
+            <div class="calc-results-badge">⚡ ZWROT Z INWESTYCJI: ~12.4x ROI</div>
+            
+            <div class="calc-metric-block">
+              <div class="metric-caption">Odzyskany przychód miesięcznie:</div>
+              <div class="metric-amount-primary" id="roi-monthly">+10 669 zł</div>
+            </div>
+
+            <div class="calc-metric-block">
+              <div class="metric-caption">Dodatkowy zysk rocznie:</div>
+              <div class="metric-amount-annual" id="roi-annual">+128 028 zł</div>
+            </div>
+
+            <ul class="calc-features-check">
+              <li>✓ 88% odwołanych wizyt obsadzonych przez autopilot SMS</li>
+              <li>✓ ~48 godzin zaoszczędzonego czasu recepcji w miesiącu</li>
+              <li>✓ Integracja z EDM i systemem P1 w cenie wdrożenia</li>
+            </ul>
+
+            <a href="#demo" class="calc-cta-btn" data-open-demo>Umów bezpłatne wdrożenie ↗</a>
+            
+            <div class="calc-footnote">*Estymacja na podstawie średnich wyników 140+ klinik w Polsce</div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="demo" id="demo" aria-labelledby="demo-title">
-      <div><h2 id="demo-title">Zobacz spokojny przebieg pracy.</h2><p>Formularz pokazuje lokalny stan interakcji. Dane nie są wysyłane ani zapisywane.</p></div>
-      <form data-demo-form novalidate>
-        <label for="demo-email">E-mail służbowy</label>
-        <div class="form-control"><input id="demo-email" name="email" type="email" autocomplete="email" placeholder="recepcja@gabinet.pl" required aria-describedby="demo-help demo-status"><button type="submit">Uruchom demo</button></div>
-        <p id="demo-help">Lokalna demonstracja — bez wysyłki.</p>
-        <p id="demo-status" class="form-status" role="status" aria-live="polite" data-demo-status></p>
-      </form>
+
+    <!-- ==========================================================================
+         CHAPTER 05: TRANSPARENT PRICING MATRIX
+         ========================================================================== -->
+    <section class="section-deep-dive" id="cennik">
+      <div class="container-narrow">
+        <div class="section-kicker reveal-init">PROSTY CENNIK</div>
+        <h2 class="section-heading reveal-init">Transparentne plany bez ukrytych opłat za wdrożenie</h2>
+        <p class="section-subtext reveal-init">
+          Wszystkie plany zawierają nielimitowaną liczbę pacjentów, darmowe aktualizacje i certyfikat bezpieczeństwa danych medycznych RODO/P1.
+        </p>
+
+        <div class="pricing-cards-grid">
+          <!-- Plan 1 -->
+          <div class="price-tier-card reveal-init">
+            <div class="tier-name">Gabinet Solo</div>
+            <div class="tier-price">199 zł <span>/ fotel / m-c</span></div>
+            <p class="tier-desc">Dla indywidualnych praktyk i gabinetów 1-2 fotelowych.</p>
+            <ul class="tier-features">
+              <li>✓ Harmonogram 1-2 foteli</li>
+              <li>✓ Podstawowy diagram zębowy</li>
+              <li>✓ Pakiet 300 SMS / m-c</li>
+              <li>✓ Zgodność z P1 i e-Recepty</li>
+            </ul>
+            <a href="#demo" class="btn-pill btn-subtle" style="width:100%;margin-top:auto;" data-open-demo>Wybierz plan</a>
+          </div>
+
+          <!-- Plan 2: Featured -->
+          <div class="price-tier-card featured reveal-init">
+            <div class="tier-badge">NAJCZĘŚCIEJ WYBIERANY</div>
+            <div class="tier-name">Klinika Pro</div>
+            <div class="tier-price">159 zł <span>/ fotel / m-c</span></div>
+            <p class="tier-desc">Dla klinik 3-6 foteli potrzebujących automatyzacji grafiku.</p>
+            <ul class="tier-features">
+              <li>✓ Nielimitowane fotele i lekarze</li>
+              <li>✓ Zaawansowany diagram 3D FDI + RVG</li>
+              <li>✓ Autopilot SMS z inteligentną listą</li>
+              <li>✓ Raporty obłożenia i prowizji lekarzy</li>
+              <li>✓ Dedykowany opiekun wdrożenia</li>
+            </ul>
+            <a href="#demo" class="btn-pill btn-dark" style="width:100%;margin-top:auto;" data-open-demo>Rozpocznij 14 dni testu</a>
+          </div>
+
+          <!-- Plan 3 -->
+          <div class="price-tier-card reveal-init">
+            <div class="tier-name">Sieć Klinik</div>
+            <div class="tier-price">Indywidualnie</div>
+            <p class="tier-desc">Dla sieci klinik, szpitali stomatologicznych i franczyz.</p>
+            <ul class="tier-features">
+              <li>✓ Architektura Multi-Branch</li>
+              <li>✓ Centralna baza pacjentów i magazyn</li>
+              <li>✓ Integracja API z systemami ERP</li>
+              <li>✓ SLA 99.98% z gwarancją czasu reakcji</li>
+            </ul>
+            <a href="#demo" class="btn-pill btn-subtle" style="width:100%;margin-top:auto;" data-open-demo>Porozmawiaj z nami</a>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <!-- ==========================================================================
+         CHAPTER 06: FAQ & MODAL
+         ========================================================================== -->
+    <section class="section-deep-dive" id="faq" style="background:#F7F6F2;">
+      <div class="container-narrow">
+        <div class="section-kicker reveal-init">CZĘSTO ZADAWANE PYTANIA</div>
+        <h2 class="section-heading reveal-init">Wszystko, co musisz wiedzieć przed migracją</h2>
+        
+                <div class="faq-accordion-list reveal-init">
+          <div class="faq-item">
+            <button class="faq-q" type="button">
+              <span>Jak przebiega migracja danych z naszego starego programu?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                <p>Nasz dedykowany inżynier wdrożeniowy przenosi całą historię pacjentów, zdjęcia RTG i harmonogramy w weekend, aby klinika nie miała ani 1 minuty przestoju w pracy.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button">
+              <span>Czy Denty jest w 100% zgodny z polskim systemem e-Zdrowie P1?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                <p>Tak. Denty posiada oficjalną certyfikację integracji z systemem P1 (e-Recepty, e-Skierowania, Elektroniczna Dokumentacja Medyczna EDM i Zdarzenia Medyczne).</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button">
+              <span>Czy lekarze i asystentki poradzą sobie z obsługą systemu?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                <p>Interfejs Denty został zaprojektowany z myślą o prostocie: średni czas wdrożenia nowego lekarza to zaledwie 15 minut. Oferujemy też bezpłatne szkolenie wideo dla całego zespołu.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="site-footer"><a class="brand" href="#main"><img src="favicon.svg" width="24" height="24" alt=""><span>Denty</span></a><p>Koncepcyjny CRM dla gabinetu stomatologicznego. Marka, interfejs i dane demonstracyjne powstały na potrzeby portfolio.</p><a href="#main">Do góry</a></footer>
-<div class="ov-badge" id="ov-badge">
-  <a class="ov-badge__main" href="https://overflow-web.pl/work/denty/">
-    <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
-  </a>
-  <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
-</div>
-<style>
-.ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
-.ov-badge a{color:inherit;text-decoration:none}
-.ov-badge__main{display:flex;align-items:center;gap:5px}
-.ov-badge__mark{font-weight:700;letter-spacing:-.02em}
-.ov-badge__dot{opacity:.45}
-.ov-badge__type{opacity:.7}
-.ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
-.ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
-@media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
-@media print{.ov-badge{display:none}}
-</style>
-<!-- ov-badge-init -->
+  <!-- ==========================================================================
+       SUNBEAM FOOTER
+       ========================================================================== -->
+  <footer class="sunbeam-footer">
+    <div class="sunbeam-footer-inner">
+      <div class="footer-left">
+        <a href="#" class="sunbeam-brand" style="margin-bottom:8px;">
+          <span class="brand-mascot-dot"></span>
+          <span class="brand-text">Denty</span>
+        </a>
+        <p style="font-size:13px;color:var(--text-secondary);max-width:320px;">
+          Nowoczesny system operacyjny dla klinik stomatologicznych. Prowadzenie gabinetu znów staje się czystą przyjemnością.
+        </p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <strong>Produkt</strong>
+          <a href="#moduly">Moduły</a>
+          
+          <a href="#kalkulator">Kalkulator ROI</a>
+          <a href="#cennik">Cennik</a>
+        </div>
+        <div class="footer-col">
+          <strong>Firma</strong>
+          <a href="#kliniki">Kliniki w Polsce</a>
+          <a href="#faq">Bezpieczeństwo P1</a>
+          <a href="#demo" data-open-demo>Kontakt</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom-bar">
+      <span>© 2026 Denty Sp. z o.o. Wszelkie prawa zastrzeżone.</span>
+      <span>Zaprojektowano z myślą o polskich klinikach stomatologicznych.</span>
+    </div>
+  </footer>
+
+  <!-- Demo Booking Modal -->
+  <div id="demo-modal" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modal-close-btn" data-close-modal type="button" aria-label="Zamknij">✕</button>
+      <div class="modal-header">
+        <div class="brand-mascot-dot" style="margin:0 auto 12px;"></div>
+        <h3 style="font-family:var(--font-display);font-size:24px;font-weight:700;">Umów 15-minutowe demo</h3>
+        <p style="font-size:13px;color:var(--text-secondary);margin-top:6px;">
+          Pokażemy Ci na żywo, jak Denty odzyskuje odwołane wizyty i przyspiesza pracę w Twojej klinice.
+        </p>
+      </div>
+      <form id="demo-form" class="modal-form">
+        <div class="form-group">
+          <label for="demo-name">Imię i Nazwisko / Nazwa Kliniki</label>
+          <input type="text" id="demo-name" class="form-input" required placeholder="np. Lek. dent. Anna Nowak">
+        </div>
+        <div class="form-group">
+          <label for="demo-phone">Numer telefonu do kontaktu</label>
+          <input type="tel" id="demo-phone" class="form-input" required placeholder="np. 500 123 456">
+        </div>
+        <div class="form-group">
+          <label for="demo-chairs">Liczba foteli zabiegowych</label>
+          <select id="demo-chairs" class="form-select">
+            <option>1-2 fotele</option>
+            <option selected>3-5 foteli</option>
+            <option>6+ foteli (Sieć klinik)</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-pill btn-dark" style="width:100%;height:46px;margin-top:8px;">
+          Potwierdź bezpłatną prezentację ↗
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+<!-- universal-smooth-anchor-scroll -->
 <script>
-(function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
+(function(){
+  if(window.__ovSmoothScrollInit) return;
+  window.__ovSmoothScrollInit = true;
+  var animId = null;
+  function cancel(){ if(animId){ cancelAnimationFrame(animId); animId = null; } }
+  window.addEventListener('wheel', cancel, {passive:true});
+  window.addEventListener('touchstart', cancel, {passive:true});
+  window.addEventListener('keydown', cancel, {passive:true});
+  function smoothTo(targetY, dur){
+    cancel();
+    var startY = window.scrollY || window.pageYOffset || 0;
+    var maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    var destY = Math.min(Math.max(0, targetY), maxScroll);
+    var dist = destY - startY;
+    if(Math.abs(dist) < 3) return;
+    var startTime = performance.now();
+    var d = dur || 780;
+    function step(now){
+      var t = Math.min((now - startTime) / d, 1);
+      var ease = 1 - Math.pow(1 - t, 3);
+      window.scrollTo(0, startY + dist * ease);
+      if(t < 1) animId = requestAnimationFrame(step);
+      else animId = null;
+    }
+    animId = requestAnimationFrame(step);
+  }
+  window.__ovSmoothScrollTo = smoothTo;
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('a[href^="#"], [data-scroll-to], [data-target]');
+    if(!el) return;
+    var sel = el.getAttribute('data-scroll-to') || el.getAttribute('href');
+    if(!sel || sel.charAt(0) !== '#') return;
+    if(sel === '#'){
+      if(el.classList.contains('logo-link') || el.classList.contains('brand')){
+        e.preventDefault();
+        smoothTo(0, 750);
+      }
+      return;
+    }
+    var target = null;
+    try { target = document.querySelector(sel); } catch(err){}
+    if(!target) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var header = document.querySelector('header, nav.navbar, .site-header, .top-nav, .nav-bar');
+    var offset = 0;
+    if(header){
+      var pos = getComputedStyle(header).position;
+      if(pos === 'fixed' || pos === 'sticky'){
+        offset = header.offsetHeight || 72;
+      }
+    }
+    var top = (window.scrollY || window.pageYOffset || 0) + target.getBoundingClientRect().top - offset;
+    smoothTo(top, 780);
+  }, true);
+})();
 </script>
+
 </body>
 </html>

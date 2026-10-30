@@ -27,3 +27,16 @@ Thumbs.db
 # original image sources (moved out of public for weight, kept on disk)
 _source-assets/
 
+
+# local test / scratch / capture scripts
+*-old/
+scratch/
+scratch_*
+qa_verify_*
+test_*
+update_*
+capture_*
+docs/
+scripts/
+public/screens/_capture_fresh_report.json
+public/covers/_eval/

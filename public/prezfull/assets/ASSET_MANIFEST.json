@@ -1,0 +1,44 @@
+[
+  {
+    "id": "01_hero_exterior",
+    "dimensions": "1376x768",
+    "jpg": "C:\\Users\\deppe\\Desktop\\Overflow Portfolio\\work-2026-10-28\\prezfull\\assets\\01_hero_exterior.jpg",
+    "webp": "C:\\Users\\deppe\\Desktop\\Overflow Portfolio\\work-2026-10-28\\prezfull\\assets\\01_hero_exterior.webp",
+    "artifact_preview": "C:\\Users\\deppe\\.gemini\\antigravity\\brain\\e63b58d1-605d-4819-974d-eb18fe41c42b\\prezfull_01_hero_exterior.jpg"
+  },
+  {
+    "id": "02_interior_living",
+    "dimensions": "1376x768",
+    "jpg": "C:\\Users\\deppe\\Desktop\\Overflow Portfolio\\work-2026-10-28\\prezfull\\assets\\02_interior_living.jpg",
+    "webp": "C:\\Users\\deppe\\Desktop\\Overflow Portfolio\\work-2026-10-28\\prezfull\\assets\\02_interior_living.webp",
+    "artifact_preview": "C:\\Users\\deppe\\.gemini\\antigravity\\brain\\e63b58d1-605d-4819-974d-eb18fe41c42b\\prezfull_02_interior_living.jpg"
+  },
+  {
+    "id": "03_dusk_courtyard",
+    "dimensions": "1200x896",
+    "jpg": "C:\\Users\\deppe\\Desktop\\Overflow Portfolio\\work-2026-10-28\\prezfull\\assets\\03_dusk_courtyard.jpg",
+    "webp": "C:\\Users\\deppe\\Desktop\\Overflow Portfolio\\work-2026-10-28\\prezfull\\assets\\03_dusk_courtyard.webp",
+    "artifact_preview": "C:\\Users\\deppe\\.gemini\\antigravity\\brain\\e63b58d1-605d-4819-974d-eb18fe41c42b\\prezfull_03_dusk_courtyard.jpg"
+  },
+  {
+    "id": "04_material_detail",
+    "dimensions": "1200x896",
+    "jpg": "C:\\Users\\deppe\\Desktop\\Overflow Portfolio\\work-2026-10-28\\prezfull\\assets\\04_material_detail.jpg",
+    "webp": "C:\\Users\\deppe\\Desktop\\Overflow Portfolio\\work-2026-10-28\\prezfull\\assets\\04_material_detail.webp",
+    "artifact_preview": "C:\\Users\\deppe\\.gemini\\antigravity\\brain\\e63b58d1-605d-4819-974d-eb18fe41c42b\\prezfull_04_material_detail.jpg"
+  },
+  {
+    "id": "05_chief_architect",
+    "dimensions": "1024x1024",
+    "jpg": "C:\\Users\\deppe\\Desktop\\Overflow Portfolio\\work-2026-10-28\\prezfull\\assets\\05_chief_architect.jpg",
+    "webp": "C:\\Users\\deppe\\Desktop\\Overflow Portfolio\\work-2026-10-28\\prezfull\\assets\\05_chief_architect.webp",
+    "artifact_preview": "C:\\Users\\deppe\\.gemini\\antigravity\\brain\\e63b58d1-605d-4819-974d-eb18fe41c42b\\prezfull_05_chief_architect.jpg"
+  },
+  {
+    "id": "06_blueprint_axonometric",
+    "dimensions": "1376x768",
+    "jpg": "C:\\Users\\deppe\\Desktop\\Overflow Portfolio\\work-2026-10-28\\prezfull\\assets\\06_blueprint_axonometric.jpg",
+    "webp": "C:\\Users\\deppe\\Desktop\\Overflow Portfolio\\work-2026-10-28\\prezfull\\assets\\06_blueprint_axonometric.webp",
+    "artifact_preview": "C:\\Users\\deppe\\.gemini\\antigravity\\brain\\e63b58d1-605d-4819-974d-eb18fe41c42b\\prezfull_06_blueprint_axonometric.jpg"
+  }
+]

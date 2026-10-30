@@ -1,13 +1,13 @@
 ---
 title: FreshClean
-tagline: Лендинг клининга в Варшаве — cost calculator и hero с интерьером вместо stock-foto
+tagline: Флагманский лендинг эко-клининга в Варшаве — CleanCo скролл-хореография, калькулятор в hero и интерактивный Before/After
 niche: Services
 year: '2025'
-palette: LIGHT-FRESH-GREEN
+palette: SLATE-LIME-MODERN
 tier: 1
-accent: '#16A085'
-bg: '#FAFAF8'
-siteUrl: https://freshclean-showcase.vercel.app
+accent: '#8A3FFC'
+bg: '#3A4C58'
+siteUrl: https://overflow-web.pl/freshclean/
 cover: /covers/freshclean.jpg
 screens:
   - src: /screens/freshclean-m1.webp
@@ -17,70 +17,87 @@ screens:
   - src: /screens/freshclean-m3.webp
     kind: phone
 technologies:
-  - HTML
-  - CSS
+  - HTML5
+  - CSS3
   - JavaScript
+  - Framer-Style Motion
 region:
   - PL
-summary: Лендинг клининговой компании в Варшаве. Cost calculator в hero (60 секунд), реальное фото интерьера вместо stock «уборщица улыбается».
-order: 3
+summary: Флагманский лендинг эко-клининга в Варшаве по архитектуре CleanCo. Точный 100vh hero с живым калькулятором цены, кинематографичные 35mm кадры штатного персонала, интерактивный чеклист по комнатам и слайдер до/после.
+order: 99
 concept: true
 translations:
   pl:
-    tagline: Lending sprzątania w Warszawie — kalkulator kosztów i hero z wnętrzem, nie stock-foto
-    summary: Lending firmy sprzątającej w Warszawie. Kalkulator kosztów w hero (60 sekund), prawdziwe foto wnętrza zamiast stock „uśmiechniętej sprzątaczki".
+    tagline: Flagowy lending eco-cleaningu w Warszawie — choreografia CleanCo, kalkulator w hero i interaktywny suwak Before/After
+    summary: Flagowy lending eco-sprzątania w Warszawie oparty na architekturze CleanCo. Dokładny hero 100vh z kalkulatorem wyceny w 10 sekund, autentyczne zdjęcia 35mm etatowego zespołu, interaktywna lista kontrolna pomieszczeń i suwak przed/po.
     body: |
       ## Kontekst
 
-      Lending firmy sprzątającej w Warszawie — sprzątanie mieszkań i biur dla profesjonalistów pracujących z domu i menedżerów małych biur (segment 200-800 zł). Wszyscy konkurenci są jak spod sztancy: stockowa uśmiechnięta sprzątaczka w uniformie, „Profesjonalne sprzątanie", przycisk „Zamów" — klient nie ma czym wybierać, dzwoni do pierwszego z brzegu i idzie na cenę. Trzeba było wyróżnić się dwoma ruchami: pokazać rezultat zamiast procesu i zdjąć barierę „ile to będzie" przed kontaktem.
+      Segment sprzątania premium i mieszkań w Warszawie (Mokotów, Wilanów, Śródmieście, Wola). Standardowi konkurenci cierpią na stock-slop i brak transparentności: generyczne uśmiechnięte modele, ukryte stawki i konieczność dzwonienia po wycenę. Celem było stworzenie bezkonkurencyjnego doświadczenia inspirowanego najlepszym wzorcem rynkowym CleanCo: natychmiastowa przejrzystość, zaufanie budowane autentycznymi kadrami i płynna choreografia interakcji.
 
       ## Rozwiązanie
 
-      W hero — prawdziwe zdjęcie gotowego, czystego wnętrza, a nie sprzątaczka: odwiedzający od razu widzi rezultat (produkt), a nie ludzi ze ścierkami. Kalkulator kosztów na pierwszym ekranie: 60 sekund — metraż, rodzaj sprzątania, usługi dodatkowe → orientacyjna cena, bez „trzeba zadzwonić i zapytać". Trzy pakiety (Mieszkanie / Biuro / Po remoncie) segmentują bez przeładowania. Paleta lekka — kremowe tło i szmaragdowy akcent: świeżo i czysto, bez aptecznej sterylności medycznego niebieskiego.
+      1. **Hero 100vh o architekturze CleanCo:** Tytuł display z mocną typografią, wbudowany kalkulator wyceny w czasie rzeczywistym (metraż, pokoje, łazienki, rabat za częstotliwość) oraz karta wizerunkowa certyfikowanej specjalistki z oceną 5.0 ★.
+      2. **Precyzyjny Standard (Scope Checklist):** Interaktywne przełączanie pomieszczeń (Salon, Kuchnia, Łazienka, Sypialnia, Okna) z odhaczaniem 48 konkretnych punktów kontrolnych.
+      3. **Interaktywny suwak Przed / Po:** Płynne porównanie przeciągane dotykowo i myszą pokazujące usuwanie kamienia i tłuszczu bez agresywnej chemii.
+      4. **Protokół Botaniczny & Ekologiczny Koszyk:** Certyfikowane ekstrakty roślinne, parownice 160°C i filtry HEPA H14 chroniące dzieci i zwierzęta.
+      5. **Przejrzysty Cennik i Rezerwacja 60s:** Transparentna tabela stawek oraz szybki formularz bez konieczności podawania karty kredytowej.
 
       ## Wynik
 
-      HTML/CSS + trochę JS (kalkulator, efekty przy przewijaniu), bez ciężkich frameworków — szybka strona dla tych, którzy otwierają z telefonu. Lending, gdzie odbiorca widzi rezultat usługi jeszcze przed opisem i poznaje cenę przed telefonem: dwa proste ruchy (prawdziwe zdjęcie + kalkulator w hero) zamykają pierwsze dwa zastrzeżenia jeszcze przed formularzem.
+      Ekspresowa strona bez ciężkich bibliotek (0ms latency, natywny scroll, zero wheel-hijacking). Konwersja oparta na natychmiastowej odpowiedzi na pytanie o cenę i bezwzględnym zaufaniu do ubezpieczonego, stałego personelu.
   en:
-    tagline: Cleaning service landing in Warsaw — cost calculator and real interior photo, not stock
-    summary: Cleaning service landing in Warsaw. 60-second cost calculator in hero, real interior photo instead of the stock "smiling cleaner".
+    tagline: Flagship eco-cleaning landing in Warsaw — CleanCo scroll choreography, hero calculator & interactive Before/After
+    summary: Flagship eco-cleaning landing in Warsaw based on CleanCo architecture. Exact 100vh hero with a 10-second real-time calculator, authentic 35mm photos of verified in-house staff, room-by-room scope checklist, and interactive before/after slider.
     body: |
       ## Context
 
-      A landing for a cleaning company in Warsaw — apartment and office cleaning for work-from-home professionals and small-office managers (200-800 zł segment). Every competitor looks the same: a stock smiling cleaner in uniform, "Profesjonalne sprzątanie", a "Zamów" button — the client has nothing to choose by, calls whoever comes up first and goes by price. The job was to stand out with two moves: show the result instead of the process, and remove the "what will it cost" barrier before contact.
+      Residential and apartment cleaning in Warsaw (Mokotów, Wilanów, City Center, Wola). Typical competitors rely on generic stock photos, concealed pricing, and forced phone quotes. The goal was to build a standout digital presence benchmarked against CleanCo: instant transparent estimates, genuine trust through authentic 35mm staff photography, and smooth spring-based scroll choreography.
 
-      ## The solution
+      ## The Solution
 
-      The hero is a real photo of a finished, clean interior, not a cleaner: the visitor sees the result (the product) at once, not people with rags. The cost calculator sits on the first screen: 60 seconds — area, type of clean, extras → a ballpark price, no "I have to call and ask". Three packages (Mieszkanie / Biuro / Po remoncie) segment without overload. A light palette — cream background and an emerald accent: fresh and clean, without the pharmacy sterility of medical blue.
+      1. **Strict 100vh CleanCo Hero:** Monumental display typography, embedded real-time cost calculator (square meters, room steppers, frequency discount), and verified cleaner showcase card.
+      2. **Detailed Scope Checklist:** Interactive room switcher (Living Room, Kitchen, Bathroom, Bedroom, Windows) detailing 48 specific cleaning checkpoints.
+      3. **Interactive Before / After Comparison:** Smooth touch and mouse draggable split-view showing natural descaling and degreasing results.
+      4. **Botanical Protocol & Eco Kit:** Plant-based extracts, 160°C dry steam sanitization, and HEPA H14 filtration safe for children and pets.
+      5. **Transparent Matrix & 60s Booking:** Clear room pricing breakdown and a 3-step rapid booking form with zero prepayment requirements.
 
-      ## The outcome
+      ## The Outcome
 
-      HTML/CSS + a little JS (calculator, scroll effects), no heavy frameworks — a fast page for people opening it on their phone. A landing where the audience sees the result before the description and learns the price before calling: two simple moves (a real photo + a calculator in the hero) close the first two objections before the contact form.
+      High-performance vanilla stack (0ms latency, native hardware scroll, zero wheel hijacking). The visitor receives an immediate, accurate price calculation and verified trust signals before taking action.
   ua:
-    tagline: Лендинг клінінгу у Варшаві — cost calculator та hero з інтер'єром замість stock-foto
-    summary: Лендинг клінінгової компанії у Варшаві. Cost calculator в hero (60 секунд), реальне фото інтер'єру замість stock «прибиральниця посміхається».
+    tagline: Флагманський лендинг еко-клінінгу у Варшаві — скрол-хореографія CleanCo, калькулятор в hero та інтерактивний Before/After
+    summary: Флагманський лендинг еко-клінінгу у Варшаві за архітектурою CleanCo. Точний 100vh hero із живим калькулятором вартості, кінематографічні 35mm кадри штатного персоналу, інтерактивний чекліст кімнат та слайдер до/після.
     body: |
       ## Контекст
 
-      Лендинг клінінгової компанії у Варшаві — прибирання квартир і офісів для work-from-home професіоналів і менеджерів невеликих офісів (сегмент 200-800 zł). Усі конкуренти на одне лице: стокова усміхнена прибиральниця у формі, «Profesjonalne sprzątanie», кнопка «Zamów» — клієнту нічим вибирати, він дзвонить першому-ліпшому й іде на ціну. Потрібно було виділитися двома ходами: показати результат замість процесу і зняти бар'єр «скільки це буде» до контакту.
+      Прибирання апартаментів і резиденцій у Варшаві (Mokotów, Wilanów, Śródmieście, Wola). Стандартні конкуренти страждають від стокових фото та непрозорих цін із нав'язуванням дзвінків. Завданням було створити передовий сайт на основі референсу CleanCo: миттєвий розрахунок вартості, глибока довіра завдяки живим 35mm фото штатної команди та плавна анімація появи.
 
       ## Рішення
 
-      У hero — реальне фото готового, чистого інтер'єру, а не прибиральниця: відвідувач одразу бачить результат (продукт), а не людей із ганчірками. Калькулятор вартості на першому екрані: 60 секунд — площа, тип прибирання, додаткові послуги → орієнтовна ціна, без «треба подзвонити і спитати». Три пакети (Mieszkanie / Biuro / Po remoncie) сегментують без перевантаження. Палітра легка — кремовий фон і смарагдовий акцент: свіжо і чисто, без аптечної стерильності медичного синього.
+      1. **Hero 100vh за каноном CleanCo:** Потужна дисплейна типографіка, вбудований живий калькулятор (площа, лічильники кімнат, знижка за регулярність) та картка сертифікованої спеціалістки з рейтингом 5.0 ★.
+      2. **Детальний чекліст робіт:** Інтерактивне перемикання зон (вітальня, кухня, ванна, спальня, вікна) із 48 чіткими пунктами контролю.
+      3. **Інтерактивний слайдер До / Після:** Плавне перетягування мишкою або тачем із наочним результатом видалення вапна та жиру без токсичної хімії.
+      4. **Ботанічний протокол та Eco Kit:** Рослинні екстракти, суха пара 160°C та фільтрація HEPA H14, безпечні для дітей і домашніх тварин.
+      5. **Прозорий прайс і бронювання 60с:** Зрозуміла сітка тарифів і швидка форма замовлення без необхідності вводити дані банківської картки.
 
       ## Підсумок
 
-      HTML/CSS + трохи JS (калькулятор, ефекти при скролі), без важких фреймворків — швидка сторінка для тих, хто відкриває з телефона. Лендинг, де аудиторія бачить результат послуги ще до опису і дізнається ціну до дзвінка: два прості ходи (реальне фото + калькулятор у hero) закривають перші два заперечення ще до форми контакту.
+      Ультрашвидка сторінка на ванільному стеку (0мс затримки, нативний плавний скрол, жодного втручання в колесо миші). Відвідувач закриває питання ціни та переконується у надійності ще до заповнення форми.
 ---
 
 ## Контекст
 
-Лендинг клининговой компании в Варшаве — уборка квартир и офисов для work-from-home профессионалов и менеджеров небольших офисов (сегмент 200-800 zł). Все конкуренты на одно лицо: стоковая улыбающаяся уборщица в форме, «Profesjonalne sprzątanie», кнопка «Zamów» — клиенту нечем выбирать, он звонит первому попавшемуся и идёт на цену. Нужно было выделиться двумя ходами: показать результат вместо процесса и снять барьер «сколько это будет» до контакта.
+Сегмент уборки квартир и резиденций в Варшаве (Мокотув, Вилянув, Сьрудмесьце, Воля). Большинство сайтов перегружены шаблонным стоковым клише и скрывают цены, принуждая клиентов к долгим звонкам. Цель — создать флагманский лендинг по архитектуре утверждённого эталона CleanCo: моментальная открытость, доверие через аутентичные 35mm кадры штатных специалистов и плавная скролл-хореография.
 
 ## Решение
 
-В hero — реальное фото готового чистого интерьера, а не уборщица: посетитель сразу видит результат (продукт), а не людей с тряпками. Калькулятор стоимости на первом экране: 60 секунд — площадь, тип уборки, доп. услуги → ориентировочная цена, без «надо позвонить спросить». Три пакета (Mieszkanie / Biuro / Po remoncie) сегментируют без перегруза. Палитра лёгкая — кремовый фон и изумрудный акцент: свежо и чисто, без аптечной стерильности медицинского синего.
+1. **CleanCo 100vh Hero:** Крупный дисплейный акцидентный заголовок, встроенный интерактивный калькулятор расчета стоимости (метраж, комнаты, санузлы, скидка на подписку) и персональная карточка клинера с рейтингом 5.0 ★.
+2. **Интерактивный чеклист чистоты:** Переключатель зон (Гостиная, Кухня, Ванная, Спальня, Окна) с детальным перечнем 48 регламентных операций.
+3. **Слайдер До / После:** Интерактивное разделение с тач-шторкой, демонстрирующее экологичное удаление известкового налета и жира без резкой химии.
+4. **Ботанический протокол и Eco Kit:** 100% растительные концентраты, пар 160°C и HEPA-фильтрация H14, гипоаллергенные и безопасные для детей и питомцев.
+5. **Прозрачная сетка тарифов и заявка за 60 секунд:** Понятные цены без скрытых платежей и быстрая бронь с оплатой строго после приемки работ.
 
 ## Итог
 
-HTML/CSS + немного JS (калькулятор, эффекты при скролле), без тяжёлых фреймворков — быстрая страница для тех, кто открывает с телефона. Лендинг, где аудитория видит результат услуги ещё до описания и узнаёт цену до звонка: два простых хода (реальное фото + калькулятор в hero) закрывают первые два возражения ещё до формы контакта.
+Мгновенная загрузка на чистом стеке без тяжелых библиотек (0ms latency, нативный аппаратный скролл, отсутствие блокировки колеса мыши). Клиент получает точный расчет стоимости и подтверждение квалификации мастеров в первые 10 секунд посещения.

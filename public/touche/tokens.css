@@ -1,0 +1,69 @@
+/* ==========================================================================
+   TOUCHÉ — VISUAL DESIGN TOKENS (MAREA SPA CANON + POLISH DIACRITICS)
+   Direction: Marea Spa Editorial Wellness (1:1 Canon + Warsaw Sanctuary)
+   ========================================================================== */
+
+:root {
+  /* Surface Palette */
+  --bg-sand: #F9F4EE;             /* Marea Silk Alabaster (Primary Canvas) */
+  --bg-sand-warm: #F3ECE1;        /* Slightly deeper linen stone */
+  --bg-card: #FFFFFF;             /* Pure Card White */
+  --bg-plum-dark: #2A1D26;        /* Touché Signature Plum Espresso (Apothecary) */
+  --bg-plum-card: rgba(255, 255, 255, 0.05);
+  --bg-stone: #EFE8DF;            /* Tension Map Architecture */
+  
+  /* Accent & Typographic Brand Colors */
+  --color-coral: #E86B63;         /* Marea Coral Terracotta Display */
+  --color-coral-deep: #D4574F;    /* Hover State Coral */
+  --color-coral-tint: rgba(232, 107, 99, 0.10);
+  --color-coral-border: rgba(232, 107, 99, 0.28);
+  
+  /* Text & Ink Colors */
+  --text-dark: #1F191D;           /* Deep Warm Espresso Charcoal */
+  --text-muted: #6E6360;          /* Warm Earth Muted Gray */
+  --text-subtle: #968B87;         /* Hairline Text */
+  --text-light: #F9F4EE;          /* Light Cream for Plum Dark sections */
+  --text-light-muted: #D1C5BD;    /* Muted text on Plum Dark */
+  --text-white: #FFFFFF;
+  
+  /* Architectural Lines & Hairlines */
+  --border-light: rgba(31, 25, 29, 0.08);
+  --border-mid: rgba(31, 25, 29, 0.14);
+  --border-plum: rgba(249, 244, 238, 0.12);
+  --border-active: #E86B63;
+  
+  /* Shadows & Depth (No heavy drop-shadows on images for 144fps scroll) */
+  --shadow-sm: 0 2px 8px rgba(31, 25, 29, 0.04);
+  --shadow-md: 0 12px 32px rgba(31, 25, 29, 0.06);
+  --shadow-lg: 0 24px 60px rgba(31, 25, 29, 0.09);
+  --shadow-drawer: -24px 0 60px rgba(31, 25, 29, 0.22);
+  --shadow-title: 0 4px 28px rgba(18, 14, 12, 0.35);
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+
+  /* Typography Scales & Font Stacks */
+  /* CRITICAL: Instrument Serif + Cormorant Garamond ensures 100% Polish diacritic elegance (ą, ć, ę, ł, ń, ó, ś, ź, ż) */
+  --font-serif: 'Instrument Serif', 'Cormorant Garamond', 'Italiana', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+  /* Font Weights */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  /* Container & Layout */
+  --container-max: 1480px;
+  --container-pad: clamp(20px, 4vw, 64px);
+  --header-height: 80px;
+
+  /* Transitions */
+  --trans-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --trans-base: 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  --trans-smooth: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}

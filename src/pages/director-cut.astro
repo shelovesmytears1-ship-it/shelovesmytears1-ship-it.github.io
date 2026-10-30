@@ -4,7 +4,7 @@ import { withBase } from '../i18n/ui';
 import { getSummary } from '../data/caseHelpers';
 
 const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
-const heroCases = cases.filter((entry) => ['wavemetrics', 'dispersia', 'interspace'].includes(entry.slug));
+const heroCases = cases.filter((entry) => ['dispersia', 'lunea', 'denty'].includes(entry.slug));
 const featuredCases = cases.slice(0, 6);
 const stageCases = heroCases.length === 3 ? heroCases : cases.slice(0, 3);
 const coverSrcset = (cover: string) =>

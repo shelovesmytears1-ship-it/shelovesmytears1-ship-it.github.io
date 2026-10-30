@@ -7,7 +7,42 @@
 import type { CollectionEntry } from 'astro:content';
 import type { Lang } from '../i18n/ui';
 
+import { withBase } from '../i18n/ui';
+
 type Case = CollectionEntry<'cases'>;
+
+/**
+ * Maps case study slug to its demo folder under public/ when names differ.
+ * e.g. edtech -> alona, schedulehub -> booking.
+ */
+export const CASE_FOLDER_MAP: Record<string, string> = {
+  edtech: 'alona',
+  schedulehub: 'booking',
+};
+
+export function getCaseDemoFolder(slug: string): string {
+  return CASE_FOLDER_MAP[slug] || slug;
+}
+
+/**
+ * Computes the URL for opening the project / live demo.
+ * In dev mode (import.meta.env.DEV) OR for any internal showcase (overflow-web.pl),
+ * routes directly to the local demo file: /${folder}/index.html.
+ * This guarantees local testing on localhost stays local.
+ */
+export function getProjectUrl(entry: { slug: string; data: { siteUrl?: string } }): string {
+  const folder = getCaseDemoFolder(entry.slug);
+  const siteUrl = entry.data.siteUrl;
+
+  const isInternal = !siteUrl || siteUrl.includes('overflow-web.pl');
+  const isDev = Boolean(import.meta.env.DEV);
+
+  if (isDev || isInternal) {
+    return withBase(`/${folder}/index.html`);
+  }
+
+  return siteUrl;
+}
 
 /** Get the localized tagline. Falls back to RU master (frontmatter.tagline). */
 export function getTagline(c: Case, lang: Lang): string {

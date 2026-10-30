@@ -1,42 +1,815 @@
 <!doctype html>
-<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="ARCHLINE — koncepcyjny dziennik remontu z zakresem, odbiorami i kontrolą zmian."><title>ARCHLINE — remont zapisany krok po kroku</title><link rel="stylesheet" href="arch-preview.css"><link rel="stylesheet" href="arch-expanded.css"><meta name="robots" content="noindex, follow"></head>
-<body><a class="skip" href="#main">Przejdź do treści</a><header><a class="brand" href="#top">ARCHLINE</a><nav><a href="#estimate">Zakres</a><a href="#checkpoints">Odbiory</a><a href="#compare">Przed / po</a></nav><a href="#contact">Omów mieszkanie</a></header>
-<main id="main">
-<section class="hero" id="top"><div><span>DZIENNIK / MIESZKANIE / 2026</span><h1>Remont widać nie tylko po efekcie. Widać go po decyzjach.</h1><p>Projekt, kosztorys, kolejność prac i odbiory zapisane tak, żeby było wiadomo: co robimy, kto odpowiada i co może zmienić budżet.</p><a href="#estimate">Zbuduj zakres orientacyjny</a></div><figure><img src="images/hero.webp" alt="Wykończone nowoczesne wnętrze"><figcaption>REALIZACJA KONCEPCYJNA · WARSZAWA</figcaption></figure></section>
-<section class="estimate" id="estimate"><div class="estimate-head"><h2>Najpierw założenia. Potem liczba.</h2><p>Kalkulator pokazuje orientacyjny przedział dla portfolio demo. Nie jest ofertą ani kosztorysem wykonawczym.</p></div><div class="estimator"><form id="estimateForm"><label>Powierzchnia: <b id="areaOut">60 m²</b><input id="area" type="range" min="30" max="140" value="60"></label><fieldset><legend>Standard wykończenia</legend><label><input type="radio" name="level" value="base" checked><span>Funkcjonalny</span></label><label><input type="radio" name="level" value="plus"><span>Rozszerzony</span></label><label><input type="radio" name="level" value="custom"><span>Indywidualny</span></label></fieldset><label>Łazienki<select id="baths"><option value="1">1 łazienka</option><option value="2">2 łazienki</option><option value="3">3 łazienki</option></select></label></form><article aria-live="polite"><span>ORIENTACYJNY PRZEDZIAŁ</span><h3 id="range">198–246 tys. zł</h3><p id="rangeNote">Dla 60 m², standard funkcjonalny, 1 łazienka.</p><ul><li>zawiera robociznę i typowy pakiet materiałów</li><li>nie zawiera mebli ruchomych i sprzętu AGD</li><li>stan instalacji potwierdzamy po inwentaryzacji</li></ul><button id="copyEstimate" type="button">Kopiuj założenia</button><p id="copyStatus" role="status"></p></article></div></section>
-<section class="scope" aria-labelledby="scope-title"><div><h2 id="scope-title">Zakres musi mieć granice.</h2><p>Każdy pakiet zaczyna się od pozycji włączonych, wyłączonych oraz takich, które można wycenić dopiero po odkrywkach.</p></div><div class="scope-sheet"><article><b>W zakresie demo</b><p>koordynacja branż, typowe prace wykończeniowe, odbiory etapowe</p></article><article><b>Po inwentaryzacji</b><p>wymiana instalacji, naprawa podłoży, korekta geometrii</p></article><article><b>Poza zakresem</b><p>meble ruchome, AGD, opłaty administracyjne i decyzje formalne</p></article></div></section>
-<section class="checkpoints" id="checkpoints"><div><h2>Pięć odbiorów zamiast jednego finału.</h2><p>Ukryte prace odbieramy, zanim znikną pod kolejną warstwą.</p></div><ol><li><span>01</span><b>Stan wejściowy</b><p>pomiary, instalacje, ryzyka i protokół</p><em>START</em></li><li><span>02</span><b>Prace ukryte</b><p>elektryka, hydraulika, hydroizolacja</p><em>ODBIÓR</em></li><li><span>03</span><b>Geometria</b><p>ściany, sufity, poziomy i osie</p><em>ODBIÓR</em></li><li><span>04</span><b>Wykończenie</b><p>okładziny, stolarka, malowanie</p><em>ODBIÓR</em></li><li><span>05</span><b>Przekazanie</b><p>lista usterek, instrukcje i dokumentacja</p><em>PROTOKÓŁ</em></li></ol></section>
-<section class="demolition" aria-labelledby="demo-title"><div class="site-photo"><img src="images/demolition-inspection.webp" alt="Dokumentowanie odkrytych warstw podczas remontu mieszkania"><span>STAN ODKRYTY / CONCEPT</span></div><div><h2 id="demo-title">Demontaż jest badaniem stanu, nie tylko hałasem.</h2><p>Po odsłonięciu warstw aktualizujemy protokół: co zgadza się z założeniami, co wymaga projektu zamiennego i które decyzje wpływają na koszt.</p><dl><div><dt>Dokumentujemy</dt><dd>przebieg instalacji, wilgoć, rysy i warstwy podłoża</dd></div><div><dt>Zatrzymujemy</dt><dd>prace, których nie można bezpiecznie kontynuować bez decyzji</dd></div><div><dt>Wycenimy osobno</dt><dd>nowy zakres wynikający z odkrytego stanu</dd></div></dl></div></section>
-<section class="installations" aria-labelledby="install-title"><h2 id="install-title">Instalacje odbiera się przed tynkiem.</h2><div class="install-log"><p><span>ELEKTRYKA</span><b>trasy · punkty · zabezpieczenia</b><em>protokół pomiarów wymagany</em></p><p><span>WODA</span><b>prowadzenie · próba ciśnieniowa</b><em>zdjęcia przed zabudową</em></p><p><span>WENTYLACJA</span><b>drożność · nawiew · podcięcia</b><em>weryfikacja z projektem</em></p><p><span>OGRZEWANIE</span><b>przebieg · sterowanie · test</b><em>instrukcja przy przekazaniu</em></p></div></section>
-<section class="wet-zone" aria-labelledby="wet-title"><div><h2 id="wet-title">Łazienka ma warstwy, których nie widać na zdjęciu.</h2><p>Spadki, naroża, przejścia instalacyjne i hydroizolację zapisujemy przed ułożeniem okładziny.</p></div><ol><li><span>Podłoże</span><b>równość i nośność</b></li><li><span>Spadek</span><b>kierunek odpływu</b></li><li><span>Uszczelnienie</span><b>naroża i przejścia</b></li><li><span>Próba</span><b>odbiór przed płytką</b></li></ol></section>
-<section class="compare" id="compare"><div><h2>Różnica jest w warstwach, nie w suwaku.</h2><p>Przesuń granicę, ale sprawdź też, co faktycznie zostało wykonane.</p></div><div class="compare-box" id="compareBox"><img src="images/premium.webp" alt="Mieszkanie po remoncie"><div id="beforeLayer"><img src="images/broken.webp" alt="Mieszkanie przed remontem"></div><input id="compareRange" type="range" min="0" max="100" value="48" aria-label="Porównaj stan przed i po"><span>PRZED</span><b>PO</b></div><ul><li>nowy układ instalacji</li><li>wyrównane podłoża i geometria</li><li>zabudowy według projektu wykonawczego</li></ul></section>
-<section class="materials" aria-labelledby="materials-title"><div><h2 id="materials-title">Materiał trafia na budowę dopiero po akceptacji.</h2><p>Próbka, karta techniczna, partia i sposób montażu tworzą jeden zapis. Wizualizacja nie zastępuje decyzji materiałowej.</p></div><div class="material-register"><article><span>M-014</span><b>Farba ścienna</b><p>kolor · stopień połysku · przygotowanie podłoża</p><em>DO AKCEPTACJI</em></article><article><span>M-027</span><b>Okładzina łazienki</b><p>format · fuga · układ · narożniki</p><em>PRÓBKA</em></article><article><span>M-041</span><b>Podłoga drewniana</b><p>selekcja · wykończenie · kierunek · dylatacje</p><em>MOCKUP</em></article></div></section>
-<section class="schedule" aria-labelledby="schedule-title"><h2 id="schedule-title">Termin jest siecią zależności.</h2><div class="schedule-track"><article><span>TYG. 01–02</span><b>Inwentaryzacja i demontaż</b><i></i></article><article><span>TYG. 03–06</span><b>Instalacje i prace ukryte</b><i></i></article><article><span>TYG. 07–10</span><b>Geometria i mokre procesy</b><i></i></article><article><span>TYG. 11–14</span><b>Wykończenie i montaż</b><i></i></article><article><span>TYG. 15</span><b>Odbiór i dokumentacja</b><i></i></article></div><p>Harmonogram demonstracyjny. Realne terminy powstają po projekcie, dostępności ekip i potwierdzeniu dostaw.</p></section>
-<section class="changes" aria-labelledby="changes-title"><div><h2 id="changes-title">Zmiana bez śladu staje się konfliktem.</h2><p>Każda decyzja po akceptacji zakresu otrzymuje numer, wpływ na koszt, wpływ na termin i osobę zatwierdzającą.</p></div><div class="change-note"><span>ZMIANA / Z-006 / DEMO</span><strong>Przesunięcie punktów elektrycznych po zamówieniu zabudowy</strong><dl><div><dt>Koszt</dt><dd>do wyceny po trasowaniu</dd></div><div><dt>Termin</dt><dd>możliwe +2 dni</dd></div><div><dt>Decyzja</dt><dd>wstrzymana do akceptacji</dd></div></dl></div></section>
-<section class="risk"><h2>Co realnie zmienia koszt i termin?</h2><dl><div><dt>Stan zastany</dt><dd>instalacje i podłoża odkryte po demontażu</dd></div><div><dt>Zmiana decyzji</dt><dd>nowy zakres po zatwierdzeniu dokumentacji</dd></div><div><dt>Dostępność</dt><dd>terminy materiałów i elementów na zamówienie</dd></div><div><dt>Formalności</dt><dd>zgody administracji i prace wspólnotowe</dd></div></dl></section>
-<section class="responsibility" aria-labelledby="responsibility-title"><div><h2 id="responsibility-title">Kto dostarcza decyzję, zanim ekipa czeka.</h2><p>Plan odpowiedzialności odróżnia koordynację od akceptacji i pokazuje, kiedy potrzebny jest specjalista branżowy.</p></div><div><p><span>ARCHLINE</span>koordynacja, zapisy, kontrola zakresu</p><p><span>WŁAŚCICIEL</span>budżet, materiały, zmiany funkcjonalne</p><p><span>PROJEKTANT</span>dokumentacja i odpowiedzi projektowe</p><p><span>BRANŻYSTA</span>pomiary, próby i odbiory specjalistyczne</p></div></section>
-<section class="questions" aria-labelledby="questions-title"><div><h2 id="questions-title">Pytania przed wejściem na budowę.</h2><p>Odpowiedzi opisują logikę koncepcji, nie stanowią warunków usługi.</p></div><div><details><summary>Czy kalkulator jest ofertą?</summary><p>Nie. Pokazuje orientacyjny przedział na podstawie trzech założeń i nie uwzględnia stanu odkrytego, projektu ani cen dostawców.</p></details><details><summary>Kiedy zmienia się budżet?</summary><p>Po udokumentowanej zmianie zakresu, odkryciu stanu niezgodnego z założeniami lub aktualizacji potwierdzonych cen i terminów.</p></details><details><summary>Dlaczego odbiorów jest kilka?</summary><p>Bo instalacji i hydroizolacji nie można rzetelnie ocenić po zamknięciu kolejnych warstw.</p></details><details><summary>Co przygotować do rozmowy?</summary><p>Rzut, lokalizację, etap inwestycji, zdjęcia stanu i priorytety budżetowe. Formularz poniżej działa wyłącznie lokalnie.</p></details></div></section>
-<section class="contact" id="contact"><div><h2>Rozmowa zaczyna się od rzutu i stanu mieszkania.</h2><p>Formularz lokalny — niczego nie wysyła.</p></div><form id="contactForm"><label>E-mail<input type="email" required placeholder="ty@email.pl"></label><label>Etap<select required><option value="">Wybierz</option><option>Przed odbiorem</option><option>Stan deweloperski</option><option>Remont mieszkania</option></select></label><button>Przygotuj rozmowę</button><p id="status" role="status"></p></form></section>
-</main><footer><a class="brand" href="#top">ARCHLINE</a><p>Renovation portfolio concept · 2026</p></footer><script src="arch-preview.js"></script><div class="ov-badge" id="ov-badge">
-  <a class="ov-badge__main" href="https://overflow-web.pl/work/archline/">
-    <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
-  </a>
-  <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
-</div>
-<style>
-.ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
-.ov-badge a{color:inherit;text-decoration:none}
-.ov-badge__main{display:flex;align-items:center;gap:5px}
-.ov-badge__mark{font-weight:700;letter-spacing:-.02em}
-.ov-badge__dot{opacity:.45}
-.ov-badge__type{opacity:.7}
-.ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
-.ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
-@media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
-@media print{.ov-badge{display:none}}
-</style>
-<!-- ov-badge-init -->
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ARCHLINE — Studio architektury wnętrz i realizacji pod klucz w standardzie cichego luksusu (Norm Architects aesthetic).">
+  <title>ARCHLINE — Architektura wnętrz i realizacje pod klucz</title>
+  
+  <!-- Fonts: Cormorant Garamond & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="style.css">
+  <meta name="robots" content="noindex, follow">
+</head>
+<body>
+
+  <!-- Top Architectural Navigation -->
+  <header class="arch-header" id="top">
+    <div class="header-inner">
+      <a class="brand" href="#top">
+        <span class="brand-title">ARCHLINE</span>
+        <span class="brand-sub">STUDIO ARCHITEKTURY & REALIZACJI POD KLUCZ</span>
+      </a>
+      
+      <nav class="arch-nav" aria-label="Główna nawigacja">
+        <a href="#hero" class="nav-link active">01. REALIZACJE</a>
+        <a href="#compare" class="nav-link">02. PRZED / PO</a>
+        <a href="#calculator" class="nav-link">03. KALKULATOR BUDŻETU</a>
+        <a href="#quality" class="nav-link">04. NADZÓR 5 FAZ</a>
+        <a href="#materials" class="nav-link">05. MATERIAŁY</a>
+      </nav>
+      
+      <div class="header-cta">
+        <a href="#booking" class="btn-hairline">UMÓW ODBIÓR</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    
+    <!-- Screen 1: 100vh Exact Hero Sanctuary -->
+    <section class="screen-hero" id="hero" aria-label="Rozdział 01: Hero Sanctuary">
+      <div class="hero-canvas-wrap">
+        <picture class="hero-media">
+          <source id="heroSourceWebp" srcset="assets/01_hero_norm_apartment.webp" type="image/webp">
+          <img id="heroImg" src="assets/01_hero_norm_apartment.jpg" alt="Minimalistyczny apartament w Warszawie projektu ARCHLINE inspirowany estetyką Norm Architects" class="hero-image" loading="eager" fetchpriority="high">
+        </picture>
+        <div class="hero-curtain"></div>
+      </div>
+
+      <div class="hero-overlay-content">
+        <div class="hero-top-datum">
+          <span class="datum-tag">MONOGRAFIA ARCHITEKTONICZNA / 2026</span>
+          <span class="datum-coords">52°13'N · 21°00'E · WARSZAWA MOKOTÓW</span>
+        </div>
+
+        <div class="hero-center-statement">
+          <h1 class="hero-serif-title">Architektura wnętrz jako spokój przestrzeni.</h1>
+          <p class="hero-serif-sub">
+            Remont to nie hałas i kompromisy. To milimetrowa geometria, szlachetne naturalne materiały i spokój decyzji podjętych przed wejściem ekipy na budowę.
+          </p>
+        </div>
+
+        <div class="hero-bottom-dock">
+          <div class="project-switcher" role="tablist" aria-label="Wybierz realizację">
+            <button class="switcher-btn active" role="tab" aria-selected="true" data-project="mokotow" data-img="01_hero_norm_apartment">
+              <span class="sw-idx">PROJEKT I</span>
+              <strong class="sw-name">Apartament Mokotów</strong>
+              <span class="sw-meta">118 m² · Dąb wędzony & Trawertyn</span>
+            </button>
+            
+            <button class="switcher-btn" role="tab" aria-selected="false" data-project="srodmiescie" data-img="02_living_sanctuary_oak">
+              <span class="sw-idx">PROJEKT II</span>
+              <strong class="sw-name">Kamienica Śródmieście</strong>
+              <span class="sw-meta">164 m² · Tynk wapienny & Bouclé</span>
+            </button>
+            
+            <button class="switcher-btn" role="tab" aria-selected="false" data-project="wilanow" data-img="03_bathroom_travertine_monolith">
+              <span class="sw-idx">PROJEKT III</span>
+              <strong class="sw-name">Willa Wilanów</strong>
+              <span class="sw-meta">220 m² · Monolit kamienny & Brąz</span>
+            </button>
+          </div>
+
+          <a href="#compare" class="scroll-cue" aria-label="Przewiń do rozdziału 02">
+            <span>OD STANU SUROWEGO</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 02: Draggable Before / After Structural Transformation Slider -->
+    <section class="chapter-section" id="compare" aria-labelledby="ch02-heading">
+      <div class="container">
+        <div class="chapter-header">
+          <span class="chapter-num">ROZDZIAŁ 02 · PRZED I PO</span>
+          <h2 id="ch02-heading" class="chapter-title">Od surowej substancji do wyciszonej harmonii.</h2>
+          <p class="chapter-desc">
+            Przeciągnij suwak, aby porównać stan surowy kamienicy z laserowym trasowaniem instalacji oraz gotowy apartament po odbiorze autorskim.
+          </p>
+        </div>
+
+        <div class="comparison-shell" id="compareSliderShell">
+          <div class="compare-frame">
+            <!-- Background (After image) -->
+            <img class="compare-img compare-after" src="assets/01_hero_norm_apartment.jpg" alt="Po remoncie: apartament w standardzie Norm Architects">
+            <span class="compare-badge badge-after">PO REALIZACJI · SANKTUARIUM</span>
+
+            <!-- Foreground Clip (Before image) -->
+            <div class="compare-clip" id="compareClip">
+              <img class="compare-img compare-before" src="assets/04_renovation_raw_shell_before.jpg" alt="Przed remontem: surowy stan konstrukcyjny z laserowym wyznaczaniem osi">
+              <span class="compare-badge badge-before">STAN SUROWY · TRASOWANIE 3D</span>
+
+              <!-- Technical Overlay Callouts -->
+              <div class="tech-callout tc-laser">
+                <span class="tc-dot"></span>
+                <span class="tc-text">Laserowa oś odniesienia ±1.0 mm</span>
+              </div>
+              <div class="tech-callout tc-chase">
+                <span class="tc-dot"></span>
+                <span class="tc-text">Bruzdy instalacyjne w cegle zaporowej</span>
+              </div>
+            </div>
+
+            <!-- Draggable divider bar -->
+            <div class="compare-handle" id="compareHandle" role="slider" aria-label="Suwak porównania Przed i Po" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+              <div class="handle-line"></div>
+              <div class="handle-knob">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Residence Monographs Meta -->
+          <div class="monographs-grid">
+            <article class="mono-card active" data-before="04_renovation_raw_shell_before" data-after="01_hero_norm_apartment">
+              <div class="mono-header">
+                <span class="mono-city">WARSZAWA · MOKOTÓW</span>
+                <span class="mono-metric">118 m² · 18 TYGODNI</span>
+              </div>
+              <h3 class="mono-title">Mokotów Sanctuary</h3>
+              <p class="mono-text">
+                Rewitalizacja apartamentu deweloperskiego: wymiana jastrychu na wyciszony, autorska stolarka dębowa do sufitu i monolityczna wyspa z trawertynu Navona.
+              </p>
+            </article>
+
+            <article class="mono-card" data-before="04_renovation_raw_shell_before" data-after="02_living_sanctuary_oak">
+              <div class="mono-header">
+                <span class="mono-city">WARSZAWA · ŚRÓDMIEŚCIE</span>
+                <span class="mono-metric">164 m² · 22 TYGODNIE</span>
+              </div>
+              <h3 class="mono-title">Kamienica z 1912 roku</h3>
+              <p class="mono-text">
+                Konserwatorskie wzmocnienie stropów Kleina, wyciszenie akustyczne stropów 48 dB, tynki wapienne zacierane na gładko i zlicowane drzwi ukryte.
+              </p>
+            </article>
+
+            <article class="mono-card" data-before="04_renovation_raw_shell_before" data-after="03_bathroom_travertine_monolith">
+              <div class="mono-header">
+                <span class="mono-city">WARSZAWA · WILANÓW</span>
+                <span class="mono-metric">220 m² · 26 TYGODNI</span>
+              </div>
+              <h3 class="mono-title">Willa Wilanów Spa</h3>
+              <p class="mono-text">
+                Trzypoziomowa willa: strefa kąpielowa z monolityczną umywalką z jednego bloku kamiennego, armatura z patynowanego brązu i szkło ryflowane.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 03: Turnkey Budget & Timeline Calculator -->
+    <section class="chapter-section bg-travertine" id="calculator" aria-labelledby="ch03-heading">
+      <div class="container">
+        <div class="chapter-header">
+          <span class="chapter-num">ROZDZIAŁ 03 · KOSZTORYS & HARMONOGRAM</span>
+          <h2 id="ch03-heading" class="chapter-title">Najpierw założenia. Potem liczba.</h2>
+          <p class="chapter-desc">
+            Przejrzysty kalkulator inwestycji w oparciu o zrealizowane projekty premium w Warszawie. Zobacz rozbicie na 4 filary budżetu i precyzyjny czas trwania prac.
+          </p>
+        </div>
+
+        <div class="calculator-grid">
+          <!-- Left Controls -->
+          <div class="calc-controls">
+            <!-- Area Slider -->
+            <div class="calc-field">
+              <div class="field-top">
+                <label for="areaInput" class="field-label">Powierzchnia apartamentu</label>
+                <output id="areaDisplay" class="field-val">118 m²</output>
+              </div>
+              <input type="range" id="areaInput" min="45" max="250" value="118" step="1" class="calc-range">
+              <div class="range-marks">
+                <span>45 m²</span>
+                <span>100 m²</span>
+                <span>160 m²</span>
+                <span>250 m²</span>
+              </div>
+            </div>
+
+            <!-- Building Condition -->
+            <div class="calc-field">
+              <label class="field-label">Stan wyjściowy substancji</label>
+              <div class="condition-toggle" role="radiogroup" aria-label="Stan substancji">
+                <button type="button" class="cond-btn active" data-condition="dev" role="radio" aria-checked="true">
+                  <span class="cond-title">Stan deweloperski</span>
+                  <span class="cond-desc">Nowy budynek · przygotowane podejścia</span>
+                </button>
+                <button type="button" class="cond-btn" data-condition="reno" role="radio" aria-checked="false">
+                  <span class="cond-title">Kamienica / Rynek wtórny</span>
+                  <span class="cond-desc">Wymaga wyburzeń, wymiany pionów i wzmocnień</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Finish Standard -->
+            <div class="calc-field">
+              <label class="field-label">Standard wykończenia i materiałów</label>
+              <div class="tiers-selector">
+                <label class="tier-card">
+                  <input type="radio" name="standardTier" value="calm" class="tier-radio">
+                  <div class="tier-body">
+                    <div class="tier-top">
+                      <span class="tier-name">Natural Calm</span>
+                      <span class="tier-rate">od 4 200 zł / m²</span>
+                    </div>
+                    <p class="tier-text">Tynki mineralne, lita deska dębowa, armatura podtynkowa, proste zlicowane szafy.</p>
+                  </div>
+                </label>
+
+                <label class="tier-card active">
+                  <input type="radio" name="standardTier" value="bespoke" class="tier-radio" checked>
+                  <div class="tier-body">
+                    <div class="tier-top">
+                      <span class="tier-name">Bespoke Oak & Stone (Norm)</span>
+                      <span class="tier-rate">od 6 500 zł / m²</span>
+                    </div>
+                    <p class="tier-text">Dąb wędzony pod sufit, wyspa z trawertynu rzymskiego, szczeliny cieniowe 2 mm, drzwi ukryte.</p>
+                  </div>
+                </label>
+
+                <label class="tier-card">
+                  <input type="radio" name="standardTier" value="monolith" class="tier-radio">
+                  <div class="tier-body">
+                    <div class="tier-top">
+                      <span class="tier-name">Collector Monolith</span>
+                      <span class="tier-rate">od 9 800 zł / m²</span>
+                    </div>
+                    <p class="tier-text">Bryły kamienne frezowane z bloku, brąz patynowany, akustyka studyjna, pełna automatyka DALI.</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Custom Joinery Addons -->
+            <div class="calc-field">
+              <label class="field-label">Autorska stolarka na zamówienie</label>
+              <div class="addons-grid">
+                <label class="addon-item">
+                  <input type="checkbox" id="addonKitchen" class="addon-check" checked>
+                  <span class="addon-box"></span>
+                  <span class="addon-label">Kuchnia z wyspą kamienną (+48 000 zł)</span>
+                </label>
+                <label class="addon-item">
+                  <input type="checkbox" id="addonWardrobe" class="addon-check" checked>
+                  <span class="addon-box"></span>
+                  <span class="addon-label">Garderoby & zabudowy wnękowe (+34 000 zł)</span>
+                </label>
+                <label class="addon-item">
+                  <input type="checkbox" id="addonCladding" class="addon-check">
+                  <span class="addon-box"></span>
+                  <span class="addon-label">Okładziny ścienne & drzwi zlicowane (+28 000 zł)</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Calculation Sheet -->
+          <div class="calc-receipt">
+            <div class="receipt-card">
+              <div class="receipt-header">
+                <span class="rc-label">ZESTAWIENIE INWESTYCJI POD KLUCZ</span>
+                <span class="rc-tag">WARSZAWA · 2026</span>
+              </div>
+
+              <div class="rc-breakdown">
+                <div class="rc-row">
+                  <span class="rc-key">1. Prace budowlane, wyburzenia & instalacje</span>
+                  <span class="rc-val" id="rowBuild">247 800 zł</span>
+                </div>
+                <div class="rc-row">
+                  <span class="rc-key">2. Autorska stolarka na wymiar (Dąb)</span>
+                  <span class="rc-val" id="rowJoinery">182 000 zł</span>
+                </div>
+                <div class="rc-row">
+                  <span class="rc-key">3. Kamień naturalny (Trawertyn) & armatura</span>
+                  <span class="rc-val" id="rowStone">141 600 zł</span>
+                </div>
+                <div class="rc-row">
+                  <span class="rc-key">4. Nadzór autorski, logistyka & 5 odbiorów</span>
+                  <span class="rc-val" id="rowSupervision">59 000 zł</span>
+                </div>
+              </div>
+
+              <div class="rc-divider"></div>
+
+              <div class="rc-total-block">
+                <span class="rc-total-label">SZACOWANA CAŁOŚĆ INWESTYCJI</span>
+                <div class="rc-total-amount" id="totalBudgetDisplay">630 400 zł</div>
+                <div class="rc-timeline-pill">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                  </svg>
+                  <span id="timelineDisplay">Przewidywany czas: 18 tygodni (ze stolarką)</span>
+                </div>
+              </div>
+
+              <div class="rc-disclaimer">
+                Kosztorys zawiera pełną robociznę, materiały wykończeniowe i koordynację. Zapis zostaje zablokowany w umowie po inwentaryzacji laserowej.
+              </div>
+
+              <button type="button" class="btn-bronze" id="btnTransferToBrief">
+                PRZEŚLIJ KALKULACJĘ DO BRIEFU ↓
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 04: 5-Stage Engineering & Quality Control Ledger -->
+    <section class="chapter-section" id="quality" aria-labelledby="ch04-heading">
+      <div class="container">
+        <div class="chapter-header">
+          <span class="chapter-num">ROZDZIAŁ 04 · NADZÓR INŻYNIERSKI</span>
+          <h2 id="ch04-heading" class="chapter-title">Pięć odbiorów technicznych zamiast jednego finału.</h2>
+          <p class="chapter-desc">
+            Prace ukryte odbieramy komisyjnie, zanim znikną pod kolejną warstwą. Każdy etap ma formalny protokół pomiarowy i wpis do dziennika budowy.
+          </p>
+        </div>
+
+        <div class="checkpoints-accordion" id="checkpointsAccordion">
+          <!-- Gate 1 -->
+          <article class="gate-item active" data-gate="1">
+            <button class="gate-head" aria-expanded="true">
+              <span class="gate-num">01</span>
+              <div class="gate-meta">
+                <strong class="gate-title">Inwentaryzacja laserowa 3D i badanie wilgotności</strong>
+                <span class="gate-subtitle">Tydzień 01 · Stan zerowy inwestycji</span>
+              </div>
+              <span class="gate-status">PROTOKÓŁ WSTĘPNY</span>
+            </button>
+            <div class="gate-content">
+              <div class="gate-details">
+                <p>
+                  Skanujemy przestrzeń skanerem chmury punktów z dokładnością do 1.0 mm. Sprawdzamy piony ścian, ugięcia stropów oraz wilgotność podłoża higrometrem CM. Na tej podstawie korygujemy rysunki wykonawcze stolarki przed zamówieniem materiałów.
+                </p>
+                <ul class="gate-checks">
+                  <li>Tolerancja wymiarowa: ±1 mm</li>
+                  <li>Wilgotność jastrychu: &lt; 1.8% CM dla parkietu</li>
+                  <li>Dokumentacja fotograficzna 360° wszystkich instalacji zastanych</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Gate 2 -->
+          <article class="gate-item" data-gate="2">
+            <button class="gate-head" aria-expanded="false">
+              <span class="gate-num">02</span>
+              <div class="gate-meta">
+                <strong class="gate-title">Prace ukryte: hydraulika, elektryka i próby ciśnieniowe</strong>
+                <span class="gate-subtitle">Tydzień 04–06 · Przed zamknięciem szachtów</span>
+              </div>
+              <span class="gate-status">ODBIÓR BRANŻOWY</span>
+            </button>
+            <div class="gate-content">
+              <div class="gate-details">
+                <p>
+                  Poddajemy instalację wodną 72-godzinnej próbie ciśnieniowej przy 10 barach. Weryfikujemy tłumienie akustyczne pionów kanalizacyjnych (rury niskoszumowe otulone matą kauczukową, redukcja do 48 dB). Trasowanie przewodów elektrycznych dokumentujemy geodezyjnie.
+                </p>
+                <ul class="gate-checks">
+                  <li>Próba ciśnieniowa: 10 bar przez 72h ze świadkiem inwestora</li>
+                  <li>Wyciszenie szachtów: wełna mineralna + maty elastyczne</li>
+                  <li>Protokoły rezystancji izolacji obwodów zasilających</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Gate 3 -->
+          <article class="gate-item" data-gate="3">
+            <button class="gate-head" aria-expanded="false">
+              <span class="gate-num">03</span>
+              <div class="gate-meta">
+                <strong class="gate-title">Geometria tynków i zintegrowana szczelina cieniowa 2 mm</strong>
+                <span class="gate-subtitle">Tydzień 08–10 · Przed montażem podłóg</span>
+              </div>
+              <span class="gate-status">ODBIÓR GEOMETRII</span>
+            </button>
+            <div class="gate-content">
+              <div class="gate-details">
+                <p>
+                  Odbiór płaszczyzn i kątów prostych (kąt 90.0° pod zabudowy kuchenne i kamień). Montaż podtynkowych profili cieniowych zlicowanych ze ścianą — eliminacja tradycyjnych listew przypodłogowych zgodnie z kanonem Norm Architects.
+                </p>
+                <ul class="gate-checks">
+                  <li>Kąty proste pod zabudowy: odchyłka &lt; 0.5 mm na 2 metrach</li>
+                  <li>Szczelina cieniowa: równe 2.0 mm na całym obwodzie</li>
+                  <li>Podkład mineralny pod tynki wapienne Grassello</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Gate 4 -->
+          <article class="gate-item" data-gate="4">
+            <button class="gate-head" aria-expanded="false">
+              <span class="gate-num">04</span>
+              <div class="gate-meta">
+                <strong class="gate-title">Stolarka autorska, spasowanie fornirów i montaż kamienia</strong>
+                <span class="gate-subtitle">Tydzień 12–15 · Prace montażowe</span>
+              </div>
+              <span class="gate-status">ODBIÓR RZEMIOSŁA</span>
+            </button>
+            <div class="gate-content">
+              <div class="gate-details">
+                <p>
+                  Sprawdzamy ciągłość rysunku słojów dębu wędzonego na kolejnych frontach szaf. Montaż monolitycznych bloków trawertynu z wpuszczanymi zlewami bez widocznych spoin. Kalibracja ukrytych zawiasów Blum i cichych domyków.
+                </p>
+                <ul class="gate-checks">
+                  <li>Spasowanie usłojenia: dobór partii drewna z jednego pnia</li>
+                  <li>Impregnacja hydrofobowa kamienia: próba kroplowa wina i kwasów</li>
+                  <li>Zlicowanie drzwi ukrytych z płaszczyzną ściany (szczelina 1.5 mm)</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Gate 5 -->
+          <article class="gate-item" data-gate="5">
+            <button class="gate-head" aria-expanded="false">
+              <span class="gate-num">05</span>
+              <div class="gate-meta">
+                <strong class="gate-title">Odbiór końcowy z kamerą termowizyjną i protokół zero usterek</strong>
+                <span class="gate-subtitle">Tydzień 16–18 · Przekazanie kluczy</span>
+              </div>
+              <span class="gate-status">PROTOKÓŁ KOŃCOWY</span>
+            </button>
+            <div class="gate-content">
+              <div class="gate-details">
+                <p>
+                  Badamy cały lokal profesjonalną kamerą termowizyjną (kontrola ciągłości izolacji okiennej, eliminacja mostków termicznych i sprawdzenie równomierności mat grzewczych). Przekazanie księgi powykonawczej z gwarancjami i instrukcją konserwacji materiałów.
+                </p>
+                <ul class="gate-checks">
+                  <li>Raport termowizyjny FLIR: brak mostków cieplnych</li>
+                  <li>Certyfikaty materiałowe i karty gwarancyjne producentów</li>
+                  <li>Serwis gwarancyjny ARCHLINE: przegląd po 12 miesiącach w cenie</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 05: Tactile Material Library -->
+    <section class="chapter-section bg-travertine-subtle" id="materials" aria-labelledby="ch05-heading">
+      <div class="container">
+        <div class="chapter-header">
+          <span class="chapter-num">ROZDZIAŁ 05 · ARCHITEKTURA MATERIAŁÓW</span>
+          <h2 id="ch05-heading" class="chapter-title">Rejestr materiałów naturalnych.</h2>
+          <p class="chapter-desc">
+            Wnętrza ARCHLINE nie starzeją się z czasem — zyskują patynę. Każdy materiał badamy pod kątem dotyku, akustyki i odporności na dziesięciolecia życia.
+          </p>
+        </div>
+
+        <div class="materials-showcase">
+          <!-- Main visual board -->
+          <div class="material-board-frame">
+            <picture>
+              <source srcset="assets/05_material_board_tactile.webp" type="image/webp">
+              <img src="assets/05_material_board_tactile.jpg" alt="Płaska kompozycja próbek materiałowych w pracowni architektonicznej" class="board-photo">
+            </picture>
+            <div class="board-caption">
+              <span>PRÓBNIK ARCHITEKTONICZNY · NORM ARCHITECTS AESTHETIC</span>
+              <span>POCHODZENIE: EUROPA · SELEKCJA RĘCZNA</span>
+            </div>
+          </div>
+
+          <!-- Interactive Material Cards -->
+          <div class="materials-selector">
+            <div class="mat-card active" data-mat="oak">
+              <div class="mat-meta">
+                <span class="mat-id">M-01</span>
+                <strong class="mat-name">Dąb Wędzony Europejski</strong>
+              </div>
+              <p class="mat-desc">
+                Drewno modyfikowane oparami amoniaku w głąb struktury, nie barwione powierzchownie. Ciepły, głęboki odcień orzecha, wykończony naturalnym twardym woskiem olejnym Rubio.
+              </p>
+              <div class="mat-specs">
+                <span>Twardość Brinella: 3.8</span>
+                <span>Wykończenie: Mat 5%</span>
+                <span>Patynowanie: Ciepły bursztyn</span>
+              </div>
+            </div>
+
+            <div class="mat-card" data-mat="stone">
+              <div class="mat-meta">
+                <span class="mat-id">M-02</span>
+                <strong class="mat-name">Trawertyn Rzymski Navona</strong>
+              </div>
+              <p class="mat-desc">
+                Cięty wzdłuż żyły (vein-cut) z włoskich kamieniołomów w Tivoli. Szlifowany na mat, pozostawiony z naturalnymi kawernami (nieszpachlowany). Aksamitny w dotyku.
+              </p>
+              <div class="mat-specs">
+                <span>Gęstość: 2450 kg/m³</span>
+                <span>Nasiąkliwość: &lt; 0.9%</span>
+                <span>Ochrona: Impregnat krzemianowy</span>
+              </div>
+            </div>
+
+            <div class="mat-card" data-mat="plaster">
+              <div class="mat-meta">
+                <span class="mat-id">M-03</span>
+                <strong class="mat-name">Tynk Wapienny Grassello</strong>
+              </div>
+              <p class="mat-desc">
+                Organiczne wapno gaszone sezonowane przez 24 miesiące. W 100% dyfuzyjne, regulujące wilgotność w sypialniach i salonie. Matowa, pergaminowa faktura bez połysku.
+              </p>
+              <div class="mat-specs">
+                <span>Oddychalność: μ = 12</span>
+                <span>Odczyn: pH 12 (antygrzybiczny)</span>
+                <span>Barwniki: Ziemie naturalne</span>
+              </div>
+            </div>
+
+            <div class="mat-card" data-mat="brass">
+              <div class="mat-meta">
+                <span class="mat-id">M-04</span>
+                <strong class="mat-name">Mosiądz Szczotkowany Patynowany</strong>
+              </div>
+              <p class="mat-desc">
+                Masywny lity mosiądz frezowany z bloków. Pozbawiony syntetycznego lakieru proszkowego, dzięki czemu w miejscach dotyku dłoni tworzy unikatową szlachetną patynę.
+              </p>
+              <div class="mat-specs">
+                <span>Stop: CuZn39Pb3</span>
+                <span>Obróbka: Ręczne szczotkowanie</span>
+                <span>Starzenie: Naturalna oksydacja</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Craft Detail Showcase -->
+        <div class="craft-detail-strip">
+          <div class="craft-image">
+            <picture>
+              <source srcset="assets/06_joinery_detail_craft.webp" type="image/webp">
+              <img src="assets/06_joinery_detail_craft.jpg" alt="Zbliżenie na precyzyjną szczelinę 2mm między dębem a kamieniem" class="craft-img">
+            </picture>
+          </div>
+          <div class="craft-text">
+            <span class="craft-tag">DETAL WYKONAWCZY · ARCHLINE CRAFT</span>
+            <h3 class="craft-title">Szczelina cieniowa 2.0 mm jako podpis pracowni.</h3>
+            <p class="craft-p">
+              Nie używamy silikonów ani listew maskujących. Każde połączenie drewna z kamieniem i tynkiem jest frezowane z tolerancją zegarmistrzowską. Prawdziwa jakość ujawnia się w sposobie, w jaki dwa różne materiały spotykają się w świetle.
+            </p>
+            <div class="craft-datum">
+              <div>
+                <strong>±0.5 mm</strong>
+                <span>Tolerancja montażowa</span>
+              </div>
+              <div>
+                <strong>100%</strong>
+                <span>Lite drewno & kamień</span>
+              </div>
+              <div>
+                <strong>10 lat</strong>
+                <span>Gwarancji na konstrukcję</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 06: Turnkey Brief & Site Inspection Booking -->
+    <section class="chapter-section" id="booking" aria-labelledby="ch06-heading">
+      <div class="container">
+        <div class="booking-wrap">
+          <div class="booking-intro">
+            <span class="chapter-num">ROZDZIAŁ 06 · WIZJA LOKALNA</span>
+            <h2 id="ch06-heading" class="chapter-title">Zarezerwuj wizję lokalną i audyt substancji.</h2>
+            <p class="chapter-desc">
+              Przyjeżdżamy na budowę z dalmierzem laserowym i higrometrem. Oceniamy stan pionów, nośność podłoży i weryfikujemy założenia budżetowe przed podpisaniem jakiejkolwiek umowy.
+            </p>
+
+            <div class="booking-perks">
+              <div class="perk-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/>
+                </svg>
+                <span>Audyt techniczny na miejscu inwestycji w Warszawie i Trójmieście</span>
+              </div>
+              <div class="perk-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/>
+                </svg>
+                <span>Wstępny kosztorys z podziałem na 4 filary (robocizna, stolarka, kamień, nadzór)</span>
+              </div>
+              <div class="perk-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/>
+                </svg>
+                <span>Weryfikacja możliwości usunięcia ścian i poprowadzenia instalacji</span>
+              </div>
+            </div>
+
+            <div class="booking-contact-direct">
+              <span>BEZPOŚREDNI KONTAKT ZE STUDIEM:</span>
+              <a href="mailto:pracownia@archline-studio.pl">pracownia@archline-studio.pl</a>
+              <span class="contact-phone">+48 22 849 20 11 · Mokotowska 42, Warszawa</span>
+            </div>
+          </div>
+
+          <!-- Interactive Booking Form -->
+          <div class="booking-form-box">
+            <form id="turnkeyBookingForm" class="arch-form">
+              <h3 class="form-heading">Formularz wizji lokalnej</h3>
+              <p class="form-sub">Dane przeniesione z kalkulatora (możesz je edytować):</p>
+
+              <div class="form-row form-row-2">
+                <div class="input-wrap">
+                  <label for="formArea">Powierzchnia (m²)</label>
+                  <input type="number" id="formArea" name="area" value="118" required>
+                </div>
+                <div class="input-wrap">
+                  <label for="formTier">Standard wykończenia</label>
+                  <select id="formTier" name="tier">
+                    <option value="calm">Natural Calm (od 4 200 zł/m²)</option>
+                    <option value="bespoke" selected>Bespoke Oak & Stone (od 6 500 zł/m²)</option>
+                    <option value="monolith">Collector Monolith (od 9 800 zł/m²)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="input-wrap">
+                <label for="formBudgetEst">Szacunkowy budżet z kalkulatora</label>
+                <input type="text" id="formBudgetEst" name="budget" value="630 400 zł" readonly class="input-readonly">
+              </div>
+
+              <div class="form-row form-row-2">
+                <div class="input-wrap">
+                  <label for="formName">Imię i nazwisko</label>
+                  <input type="text" id="formName" name="name" required placeholder="np. Jan Kowalski">
+                </div>
+                <div class="input-wrap">
+                  <label for="formPhone">Telefon kontaktowy</label>
+                  <input type="tel" id="formPhone" name="phone" required placeholder="+48 600 000 000">
+                </div>
+              </div>
+
+              <div class="input-wrap">
+                <label for="formEmail">Adres e-mail</label>
+                <input type="email" id="formEmail" name="email" required placeholder="adres@domena.pl">
+              </div>
+
+              <div class="input-wrap">
+                <label for="formAddress">Adres lub dzielnica inwestycji</label>
+                <input type="text" id="formAddress" name="address" required placeholder="np. Warszawa, Mokotów ul. Wiktorska">
+              </div>
+
+              <div class="input-wrap">
+                <label for="formDate">Preferowany termin spotkania na budowie</label>
+                <input type="date" id="formDate" name="date" required>
+              </div>
+
+              <button type="submit" class="btn-submit" id="btnSubmitForm">
+                POTWIERDŹ REZERWACJĘ WIZJI LOKALNEJ
+              </button>
+
+              <div class="form-status" id="formStatusBox" style="display: none;" role="status">
+                <div class="status-card">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8C6D3F" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/>
+                  </svg>
+                  <div>
+                    <strong>Wizja lokalna została wstępnie zarezerwowana.</strong>
+                    <p id="statusMsg">Nasz architekt prowadzący skontaktuje się w ciągu 4 godzin roboczych, aby potwierdzić godzinę spotkania.</p>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Architectural Quiet Footer -->
+  <footer class="arch-footer">
+    <div class="container footer-inner">
+      <div class="footer-col brand-col">
+        <a class="brand" href="#top">
+          <span class="brand-title">ARCHLINE</span>
+          <span class="brand-sub">STUDIO ARCHITEKTURY & REALIZACJI POD KLUCZ</span>
+        </a>
+        <p class="footer-claim">
+          Norm Architects reference · Realizacje wnętrz w standardzie cichego luksusu w Warszawie, Konstancinie i Sopocie.
+        </p>
+      </div>
+
+      <div class="footer-col links-col">
+        <span class="footer-heading">ROZDZIAŁY</span>
+        <a href="#hero">01. Realizacje</a>
+        <a href="#compare">02. Przed / Po</a>
+        <a href="#calculator">03. Kalkulator</a>
+        <a href="#quality">04. Nadzór 5 faz</a>
+        <a href="#materials">05. Materiały</a>
+      </div>
+
+      <div class="footer-col studio-col">
+        <span class="footer-heading">PRACOWNIA</span>
+        <address class="footer-address">
+          Mokotowska 42, 00-543 Warszawa<br>
+          Pn – Pt: 09:00 – 18:00<br>
+          <a href="mailto:pracownia@archline-studio.pl">pracownia@archline-studio.pl</a>
+        </address>
+        <div class="footer-version-link">
+          <a href="/archline-old/index.html" class="legacy-link">Porównaj z wersją archiwalną (Przed / Po) →</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <span>© 2026 ARCHLINE Studio. Wszelkie prawa zastrzeżone.</span>
+        <span>Standard: Norm Architects / Cichy Luksus</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+<!-- universal-smooth-anchor-scroll -->
 <script>
-(function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
+(function(){
+  if(window.__ovSmoothScrollInit) return;
+  window.__ovSmoothScrollInit = true;
+  var animId = null;
+  function cancel(){ if(animId){ cancelAnimationFrame(animId); animId = null; } }
+  window.addEventListener('wheel', cancel, {passive:true});
+  window.addEventListener('touchstart', cancel, {passive:true});
+  window.addEventListener('keydown', cancel, {passive:true});
+  function smoothTo(targetY, dur){
+    cancel();
+    var startY = window.scrollY || window.pageYOffset || 0;
+    var maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    var destY = Math.min(Math.max(0, targetY), maxScroll);
+    var dist = destY - startY;
+    if(Math.abs(dist) < 3) return;
+    var startTime = performance.now();
+    var d = dur || 780;
+    function step(now){
+      var t = Math.min((now - startTime) / d, 1);
+      var ease = 1 - Math.pow(1 - t, 3);
+      window.scrollTo(0, startY + dist * ease);
+      if(t < 1) animId = requestAnimationFrame(step);
+      else animId = null;
+    }
+    animId = requestAnimationFrame(step);
+  }
+  window.__ovSmoothScrollTo = smoothTo;
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('a[href^="#"], [data-scroll-to], [data-target]');
+    if(!el) return;
+    var sel = el.getAttribute('data-scroll-to') || el.getAttribute('href');
+    if(!sel || sel.charAt(0) !== '#') return;
+    if(sel === '#'){
+      if(el.classList.contains('logo-link') || el.classList.contains('brand')){
+        e.preventDefault();
+        smoothTo(0, 750);
+      }
+      return;
+    }
+    var target = null;
+    try { target = document.querySelector(sel); } catch(err){}
+    if(!target) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var header = document.querySelector('header, nav.navbar, .site-header, .top-nav, .nav-bar');
+    var offset = 0;
+    if(header){
+      var pos = getComputedStyle(header).position;
+      if(pos === 'fixed' || pos === 'sticky'){
+        offset = header.offsetHeight || 72;
+      }
+    }
+    var top = (window.scrollY || window.pageYOffset || 0) + target.getBoundingClientRect().top - offset;
+    smoothTo(top, 780);
+  }, true);
+})();
 </script>
-</body></html>
+
+</body>
+</html>

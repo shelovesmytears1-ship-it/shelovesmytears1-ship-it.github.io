@@ -75,7 +75,7 @@ const copy: Record<Lang, NewDirectionCopy> = {
     },
     home: {
       meta: 'NIEZALEŻNY DEVELOPER', location: 'GDAŃSK · PL / REMOTE',
-      heroTitle: 'Tworzę strony dla firm i ekspertów,', heroAccent: 'które jasno pokazują wartość', heroTail: 'i prowadzą do działania.', heroBody: 'Landingi, strony wielostronicowe i małe sklepy — od pierwszej rozmowy do wdrożenia. Pracuję osobiście, bez pośredników.', heroCta: 'Opowiedz o projekcie',
+      heroTitle: 'Nowoczesny frontend.', heroAccent: 'Płynny ruch.', heroTail: 'Interfejsy, które zapadają w pamięć.', heroBody: 'Projektuję i koduję dopracowane serwisy dla marek, które nie godzą się na przeciętność. Od pierwszej makiety po stabilne wdrożenie — bezpośrednio z developerem.', heroCta: 'Opowiedz o projekcie',
       introMeta: '01 — PODEJŚCIE', intro: 'Nie jestem agencją. Prowadzę projekt osobiście — z dbałością o kierunek wizualny, kod i to, co dzieje się po publikacji.', facts: ['Strategia strony', 'Interfejs i frontend', 'Wdrożenie i jakość'],
       workMeta: '02 — WYBRANE PRACE', workTitle: 'Mniej projektów.', workAccent: 'Więcej charakteru.', workBody: 'Realizacje dla klientów i autorskie koncepty — każdy projekt jest jasno oznaczony.', openProject: 'Otwórz projekt', allWork: 'Zobacz wszystkie prace',
       processMeta: '03 — PROCES', processTitle: 'Jasny proces.', processAccent: 'Bez domysłów.',
@@ -144,7 +144,7 @@ const copy: Record<Lang, NewDirectionCopy> = {
     layout: { skip: 'Перейти к содержанию', nav: { work: 'Работы', method: 'Процесс', about: 'Обо мне', contact: 'Контакт', talk: 'Обсудить проект', menu: 'Меню' }, mainNavigation: 'Основная навигация', mobileNavigation: 'Мобильное меню', languageLabel: 'Язык', footer: 'Независимый frontend-разработчик' },
     home: {
       meta: 'НЕЗАВИСИМЫЙ РАЗРАБОТЧИК', location: 'ГДАНЬСК · PL / REMOTE',
-      heroTitle: 'Создаю сайты для бизнеса и экспертов,', heroAccent: 'которые понятно объясняют ценность', heroTail: 'и ведут к действию.', heroBody: 'Лендинги, многостраничные сайты и небольшие магазины — от первого разговора до запуска. Работаю лично, без посредников.', heroCta: 'Рассказать о проекте',
+      heroTitle: 'Современный фронтенд.', heroAccent: 'Плавная кинетика.', heroTail: 'Интерфейсы, которые запоминаются.', heroBody: 'Проектирую и собираю продуманные сайты для брендов, которые не терпят посредственности. От первого макета до релиза на домене — напрямую с разработчиком.', heroCta: 'Рассказать о проекте',
       introMeta: '01 — ПОДХОД', intro: 'Я не агентство. Веду проект лично — с вниманием к визуальному направлению, коду и тому, что происходит после публикации.', facts: ['Стратегия сайта', 'Интерфейс и frontend', 'Запуск и качество'],
       workMeta: '02 — ИЗБРАННЫЕ РАБОТЫ', workTitle: 'Меньше проектов.', workAccent: 'Больше характера.', workBody: 'Клиентские запуски и авторские концепты — каждый проект обозначен честно.', openProject: 'Открыть проект', allWork: 'Все работы',
       processMeta: '03 — ПРОЦЕСС', processTitle: 'Ясный процесс.', processAccent: 'Без догадок.',
@@ -213,7 +213,7 @@ const copy: Record<Lang, NewDirectionCopy> = {
     layout: { skip: 'Skip to content', nav: { work: 'Work', method: 'Process', about: 'About', contact: 'Contact', talk: 'Let’s talk', menu: 'Menu' }, mainNavigation: 'Main navigation', mobileNavigation: 'Mobile navigation', languageLabel: 'Language', footer: 'Independent frontend developer' },
     home: {
       meta: 'INDEPENDENT DEVELOPER', location: 'GDAŃSK · PL / REMOTE',
-      heroTitle: 'I build websites for businesses and experts', heroAccent: 'that explain value clearly', heroTail: 'and lead to action.', heroBody: 'Landing pages, multi-page sites and small online shops — from the first conversation to launch. I work directly, with no middlemen.', heroCta: 'Tell me about your project',
+      heroTitle: 'Modern frontend.', heroAccent: 'Fluid motion.', heroTail: 'Interfaces built to make an impression.', heroBody: 'Designing and engineering high-polish web experiences for brands that refuse to look generic. From initial layout to production launch — directly with a senior developer.', heroCta: 'Tell me about your project',
       introMeta: '01 — APPROACH', intro: 'I’m not an agency. I lead each project personally, paying attention to the visual direction, the code, and what happens after launch.', facts: ['Website strategy', 'Interface and frontend', 'Launch and quality'],
       workMeta: '02 — SELECTED WORK', workTitle: 'Fewer projects.', workAccent: 'More character.', workBody: 'Client launches and self-initiated concepts — every project is labelled clearly.', openProject: 'Open project', allWork: 'View all work',
       processMeta: '03 — PROCESS', processTitle: 'A clear process.', processAccent: 'No guesswork.',
@@ -282,7 +282,7 @@ const copy: Record<Lang, NewDirectionCopy> = {
     layout: { skip: 'Перейти до вмісту', nav: { work: 'Роботи', method: 'Процес', about: 'Про мене', contact: 'Контакт', talk: 'Обговорити проєкт', menu: 'Меню' }, mainNavigation: 'Основна навігація', mobileNavigation: 'Мобільне меню', languageLabel: 'Мова', footer: 'Незалежний frontend-розробник' },
     home: {
       meta: 'НЕЗАЛЕЖНИЙ РОЗРОБНИК', location: 'ГДАНСЬК · PL / REMOTE',
-      heroTitle: 'Створюю сайти для бізнесу й експертів,', heroAccent: 'які зрозуміло пояснюють цінність', heroTail: 'і ведуть до дії.', heroBody: 'Лендінги, багатосторінкові сайти й невеликі магазини — від першої розмови до запуску. Працюю особисто, без посередників.', heroCta: 'Розповісти про проєкт',
+      heroTitle: 'Сучасний фронтенд.', heroAccent: 'Плавна кінетика.', heroTail: 'Інтерфейси, що запам\'ятовуються.', heroBody: 'Проєктую і збираю продумані сайти для брендів, які не терплять посередності. Від першого макета до релізу — безпосередньо з розробником, без зайвих ланок.', heroCta: 'Розповісти про проєкт',
       introMeta: '01 — ПІДХІД', intro: 'Я не агенція. Веду проєкт особисто — з увагою до візуального напрямку, коду і того, що відбувається після публікації.', facts: ['Стратегія сайту', 'Інтерфейс і frontend', 'Запуск і якість'],
       workMeta: '02 — ВИБРАНІ РОБОТИ', workTitle: 'Менше проєктів.', workAccent: 'Більше характеру.', workBody: 'Клієнтські запуски й авторські концепти — кожен проєкт позначено чесно.', openProject: 'Відкрити проєкт', allWork: 'Усі роботи',
       processMeta: '03 — ПРОЦЕС', processTitle: 'Зрозумілий процес.', processAccent: 'Без здогадок.',

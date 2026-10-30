@@ -1,13 +1,13 @@
 ---
 title: Denty
-tagline: CRM для стоматологий с тёмной палитрой против niche convention
+tagline: Nowoczesny system operacyjny dla klinik stomatologicznych (Sunbeam Practice OS)
 niche: B2B SaaS
 year: '2026'
-palette: PL-DARK-MINT
+palette: PL-CLINICAL-DAYLIGHT
 tier: 1
-accent: '#00BFA5'
-bg: '#0F1419'
-siteUrl: https://denty-showcase.vercel.app
+accent: '#0D7A5F'
+bg: '#FAFAFA'
+siteUrl: https://overflow-web.pl/denty/
 cover: /covers/denty.jpg
 screens:
   - src: /screens/denty-m1.webp
@@ -17,70 +17,86 @@ screens:
   - src: /screens/denty-m3.webp
     kind: phone
 technologies:
-  - HTML
-  - Tailwind
-  - JavaScript
+  - HTML5
+  - Modern CSS
+  - Vanilla JS
+  - Web APIs
 region:
   - PL
-summary: CRM для стоматологий. Анти-конвенция в нише — dark+mint там где все делают white+blue.
-order: 6
+summary: System operacyjny dla nowoczesnych klinik stomatologicznych. Architektura Sunbeam, interaktywny diagram 3D, autopilot SMS ratujący puste okienka i kalkulator rentowności foteli.
+order: 99
 concept: true
 translations:
   pl:
-    tagline: CRM dla stomatologii z ciemną paletą wbrew konwencji niszy
-    summary: CRM dla stomatologii. Anty-konwencja w niszy — dark+mint tam gdzie wszyscy robią white+blue.
+    tagline: Nowoczesny system operacyjny dla klinik stomatologicznych (Sunbeam Practice OS)
+    summary: System operacyjny dla klinik stomatologicznych. Architektura Sunbeam, interaktywny diagram 3D, autopilot SMS i kalkulator rentowności foteli.
     body: |
       ## Kontekst
 
-      Lending CRM dla stomatologii w Polsce — dla właścicieli klinik na 3-15 foteli. To segment middle-market: nie dla prywatnego lekarza i nie dla dużych sieci. W niszy niemal wszystkie strony są jak spod sztancy — białe tło, medyczny niebieski, stockowe uśmiechy, przycisk „Book a demo". Każdy nowy produkt czyta się jako „kolejny medyczny CRM". Zadanie — wyjść z szablonu, nie tracąc skojarzenia z medycyną.
+      Większość oprogramowania dla gabinetów stomatologicznych w Polsce (Kamsoft, Prodentis, Estomed) zatrzymała się w latach 2005–2012: ciężkie interfejsy, setki nieczytelnych tabel i konieczność tygodniowych szkoleń personelu. Tradycyjne strony tych produktów to generyczne foldery z uśmiechniętymi modelami ze stocka. Zadanie dla Denty: stworzyć zaufany, technologiczny system operacyjny dla klinik na 2–12 foteli w estetyce Sunbeam — jasny, poranny canvas (#FAFAFA), pastelowe kontenery medyczne (mint, lavender, sand) oraz namacalny, w 100% interaktywny produkt na pierwszym ekranie.
 
       ## Rozwiązanie
 
-      Ciemna paleta: głębokie granatowe tło i stonowany akcent mint. Mint trzyma związek z niszą bocznymi drzwiami — to kolor higieny stomatologicznej i świeżości — a ciemne tło od razu mówi „nowoczesny SaaS", a nie „soft z 2010 roku". Pozycjonowanie pod właścicieli, którzy liczą ROI z każdego fotela; tych, którzy sprzedają „niezawodność przez 23 lata", taka strona odsiewa — i to w porządku.
+      Zastosowano architekturę Candidate B (Sunbeam UI Stage) połączoną z rygorem medycznym i naturalną fotografią 35mm:
+      1. **Hero Screen 1 (Strict 100vh):** Centrowana typografia Urbanist i pływająca belka nawigacyjna nad interaktywną konsolą gabinetową z 5 modułami (Harmonogram 3 foteli, Odontogram 3D, Autopilot SMS, Rozliczenia i Analityka obłożenia).
+      2. **Autopilot SMS i Lista Rezerwowa:** Rozwiązanie problemu pustych foteli — w przypadku odwołania wizyty system automatycznie kontaktuje się z pacjentami oczekującymi i zapełnia fotel w średnio 4–7 minut.
+      3. **Interaktywny Diagram Zębowy:** Łuk zębowy (18–28) z natychmiastową kalkulacją czasu fotelowego, kosztorysu procedury i generowaniem cyfrowego planu leczenia dla pacjenta.
+      4. **Kalkulator ROI:** Interaktywne suwaki pokazujące właścicielowi kliniki dokładną roczną stratę na nieobsadzonych fotelach oraz miesięczny zysk z Denty.
 
       ## Wynik
 
-      HTML + Tailwind, bez frameworków JS, lokalizacja pod Polskę (waluta, kody podatkowe, zwroty językowe). Wyszła strona CRM, która nie wygląda jak medyczny soft: właściwą grupę łapie tonem, zanim ta doczyta do funkcji.
+      Wyjątkowo responsywny, bezlagowy interfejs (zero Lenis scroll-hijackingu), zero elementów stockowych, 4 autorskie fotografie 35mm w skandynawskim świetle dziennym i natychmiastowe poczucie technologicznej przewagi dla właściciela kliniki.
   en:
-    tagline: Dental CRM with dark palette, against niche convention
-    summary: Dental CRM. Anti-convention in the niche — dark+mint where everyone does white+blue.
+    tagline: Modern Dental Practice OS & Chairside Telemetry (Sunbeam Architecture)
+    summary: Operating system for modern dental clinics. Sunbeam architecture, interactive 3D dental chart, SMS slot recovery autopilot, and chair yield calculator.
     body: |
       ## Context
 
-      A CRM landing for dental clinics in Poland — for owners of 3-15-chair clinics. It's the middle-market: not for a solo practitioner, not for large chains. In this niche almost every site is cut from the same cloth — white background, medical blue, stock smiles, a "Book a demo" button. Any new product reads as "one more medical CRM". The job was to step out of that template without losing the link to medicine.
+      Most dental clinic software in Poland and Central Europe (Kamsoft, Prodentis, Estomed) remains trapped in the 2005–2012 era: dense desktop interfaces, endless tabular grids, and cumbersome staff onboarding. Traditional landing pages in this sector rely on generic stock smiles. The goal for Denty: build a deeply trustworthy, modern Practice OS for 2–12 chair clinics following the Sunbeam architecture — crisp daylight canvas (#FAFAFA), soft pastel clinical containers (mint, lavender, warm sand), and an immediate, tangible product showcase right on Screen 1.
 
-      ## The solution
+      ## The Solution
 
-      A dark palette: deep navy background and a muted mint accent. Mint keeps the link to the niche through a side door — it's the colour of dental hygiene and freshness — while the dark background instantly says "modern SaaS", not "software from 2010". Positioning is tuned to owners who count ROI per chair; those who sell "reliability through 23 years" get filtered out by a dark site — and that's fine.
+      Engineered using Candidate B (Sunbeam Interactive Stage) synthesized with clinical daylight rigor and authentic 35mm photography:
+      1. **Screen 1 (Strict 100vh Desktop Lock):** Centered Urbanist display hierarchy and floating pill navigation perched above a 5-module interactive Practice OS window (Multi-chair schedule, 3D dental arch, SMS slot recovery, treatment financing, and occupancy analytics).
+      2. **Autopilot SMS Slot Rescue:** Eliminates empty operatory losses — when a visit is cancelled, the system automatically messages waitlisted patients and refills the chair within 4 to 7 minutes.
+      3. **Interactive Dental Workstation:** Clickable adult dental arch (Teeth 18–28) with chairside procedure assignment, live chair time calculation, and 1-click patient PDF estimate generation.
+      4. **Interactive Clinic ROI Engine:** Dynamic sliders mapping clinic chairs, visit value, and cancellation rates to recovered monthly revenue.
 
-      ## The outcome
+      ## The Outcome
 
-      HTML + Tailwind, no JS frameworks, localized for Poland (currency, tax codes, phrasing). The result is a CRM site that doesn't look like medical software: it catches the right audience by tone, before they even reach the feature list.
+      A zero-lag, accessible Practice OS frontend (zero scroll-wheel hijacking), zero stock cliches, 4 authentic 35mm Scandinavian daylight clinical assets, and instant software authority for private practice owners.
   ua:
-    tagline: CRM для стоматологій з темною палітрою проти niche convention
-    summary: CRM для стоматологій. Анти-конвенція в ніші — dark+mint там де всі роблять white+blue.
+    tagline: Сучасна операційна система для стоматологічних клінік (Sunbeam Practice OS)
+    summary: Операційна система для стоматологічних клінік. Архітектура Sunbeam, інтерактивна 3D зубна карта, SMS автопілот вікон і калькулятор рентабельності крісел.
     body: |
       ## Контекст
 
-      Лендинг CRM для стоматологій у Польщі — для власників клінік на 3-15 крісел. Це middle-market: не для приватного лікаря і не для великих мереж. У ніші майже всі сайти як з-під штампа — білий фон, медичний синій, стокові усмішки, кнопка «Book a demo». Будь-який новий продукт читається як «ще один медичний CRM». Завдання — вийти з шаблону, не втративши зв'язок з медициною.
+      Більшість програм для стоматологій у Східній Європі зупинилися в епосі 2005–2012 років: важкі інтерфейси, сотні незрозумілих таблиць і тижні навчання персоналу. Завдання Denty: створити авторитетну, сучасну Practice OS для клінік на 2–12 крісел в естетиці Sunbeam — чисте денне світло (#FAFAFA), м'які пастельні контейнери (м'ята, лаванда, теплий пісок) та інтерактивна консоль безпосередньо на першому екрані.
 
       ## Рішення
 
-      Темна палітра: глибоке темно-синє тло і приглушений mint-акцент. Mint тримає зв'язок з нішею через side-door — це колір стоматологічної гігієни і свіжості, — а темне тло одразу каже «сучасний SaaS», а не «софт із 2010-х». Позиціонування під власників, які рахують ROI на кожне крісло; тих, хто продає «надійність через 23 роки», такий сайт відсіює — і це нормально.
+      Застосовано архітектуру Candidate B (Sunbeam UI Stage) у поєднанні з медичною точністю та 35мм фотографією:
+      1. **Hero Screen 1 (Strict 100vh):** Центрована типографіка Urbanist над 5-модульною інтерактивною консоллю клініки (Розклад 3 крісел, 3D одонтограма, SMS автопілот, розрахунок лікування, аналітика завантаження).
+      2. **Автопілот SMS:** При скасуванні візиту система миттєво підбирає пацієнтів із резерву та заповнює крісло за 4–7 хвилин.
+      3. **Інтерактивна зубна дуга:** Клікабельні зуби (18–28) з миттєвим розрахунком часу крісла та вартості плану лікування.
+      4. **Калькулятор ROI:** Динамічні повзунки для розрахунку поверненого прибутку клініки.
 
       ## Підсумок
 
-      HTML + Tailwind, без JS-фреймворків, локалізація під Польщу (валюта, податкові коди, мовні звороти). Вийшов сайт CRM, який не виглядає як медичний софт: потрібну аудиторію він чіпляє тоном ще до того, як вона дочитає до функціоналу.
+      Швидкий інтерфейс без затримок скролу, авторські фотографії 35мм у природному денному світлі та переконливий показ реального програмного продукту.
 ---
 
 ## Контекст
 
-Лендинг CRM для стоматологий в Польше — для владельцев клиник на 3-15 кресел. Это middle-market: не для частного врача и не для крупных сетей. В нише почти все сайты на одно лицо — белый фон, медицинский синий, стоковые улыбки, кнопка «Book a demo». Любой новый продукт читается как «ещё один медицинский CRM». Задача — выйти из шаблона, не потеряв связь с медициной.
+Большинство программ для стоматологий в Польше и Центральной Европе (Kamsoft, Prodentis, Estomed) застряли в 2005–2012 годах: тяжелые интерфейсы, сотни перегруженных таблиц и недели обучения ассистентов. Задача Denty: создать авторитетную, современную Practice OS для клиник на 2–12 кресел в утвержденной эстетике Sunbeam — светлый утренний холст (#FAFAFA), пастельные клинические контейнеры (mint, lavender, warm sand) и осязаемый интерактивный продукт на первом экране.
 
 ## Решение
 
-Тёмная палитра: глубокий тёмно-синий фон и приглушённый mint-акцент. Mint держит связь с нишей через side-door — это цвет стоматологической гигиены и свежести, — а тёмный фон сразу говорит «современный SaaS», а не «софт из 2010-х». Позиционирование заточено под владельцев, которые считают ROI на каждое кресло; тех, кто продаёт «надёжность через 23 года репутации», такой сайт отсекает — и это нормально.
+1. **Screen 1 (Strict 100vh Desktop Lock):** Центрированная типографика Urbanist и плавающий pill-хедер над интерактивной рабочей консолью клиники с 5 переключаемыми модулями.
+2. **Автопилот SMS для отмененных визитов:** Автоматически опрашивает очередь ожидания и закрывает пустое окно в кресле в среднем за 4–7 минут.
+3. **Интерактивный одонтограм:** Выбор зубов (18–28) с назначением клинических протоколов, расчетом времени в кресле и генерацией сметы для пациента.
+4. **Калькулятор ROI:** Интерактивные слайдеры кресел, среднего чека и срывов графика, наглядно демонстрирующие возврат инвестиций.
 
 ## Итог
 
-HTML + Tailwind, без JS-фреймворков, локализация под Польшу (валюта, налоговые коды, обороты речи). Получился сайт CRM, который не выглядит как медицинский софт: нужную аудиторию он цепляет тоном ещё до того, как она дочитает до функционала.
+Zero-lag скролл (без Lenis wheel-hijack), отсутствие стоковых клише, 4 авторских 35mm-фотографии в скандинавском дневном свете и мгновенная конверсия владельцев клиник.

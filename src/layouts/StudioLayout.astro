@@ -51,6 +51,11 @@ const socialImage = new URL('/og-default.jpg', site).href;
 const themeColor = variant === 'dark' ? '#0e0f12' : variant === 'editorial' ? '#f1ece2' : '#f4f2ec';
 const ogLocale = lang === 'ru' ? 'ru_RU' : 'pl_PL';
 const adaptiveTheme = variant === 'studio';
+
+const navWorkHref = p('work');
+const navMethodHref = p('method');
+const navAboutHref = p('about');
+const navContactHref = p('contact');
 const themeLabels: Record<Lang, { dark: string; light: string }> = {
   pl: { dark: 'Włącz tryb ciemny', light: 'Włącz tryb jasny' },
   ru: { dark: 'Включить тёмную тему', light: 'Включить светлую тему' },
@@ -163,14 +168,14 @@ const menuLabel = menuLabels[lang];
           <img src="/logo.png" alt="overflow" class="logo-img" width="142" height="30" decoding="async" />
         </a>
         <nav class="nav-links" aria-label={c.layout.mainNavigation}>
-          <a href={p('work')} aria-current={current === 'work' ? 'page' : undefined} data-cursor data-tname={c.layout.nav.work}>{c.layout.nav.work}</a>
-          <a href={p('method')} aria-current={current === 'method' ? 'page' : undefined} data-cursor data-tname={c.layout.nav.method}>{c.layout.nav.method}</a>
-          <a href={p('about')} aria-current={current === 'about' ? 'page' : undefined} data-cursor data-tname={c.layout.nav.about}>{c.layout.nav.about}</a>
+          <a href={navWorkHref} data-cursor="→" aria-current={current === 'work' ? 'page' : undefined} data-tname={c.layout.nav.work}>{c.layout.nav.work}</a>
+          <a href={navMethodHref} data-cursor="→" aria-current={current === 'method' ? 'page' : undefined} data-tname={c.layout.nav.method}>{c.layout.nav.method}</a>
+          <a href={navAboutHref} data-cursor="→" aria-current={current === 'about' ? 'page' : undefined} data-tname={c.layout.nav.about}>{c.layout.nav.about}</a>
         </nav>
         <div class="nav-right">
           <div class="lang" aria-label={c.layout.languageLabel}>
             {locales.map((l) => (
-              <a href={l.href} aria-current={l.code === lang ? 'page' : undefined} data-cursor>{l.label}</a>
+              <a href={l.href} data-cursor={l.label} aria-current={l.code === lang ? 'page' : undefined}>{l.label}</a>
             ))}
           </div>
           {adaptiveTheme && (
@@ -178,7 +183,7 @@ const menuLabel = menuLabels[lang];
               class="theme-toggle theme-toggle--desktop"
               type="button"
               data-theme-toggle
-              data-cursor
+              data-cursor="theme"
               data-label-dark={themeLabel.dark}
               data-label-light={themeLabel.light}
               aria-label={themeLabel.dark}
@@ -194,7 +199,7 @@ const menuLabel = menuLabels[lang];
               </svg>
             </button>
           )}
-          <a class="nav-cta" href={p('contact')} aria-current={current === 'contact' ? 'page' : undefined} data-cursor data-tname={c.layout.nav.talk}><span class="btn-text">{c.layout.nav.talk} ↗&#xFE0E;</span></a>
+          <a class="nav-cta" href={navContactHref} aria-current={current === 'contact' ? 'page' : undefined} data-cursor data-tname={c.layout.nav.talk}><span class="btn-text">{c.layout.nav.talk} ↗&#xFE0E;</span></a>
           <button
             class="burger"
             id="burger"
@@ -217,10 +222,10 @@ const menuLabel = menuLabels[lang];
         <span></span><span></span>
       </button>
       <div class="wrap mnav-inner">
-        <a href={p('work')} data-tname={c.layout.nav.work}><span>01</span>{c.layout.nav.work}</a>
-        <a href={p('method')} data-tname={c.layout.nav.method}><span>02</span>{c.layout.nav.method}</a>
-        <a href={p('about')} data-tname={c.layout.nav.about}><span>03</span>{c.layout.nav.about}</a>
-        <a href={p('contact')} data-tname={c.layout.nav.talk}><span>04</span>{c.layout.nav.talk}</a>
+        <a href={navWorkHref} data-tname={c.layout.nav.work}><span>01</span>{c.layout.nav.work}</a>
+        <a href={navMethodHref} data-tname={c.layout.nav.method}><span>02</span>{c.layout.nav.method}</a>
+        <a href={navAboutHref} data-tname={c.layout.nav.about}><span>03</span>{c.layout.nav.about}</a>
+        <a href={navContactHref} data-tname={c.layout.nav.talk}><span>04</span>{c.layout.nav.talk}</a>
         {adaptiveTheme && (
           <div class="mnav-theme-row">
             <button

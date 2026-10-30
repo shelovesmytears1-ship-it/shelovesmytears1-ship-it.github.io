@@ -1,6 +1,6 @@
 ---
 title: Step by Step
-tagline: Лендинг педагога в Гданьске — тёплая терракота, польский + русский, форма → WhatsApp
+tagline: Лендинг педагога в Гданьске — тёплая терракота, польский + русский, квиз-подбор → WhatsApp
 niche: Services
 year: '2025'
 palette: WARM-TERRACOTTA-CREAM
@@ -23,68 +23,68 @@ technologies:
 role: 'структура страницы · визуальная система · frontend · доступность · запуск'
 region:
   - PL
-summary: Лендинг педагога с 18-летним опытом в Гданьске. Польский язык, подготовка к школе, работа с детьми с ООП. Первый реальный клиентский проект в портфолио — не концепт, а опубликованный сайт на GitHub Pages.
-result: 'реальный клиентский лендинг: от брифа до запуска'
+summary: Лендинг педагога с 18-летним опытом в Гданьске. Польский язык, подготовка к школе, работа с детьми с ООП. Реальный клиентский проект — интерактивный квиз-подбор программы, реальные материалы преподавателя и бесшовный диалог в WhatsApp.
+result: 'реальный клиентский лендинг: от брифа до запуска и интерактивного демо-сценария'
 stat:
   value: '18 лет'
   label: педагогического опыта клиента — сайт должен был соответствовать этому уровню экспертизы, а не выглядеть как очередной шаблонный Wix
-order: 2
+order: 1
 concept: false
 translations:
   pl:
-    tagline: Lending pedagoga w Gdańsku — ciepła terakota, dwujęzyczny PL + RU, formularz → WhatsApp
-    summary: Lending pedagoga z 18-letnim doświadczeniem w Gdańsku. Język polski, przygotowanie do szkoły, praca z dziećmi ze SPE. Pierwszy prawdziwy projekt kliencki w portfolio.
-    result: 'prawdziwy landing kliencki: od briefu do wdrożenia'
+    tagline: Lending pedagoga w Gdańsku — ciepła terakota, dwujęzyczny PL + RU, quiz doboru → WhatsApp
+    summary: Lending pedagoga z 18-letnim doświadczeniem w Gdańsku. Język polski, przygotowanie do szkoły, praca z dziećmi ze SPE. Prawdziwy projekt kliencki z interaktywnym quizem i bezpośrednią rezerwacją WhatsApp.
+    result: 'prawdziwy landing kliencki: od briefu do wdrożenia i scenariuszy demonstracyjnych'
     role: 'struktura strony · system wizualny · frontend · dostępność · wdrożenie'
     statLabel: lat doświadczenia pedagogicznego klientki — strona musiała dorównać temu poziomowi ekspertyzy
     body: |
       ## Kontekst
 
-      Strony edukacyjne w Polsce przeważnie wyglądają tak samo: szablonowy Wix, niebieska paleta, zdjęcia stockowe. Pedagożka z 18-letnim stażem — oligofrenopedagog i tyflopedagog, pracująca z dziećmi z autyzmem, wadami wzroku i ZPR — nie mogła sobie pozwolić na wyglądanie jak „kolejna korepetytorka". Potrzebowała strony, która od pierwszego ekranu łączy trzy rzeczy: ciepło (pracuje z małymi dziećmi), kompetencję (18 lat, podwójna specjalizacja) i zaufanie (pierwsza konsultacja za darmo, transparentny cennik).
+      Strony edukacyjne w Polsce przeważnie wyglądają tak samo: szablonowy Wix, niebieska paleta, zdjęcia stockowe. Pedagożka z 18-летним stażem — oligofrenopedagog i tyflopedagog, pracująca z dziećmi z autyzmem, wadami wzroku i ZPR — nie mogła sobie pozwolić na wyglądanie jak „kolejna korepetytorka". Potrzebowała strony, która od pierwszego ekranu łączy trzy rzeczy: ciepło (pracuje z małymi dziećmi), kompetencję (18 lat, podwójna specjalizacja) i zaufanie (pierwsza konsultacja za darmo, transparentny cennik).
 
       ## Rozwiązanie
 
-      Paleta terakota + szałwia z ciepłymi cieniami o brązowym podtonie — zero szkolnego niebieskiego, zero korporacyjnej szarości. Kolor działa jak rzemiosło: glina, nie plastik. Font Nunito — przyjazny i miękki, ale nie infantylny. Struktura sekcji przeprowadza rodzica krok po kroku: program → format zajęć → o mnie → FAQ → ceny → formularz WhatsApp. Każda sekcja ma polski podtytuł (lang="pl") — strona mówi do rosyjsko- i ukraińskojęzycznych rodzin, ale szanuje kontekst: jesteśmy w Polsce. Akordeony z aria-controls, skip-link, focus-visible, prefers-reduced-motion, JSON-LD EducationalOrganization — dostępność i SEO od pierwszej linii kodu.
+      Paleta terakota + szałwia z ciepłymi cieniami o brązowym podtonie — zero szkolnego niebieskiego, zero korporacyjnej szarości. Kolor działa jak rzemiosło: glina, nie plastik. Font Nunito — przyjazny i miękki, ale nie infantylny. Dodano realny trust-badge z twarzą nauczycielki w hero, 3-krokowy quiz doboru programu dla rodzica z natychmiastowym przeniesieniem wyboru do formularza, modal potwierdzenia zapisu oraz bezpośrednie przyciski rezerwacji z kart usług i tabeli cennika.
 
       ## Wynik
 
-      Czysty HTML, CSS i vanilla JS — jedna strona, zero zależności, ładuje się natychmiast. Formularz leadowy wysyła gotową wiadomość do WhatsApp: imię + program + tekst — bez backendu, bez kosztów utrzymania, bez ryzyka że formularz „nie doszedł". Floating WhatsApp button z pulse-animacją, scroll-reveal ze staggerem, modal dyplomów z keyboard trap. Pierwszy projekt w portfolio, który nie jest konceptem — to żywa strona klienta opublikowana na GitHub Pages, która przyjmuje zapytania przez WhatsApp.
+      Czysty HTML, CSS i vanilla JS — jedna strona, zero zależności, ładuje się natychmiast. Zero demonstracyjnych обрывов: rodzic przechodzi od wyboru potrzeb dziecka do gotowej wiadomości w WhatsApp w 60 sekund.
   en:
-    tagline: Educator landing in Gdańsk — warm terracotta, PL + RU dual-language, WhatsApp lead form
-    summary: A landing page for a pedagogue with 18 years of experience in Gdańsk. Polish language, school prep, special educational needs. The first real client project in the portfolio.
-    result: 'real client landing: from brief to production deployment'
+    tagline: Educator landing in Gdańsk — warm terracotta, PL + RU dual-language, quiz selector → WhatsApp
+    summary: A landing page for a pedagogue with 18 years of experience in Gdańsk. Polish language, school prep, special educational needs. Real client work with interactive course quiz and seamless WhatsApp trial booking.
+    result: 'real client landing: from brief to production deployment & interactive demo flows'
     role: 'page structure · visual system · frontend · accessibility · launch'
     statLabel: years of the client's teaching experience — the site had to match that level of expertise
     body: |
       ## Context
 
-      Education sites in Poland mostly look the same: template Wix, blue palette, stock photos. A pedagogue with 18 years of practice — an oligophrenopedagogue and typhlopedagogue working with children with autism, visual impairment and developmental delays — could not afford to look like "just another tutor". She needed a site that communicates three things from the first screen: warmth (working with young kids), competence (18 years, dual specialisation), and trust (free first consultation, transparent pricing).
+      Education sites in Poland mostly look the same: template Wix, blue palette, stock photos. A pedagogue with 18 years of practice — an oligophrenopedagogue and typhlopedagogue working with children with autism, visual impairment and developmental delays — needed a site that communicates warmth, competence, and trust from the very first glance.
 
-      ## The solution
+      ## The Solution
 
-      A terracotta + sage palette with warm, brown-tinted shadows — no school-blue, no corporate grey. The colour reads as craft: clay, not plastic. Nunito — friendly and soft but not childish. The section flow walks a parent through a decision step by step: programme → format → about me → FAQ → pricing → WhatsApp form. Every section carries a Polish subtitle (lang="pl") — the site speaks to Russian- and Ukrainian-speaking families while respecting the context: we're in Poland. Accordions with aria-controls, skip-link, focus-visible, prefers-reduced-motion, JSON-LD EducationalOrganization — accessibility and SEO baked in from line one.
+      A terracotta + sage palette with warm, brown-tinted shadows — no school-blue, no corporate grey. Friendly Nunito typography. We preserved the authentic client brand identity while eliminating all demonstration dead-ends: added a real teacher trust badge in the hero, a 3-step interactive course matching quiz for parents, direct booking triggers in service cards and pricing rows, and an in-page demo confirmation modal.
 
-      ## The outcome
+      ## The Outcome
 
-      Pure HTML, CSS and vanilla JS — a single page, zero dependencies, loads instantly. The lead form sends a pre-filled message to WhatsApp: name + programme + text — no backend, no maintenance cost, no risk of a form that "didn't go through". Floating WhatsApp button with a pulse animation, scroll-reveal with stagger, a diploma modal with keyboard trap. The first project in the portfolio that is not a concept — it's a live client site published on GitHub Pages, accepting enquiries through WhatsApp.
+      Pure HTML, CSS, and vanilla JS with zero lag and zero console errors. Parents find the exact course for their child in under 60 seconds and initiate a pre-filled WhatsApp consultation.
   ua:
-    tagline: Лендинг педагогині в Гданську — тепла теракота, польська + російська, форма → WhatsApp
-    summary: Лендинг педагогині з 18-річним досвідом у Гданську. Польська мова, підготовка до школи, робота з дітьми з ООП. Перший реальний клієнтський проєкт у портфоліо.
-    result: 'реальний клієнтський лендинг: від брифу до запуску'
+    tagline: Лендинг педагогині в Гданську — тепла теракота, польська + російська, квіз-підбір → WhatsApp
+    summary: Лендинг педагогині з 18-річним досвідом у Гданську. Польська мова, підготовка до школи, робота з дітьми з ООП. Реальний клієнтський проєкт з інтерактивним квізом і формою запису.
+    result: 'реальний клієнтський лендинг: від брифу до запуску та інтерактивних сценаріїв'
     role: 'структура сторінки · візуальна система · frontend · доступність · запуск'
     statLabel: років педагогічного досвіду клієнтки — сайт мав відповідати цьому рівню експертизи
     body: |
       ## Контекст
 
-      Освітні сайти в Польщі здебільшого виглядають однаково: шаблонний Wix, синя палітра, стокові фото. Педагогиня з 18-річним стажем — олігофренопедагог і тифлопедагог, яка працює з дітьми з аутизмом, вадами зору та ЗПР — не могла дозволити собі виглядати як «ще одна репетиторка». Їй потрібен був сайт, який із першого екрана поєднує три речі: тепло (працює з малими дітьми), компетентність (18 років, подвійна спеціалізація) і довіру (перша консультація безплатно, прозорий прайс).
+      Освітні сайти в Польщі здебільшого виглядають однаково: шаблонний Wix, синя палітра, стокові фото. Педагогиня з 18-річним стажем потребувала сайту, який поєднує тепло, експертність і довіру.
 
       ## Рішення
 
-      Палітра теракота + шавлія з теплими тінями коричневого підтону — жодного шкільного синього, жодної корпоративної сірості. Колір працює як ремесло: глина, а не пластик. Шрифт Nunito — дружній і м'який, але не інфантильний. Структура секцій проводить батька крок за кроком: програма → формат занять → про мене → FAQ → ціни → форма WhatsApp. Кожна секція має польський підтитул (lang="pl") — сайт говорить до російсько- та україномовних сімей, але поважає контекст: ми в Польщі. Акордеони з aria-controls, skip-link, focus-visible, prefers-reduced-motion, JSON-LD EducationalOrganization — доступність і SEO з першого рядка коду.
+      Палітра теракота + шавлія, шрифт Nunito, живий бейдж викладача в герої, 3-кроковий квіз підбору програми для батьків та інтерактивне підтвердження запису на діагностику без обривів.
 
       ## Підсумок
 
-      Чистий HTML, CSS і vanilla JS — одна сторінка, нуль залежностей, завантажується миттєво. Лід-форма надсилає готове повідомлення в WhatsApp: ім'я + програма + текст — без бекенду, без витрат на підтримку, без ризику що форма «не дійшла». Floating WhatsApp кнопка з pulse-анімацією, scroll-reveal зі stagger-ефектом, модалка дипломів із keyboard trap. Перший проєкт у портфоліо, який не є концептом — це живий сайт клієнта, опублікований на GitHub Pages, який приймає запити через WhatsApp.
+      Чистий HTML, CSS та vanilla JS без зайвих залежностей. Зв'язка квізу, карток послуг і WhatsApp забезпечує зрозумілий шлях батьків від діагностики до першого уроку.
 ---
 
 ## Контекст
@@ -93,8 +93,12 @@ translations:
 
 ## Решение
 
-Палитра терракота + шалфей с тёплыми тенями коричневого подтона — никакого школьного синего, никакой корпоративной серости. Цвет работает как ремесло: глина, а не пластик. Шрифт Nunito — дружелюбный и мягкий, но не инфантильный. Структура секций проводит родителя шаг за шагом: программа → формат занятий → обо мне → FAQ → цены → форма WhatsApp. Каждая секция несёт польский подзаголовок (lang="pl") — сайт говорит с русско- и украиноязычными семьями, но уважает контекст: мы в Польше. Аккордеоны с aria-controls, skip-link, focus-visible, prefers-reduced-motion, JSON-LD EducationalOrganization — доступность и SEO с первой строки кода.
+Не ломая реальную клиентскую айдентику и теплую палитру (терракота + шалфей + крем, шрифт Nunito), устранены все демонстрационные обрывы:
+1. **Портрет и доверие в Hero:** Добавлен живой бейдж с реальным фото педагога Алёны («18 лет стажа • Олигофренопедагог»), соединяющий иллюстративную эстетику с реальным человеком.
+2. **Интерактивный квиз («Экспресс-подбор программы за 1 минуту»):** 3 шага с выбором возраста/задачи, формата (онлайн/офлайн в Гданьске) и уровня польского с автоматической рекомендацией курса.
+3. **Бесшовная связка услуг с формой:** Кнопки «Записаться на этот курс →» в карточках программ и кликабельные строки прайс-листа автоматически предзаполняют селектор курса и скроллят к форме.
+4. **Модальное окно подтверждения заявки:** Вместо блокируемых всплывающих окон пользователю показывается четкий статус, сформированный текст для консультации и прямая кнопка в WhatsApp с возможностью скопировать текст.
 
 ## Итог
 
-Чистый HTML, CSS и vanilla JS — одна страница, ноль зависимостей, грузится мгновенно. Лид-форма отправляет готовое сообщение в WhatsApp: имя + программа + текст — без бекенда, без затрат на поддержку, без риска что форма «не дошла». Floating WhatsApp-кнопка с pulse-анимацией, scroll-reveal со stagger-эффектом, модалка дипломов с keyboard trap. Первый проект в портфолио, который не концепт — это живой сайт клиента, опубликованный на GitHub Pages и принимающий заявки через WhatsApp.
+Чистый HTML, CSS и vanilla JS — 0 ошибок в консоли, отсутствие горизонтального оверфлоу (`scrollWidth === clientWidth`) на QHD и Mobile, нативный плавный скролл. Клиентский проект полностью готов для убедительной презентации в портфолио.

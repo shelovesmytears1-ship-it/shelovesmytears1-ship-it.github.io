@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" role="img" aria-label="Ученик с тетрадью и рюкзаком">
+  <rect width="400" height="320" rx="24" fill="#f4f5ed"/>
+  <circle cx="202" cy="103" r="44" fill="#e9b28e"/>
+  <path d="M158 101c0-38 20-60 48-60 30 0 48 22 48 59-16-5-29-17-36-29-13 17-33 27-60 30Z" fill="#574b48"/>
+  <path d="M125 292c5-81 31-123 77-123s72 42 77 123" fill="#7795cf"/>
+  <path d="M171 180h62l-16 39h-30z" fill="#fff8e9"/>
+  <path d="m202 219-15 72M203 219l19 72" stroke="#fff8e9" stroke-width="7" stroke-linecap="round"/>
+  <rect x="76" y="199" width="71" height="93" rx="18" fill="#e4a855"/>
+  <path d="M88 199c1-20 10-31 24-31s23 11 24 31" fill="none" stroke="#bf793e" stroke-width="8"/>
+  <rect x="253" y="224" width="88" height="61" rx="8" fill="#fffdf4" transform="rotate(-7 253 224)"/>
+  <path d="m272 241 48-6M274 256l43-5M276 271l30-4" stroke="#86a99a" stroke-width="4" stroke-linecap="round"/>
+</svg>

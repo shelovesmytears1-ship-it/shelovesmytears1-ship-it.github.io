@@ -1,0 +1,6 @@
+GSAP 3.15.0
+Copyright 2026, GreenSock. All rights reserved.
+The upstream distribution identifies these files as subject to the Standard “no charge” license:
+https://gsap.com/standard-license
+
+The original copyright/license header is retained in gsap.min.js and ScrollTrigger.min.js. Package metadata source: GSAP 3.15.0 package.json.

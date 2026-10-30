@@ -4,6 +4,7 @@ import { marked } from 'marked';
 import NewDirectionLayout from '../../../layouts/NewDirectionLayout.astro';
 import { type Lang, withBase } from '../../../i18n/ui';
 import { getNewDirectionCopy, newDirectionPath } from '../../../data/newDirectionI18n';
+import { getProjectUrl } from '../../../data/caseHelpers';
 
 export interface Props {
   entry: CollectionEntry<'cases'>;
@@ -23,7 +24,7 @@ const summary = localized?.summary ?? entry.data.summary;
 const result = localized?.result ?? entry.data.result;
 const rawBody = localized?.body?.trim() || entry.body;
 const body = await marked.parse(rawBody);
-const projectUrl = entry.data.siteUrl || withBase(`/${entry.slug}/`);
+const projectUrl = getProjectUrl(entry);
 ---
 
 <NewDirectionLayout title={entry.data.title} description={summary} current="work" lang={lang} currentPath={`work/${entry.slug}`}>

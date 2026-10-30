@@ -11,8 +11,8 @@
     <link rel="canonical" href="https://step-by-step-gdansk.pl/">
 
     <!-- Favicon -->
-    <link rel="icon" href="логотип.jpg" type="image/jpeg">
-    <link rel="apple-touch-icon" href="логотип.jpg">
+    <link rel="icon" href="logo.jpg" type="image/jpeg">
+    <link rel="apple-touch-icon" href="logo.jpg">
 
     <!-- Open Graph / Social share -->
     <meta property="og:type" content="website">
@@ -20,12 +20,12 @@
     <meta property="og:title" content="Step by Step — Польский язык и подготовка к школе в Гданьске">
     <meta property="og:description"
         content="Педагог с 18-летним опытом. Польский язык, подготовка к школе, поддержка детей с особыми потребностями. Первая консультация бесплатно.">
-    <meta property="og:image" content="моё фото.jpg">
+    <meta property="og:image" content="teacher-photo.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Step by Step — Польский язык и подготовка к школе в Гданьске">
     <meta name="twitter:description"
         content="Педагог с 18-летним опытом. Первая консультация бесплатно.">
-    <meta name="twitter:image" content="моё фото.jpg">
+    <meta name="twitter:image" content="teacher-photo.jpg">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,7 +45,7 @@
       "@type": "EducationalOrganization",
       "name": "Step by Step",
       "description": "Польский язык для детей и взрослых и подготовка к школе. Поддержка детей мигрантов и детей с особыми образовательными потребностями.",
-      "image": "моё фото.jpg",
+      "image": "teacher-photo.jpg",
       "areaServed": "Gdańsk, Polska",
       "address": {
         "@type": "PostalAddress",
@@ -77,7 +77,7 @@
     <nav class="navbar">
         <div class="container nav-content">
             <a href="#" class="logo-link" aria-label="Step by Step — на главную">
-                <img src="логотип.jpg" alt="Логотип Step by Step" class="logo">
+                <img src="logo.jpg" alt="Логотип Step by Step" class="logo">
             </a>
 
             <button class="nav-toggle" id="nav-toggle" aria-label="Открыть меню" aria-expanded="false"
@@ -89,6 +89,7 @@
 
             <ul class="nav-links" id="nav-links">
                 <li><a href="#services">Услуги</a></li>
+                <li><a href="#quiz">Подобрать курс</a></li>
                 <li><a href="#formats">Формат</a></li>
                 <li><a href="#about">Обо мне</a></li>
                 <li><a href="#faq">Вопросы</a></li>
@@ -126,8 +127,15 @@
             </div>
             <div class="hero-image-wrapper">
                 <div class="blob-shape" aria-hidden="true"></div>
-                <img src="для сайта/unnamed (5).jpg" alt="Комплексная подготовка ребёнка к польской школе"
+                <img src="gallery/unnamed (5).jpg" alt="Комплексная подготовка ребёнка к польской школе"
                     class="hero-image-main" width="350" height="350">
+                <div class="teacher-hero-badge">
+                    <img src="teacher-photo.jpg" alt="Педагог Алёна" width="48" height="48">
+                    <div>
+                        <strong>Алёна</strong>
+                        <span>18 лет стажа • Олигофренопедагог</span>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -165,6 +173,7 @@
                             <strong>Что развиваем:</strong>
                             <p>Словарный запас, правильное произношение. А также: внимание, слуховое восприятие,
                                 память и логику с помощью игр.</p>
+                            <button type="button" class="select-service-btn" data-program="Польский для детей (6+)">Записаться на этот курс →</button>
                         </div>
                     </div>
                 </div>
@@ -190,6 +199,7 @@
                             </ul>
                             <strong>Результат:</strong>
                             <p>Вы уверенно общаетесь в ситуациях, понимаете разговорную речь.</p>
+                            <button type="button" class="select-service-btn" data-program="Польский для подростков/взрослых">Записаться на этот курс →</button>
                         </div>
                     </div>
                 </div>
@@ -215,6 +225,7 @@
                             </ul>
                             <strong>Методы:</strong>
                             <p>Элементы сенсорной интеграции, музыкотерапия, визуальная поддержка.</p>
+                            <button type="button" class="select-service-btn" data-program="Особые потребности (ОПП)">Записаться на этот курс →</button>
                         </div>
                     </div>
                 </div>
@@ -239,10 +250,156 @@
                                 <li><strong>Когнитивные навыки:</strong> внимание, память, концентрация.</li>
                             </ul>
                             <p>Помогаем быстрее адаптироваться в школе без сильного стресса.</p>
+                            <button type="button" class="select-service-btn" data-program="Подготовка к школе">Записаться на этот курс →</button>
                         </div>
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz / Course Selection Section -->
+    <section id="quiz" class="quiz-section section bg-light">
+        <div class="container">
+            <div class="section-title reveal">
+                <span class="eyebrow">Экспресс-тест за 1 минуту</span>
+                <h2>Подобрать программу обучения</h2>
+                <p lang="pl" class="title-pl">Wybierz odpowiedni program dla siebie lub dziecka</p>
+            </div>
+
+            <div class="quiz-container reveal">
+                <div class="quiz-progress-bar">
+                    <div class="quiz-progress-step active" id="q-step-bar-1"></div>
+                    <div class="quiz-progress-step" id="q-step-bar-2"></div>
+                    <div class="quiz-progress-step" id="q-step-bar-3"></div>
+                </div>
+
+                <!-- Step 1 -->
+                <div class="quiz-step-pane" id="quiz-step-1">
+                    <div class="quiz-step-title">1. Для кого подбираете занятия?</div>
+                    <div class="quiz-options-grid quiz-grid-2">
+                        <button type="button" class="quiz-opt-btn" data-target-step="2" data-key="who" data-val="child">
+                            <span class="quiz-opt-head">
+                                <span class="quiz-svg-badge" aria-hidden="true">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+                                </span>
+                                <span>Ребёнок 6–10 лет</span>
+                            </span>
+                            <span class="quiz-opt-desc">Польский с нуля или адаптация к школе</span>
+                        </button>
+                        <button type="button" class="quiz-opt-btn" data-target-step="2" data-key="who" data-val="special">
+                            <span class="quiz-opt-head">
+                                <span class="quiz-svg-badge quiz-svg-badge--sage" aria-hidden="true">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.439 7.85c-.049.322.059.648.289.878l1.568 1.568c.47.47.706 1.087.706 1.704s-.235 1.233-.706 1.704l-1.611 1.611a.98.98 0 0 1-.837.276c-.47-.07-.802-.48-.968-.925a2.501 2.501 0 1 0-3.214 3.214c.446.166.855.497.925.968a.979.979 0 0 1-.276.837l-1.61 1.61a2.404 2.404 0 0 1-1.705.707 2.402 2.402 0 0 1-1.704-.706l-1.568-1.568a1.026 1.026 0 0 0-.877-.29c-.493.074-.84.504-1.02.968a2.5 2.5 0 1 1-3.237-3.237c.464-.18.894-.527.967-1.02a1.026 1.026 0 0 0-.289-.877l-1.568-1.568A2.402 2.402 0 0 1 1.998 12c0-.617.236-1.234.706-1.704L4.315 8.685a.98.98 0 0 1 .837-.276c.47.07.802.48.968.925a2.501 2.501 0 1 0 3.214-3.214c-.446-.166-.855-.497-.925-.968a.979.979 0 0 1 .276-.837l1.61-1.61a2.404 2.404 0 0 1 1.705-.707c.617 0 1.234.236 1.704.706l1.568 1.568c.23.23.556.338.877.29.493-.074.84-.504 1.02-.968a2.5 2.5 0 1 1 3.237 3.237c-.464.18-.894.527-.967 1.02Z"/></svg>
+                                </span>
+                                <span>Ребёнок с особыми потребностями (ООП)</span>
+                            </span>
+                            <span class="quiz-opt-desc">Аутизм, ЗПР, сенсорная поддержка, моторика</span>
+                        </button>
+                        <button type="button" class="quiz-opt-btn" data-target-step="2" data-key="who" data-val="prep">
+                            <span class="quiz-opt-head">
+                                <span class="quiz-svg-badge" aria-hidden="true">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M8 7h6"/><path d="M8 11h8"/></svg>
+                                </span>
+                                <span>Подготовка к 0–3 классу</span>
+                            </span>
+                            <span class="quiz-opt-desc">Польский + основы счёта и школьные инструкции</span>
+                        </button>
+                        <button type="button" class="quiz-opt-btn" data-target-step="2" data-key="who" data-val="adult">
+                            <span class="quiz-opt-head">
+                                <span class="quiz-svg-badge quiz-svg-badge--sage" aria-hidden="true">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/></svg>
+                                </span>
+                                <span>Подросток или взрослый</span>
+                            </span>
+                            <span class="quiz-opt-desc">Разговорная практика, язык для работы и жизни</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="quiz-step-pane" id="quiz-step-2" style="display:none;">
+                    <div class="quiz-step-title">2. Какой формат для вас наиболее комфортен?</div>
+                    <div class="quiz-options-grid quiz-grid-2">
+                        <button type="button" class="quiz-opt-btn" data-target-step="3" data-key="format" data-val="online">
+                            <span class="quiz-opt-head">
+                                <span class="quiz-svg-badge" aria-hidden="true">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+                                </span>
+                                <span>Онлайн (Zoom / Google Meet)</span>
+                            </span>
+                            <span class="quiz-opt-desc">Интерактивные игры, экономия времени на дорогу</span>
+                        </button>
+                        <button type="button" class="quiz-opt-btn" data-target-step="3" data-key="format" data-val="offline">
+                            <span class="quiz-opt-head">
+                                <span class="quiz-svg-badge quiz-svg-badge--sage" aria-hidden="true">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                                </span>
+                                <span>Офлайн в Гданьске</span>
+                            </span>
+                            <span class="quiz-opt-desc">Кабинет на Stogi или занятия с доездом</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="quiz-step-pane" id="quiz-step-3" style="display:none;">
+                    <div class="quiz-step-title">3. Текущий уровень владения польским языком?</div>
+                    <div class="quiz-options-grid quiz-grid-3">
+                        <button type="button" class="quiz-opt-btn" data-target-step="result" data-key="level" data-val="zero">
+                            <span class="quiz-opt-head">
+                                <span class="quiz-svg-badge" aria-hidden="true">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg>
+                                </span>
+                                <span>С нуля</span>
+                            </span>
+                            <span class="quiz-opt-desc">Не знает алфавита, не понимает на слух</span>
+                        </button>
+                        <button type="button" class="quiz-opt-btn" data-target-step="result" data-key="level" data-val="basic">
+                            <span class="quiz-opt-head">
+                                <span class="quiz-svg-badge quiz-svg-badge--sage" aria-hidden="true">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/></svg>
+                                </span>
+                                <span>Понимает простые слова</span>
+                            </span>
+                            <span class="quiz-opt-desc">Стесняется говорить, языковой барьер</span>
+                        </button>
+                        <button type="button" class="quiz-opt-btn" data-target-step="result" data-key="level" data-val="school">
+                            <span class="quiz-opt-head">
+                                <span class="quiz-svg-badge" aria-hidden="true">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                                </span>
+                                <span>Уже учится в польской школе</span>
+                            </span>
+                            <span class="quiz-opt-desc">Нужна помощь с классными заданиями и чтением</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step Result -->
+                <div class="quiz-step-pane" id="quiz-step-result" style="display:none;">
+                    <div class="quiz-result-card">
+                        <span class="quiz-result-badge">Рекомендуемая программа</span>
+                        <div class="quiz-result-title" id="quiz-res-title">Комплексная подготовка к школе (0–3 класс)</div>
+                        <p class="quiz-result-desc" id="quiz-res-desc">
+                            Индивидуальный бережный темп с акцентом на понимание школьных инструкций, алфавит и снятие страха перед уроками.
+                        </p>
+                        <div class="quiz-result-meta">
+                            <span><i class="fa-solid fa-clock"></i> 40 минут урок</span>
+                            <span id="quiz-res-format"><i class="fa-solid fa-laptop-house"></i> Онлайн или Офлайн (Гданьск)</span>
+                            <span><i class="fa-solid fa-gift"></i> 1-я встреча-диагностика: БЕСПЛАТНО</span>
+                        </div>
+                        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
+                            <button type="button" id="quiz-apply-btn" class="btn btn-primary">
+                                Записаться на эту программу
+                            </button>
+                            <button type="button" id="quiz-reset-btn" class="btn btn-secondary">
+                                Пройти тест заново
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -259,7 +416,7 @@
             <div class="formats-grid">
                 <!-- Online -->
                 <div class="format-card reveal">
-                    <img src="для сайта/unnamed (6).jpg" alt="Онлайн-занятие за компьютером" class="format-img"
+                    <img src="gallery/unnamed (6).jpg" alt="Онлайн-занятие за компьютером" class="format-img"
                         loading="lazy" width="600" height="250">
                     <div class="format-content">
                         <h3><i class="fa-solid fa-laptop-house icon-primary"></i> Онлайн занятия</h3>
@@ -273,7 +430,7 @@
                 </div>
                 <!-- Offline -->
                 <div class="format-card reveal">
-                    <img src="для сайта/unnamed (7).jpg" alt="Офлайн-занятие с педагогом" class="format-img"
+                    <img src="gallery/unnamed (7).jpg" alt="Офлайн-занятие с педагогом" class="format-img"
                         loading="lazy" width="600" height="250">
                     <div class="format-content">
                         <h3><i class="fa-solid fa-building-user icon-primary"></i> Офлайн (Гданьск)</h3>
@@ -295,10 +452,10 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-image-col reveal">
-                    <img src="моё фото.jpg" alt="Фото педагога Алёны" class="about-photo" loading="lazy">
+                    <img src="teacher-photo.jpg" alt="Фото педагога Алёны" class="about-photo" loading="lazy">
                     <div class="diploma-wrapper" id="diploma-btn" role="button" tabindex="0"
                         aria-label="Открыть дипломы и квалификации">
-                        <img src="дипломы.webp" alt="Дипломы и сертификаты педагога" class="diploma-thumb"
+                        <img src="diplomas.webp" alt="Дипломы и сертификаты педагога" class="diploma-thumb"
                             loading="lazy">
                         <div class="diploma-overlay">
                             <i class="fa-solid fa-magnifying-glass-plus"></i>
@@ -587,7 +744,7 @@
     <footer class="footer">
         <div class="container footer-content">
             <div class="footer-logo">
-                <img src="логотип.jpg" alt="Step by Step" class="logo-footer">
+                <img src="logo.jpg" alt="Step by Step" class="logo-footer">
                 <p>Польский язык и подготовка к школе в Гданьске</p>
             </div>
             <p class="footer-copy">© <span id="year">2024</span> Step by Step. Все права защищены.</p>
@@ -600,10 +757,34 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    
+    <!-- Confirmation Modal -->
+    <div id="booking-modal" class="modal" role="dialog" aria-modal="true" aria-label="Подтверждение записи">
+        <button class="close-modal" id="close-booking-modal" aria-label="Закрыть">&times;</button>
+        <div class="confirm-modal-box">
+            <div class="confirm-check-icon"><i class="fa-solid fa-check"></i></div>
+            <h3 class="confirm-title">Заявка принята!</h3>
+            <p class="confirm-text">Мы сформировали текст для бесплатной встречи-консультации и готовы отправить его в WhatsApp.</p>
+            <div class="confirm-summary-card">
+                <div><strong>Имя:</strong> <span id="confirm-name">Анна</span></div>
+                <div><strong>Программа:</strong> <span id="confirm-prog">Польский для детей (6+)</span></div>
+                <div><strong>Формат консультации:</strong> <span style="color:var(--secondary);font-weight:700;">Бесплатная диагностика (Online)</span></div>
+            </div>
+            <div class="confirm-actions">
+                <a id="confirm-wa-btn" href="#" target="_blank" rel="noopener" class="btn btn-primary btn-block">
+                    <i class="fa-brands fa-whatsapp"></i> Открыть WhatsApp с готовым текстом
+                </a>
+                <button type="button" id="copy-msg-btn" class="btn btn-secondary btn-block">
+                    <i class="fa-regular fa-copy"></i> Скопировать текст заявки
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Image Modal for Diplomas -->
     <div id="image-modal" class="modal" role="dialog" aria-modal="true" aria-label="Дипломы и квалификации">
         <button class="close-modal" aria-label="Закрыть">&times;</button>
-        <img class="modal-content" id="modal-img" alt="Дипломы и сертификаты педагога">
+        <img class="modal-content" id="modal-img" src="diplomas.webp" alt="Дипломы и сертификаты педагога">
         <div id="caption">Мои квалификации и дипломы</div>
     </div>
 
@@ -630,6 +811,67 @@
 <script>
 (function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
 </script>
+
+<!-- universal-smooth-anchor-scroll -->
+<script>
+(function(){
+  if(window.__ovSmoothScrollInit) return;
+  window.__ovSmoothScrollInit = true;
+  var animId = null;
+  function cancel(){ if(animId){ cancelAnimationFrame(animId); animId = null; } }
+  window.addEventListener('wheel', cancel, {passive:true});
+  window.addEventListener('touchstart', cancel, {passive:true});
+  window.addEventListener('keydown', cancel, {passive:true});
+  function smoothTo(targetY, dur){
+    cancel();
+    var startY = window.scrollY || window.pageYOffset || 0;
+    var maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    var destY = Math.min(Math.max(0, targetY), maxScroll);
+    var dist = destY - startY;
+    if(Math.abs(dist) < 3) return;
+    var startTime = performance.now();
+    var d = dur || 780;
+    function step(now){
+      var t = Math.min((now - startTime) / d, 1);
+      var ease = 1 - Math.pow(1 - t, 3);
+      window.scrollTo(0, startY + dist * ease);
+      if(t < 1) animId = requestAnimationFrame(step);
+      else animId = null;
+    }
+    animId = requestAnimationFrame(step);
+  }
+  window.__ovSmoothScrollTo = smoothTo;
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('a[href^="#"], [data-scroll-to], [data-target]');
+    if(!el) return;
+    var sel = el.getAttribute('data-scroll-to') || el.getAttribute('href');
+    if(!sel || sel.charAt(0) !== '#') return;
+    if(sel === '#'){
+      if(el.classList.contains('logo-link') || el.classList.contains('brand')){
+        e.preventDefault();
+        smoothTo(0, 750);
+      }
+      return;
+    }
+    var target = null;
+    try { target = document.querySelector(sel); } catch(err){}
+    if(!target) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var header = document.querySelector('header, nav.navbar, .site-header, .top-nav, .nav-bar');
+    var offset = 0;
+    if(header){
+      var pos = getComputedStyle(header).position;
+      if(pos === 'fixed' || pos === 'sticky'){
+        offset = header.offsetHeight || 72;
+      }
+    }
+    var top = (window.scrollY || window.pageYOffset || 0) + target.getBoundingClientRect().top - offset;
+    smoothTo(top, 780);
+  }, true);
+})();
+</script>
+
 </body>
 
 </html>

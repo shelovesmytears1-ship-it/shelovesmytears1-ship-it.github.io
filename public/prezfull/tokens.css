@@ -1,0 +1,59 @@
+/* ==========================================================================
+   Design Tokens: PREZFULL Atelier Architectural Identity
+   Gate: G3 (Visual Surface & Motion Contract)
+   Ground: #FAF5F0 | Ink: #101010 | Divider: 1px #101010
+   ========================================================================== */
+
+:root {
+  /* Ground & Paper Canvas */
+  --bg-paper: #FAF5F0;               /* Warm architectural drafting bone paper */
+  --bg-paper-alt: #F2ECE3;           /* Secondary active card surface */
+  --bg-paper-mist: rgba(250, 245, 240, 0.88); /* Translucent mist overlay without blur */
+  --bg-surface-elevated: #FFFFFF;
+  --bg-card-feature: linear-gradient(145deg, rgba(96, 108, 82, 0.90), rgba(62, 72, 52, 0.94));
+  --bg-card-olive: linear-gradient(145deg, #495340, #384230);
+  --color-olive-deep: #495340;
+  --color-olive-dark: #384230;
+
+  /* Drafting Ink & Typography */
+  --text-ink: #101010;               /* Deep charcoal ink */
+  --text-secondary: #4A4A48;         /* Editorial body text */
+  --text-muted: #6E6D68;             /* Subtitle and architect role */
+  --text-inverse: #FFFFFF;           /* White text on dark buttons */
+
+  /* Hairlines & Spatial Datums */
+  --line-hairline: #101010;          /* 1px solid black architectural datum */
+  --line-subtle: #DCD6CD;            /* Secondary grid line */
+  --line-card-border: rgba(255, 255, 255, 0.45);
+  --line-rule: rgba(16, 16, 16, 0.12); /* Subtle section monograph rule */
+
+  /* Fonts */
+  --font-heading: 'Raleway', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Layout Dimensions */
+  --container-max: 1200px;
+  --container-pad-desktop: 40px;
+  --container-pad-tablet: 28px;
+  --container-pad-mobile: 20px;
+  --header-height-desktop: max(88px, 8vh);
+  --header-height-tablet: 80px;
+  --header-height-mobile: 64px;
+
+  /* Radii */
+  --radius-pill: 60px;
+  --radius-circle: 50%;
+  --radius-card: 4px;
+
+  /* Transitions */
+  --ease-architectural: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 200ms;
+  --duration-normal: 300ms;
+  --duration-reveal: 750ms;
+}
+
+@media (min-width: 1441px) {
+  :root {
+    --container-max: 1360px;
+  }
+}

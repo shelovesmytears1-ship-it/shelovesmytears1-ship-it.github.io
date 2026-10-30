@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f5f7f4" />
+    <meta name="description" content="Alona polski centrum — интерактивная студия польского языка" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Alona polski centrum" />
+    <link rel="manifest" href="/alona/manifest.webmanifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/alona/assets/icon-180.png?v=diary-20261022" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/alona/assets/icon-32.png?v=diary-20261022" />
+    <title>Alona polski centrum — Учебная платформа</title>
+    <script type="module" crossorigin src="/alona/assets/index-DSR24QD5.js"></script>
+    <script defer src="/alona/assets/alona-demo-controller.js"></script>
+    <link rel="stylesheet" crossorigin href="/alona/assets/index-CQYUpQTj.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  <!-- universal-smooth-anchor-scroll -->
+<script>
+(function(){
+  if(window.__ovSmoothScrollInit) return;
+  window.__ovSmoothScrollInit = true;
+  var animId = null;
+  function cancel(){ if(animId){ cancelAnimationFrame(animId); animId = null; } }
+  window.addEventListener('wheel', cancel, {passive:true});
+  window.addEventListener('touchstart', cancel, {passive:true});
+  window.addEventListener('keydown', cancel, {passive:true});
+  function smoothTo(targetY, dur){
+    cancel();
+    var startY = window.scrollY || window.pageYOffset || 0;
+    var maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    var destY = Math.min(Math.max(0, targetY), maxScroll);
+    var dist = destY - startY;
+    if(Math.abs(dist) < 3) return;
+    var startTime = performance.now();
+    var d = dur || 780;
+    function step(now){
+      var t = Math.min((now - startTime) / d, 1);
+      var ease = 1 - Math.pow(1 - t, 3);
+      window.scrollTo(0, startY + dist * ease);
+      if(t < 1) animId = requestAnimationFrame(step);
+      else animId = null;
+    }
+    animId = requestAnimationFrame(step);
+  }
+  window.__ovSmoothScrollTo = smoothTo;
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('a[href^="#"], [data-scroll-to], [data-target]');
+    if(!el) return;
+    var sel = el.getAttribute('data-scroll-to') || el.getAttribute('href');
+    if(!sel || sel.charAt(0) !== '#') return;
+    if(sel === '#'){
+      if(el.classList.contains('logo-link') || el.classList.contains('brand')){
+        e.preventDefault();
+        smoothTo(0, 750);
+      }
+      return;
+    }
+    var target = null;
+    try { target = document.querySelector(sel); } catch(err){}
+    if(!target) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var header = document.querySelector('header, nav.navbar, .site-header, .top-nav, .nav-bar');
+    var offset = 0;
+    if(header){
+      var pos = getComputedStyle(header).position;
+      if(pos === 'fixed' || pos === 'sticky'){
+        offset = header.offsetHeight || 72;
+      }
+    }
+    var top = (window.scrollY || window.pageYOffset || 0) + target.getBoundingClientRect().top - offset;
+    smoothTo(top, 780);
+  }, true);
+})();
+</script>
+</body>
+</html>

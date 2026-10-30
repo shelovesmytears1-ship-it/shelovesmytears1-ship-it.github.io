@@ -1,43 +1,1511 @@
-<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="FreshClean — koncepcyjna tablica dyspozytorska sprzątania mieszkań i małych biur."><title>FreshClean — jasny zakres, czyste przekazanie</title><link rel="stylesheet" href="fresh-preview.css"><link rel="stylesheet" href="fresh-expanded.css"><meta name="robots" content="noindex, follow"></head><body><a class="skip" href="#main">Przejdź do treści</a><header><a class="brand" href="#top">FRESH/CLEAN</a><nav><a href="#ticket">Zlecenie</a><a href="#scope">Zakres</a><a href="#handoff">Odbiór</a></nav><a href="#ticket">Oblicz usługę</a></header><main id="main">
-<section class="hero" id="top"><div><span>WARSZAWA / DISPATCH 06:30–20:00</span><h1>Najpierw jasny zakres. Potem czyste przekazanie.</h1><p>Sprzątanie mieszkań i małych biur z listą prac, orientacyjnym czasem oraz prostym odbiorem — bez zgadywania, co znaczy „dokładnie”.</p><a href="#ticket">Zbuduj kartę zlecenia</a></div><figure><img src="images/hero-image.webp" alt="Jasne, uporządkowane wnętrze po sprzątaniu"><figcaption>STREFA: WARSZAWA · PORTFOLIO DEMO</figcaption></figure></section>
-<section class="ticket" id="ticket"><div class="ticket-head"><h2>Jedno zlecenie. Wszystko na liście.</h2><p>Przedział jest orientacyjny. Ostateczne potwierdzenie zależy od stanu, dostępu i faktycznego zakresu.</p></div><div class="dispatch"><form id="ticketForm"><fieldset><legend>Rodzaj usługi</legend><label><input type="radio" name="service" value="regular" checked><span>Regularne</span></label><label><input type="radio" name="service" value="deep"><span>Generalne</span></label><label><input type="radio" name="service" value="office"><span>Małe biuro</span></label><label><input type="radio" name="service" value="renovation"><span>Po remoncie</span></label></fieldset><label>Powierzchnia: <b id="areaOut">50 m²</b><input id="area" type="range" min="25" max="180" value="50"></label><fieldset><legend>Dodatki</legend><label><input type="checkbox" name="extra" value="windows"><span>Okna</span></label><label><input type="checkbox" name="extra" value="oven"><span>Piekarnik</span></label><label><input type="checkbox" name="extra" value="fridge"><span>Lodówka</span></label></fieldset></form><article aria-live="polite"><div class="job-head"><span>KARTA FC—024</span><b>DO POTWIERDZENIA</b></div><h3 id="jobTitle">Sprzątanie regularne / 50 m²</h3><div class="job-meta"><p><small>CZAS</small><b id="duration">3–4 h</b></p><p><small>PRZEDZIAŁ</small><b id="price">220–275 zł</b></p><p><small>ZESPÓŁ</small><b id="crew">1 osoba</b></p></div><h4>W zakresie</h4><ul id="includeList"></ul><button id="copyTicket" type="button">Kopiuj kartę</button><p id="copyStatus" role="status"></p></article></div></section>
-<section class="scope" id="scope"><div><h2>Cztery usługi. Inny punkt końcowy.</h2><p>Wybierz po stanie przestrzeni, nie po nazwie pakietu.</p></div><figure><img src="images/service-regular.webp" alt="Regularnie sprzątane mieszkanie"><figcaption><b>Regularne</b><span>utrzymanie bieżącego porządku</span></figcaption></figure><figure><img src="images/service-deep.webp" alt="Dokładne sprzątanie kuchni"><figcaption><b>Generalne</b><span>więcej detalu i odkładanych miejsc</span></figcaption></figure><figure><img src="images/service-office.webp" alt="Czyste niewielkie biuro"><figcaption><b>Małe biuro</b><span>stanowiska, kuchnia, sanitariaty</span></figcaption></figure><figure><img src="images/service-renovation.webp" alt="Wnętrze po zakończonym remoncie"><figcaption><b>Po remoncie</b><span>pył budowlany po zakończonych pracach</span></figcaption></figure></section>
-<section class="zones" aria-labelledby="zones-title"><div><h2 id="zones-title">Każde pomieszczenie ma własny punkt odbioru.</h2><p>Lista nie mówi „sprzątnąć kuchnię”. Rozdziela powierzchnie, kontakt, podłogę i rzeczy, których nie wolno ruszać bez zgody.</p></div><div class="zone-board"><article><span>KUCHNIA</span><b>blaty · zlew · fronty dostępne · podłoga</b><em>AGD wewnątrz jako dodatek</em></article><article><span>ŁAZIENKA</span><b>armatura · ceramika · lustro · podłoga</b><em>kamień naturalny wymaga potwierdzenia</em></article><article><span>POKOJE</span><b>kurz dostępny · lustra · podłogi</b><em>przedmioty osobiste zostają na miejscu</em></article><article><span>BIURO</span><b>stanowiska · kuchnia · sanitariaty</b><em>sprzęt wyłączony przed pracą</em></article></div></section>
-<section class="prep" aria-labelledby="prep-title"><h2 id="prep-title">Dziesięć minut przygotowania oszczędza godzinę zgadywania.</h2><ol><li><span>PRZEJŚCIE</span><b>Usuń rzeczy z podłogi i udostępnij pomieszczenia.</b></li><li><span>DELIKATNE</span><b>Oznacz powierzchnie, przedmioty i środki niedozwolone.</b></li><li><span>DOSTĘP</span><b>Potwierdź wejście, wodę, prąd i miejsce na sprzęt.</b></li><li><span>PRIORYTET</span><b>Wskaż jeden obszar, który ma być sprawdzony jako pierwszy.</b></li></ol></section>
-<section class="surface" aria-labelledby="surface-title"><div><h2 id="surface-title">Najpierw powierzchnia. Potem środek.</h2><p>Ta sama chemia nie pasuje do drewna, kamienia, szkła i stali. Karta zlecenia powinna wskazywać materiał oraz ograniczenie.</p></div><div class="surface-ledger"><p><span>DREWNO</span><b>mało wilgoci · bez długiego kontaktu</b></p><p><span>KAMIEŃ</span><b>bez kwasów · środek potwierdzony</b></p><p><span>SZKŁO</span><b>czysta ściereczka · kontrola smug</b></p><p><span>STAL</span><b>zgodnie z kierunkiem wykończenia</b></p><p><span>EKRANY</span><b>wyłącznie po zgodzie i wyłączeniu sprzętu</b></p></div></section>
-<section class="handoff" id="handoff"><div><h2>Odbiór trwa pięć minut.</h2><p>Sprawdzamy razem obszary wysokiego kontaktu i zgłaszamy ograniczenia, zanim zespół wyjdzie.</p></div><ol><li><span>01</span><b>Zakres</b><p>lista zgodna z kartą</p></li><li><span>02</span><b>Powierzchnie</b><p>brak widocznych smug i pyłu</p></li><li><span>03</span><b>Kuchnia / łazienka</b><p>punkty kontaktu i armatura</p></li><li><span>04</span><b>Uwagi</b><p>co było niedostępne lub ryzykowne</p></li></ol></section>
-<section class="quality" aria-labelledby="quality-title"><div><h2 id="quality-title">„Czysto” musi dać się sprawdzić.</h2><p>Punkt odbioru opisuje widoczny rezultat w normalnym świetle. Nie udaje sterylności ani renowacji uszkodzonej powierzchni.</p></div><div><p><span>WZROK</span>brak luźnego kurzu, włosów i widocznych smug</p><p><span>DOTYK</span>suche punkty kontaktu bez lepkiej pozostałości</p><p><span>ZAPACH</span>neutralny po przewietrzeniu, bez obietnicy dezynfekcji</p><p><span>OGRANICZENIE</span>trwałe osady i uszkodzenia zapisane w uwagach</p></div></section>
-<section class="exceptions" aria-labelledby="exceptions-title"><div><h2 id="exceptions-title">Uwagi nie są porażką. Są częścią przekazania.</h2><p>Jeśli obszar jest niedostępny, materiał nieznany albo zabrudzenie wymaga specjalisty, zapisujemy to zamiast improwizować.</p></div><div class="exception-slip"><span>UWAGA / FC—024—03 / DEMO</span><strong>Kamienny blat bez potwierdzonego rodzaju i instrukcji pielęgnacji.</strong><p>Działanie: wyłączyć z mokrego czyszczenia, odkurzyć bezpiecznie, poprosić o dokumentację materiału.</p><b>STATUS: DO DECYZJI</b></div></section>
-<section class="team" aria-labelledby="team-title"><h2 id="team-title">Zespół pracuje według jednej karty.</h2><div><article><span>DISPATCH</span><b>potwierdza adres, zakres, dostęp i czas</b></article><article><span>LEAD</span><b>dzieli strefy i zapisuje ograniczenia</b></article><article><span>ZESPÓŁ</span><b>realizuje listę bez rozszerzania jej na miejscu</b></article><article><span>ODBIÓR</span><b>porównuje wynik z kartą, nie z ogólnym wrażeniem</b></article></div></section>
-<section class="office" aria-labelledby="office-title"><figure><img src="images/office-return.webp" alt="Posprzątane małe biuro przygotowane na powrót zespołu"></figure><div><h2 id="office-title">Biuro wraca do pracy, nie do zapachu detergentu.</h2><p>Praca poza ruchem zespołu, ostrożność przy elektronice i jasny podział stref ograniczają przerwy.</p><dl><div><dt>Przed</dt><dd>dostęp, alarm, klucze, poufne materiały</dd></div><div><dt>W trakcie</dt><dd>sprzęt wyłączony, mokre podłogi oznaczone</dd></div><div><dt>Po</dt><dd>zamknięcie, światła, zdjęcie uwag bez danych wrażliwych</dd></div></dl></div></section>
-<section class="coverage"><h2>Gdzie działamy?</h2><p>Portfolio concept zakłada obsługę Warszawy. Dojazd i dostępność terminu są potwierdzane przed przyjęciem zlecenia.</p><div><span>Śródmieście</span><span>Mokotów</span><span>Wola</span><span>Żoliborz</span><span>Ochota</span><span>Praga</span></div></section>
-<section class="limits" aria-labelledby="limits-title"><h2 id="limits-title">Czego zwykłe sprzątanie nie obiecuje.</h2><div><p><span>NAPRAWA</span>usunięcia rys, przebarwień i uszkodzeń materiału</p><p><span>SPECJALISTYCZNE</span>pleśni, odpadów niebezpiecznych i pracy na wysokości</p><p><span>DEZYNFEKCJA</span>efektu medycznego bez osobnej procedury i produktu</p><p><span>ORGANIZACJA</span>przenoszenia dokumentów i rzeczy osobistych bez instrukcji</p></div></section>
-<section class="questions" aria-labelledby="questions-title"><div><h2 id="questions-title">Pytania przed potwierdzeniem.</h2><p>Odpowiedzi dotyczą demonstracyjnego procesu, nie realnej dostępności usługi.</p></div><div><details><summary>Czy cena z karty jest ostateczna?</summary><p>Nie. To orientacyjny przedział zależny od powierzchni, typu usługi i dodatków. Stan i dostęp muszą zostać potwierdzone.</p></details><details><summary>Czy środki są w cenie?</summary><p>Koncepcja zakłada typowy zestaw, ale realne wdrożenie wymaga listy produktów, kart bezpieczeństwa i zasad dla powierzchni.</p></details><details><summary>Czy trzeba być na miejscu?</summary><p>Potrzebny jest uzgodniony dostęp oraz sposób pięciominutowego odbioru. Szczegóły nie są jeszcze warunkami realnej usługi.</p></details><details><summary>Czy usuwacie każdy osad?</summary><p>Nie. Trwałe uszkodzenia, materiały ryzykowne i prace specjalistyczne trafiają do uwag, nie do obietnic.</p></details></div></section>
-<section class="contact"><div><h2>Wyślij kartę, nie luźną wiadomość.</h2><p>Formularz lokalny — nie zbiera danych.</p></div><form id="contactForm"><label>E-mail<input type="email" required placeholder="ty@email.pl"></label><label>Preferowany dzień<input required placeholder="np. piątek rano"></label><button>Przygotuj zapytanie</button><p id="status" role="status"></p></form></section>
-</main><footer><a class="brand" href="#top">FRESH/CLEAN</a><p>Cleaning service portfolio concept · 2026</p></footer><script src="fresh-preview.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-<script defer src="../motion-layer.js"></script><div class="ov-badge" id="ov-badge">
-  <a class="ov-badge__main" href="https://overflow-web.pl/work/freshclean/">
-    <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
-  </a>
-  <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
-</div>
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FreshClean — Certyfikowane, ekologiczne sprzątanie mieszkań i rezydencji w Warszawie. Naturalne ekstrakty, stały personel i natychmiastowa wycena online.">
+  <title>FreshClean — Ekologiczne Sprzątanie Rezydencji | Warszawa</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <meta name="robots" content="noindex, follow">
 <style>
-.ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
-.ov-badge a{color:inherit;text-decoration:none}
-.ov-badge__main{display:flex;align-items:center;gap:5px}
-.ov-badge__mark{font-weight:700;letter-spacing:-.02em}
-.ov-badge__dot{opacity:.45}
-.ov-badge__type{opacity:.7}
-.ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
-.ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
-@media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
-@media print{.ov-badge{display:none}}
+main#main,
+section.fc-section,
+.fc-section,
+.fc-hero,
+.fc-price-table-wrapper,
+.fc-protocol-showcase,
+.fc-form-group {
+  overflow-x: clip !important;
+  overflow: hidden !important;
+  max-width: 100vw !important;
+  box-sizing: border-box !important;
+}
+
+.fc-pricing-table-wrap,
+.fc-price-table-wrapper {
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  max-width: 100% !important;
+}
+
+.fc-date-grid {
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  max-width: 100% !important;
+}
 </style>
-<!-- ov-badge-init -->
+</head>
+<body>
+  <a class="skip-link" href="#main">Przejdź do treści głównej</a>
+
+  <!-- Top Navigation Bar -->
+  <header class="fc-nav-wrapper">
+    <nav class="fc-nav" aria-label="Główna nawigacja">
+      <a class="fc-brand" href="#top">
+        <span class="fc-brand-sparkle">✦</span> FRESH/CLEAN
+      </a>
+      <ul class="fc-nav-links">
+        <li><a class="fc-nav-link" href="#scope">Zakres prac</a></li>
+        <li><a class="fc-nav-link" href="#before-after">Efekt Przed / Po</a></li>
+        <li><a class="fc-nav-link" href="#protocol">Protokół Eko</a></li>
+        <li><a class="fc-nav-link" href="#security">Zaufany Zespół</a></li>
+        <li><a class="fc-nav-link" href="#pricing">Cennik</a></li>
+      </ul>
+      <div class="fc-nav-actions">
+        <a class="fc-nav-phone" href="tel:+48228901234">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          22 890 12 34
+        </a>
+        <a class="fc-btn-primary" href="#booking">Rezerwacja 60s ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ==========================================================================
+         CHAPTER 01: HERO SECTION (Strict 100vh on Desktop, 0px peeking)
+         ========================================================================== -->
+    <section class="fc-hero" id="top">
+      <div class="fc-hero-container">
+        <!-- Left Hero Copy -->
+        <div class="fc-hero-copy">
+          <div class="fc-hero-pill">
+            <svg class="fc-hero-pill-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+            </svg>
+            <span>100% Roślinne Formuły · Warszawa</span>
+          </div>
+          <h1 class="fc-hero-title">
+            <span>CZYSTOŚĆ.</span>
+            <span class="title-accent">ŚWIEŻOŚĆ.</span>
+            <span>SPOKÓJ.</span>
+          </h1>
+          <p class="fc-hero-subtitle">
+            Certyfikowane sprzątanie rezydencji i mieszkań w Warszawie. Naturalne ekstrakty, stały zaufany personel i natychmiastowa wycena online bez ukrytych opłat.
+          </p>
+          <div class="fc-hero-badges">
+            <div class="fc-hero-badge">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Ubezpieczenie OC do 1 000 000 zł</span>
+            </div>
+            <div class="fc-hero-badge">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Gwarancja Satysfakcji 24h</span>
+            </div>
+            <div class="fc-hero-badge">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>100% Ekologiczne Formuły</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Live Calculator Card (CleanCo Architecture) -->
+        <div class="fc-calc-card">
+          <div class="fc-calc-header">
+            <h3>Oblicz koszt w 10 sekund</h3>
+            <span class="fc-calc-tag">Gwarancja Ceny</span>
+          </div>
+
+          <!-- Service Type Selector -->
+          <div class="fc-type-tabs" role="tablist">
+            <button class="fc-type-btn active" data-type="standard" type="button">Standard Eco</button>
+            <button class="fc-type-btn" data-type="deep" type="button">Generalne</button>
+            <button class="fc-type-btn" data-type="renovation" type="button">Po remoncie</button>
+          </div>
+
+          <!-- Area Range Slider -->
+          <div class="fc-calc-group">
+            <div class="fc-calc-label-row">
+              <span>Metraż mieszkania</span>
+              <strong id="heroAreaVal">50 m²</strong>
+            </div>
+            <input class="fc-slider" id="heroAreaSlider" type="range" min="25" max="180" step="5" value="50" aria-label="Metraż mieszkania w m²">
+          </div>
+
+          <!-- Stepper Counters -->
+          <div class="fc-stepper-row">
+            <div class="fc-stepper-box">
+              <span class="fc-stepper-label">Liczba pokoi</span>
+              <div class="fc-stepper-controls">
+                <button class="fc-step-btn" id="roomMinus" type="button" aria-label="Mniej pokoi">-</button>
+                <span class="fc-step-val" id="heroRoomsVal">2</span>
+                <button class="fc-step-btn" id="roomPlus" type="button" aria-label="Więcej pokoi">+</button>
+              </div>
+            </div>
+            <div class="fc-stepper-box">
+              <span class="fc-stepper-label">Liczba łazienek</span>
+              <div class="fc-stepper-controls">
+                <button class="fc-step-btn" id="bathMinus" type="button" aria-label="Mniej łazienek">-</button>
+                <span class="fc-step-val" id="heroBathVal">1</span>
+                <button class="fc-step-btn" id="bathPlus" type="button" aria-label="Więcej łazienek">+</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frequency Discount Toggle -->
+          <div class="fc-freq-row">
+            <button class="fc-freq-btn active" data-freq="weekly" type="button">Co tydzień (-20%)</button>
+            <button class="fc-freq-btn" data-freq="biweekly" type="button">Co 2 tyg. (-15%)</button>
+            <button class="fc-freq-btn" data-freq="once" type="button">Jednorazowo</button>
+          </div>
+
+          <!-- Live Output Price Box -->
+          <div class="fc-price-box">
+            <div>
+              <span class="fc-price-label">Szacowany koszt:</span>
+              <p class="fc-price-val" id="heroPriceVal">od 212 PLN</p>
+            </div>
+            <div style="text-align: right;">
+              <span class="fc-price-label">Czas i zespół:</span>
+              <p style="font-weight: 600; font-size: 13px; color: #ffffff;" id="heroMetaVal">~3.5 godz. · 1 osoba</p>
+            </div>
+          </div>
+
+          <!-- CTA Button -->
+          <a class="fc-btn-primary fc-calc-btn" href="#booking">
+            Zarezerwuj ten termin <span>→</span>
+          </a>
+          <p class="fc-calc-guarantee">Bez karty kredytowej · Płatność po odbiorze usługi</p>
+        </div>
+
+        <!-- Right: Human Presence & Trust Photo Card (CleanCo Staging) -->
+        <div class="fc-hero-photo-wrap">
+          <div class="fc-hero-photo-card">
+            <img 
+              src="assets/01_hero_cleaner_sunlit_living.jpg" 
+              alt="Certyfikowana specjalistka FreshClean w trakcie sprzątania apartamentu w Warszawie" 
+              class="fc-hero-photo-img"
+              loading="eager"
+            />
+            <div class="fc-hero-photo-caption">
+              <div class="fc-photo-pill">
+                <span class="pulse-dot"></span> 100% etatowy zespół
+              </div>
+              <div class="fc-photo-details">
+                <div class="fc-photo-name">Anna K. · 5.0 ★</div>
+                <div class="fc-photo-sub">Starsza specjalistka FreshClean · 480+ realizacji (Mokotów / Wilanów)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Bottom Ribbon (Seamless Infinite Loop) -->
+      <div class="fc-hero-ribbon fc-ribbon-wrapper fc-ribbon" aria-label="Atuty serwisu FreshClean">
+        <div class="fc-ribbon-track">
+          <div class="fc-ribbon-group">
+            <span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z"/></svg> Warszawa: Śródmieście · Mokotów · Wilanów · Wola · Żoliborz · Ursynów · Saska Kępa</span>
+            <span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z"/></svg> 100% Certyfikowane Ekologiczne Środki (EU Ecolabel)</span>
+            <span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z"/></svg> Stały, Zweryfikowany Personel Etatowy (KRK)</span>
+            <span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z"/></svg> Polisa Ubezpieczeniowa OC 1 000 000 PLN</span>
+            <span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z"/></svg> Gwarancja Satysfakcji 24h · Bezpłatna Korekta</span>
+            <span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z"/></svg> Płatność BLIK / Kartą Dopiero Po Odbiorze</span>
+          </div>
+          <div class="fc-ribbon-group" aria-hidden="true">
+            <span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z"/></svg> Warszawa: Śródmieście · Mokotów · Wilanów · Wola · Żoliborz · Ursynów · Saska Kępa</span>
+            <span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z"/></svg> 100% Certyfikowane Ekologiczne Środki (EU Ecolabel)</span>
+            <span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z"/></svg> Stały, Zweryfikowany Personel Etatowy (KRK)</span>
+            <span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z"/></svg> Polisa Ubezpieczeniowa OC 1 000 000 PLN</span>
+            <span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z"/></svg> Gwarancja Satysfakcji 24h · Bezpłatna Korekta</span>
+            <span><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z"/></svg> Płatność BLIK / Kartą Dopiero Po Odbiorze</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <!-- ==========================================================================
+         CHAPTER 02: ROOM-BY-ROOM SCOPE CHECKLIST (CleanCo Framer Bento Grid)
+         ========================================================================== -->
+    <section class="fc-section" id="scope">
+      <div class="fc-section-head reveal-init">
+        <span class="fc-section-tag">Precyzyjny Standard CleanCo</span>
+        <h2 class="fc-section-title">Co dokładnie robimy w każdym pokoju?</h2>
+        <p class="fc-section-desc">Nie używamy ogólników „posprzątane”. Każda wizyta realizuje rygorystyczną kartę 70 punktów kontrolnych z dedykowanymi bio-preparatami dopasowanymi do każdego materiału.</p>
+      </div>
+
+      <!-- CleanCo Bento Room Switcher -->
+      <div class="fc-scope-tabs-container reveal-init">
+        <div class="fc-scope-tabs" role="tablist" aria-label="Wybierz pomieszczenie">
+          <button class="fc-scope-tab-btn active" data-target="kuchnia" role="tab" aria-selected="true" type="button">
+            <svg class="fc-tab-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 21h-8a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4z"></path><line x1="6" y1="11" x2="22" y2="11"></line><circle cx="10" cy="7" r="1"></circle><circle cx="14" cy="7" r="1"></circle></svg>
+            <span>Kuchnia &amp; Jadalnia</span>
+            <span class="fc-tab-badge">18 pkt</span>
+          </button>
+          <button class="fc-scope-tab-btn" data-target="salon" role="tab" aria-selected="false" type="button">
+            <svg class="fc-tab-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="10" width="20" height="9" rx="2"></rect><path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"></path><line x1="2" y1="15" x2="22" y2="15"></line></svg>
+            <span>Salon &amp; Living</span>
+            <span class="fc-tab-badge">14 pkt</span>
+          </button>
+          <button class="fc-scope-tab-btn" data-target="lazienka" role="tab" aria-selected="false" type="button">
+            <svg class="fc-tab-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-2.12 0 1.5 1.5 0 0 0 0 2.12L7 8"></path><path d="M4 14h16c0 4-3.5 6-8 6s-8-2-8-6Z"></path><path d="M6 14v-4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4"></path></svg>
+            <span>Łazienka &amp; SPA</span>
+            <span class="fc-tab-badge">16 pkt</span>
+          </button>
+          <button class="fc-scope-tab-btn" data-target="sypialnia" role="tab" aria-selected="false" type="button">
+            <svg class="fc-tab-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"></path><path d="M2 8h18a2 2 0 0 1 2 2v10"></path><path d="M2 17h20"></path><path d="M6 8v9"></path></svg>
+            <span>Sypialnia</span>
+            <span class="fc-tab-badge">12 pkt</span>
+          </button>
+          <button class="fc-scope-tab-btn" data-target="okna" role="tab" aria-selected="false" type="button">
+            <svg class="fc-tab-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="12" y1="3" x2="12" y2="21"></line><line x1="3" y1="12" x2="21" y2="12"></line></svg>
+            <span>Okna &amp; Detale</span>
+            <span class="fc-tab-badge">10 pkt</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===================================================================
+           TAB 1: KUCHNIA & JADALNIA (CleanCo Framer Bento)
+           =================================================================== -->
+      <div class="fc-scope-panel fc-scope-bento-grid active-panel reveal-init" id="scope-kuchnia" role="tabpanel">
+        <!-- Hero Bento: 2 Cols -->
+        <article class="fc-bento-card bento-hero bento-white">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-violet">
+              <span class="fc-badge-dot"></span>
+              PKT 01 · GŁÓWNA STREFA GORĄCA
+            </span>
+            <div class="fc-bento-icon-box box-violet">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"></rect><circle cx="8" cy="10" r="2.5"></circle><circle cx="16" cy="10" r="2.5"></circle><path d="M6 16h12"></path></svg>
+            </div>
+          </div>
+          <div class="fc-bento-body">
+            <h3>Strefa Gorąca, Blaty &amp; AGD</h3>
+            <p>Głębokie odtłuszczanie płyt indukcyjnych, gazowych, piekarników i okapów aktywnymi bio-kwasami owocowymi. Regeneracja kamienia, konglomeratów oraz matowych frontów Fenix bez ryzyka mikrozarysowań.</p>
+            <div class="fc-bento-tags">
+              <span class="fc-bento-tag">Bio-enzymy cytrusowe</span>
+              <span class="fc-bento-tag">Ochrona matu Fenix</span>
+              <span class="fc-bento-tag">Stal szlachetna Inox</span>
+              <span class="fc-bento-tag">Zero zarysowań</span>
+            </div>
+          </div>
+          <div class="fc-bento-callout callout-violet">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+            <span>Atest PZH: Bezpieczny kontakt z żywnością bezpośrednio po zakończeniu prac.</span>
+          </div>
+        </article>
+
+        <!-- Metric Bento: 1 Col -->
+        <article class="fc-bento-card bento-metric metric-lime">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-dark">
+              <span class="fc-badge-dot dot-dark"></span>
+              BIO-STANDARD pH
+            </span>
+            <div class="fc-bento-icon-box box-dark">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"></path><path d="m4.93 4.93 4.24 4.24"></path><path d="m14.83 14.83 4.24 4.24"></path><path d="M2 12h20"></path></svg>
+            </div>
+          </div>
+          <div class="fc-metric-center">
+            <div class="fc-metric-val">pH 4.2</div>
+            <div class="fc-metric-label">Aktywny Bio-Kwas Owocowy</div>
+            <p class="fc-metric-sub">Emulguje przypalony tłuszcz i nagar w 180 sekund bez żrącej sody i duszącego dymu.</p>
+          </div>
+          <div class="fc-metric-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>100% Wegański · 0% Chloru</span>
+          </div>
+        </article>
+
+        <!-- Checklist Bento: 1 Col -->
+        <article class="fc-bento-card bento-checklist">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-slate">PROCEDURY KUCHNIA</span>
+            <div class="fc-bento-icon-box box-subtle">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11 3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+            </div>
+          </div>
+          <div class="fc-bento-body">
+            <h4>Rejestr Czynności</h4>
+            <ul class="fc-bento-checklist">
+              <li>
+                <span class="fc-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span>Mycie frontów kuchennych i frezów bez smug</span>
+              </li>
+              <li>
+                <span class="fc-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span>Hydro-polerowanie zlewu granitowego i baterii</span>
+              </li>
+              <li>
+                <span class="fc-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span>Czyszczenie obudów AGD (lodówka, piekarnik, ekspres)</span>
+              </li>
+              <li>
+                <span class="fc-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span>Dezynfekcja szuflady podzlewowej i selektorów</span>
+              </li>
+            </ul>
+          </div>
+          <div class="fc-bento-footer">
+            <span class="fc-footer-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              4-etapowa inspekcja optyczna
+            </span>
+          </div>
+        </article>
+
+        <!-- Protocol Bento: 1 Col (Obsidian) -->
+        <article class="fc-bento-card bento-protocol bento-obsidian">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-obsidian-lime">
+              <span class="fc-badge-dot dot-lime"></span>
+              KOD STREFY #01 · ZIELONY
+            </span>
+            <div class="fc-bento-icon-box box-obsidian">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+          </div>
+          <div class="fc-bento-body">
+            <h4>Protokół Zielonej Strefy</h4>
+            <p>Zielone mikrofibry 380 GSM dedykowane są wyłącznie powierzchniom roboczym kuchni. Gwarancja absolutnego braku kontaktu z chemią łazienkową.</p>
+          </div>
+          <div class="fc-bento-footer">
+            <span class="fc-obsidian-pill">HACCP Separation Standard</span>
+          </div>
+        </article>
+
+        <!-- Detail / Care Bento: 1 Col (Mint) -->
+        <article class="fc-bento-card bento-detail bento-mint">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-mint">REGENERACJA POWŁOK</span>
+            <div class="fc-bento-icon-box box-mint">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+            </div>
+          </div>
+          <div class="fc-bento-body">
+            <h4>Hydrofobizacja Granitu</h4>
+            <p>Naturalny bio-wosk carnauba nałożony na zlewozmywaki i blaty kamienne tworzy barierę perlenia, zapobiegając osadom wapiennym przez 14 dni.</p>
+          </div>
+          <div class="fc-bento-footer">
+            <span class="fc-mint-pill">Efekt Perlenia Wody</span>
+          </div>
+        </article>
+      </div>
+
+      <!-- ===================================================================
+           TAB 2: SALON & LIVING (CleanCo Framer Bento)
+           =================================================================== -->
+      <div class="fc-scope-panel fc-scope-bento-grid reveal-init" id="scope-salon" role="tabpanel" style="display: none;">
+        <!-- Metric Bento: 1 Col (Electric Violet) -->
+        <article class="fc-bento-card bento-metric metric-violet">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-white">
+              <span class="fc-badge-dot dot-lime"></span>
+              FILTRACJA KLINICZNA
+            </span>
+            <div class="fc-bento-icon-box box-violet-light">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>
+            </div>
+          </div>
+          <div class="fc-metric-center">
+            <div class="fc-metric-val">HEPA H13</div>
+            <div class="fc-metric-label">Medyczna Czystość Powietrza</div>
+            <p class="fc-metric-sub">Turbiny cyklonowe zatrzymują 99.97% cząstek kurzu, pyłków i roztoczy o wielkości od 0.3 mikrona.</p>
+          </div>
+          <div class="fc-metric-chip chip-lime">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Certyfikat Alergologiczny ECARF</span>
+          </div>
+        </article>
+
+        <!-- Hero Bento: 2 Cols -->
+        <article class="fc-bento-card bento-hero bento-white">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-violet">
+              <span class="fc-badge-dot"></span>
+              PKT 01 · SALON &amp; WYPOCZYNEK
+            </span>
+            <div class="fc-bento-icon-box box-violet">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="10" width="20" height="9" rx="2"></rect><path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"></path><line x1="2" y1="15" x2="22" y2="15"></line></svg>
+            </div>
+          </div>
+          <div class="fc-bento-body">
+            <h3>Meble Tapicerowane, Drewno &amp; Akustyka</h3>
+            <p>Głęboka ekstrakcja kurzu ze szczelin sof, foteli i wełnianych dywanów z użyciem wibrującej turboszczotki. Odżywianie blatów dębowych i orzechowych szlachetnymi woskami roślinnymi.</p>
+            <div class="fc-bento-tags">
+              <span class="fc-bento-tag">Turboszczotki tkaninowe</span>
+              <span class="fc-bento-tag">Wosk Carnauba do dębu</span>
+              <span class="fc-bento-tag">Sztukateria &amp; Gzymsy</span>
+              <span class="fc-bento-tag">Neutralizacja sierści</span>
+            </div>
+          </div>
+          <div class="fc-bento-callout callout-violet">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+            <span>Bezpieczne dla tkanin Bouclé, lnu i weluru bez ryzyka mikrozmechacenia.</span>
+          </div>
+        </article>
+
+        <!-- Checklist Bento: 1 Col -->
+        <article class="fc-bento-card bento-checklist">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-slate">PROCEDURY SALON</span>
+            <div class="fc-bento-icon-box box-subtle">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11 3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+            </div>
+          </div>
+          <div class="fc-bento-body">
+            <h4>Harmonia &amp; Detale</h4>
+            <ul class="fc-bento-checklist">
+              <li>
+                <span class="fc-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span>Odkurzanie zakamarków mebli wypoczynkowych</span>
+              </li>
+              <li>
+                <span class="fc-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span>Ścieranie kurzu z designerskich lamp i abażurów</span>
+              </li>
+              <li>
+                <span class="fc-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span>Pielęgnacja ramek, sztukaterii i luster</span>
+              </li>
+              <li>
+                <span class="fc-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span>Przecieranie cokołów, listew i włączników światła</span>
+              </li>
+            </ul>
+          </div>
+          <div class="fc-bento-footer">
+            <span class="fc-footer-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              Odpylanie statyczne 360°
+            </span>
+          </div>
+        </article>
+
+        <!-- Protocol Bento: 1 Col (Obsidian) -->
+        <article class="fc-bento-card bento-protocol bento-obsidian">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-obsidian-blue">
+              <span class="fc-badge-dot dot-blue"></span>
+              KOD STREFY #02 · NIEBIESKI
+            </span>
+            <div class="fc-bento-icon-box box-obsidian">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+          </div>
+          <div class="fc-bento-body">
+            <h4>Standard Antystatyczny</h4>
+            <p>Niebieskie mikrofibry o splocie diagonalnym z ujemnym ładunkiem elektrostatycznym redukują osiadanie kurzu na meblach RTV nawet o 65%.</p>
+          </div>
+          <div class="fc-bento-footer">
+            <span class="fc-obsidian-pill">Bariera Antystatyczna</span>
+          </div>
+        </article>
+
+        <!-- Detail / Care Bento: 1 Col (Lavender) -->
+        <article class="fc-bento-card bento-detail bento-lavender">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-lavender">OPTYKA &amp; EKRANY</span>
+            <div class="fc-bento-icon-box box-lavender">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </div>
+          </div>
+          <div class="fc-bento-body">
+            <h4>Ochrona Matryc OLED / 8K</h4>
+            <p>Specjalistyczna nanofibra bezkłaczkowa do telewizorów i monitorów graficznych. Zero alkoholu, zero smug, 100% ochrony powłok antyrefleksyjnych.</p>
+          </div>
+          <div class="fc-bento-footer">
+            <span class="fc-lavender-pill">0% Ryzyka dla Ekranu</span>
+          </div>
+        </article>
+      </div>
+
+      <!-- ===================================================================
+           TAB 3: ŁAZIENKA & SPA (CleanCo Framer Bento)
+           =================================================================== -->
+      <div class="fc-scope-panel fc-scope-bento-grid reveal-init" id="scope-lazienka" role="tabpanel" style="display: none;">
+        <!-- Hero Bento: 2 Cols -->
+        <article class="fc-bento-card bento-hero bento-white">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-violet">
+              <span class="fc-badge-dot"></span>
+              PKT 01 · STREFA MOKRA &amp; KABINY
+            </span>
+            <div class="fc-bento-icon-box box-violet">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-2.12 0 1.5 1.5 0 0 0 0 2.12L7 8"></path><path d="M4 14h16c0 4-3.5 6-8 6s-8-2-8-6Z"></path><path d="M6 14v-4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4"></path></svg>
+            </div>
+          </div>
+          <div class="fc-bento-body">
+            <h3>Hydrofobowe SPA, Szkło Walk-In &amp; Armatura</h3>
+            <p>Likwidacja kamienia wapiennego i osadów mydlanych z szyb prysznicowych, wanien wolnostojących oraz baterii w wykończeniu czarny mat, chrom i szczotkowane złoto. Bez żrących oparów chloru.</p>
+            <div class="fc-bento-tags">
+              <span class="fc-bento-tag">Szkło Walk-In bez smug</span>
+              <span class="fc-bento-tag">Armatura PVD Złoto &amp; Mat</span>
+              <span class="fc-bento-tag">Bio-kwas mlekowy</span>
+              <span class="fc-bento-tag">Fugi bez pleśni</span>
+            </div>
+          </div>
+          <div class="fc-bento-callout callout-violet">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+            <span>Certyfikat Delikatności: Bezpieczny dla powłok galwanicznych i naturalnego marmuru Carrara.</span>
+          </div>
+        </article>
+
+        <!-- Metric Bento: 1 Col (CleanCo Lime) -->
+        <article class="fc-bento-card bento-metric metric-lime">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-dark">
+              <span class="fc-badge-dot dot-dark"></span>
+              BIO-ODDYCHANIE
+            </span>
+            <div class="fc-bento-icon-box box-dark">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
+            </div>
+          </div>
+          <div class="fc-metric-center">
+            <div class="fc-metric-val">0% Chloru</div>
+            <div class="fc-metric-label">Formuła Bio-Kwasu Mlekowego</div>
+            <p class="fc-metric-sub">Naturalny kwas z fermentacji buraczanej rozpuszcza kamień w kilka chwil bez drażnienia dróg oddechowych domowników i łap zwierząt.</p>
+          </div>
+          <div class="fc-metric-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Atest Ecocert Organic Standard</span>
+          </div>
+        </article>
+
+        <!-- Checklist Bento: 1 Col -->
+        <article class="fc-bento-card bento-checklist">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-slate">PROCEDURY ŁAZIENKA</span>
+            <div class="fc-bento-icon-box box-subtle">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11 3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+            </div>
+          </div>
+          <div class="fc-bento-body">
+            <h4>Karta Zabiegów SPA</h4>
+            <ul class="fc-bento-checklist">
+              <li>
+                <span class="fc-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span>Odkamienianie deszczownic i dysz hydromasażu</span>
+              </li>
+              <li>
+                <span class="fc-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span>Mycie i polerowanie ceramiki sanitarnej</span>
+              </li>
+              <li>
+                <span class="fc-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span>Czyszczenie luster wielkoformatowych anty-para</span>
+              </li>
+              <li>
+                <span class="fc-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span>Dezynfekcja parowa odpływów liniowych</span>
+              </li>
+            </ul>
+          </div>
+          <div class="fc-bento-footer">
+            <span class="fc-footer-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              Krystaliczna przejrzystość
+            </span>
+          </div>
+        </article>
+
+        <!-- Protocol Bento: 1 Col (Obsidian) -->
+        <article class="fc-bento-card bento-protocol bento-obsidian">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-obsidian-red">
+              <span class="fc-badge-dot dot-red"></span>
+              KOD STREFY #04 · CZERWONY
+            </span>
+            <div class="fc-bento-icon-box box-obsidian">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            </div>
+          </div>
+          <div class="fc-bento-body">
+            <h4>Rygor Czerwonej Strefy</h4>
+            <p>Czerwony pakiet mikrofibr i gąbek sterylizowanych w 90°C służy wyłącznie do muszli WC i bidetu. Bezwzględna separacja sanitarna wyklucza transfer drobnoustrojów.</p>
+          </div>
+          <div class="fc-bento-footer">
+            <span class="fc-obsidian-pill">99.9% Eliminacji Bakterii</span>
+          </div>
+        </article>
+
+        <!-- Detail / Care Bento: 1 Col (Mint) -->
+        <article class="fc-bento-card bento-detail bento-mint">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-mint">NANOGLASS SHIELD</span>
+            <div class="fc-bento-icon-box box-mint">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m4.93 4.93 4.24 4.24"></path><path d="m14.83 14.83 4.24 4.24"></path><path d="M14 12a2 2 0 1 0-4 0 2 2 0 0 0 4 0Z"></path></svg>
+            </div>
+          </div>
+          <div class="fc-bento-body">
+            <h4>Polimeryzacja Szkła Walk-In</h4>
+            <p>Aplikacja powłoki hydrofobowej sprawia, że krople wody natychmiast spływają do odpływu, chroniąc kabinę przed osadami z mydła przez kolejne 21 dni.</p>
+          </div>
+          <div class="fc-bento-footer">
+            <span class="fc-mint-pill">Efekt Spływu Kropelkowego</span>
+          </div>
+        </article>
+      </div>
+
+      <!-- ===================================================================
+           TAB 4: SYPIALNIA (CleanCo Framer Bento)
+           =================================================================== -->
+      <div class="fc-scope-panel fc-scope-bento-grid reveal-init" id="scope-sypialnia" role="tabpanel" style="display: none;">
+        <!-- Metric Bento: 1 Col (Lavender) -->
+        <article class="fc-bento-card bento-metric metric-lavender">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-violet">
+              <span class="fc-badge-dot"></span>
+              GĘSTOŚĆ MIKROFIBRY
+            </span>
+            <div class="fc-bento-icon-box box-lavender-deep">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg>
+            </div>
+          </div>
+          <div class="fc-metric-center">
+            <div class="fc-metric-val">380 GSM</div>
+            <div class="fc-metric-label">Pluszowa Mikrofibra Premium</div>
+            <p class="fc-metric-sub">Miliony gęstych mikrowłókien trwale zamykają w sobie pył i alergeny bez wzbijania ich w powietrze sypialni.</p>
+          </div>
+          <div class="fc-metric-chip chip-violet">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Zero Wzbijania Kurzu</span>
+          </div>
+        </article>
+
+        <!-- Hero Bento: 2 Cols -->
+        <article class="fc-bento-card bento-hero bento-white">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-violet">
+              <span class="fc-badge-dot"></span>
+              PKT 01 · OAZA SPOKOJNEGO SNU
+            </span>
+            <div class="fc-bento-icon-box box-violet">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"></path><path d="M2 8h18a2 2 0 0 1 2 2v10"></path><path d="M2 17h20"></path><path d="M6 8v9"></path></svg>
+            </div>
+          </div>
+          <div class="fc-bento-body">
+            <h3>Klimat Głębokiego Snu &amp; Garderoba</h3>
+            <p>Głębokie odkurzanie materacy, wezgłowi tapicerowanych oraz strefy pod łóżkiem. Porządkowanie stolików nocnych, polerowanie frontów szaf i opcjonalna aromaterapia naturalną lawendą.</p>
+            <div class="fc-bento-tags">
+              <span class="fc-bento-tag">Ekstrakcja kurzu z materaca</span>
+              <span class="fc-bento-tag">Wezgłowia pikowane</span>
+              <span class="fc-bento-tag">Fronty garderobiane</span>
+              <span class="fc-bento-tag">Dyskrecja sfery prywatnej</span>
+            </div>
+          </div>
+          <div class="fc-bento-callout callout-violet">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+            <span>Czyste mikromateriały: Zapewniają optymalne warunki tlenowe dla regenerującego snu.</span>
+          </div>
+        </article>
+
+        <!-- Checklist Bento: 1 Col -->
+        <article class="fc-bento-card bento-checklist">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-slate">PROCEDURY SYPIALNIA</span>
+            <div class="fc-bento-icon-box box-subtle">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11 3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+            </div>
+          </div>
+          <div class="fc-bento-body">
+            <h4>Rytuał Świeżości</h4>
+            <ul class="fc-bento-checklist">
+              <li>
+                <span class="fc-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span>Wietrzenie i odświeżenie mikroklimatu pokoju</span>
+              </li>
+              <li>
+                <span class="fc-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span>Ścielenie łóżka z układaniem poduszek ozdobnych</span>
+              </li>
+              <li>
+                <span class="fc-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span>Odkurzanie szczelin ramy i podłogi pod łóżkiem</span>
+              </li>
+              <li>
+                <span class="fc-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span>Przecieranie luster i uchwytów garderoby</span>
+              </li>
+            </ul>
+          </div>
+          <div class="fc-bento-footer">
+            <span class="fc-footer-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              Perfekcyjny porządek
+            </span>
+          </div>
+        </article>
+
+        <!-- Protocol Bento: 1 Col (Obsidian) -->
+        <article class="fc-bento-card bento-protocol bento-obsidian">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-obsidian-lime">
+              <span class="fc-badge-dot dot-lime"></span>
+              PROTOKÓŁ WELL-BEING
+            </span>
+            <div class="fc-bento-icon-box box-obsidian">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"></path><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+            </div>
+          </div>
+          <div class="fc-bento-body">
+            <h4>Dyskrecja &amp; Cicha Praca</h4>
+            <p>Akustycznie wytłumiony sprzęt poniżej 68 dB. Pełen szacunek dla prywatnych rzeczy w garderobie. Przestawianie bibelotów na miękkich filcowych podkładkach.</p>
+          </div>
+          <div class="fc-bento-footer">
+            <span class="fc-obsidian-pill">Standard VIP Discretion</span>
+          </div>
+        </article>
+
+        <!-- Detail / Care Bento: 1 Col (Lime) -->
+        <article class="fc-bento-card bento-detail bento-lime">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-dark">AROMATERAPIA EKO</span>
+            <div class="fc-bento-icon-box box-dark">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+            </div>
+          </div>
+          <div class="fc-bento-body">
+            <h4>Lawenda Prowansalska</h4>
+            <p>Subtelna mgiełka z czystego organicznego hydrolatu lawendowego nanoszona na świeże tekstylia. Uspokaja zmysły i naturalnie odstrasza owady.</p>
+          </div>
+          <div class="fc-bento-footer">
+            <span class="fc-lime-pill">100% Czysty Hydrolat Bio</span>
+          </div>
+        </article>
+      </div>
+
+      <!-- ===================================================================
+           TAB 5: OKNA & DETALE (CleanCo Framer Bento)
+           =================================================================== -->
+      <div class="fc-scope-panel fc-scope-bento-grid reveal-init" id="scope-okna" role="tabpanel" style="display: none;">
+        <!-- Hero Bento: 2 Cols -->
+        <article class="fc-bento-card bento-hero bento-white">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-violet">
+              <span class="fc-badge-dot"></span>
+              PKT 01 · PRZESZKLENIA &amp; DETALE
+            </span>
+            <div class="fc-bento-icon-box box-violet">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="12" y1="3" x2="12" y2="21"></line><line x1="3" y1="12" x2="21" y2="12"></line></svg>
+            </div>
+          </div>
+          <div class="fc-bento-body">
+            <h3>Panoramiczne Przeszklenia &amp; Architektura Wnętrza</h3>
+            <p>Precyzyjne mycie ram aluminiowych, uszczelek, rowków odpływowych i parapetów kamiennych. Odpylanie listew cokołowych, gzymsów, gniazdek i włączników w całym mieszkaniu.</p>
+            <div class="fc-bento-tags">
+              <span class="fc-bento-tag">Okna panoramiczne &amp; HS</span>
+              <span class="fc-bento-tag">Rowki i uszczelki ram</span>
+              <span class="fc-bento-tag">Parapety kamienne</span>
+              <span class="fc-bento-tag">Włączniki światła &amp; cokoły</span>
+            </div>
+          </div>
+          <div class="fc-bento-callout callout-violet">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+            <span>Gwarancja Krystaliczności: Zero refleksów i tęczowych smug nawet w ostrym świetle południowym.</span>
+          </div>
+        </article>
+
+        <!-- Metric Bento: 1 Col (CleanCo Lime) -->
+        <article class="fc-bento-card bento-metric metric-lime">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-dark">
+              <span class="fc-badge-dot dot-dark"></span>
+              CZYSTOŚĆ OPTYCZNA
+            </span>
+            <div class="fc-bento-icon-box box-dark">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            </div>
+          </div>
+          <div class="fc-metric-center">
+            <div class="fc-metric-val">100% Bez Smug</div>
+            <div class="fc-metric-label">Bio-Etanol z Trzciny Cukrowej</div>
+            <p class="fc-metric-sub">Błyskawicznie odparowuje bez pozostawiania tłustego filmu, który przyciągałby kurz miejski.</p>
+          </div>
+          <div class="fc-metric-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Długotrwały Efekt Czystości</span>
+          </div>
+        </article>
+
+        <!-- Checklist Bento: 1 Col -->
+        <article class="fc-bento-card bento-checklist">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-slate">PROCEDURY DETALE</span>
+            <div class="fc-bento-icon-box box-subtle">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11 3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+            </div>
+          </div>
+          <div class="fc-bento-body">
+            <h4>Mikro-Architektura</h4>
+            <ul class="fc-bento-checklist">
+              <li>
+                <span class="fc-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span>Próżniowe oczyszczanie prowadnic i uszczelek</span>
+              </li>
+              <li>
+                <span class="fc-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span>Polerowanie klamek, szyldów i zamków drzwiowych</span>
+              </li>
+              <li>
+                <span class="fc-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span>Mycie listew przypodłogowych i cokołów na wilgotno</span>
+              </li>
+              <li>
+                <span class="fc-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                <span>Dezynfekcja włączników światła i domofonu</span>
+              </li>
+            </ul>
+          </div>
+          <div class="fc-bento-footer">
+            <span class="fc-footer-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              Precyzja co do milimetra
+            </span>
+          </div>
+        </article>
+
+        <!-- Protocol Bento: 1 Col (Obsidian) -->
+        <article class="fc-bento-card bento-protocol bento-obsidian">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-obsidian-lime">
+              <span class="fc-badge-dot dot-lime"></span>
+              OCHRONA MATERIAŁÓW
+            </span>
+            <div class="fc-bento-icon-box box-obsidian">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+          </div>
+          <div class="fc-bento-body">
+            <h4>Kondycjonowanie Uszczelek</h4>
+            <p>Zabezpieczenie gumowych uszczelek okiennych preparatem na bazie roślinnego silikonu zapobiega ich parnieniu, kruszeniu i nieszczelnościom termicznym.</p>
+          </div>
+          <div class="fc-bento-footer">
+            <span class="fc-obsidian-pill">Trwała Elastyczność Uszczelek</span>
+          </div>
+        </article>
+
+        <!-- Detail / Care Bento: 1 Col (Mint) -->
+        <article class="fc-bento-card bento-detail bento-mint">
+          <div class="fc-bento-top">
+            <span class="fc-bento-badge badge-mint">NATURALNY KAMIEŃ</span>
+            <div class="fc-bento-icon-box box-mint">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="6 3 18 3 22 9 12 22 2 9 6 3"></polygon></svg>
+            </div>
+          </div>
+          <div class="fc-bento-body">
+            <h4>Pielęgnacja Parapetów Kamiennych</h4>
+            <p>Konserwacja marmuru, granitu i spieków preparatem o neutralnym pH 7.0. Chroni przed odbarwieniami po wodzie z doniczek i osadach z kurzu miejskiego.</p>
+          </div>
+          <div class="fc-bento-footer">
+            <span class="fc-mint-pill">pH 7.0 Obojętne dla Kamienia</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CHAPTER 03: INTERACTIVE DRAGGABLE BEFORE / AFTER COMPARISON (1:1 Same Kitchen)
+         ========================================================================== -->
+    <section class="fc-section" id="before-after">
+      <div class="fc-section-head reveal-init">
+        <span class="fc-section-tag">Widoczny Rezultat 1:1</span>
+        <h2 class="fc-section-title">Efekt FreshClean — przesuń, aby porównać</h2>
+        <p class="fc-section-desc">Ta sama kuchnia przed i po naszej wizycie: zobacz usunięcie tłustych osadów, plam po kawie i zacieków na wyspie kuchennej oraz armaturze.</p>
+      </div>
+
+      <div class="fc-ba-wrapper reveal-init">
+        <div class="fc-ba-slider" id="baSlider" tabindex="0" aria-label="Suwak porównania przed i po sprzątaniu tej samej kuchni">
+          <!-- Background Image: Dirty Kitchen (Exact Same Kitchen Geometry) -->
+          <img class="fc-ba-img" src="assets/02_before_after_kitchen_dirty.jpg?v=real_photo" alt="Ta sama kuchnia przed sprzątaniem: widoczne plamy po kawie, tłusty osad, okruchy i zacieki">
+          <span class="fc-ba-badge left">Przed Sprzątaniem · Osad i Plamy</span>
+
+          <!-- Foreground Overlay Image: Sparkling Clean Kitchen (Exact Same Kitchen Geometry) -->
+          <div class="fc-ba-overlay" id="baOverlay">
+            <img class="fc-ba-img" src="assets/03_before_after_kitchen_clean.jpg?v=aligned2" alt="Ta sama kuchnia po ekologicznym sprzątaniu FreshClean: lśniąca wyspa, czysta płyta i armatura">
+            <span class="fc-ba-badge right">Po Serwisie FreshClean · 100% Blasku</span>
+          </div>
+
+          <!-- Draggable Divider Handle -->
+          <div class="fc-ba-handle" id="baHandle">
+            <div class="fc-ba-knob">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Proof Callout Pills Under Slider -->
+        <div class="fc-ba-metrics-strip">
+          <div class="fc-ba-metric-pill">
+            <span class="fc-ba-metric-dot" style="background:#a459ff;"></span>
+            <div>
+              <strong>Blat kwarcowy i wyspa</strong>
+              <span>Usunięte plamy po espresso, tłuszczu i osadzie kamiennym</span>
+            </div>
+          </div>
+          <div class="fc-ba-metric-pill">
+            <span class="fc-ba-metric-dot" style="background:#00d084;"></span>
+            <div>
+              <strong>Bateria, zlew i płyta grzewcza</strong>
+              <span>Odkamienione kwasem mlekowym i wypolerowane na sucho</span>
+            </div>
+          </div>
+          <div class="fc-ba-metric-pill">
+            <span class="fc-ba-metric-dot" style="background:#ccff00;"></span>
+            <div>
+              <strong>Fronty i posadzka dębowa</strong>
+              <span>Zero smug pod światło słoneczne · bezpieczne pH 7.0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CHAPTER 04: BOTANICAL PROTOCOL & 4-COLOR SYSTEM (CleanCo Architectural Bento)
+         ========================================================================== -->
+    <section class="fc-section" id="protocol">
+      <div class="fc-protocol-showcase reveal-init">
+        <!-- Left Photo Column with Floating Lab Telemetry -->
+        <div class="fc-protocol-visual">
+          <img class="fc-protocol-img" src="assets/05_eco_kit_caddy.jpg" alt="Ekologiczny zestaw środków czystości FreshClean w drewnianym organizerze">
+          <div class="fc-protocol-floating-card">
+            <div class="fc-proto-float-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+            </div>
+            <div>
+              <strong>Certyfikat EU Ecolabel & pH Neutral</strong>
+              <span>0% chloru, 0% fosforanów, 100% biodegradowalne ekstrakty roślinne</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 4-Zone Microfiber Protocol Bento -->
+        <div class="fc-protocol-content">
+          <span class="fc-section-tag">Bezpieczeństwo Domu & Higiena</span>
+          <h2 class="fc-section-title">Bezpieczne dla dzieci, zwierząt i naturalnego kamienia</h2>
+          <p class="fc-section-desc">Do każdego mieszkania otwieramy świeżo wyprany w 90°C pakiet mikrofibr. Rygorystyczny system 4 kolorów gwarantuje, że ściereczka z łazienki nigdy nie dotknie Twojego blatu w kuchni.</p>
+
+          <div class="fc-colors-grid-rich">
+            <div class="fc-zone-card zone-red">
+              <div class="fc-zone-head">
+                <span class="fc-zone-badge">STREFA 01 · SANITARNA</span>
+                <div class="fc-zone-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+              </div>
+              <h4>Czerwona Mikrofibra</h4>
+              <p>Używana wyłącznie do zewnętrznych i wewnętrznych stref toalet oraz bidetów. Izolowana w osobnym worku.</p>
+            </div>
+
+            <div class="fc-zone-card zone-amber">
+              <div class="fc-zone-head">
+                <span class="fc-zone-badge">STREFA 02 · ARMATURA</span>
+                <div class="fc-zone-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/></svg>
+                </div>
+              </div>
+              <h4>Żółta Mikrofibra</h4>
+              <p>Przeznaczona wyłącznie do umywalek, wanien, kabin prysznicowych i płytek ceramicznych w łazience.</p>
+            </div>
+
+            <div class="fc-zone-card zone-blue">
+              <div class="fc-zone-head">
+                <span class="fc-zone-badge">STREFA 03 · SALON & SZKŁO</span>
+                <div class="fc-zone-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                </div>
+              </div>
+              <h4>Niebieska Mikrofibra</h4>
+              <p>Bezpyłowy splot do luster, przeszkleń, mebli drewnianych, parapetów i sprzętu RTV w salonie oraz sypialniach.</p>
+            </div>
+
+            <div class="fc-zone-card zone-green">
+              <div class="fc-zone-head">
+                <span class="fc-zone-badge">STREFA 04 · KUCHNIA BIO</span>
+                <div class="fc-zone-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/></svg>
+                </div>
+              </div>
+              <h4>Zielona Mikrofibra</h4>
+              <p>Stosowana wyłącznie na blatach kuchennych, wyspie, stole jadalnianym i powierzchniach kontaktu z żywnością.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CHAPTER 05: VERIFIED CLEANERS & GUARANTEE (CleanCo Color-Block Architecture)
+         ========================================================================== -->
+    <section class="fc-section" id="security">
+      <div class="fc-security-bento reveal-init">
+        <!-- Top Row: Editorial Copy + CleanCo Overlapping Color-Block KPI Cards -->
+        <div class="fc-security-top">
+          <div class="fc-security-intro">
+            <span class="fc-section-tag">Bezpieczeństwo Mienia</span>
+            <h2 class="fc-section-title">Ludzie, którym możesz bez obaw powierzyć klucze</h2>
+            <p class="fc-section-desc">Nie jesteśmy anonimowym marketplace’em z ogłoszeniami. Zatrudniamy własny, przeszkolony zespół i bierzemy pełną odpowiedzialność finansową za Twoje mieszkanie.</p>
+          </div>
+
+          <!-- CleanCo Signature Color-Block Stat Cards -->
+          <div class="fc-cleanco-stat-stack">
+            <div class="fc-stat-block stat-lime">
+              <span class="fc-stat-kicker">DOŚWIADCZENIE W WARSZAWIE</span>
+              <div class="fc-stat-number">12 400+</div>
+              <p>Bezpiecznie wysprzątanych apartamentów i rezydencji ze średnią oceną 4.96/5.0</p>
+            </div>
+            <div class="fc-stat-block stat-violet">
+              <span class="fc-stat-kicker">OCHRONA PZU BIZNES</span>
+              <div class="fc-stat-number">1 000 000 zł</div>
+              <p>Aktywna polisa OC chroniąca marmur, parkiet, elektronikę i dzieła sztuki</p>
+            </div>
+            <div class="fc-stat-block stat-obsidian">
+              <span class="fc-stat-kicker">WERYFIKACJA PERSONELU</span>
+              <div class="fc-stat-number">100% KRK</div>
+              <p>Każdy specjalista posiada zaświadczenie o niekaralności i umowę o pracę</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Row: 3 Architectural Guarantee Pillars + Live Photo Card -->
+        <div class="fc-security-bottom">
+          <div class="fc-pillar-cards">
+            <article class="fc-pillar-card">
+              <div class="fc-pillar-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <div>
+                <h4>3-etapowa rekrutacja i egzamin praktyczny</h4>
+                <p>Zanim specjalista otrzyma klucze klienta, przechodzi weryfikację KRK, referencji oraz 80 godzin szkolenia z pielęgnacji kamienia, drewna i armatury.</p>
+              </div>
+            </article>
+
+            <article class="fc-pillar-card">
+              <div class="fc-pillar-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <div>
+                <h4>Bezpieczny depozyt kluczy i stały opiekun</h4>
+                <p>Klucze oznaczane są wyłącznie anonimowym kodem QR w sejfie biura, a do Twojego mieszkania przypisana jest zawsze ta sama zaufana osoba.</p>
+              </div>
+            </article>
+
+            <article class="fc-pillar-card">
+              <div class="fc-pillar-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <h4>Gwarancja Satysfakcji 24h bez dyskusji</h4>
+                <p>Jeśli po powrocie do domu zauważysz choćby najmniejsze niedociągnięcie, nasz zespół przyjedzie w ciągu 24 godzin i poprawi je całkowicie bezpłatnie.</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="fc-security-photo-card">
+            <img class="fc-protocol-img" src="assets/04_steam_upholstery_care.jpg" alt="Specjalistka FreshClean podczas parowego czyszczenia sofy w salonie">
+            <div class="fc-security-photo-overlay">
+              <span class="fc-security-badge">PROJEKTANT STANDARDÓW CZYSTOŚCI</span>
+              <strong>Stały nadzór koordynatora jakości i odbiór według listy 48 punktów</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CHAPTER 06: FULL BOOKING CONFIGURATOR & ORDER
+         ========================================================================== -->
+    <section class="fc-section" id="booking">
+      <div class="fc-section-head reveal-init">
+        <span class="fc-section-tag">Błyskawiczna Rezerwacja</span>
+        <h2 class="fc-section-title">Zarezerwuj termin w 60 sekund</h2>
+        <p class="fc-section-desc">Dane zostały zsynchronizowane z Twoimi ustawieniami w kalkulatorze. Wybierz dogodny termin i opcjonalne dodatki.</p>
+      </div>
+
+      <div class="fc-booking-card reveal-init">
+        <!-- Booking Form Inputs -->
+        <form id="fcBookingForm">
+          <!-- Addons -->
+          <div class="fc-form-group">
+            <label class="fc-form-label">Dodatkowe usługi na życzenie:</label>
+            <div class="fc-addons-grid">
+              <label class="fc-addon-item">
+                <input class="fc-addon-checkbox" type="checkbox" name="windows">
+                <div>
+                  <strong style="font-size: 13px; display: block;">Mycie okien (+120 zł)</strong>
+                  <small style="color: var(--fc-text-muted); font-size: 11px;">Dwustronnie, do 4 skrzydeł</small>
+                </div>
+              </label>
+              <label class="fc-addon-item">
+                <input class="fc-addon-checkbox" type="checkbox" name="oven">
+                <div>
+                  <strong style="font-size: 13px; display: block;">Wnętrze piekarnika (+60 zł)</strong>
+                  <small style="color: var(--fc-text-muted); font-size: 11px;">Usuwanie przypalonego tłuszczu</small>
+                </div>
+              </label>
+              <label class="fc-addon-item">
+                <input class="fc-addon-checkbox" type="checkbox" name="fridge">
+                <div>
+                  <strong style="font-size: 13px; display: block;">Wnętrze lodówki (+50 zł)</strong>
+                  <small style="color: var(--fc-text-muted); font-size: 11px;">Mycie półek i bio-odświeżenie</small>
+                </div>
+              </label>
+              <label class="fc-addon-item">
+                <input class="fc-addon-checkbox" type="checkbox" name="steam">
+                <div>
+                  <strong style="font-size: 13px; display: block;">Pranie parowe sofy (+160 zł)</strong>
+                  <small style="color: var(--fc-text-muted); font-size: 11px;">Ekstrakcja gorącą parą 140°C</small>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Date Selector -->
+          <div class="fc-form-group">
+            <label class="fc-form-label">Wybierz dogodny dzień:</label>
+            <div class="fc-date-grid">
+              <div class="fc-date-pill active" data-date="Jutro (Piątek)">
+                <small style="display: block; font-size: 11px; opacity: 0.8;">JUTRO</small>
+                <strong>Pt, 30 Paź</strong>
+              </div>
+              <div class="fc-date-pill" data-date="Sobota, 31 Paź">
+                <small style="display: block; font-size: 11px; opacity: 0.8;">WEEKEND</small>
+                <strong>Sob, 31 Paź</strong>
+              </div>
+              <div class="fc-date-pill" data-date="Poniedziałek, 2 Lis">
+                <small style="display: block; font-size: 11px; opacity: 0.8;">PONIEDZIAŁEK</small>
+                <strong>Pon, 2 Lis</strong>
+              </div>
+              <div class="fc-date-pill" data-date="Wtorek, 3 Lis">
+                <small style="display: block; font-size: 11px; opacity: 0.8;">WTOREK</small>
+                <strong>Wt, 3 Lis</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Time Slot Selector -->
+          <div class="fc-form-group">
+            <label class="fc-form-label">Przedział godzinowy rozpoczęcia:</label>
+            <div class="fc-slot-grid">
+              <button class="fc-slot-btn active" data-slot="08:00 - 12:00" type="button">Poranny (08:00 - 12:00)</button>
+              <button class="fc-slot-btn" data-slot="12:00 - 16:00" type="button">Popołudniowy (12:00 - 16:00)</button>
+              <button class="fc-slot-btn" data-slot="16:00 - 20:00" type="button">Wieczorny (16:00 - 20:00)</button>
+            </div>
+          </div>
+
+          <!-- Contact Details -->
+          <div class="fc-form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div>
+              <label class="fc-form-label" for="fcClientName">Imię i nazwisko</label>
+              <input class="fc-input" id="fcClientName" type="text" required placeholder="np. Anna Kowalska">
+            </div>
+            <div>
+              <label class="fc-form-label" for="fcClientPhone">Numer telefonu</label>
+              <input class="fc-input" id="fcClientPhone" type="tel" required placeholder="np. 500 123 456">
+            </div>
+          </div>
+
+          <div class="fc-form-group" style="display: grid; grid-template-columns: 2fr 1fr; gap: 14px;">
+            <div>
+              <label class="fc-form-label" for="fcClientAddress">Adres w Warszawie</label>
+              <input class="fc-input" id="fcClientAddress" type="text" required placeholder="np. ul. Mokotowska 45 m. 12">
+            </div>
+            <div>
+              <label class="fc-form-label" for="fcClientDistrict">Dzielnica</label>
+              <select class="fc-input" id="fcClientDistrict">
+                <option>Śródmieście</option>
+                <option>Mokotów</option>
+                <option>Wilanów</option>
+                <option>Wola</option>
+                <option>Żoliborz</option>
+                <option>Ursynów</option>
+                <option>Ochota</option>
+                <option>Praga</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="fc-btn-primary" style="width: 100%; padding: 16px; font-size: 16px; justify-content: center;" type="submit">
+            Potwierdź zamówienie sprzątania <span>✓</span>
+          </button>
+        </form>
+
+        <!-- Right Side Live Summary -->
+        <div class="fc-order-summary">
+          <div>
+            <h3 style="font-family: var(--fc-font-display); font-size: 20px; margin-bottom: 20px;">Podsumowanie zlecenia</h3>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px;">
+              <span style="color: var(--fc-text-secondary);">Pakiet:</span>
+              <strong id="sumServiceType">Standard Eco</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px;">
+              <span style="color: var(--fc-text-secondary);">Metraż i pokoje:</span>
+              <strong id="sumArea">50 m² (2 pok., 1 łaz.)</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px;">
+              <span style="color: var(--fc-text-secondary);">Częstotliwość:</span>
+              <strong id="sumFrequency">Co tydzień (-20%)</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px;">
+              <span style="color: var(--fc-text-secondary);">Termin:</span>
+              <strong id="sumDate">Jutro (Piątek)</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px;">
+              <span style="color: var(--fc-text-secondary);">Godziny:</span>
+              <strong id="sumSlot">08:00 - 12:00</strong>
+            </div>
+            <div style="border-top: 1px dashed var(--fc-border-strong); margin: 20px 0;"></div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+              <span style="font-weight: 700;">Razem do zapłaty:</span>
+              <span style="font-family: var(--fc-font-display); font-size: 32px; font-weight: 700; color: var(--fc-text-primary);" id="sumTotal">212 PLN</span>
+            </div>
+            <p style="font-size: 12px; color: var(--fc-text-muted); margin-top: 6px;" id="sumHours">Orientacyjny czas: ok. 3.5 godz.</p>
+          </div>
+
+          <div style="background: rgba(0, 208, 132, 0.08); padding: 14px; border-radius: 12px; border: 1px solid rgba(0, 208, 132, 0.2); font-size: 12px; color: var(--fc-accent-teal);">
+            ✓ Płatność kartą lub BLIK po zakończeniu prac i Twoim odbiorze.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CHAPTER 07: PRICING COMPARISON TABLE & GUARANTEE FAQ
+         ========================================================================== -->
+    <section class="fc-section" id="pricing">
+      <div class="fc-section-head reveal-init">
+        <span class="fc-section-tag">Przejrzysty Cennik</span>
+        <h2 class="fc-section-title">Porównaj pakiety usług</h2>
+        <p class="fc-section-desc">Żadnych ukrytych dopłat za dojazd na terenie Warszawy ani za profesjonalną chemię ekologiczną.</p>
+      </div>
+
+      <div class="fc-price-table-wrapper reveal-init">
+        <table class="fc-price-table">
+          <thead>
+            <tr>
+              <th>Zakres prac</th>
+              <th>Standard Eco</th>
+              <th>Generalne Gruntowne</th>
+              <th>Po remoncie</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Odkurzanie i mycie podłóg</td>
+              <td>✓</td>
+              <td>✓</td>
+              <td>✓ (odpylanie)</td>
+            </tr>
+            <tr>
+              <td>Mycie blatów, zlewu i frontów</td>
+              <td>✓</td>
+              <td>✓</td>
+              <td>✓</td>
+            </tr>
+            <tr>
+              <td>Dezynfekcja sanitariatów</td>
+              <td>✓</td>
+              <td>✓</td>
+              <td>✓</td>
+            </tr>
+            <tr>
+              <td>Odkamienianie fug i płytek</td>
+              <td>—</td>
+              <td>✓</td>
+              <td>✓</td>
+            </tr>
+            <tr>
+              <td>Mycie cokołów i futryn drzwi</td>
+              <td>—</td>
+              <td>✓</td>
+              <td>✓</td>
+            </tr>
+            <tr>
+              <td>Usuwanie pyłu gipsowego i farby</td>
+              <td>—</td>
+              <td>—</td>
+              <td>✓</td>
+            </tr>
+            <tr>
+              <td><strong>Cena wyjściowa (50 m²)</strong></td>
+              <td><strong>od 189 zł</strong></td>
+              <td><strong>od 340 zł</strong></td>
+              <td><strong>od 490 zł</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Expandable FAQ Accordion -->
+      <div class="fc-faq-list reveal-init">
+        <details class="fc-faq-item">
+          <summary class="fc-faq-summary">
+            Czy muszę być w domu podczas sprzątania?
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="fc-faq-content">
+            Nie, większość naszych stałych klientów przekazuje klucze na początku lub korzysta ze skrzynek kodowych. Możesz wrócić na sam 5-minutowy odbiór lub zlecić odbiór zdalny przez protokół fotograficzny.
+          </div>
+        </details>
+
+        <details class="fc-faq-item">
+          <summary class="fc-faq-summary">
+            Czy Wasze środki są w 100% bezpieczne dla zwierząt domowych?
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="fc-faq-content">
+            Tak. Stosujemy certyfikowane płyny pozbawione chloru, fosforanów i sztucznych barwników. Nawet jeśli pies lub kot poliże podłogę świeżo po myciu, jest całkowicie bezpieczny.
+          </div>
+        </details>
+
+        <details class="fc-faq-item">
+          <summary class="fc-faq-summary">
+            Co obejmuje Gwarancja Satysfakcji 24h?
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="fc-faq-content">
+            Jeśli w ciągu 24 godzin od zakończenia usługi zauważysz jakiekolwiek pominięte miejsce lub smugę, wyślij nam zdjęcie. Nasz koordynator przyjedzie bezpłatnie i doprowadzi powierzchnię do perfekcji.
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="fc-footer">
+    <div class="fc-footer-inner">
+      <div>
+        <a class="fc-brand" href="#top" style="margin-bottom: 16px;">
+          <span class="fc-brand-sparkle">✦</span> FRESH/CLEAN
+        </a>
+        <p style="color: #a0aec0; font-size: 14px; max-width: 440px; margin-bottom: 24px;">
+          Certyfikowany serwis sprzątający domy i apartamenty w Warszawie. Naturalna czystość, szacunek dla materiałów i pełna dyskrecja.
+        </p>
+        <div>
+          <strong style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: #ffffff;">Strefy obsługi w Warszawie:</strong>
+          <div class="fc-districts-grid">
+            <span class="fc-district-tag">Śródmieście</span>
+            <span class="fc-district-tag">Mokotów</span>
+            <span class="fc-district-tag">Wilanów</span>
+            <span class="fc-district-tag">Wola</span>
+            <span class="fc-district-tag">Żoliborz</span>
+            <span class="fc-district-tag">Ursynów</span>
+            <span class="fc-district-tag">Ochota</span>
+            <span class="fc-district-tag">Saska Kępa</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <strong style="display: block; font-size: 15px; margin-bottom: 16px; color: #ffffff;">Kontakt bezpośredni</strong>
+        <p style="font-size: 14px; color: #a0aec0; margin-bottom: 8px;">Infolinia: <a href="tel:+48228901234" style="color: #ffffff; text-decoration: none;">22 890 12 34</a></p>
+        <p style="font-size: 14px; color: #a0aec0; margin-bottom: 8px;">E-mail: kontakt@freshclean.pl</p>
+        <p style="font-size: 14px; color: #a0aec0;">Dyspozytornia: 07:00 – 21:00 (Pn–Sb)</p>
+      </div>
+      <div>
+        <strong style="display: block; font-size: 15px; margin-bottom: 16px; color: #ffffff;">Certyfikaty & OC</strong>
+        <p style="font-size: 14px; color: #a0aec0; margin-bottom: 8px;">Polisa OC PZU: 1 000 000 PLN</p>
+        <p style="font-size: 14px; color: #a0aec0; margin-bottom: 8px;">Ecolabel EU Certified</p>
+        <p style="font-size: 14px; color: #a0aec0;">KRS: 0000892145 · NIP: 5252819201</p>
+      </div>
+    </div>
+    <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px; text-align: center; font-size: 12px; color: #718096;">
+      FreshClean · Koncepcja serwisu sprzątającego dla portfolio Overflow · 2026
+    </div>
+  </footer>
+
+  <!-- Modal Booking Confirmation -->
+  <div class="fc-modal-backdrop" id="fcModal">
+    <div class="fc-modal">
+      <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(0, 208, 132, 0.15); color: var(--fc-accent-mint); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h3 style="font-family: var(--fc-font-display); font-size: 24px; margin-bottom: 12px;">Rezerwacja Przyjęta!</h3>
+      <p style="font-size: 15px; color: var(--fc-text-secondary); line-height: 1.5; margin-bottom: 24px;" id="modalDetails">
+        Dziękujemy! Twoja rezerwacja została wstępnie zarejestrowana.
+      </p>
+      <button class="fc-btn-primary" id="fcCloseModal" style="width: 100%; justify-content: center;" type="button">Świetnie, dziękuję!</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+  <!-- Overflow Portfolio Badge -->
+  <div class="ov-badge" id="ov-badge">
+    <a class="ov-badge__main" href="https://overflow-web.pl/work/freshclean/">
+      <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
+    </a>
+    <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
+  </div>
+  <style>
+  .ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
+  .ov-badge a{color:inherit;text-decoration:none}
+  .ov-badge__main{display:flex;align-items:center;gap:5px}
+  .ov-badge__mark{font-weight:700;letter-spacing:-.02em}
+  .ov-badge__dot{opacity:.45}
+  .ov-badge__type{opacity:.7}
+  .ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
+  .ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
+  @media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
+  @media print{.ov-badge{display:none}}
+  </style>
+  <script>
+  (function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
+  </script>
+
+<!-- universal-smooth-anchor-scroll -->
 <script>
-(function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
+(function(){
+  if(window.__ovSmoothScrollInit) return;
+  window.__ovSmoothScrollInit = true;
+  var animId = null;
+  function cancel(){ if(animId){ cancelAnimationFrame(animId); animId = null; } }
+  window.addEventListener('wheel', cancel, {passive:true});
+  window.addEventListener('touchstart', cancel, {passive:true});
+  window.addEventListener('keydown', cancel, {passive:true});
+  function smoothTo(targetY, dur){
+    cancel();
+    var startY = window.scrollY || window.pageYOffset || 0;
+    var maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    var destY = Math.min(Math.max(0, targetY), maxScroll);
+    var dist = destY - startY;
+    if(Math.abs(dist) < 3) return;
+    var startTime = performance.now();
+    var d = dur || 780;
+    function step(now){
+      var t = Math.min((now - startTime) / d, 1);
+      var ease = 1 - Math.pow(1 - t, 3);
+      window.scrollTo(0, startY + dist * ease);
+      if(t < 1) animId = requestAnimationFrame(step);
+      else animId = null;
+    }
+    animId = requestAnimationFrame(step);
+  }
+  window.__ovSmoothScrollTo = smoothTo;
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('a[href^="#"], [data-scroll-to], [data-target]');
+    if(!el) return;
+    var sel = el.getAttribute('data-scroll-to') || el.getAttribute('href');
+    if(!sel || sel.charAt(0) !== '#') return;
+    if(sel === '#'){
+      if(el.classList.contains('logo-link') || el.classList.contains('brand')){
+        e.preventDefault();
+        smoothTo(0, 750);
+      }
+      return;
+    }
+    var target = null;
+    try { target = document.querySelector(sel); } catch(err){}
+    if(!target) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var header = document.querySelector('header, nav.navbar, .site-header, .top-nav, .nav-bar');
+    var offset = 0;
+    if(header){
+      var pos = getComputedStyle(header).position;
+      if(pos === 'fixed' || pos === 'sticky'){
+        offset = header.offsetHeight || 72;
+      }
+    }
+    var top = (window.scrollY || window.pageYOffset || 0) + target.getBoundingClientRect().top - offset;
+    smoothTo(top, 780);
+  }, true);
+})();
 </script>
-</body></html>
+
+</body>
+</html>

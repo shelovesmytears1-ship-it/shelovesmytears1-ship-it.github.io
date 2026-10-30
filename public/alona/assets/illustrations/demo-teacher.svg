@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" role="img" aria-label="Учитель у доски">
+  <rect width="400" height="320" rx="24" fill="#f4f5ed"/>
+  <rect x="32" y="36" width="188" height="156" rx="14" fill="#dcebe2"/>
+  <rect x="50" y="53" width="152" height="119" rx="8" fill="#438172"/>
+  <path d="M76 89h84M76 112h62M76 136h75" stroke="#f7f3df" stroke-width="7" stroke-linecap="round" opacity=".9"/>
+  <circle cx="285" cy="105" r="42" fill="#edb994"/>
+  <path d="M244 100c1-37 23-58 51-58 31 0 49 22 49 53-10-12-18-19-31-23-17 13-37 19-69 18Z" fill="#604c44"/>
+  <path d="M218 289c4-74 28-115 68-115 43 0 69 40 75 115" fill="#e7aa74"/>
+  <path d="M263 184h45l-13 32h-20z" fill="#f5f0dd"/>
+  <path d="m285 220-18 69M287 220l21 69" stroke="#f5f0dd" stroke-width="7" stroke-linecap="round"/>
+  <rect x="23" y="262" width="111" height="18" rx="9" fill="#e8c975"/>
+</svg>

@@ -1,12 +1,12 @@
 ---
 title: Джерело
-tagline: E-commerce премиум чая с quiz «подбор по состоянию» вместо стандартного каталога
-niche: E-commerce
+tagline: Чайний ательє-журнал прямого імпорту, анатомія листа та інтерактивний калькулятор проливів Гунфу
+niche: Editorial & E-commerce
 year: '2026'
-palette: WARM-CEREMONIAL
+palette: BOTANICAL-ATELIER
 tier: 1
-accent: '#5B7C3D'
-bg: '#F8F4EC'
+accent: '#9E472A'
+bg: '#EDE5D5'
 siteUrl: https://overflow-web.pl/dzherelo/
 cover: /covers/dzherelo.jpg
 screens:
@@ -17,70 +17,91 @@ screens:
   - src: /screens/dzherelo-m3.webp
     kind: phone
 technologies:
-  - HTML
-  - CSS
-  - JavaScript
+  - HTML5
+  - CSS3 Tokens
+  - Vanilla JavaScript
+  - Web Audio API
 region:
   - UA
-summary: E-commerce премиум чая. Quiz «подбор по состоянию» вместо стандартного каталога. UA-локализация.
-order: 15
+summary: Чайний ательє-журнал прямого імпорту. Сенсорний ритуал проливів, анатомія цільного листа, інтерактивний таймер Гунфу з дзвоном чаші та авторська дров'яна кераміка.
+order: 99
 concept: true
 translations:
   pl:
-    tagline: E-commerce premium herbaty z quizem „dobór po stanie" zamiast standardowego katalogu
-    summary: E-commerce premium herbaty. Quiz „dobór po stanie" zamiast standardowego katalogu. Lokalizacja UA.
+    tagline: Herbaciarnia-magazyn z bezpośrednim importem, anatomią liścia i interaktywnym kalkulatorem parzeń Gongfu
+    summary: Herbaciarnia-magazyn bezpośredniego importu. Zmysłowy rytuał parzeń, anatomia liścia, interaktywny timer Gongfu z dźwiękiem misy oraz autorska ceramika opalana drewnem.
     body: |
       ## Kontekst
 
-      Sklep internetowy z herbatą premium z bezpośredniego importu — pu-erhy, oolongi, leżakowane gatunki; odbiorcy — Ukraińcy 30-50 z dochodem średnim+, którzy szukają wejścia w kulturę herbaty, a nie torebek do biura (koszyk 30-80 $). Zwykły katalog e-commerce tu nie działa: nowicjusz widzi siatkę 47 gatunków (green, black, oolong, pu-erh), nie zna różnicy — i wychodzi z pustym koszykiem. Nie ma czym wybierać: wie, co chce poczuć, ale nie wie, jaki gatunek do tego.
+      Flagowa publikacja i atelier herbaty z bezpośredniego importu z Tajwanu, Yunnanu i Fujianu. Grupa docelowa — koneserzy ceremonii herbacianej, kolekcjonerzy ceramiki i entuzjaści slow-livingu. Tradycyjny e-commerce z siatką anonimowych torebek spłyca kulturę herbaty. Wymagane było medium, które łączy wnikliwą publicystykę botaniczną z precyzyjną, dotykową prezentacją rzemiosła.
 
       ## Rozwiązanie
 
-      Główny mechanizm — quiz „dobór po stanie": cztery pytania (co chcesz poczuć, pora dnia, doświadczenie, ograniczenia) → 2-3 rekomendacje z opisem. To wejście dla nowicjusza — nie katalog, a konsultacja. Paleta — ciepły beżowy papier i oliwkowo-herbaciany akcent (nawiązanie do starych poradników ceremonii, prawdziwy kolor liścia, a nie „luxury gold"). Zdjęcia sourcingowe — góry i farmerzy, nie studyjne paczki: publiczność premium potrzebuje przejrzystości pochodzenia.
+      Architektura w estetyce Bellocq Tea Atelier połączona z precyzją botaniczną Song Tea:
+      - Ekran 1 (`100vh`) — nastrojowy chiaroscuro w 35mm kadrze z parującym czajnikiem kyusu i autorskim liternictwem szeryfowym.
+      - Monografie partii — interaktywna inspekcja liścia w 3 stanach (suchy liść, rozwinięty liść, kolor naparu) z paszportem parceli i wysokością zbioru.
+      - 5-stopniowy protokół Gongfu Cha — interaktywny timer na Web Audio API z akustycznym wybrzmieniem misy śpiewającej.
+      - Tabela korekty naparu — diagnostyka niuansów temperaturowych i proporcji wody.
+      - Dedykowany konfigurator zestawu degustacyjnego z wysuwanym koszykiem zamówienia.
 
       ## Wynik
 
-      HTML/CSS + JS na koszyk i quiz; stan quizu zapisuje się między wizytami, koszyk bez przeładowania, ceny w formacie ukraińskim. Lokalizacja UA jako główna — rynek niedoobsłużony (niemal całe premium herbaciane na Ukrainie jest anglojęzyczne). Sklep, w którym nowicjusz się nie boi: przez quiz przechodzi drogę od „nie znam się" do „kupiłem", nie błądząc po parametrach, które nic mu nie mówią.
+      Głębokie doświadczenie dotykowego rzemiosła: responsywne od monitorów QHD 2560px do smartfonów 390px, czysty natywny scroll bez opóźnień, zero bibliotek zewnętrznych, pełne wsparcie Web Audio API.
   en:
-    tagline: Premium tea e-commerce with a "by mood" quiz instead of a standard catalog
-    summary: Premium tea e-commerce. "By mood" quiz instead of a standard catalog. UA localization.
+    tagline: Botanical tea atelier magazine with direct import lots, leaf anatomy, and interactive Gongfu brewing timer
+    summary: Direct-import botanical tea atelier magazine. Sensory steeping ritual, whole-leaf anatomy, interactive Gongfu timer with singing bowl acoustic chime, and wood-fired ceramics.
     body: |
       ## Context
 
-      An online shop for premium direct-import tea — pu-erhs, oolongs, aged varieties; audience — Ukrainians 30-50, mid-plus income, looking for a way into tea culture, not office tea bags (order 30-80 $). A standard e-commerce catalog doesn't work here: a beginner sees a grid of 47 varieties (green, black, oolong, pu-erh), doesn't know the difference — and leaves with an empty cart. They have nothing to choose by: they know how they want to feel, not which variety fits.
+      A flagship tea atelier publication and collectible direct-import showroom featuring single-origin harvests from Taiwan, Yunnan, and Fujian. The target audience includes tea connoisseurs, ceramic collectors, and slow-living practitioners. Standard grocery e-commerce catalog grids fail to convey the sensory nuance and craft depth of artisanal whole-leaf tea.
 
-      ## The solution
+      ## The Solution
 
-      The main mechanism is a "by mood" quiz: four questions (how you want to feel, time of day, experience, restrictions) → 2-3 recommendations with descriptions. It's a beginner's entry — a consultation, not a catalog. Palette — warm beige paper and an olive-tea accent (a nod to old ceremony manuals, the real colour of a leaf, not "luxury gold"). Sourcing photos — mountains and farmers, not studio packets: a premium audience wants transparency of origin.
+      A sensory editorial architecture channeling Bellocq Tea Atelier's atmospheric chiaroscuro paired with Song Tea's whole-leaf botanical specimen precision:
+      - Exact `100vh` Screen 1 Hero — moody 35mm still-life photography with drifting steam, antique slate, and high-contrast editorial serif typography.
+      - Single-Origin Monographs — interactive 3-state leaf specimen inspector (dry rolled leaf, unfurled wet leaf, infusion liquor) with altitude and terroir credentials.
+      - 5-Steep Gongfu Protocol — dynamic temperature and steep duration slider paired with a live countdown timer and Web Audio singing-bowl acoustic chime.
+      - Sensory Troubleshooting Ledger — interactive diagnostics for water chemistry and extraction errors.
+      - Custom Tasting Box Builder & slide-over cart drawer.
 
-      ## The outcome
+      ## The Outcome
 
-      HTML/CSS + JS for cart and quiz; the quiz state persists between visits, the cart needs no reload, prices in the Ukrainian format. UA localization as the primary one — an underserved market (almost all premium tea in Ukraine is English-language). A shop where a beginner isn't scared off: the quiz takes them from "I don't know this" to "bought it" without wandering through specs that mean nothing to them.
+      A museum-grade tactile editorial platform: seamless responsiveness from 2560px QHD down to 390px mobile, zero wheel hijacking, native performance, and authentic artisanal immersion.
   ua:
-    tagline: E-commerce преміум чаю з quiz «підбір за станом» замість стандартного каталогу
-    summary: E-commerce преміум чаю. Quiz «підбір за станом» замість стандартного каталогу. UA-локалізація.
+    tagline: Чайний ательє-журнал прямого імпорту, анатомія листа та інтерактивний калькулятор проливів Гунфу
+    summary: Чайний ательє-журнал прямого імпорту. Сенсорний ритуал проливів, анатомія цільного листа, інтерактивний таймер Гунфу з дзвоном чаші та авторська дров'яна кераміка.
     body: |
       ## Контекст
 
-      Інтернет-магазин преміум-чаю прямого імпорту — пуери, улуни, витримані сорти; аудиторія — українці 30-50 із середнім+ доходом, які шукають вхід у чайну культуру, а не пакетики для офісу (чек 30-80 $). Звичайний e-commerce каталог тут не працює: новачок бачить сітку з 47 сортів (green, black, oolong, pu-erh), не знає різниці — і йде з порожнім кошиком. Йому нічим вибирати: він знає, що хоче відчути, але не знає, який сорт під це.
+      Флагманський чайний ательє-журнал та шоурум селекційного прямого імпорту з високогірних садів Тайваню, Юньнані та Фуцзяні. Аудиторія — знавці чайної культури, колекціонери авторської кераміки та поціновувачі сповільненого ритму життя. Звичайний e-commerce каталог із сухою сіткою пачок знецінює ремесло: тут потрібне видання, де кожен лот говорить голосом свого теруару.
 
       ## Рішення
 
-      Головний механізм — quiz «підбір за станом»: чотири питання (що хочеш відчути, час доби, досвід, обмеження) → 2-3 рекомендації з описом. Це вхід для новачка — не каталог, а консультація. Палітра — теплий бежевий папір і оливково-чайний акцент (відсилання до старих посібників із церемонії, реальний колір листа, а не «luxury gold»). Сорсинг-фото — гори і фермери, а не студійні пачки: преміум-аудиторії потрібна прозорість походження.
+      Сенсорна видавнича архітектура в естетиці Bellocq Tea Atelier та ботанічною точністю Song Tea:
+      - Екран 1 (`100vh`) — повнокадровий натюрморт 35mm chiaroscuro з глиняним кюсу, парою над чашею та класичною заголовною типографікою з виразним курсивом.
+      - Монографії партій — інтерактивний огляд листа в 3 станах (сухий лист, розкритий вологий лист, колір настою) із паспортом лота, висотою над рівнем моря та дегустаційними нотами.
+      - 5-ступеневий протокол Гунфу Ча — динамічна шкала температури й часу витримки з живим таймером та звуковим резонансом тибетської співаючої чаші (Web Audio API).
+      - Таблиця корекції настою — сенсорна діагностика помилок екстракції.
+      - Конструктор дегустаційного боксу та висувний кошик замовлення.
 
       ## Підсумок
 
-      HTML/CSS + JS на кошик і quiz; стан quiz зберігається між візитами, кошик без перезавантаження, ціни в українському форматі. UA-локалізація як основна — ринок недообслужений (майже все преміум-чайне в Україні англомовне). Магазин, де новачок не лякається: через quiz він проходить шлях від «не розбираюся» до «купив», не блукаючи в характеристиках, які йому нічого не кажуть.
+      Видання найвищого гатунку: адаптивне від 2560px QHD до 390px на мобільних пристроях, природний скрол без затримок, 100% чистий код і автентична атмосфера ательє.
 ---
 
 ## Контекст
 
-Интернет-магазин премиум-чая прямого импорта — пуэры, улуны, выдержанные сорта; аудитория — украинцы 30-50 со средним+ доходом, которые ищут вход в чайную культуру, а не пакетики для офиса (чек 30-80 $). Обычный e-commerce каталог тут не работает: новичок видит сетку из 47 сортов (green, black, oolong, pu-erh), не знает разницы — и уходит с пустой корзиной. Ему нечем выбирать: он знает, что хочет почувствовать, но не знает, какой сорт под это.
+Флагманский чайный ателье-журнал и шоурум селекционного прямого импорта из высокогорных садов Тайваня, Юньнани и Фуцзяни. Аудитория — ценители чайной культуры, коллекционеры авторской керамики и апологеты замедленного ритма жизни. Обычный e-commerce каталог с сеткой безликих пачек обесценивает чай: здесь требовалось издание, где каждый лот раскрывает историю терруара и мастерства фермера.
 
 ## Решение
 
-Главный механизм — quiz «подбор по состоянию»: четыре вопроса (что хочешь почувствовать, время дня, опыт, ограничения) → 2-3 рекомендации с описанием. Это вход для новичка — не каталог, а консультация. Палитра — тёплая бежевая бумага и оливково-чайный акцент (отсылка к старым руководствам по церемонии, реальный цвет листа, а не «luxury gold»). Сорсинг-фото — горы и фермеры, а не студийные пачки: премиум-аудитории нужна прозрачность происхождения.
+Сенсорная издательская архитектура в эстетике Bellocq Tea Atelier и ботанической строгостью Song Tea:
+- Экран 1 (`100vh`) — полнокадровый натюрморт 35mm chiaroscuro с глиняным кюсу, струящимся паром и контрастной антиквой с курсивными акцентами.
+- Монографии партий — интерактивный осмотр листа в 3 фазах (сухой лист, раскрытый лист, цвет настоя) с паспортом лота и высотой сбора.
+- 5-ступенчатый протокол Гунфу Ча — динамическая шкала температуры и времени с живым таймером и акустическим колоколом поющей чаши (Web Audio API).
+- Таблица коррекции настоя — сенсорная диагностика горечи, плоскости аромата или дефектов воды.
+- Конструктор дегустационного сета и выезжающая корзина заказа.
 
 ## Итог
 
-HTML/CSS + JS на корзину и quiz; состояние quiz сохраняется между визитами, корзина без перезагрузки, цены по украинскому формату. UA-локализация как основная — рынок недообслужен (почти всё премиум-чайное в Украине англоязычное). Магазин, где новичок не пугается: через quiz он проходит путь от «не разбираюсь» до «купил», не блуждая в характеристиках, которые ему ничего не говорят.
+Издание музейного ремесленного уровня: безупречная адаптивность от QHD 2560px до смартфонов 390px, естественный скролл без задержек и живой звук церемонии.

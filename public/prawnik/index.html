@@ -1,137 +1,2102 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Prawnik.Tech — demonstracyjny koncept przygotowania do rejestracji firmy w Polsce.">
-  <title>Prawnik.Tech — Teczka decyzyjna</title>
-  <link rel="icon" href="favicon.svg">
-  <link rel="stylesheet" href="prawnik-preview.css">
-  <link rel="stylesheet" href="prawnik-expanded.css">
-<meta name="robots" content="noindex, follow"></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prawnik.Tech — Nowoczesne Doradztwo Prawne & Rejestracja Spółek w Polsce</title>
+  <meta name="description" content="Budujemy bezpieczną strukturę prawną dla nowoczesnych firm i międzynarodowych założycieli w Polsce. Rejestracja JDG oraz Spółki z o.o. S24 w 72h ze stałą ceną i pełnym compliance.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens.css">
+  <style>
+    /* ==========================================================================
+       Prawnik.Tech Styles — Harvey Canon (https://www.harvey.ai/)
+       ========================================================================== */
+
+    /* Container Utility */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: var(--container-padding);
+    }
+    .container-wide {
+      width: 100%;
+      max-width: var(--max-width-wide);
+      margin: 0 auto;
+      padding: var(--container-padding);
+    }
+
+    /* Section Base */
+    section {
+      position: relative;
+      width: 100%;
+      padding: var(--section-padding-desktop);
+      border-bottom: 1px solid var(--border-subdued);
+    }
+
+    /* Typography Utilities */
+    .font-serif { font-family: var(--font-serif); }
+    .font-mono { font-family: var(--font-mono); }
+    .font-sans { font-family: var(--font-sans); }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-champagne);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: var(--color-champagne);
+      border-radius: 50%;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(34px, 3.4vw, 56px);
+      line-height: 1.1;
+      font-weight: 400;
+      letter-spacing: -0.015em;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--color-champagne);
+      font-weight: 400;
+    }
+
+    .section-desc {
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      max-width: 680px;
+      margin-bottom: 48px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      border-radius: 4px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      border: 1px solid transparent;
+      min-height: 48px;
+    }
+    .btn-champagne {
+      background-color: var(--color-champagne);
+      color: var(--bg-primary);
+      box-shadow: 0 4px 18px var(--color-champagne-glow);
+    }
+    .btn-champagne:hover {
+      background-color: var(--color-champagne-bright);
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      background: transparent;
+      border-color: var(--border-hairline);
+      color: var(--text-primary);
+    }
+    .btn-outline:hover {
+      border-color: var(--color-champagne);
+      color: var(--color-champagne);
+      background: var(--color-champagne-glow);
+    }
+
+    /* ==========================================================================
+       HEADER & NAVIGATION
+       ========================================================================== */
+    .site-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--header-height);
+      z-index: 100;
+      border-bottom: 1px solid var(--border-subdued);
+      background: rgba(15, 14, 13, 0.88);
+      backdrop-filter: blur(12px);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+    .brand-logo-badge {
+      width: 32px;
+      height: 32px;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-hairline);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-champagne);
+      border-radius: 2px;
+    }
+    .brand-name {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .brand-name span {
+      color: var(--color-champagne);
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-link {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+      position: relative;
+    }
+    .nav-link:hover {
+      color: var(--text-primary);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .telemetry-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subdued);
+      border-radius: 20px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--status-active);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--status-active);
+    }
+
+    /* ==========================================================================
+       CHAPTER 1: HERO (STRICT 100vh on Desktop 2560x1310 & 1920x1080)
+       ========================================================================== */
+    .hero {
+      height: 100vh;
+      max-height: 100vh;
+      overflow: hidden;
+      padding-top: calc(var(--header-height) + 14px);
+      padding-bottom: 24px;
+      box-sizing: border-box;
+      border-bottom: 1px solid var(--border-hairline);
+      background: 
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(217, 201, 168, 0.05) 0%, transparent 70%),
+        var(--bg-primary);
+    }
+
+    .hero-inner {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+    }
+
+    .hero-top-row {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: flex-start;
+      margin-bottom: 0;
+      flex-shrink: 0;
+    }
+
+    .hero-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(40px, 4.2vw, 76px);
+      line-height: 1.04;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--color-champagne);
+    }
+
+    .hero-thesis-block {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding-left: 24px;
+      border-left: 1px solid var(--border-hairline);
+    }
+    .hero-thesis-text {
+      font-size: clamp(14px, 1.1vw, 17px);
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* Harvey-Style Architectural Showcase Frame */
+    .hero-showcase-frame {
+      flex: 1;
+      min-height: 480px;
+      margin-top: 24px;
+      background: 
+        linear-gradient(180deg, rgba(14, 14, 14, 0.25) 0%, rgba(14, 14, 14, 0.88) 100%),
+        url('assets/01_harvey_hero_architecture.jpg') center/cover no-repeat;
+      border: 1px solid rgba(217, 201, 168, 0.18);
+      border-radius: 12px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    /* Prawnik Command Center (Interactive First-Screen Terminal inside Frame) */
+    .command-center {
+      background: rgba(23, 22, 21, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(217, 201, 168, 0.22);
+      border-radius: 8px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      width: 100%;
+    }
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background: var(--bg-surface-elevated);
+      border-bottom: 1px solid var(--border-subdued);
+    }
+    .terminal-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-champagne);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .terminal-tabs {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .terminal-tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      padding: 6px 14px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-secondary);
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .terminal-tab-btn:hover {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .terminal-tab-btn.active {
+      color: var(--text-primary);
+      background: var(--bg-surface);
+      border-color: var(--border-hairline);
+    }
+
+    .terminal-body {
+      padding: 18px 24px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) 1.2fr;
+      gap: 20px;
+      align-items: center;
+    }
+    .telemetry-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .cell-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .cell-value {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .cell-sub {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    .terminal-status-box {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-subdued);
+      border-radius: 4px;
+      padding: 8px 14px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .status-line {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-secondary);
+    }
+    .status-line strong {
+      color: var(--color-champagne);
+    }
+
+    /* ==========================================================================
+       CHAPTER 2: INTERACTIVE ENTITY ARCHITECT (3-Step Triage Calculator)
+       ========================================================================== */
+    .architect-wrapper {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .triage-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .triage-step-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subdued);
+      border-radius: 6px;
+      padding: 24px;
+      transition: border-color var(--transition-fast);
+    }
+    .triage-step-card:hover {
+      border-color: var(--border-hairline);
+    }
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .step-number {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--color-champagne-glow);
+      color: var(--color-champagne);
+      border: 1px solid var(--border-hairline);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .step-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .step-options-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .option-btn {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-subdued);
+      border-radius: 4px;
+      padding: 12px 14px;
+      text-align: left;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: all var(--transition-fast);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .option-btn:hover {
+      border-color: var(--border-hairline);
+      color: var(--text-primary);
+    }
+    .option-btn.selected {
+      background: var(--bg-surface-elevated);
+      border-color: var(--color-champagne);
+      color: var(--text-primary);
+    }
+    .option-btn-title {
+      font-weight: 600;
+      font-size: 13px;
+      color: inherit;
+    }
+    .option-btn-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Verdict Card (Right Side of Chapter 2) */
+    .verdict-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: 6px;
+      padding: 32px;
+      position: sticky;
+      top: 100px;
+      box-shadow: var(--shadow-card);
+    }
+    .verdict-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      background: var(--color-champagne-glow);
+      border: 1px solid var(--border-hairline);
+      color: var(--color-champagne);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-radius: 2px;
+      margin-bottom: 16px;
+    }
+    .verdict-main-title {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+    .verdict-details-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 28px;
+      border-top: 1px solid var(--border-subdued);
+      padding-top: 18px;
+    }
+    .verdict-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+    .verdict-label {
+      color: var(--text-secondary);
+    }
+    .verdict-value {
+      font-weight: 600;
+      color: var(--text-primary);
+      text-align: right;
+    }
+    .verdict-pkd-chips {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .pkd-chip {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-subdued);
+      padding: 4px 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-champagne);
+      border-radius: 2px;
+    }
+
+    /* ==========================================================================
+       CHAPTER 3: MACIERZ PAKIETÓW (Transparent Packages)
+       ========================================================================== */
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .package-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subdued);
+      border-radius: 6px;
+      padding: 36px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: all var(--transition-smooth);
+    }
+    .package-card:hover {
+      border-color: var(--border-hairline);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-card);
+    }
+    .package-card.featured {
+      border-color: var(--color-champagne);
+      background: linear-gradient(180deg, rgba(217, 201, 168, 0.05) 0%, var(--bg-surface) 100%);
+    }
+    .featured-tag {
+      position: absolute;
+      top: -12px;
+      left: 30px;
+      background: var(--color-champagne);
+      color: var(--bg-primary);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+    .package-header {
+      margin-bottom: 24px;
+    }
+    .package-tier {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-champagne);
+      margin-bottom: 8px;
+    }
+    .package-name {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+    .package-price {
+      font-family: var(--font-sans);
+      font-size: 38px;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .package-price span {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-secondary);
+    }
+    .package-lead-time {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--status-active);
+      margin-top: 6px;
+    }
+
+    .package-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 28px 0;
+      border-top: 1px solid var(--border-subdued);
+      padding-top: 20px;
+      flex-grow: 1;
+    }
+    .package-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+    .package-feature-item svg {
+      width: 16px;
+      height: 16px;
+      color: var(--color-champagne);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ==========================================================================
+       CHAPTER 4: ARCHITEKTURA PROCEDURY (Timeline)
+       ========================================================================== */
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      position: relative;
+    }
+    .timeline-grid::before {
+      content: "";
+      position: absolute;
+      top: 36px;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: var(--border-hairline);
+      z-index: 1;
+    }
+    .timeline-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subdued);
+      border-radius: 6px;
+      padding: 28px 24px;
+      position: relative;
+      z-index: 2;
+      transition: all var(--transition-fast);
+    }
+    .timeline-card:hover {
+      border-color: var(--border-hairline);
+      transform: translateY(-2px);
+    }
+    .timeline-node {
+      width: 32px;
+      height: 32px;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--color-champagne);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-champagne);
+      margin-bottom: 20px;
+    }
+    .timeline-day {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-champagne);
+      margin-bottom: 6px;
+    }
+    .timeline-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+    .timeline-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* ==========================================================================
+       CHAPTER 5: WZORY DOKUMENTÓW & COMPLIANCE (Clause Inspector)
+       ========================================================================== */
+    .clause-inspector {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: 6px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+    }
+    .clause-nav {
+      background: var(--bg-surface-elevated);
+      border-right: 1px solid var(--border-subdued);
+      display: flex;
+      flex-direction: column;
+    }
+    .clause-nav-btn {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border-subdued);
+      padding: 20px 24px;
+      text-align: left;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: all var(--transition-fast);
+    }
+    .clause-nav-btn:hover {
+      background: var(--bg-surface);
+      color: var(--text-primary);
+    }
+    .clause-nav-btn.active {
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      border-left: 3px solid var(--color-champagne);
+    }
+    .clause-btn-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      color: var(--color-champagne);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .clause-btn-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: inherit;
+    }
+
+    .clause-content-pane {
+      padding: 36px 40px;
+      background: var(--bg-surface);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .clause-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subdued);
+      padding-bottom: 16px;
+    }
+    .clause-heading {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      color: var(--text-primary);
+    }
+    .clause-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 3px 8px;
+      background: var(--color-champagne-glow);
+      color: var(--color-champagne);
+      border: 1px solid var(--border-hairline);
+      border-radius: 2px;
+    }
+    .clause-code-box {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-subdued);
+      border-radius: 4px;
+      padding: 24px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text-primary);
+      overflow-x: auto;
+    }
+    .clause-code-box .highlight {
+      color: var(--color-champagne);
+      background: rgba(217, 201, 168, 0.08);
+      padding: 2px 4px;
+      border-radius: 2px;
+    }
+    .clause-annotation {
+      font-size: 13px;
+      color: var(--text-secondary);
+      border-left: 2px solid var(--color-champagne);
+      padding-left: 14px;
+      font-style: italic;
+    }
+
+    /* ==========================================================================
+       CHAPTER 6: ZESPÓŁ I PRAKTYKA (35mm Editorial Gallery)
+       ========================================================================== */
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .practice-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subdued);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: all var(--transition-fast);
+    }
+    .practice-card:hover {
+      border-color: var(--border-hairline);
+      transform: translateY(-2px);
+    }
+    .practice-img-wrap {
+      width: 100%;
+      height: 260px;
+      overflow: hidden;
+      position: relative;
+    }
+    .practice-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-smooth);
+    }
+    .practice-card:hover .practice-img-wrap img {
+      transform: scale(1.03);
+    }
+    .practice-card-body {
+      padding: 24px;
+    }
+    .practice-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-champagne);
+      margin-bottom: 8px;
+    }
+    .practice-role {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .practice-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .metrics-ribbon {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding: 32px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: 6px;
+      text-align: center;
+    }
+    .metric-number {
+      font-family: var(--font-serif);
+      font-size: 42px;
+      color: var(--color-champagne);
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+    .metric-label {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* ==========================================================================
+       CHAPTER 7: GENERATOR TECZKI REJESTRACYJNEJ (Booking Form)
+       ========================================================================== */
+    .dossier-generator-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .dossier-manifest-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: 6px;
+      padding: 36px;
+      position: sticky;
+      top: 100px;
+    }
+    .dossier-number-badge {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--color-champagne);
+      background: var(--color-champagne-glow);
+      border: 1px solid var(--border-hairline);
+      padding: 6px 12px;
+      border-radius: 3px;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+    .dossier-manifest-title {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+    .dossier-manifest-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .selected-summary-box {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-subdued);
+      border-radius: 4px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+    }
+    .summary-line span { color: var(--text-muted); }
+    .summary-line strong { color: var(--text-primary); font-family: var(--font-mono); }
+
+    /* Intake Form */
+    .dossier-form {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subdued);
+      border-radius: 6px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .form-input, .form-select {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-subdued);
+      border-radius: 4px;
+      padding: 14px 16px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--text-primary);
+      outline: none;
+      transition: border-color var(--transition-fast);
+      min-height: 48px;
+    }
+    .form-input:focus, .form-select:focus {
+      border-color: var(--color-champagne);
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-disclaimer {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .form-success-banner {
+      display: none;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--status-active);
+      color: var(--text-primary);
+      padding: 20px;
+      border-radius: 4px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .form-success-banner strong {
+      color: var(--status-active);
+    }
+
+    /* Footer */
+    .site-footer {
+      padding: 60px 0 40px;
+      border-top: 1px solid var(--border-subdued);
+      background: var(--bg-primary);
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+    .footer-legal-copy {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 800px;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS (Mobile 390px, Tablet 768px, QHD 2560px)
+       ========================================================================== */
+    @media (max-width: 1200px) {
+      .practice-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 1024px) {
+      .hero-top-row { grid-template-columns: 1fr; gap: 24px; }
+      .hero-thesis-block { padding-left: 0; border-left: none; }
+      .hero-showcase-frame { min-height: 400px; padding: 24px; }
+      .terminal-body { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .architect-wrapper { grid-template-columns: 1fr; }
+      .packages-grid { grid-template-columns: 1fr; }
+      .timeline-grid { grid-template-columns: 1fr 1fr; }
+      .timeline-grid::before { display: none; }
+      .clause-inspector { grid-template-columns: 1fr; }
+      .practice-grid { grid-template-columns: repeat(2, 1fr); }
+      .metrics-ribbon { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .dossier-generator-layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --header-height: 64px;
+        --container-padding: 0 16px;
+      }
+      .container, .container-wide {
+        padding: 0 16px;
+      }
+      .nav-links { display: none; }
+      .telemetry-chip { display: none; }
+      .hero {
+        height: auto;
+        min-height: 100vh;
+        max-height: none;
+        overflow: visible;
+        padding-top: 80px;
+        padding-bottom: 40px;
+      }
+      .hero-showcase-frame {
+        min-height: auto;
+        padding: 16px 12px;
+        margin-top: 20px;
+      }
+      .terminal-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 14px;
+      }
+      .terminal-tabs {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .terminal-tab-btn {
+        padding: 6px 10px;
+        font-size: 11px;
+      }
+      .terminal-body { grid-template-columns: 1fr; padding: 16px; }
+      .step-options-grid { grid-template-columns: 1fr; }
+      .timeline-grid { grid-template-columns: 1fr; }
+      .clause-meta-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .practice-grid { grid-template-columns: 1fr; }
+      .metrics-ribbon { grid-template-columns: 1fr; }
+      .dossier-generator-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+      .dossier-manifest-card { padding: 20px 16px; position: static; max-width: 100%; min-width: 0; box-sizing: border-box; }
+      .dossier-form { padding: 20px 16px; max-width: 100%; min-width: 0; box-sizing: border-box; }
+      .form-row { grid-template-columns: 1fr; gap: 14px; }
+      .footer-top { flex-direction: column; align-items: flex-start; gap: 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .container, .container-wide {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+      }
+      .dossier-generator-layout {
+        grid-template-columns: minmax(0, 1fr) !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        gap: 20px !important;
+      }
+      .dossier-manifest-card,
+      .dossier-form {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        min-width: 0 !important;
+        padding: 20px 14px !important;
+      }
+      .summary-line {
+        flex-wrap: wrap !important;
+        gap: 4px !important;
+      }
+      .form-input, .form-select {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+      }
+    }
+  </style>
+</head>
 <body>
-  <a class="skip" href="#main">Przejdź do treści</a>
-  <header class="topbar">
-    <a class="brand" href="#start" aria-label="Prawnik.Tech — strona główna"><span>PT</span>Prawnik.Tech</a>
-    <nav aria-label="Główna nawigacja">
-      <a href="#orientacja">Orientacja</a><a href="#porownanie">Porównanie</a><a href="#zrodla">Źródła</a>
-    </nav>
-    <a class="header-action" href="#orientacja">Otwórz teczkę</a>
+
+  <!-- ==========================================================================
+       HEADER
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#hero" class="brand-mark">
+        <div class="brand-logo-badge">PT</div>
+        <div class="brand-name">Prawnik<span>.Tech</span></div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#hero" class="nav-link">Terminal</a></li>
+          <li><a href="#entity-architect" class="nav-link">Kalkulator Formy</a></li>
+          <li><a href="#packages" class="nav-link">Pakiety</a></li>
+          <li><a href="#procedure" class="nav-link">Procedura</a></li>
+          <li><a href="#standards" class="nav-link">Wzorce Umów</a></li>
+          <li><a href="#practice" class="nav-link">Praktyka</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <div class="telemetry-chip">
+          <span class="pulse-dot"></span>
+          <span>S24 / KRS: Działa (24-72h)</span>
+        </div>
+        <a href="#dossier-intake" class="btn btn-champagne" style="padding: 8px 18px; min-height: 38px; font-size: 13px;">Otwórz Teczkę →</a>
+      </div>
+    </div>
   </header>
 
-  <main id="main">
-    <section class="hero" id="start">
-      <div class="hero-copy">
-        <p class="file-code">TECZKA: START / PL / 2026</p>
-        <h1>Zanim zarejestrujesz firmę, <em>ustal właściwe pytania.</em></h1>
-        <p class="lede">Porządkujemy informacje potrzebne przed wejściem do CEIDG albo S24/KRS. Bez obietnic „bez błędów”, bez zgadywania podatków, bez ukrywania granic odpowiedzialności.</p>
-        <div class="hero-actions"><a class="button primary" href="#orientacja">Przygotuj dossier</a><a class="text-link" href="#porownanie">Najpierw porównaj ścieżki <span aria-hidden="true">→</span></a></div>
-        <p class="disclaimer">Projekt demonstracyjny. Nie stanowi porady prawnej ani podatkowej i nie składa wniosków.</p>
-      </div>
-      <figure class="hero-figure">
-        <img src="case-file-generated.webp" alt="Teczki i formularz przygotowany do uzupełnienia na biurku">
-        <figcaption><b>Materiał roboczy</b><span>Najpierw fakty. Potem formularz.</span></figcaption>
-        <div class="stamp" aria-hidden="true">DO USTALENIA</div>
-      </figure>
-    </section>
-
-    <section class="orientation" id="orientacja" aria-labelledby="orientation-title">
-      <div class="section-intro">
-        <p class="file-code">FORMULARZ ORIENTACYJNY A–03</p>
-        <h2 id="orientation-title">Zbuduj teczkę w trzech odpowiedziach.</h2>
-        <p>Nie wybieramy za Ciebie formy prawnej. Tworzymy listę tematów, które warto zweryfikować z księgowym lub prawnikiem.</p>
-      </div>
-      <div class="dossier-shell">
-        <div class="tabs" aria-label="Postęp"><span class="tab active">A / Wspólnicy</span><span class="tab">B / Ryzyko</span><span class="tab">C / Status</span><span class="tab">D / Teczka</span></div>
-        <div class="question-panel" aria-live="polite">
-          <div class="question-head"><span id="stepLabel">Pytanie 1 z 3</span><button id="resetButton" type="button">Wyczyść</button></div>
-          <div class="progress"><span id="progressBar"></span></div>
-          <div id="questionBody"></div>
-          <div class="form-nav"><button class="back" id="backButton" type="button">Wstecz</button><p id="formHint">Wybierz jedną odpowiedź, aby przejść dalej.</p></div>
+  <!-- ==========================================================================
+       CHAPTER 1: THE EXECUTIVE HERO (STRICT 100vh on Desktop 2560x1310)
+       ========================================================================== -->
+  <section id="hero" class="hero">
+    <div class="container hero-inner">
+      <div class="hero-top-row">
+        <div>
+          <div class="eyebrow">Praktyka Prawa Nowych Technologii · Warszawa</div>
+          <h1 class="hero-headline">
+            Budujemy strukturę prawną dla <em>nowoczesnego biznesu</em> w Polsce.
+          </h1>
         </div>
-        <aside class="file-preview" aria-label="Podgląd teczki">
-          <div class="preview-head"><span>AKTA ROBOCZE</span><span id="caseId">PT—000</span></div>
-          <div id="previewLines"><p>Wspólnicy <b>—</b></p><p>Odpowiedzialność <b>—</b></p><p>Status <b>—</b></p></div>
-          <div class="preview-seal">NIE JEST WNIOSKIEM</div>
-        </aside>
+
+        <div class="hero-thesis-block">
+          <p class="hero-thesis-text">
+            Rejestracja jednoosobowej działalności oraz Spółki z o.o. w systemie S24 przekształcona w przejrzysty, cyfrowy proces. Stała cena, gwarancja zgodności z KRS oraz natychmiastowe wdrożenie tarczy podatkowej.
+          </p>
+          <div class="hero-actions">
+            <a href="#dossier-intake" class="btn btn-champagne">Otwórz Teczkę Rejestracyjną →</a>
+            <a href="#entity-architect" class="btn btn-outline">Uruchom kalkulator formy</a>
+          </div>
+        </div>
       </div>
-    </section>
 
-    <section class="fact-map" aria-labelledby="facts-title">
-      <div><h2 id="facts-title">Formularz zaczyna się od faktów, których nie wolno zgadywać.</h2><p>Jedna niepewna odpowiedź może zmienić dokumenty, sposób podpisu albo potrzebnego specjalistę. Dossier zostawia brak widoczny.</p></div>
-      <dl><div><dt>Osoby</dt><dd>wspólnicy, reprezentacja, rezydencja, beneficjenci</dd></div><div><dt>Działalność</dt><dd>co firma faktycznie robi, gdzie i dla kogo</dd></div><div><dt>Adres</dt><dd>tytuł do lokalu i adres do doręczeń</dd></div><div><dt>Finanse</dt><dd>kapitał, rachunek, planowane rozliczenia</dd></div><div><dt>Podpis</dt><dd>profil zaufany, podpis kwalifikowany lub pełnomocnictwo</dd></div></dl>
-    </section>
+      <!-- Architectural Showcase Frame (Harvey-style Grand Stage) -->
+      <div class="hero-showcase-frame">
+        <div class="command-center">
+          <div class="terminal-header">
+            <div class="terminal-title">
+              <span class="pulse-dot"></span>
+              <span>Command Center: Rejestracja & Compliance</span>
+            </div>
+            <div class="terminal-tabs">
+              <button class="terminal-tab-btn active" onclick="switchTerminalEntity('jdg')">JDG (Jednoosobowa)</button>
+              <button class="terminal-tab-btn" onclick="switchTerminalEntity('s24')">Spółka z o.o. S24</button>
+              <button class="terminal-tab-btn" onclick="switchTerminalEntity('notary')">Spółka Notarialna & IP</button>
+            </div>
+          </div>
 
-    <section class="comparison" id="porownanie" aria-labelledby="comparison-title">
-      <div class="comparison-head"><h2 id="comparison-title">Dwie ścieżki. Inne konsekwencje.</h2><p>To punkt wyjścia do rozmowy, nie skrót do decyzji.</p></div>
-      <div class="switcher" role="tablist" aria-label="Porównaj formy"><button role="tab" aria-selected="true" aria-controls="pathPanel" data-path="jdg">JDG / CEIDG</button><button role="tab" aria-selected="false" aria-controls="pathPanel" data-path="spzoo">sp. z o.o. / KRS</button></div>
-      <article class="path-panel" id="pathPanel" tabindex="0">
-        <div><span class="path-index" id="pathIndex">CEIDG</span><h3 id="pathTitle">Jednoosobowa działalność gospodarcza</h3><p id="pathSummary">Wpis dotyczy osoby fizycznej prowadzącej działalność we własnym imieniu.</p></div>
-        <dl id="pathFacts"><div><dt>Rejestr</dt><dd>CEIDG</dd></div><div><dt>Do ustalenia</dt><dd>m.in. PKD, forma opodatkowania, ZUS, VAT</dd></div><div><dt>Granica</dt><dd>zobowiązania działalności są związane z przedsiębiorcą</dd></div></dl>
-      </article>
-    </section>
+          <div class="terminal-body" id="terminal-body">
+            <div class="telemetry-cell">
+              <span class="cell-label">Czas Wdrożenia</span>
+              <span class="cell-value" id="term-time">24 godziny</span>
+              <span class="cell-sub" id="term-time-sub">Wpis do CEIDG</span>
+            </div>
 
-    <section class="documents" aria-labelledby="documents-title"><div><h2 id="documents-title">Dokument ma status, właściciela i źródło.</h2><p>Lista jest orientacyjna. Właściwy komplet zależy od formy, osób, sposobu reprezentacji i aktualnych wymagań rejestru.</p></div><div class="document-register"><article><span>IDENTYFIKACJA</span><b>Dane i dokumenty osób</b><em>DO WERYFIKACJI</em></article><article><span>ADRES</span><b>Tytuł do lokalu / zgoda</b><em>ZALEŻNE OD SPRAWY</em></article><article><span>SPÓŁKA</span><b>Umowa i sposób reprezentacji</b><em>SPECJALISTA</em></article><article><span>PODPIS</span><b>Narzędzie podpisu dla właściwego systemu</b><em>OFICJALNY SYSTEM</em></article></div></section>
+            <div class="telemetry-cell">
+              <span class="cell-label">Forma Opodatkowania</span>
+              <span class="cell-value" id="term-tax">Ryczałt 8.5% – 12%</span>
+              <span class="cell-sub" id="term-tax-sub">Dla usług programistycznych i B2B</span>
+            </div>
 
-    <section class="activity-code" aria-labelledby="activity-title"><div class="code-sheet"><span>OPIS DZIAŁALNOŚCI / ROBOCZY</span><strong>„Tworzenie i utrzymanie oprogramowania dla klientów biznesowych”</strong><p>Opis nie jest kodem PKD. Najpierw zapisujemy realne czynności, przychody i sposób świadczenia usług, a dopiero potem sprawdzamy aktualną klasyfikację.</p></div><div><h2 id="activity-title">Kod ma opisywać działalność, nie ambicję marki.</h2><ol><li><b>Co sprzedajesz?</b><span>produkt, usługa, licencja, pośrednictwo</span></li><li><b>Jak powstaje przychód?</b><span>projekt, abonament, prowizja, handel</span></li><li><b>Gdzie działasz?</b><span>Polska, UE, państwa trzecie</span></li><li><b>Co wymaga sprawdzenia?</b><span>regulacja, zezwolenie, VAT, kasa fiskalna</span></li></ol></div></section>
+            <div class="telemetry-cell">
+              <span class="cell-label">Odpowiedzialność</span>
+              <span class="cell-value" id="term-liab">Majątkiem osobistym</span>
+              <span class="cell-sub" id="term-liab-sub">Bez kapitału zakładowego</span>
+            </div>
 
-    <section class="process" aria-labelledby="process-title">
-      <div class="process-copy"><h2 id="process-title">Pomoc kończy się tam, gdzie zaczyna się decyzja zawodowa.</h2><p>Dobry proces nie udaje urzędu ani kancelarii. Pokazuje, kto odpowiada za każdy krok.</p></div>
-      <ol class="ledger">
-        <li><span>01</span><div><h3>Zebranie faktów</h3><p>Ty opisujesz model działalności, wspólników, rezydencję i plan operacyjny.</p></div><b>TY</b></li>
-        <li><span>02</span><div><h3>Weryfikacja decyzji</h3><p>Prawnik i księgowy oceniają skutki prawne oraz podatkowe konkretnej sytuacji.</p></div><b>SPECJALISTA</b></li>
-        <li><span>03</span><div><h3>Złożenie dokumentów</h3><p>Właściwe osoby podpisują i przekazują komplet do oficjalnego systemu.</p></div><b>CEIDG / KRS</b></li>
-        <li><span>04</span><div><h3>Decyzja rejestrowa</h3><p>Termin i wynik zależą od rejestru, kompletności oraz indywidualnej sprawy.</p></div><b>URZĄD / SĄD</b></li>
-      </ol>
-    </section>
+            <div class="telemetry-cell">
+              <span class="cell-label">Koszty Urzędowe</span>
+              <span class="cell-value" id="term-cost">0 zł</span>
+              <span class="cell-sub" id="term-cost-sub">Wpis CEIDG bezpłatny</span>
+            </div>
 
-    <section class="tax-boundary" aria-labelledby="tax-title"><div><h2 id="tax-title">Rejestracja nie wybiera za Ciebie podatków.</h2><p>Dossier może zebrać pytania, ale skutki zależą od rodzaju przychodu, kosztów, osób, rezydencji i planów. To zakres dla księgowego lub doradcy podatkowego.</p></div><div><p><span>PRZYCHÓD</span>skąd, kiedy i w jakiej walucie</p><p><span>KOSZTY</span>jakie wydatki są rzeczywiście związane z działalnością</p><p><span>VAT</span>kraj, typ klienta i rodzaj świadczenia</p><p><span>ZUS</span>status osoby i inne tytuły ubezpieczenia</p><p><span>WYPŁATA</span>wynagrodzenie, dywidenda lub inny mechanizm po analizie</p></div></section>
-
-    <section class="registry-timeline" aria-labelledby="timeline-title"><h2 id="timeline-title">Proces ma kolejność, nie obietnicę czasu.</h2><ol><li><span>PRZYGOTOWANIE</span><b>fakty, pytania, dokumenty</b><p>bez prognozy terminu urzędu</p></li><li><span>WERYFIKACJA</span><b>prawnik / księgowy</b><p>zakres zależny od sprawy</p></li><li><span>PODPIS</span><b>właściwe osoby</b><p>w narzędziu wymaganym przez system</p></li><li><span>REJESTR</span><b>CEIDG albo KRS/S24</b><p>wynik i czas po stronie instytucji</p></li><li><span>PO WPISIE</span><b>obowiązki operacyjne</b><p>rachunek, rozliczenia, zgłoszenia zależne od sytuacji</p></li></ol></section>
-
-    <section class="foreign-founder" aria-labelledby="foreign-title"><div><h2 id="foreign-title">Założyciel zagraniczny potrzebuje osobnej ścieżki pytań.</h2><p>Obywatelstwo, miejsce zamieszkania, prawo pobytu, identyfikator, podpis i sposób doręczeń mogą zmienić procedurę. Koncepcja nie przesądza uprawnienia do rejestracji.</p></div><div class="foreign-file"><span>DODATEK / FF—01</span><p><b>STATUS POBYTOWY</b><em>do oceny na aktualnych przepisach</em></p><p><b>IDENTYFIKACJA</b><em>PESEL / dokument / tłumaczenie — zależne od sprawy</em></p><p><b>PODPIS</b><em>zgodność z wybranym systemem</em></p><p><b>DORĘCZENIA</b><em>adres i osoba odbierająca korespondencję</em></p></div></section>
-
-    <section class="data-safety" aria-labelledby="data-title"><div><h2 id="data-title">Nie wkładaj dokumentów tożsamości do przypadkowego formularza.</h2><p>Narzędzie demo działa lokalnie i nie prosi o numery dokumentów. Realna usługa potrzebuje minimalizacji danych, bezpiecznego kanału, retencji i informacji o administratorze.</p></div><dl><div><dt>Minimum</dt><dd>zbieraj tylko dane potrzebne na aktualnym etapie</dd></div><div><dt>Kanał</dt><dd>oddziel zwykły kontakt od przekazywania dokumentów</dd></div><div><dt>Dostęp</dt><dd>określ, kto i po co widzi dossier</dd></div><div><dt>Usunięcie</dt><dd>ustal termin i sposób zamknięcia akt</dd></div></dl></section>
-
-    <section class="red-flags" aria-labelledby="flags-title"><h2 id="flags-title">Kiedy prosta orientacja przestaje wystarczać.</h2><div><p><span>WSPÓLNICY</span>spór, nierówny wkład, inwestor lub złożone zasady wyjścia</p><p><span>ZAGRANICA</span>rezydencja, działalność lub klienci w wielu państwach</p><p><span>REGULACJA</span>finanse, zdrowie, transport, edukacja lub działalność koncesjonowana</p><p><span>WŁASNOŚĆ</span>aport, IP, licencje albo aktywa przenoszone do spółki</p><p><span>ODPOWIEDZIALNOŚĆ</span>ryzyko, którego nie da się ocenić w ankiecie</p></div></section>
-
-    <section class="consultation-file" aria-labelledby="consultation-title"><div><h2 id="consultation-title">Na konsultację przynieś pytania, nie gotową odpowiedź.</h2><p>Dobra notatka skraca czas porządkowania faktów i pozwala specjaliście skupić się na konsekwencjach.</p></div><ol><li><b>Model działalności</b><span>co, dla kogo, gdzie i jak sprzedajesz</span></li><li><b>Osoby</b><span>wspólnicy, role, rezydencja, reprezentacja</span></li><li><b>Pieniądze</b><span>przychody, koszty, kapitał i wypłaty</span></li><li><b>Ryzyko</b><span>umowy, odpowiedzialność, regulacja, IP</span></li><li><b>Braki</b><span>lista tego, czego jeszcze nie wiesz</span></li></ol></section>
-
-    <section class="questions" aria-labelledby="questions-title"><div><h2 id="questions-title">Najczęstsze granice tej teczki.</h2><p>Odpowiedzi wyjaśniają działanie portfolio concept, nie zastępują aktualnej procedury ani porady.</p></div><div><details><summary>Czy narzędzie wybiera formę firmy?</summary><p>Nie. Z odpowiedzi tworzy listę tematów do weryfikacji i pokazuje dwa oficjalne kierunki.</p></details><details><summary>Czy składa wniosek?</summary><p>Nie. Nie łączy się z CEIDG, S24 ani KRS i nie przesyła danych.</p></details><details><summary>Czy podaje termin rejestracji?</summary><p>Nie. Czas zależy od wybranej ścieżki, kompletności, podpisów i działania właściwej instytucji.</p></details><details><summary>Czy mogę przesłać skan dokumentu?</summary><p>Nie w tej demonstracji. Realny produkt wymaga osobnego, bezpiecznego kanału i zasad ochrony danych.</p></details></div></section>
-
-    <section class="sources" id="zrodla" aria-labelledby="sources-title">
-      <div><h2 id="sources-title">Oficjalne źródło jest częścią procesu.</h2><p>Procedury i wymagania mogą się zmieniać. Przed działaniem sprawdź aktualne informacje u źródła.</p></div>
-      <div class="source-links">
-        <a href="https://biznes.gov.pl/" target="_blank" rel="noreferrer"><span>CEIDG i informacje dla przedsiębiorców</span><b>Biznes.gov.pl ↗</b></a>
-        <a href="https://www.gov.pl/web/sprawiedliwosc/s24-rejestracja-spolki-inne-wnioski" target="_blank" rel="noreferrer"><span>Rejestracja spółki i inne wnioski</span><b>Portal S24 ↗</b></a>
-        <a href="https://www.gov.pl/web/sprawiedliwosc/krajowy-rejestr-sadowy4" target="_blank" rel="noreferrer"><span>Krajowy Rejestr Sądowy</span><b>Gov.pl ↗</b></a>
+            <div class="terminal-status-box">
+              <div class="status-line"><span>Rejestr:</span> <strong id="term-registry">CEIDG / ZUS</strong></div>
+              <div class="status-line"><span>Wymagany podpis:</span> <strong id="term-signature">Profil Zaufany ePUAP</strong></div>
+              <div class="status-line"><span>Status procedury:</span> <strong style="color: var(--status-active);">Gotowy do zgłoszenia</strong></div>
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
-  </main>
-  <footer><a class="brand" href="#start"><span>PT</span>Prawnik.Tech</a><p>Portfolio concept · informacja, nie porada · 2026</p></footer>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="prawnik-preview.js"></script>
-<div class="ov-badge" id="ov-badge">
-  <a class="ov-badge__main" href="https://overflow-web.pl/work/prawnik/">
-    <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
-  </a>
-  <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
-</div>
-<style>
-.ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
-.ov-badge a{color:inherit;text-decoration:none}
-.ov-badge__main{display:flex;align-items:center;gap:5px}
-.ov-badge__mark{font-weight:700;letter-spacing:-.02em}
-.ov-badge__dot{opacity:.45}
-.ov-badge__type{opacity:.7}
-.ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
-.ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
-@media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
-@media print{.ov-badge{display:none}}
-</style>
-<!-- ov-badge-init -->
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CHAPTER 2: INTERACTIVE ENTITY ARCHITECT (3-Step Triage Calculator)
+       ========================================================================== -->
+  <section id="entity-architect">
+    <div class="container">
+      <div class="eyebrow">Diagnostyka Prawna · Dobór Formy Działalności</div>
+      <h2 class="section-title">Wybierz właściwą strukturę <em>w 3 krokach</em>.</h2>
+      <p class="section-desc">
+        Nie zgadujemy formy prawnej. Odpowiedz na trzy pytania operacyjne, aby uzyskać rekomendowaną strukturę spółki, optymalny model opodatkowania oraz listę wymaganych kodów PKD.
+      </p>
+
+      <div class="architect-wrapper">
+        <!-- Triage Steps -->
+        <div class="triage-steps">
+          <!-- Step 1 -->
+          <div class="triage-step-card">
+            <div class="step-header">
+              <span class="step-number">1</span>
+              <span class="step-title">Liczba wspólników i struktura kapitału</span>
+            </div>
+            <div class="step-options-grid">
+              <button class="option-btn selected" onclick="selectTriageOption(1, 'solo', this)">
+                <span class="option-btn-title">1 założyciel</span>
+                <span class="option-btn-desc">Działalność prowadzona samodzielnie</span>
+              </button>
+              <button class="option-btn" onclick="selectTriageOption(1, 'partners', this)">
+                <span class="option-btn-title">2+ wspólników</span>
+                <span class="option-btn-desc">Zespół założycielski bez ZUS wspólnika</span>
+              </button>
+              <button class="option-btn" onclick="selectTriageOption(1, 'investors', this)">
+                <span class="option-btn-title">Inwestorzy</span>
+                <span class="option-btn-desc">Rundy finansowania / Zagraniczny kapitał</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="triage-step-card">
+            <div class="step-header">
+              <span class="step-number">2</span>
+              <span class="step-title">Poziom ryzyka kontraktowego i odpowiedzialność</span>
+            </div>
+            <div class="step-options-grid">
+              <button class="option-btn selected" onclick="selectTriageOption(2, 'low', this)">
+                <span class="option-btn-title">Niskie / B2B</span>
+                <span class="option-btn-desc">Pojedyncze kontrakty doradcze lub dev</span>
+              </button>
+              <button class="option-btn" onclick="selectTriageOption(2, 'mid', this)">
+                <span class="option-btn-title">Średnie (SaaS)</span>
+                <span class="option-btn-desc">Własny produkt, subskrypcje, SLA</span>
+              </button>
+              <button class="option-btn" onclick="selectTriageOption(2, 'high', this)">
+                <span class="option-btn-title">Wysokie (Trading/Zatrudnianie)</span>
+                <span class="option-btn-desc">Wielomilionowe kontrakty i zespół</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="triage-step-card">
+            <div class="step-header">
+              <span class="step-number">3</span>
+              <span class="step-title">Prognozowany roczny obrót i model podatkowy</span>
+            </div>
+            <div class="step-options-grid">
+              <button class="option-btn selected" onclick="selectTriageOption(3, 'under500k', this)">
+                <span class="option-btn-title">&lt; 500 tys. PLN</span>
+                <span class="option-btn-desc">Ulga na start, preferencyjny ZUS</span>
+              </button>
+              <button class="option-btn" onclick="selectTriageOption(3, '500k-2m', this)">
+                <span class="option-btn-title">500k – 2 mln PLN</span>
+                <span class="option-btn-desc">Mały podatnik CIT 9%</span>
+              </button>
+              <button class="option-btn" onclick="selectTriageOption(3, 'over2m', this)">
+                <span class="option-btn-title">&gt; 2 mln PLN</span>
+                <span class="option-btn-desc">Estoński CIT 0% do podziału zysku</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Verdict Card -->
+        <div class="verdict-card">
+          <div class="verdict-badge">Wynik Weryfikacji Systemowej</div>
+          <h3 class="verdict-main-title" id="verdict-title">Jednoosobowa Działalność (JDG)</h3>
+
+          <div class="verdict-details-list">
+            <div class="verdict-row">
+              <span class="verdict-label">Rekomendowane opodatkowanie:</span>
+              <span class="verdict-value" id="verdict-tax">Ryczałt 12% (IT) / 8.5% (Services)</span>
+            </div>
+            <div class="verdict-row">
+              <span class="verdict-label">Ochrona majątku prywatnego:</span>
+              <span class="verdict-value" id="verdict-shield" style="color: var(--status-pending);">Brak (pełna odpowiedzialność)</span>
+            </div>
+            <div class="verdict-row">
+              <span class="verdict-label">Szacowany czas rejestracji:</span>
+              <span class="verdict-value" id="verdict-time">24 godziny (CEIDG)</span>
+            </div>
+            <div class="verdict-row">
+              <span class="verdict-label">Koszty księgowości miesięcznie:</span>
+              <span class="verdict-value" id="verdict-acc">ok. 250 – 400 zł</span>
+            </div>
+          </div>
+
+          <div style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px;">
+            Rekomendowane Kody PKD:
+          </div>
+          <div class="verdict-pkd-chips" id="verdict-pkd">
+            <span class="pkd-chip">62.01.Z (Oprogramowanie)</span>
+            <span class="pkd-chip">62.02.Z (Doradztwo IT)</span>
+            <span class="pkd-chip">62.09.Z (Pozostałe IT)</span>
+          </div>
+
+          <button class="btn btn-champagne" style="width: 100%;" onclick="applyVerdictToPackages()">
+            Przejdź do właściwego pakietu →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CHAPTER 3: MACIERZ PAKIETÓW (Transparent Fixed Pricing)
+       ========================================================================== -->
+  <section id="packages" style="background: var(--bg-surface);">
+    <div class="container">
+      <div class="eyebrow">Stałe Ceny · Pełne Wdrożenie bez Ukrytych Kosztów</div>
+      <h2 class="section-title">Trzy precyzyjne pakiety <em>rejestracji</em>.</h2>
+      <p class="section-desc">
+        Wszystkie opłaty sądowe, podatek PCC-3, zgłoszenia do CRBR oraz weryfikacja VAT-UE wliczone w cenę. Żadnych dopłat za „dodatkowy podpis” czy „weryfikację wniosku”.
+      </p>
+
+      <div class="packages-grid">
+        <!-- Package 1 -->
+        <div class="package-card" id="pkg-jdg">
+          <div>
+            <div class="package-header">
+              <div class="package-tier">Krok 1 · Solo Founder</div>
+              <h3 class="package-name">JDG Start</h3>
+              <div class="package-price">1 200 PLN <span>netto</span></div>
+              <div class="package-lead-time">✓ Gotowa w 24 godziny</div>
+            </div>
+
+            <ul class="package-features">
+              <li class="package-feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Zgłoszenie do rejestru CEIDG i ZUS (Ulga na start)</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Optymalny dobór kodów PKD pod Ryczałt / Skalę</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Zgłoszenie VAT-R i VAT-UE dla klientów zagranicznych</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Wzór bezpiecznego kontraktu B2B z zagranicznym zleceniodawcą</span>
+              </li>
+            </ul>
+          </div>
+
+          <button class="btn btn-outline" onclick="selectPackageForDossier('JDG Start (1 200 PLN)')">Wybierz pakiet →</button>
+        </div>
+
+        <!-- Package 2 (Featured) -->
+        <div class="package-card featured" id="pkg-s24">
+          <div class="featured-tag">Standard Rynkowy · Najczęściej Wybierany</div>
+          <div>
+            <div class="package-header">
+              <div class="package-tier">Krok 2 · Pełna Ochrona</div>
+              <h3 class="package-name">Spółka z o.o. S24</h3>
+              <div class="package-price">2 900 PLN <span>netto</span></div>
+              <div class="package-lead-time">✓ Wpis do KRS w 72 godziny</div>
+            </div>
+
+            <ul class="package-features">
+              <li class="package-feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Rejestracja w Krajowym Rejestrze Sądowym (KRS) przez portal S24</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span><strong>Opłata sądowa 350 zł wliczona</strong> (brak dodatkowych rachunków)</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Zgłoszenie do Centralnego Rejestru Beneficjentów Rzeczywistych (CRBR)</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Złożenie NIP-8, deklaracji PCC-3 oraz VAT-R / VAT-UE</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Komplet uchwał zarządu o powołaniu i adresie</span>
+              </li>
+            </ul>
+          </div>
+
+          <button class="btn btn-champagne" onclick="selectPackageForDossier('Spółka z o.o. S24 (2 900 PLN)')">Wybierz pakiet →</button>
+        </div>
+
+        <!-- Package 3 -->
+        <div class="package-card" id="pkg-notary">
+          <div>
+            <div class="package-header">
+              <div class="package-tier">Krok 3 · Architektura Inwestycyjna</div>
+              <h3 class="package-name">Spółka Notarialna & IP</h3>
+              <div class="package-price">5 400 PLN <span>netto</span></div>
+              <div class="package-lead-time">✓ Indywidualny akt notarialny w 5 dni</div>
+            </div>
+
+            <ul class="package-features">
+              <li class="package-feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Indywidualna umowa spółki (Vesting, Drag-Along, Tag-Along)</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Klauzule ochrony własności intelektualnej i algorytmów (IP Box)</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Organizacja aktu notarialnego w Warszawie lub przez pełnomocnictwo</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Wsparcie przy uzyskaniu PESEL oraz podpisu elektronicznego dla obcokrajowców</span>
+              </li>
+            </ul>
+          </div>
+
+          <button class="btn btn-outline" onclick="selectPackageForDossier('Spółka Notarialna & IP (5 400 PLN)')">Wybierz pakiet →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CHAPTER 4: ARCHITEKTURA PROCEDURY (Timeline)
+       ========================================================================== -->
+  <section id="procedure">
+    <div class="container">
+      <div class="eyebrow">Harmonogram Realizacji · Krok po Kroku</div>
+      <h2 class="section-title">Od audytu założeń do <em>aktywnego konta</em>.</h2>
+      <p class="section-desc">
+        Ścieżka prawna jest podzielona na 4 precyzyjne punkty kontrolne. Każdy etap kończy się urzędowym potwierdzeniem przekazywanym do Państwa teczki.
+      </p>
+
+      <div class="timeline-grid">
+        <div class="timeline-card">
+          <div class="timeline-node">1</div>
+          <div class="timeline-day">Dzień 1</div>
+          <h4 class="timeline-title">Audyt i Umowa Spółki</h4>
+          <p class="timeline-desc">
+            Weryfikacja unikalności nazwy w KRS, ustalenie podziału udziałów, PKD i przygotowanie formularza elektronicznego.
+          </p>
+        </div>
+
+        <div class="timeline-card">
+          <div class="timeline-node">2</div>
+          <div class="timeline-day">Dzień 2</div>
+          <h4 class="timeline-title">Podpis ePUAP & Wniosek KRS</h4>
+          <p class="timeline-desc">
+            Elektroniczne podpisanie umowy przez wszystkich wspólników i automatyczna wysyłka wniosku rejestracyjnego do sądu.
+          </p>
+        </div>
+
+        <div class="timeline-card">
+          <div class="timeline-node">3</div>
+          <div class="timeline-day">Dzień 3 – 4</div>
+          <h4 class="timeline-title">Wpis KRS, NIP & CRBR</h4>
+          <p class="timeline-desc">
+            Sąd rejestruje podmiot. System generuje numer KRS, automatyczny NIP i REGON. Natychmiast zgłaszamy beneficjentów do CRBR.
+          </p>
+        </div>
+
+        <div class="timeline-card">
+          <div class="timeline-node">4</div>
+          <div class="timeline-day">Dzień 5</div>
+          <h4 class="timeline-title">Konto Firmowe & VAT-R</h4>
+          <p class="timeline-desc">
+            Przekazanie kompletu dokumentów, złożenie zgłoszenia VAT/VAT-UE w Urzędzie Skarbowym i uruchomienie rachunku bankowego.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CHAPTER 5: WZORY DOKUMENTÓW & COMPLIANCE (Clause Inspector)
+       ========================================================================== -->
+  <section id="standards" style="background: var(--bg-surface);">
+    <div class="container">
+      <div class="eyebrow">Standardy Praktyki · Weryfikacja Klauzul</div>
+      <h2 class="section-title">Dokumenty, które <em>chronią</em> Twój biznes.</h2>
+      <p class="section-desc">
+        Prawdziwa praktyka prawna opiera się na precyzji zapisów. Przejrzyj przykładowe standardy klauzul, które wdrażamy w każdej tworzonej strukturze.
+      </p>
+
+      <div class="clause-inspector">
+        <div class="clause-nav">
+          <button class="clause-nav-btn active" onclick="switchClause('vesting', this)">
+            <span class="clause-btn-tag">Struktura Założycielska</span>
+            <span class="clause-btn-title">Klauzula Vestingowa Wspólników</span>
+          </button>
+          <button class="clause-nav-btn" onclick="switchClause('ip', this)">
+            <span class="clause-btn-tag">Prawa Autorskie</span>
+            <span class="clause-btn-title">Przeniesienie IP i Kodów Źródłowych</span>
+          </button>
+          <button class="clause-nav-btn" onclick="switchClause('board', this)">
+            <span class="clause-btn-tag">Ład Korporacyjny</span>
+            <span class="clause-btn-title">Reprezentacja i Ograniczenia Zarządu</span>
+          </button>
+        </div>
+
+        <div class="clause-content-pane" id="clause-pane">
+          <div class="clause-meta">
+            <h3 class="clause-heading" id="clause-title">Klauzula Vestingowa (Ochrona Udziałów Spółki)</h3>
+            <span class="clause-badge" id="clause-badge">Art. 182 KSH Compliant</span>
+          </div>
+
+          <div class="clause-code-box" id="clause-code">
+            § 8. 1. Wspólnik zobowiązuje się do nieodpłatnego umorzenia lub sprzedaży <span class="highlight">1/48 części posiadanych udziałów</span> za każdy miesiąc, w którym zaprzestał świadczenia usług na rzecz Spółki przed upływem 4-letniego okresu zaangażowania.<br><br>
+            2. W przypadku naruszenia zobowiązania, Spółce przysługuje <span class="highlight">nieodwołalne pełnomocnictwo</span> do wykonania prawa odkupu po wartości nominalnej.
+          </div>
+
+          <div class="clause-annotation" id="clause-note">
+            Uwaga praktyka: Chroni założycieli przed sytuacją, w której jeden z kluczowych partnerów odchodzi z 50% udziałów po kilku miesiącach, paraliżując możliwość pozyskania inwestora.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CHAPTER 6: ZESPÓŁ I PRAKTYKA (35mm Editorial Gallery)
+       ========================================================================== -->
+  <section id="practice">
+    <div class="container">
+      <div class="eyebrow">Zespół i Doświadczenie · Warszawa</div>
+      <h2 class="section-title">Doradztwo poparte <em>liczbami</em>.</h2>
+      <p class="section-desc">
+        Łączymy wiedzę radców prawnych, doradców podatkowych i menedżerów compliance z technologią automatyzacji rejestracji w KRS i CEIDG.
+      </p>
+
+      <div class="practice-grid">
+        <div class="practice-card">
+          <div class="practice-img-wrap">
+            <img src="assets/01_harvey_hero_architecture.jpg" alt="Biuro Prawnik.Tech w Warszawie" loading="eager" decoding="async">
+          </div>
+          <div class="practice-card-body">
+            <div class="practice-tag">Infrastruktura</div>
+            <h4 class="practice-role">Centrala w Warszawie</h4>
+            <p class="practice-desc">Biuro w centrum finansowym Warszawy z dostępem do warszawskich notariatów i sądów rejestrowych.</p>
+          </div>
+        </div>
+
+        <div class="practice-card">
+          <div class="practice-img-wrap">
+            <img src="assets/05_partner_portrait_editorial.jpg" alt="Radca Prawny Partner" loading="eager" decoding="async">
+          </div>
+          <div class="practice-card-body">
+            <div class="practice-tag">Prawo Spółek</div>
+            <h4 class="practice-role">Opieka Radcy Prawnego</h4>
+            <p class="practice-desc">Bezpośredni nadzór uprawnionego radcy prawnego nad każdą przygotowywaną umową i wnioskiem.</p>
+          </div>
+        </div>
+
+        <div class="practice-card">
+          <div class="practice-img-wrap">
+            <img src="assets/03_founders_advisory_session.jpg" alt="Konsultacja Założycielska" loading="eager" decoding="async">
+          </div>
+          <div class="practice-card-body">
+            <div class="practice-tag">Strategia</div>
+            <h4 class="practice-role">Doradztwo dla Założycieli</h4>
+            <p class="practice-desc">Strukturyzacja kapitału zakładowego, umów wspólników (SHA) oraz planów motywacyjnych ESOP/Vesting.</p>
+          </div>
+        </div>
+
+        <div class="practice-card">
+          <div class="practice-img-wrap">
+            <img src="assets/04_notary_boardroom_warsaw.jpg" alt="Sesja Notarialna" loading="eager" decoding="async">
+          </div>
+          <div class="practice-card-body">
+            <div class="practice-tag">Procedura</div>
+            <h4 class="practice-role">Bezpieczeństwo Kapitałowe</h4>
+            <p class="practice-desc">Weryfikacja pod kątem ustawy o praniu pieniędzy (AML) oraz transparentności beneficjentów w CRBR.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="metrics-ribbon">
+        <div>
+          <div class="metric-number">1 200+</div>
+          <div class="metric-label">Zarejestrowanych podmiotów</div>
+        </div>
+        <div>
+          <div class="metric-number">99.4%</div>
+          <div class="metric-label">Wniosków bez wezwań sądu</div>
+        </div>
+        <div>
+          <div class="metric-number">72h</div>
+          <div class="metric-label">Średni czas wpisu S24</div>
+        </div>
+        <div>
+          <div class="metric-number">0 zł</div>
+          <div class="metric-label">Nieprzewidzianych opłat</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CHAPTER 7: GENERATOR TECZKI REJESTRACYJNEJ (Booking Form)
+       ========================================================================== -->
+  <section id="dossier-intake" style="background: var(--bg-surface);">
+    <div class="container">
+      <div class="eyebrow">Generator Teczki Rejestracyjnej · Sprawa Online</div>
+      <h2 class="section-title">Rozpocznij procedurę <em>już dziś</em>.</h2>
+      <p class="section-desc">
+        Wypełnij poniższe dane operacyjne, aby wygenerować unikalny numer teczki rejestracyjnej i otrzymać wstępny projekt umowy w ciągu 2 godzin roboczych.
+      </p>
+
+      <div class="dossier-generator-layout">
+        <!-- Manifest summary -->
+        <div class="dossier-manifest-card">
+          <div class="dossier-seal-preview" style="margin-bottom: 20px; border-radius: 4px; overflow: hidden; border: 1px solid var(--border-hairline); height: 160px;">
+            <img src="assets/02_corporate_dossier_seal.jpg" alt="Pieczęć Urzędowa KRS i Kancelarii" loading="eager" decoding="async" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div class="dossier-number-badge" id="dossier-badge">AKTA PT-2026-8492</div>
+          <h3 class="dossier-manifest-title">Teczka Wdrożeniowa</h3>
+          <p class="dossier-manifest-desc">
+            Dane z formularza są automatycznie szyfrowane i przygotowywane do sporządzenia wniosku w portalu Ministerstwa Sprawiedliwości.
+          </p>
+
+          <div class="selected-summary-box">
+            <div class="summary-line">
+              <span>Wybrany Pakiet:</span>
+              <strong id="summary-pkg">Spółka z o.o. S24 (2 900 PLN)</strong>
+            </div>
+            <div class="summary-line">
+              <span>Forma Prawna:</span>
+              <strong id="summary-entity">Spółka z o.o.</strong>
+            </div>
+            <div class="summary-line">
+              <span>Czas Realizacji:</span>
+              <strong id="summary-sla">72 godziny</strong>
+            </div>
+            <div class="summary-line">
+              <span>Status Opłaty Sądowej:</span>
+              <strong style="color: var(--status-active);">W cenie pakietu (350 zł)</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Intake Form -->
+        <form class="dossier-form" id="dossier-form" onsubmit="handleDossierSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="firm-name">Proponowana Nazwa Spółki / Firmy</label>
+              <input class="form-input" type="text" id="firm-name" placeholder="np. Nexus Tech Sp. z o.o." required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="founder-name">Imię i Nazwisko Założyciela</label>
+              <input class="form-input" type="text" id="founder-name" placeholder="np. Jan Kowalski" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="contact-email">Adres E-mail do Korespondencji</label>
+              <input class="form-input" type="email" id="contact-email" placeholder="jan@twojadomena.pl" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-phone">Numer Telefonu</label>
+              <input class="form-input" type="tel" id="contact-phone" placeholder="+48 000 000 000" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="entity-select">Forma Rejestracji</label>
+              <select class="form-select" id="entity-select" onchange="updateDossierPackage(this.value)">
+                <option value="s24" selected>Spółka z o.o. S24 (72h — 2 900 zł)</option>
+                <option value="jdg">JDG (Jednoosobowa — 1 200 zł)</option>
+                <option value="notary">Spółka Notarialna & IP (5 dni — 5 400 zł)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="residence-select">Status Rezydentury Wspólników</label>
+              <select class="form-select" id="residence-select">
+                <option value="pl" selected>Wspólnicy z obywatelstwem PL / PESEL</option>
+                <option value="eu">Obywatele UE (wymagany PESEL/ePUAP)</option>
+                <option value="non-eu">Obywatele spoza UE (wymagane paszporty)</option>
+              </select>
+            </div>
+          </div>
+
+          <p class="form-disclaimer">
+            Wysyłając formularz, akceptujesz zasady zachowania poufności adwokackiej i radcowskiej. Przekazane dane posłużą wyłącznie do weryfikacji dostępności nazwy w KRS i przygotowania projektu umowy.
+          </p>
+
+          <button type="submit" class="btn btn-champagne" style="font-size: 15px;">
+            Zarejestruj Sprawę i Wygeneruj Dokumenty →
+          </button>
+
+          <div class="form-success-banner" id="form-success-banner">
+            <strong>✓ Teczka została zarejestrowana w systemie!</strong><br>
+            Numer sprawy: <span id="success-case-id" style="font-family: var(--font-mono); font-weight: 700;"></span>.<br>
+            Wysłaliśmy potwierdzenie na Twój adres e-mail wraz z listą kontrolną dokumentów. Nasz radca prawny skontaktuje się w ciągu 2 godzin roboczych.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <a href="#hero" class="brand-mark">
+          <div class="brand-logo-badge">PT</div>
+          <div class="brand-name">Prawnik<span>.Tech</span></div>
+        </a>
+        <div style="font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary);">
+          Kancelaria Prawa Nowych Technologii · Rondo Daszyńskiego, Warszawa
+        </div>
+      </div>
+
+      <p class="footer-legal-copy">
+        Prawnik.Tech jest wyspecjalizowaną praktyką doradztwa korporacyjnego i compliance dla branży technologicznej. Niniejszy serwis ma charakter informacyjny i demonstracyjny. Wszystkie procedury rejestracyjne w KRS i CEIDG są prowadzone zgodnie z Kodeksem Spółek Handlowych oraz ustawą o swobodzie działalności gospodarczej.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       INTERACTIVE LOGIC (No Lenis, Clean Vanilla JS)
+       ========================================================================== -->
+  <script>
+    // 1. Chapter 1: Terminal Switcher
+    const terminalData = {
+      jdg: {
+        time: '24 godziny',
+        timeSub: 'Wpis do CEIDG',
+        tax: 'Ryczałt 8.5% – 12%',
+        taxSub: 'Dla usług programistycznych i B2B',
+        liab: 'Majątkiem osobistym',
+        liabSub: 'Bez kapitału zakładowego',
+        cost: '0 zł',
+        costSub: 'Wpis CEIDG bezpłatny',
+        registry: 'CEIDG / ZUS',
+        sig: 'Profil Zaufany ePUAP'
+      },
+      s24: {
+        time: '72 godziny',
+        timeSub: 'Sąd Rejestrowy KRS',
+        tax: 'CIT 9% (Mały Podatnik)',
+        taxSub: 'Podwójne opodatkowanie z dywidendy',
+        liab: 'Do wysokości kapitału (5 000 zł)',
+        liabSub: 'Pełna ochrona majątku prywatnego',
+        cost: '350 zł (w cenie)',
+        costSub: 'Opłata sądowa i MSiG',
+        registry: 'Krajowy Rejestr Sądowy (KRS)',
+        sig: 'ePUAP lub Podpis Kwalifikowany'
+      },
+      notary: {
+        time: '5 – 7 dni roboczych',
+        timeSub: 'Akt Notarialny + KRS',
+        tax: 'CIT 9% / Estoński CIT 0%',
+        taxSub: 'Z opcją tarczy IP Box 5%',
+        liab: 'Do wysokości kapitału',
+        liabSub: 'Zaawansowany vesting wspólników',
+        cost: 'Taksa notarialna + KRS',
+        costSub: 'PCC-3 (0.5% kapitału)',
+        registry: 'Kancelaria Notarialna / KRS',
+        sig: 'Akt Notarialny (osobiście/pełnomocnik)'
+      }
+    };
+
+    function switchTerminalEntity(type) {
+      document.querySelectorAll('.terminal-tab-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const data = terminalData[type];
+      document.getElementById('term-time').textContent = data.time;
+      document.getElementById('term-time-sub').textContent = data.timeSub;
+      document.getElementById('term-tax').textContent = data.tax;
+      document.getElementById('term-tax-sub').textContent = data.taxSub;
+      document.getElementById('term-liab').textContent = data.liab;
+      document.getElementById('term-liab-sub').textContent = data.liabSub;
+      document.getElementById('term-cost').textContent = data.cost;
+      document.getElementById('term-cost-sub').textContent = data.costSub;
+      document.getElementById('term-registry').textContent = data.registry;
+      document.getElementById('term-signature').textContent = data.sig;
+    }
+
+    // 2. Chapter 2: Triage Calculator State
+    const triageState = {
+      partners: 'solo',
+      risk: 'low',
+      revenue: 'under500k'
+    };
+
+    function selectTriageOption(step, value, btn) {
+      const parent = btn.parentElement;
+      parent.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+
+      if (step === 1) triageState.partners = value;
+      if (step === 2) triageState.risk = value;
+      if (step === 3) triageState.revenue = value;
+
+      evaluateVerdict();
+    }
+
+    function evaluateVerdict() {
+      const { partners, risk, revenue } = triageState;
+      const title = document.getElementById('verdict-title');
+      const tax = document.getElementById('verdict-tax');
+      const shield = document.getElementById('verdict-shield');
+      const time = document.getElementById('verdict-time');
+      const acc = document.getElementById('verdict-acc');
+      const pkd = document.getElementById('verdict-pkd');
+
+      if (partners === 'solo' && risk === 'low' && revenue === 'under500k') {
+        title.textContent = 'Jednoosobowa Działalność (JDG)';
+        tax.textContent = 'Ryczałt 12% (IT) / 8.5% (Services)';
+        shield.textContent = 'Brak (pełna odpowiedzialność)';
+        shield.style.color = 'var(--status-pending)';
+        time.textContent = '24 godziny (CEIDG)';
+        acc.textContent = 'ok. 250 – 400 zł / msc';
+        pkd.innerHTML = `
+          <span class="pkd-chip">62.01.Z (Oprogramowanie)</span>
+          <span class="pkd-chip">62.02.Z (Doradztwo IT)</span>
+          <span class="pkd-chip">62.09.Z (Pozostałe IT)</span>
+        `;
+      } else if (partners === 'investors' || risk === 'high' || revenue === 'over2m') {
+        title.textContent = 'Spółka z o.o. Notarialna & IP';
+        tax.textContent = 'Estoński CIT 0% / IP Box 5%';
+        shield.textContent = 'Pełna ochrona kapitałowa';
+        shield.style.color = 'var(--status-active)';
+        time.textContent = '5 dni roboczych';
+        acc.textContent = 'ok. 800 – 1 500 zł / msc';
+        pkd.innerHTML = `
+          <span class="pkd-chip">62.01.Z (Programowanie)</span>
+          <span class="pkd-chip">58.29.Z (Pakiety software)</span>
+          <span class="pkd-chip">64.20.Z (Działalność holdingowa)</span>
+        `;
+      } else {
+        title.textContent = 'Spółka z o.o. S24 (Polecana)';
+        tax.textContent = 'CIT 9% (Mały Podatnik)';
+        shield.textContent = 'Pełna ochrona (do 5 000 zł)';
+        shield.style.color = 'var(--status-active)';
+        time.textContent = '72 godziny (KRS)';
+        acc.textContent = 'ok. 600 – 900 zł / msc';
+        pkd.innerHTML = `
+          <span class="pkd-chip">62.01.Z (Oprogramowanie)</span>
+          <span class="pkd-chip">62.02.Z (Doradztwo)</span>
+          <span class="pkd-chip">63.11.Z (Hosting i Portale)</span>
+        `;
+      }
+    }
+
+    function applyVerdictToPackages() {
+      const title = document.getElementById('verdict-title').textContent;
+      const targetSec = document.getElementById('packages');
+      targetSec.scrollIntoView({ behavior: 'auto' });
+
+      document.querySelectorAll('.package-card').forEach(c => c.style.outline = 'none');
+      if (title.includes('JDG')) {
+        document.getElementById('pkg-jdg').style.outline = '2px solid var(--color-champagne)';
+      } else if (title.includes('Notarialna')) {
+        document.getElementById('pkg-notary').style.outline = '2px solid var(--color-champagne)';
+      } else {
+        document.getElementById('pkg-s24').style.outline = '2px solid var(--color-champagne)';
+      }
+    }
+
+    // 3. Chapter 3: Package Selector pass-through to Chapter 7
+    function selectPackageForDossier(pkgName) {
+      document.getElementById('summary-pkg').textContent = pkgName;
+      const select = document.getElementById('entity-select');
+      if (pkgName.includes('JDG')) {
+        select.value = 'jdg';
+        updateDossierPackage('jdg');
+      } else if (pkgName.includes('Notarialna')) {
+        select.value = 'notary';
+        updateDossierPackage('notary');
+      } else {
+        select.value = 's24';
+        updateDossierPackage('s24');
+      }
+      const target = document.getElementById('dossier-intake') || document.getElementById('generator'); if (target) target.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function updateDossierPackage(val) {
+      const summaryPkg = document.getElementById('summary-pkg');
+      const summaryEntity = document.getElementById('summary-entity');
+      const summarySla = document.getElementById('summary-sla');
+
+      if (val === 'jdg') {
+        summaryPkg.textContent = 'JDG Start (1 200 PLN)';
+        summaryEntity.textContent = 'Jednoosobowa Działalność';
+        summarySla.textContent = '24 godziny';
+      } else if (val === 'notary') {
+        summaryPkg.textContent = 'Spółka Notarialna & IP (5 400 PLN)';
+        summaryEntity.textContent = 'Spółka z o.o. (Akt Notarialny)';
+        summarySla.textContent = '5 dni roboczych';
+      } else {
+        summaryPkg.textContent = 'Spółka z o.o. S24 (2 900 PLN)';
+        summaryEntity.textContent = 'Spółka z o.o.';
+        summarySla.textContent = '72 godziny';
+      }
+    }
+
+    // 4. Chapter 5: Clause Inspector
+    const clauses = {
+      vesting: {
+        title: 'Klauzula Vestingowa (Ochrona Udziałów Spółki)',
+        badge: 'Art. 182 KSH Compliant',
+        code: `§ 8. 1. Wspólnik zobowiązuje się do nieodpłatnego umorzenia lub sprzedaży <span class="highlight">1/48 części posiadanych udziałów</span> za każdy miesiąc, w którym zaprzestał świadczenia usług na rzecz Spółki przed upływem 4-letniego okresu zaangażowania.<br><br>2. W przypadku naruszenia zobowiązania, Spółce przysługuje <span class="highlight">nieodwołalne pełnomocnictwo</span> do wykonania prawa odkupu po wartości nominalnej.`,
+        note: 'Uwaga praktyka: Chroni założycieli przed odejściem wspólnika ze znaczącym pakietem akcji, co ułatwia późniejsze rundy finansowania.'
+      },
+      ip: {
+        title: 'Przeniesienie Własności Intelektualnej (IP Transfer)',
+        badge: 'Ustawa o Prawie Autorskim Art. 41',
+        code: `§ 12. 1. Z chwilą zapłaty wynagrodzenia, Zleceniobiorca przenosi na Spółkę <span class="highlight">autorskie prawa majątkowe do wszelkich utworów</span> (kody źródłowe, architektura baz danych, grafika UI) na wszystkich polach eksploatacji bez ograniczeń terytorialnych.<br><br>2. Zleceniobiorca upoważnia Spółkę do wykonywania <span class="highlight">autorskich praw zależnych</span> oraz zezwalania na ich wykonywanie osobom trzecim.`,
+        note: 'Uwaga praktyka: Kluczowy zapis audytowany przez fundusze VC przy badaniu Due Diligence przed inwestycją.'
+      },
+      board: {
+        title: 'Zasady Reprezentacji Zarządu i Zgoda Zgromadzenia',
+        badge: 'Art. 208 & 230 KSH',
+        code: `§ 15. 1. Do składania oświadczeń w imieniu Spółki upoważniony jest <span class="highlight">każdy członek Zarządu samodzielnie</span> do kwoty zobowiązania nieprzekraczającej 100 000 PLN.<br><br>2. Rozporządzenie prawem lub zaciągnięcie zobowiązania o wartości przekraczającej tę kwotę wymaga <span class="highlight">łącznego współdziałania dwóch członków Zarządu</span> lub uprzedniej uchwały Wspólników.`,
+        note: 'Uwaga praktyka: Pozwala na szybkie operacje bieżące bez zwoływania zgromadzeń, chroniąc przed nieautoryzowanym długiem.'
+      }
+    };
+
+    function switchClause(key, btn) {
+      document.querySelectorAll('.clause-nav-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const item = clauses[key];
+      document.getElementById('clause-title').textContent = item.title;
+      document.getElementById('clause-badge').textContent = item.badge;
+      document.getElementById('clause-code').innerHTML = item.code;
+      document.getElementById('clause-note').textContent = item.note;
+    }
+
+    // 5. Chapter 7: Form Submission Handler
+    function handleDossierSubmit(e) {
+      e.preventDefault();
+      const randomCase = 'AKTA PT-2026-' + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('dossier-badge').textContent = randomCase;
+      document.getElementById('success-case-id').textContent = randomCase;
+      document.getElementById('form-success-banner').style.display = 'block';
+      document.getElementById('form-success-banner').scrollIntoView({ behavior: 'auto' });
+    }
+  </script>
+
+<!-- universal-smooth-anchor-scroll -->
 <script>
-(function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
+(function(){
+  if(window.__ovSmoothScrollInit) return;
+  window.__ovSmoothScrollInit = true;
+  var animId = null;
+  function cancel(){ if(animId){ cancelAnimationFrame(animId); animId = null; } }
+  window.addEventListener('wheel', cancel, {passive:true});
+  window.addEventListener('touchstart', cancel, {passive:true});
+  window.addEventListener('keydown', cancel, {passive:true});
+  function smoothTo(targetY, dur){
+    cancel();
+    var startY = window.scrollY || window.pageYOffset || 0;
+    var maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    var destY = Math.min(Math.max(0, targetY), maxScroll);
+    var dist = destY - startY;
+    if(Math.abs(dist) < 3) return;
+    var startTime = performance.now();
+    var d = dur || 780;
+    function step(now){
+      var t = Math.min((now - startTime) / d, 1);
+      var ease = 1 - Math.pow(1 - t, 3);
+      window.scrollTo(0, startY + dist * ease);
+      if(t < 1) animId = requestAnimationFrame(step);
+      else animId = null;
+    }
+    animId = requestAnimationFrame(step);
+  }
+  window.__ovSmoothScrollTo = smoothTo;
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('a[href^="#"], [data-scroll-to], [data-target]');
+    if(!el) return;
+    var sel = el.getAttribute('data-scroll-to') || el.getAttribute('href');
+    if(!sel || sel.charAt(0) !== '#') return;
+    if(sel === '#'){
+      if(el.classList.contains('logo-link') || el.classList.contains('brand')){
+        e.preventDefault();
+        smoothTo(0, 750);
+      }
+      return;
+    }
+    var target = null;
+    try { target = document.querySelector(sel); } catch(err){}
+    if(!target) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var header = document.querySelector('header, nav.navbar, .site-header, .top-nav, .nav-bar');
+    var offset = 0;
+    if(header){
+      var pos = getComputedStyle(header).position;
+      if(pos === 'fixed' || pos === 'sticky'){
+        offset = header.offsetHeight || 72;
+      }
+    }
+    var top = (window.scrollY || window.pageYOffset || 0) + target.getBoundingClientRect().top - offset;
+    smoothTo(top, 780);
+  }, true);
+})();
 </script>
+
 </body>
 </html>

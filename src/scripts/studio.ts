@@ -648,9 +648,14 @@ if (!reduce && fine) {
     const viewWord = view[lang] || view.pl;
 
     // Resolve the word shown inside the expanding cursor:
-    //  explicit data-cursor text > project link > external link > default arrow
+    //  theme toggle > explicit data-cursor > project link > external link > default arrow
     const labelFor = (el: HTMLElement): string => {
       const explicit = (el.dataset.cursor || '').trim();
+      if (explicit === 'theme' || el.closest('.theme-toggle')) {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'studio-dark' ||
+                       document.body.getAttribute('data-theme') === 'studio-dark';
+        return isDark ? '☼' : '☾';
+      }
       if (explicit) return explicit;
       const a = el.closest('a') as HTMLAnchorElement | null;
       const href = a?.getAttribute('href') || '';
@@ -659,7 +664,7 @@ if (!reduce && fine) {
       return '→';
     };
 
-    document.querySelectorAll<HTMLElement>('[data-cursor]').forEach((el) => {
+    document.querySelectorAll<HTMLElement>('[data-cursor], .nav-links a, .lang a, .theme-toggle').forEach((el) => {
       el.addEventListener('mouseenter', () => {
         const word = labelFor(el);
         if (labelEl) labelEl.textContent = word;

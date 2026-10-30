@@ -1,0 +1,45 @@
+/* ARCHLINE Design Tokens — Norm Architects Reference */
+:root {
+  /* Colors */
+  --bg-parchment: #F5F1E5;
+  --bg-travertine: #EAE4D3;
+  --bg-travertine-subtle: #F0EADF;
+  --bg-chalk: #FAF8F2;
+  --bg-dark-panel: #141312;
+
+  --text-ink: #1C1B19;
+  --text-muted: #5C5852;
+  --text-subtle: #8A857D;
+  --text-inverse: #F5F1E5;
+
+  --border-hairline: rgba(28, 27, 25, 0.12);
+  --border-medium: rgba(28, 27, 25, 0.22);
+  --border-focus: rgba(28, 27, 25, 0.45);
+  --border-inverse: rgba(245, 241, 229, 0.15);
+
+  --accent-bronze: #8C6D3F;
+  --accent-bronze-hover: #A07D49;
+  --accent-bronze-light: #B88B4A;
+  --accent-ochre: #C49A5A;
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', Garamond, 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+  /* Spacing */
+  --max-w-canvas: 1680px;
+  --pad-x-desktop: 48px;
+  --pad-x-tablet: 32px;
+  --pad-x-mobile: 20px;
+
+  /* Layout */
+  --header-h: 72px;
+  --radius-subtle: 2px;
+  --radius-pill: 9999px;
+
+  /* Transitions */
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}

@@ -1,0 +1,69 @@
+/* ==========================================================================
+   SMM VANGUARD — DESIGN TOKENS (REJOUICE CANON)
+   ========================================================================== */
+
+:root {
+  /* Canvas & Backgrounds */
+  --bg-obsidian: #0A0A0C;
+  --bg-obsidian-subtle: #0F0F13;
+  --bg-obsidian-card: #141418;
+  --bg-obsidian-elevated: #1B1B22;
+
+  --bg-chalk: #F8F7F3;
+  --bg-chalk-card: #EFECE4;
+  --bg-chalk-elevated: #E5E1D8;
+
+  /* Typography Colors */
+  --text-white: #FFFFFF;
+  --text-white-dim: rgba(255, 255, 255, 0.72);
+  --text-white-mute: rgba(255, 255, 255, 0.42);
+
+  --text-charcoal: #0A0A0C;
+  --text-charcoal-dim: rgba(10, 10, 12, 0.72);
+  --text-charcoal-mute: rgba(10, 10, 12, 0.42);
+
+  /* Studio Laser Accent */
+  --accent-vermilion: #FF451A;
+  --accent-vermilion-hover: #E0370E;
+  --accent-vermilion-glow: rgba(255, 69, 26, 0.28);
+  --accent-vermilion-subtle: rgba(255, 69, 26, 0.12);
+
+  /* Borders & Dividers */
+  --border-dark: rgba(255, 255, 255, 0.08);
+  --border-dark-hover: rgba(255, 255, 255, 0.22);
+  --border-light: rgba(10, 10, 12, 0.09);
+  --border-light-hover: rgba(10, 10, 12, 0.20);
+
+  /* Font Families */
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+  /* Typography Scales */
+  --fs-wordmark: clamp(3.5rem, 10.6vw, 11.2rem);
+  --fs-h1: clamp(2.5rem, 5.5vw, 5.25rem);
+  --fs-h2: clamp(2rem, 4vw, 3.75rem);
+  --fs-h3: clamp(1.25rem, 2.2vw, 2rem);
+  --fs-lead: clamp(1.1rem, 1.4vw, 1.35rem);
+  --fs-body: 1rem;
+  --fs-mono: 0.8125rem;
+
+  /* Layout Dimensions */
+  --header-height: 72px;
+  --container-max: 1600px;
+  --gutter: clamp(1.25rem, 4vw, 4.5rem);
+  
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+
+  /* Easing & Motion (Pure Native CSS) */
+  --ease-rejouice: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-fast: 180ms var(--ease-rejouice);
+  --transition-normal: 320ms var(--ease-rejouice);
+  --transition-slow: 600ms var(--ease-rejouice);
+}

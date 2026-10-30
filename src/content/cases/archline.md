@@ -1,13 +1,13 @@
 ---
 title: ARCHLINE
-tagline: Лендинг ремонта квартир в Польше — dark interior фото и калькулятор стоимости
+tagline: Architektura wnętrz i realizacje pod klucz — estetyka Norm Architects, 5 odbiorów technicznych i kosztorys
 niche: Services
-year: '2025'
-palette: WARM-DARK-INTERIOR
+year: '2026'
+palette: WARM-PARCHMENT-OAK
 tier: 1
-accent: '#C8956D'
-bg: '#0F0F0F'
-siteUrl: https://archline-showcase.vercel.app
+accent: '#8C6D3F'
+bg: '#F5F1E5'
+siteUrl: https://overflow-web.pl/archline/
 cover: /covers/archline.jpg
 screens:
   - src: /screens/archline-m1.webp
@@ -22,65 +22,77 @@ technologies:
   - JavaScript
 region:
   - PL
-summary: Лендинг ремонта квартир в Польше. Dark interior фото + калькулятор стоимости + 3 пакета (косметический / капитальный / проектантский).
-order: 2
+summary: Studio architektury wnętrz i realizacji pod klucz w estetyce Norm Architects. Pergaminowe tło #F5F1E5, dąb wędzony, trawertyn, interaktywny suwak Przed/Po, 5 faz odbiorów technicznych oraz precyzyjny kalkulator budżetu.
+order: 99
 concept: true
 translations:
   pl:
-    tagline: Lending remontów mieszkań w Polsce — ciemne foto wnętrz i kalkulator kosztów
-    summary: Lending remontów mieszkań w Polsce. Ciemne foto wnętrz + kalkulator kosztów + 3 pakiety (kosmetyczny / kapitalny / projektancki).
+    tagline: Architektura wnętrz i realizacje pod klucz — estetyka Norm Architects, 5 odbiorów technicznych i kosztorys
+    summary: Studio architektury wnętrz i realizacji pod klucz w estetyce Norm Architects. Pergaminowe tło #F5F1E5, dąb wędzony, trawertyn, interaktywny suwak Przed/Po, 5 faz odbiorów technicznych oraz precyzyjny kalkulator budżetu.
     body: |
       ## Kontekst
 
-      Lending remontów mieszkań w Polsce, segment premium — właściciele mieszkań od 60 m² z budżetem od 80 000 zł, którzy chcą dokładnej realizacji projektu wnętrza bez niespodzianek. Problem niszy: niemal wszystkie strony są jak spod sztancy — jasna paleta, medyczny niebieski, stockowe ekipy w mundurkach. Klient premium czyta taki wizual jako „budżetowy wykonawca" i nie zapamiętuje firmy. Trzeba było zmienić odbiór na pierwszym ekranie: to usługa dla mieszkań z projektem wnętrza, a nie typowy remont.
+      Segment realizacji wnętrz premium w Polsce cierpi na powtarzalność: krzykliwe neony, tanie wizualizacje 3D lub stereotypowe strony firm budowlanych. Świadomy inwestor (apartamenty 80–250 m², budżety od 300 000 zł) poszukuje spokoju, gwarancji jakości i rygorystycznej kontroli inżynierskiej. Celem ARCHLINE było stworzenie monografii w kanonie Norm Architects — wyciszona architektura, naturalne materiały i rzetelna kalkulacja.
 
       ## Rozwiązanie
 
-      Ciemna paleta — głębokie czarne tło i ciepły drewniany akcent: od razu „premium wnętrze", a nie „firma budowlana". Fotografia pierwsza — hero na cały ekran z prawdziwym drogim wnętrzem, tekst podporządkowany obrazowi. Kalkulator kosztów na pierwszym ekranie, przed formularzem: klient od razu widzi orientacyjną kwotę i nie dzwoni „zapytać ile". Trzy pakiety (kosmetyczny / kapitalny / projektancki) — nie jeden (zbyt ogólnie) i nie pięć (przeładowanie): szybko znajdujesz swój.
+      1. **Estetyka Norm Architects:** Ciepłe pergaminowe tło (`#F5F1E5`), powierzchnie trawertynu (`#EAE4D3`), głęboki atrament węglowy (`#1C1B19`) i subtelny patynowany brąz (`#8C6D3F`). Redakcyjna antykwa Cormorant Garamond w połączeniu z technicznym krojem Inter.
+      2. **Interaktywny suwak Przed / Po:** Płynne porównanie surowej substancji budowlanej (laserowe osie odniesienia, bruzdy instalacyjne) ze zrealizowanym sanktuarium z dębu i trawertynu.
+      3. **Przejrzysty kalkulator inwestycji:** Rozbicie kosztów na 4 filary (prace budowlane, stolarka na wymiar, kamień, nadzór autorski) z uwzględnieniem stanu deweloperskiego vs kamienicy oraz bezpośrednim przeniesieniem danych do briefu wizji lokalnej.
+      4. **5 Odbiorów Technicznych:** Formalny rejestr kontroli jakości — od inwentaryzacji chmurą punktów 3D po badanie kamerą termowizyjną.
 
       ## Wynik
 
-      Jednostronicowa strona na czystym HTML/CSS z odrobiną JS (kalkulator, animacje przy przewijaniu), bez frameworków — ważne dla odbiorców, którzy otwierają stronę z telefonu między sprawami. Strona firmy remontowej, która nie wygląda jak strona firmy remontowej: publiczność premium odczytuje poziom po tonie, a kalkulator zdejmuje pierwszą barierę „ile to będzie" jeszcze przed kontaktem.
+      Strona na czystym HTML/CSS i natywnym JS (Zero-Lag scroll, bez obciążających bibliotek wheel-jacking). Projekt pozycjonuje ARCHLINE jako lidera cichego luksusu w Warszawie i Trójmieście, budując zaufanie inwestora jeszcze przed wejściem na budowę.
   en:
-    tagline: Apartment renovation landing in Poland — dark interior photography and cost calculator
-    summary: Apartment renovation landing in Poland. Dark interior photography + cost calculator + 3 packages (cosmetic / capital / architect-designed).
+    tagline: Interior architecture & turnkey realization — Norm Architects aesthetic, 5 technical gates & budget calculator
+    summary: Interior architecture and turnkey realization studio following the Norm Architects aesthetic. Unbleached parchment ground #F5F1E5, smoked oak, travertine, interactive Before/After slider, 5 engineering gates, and transparent budget calculator.
     body: |
       ## Context
 
-      A landing for apartment renovation in Poland, premium segment — owners of 60 m²+ apartments with a budget from 80,000 zł who want a precise build of their design with no surprises. The niche problem: nearly every site looks the same — light palette, medical blue, stock crews in uniforms. A premium client reads that visual as a "budget contractor" and doesn't remember the firm. Perception had to change on the first screen: this is a service for apartments with a design project, not a generic renovation.
+      The premium turnkey renovation segment in Poland is dominated by either loud generic templates or budget contractor websites. Discerning homeowners (80–250 m² residences, 300k+ PLN budgets) require architectural peace of mind, uncompromising craft, and rigorous engineering oversight. ARCHLINE positions turnkey renovation as high-craft spatial discipline under the Norm Architects canon.
 
-      ## The solution
+      ## The Solution
 
-      A dark palette — deep black background and a warm wood accent: "premium interior" at once, not "construction company". Photo first — a full-screen hero with a real expensive interior, text subordinate to the image. The cost calculator sits on the first screen, before the form: the client sees a ballpark figure right away and doesn't call to "ask how much". Three packages (cosmetic / full / architect-designed) — not one (too generic) and not five (overload): you find yours fast.
+      1. **Norm Architects Aesthetic:** Unbleached parchment canvas (`#F5F1E5`), warm travertine stone surfaces (`#EAE4D3`), deep charcoal ink (`#1C1B19`), and patinated bronze accents (`#8C6D3F`). Elegant editorial serif typography paired with crisp technical sans.
+      2. **Interactive Before / After Slider:** Touch-enabled comparison between the raw construction shell (laser levels, masonry chases) and the completed quiet sanctuary.
+      3. **Turnkey Budget & Timeline Calculator:** Dynamic breakdown across 4 pillars (construction, bespoke joinery, stone & fixtures, architectural supervision) with one-click transfer to on-site booking.
+      4. **5-Stage Quality Control Ledger:** Formal engineering gates from 3D point-cloud survey to thermal imaging inspection.
 
-      ## The outcome
+      ## The Outcome
 
-      A single-page site in pure HTML/CSS with a little JS (calculator, scroll animations), no frameworks — important for an audience opening the site on their phone between tasks. A renovation-company site that doesn't look like one: the premium audience reads the level from the tone, and the calculator removes the first barrier — "what will this cost" — before any contact.
+      Pure lightweight HTML/CSS with native vanilla JS (zero-lag scroll, no wheel hijacking). A digital monograph that conveys authority, quiet luxury, and engineering precision for private clients in Warsaw and Sopot.
   ua:
-    tagline: Лендинг ремонту квартир у Польщі — dark interior фото та калькулятор вартості
-    summary: Лендинг ремонту квартир у Польщі. Dark interior фото + калькулятор вартості + 3 пакети (косметичний / капітальний / проектантський).
+    tagline: Архітектура інтер'єру та реалізація під ключ — естетика Norm Architects, 5 технічних оглядів та кошторис
+    summary: Студія архітектури інтер'єру та ремонту під ключ в естетиці Norm Architects. Пергаментне тло #F5F1E5, копчений дуб, травертин, інтерактивний слайдер До/Після, 5 інженерних фаз і точний калькулятор бюджету.
     body: |
       ## Контекст
 
-      Лендинг ремонту квартир у Польщі, преміум-сегмент — власники квартир від 60 м² з бюджетом від 80 000 zł, яким потрібна точна реалізація дизайн-проєкту без сюрпризів. Біда ніші: майже всі сайти на одне лице — світла палітра, медичний синій, стокові бригади у формі. Premium-клієнт читає такий візуал як «бюджетний підрядник» і не запам'ятовує фірму. Потрібно було змінити сприйняття на першому екрані: це сервіс для квартир із дизайн-проєктом, а не типовий ремонт.
+      Преміальний ремонт квартир у Польщі часто грішить типовими сайтами будівельних бригад. Вимогливі власники нерухомості шукають архітектурного спокою, прозорості кошторису та інженерної дисципліни. ARCHLINE втілює скандинавський тихий розкіш за каноном Norm Architects.
 
       ## Рішення
 
-      Темна палітра — глибокий чорний фон і теплий дерев'яний акцент: одразу «преміум-інтер'єр», а не «будівельна компанія». Фото первинне — hero на весь екран із реальним дорогим інтер'єром, текст підпорядкований картинці. Калькулятор вартості винесений на перший екран, до форми: клієнт одразу бачить приблизну суму і не дзвонить «спитати скільки». Три пакети (косметичний / капітальний / проектантський) — не один (надто загально) і не п'ять (перевантаження): швидко знаходиш свій.
+      1. **Естетика Norm Architects:** Теплий пергамент (`#F5F1E5`), поверхні травертину (`#EAE4D3`), глибоке вугільне чорнило (`#1C1B19`) та патинована бронза (`#8C6D3F`).
+      2. **Слайдер До / Після:** Порівняння чорнового стану з лазерним трасуванням і завершеного простору.
+      3. **Калькулятор під ключ:** Прозорий розрахунок за 4 статтями витрат і термінами виконання.
+      4. **5 Технічних Етапів:** Інженерний контроль від 3D-лазерного сканування до тепловізійного аудиту.
 
-      ## Підсумок
+      ## Результат
 
-      Односторінковий сайт на чистому HTML/CSS з невеликим JS (калькулятор, анімації при скролі), без фреймворків — важливо для аудиторії, яка відкриває сайт із телефона між справами. Сайт ремонтної компанії, який не виглядає як сайт ремонтної компанії: premium-аудиторія зчитує рівень за тоном, а калькулятор знімає перший бар'єр «скільки це буде» ще до контакту.
+      Чистий HTML/CSS та нативний JS без затримок скролу. Презентація формує довіру преміум-клієнтів до початку робіт на об'єкті.
 ---
 
 ## Контекст
 
-Лендинг ремонта квартир в Польше, премиум-сегмент — владельцы квартир от 60 м² с бюджетом от 80 000 zł, которым нужна точная реализация дизайн-проекта без сюрпризов. Беда ниши: почти все сайты на одно лицо — светлая палитра, медицинский синий, стоковые бригады в форме. Premium-клиент читает такой визуал как «бюджетный подрядчик» и не запоминает фирму. Нужно было сменить восприятие на первом экране: это сервис для квартир с дизайн-проектом, а не типовой ремонт.
+Сегмент ремонта и архитектуры интерьеров под ключ в Польше перегружен шаблонными сайтами со стоковыми рабочими. Состоятельные заказчики (квартиры от 80 до 250 м², бюджеты от 300 000 zł) ищут спокойствия, безупречной материальности и инженерной строгости. Проект ARCHLINE трансформирован в архитектурную монографию по канону Norm Architects.
 
 ## Решение
 
-Тёмная палитра — глубокий чёрный фон и тёплый деревянный акцент: сразу «премиум-интерьер», а не «строительная компания». Фото первично — hero на весь экран с реальным дорогим интерьером, текст подчинён картинке. Калькулятор стоимости вынесен на первый экран, до формы: клиент сразу видит примерную сумму и не звонит «спросить сколько». Три пакета (косметический / капитальный / проектантский) — не один (слишком общо) и не пять (перегруз): быстро находишь свой.
+1. **Эстетика Norm Architects:** Небелёный пергамент (`#F5F1E5`), тёплый травертин (`#EAE4D3`), глубокий графит (`#1C1B19`), акценты патинированной бронзы (`#8C6D3F`) и редакционная типографика Cormorant Garamond.
+2. **Интерактивный слайдер «До / После»:** Сравнение бетонной коробки со штробами и лазерными лучами с готовым безмятежным интерьером из копчёного дуба и римского камня.
+3. **Калькулятор бюджета и сроков:** Точная смета по 4 статьям (строительство, заказная столярка, камень, авторский технадзор) со сквозным переносом в форму бронирования выезда.
+4. **Реестр 5 технических приёмок:** Гарантия скрытых работ — от 3D-сканирования лазером до тепловизионного контроля сдачи объекта.
 
 ## Итог
 
-Одностраничник на чистом HTML/CSS с небольшим JS (калькулятор, анимации при скролле), без фреймворков — важно для аудитории, которая открывает сайт с телефона между делами. Сайт ремонтной компании, который не выглядит как сайт ремонтной компании: premium-аудитория считывает уровень по тону, а калькулятор снимает первый барьер «сколько это будет» ещё до контакта.
+Сайт на чистом HTML/CSS и нативном JS со строгим правилом Zero-Lag (без перехвата скролла). Цифровое представительство студии, внушающее доверие с первой секунды.

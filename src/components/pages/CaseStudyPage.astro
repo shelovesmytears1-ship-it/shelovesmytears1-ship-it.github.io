@@ -3,7 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import { marked } from 'marked';
 import { useT, localePath, withBase } from '../../i18n/ui';
 import type { Lang } from '../../i18n/ui';
-import { getTagline, getSummary, getBody, getResult, getStat, nicheLabel } from '../../data/caseHelpers';
+import { getTagline, getSummary, getBody, getResult, getStat, nicheLabel, getProjectUrl } from '../../data/caseHelpers';
 import JsonLd from '../JsonLd.astro';
 
 interface Props {
@@ -16,7 +16,7 @@ const t = useT(lang);
 const p = (path: string) => localePath(path, lang);
 
 const d = entry.data;
-const projectUrl = d.siteUrl || withBase(`/${entry.slug}/`);
+const projectUrl = getProjectUrl(entry);
 const caseUrl = new URL(p(`/work/${entry.slug}`), 'https://overflow-web.pl').toString();
 
 /* Split markdown body into sections at every `^## ` heading.

@@ -1,284 +1,1279 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="KULT Drop 001, an underground energy drink campaign concept.">
-  <meta name="color-scheme" content="dark">
-  <title>KULT | Drop 001 campaign concept</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KULT — Botanical Sparkling Tonic & Clean Energy Alchemy</title>
+  <meta name="description" content="KULT: Real cold-pressed botanicals, wild Japanese gentian root, zero sugar, and a sharp bitter finish. Handcrafted for clean focus.">
+
+  <!-- Google Fonts: Pathway Extreme, Golos Text & Space Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Epilogue:wght@400;500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preload" as="image" href="assets/kult-zine-collage.webp" fetchpriority="high">
-  <link rel="stylesheet" href="kult-preview.css">
-  <link rel="stylesheet" href="kult-expanded.css">
-  <script defer src="kult-preview.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-  <script defer src="../motion-layer.js"></script>
-<meta name="robots" content="noindex, follow"></head>
-<body>
-  
-  <a class="skip-link" href="#main">Skip to campaign</a>
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Pathway+Extreme:ital,wght@0,400;0,700;0,800;0,900;1,900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-  <header class="site-header" data-header>
-    <a class="wordmark" href="#main" aria-label="KULT home">KULT</a>
+  <!-- External Animation CDNs: GSAP & ScrollTrigger (Native zero-latency hardware scroll) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-navigation" data-menu-button>
-      <span data-menu-label>Menu</span>
-    </button>
+  <!-- Design Tokens & Main Stylesheet -->
+  <link rel="stylesheet" href="tokens.css?v=3">
+  <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body data-flavor="01">
+  <!-- Root Site Wrapper for strict horizontal clipping (scrollWidth === clientWidth) -->
+  <div class="site-wrapper">
 
-    <nav class="primary-navigation" id="primary-navigation" aria-label="Primary navigation" data-navigation>
-      <a href="#drop">Drop 001</a>
-      <a href="#formula">Formula</a>
-      <a href="#culture">Culture</a>
-      <a href="#notify">Notify me</a>
-      <span class="concept-label">Portfolio concept</span>
-    </nav>
-  </header>
+    <!-- ====================================================================
+         SCREEN 1: COLOSSAL STUDIO HERO (Strict 100vh Cyclorama Stage)
+         ==================================================================== -->
+    <section class="hero-stage" id="hero" aria-label="KULT Botanical Tonic Showcase">
+      
+      <!-- Micro-Bubble Effervescence Canvas (Interactive Rising Bubbles) -->
+      <canvas class="hero-bubbles-canvas" id="heroBubblesCanvas" aria-hidden="true"></canvas>
 
-  <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <h1 id="hero-title">
-          <span class="hero-brand">KULT</span>
-          <span class="hero-statement">Energy for the underground.</span>
-        </h1>
-        <p class="hero-description">Drop 001 brings a dry citrus bite, zero sugar and 200 mg caffeine into one uncompromising can.</p>
-        <a class="hero-action" href="#drop">Explore Drop 001</a>
-      </div>
+      <!-- Circular Expanding Color-Wave Overlay for Dot Transitions -->
+      <div class="hero-color-wave" id="heroColorWave" aria-hidden="true"></div>
 
-      <div class="hero-stage" aria-label="KULT Drop 001 release board">
-        <div class="product-field">
-          <span class="product-field-word" aria-hidden="true">KULT</span>
-          <figure class="can-stage">
-            <img src="assets/kult-hero-can-cutout.webp" width="972" height="2048" alt="Black KULT energy drink can with an acid-lime label">
-          </figure>
+      <!-- Minimal Header Inside Hero Cyclorama -->
+      <header class="hero-header">
+        <div class="header-inner">
+          <!-- Brand Wordmark Logo -->
+          <a href="#hero" class="brand-logo" aria-label="KULT Home">
+            KULT<span class="logo-dot"></span>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <nav class="desktop-nav" aria-label="Main Navigation">
+            <a href="#flavours" class="nav-link">Flavours</a>
+            <a href="#anatomy" class="nav-link">Anatomy</a>
+            <a href="#ritual" class="nav-link">The Ritual</a>
+            <a href="#mixology-lab" class="nav-link">Mixology</a>
+            <a href="#variety-pack" class="nav-link">Curate Crate</a>
+            <a href="#stockists" class="nav-link">In The Wild</a>
+            <a href="#faq" class="nav-link">Questions</a>
+          </nav>
+
+          <!-- Right Action: Cart Drawer Trigger Pill -->
+          <button class="cart-trigger-btn" id="openCartBtn" aria-label="Open Shopping Cart">
+            <span class="cart-btn-label">Cart</span>
+            <span class="cart-counter-badge" id="headerCartCount">0</span>
+          </button>
         </div>
-        <figure class="culture-frame">
-          <img src="assets/kult-zine-collage.webp" width="1536" height="1024" alt="Xerox-style KULT campaign collage with cans, torn posters and acid-lime graphics">
-        </figure>
-        <div class="release-card">
-          <strong>Drop 001</strong>
-          <span>Limited campaign concept</span>
+      </header>
+
+      <!-- Colossal 3-Line Display Heading (Behind Can) -->
+      <div class="hero-heading-container" aria-hidden="true">
+        <div class="hero-colossal-title" id="heroColossalTitle">
+          <span class="colossal-line line-1">SPARKLING</span>
+          <span class="colossal-line line-2">BOTANICAL</span>
+          <span class="colossal-line line-3">TONIC</span>
         </div>
       </div>
-    </section>
 
-    <section class="release-dossier" id="drop" aria-labelledby="dossier-title">
-      <figure class="dossier-visual">
-        <img src="assets/kult-hero-can.webp" width="1024" height="1536" loading="lazy" alt="Close-up campaign portrait of the black KULT Drop 001 can">
-        <figcaption>Drop 001 / finished campaign asset</figcaption>
-      </figure>
-
-      <div class="dossier-sheet">
-        <h2 id="dossier-title">The release dossier.</h2>
-        <p class="dossier-intro">KULT is a fictional brand campaign. The can, identity and Drop 001 world are the finished design; commerce and customer proof are intentionally absent.</p>
-
-        <dl class="dossier-ledger">
-          <div>
-            <dt>Built</dt>
-            <dd>Identity, can design and the complete Drop 001 campaign.</dd>
+      <!-- Horizon Datum Hairline & Flavor Coordinates (Positioned behind Can base at bottom: 22vh) -->
+      <div class="hero-horizon-bar">
+        <div class="horizon-inner">
+          <span class="horizon-mono-id" id="heroFlavorId">NO. 01</span>
+          <div class="horizon-line" role="separator"></div>
+          <div class="horizon-meta-group">
+            <span class="horizon-mono-title" id="heroFlavorTitle">YUZU & GENTIAN</span>
+            <!-- Interactive Hero Flavor Switcher Dots -->
+            <div class="hero-flavor-dots" role="tablist" aria-label="Switch Hero Flavor">
+              <button class="flavor-dot-btn active" data-flavor="01" style="--dot-color: #F5D547;" aria-label="Select No.01 Yuzu & Gentian" aria-selected="true" role="tab"></button>
+              <button class="flavor-dot-btn" data-flavor="02" style="--dot-color: #EE6030;" aria-label="Select No.02 Blood Orange" aria-selected="false" role="tab"></button>
+              <button class="flavor-dot-btn" data-flavor="03" style="--dot-color: #B6C89B;" aria-label="Select No.03 Cucumber" aria-selected="false" role="tab"></button>
+              <button class="flavor-dot-btn" data-flavor="04" style="--dot-color: #F7B9B7;" aria-label="Select No.04 Grapefruit" aria-selected="false" role="tab"></button>
+              <button class="flavor-dot-btn" data-flavor="05" style="--dot-color: #E3AA5F;" aria-label="Select No.05 Ginger" aria-selected="false" role="tab"></button>
+            </div>
           </div>
-          <div>
-            <dt>Explored</dt>
-            <dd>BLACK, VOID and BURN as future product directions.</dd>
-          </div>
-          <div>
-            <dt>Not claimed</dt>
-            <dd>Prices, availability, customer results or invented scarcity.</dd>
-          </div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="flavor-wall" aria-labelledby="flavor-title">
-      <div class="flavor-heading">
-        <h2 id="flavor-title">Three directions.<br>One release world.</h2>
-        <p>BLACK is the finished Drop 001 language. VOID and BURN are clearly marked campaign explorations, built to test how far the system can stretch.</p>
-      </div>
-
-      <div class="poster-selector" role="tablist" aria-label="Flavor direction posters">
-        <button type="button" role="tab" aria-selected="true" aria-controls="poster-black" id="tab-black" data-poster-tab="black">Black</button>
-        <button type="button" role="tab" aria-selected="false" aria-controls="poster-void" id="tab-void" tabindex="-1" data-poster-tab="void">Void</button>
-        <button type="button" role="tab" aria-selected="false" aria-controls="poster-burn" id="tab-burn" tabindex="-1" data-poster-tab="burn">Burn</button>
-      </div>
-
-      <div class="poster-stage" data-poster-stage>
-        <article class="flavor-poster flavor-poster--black" role="tabpanel" id="poster-black" aria-labelledby="tab-black" data-poster="black">
-          <div class="poster-type" aria-hidden="true">Black</div>
-          <img src="assets/kult-hero-can-cutout.webp" width="972" height="2048" loading="lazy" alt="KULT Drop 001 black can on acid-lime poster field">
-          <div class="poster-copy">
-            <h3>Black</h3>
-            <p>Dry citrus / mineral finish</p>
-            <span>Finished Drop 001 direction</span>
-          </div>
-        </article>
-
-        <article class="flavor-poster flavor-poster--void" role="tabpanel" id="poster-void" aria-labelledby="tab-void" data-poster="void" hidden>
-          <div class="poster-type" aria-hidden="true">Void</div>
-          <img src="assets/kult-hero-can-cutout.webp" width="972" height="2048" loading="lazy" alt="KULT can placed in a cobalt and black VOID campaign exploration">
-          <div class="poster-copy">
-            <h3>Void</h3>
-            <p>Cold berry / dry finish</p>
-            <span>Illustrative campaign direction</span>
-          </div>
-        </article>
-
-        <article class="flavor-poster flavor-poster--burn" role="tabpanel" id="poster-burn" aria-labelledby="tab-burn" data-poster="burn" hidden>
-          <div class="poster-type" aria-hidden="true">Burn</div>
-          <img src="assets/kult-hero-can-cutout.webp" width="972" height="2048" loading="lazy" alt="KULT can placed in a hot-magenta BURN campaign exploration">
-          <div class="poster-copy">
-            <h3>Burn</h3>
-            <p>Bitter orange / pepper edge</p>
-            <span>Illustrative campaign direction</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="formula-strip" id="formula" aria-labelledby="formula-title">
-      <h2 id="formula-title">Formula without mythology.</h2>
-      <div class="formula-line">
-        <div><strong>Dry citrus</strong><span>Taste direction</span></div>
-        <div><strong>Zero sugar</strong><span>Drop 001 specification</span></div>
-        <div><strong>200 mg</strong><span>Caffeine per concept can</span></div>
-      </div>
-      <p>The campaign describes a product concept, not health or performance outcomes. No unsupported benefits are implied.</p>
-    </section>
-
-    <section class="taste-signal" aria-labelledby="taste-title">
-      <div class="taste-copy">
-        <h2 id="taste-title">Taste starts dry.<br>Ends mineral.</h2>
-        <p>Drop 001 is positioned away from candy sweetness. The language is directional and conceptual, not a laboratory sensory claim.</p>
-      </div>
-      <div class="taste-track" aria-label="Conceptual Drop 001 taste progression">
-        <div><strong>Open</strong><span>Citrus peel</span></div>
-        <div><strong>Middle</strong><span>Dry acid line</span></div>
-        <div><strong>Finish</strong><span>Mineral edge</span></div>
-        <p>Concept taste map / no consumer-test claim</p>
-      </div>
-    </section>
-
-    <section class="can-anatomy" id="anatomy" aria-labelledby="anatomy-title">
-      <div class="can-blueprint">
-        <span class="note note-one">01 / BLACK FIELD</span>
-        <span class="note note-two">02 / ACID LABEL</span>
-        <span class="note note-three">03 / DROP CODE</span>
-        <img src="assets/kult-hero-can-cutout.webp" width="972" height="2048" loading="lazy" alt="KULT Drop 001 can isolated for a packaging hierarchy diagram">
-      </div>
-      <div class="anatomy-copy">
-        <h2 id="anatomy-title">The can works at club distance.</h2>
-        <p>The system is built for low light and fast recognition: one black mass, one acid band, one compressed wordmark and only the information the release needs.</p>
-        <dl><div><dt>Front read</dt><dd>KULT owns the full label field.</dd></div><div><dt>Secondary read</dt><dd>Energy and 200 mg remain factual concept specifications.</dd></div><div><dt>Drop logic</dt><dd>Color and code can change without rebuilding the brand.</dd></div></dl>
-      </div>
-    </section>
-
-    <section class="release-kit" aria-labelledby="kit-title">
-      <div class="kit-copy"><h2 id="kit-title">One drop.<br>Four physical traces.</h2><p>The campaign expands through objects people can actually encounter. This is a design-deliverables map, not evidence of a real launch.</p></div>
-      <figure><img src="assets/kult-release-kit.webp" width="800" height="1043" loading="lazy" alt="KULT release kit with can, posters, shirt, stickers and xerox textures"><figcaption>Release kit / portfolio concept</figcaption></figure>
-      <ol><li><b>Can</b><span>primary product artifact</span></li><li><b>Poster</b><span>street-scale campaign field</span></li><li><b>Zine</b><span>portable release dossier</span></li><li><b>Motion cut</b><span>short-format graphic sequence</span></li></ol>
-    </section>
-
-    <section class="culture-insert" id="culture" aria-labelledby="culture-title">
-      <figure class="culture-photo">
-        <img src="assets/kult-hero-campaign.webp" width="1680" height="945" loading="lazy" alt="Dim industrial corridor used as the visual setting for the KULT campaign">
-      </figure>
-      <div class="culture-copy">
-        <h2 id="culture-title">Built after dark.</h2>
-        <p>KULT borrows the visual pressure of pasted club bills, backstage corridors and black technical clothing. It is a designed campaign world—not borrowed community proof.</p>
-        <blockquote>“The city is the media surface.”</blockquote>
-        <span>Campaign positioning line</span>
-      </div>
-    </section>
-
-    <section class="media-surface" id="media" aria-labelledby="media-title">
-      <div class="paste-wall" aria-hidden="true"><span>KULT</span><span>DROP 001</span><span>DRY / ZERO / 200</span><span>AFTER DARK</span></div>
-      <div><h2 id="media-title">The city is the media surface.</h2><p>A placement system built from scale, repetition and interruption. No fake venues or event partnerships are attached to the concept.</p><ul><li><b>Flypost wall</b><span>one word, one can, one release code</span></li><li><b>Backstage sheet</b><span>formula and campaign credits</span></li><li><b>Vertical motion</b><span>poster logic translated into cuts</span></li></ul></div>
-    </section>
-
-    <section class="material-archive" aria-labelledby="archive-title">
-      <div><h2 id="archive-title">Print errors become the texture.</h2><p>The visual language comes from overprint, toner drag, torn edges and hard crops. Effects stay tied to physical reproduction instead of generic digital noise.</p></div>
-      <div class="archive-samples"><article class="sample-lime"><b>ACID OVERPRINT</b><span>Primary release signal</span></article><article class="sample-blue"><b>COBALT PLATE</b><span>Exploration ink</span></article><article class="sample-magenta"><b>MAGENTA MISREGISTER</b><span>Exploration ink</span></article><article class="sample-paper"><b>XEROX PAPER</b><span>Information surface</span></article></div>
-    </section>
-
-    <section class="drop-two" aria-labelledby="drop-two-title">
-      <div class="drop-two-copy">
-        <h2 id="drop-two-title">Drop 002<br>changes the signal.</h2>
-        <p>A red-label packaging study that tests a harsher branch of the KULT system. Presented as a teaser concept, not a scheduled release.</p>
-        <span>Concept study / no release date</span>
-      </div>
-      <div class="drop-two-stage">
-        <span aria-hidden="true">002</span>
-        <img src="assets/kult-drop002-cutout.webp" width="972" height="2048" loading="lazy" alt="Black and red KULT Drop 002 concept can">
-      </div>
-    </section>
-
-    <section class="stretch-tests" aria-labelledby="stretch-title">
-      <div><h2 id="stretch-title">The system bends.<br>It does not dissolve.</h2><p>Future directions can change heat, color and pacing while three anchors remain fixed.</p></div>
-      <div class="stretch-register"><p><b>WORDMARK</b><span>same compressed ownership</span><em>LOCKED</em></p><p><b>BLACK MASS</b><span>same shelf-distance silhouette</span><em>LOCKED</em></p><p><b>DROP CODE</b><span>new number, new signal color</span><em>VARIABLE</em></p></div>
-    </section>
-
-    <section class="claim-boundary" id="claims" aria-labelledby="boundary-title">
-      <div class="warning-sheet"><strong>200 mg</strong><span>Caffeine per concept can</span><small>A portfolio specification only; it carries no performance claim.</small></div>
-      <div><h2 id="boundary-title">Product energy, clearly bounded.</h2><p>The campaign does not promise focus, endurance, status or belonging. Any real product launch would require final formula verification, compliant labeling and market-specific safety information.</p><ul><li>Health outcomes are outside the concept.</li><li>Ingredient benefits remain unclaimed.</li><li>The caffeine figure is information, not encouragement.</li></ul></div>
-    </section>
-
-    <section class="concept-faq" aria-labelledby="faq-title">
-      <div><h2 id="faq-title">Read the concept without the fake lore.</h2><p>The strongest campaign world is still transparent about what exists and what does not.</p></div>
-      <div><details open><summary>Can I buy Drop 001?</summary><p>No. KULT is a fictional identity, packaging and campaign project presented for portfolio review.</p></details><details><summary>Are BLACK, VOID and BURN real flavors?</summary><p>BLACK is the finished Drop 001 direction. VOID and BURN are clearly labeled visual and taste-positioning explorations.</p></details><details><summary>Is Drop 002 scheduled?</summary><p>No. It is a packaging study with no launch date, stock or availability claim.</p></details><details><summary>Are the formula claims production-ready?</summary><p>No. Any real release would require formulation, testing, legal review and final compliant labeling.</p></details></div>
-    </section>
-
-    <section class="notify-section" id="notify" aria-labelledby="notify-title">
-      <div class="notify-copy">
-        <h2 id="notify-title">Keep the signal.</h2>
-        <p>Try the signup interaction in this local portfolio preview. No email is stored or sent.</p>
-      </div>
-
-      <form class="notify-form" data-notify-form novalidate>
-        <label for="notify-email">Email address</label>
-        <div class="notify-control">
-          <input id="notify-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" required aria-describedby="notify-help notify-status">
-          <button type="submit">Run demo signup</button>
         </div>
-        <p id="notify-help">Local interaction demo. Your address never leaves this page.</p>
-        <p class="notify-status" id="notify-status" role="status" aria-live="polite" data-notify-status></p>
-      </form>
-    </section>
-  </main>
+      </div>
 
-  <footer class="site-footer">
-    <a class="footer-mark" href="#main">KULT</a>
-    <p>Fictional energy-drink identity and campaign concept created for portfolio review.</p>
-    <nav aria-label="Footer navigation">
-      <a href="#drop">Drop 001</a>
-      <a href="#formula">Formula</a>
-      <a href="#culture">Culture</a>
-    </nav>
-  </footer>
-<div class="ov-badge" id="ov-badge">
-  <a class="ov-badge__main" href="https://overflow-web.pl/work/kult/">
-    <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
-  </a>
-  <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
-</div>
-<style>
-.ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
-.ov-badge a{color:inherit;text-decoration:none}
-.ov-badge__main{display:flex;align-items:center;gap:5px}
-.ov-badge__mark{font-weight:700;letter-spacing:-.02em}
-.ov-badge__dot{opacity:.45}
-.ov-badge__type{opacity:.7}
-.ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
-.ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
-@media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
-@media print{.ov-badge{display:none}}
-</style>
-<!-- ov-badge-init -->
+      <!-- Foreground Can Cutout (Physically Overlaps Horizon Line & Headings) -->
+      <div class="hero-can-stage">
+        <div class="hero-can-wrapper" id="heroCanWrapper">
+          <img 
+            src="assets/01_yuzu_cutout_rgba.webp?v=4" 
+            alt="KULT No. 01 Yuzu & Gentian Tonic Can" 
+            class="hero-can-img"
+            id="heroCanImg"
+            width="800"
+            height="960"
+            fetchpriority="high"
+          >
+        </div>
+      </div>
+
+      <!-- Bottom-Left Action & Manifesto Lead -->
+      <div class="hero-footer-row">
+        <div class="hero-lead-box">
+          <p class="hero-lead-text">
+            Real cold-pressed botanicals, zero sugar, and a bitter finish. Handcrafted for clean focus.
+          </p>
+          <a href="#flavours" class="hero-cta-btn">
+            <span>Shop the tonic</span>
+            <span class="btn-arrow-circle" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="hero-quick-specs">
+          <span class="spec-pill">355 ML</span>
+          <span class="spec-pill">ZERO SUGAR</span>
+          <span class="spec-pill">25 CALORIES</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ====================================================================
+         TICKER MARQUEE (Velocity-Reactive Infinite Pitch Stream)
+         ==================================================================== -->
+    <div class="ticker-marquee-bar" aria-hidden="true">
+      <div class="ticker-track" id="tickerTrack">
+        <span class="ticker-item">REAL BOTANICALS</span>
+        <span class="ticker-glyph">✦</span>
+        <span class="ticker-item">ZERO REFINED SUGAR</span>
+        <span class="ticker-glyph">✦</span>
+        <span class="ticker-item">25 CALORIES A CAN</span>
+        <span class="ticker-glyph">✦</span>
+        <span class="ticker-item">BITTER ON PURPOSE</span>
+        <span class="ticker-glyph">✦</span>
+        <span class="ticker-item">COLD-PRESSED CITRUS</span>
+        <span class="ticker-glyph">✦</span>
+        <span class="ticker-item">NO ARTIFICIAL SWEETENERS</span>
+        <span class="ticker-glyph">✦</span>
+        <span class="ticker-item">REAL BOTANICALS</span>
+        <span class="ticker-glyph">✦</span>
+        <span class="ticker-item">ZERO REFINED SUGAR</span>
+        <span class="ticker-glyph">✦</span>
+        <span class="ticker-item">25 CALORIES A CAN</span>
+        <span class="ticker-glyph">✦</span>
+        <span class="ticker-item">BITTER ON PURPOSE</span>
+        <span class="ticker-glyph">✦</span>
+        <span class="ticker-item">COLD-PRESSED CITRUS</span>
+        <span class="ticker-glyph">✦</span>
+        <span class="ticker-item">NO ARTIFICIAL SWEETENERS</span>
+        <span class="ticker-glyph">✦</span>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         SCREEN 2: 01 — THE RANGE (Pick a Flavour 5-Card Monograph Grid)
+         ==================================================================== -->
+    <section class="range-section" id="flavours" aria-label="The 5 KULT Flavours">
+      <div class="container">
+        
+        <!-- Section Header Row -->
+        <div class="section-header-row">
+          <div class="header-copy-col">
+            <span class="section-mono-kicker">01 — THE RANGE</span>
+            <h2 class="section-title">PICK A FLAVOUR.</h2>
+          </div>
+          <div class="header-action-col">
+            <a href="#variety-pack" class="pill-outline-btn">
+              <span>Curate crate</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 5-Column Flavour Monograph Grid (Exact Tonic Drinks Unboxed Cards) -->
+        <div class="flavours-grid">
+
+          <!-- Card 01: Yuzu & Gentian -->
+          <article class="flavour-card reveal-item" style="--card-theme: #F5D547;">
+            <div class="flavour-card-media">
+              <span class="flavour-spine-title">YUZU</span>
+              <img 
+                src="assets/01_yuzu_card.webp" 
+                alt="KULT No. 01 Yuzu & Gentian Tonic 12-Pack" 
+                class="flavour-card-img"
+                loading="lazy"
+                width="1792"
+                height="2400"
+              >
+              <span class="flavour-num-tag">NO.01</span>
+            </div>
+            <div class="flavour-card-info">
+              <h3 class="flavour-card-name">YUZU & GENTIAN</h3>
+              <div class="flavour-card-meta">
+                <span class="card-meta-pricing"><strong>$36</strong> <span>12 × 355 ML</span></span>
+                <button 
+                  class="add-to-cart-btn shop-action-btn" 
+                  data-sku="kult-no1-yuzu" 
+                  data-name="No. 01 Yuzu & Gentian (12-Pack)" 
+                  data-price="36.00" 
+                  data-thumb="assets/01_yuzu_card.webp"
+                  aria-label="Add No. 01 Yuzu & Gentian to Cart"
+                >
+                  <span>SHOP ↗</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 02: Blood Orange & Hibiscus -->
+          <article class="flavour-card reveal-item" style="--card-theme: #EE6030; --reveal-delay: 80ms;">
+            <div class="flavour-card-media">
+              <span class="flavour-spine-title">BLOOD ORANGE</span>
+              <img 
+                src="assets/02_blood_orange.webp" 
+                alt="KULT No. 02 Blood Orange & Hibiscus Tonic 12-Pack" 
+                class="flavour-card-img"
+                loading="lazy"
+                width="1792"
+                height="2400"
+              >
+              <span class="flavour-num-tag">NO.02</span>
+            </div>
+            <div class="flavour-card-info">
+              <h3 class="flavour-card-name">BLOOD ORANGE & HIBISCUS</h3>
+              <div class="flavour-card-meta">
+                <span class="card-meta-pricing"><strong>$36</strong> <span>12 × 355 ML</span></span>
+                <button 
+                  class="add-to-cart-btn shop-action-btn" 
+                  data-sku="kult-no2-orange" 
+                  data-name="No. 02 Blood Orange (12-Pack)" 
+                  data-price="36.00" 
+                  data-thumb="assets/02_blood_orange.webp"
+                  aria-label="Add No. 02 Blood Orange to Cart"
+                >
+                  <span>SHOP ↗</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 03: Cucumber & Elderflower -->
+          <article class="flavour-card reveal-item" style="--card-theme: #B6C89B; --reveal-delay: 160ms;">
+            <div class="flavour-card-media">
+              <span class="flavour-spine-title">CUCUMBER</span>
+              <img 
+                src="assets/03_cucumber_elderflower.webp" 
+                alt="KULT No. 03 Cucumber & Elderflower Tonic 12-Pack" 
+                class="flavour-card-img"
+                loading="lazy"
+                width="1792"
+                height="2400"
+              >
+              <span class="flavour-num-tag">NO.03</span>
+            </div>
+            <div class="flavour-card-info">
+              <h3 class="flavour-card-name">CUCUMBER & ELDERFLOWER</h3>
+              <div class="flavour-card-meta">
+                <span class="card-meta-pricing"><strong>$36</strong> <span>12 × 355 ML</span></span>
+                <button 
+                  class="add-to-cart-btn shop-action-btn" 
+                  data-sku="kult-no3-cucumber" 
+                  data-name="No. 03 Cucumber (12-Pack)" 
+                  data-price="36.00" 
+                  data-thumb="assets/03_cucumber_elderflower.webp"
+                  aria-label="Add No. 03 Cucumber to Cart"
+                >
+                  <span>SHOP ↗</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 04: Grapefruit & Rosemary -->
+          <article class="flavour-card reveal-item" style="--card-theme: #F7B9B7; --reveal-delay: 240ms;">
+            <div class="flavour-card-media">
+              <span class="flavour-spine-title">GRAPEFRUIT</span>
+              <img 
+                src="assets/04_grapefruit_rosemary.webp" 
+                alt="KULT No. 04 Grapefruit & Rosemary Tonic 12-Pack" 
+                class="flavour-card-img"
+                loading="lazy"
+                width="1792"
+                height="2400"
+              >
+              <span class="flavour-num-tag">NO.04</span>
+            </div>
+            <div class="flavour-card-info">
+              <h3 class="flavour-card-name">GRAPEFRUIT & ROSEMARY</h3>
+              <div class="flavour-card-meta">
+                <span class="card-meta-pricing"><strong>$36</strong> <span>12 × 355 ML</span></span>
+                <button 
+                  class="add-to-cart-btn shop-action-btn" 
+                  data-sku="kult-no4-grapefruit" 
+                  data-name="No. 04 Grapefruit (12-Pack)" 
+                  data-price="36.00" 
+                  data-thumb="assets/04_grapefruit_rosemary.webp"
+                  aria-label="Add No. 04 Grapefruit to Cart"
+                >
+                  <span>SHOP ↗</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 05: Spiced Ginger & Lime -->
+          <article class="flavour-card reveal-item" style="--card-theme: #E3AA5F; --reveal-delay: 320ms;">
+            <div class="flavour-card-media">
+              <span class="flavour-spine-title">GINGER</span>
+              <img 
+                src="assets/05_ginger_lime.webp" 
+                alt="KULT No. 05 Spiced Ginger & Lime Tonic 12-Pack" 
+                class="flavour-card-img"
+                loading="lazy"
+                width="1792"
+                height="2400"
+              >
+              <span class="flavour-num-tag">NO.05</span>
+            </div>
+            <div class="flavour-card-info">
+              <h3 class="flavour-card-name">GINGER & LIME</h3>
+              <div class="flavour-card-meta">
+                <span class="card-meta-pricing"><strong>$36</strong> <span>12 × 355 ML</span></span>
+                <button 
+                  class="add-to-cart-btn shop-action-btn" 
+                  data-sku="kult-no5-ginger" 
+                  data-name="No. 05 Ginger Lime (12-Pack)" 
+                  data-price="36.00" 
+                  data-thumb="assets/05_ginger_lime.webp"
+                  aria-label="Add No. 05 Spiced Ginger to Cart"
+                >
+                  <span>SHOP ↗</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SCREEN 3: DARK BOTANICAL MANIFESTO (ONLY THE GOOD STUFF on #16130F)
+         ==================================================================== -->
+    <section class="manifesto-section" id="manifesto" aria-label="KULT Botanical Standards">
+      
+      <!-- Decorative Floating Can Cutouts on Edges for Wide Screens (1920 / 2560) -->
+      <div class="manifesto-floating-can float-left-top" aria-hidden="true">
+        <img src="assets/02_blood_orange_cutout_rgba.webp?v=4" alt="" width="800" height="960">
+      </div>
+      <div class="manifesto-floating-can float-left-bot" aria-hidden="true">
+        <img src="assets/03_cucumber_cutout_rgba.webp?v=4" alt="" width="800" height="960">
+      </div>
+      <div class="manifesto-floating-can float-right-top" aria-hidden="true">
+        <img src="assets/04_grapefruit_cutout_rgba.webp?v=4" alt="" width="800" height="960">
+      </div>
+      <div class="manifesto-floating-can float-right-bot" aria-hidden="true">
+        <img src="assets/05_ginger_cutout_rgba.webp?v=4" alt="" width="800" height="960">
+      </div>
+
+      <div class="container manifesto-container">
+
+        <span class="manifesto-mono-kicker">02 — THE RITUAL</span>
+        <h2 class="manifesto-title">ONLY THE GOOD STUFF.</h2>
+
+        <!-- 4 Wide Ribbons Vertically Stacked in a Single Centered Column -->
+        <div class="ribbons-column" id="ribbonsColumn">
+          <div class="ribbon-bar ribbon-bar-1">
+            <span class="ribbon-dot">•</span>
+            <span class="ribbon-text">REAL BOTANICALS</span>
+            <span class="ribbon-dot">•</span>
+          </div>
+          <div class="ribbon-bar ribbon-bar-2">
+            <span class="ribbon-dot">•</span>
+            <span class="ribbon-text">ZERO SUGAR</span>
+            <span class="ribbon-dot">•</span>
+          </div>
+          <div class="ribbon-bar ribbon-bar-3">
+            <span class="ribbon-dot">•</span>
+            <span class="ribbon-text">NO SWEETENERS</span>
+            <span class="ribbon-dot">•</span>
+          </div>
+          <div class="ribbon-bar ribbon-bar-4">
+            <span class="ribbon-dot">•</span>
+            <span class="ribbon-text">25 CALORIES A CAN</span>
+            <span class="ribbon-dot">•</span>
+          </div>
+        </div>
+
+        <p class="manifesto-lead">
+          Pressed fruit, roots and flowers. Nothing you would need to look up.
+          True Japanese gentian root delivers an authentic aperitivo bite that stimulates digestion and palate clarity.
+        </p>
+
+        <div class="manifesto-action-wrap">
+          <a href="#anatomy" class="manifesto-cta-btn">
+            <span>Explore anatomy</span>
+            <span class="btn-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         NEW CHAPTER A: 03 — ANATOMY OF A DROP (Crafted by Subtraction)
+         ==================================================================== -->
+    <section class="anatomy-section" id="anatomy" aria-label="Anatomy of a KULT Can">
+      <div class="container">
+        
+        <div class="section-header-row text-center-block">
+          <span class="section-mono-kicker">03 — ANATOMY OF A DROP</span>
+          <h2 class="section-title">CRAFTED BY SUBTRACTION.</h2>
+          <p class="anatomy-sublead">Four extraction principles engineered inside every 355 ML can — zero refined sugar, zero filler, pure botanical resonance.</p>
+        </div>
+
+        <div class="anatomy-stage-grid">
+          
+          <!-- Left/Center: Can Cutaway with 4 Interactive Hotspots & Animated Leader Lines -->
+          <div class="anatomy-visual-col">
+            <div class="can-cutaway-stage" id="canCutawayStage">
+              
+              <!-- Floating Master Can Cutout -->
+              <img 
+                src="assets/01_yuzu_cutout_rgba.webp?v=4" 
+                alt="KULT Botanical Can Anatomy" 
+                class="anatomy-can-img"
+                id="anatomyCanImg"
+                width="800"
+                height="960"
+                loading="lazy"
+              >
+
+              <!-- SVG Animated Leader Lines -->
+              <svg class="anatomy-leader-svg" viewBox="0 0 600 700" preserveAspectRatio="none" aria-hidden="true">
+                <line id="leadLine1" x1="180" y1="90" x2="280" y2="120" class="leader-line active-line" />
+                <line id="leadLine2" x1="420" y1="240" x2="330" y2="270" class="leader-line" />
+                <line id="leadLine3" x1="170" y1="410" x2="285" y2="430" class="leader-line" />
+                <line id="leadLine4" x1="430" y1="580" x2="320" y2="600" class="leader-line" />
+              </svg>
+
+              <!-- Hotspot 01: Top Rim Carbonation -->
+              <button class="anatomy-hotspot-btn active" data-spot="01" style="top: 13%; left: 22%;" aria-label="Inspect 4.2 GV Micro-Carbonation">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-badge">01</span>
+                <span class="hotspot-pill-label">4.2 GV CARBONATION</span>
+              </button>
+
+              <!-- Hotspot 02: Upper Body Cold-Pressed Rind -->
+              <button class="anatomy-hotspot-btn" data-spot="02" style="top: 34%; right: 18%;" aria-label="Inspect Cold-Pressed Citrus Oils">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-badge">02</span>
+                <span class="hotspot-pill-label">4°C COLD-PRESSED RIND</span>
+              </button>
+
+              <!-- Hotspot 03: Center White Badge Gentian Root -->
+              <button class="anatomy-hotspot-btn" data-spot="03" style="top: 58%; left: 20%;" aria-label="Inspect Wild Gentian Bitter Root">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-badge">03</span>
+                <span class="hotspot-pill-label">1,800M GENTIAN BITTER</span>
+              </button>
+
+              <!-- Hotspot 04: Base Sweetener Architecture -->
+              <button class="anatomy-hotspot-btn" data-spot="04" style="top: 83%; right: 20%;" aria-label="Inspect Sweetener Architecture">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-badge">04</span>
+                <span class="hotspot-pill-label">0.0G SWEETENERS</span>
+              </button>
+
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Extraction Spec Card & Sensory Meter -->
+          <div class="anatomy-spec-col">
+            <div class="extraction-card" id="extractionCard">
+              
+              <div class="extraction-header">
+                <span class="extraction-step-tag" id="spotStepTag">PRINCIPLE 01 // EXTRACTION PROTOCOL</span>
+                <h3 class="extraction-title" id="spotTitle">4.2 GV MICRO-CARBONATION</h3>
+                <p class="extraction-desc" id="spotDesc">
+                  Pinpoint champagne effervescence calibrated at 4.2 volumes of dissolved CO₂. Lifts delicate volatile citrus terpenes to the palate before the first sip without digestive bloating.
+                </p>
+              </div>
+
+              <!-- Technical Dossier Ledger Metrics -->
+              <div class="extraction-metrics-grid">
+                <div class="metric-block">
+                  <span class="metric-label">PRESSURE</span>
+                  <strong class="metric-val" id="spotMetric1">4.2 BAR</strong>
+                </div>
+                <div class="metric-block">
+                  <span class="metric-label">TEMP</span>
+                  <strong class="metric-val" id="spotMetric2">3.8 °C</strong>
+                </div>
+                <div class="metric-block">
+                  <span class="metric-label">SOLUBLE EXTRACT</span>
+                  <strong class="metric-val" id="spotMetric3">&lt; 0.2° BRIX</strong>
+                </div>
+                <div class="metric-block">
+                  <span class="metric-label">SUGAR ADDED</span>
+                  <strong class="metric-val" id="spotMetric4">0.00 G</strong>
+                </div>
+              </div>
+
+              <!-- Sensory Impact Meter -->
+              <div class="sensory-meter-box">
+                <span class="sensory-box-title">BOTANICAL SENSORY SPECTRUM</span>
+
+                <div class="sensory-meter-row">
+                  <div class="sensory-label-row">
+                    <span>Aromatic Citrus Lift</span>
+                    <strong id="barVal1">96%</strong>
+                  </div>
+                  <div class="sensory-track">
+                    <div class="sensory-fill" id="barFill1" style="width: 96%; background-color: #F5D547;"></div>
+                  </div>
+                </div>
+
+                <div class="sensory-meter-row">
+                  <div class="sensory-label-row">
+                    <span>Aperitivo Dry Bitterness</span>
+                    <strong id="barVal2">88%</strong>
+                  </div>
+                  <div class="sensory-track">
+                    <div class="sensory-fill" id="barFill2" style="width: 88%; background-color: #EE6030;"></div>
+                  </div>
+                </div>
+
+                <div class="sensory-meter-row">
+                  <div class="sensory-label-row">
+                    <span>Effervescence Density</span>
+                    <strong id="barVal3">92%</strong>
+                  </div>
+                  <div class="sensory-track">
+                    <div class="sensory-fill" id="barFill3" style="width: 92%; background-color: #16130F;"></div>
+                  </div>
+                </div>
+
+                <div class="sensory-meter-row">
+                  <div class="sensory-label-row">
+                    <span>Glycemic Impact</span>
+                    <strong id="barVal4">0%</strong>
+                  </div>
+                  <div class="sensory-track">
+                    <div class="sensory-fill" id="barFill4" style="width: 0%; background-color: #B6C89B;"></div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Bottom Action -->
+              <div class="extraction-card-footer">
+                <span class="extraction-footer-note">CERTIFIED ZERO ADDED SUGAR · COLD PRESSED IN BERLIN</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SCREEN 4: 04 — NO.01, UP CLOSE (50/50 Editorial Split on #F4EFE6)
+         ==================================================================== -->
+    <section class="up-close-section" id="ritual" aria-label="Up Close Tasting Notes">
+      <div class="container">
+        
+        <div class="split-editorial-grid">
+          
+          <!-- Left Column: Copy & Interactive Flavour Notes -->
+          <div class="editorial-copy-col">
+            <span class="section-mono-kicker" id="closeKicker">04 — NO. 01, UP CLOSE</span>
+            
+            <h2 class="editorial-headline" id="closeHeadline">
+              BRIGHT YUZU.<br>
+              BITTER GENTIAN.<br>
+              FINE BUBBLES.<br>
+              NOTHING ELSE.
+            </h2>
+
+            <!-- Interactive Flavour Tab Switcher -->
+            <div class="flavour-tab-pills" role="tablist">
+              <button class="pill-tab-btn active" data-flavor="01" role="tab" aria-selected="true">No. 01 Yuzu</button>
+              <button class="pill-tab-btn" data-flavor="02" role="tab" aria-selected="false">No. 02 Orange</button>
+              <button class="pill-tab-btn" data-flavor="03" role="tab" aria-selected="false">No. 03 Cucumber</button>
+              <button class="pill-tab-btn" data-flavor="04" role="tab" aria-selected="false">No. 04 Grapefruit</button>
+              <button class="pill-tab-btn" data-flavor="05" role="tab" aria-selected="false">No. 05 Ginger</button>
+            </div>
+
+            <!-- Ledger Dossier Points -->
+            <div class="editorial-ledger">
+              <div class="ledger-item">
+                <span class="ledger-num">01</span>
+                <div class="ledger-text">
+                  <h4 class="ledger-title" id="ledgerTitle1">Cold Botanical Extraction</h4>
+                  <p class="ledger-desc" id="ledgerDesc1">Extracted at low temperatures to protect delicate aromatic citrus oils and bitter gentian flavonoids.</p>
+                </div>
+              </div>
+
+              <div class="ledger-item">
+                <span class="ledger-num">02</span>
+                <div class="ledger-text">
+                  <h4 class="ledger-title" id="ledgerTitle2">Zero Refined Sugar</h4>
+                  <p class="ledger-desc" id="ledgerDesc2">No sucralose, no aspartame, no stevia aftertaste. Natural fruit oils provide crisp balance.</p>
+                </div>
+              </div>
+
+              <div class="ledger-item">
+                <span class="ledger-num">03</span>
+                <div class="ledger-text">
+                  <h4 class="ledger-title" id="ledgerTitle3">Micro-Bubble Effervescence</h4>
+                  <p class="ledger-desc" id="ledgerDesc3">Fine champagne-grade carbonation that lifts the botanical bouquet without bloat.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Link -->
+            <div class="editorial-action">
+              <button class="add-to-cart-btn primary-cart-btn" id="editorialAddBtn" data-sku="kult-no1-yuzu" data-name="No. 01 Yuzu & Gentian (12-Pack)" data-price="36.00" data-thumb="assets/01_yuzu_card.webp">
+                <span>Shop No. 01 — $36 · 12 × 355 ML</span>
+                <span class="btn-arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Column: High-Res Glass Pour Photograph -->
+          <div class="editorial-visual-col">
+            <div class="ritual-photo-card">
+              <img 
+                src="assets/06_ritual_glass_pour.webp" 
+                alt="KULT Botanical Tonic Poured Over Artisanal Ice Cube in Fluted Glass" 
+                class="ritual-photo-img"
+                loading="lazy"
+                width="2752"
+                height="1536"
+              >
+              <div class="ritual-floating-pill">
+                <span class="dot-live"></span>
+                <span>Pour over ice. Add nothing.</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         NEW CHAPTER B: 04 — THE SERVING RITUAL (Mixology & Listening Bar Lab)
+         ==================================================================== -->
+    <section class="mixology-section" id="mixology-lab" aria-label="Listening Bar Mixology Serves">
+      <div class="container">
+        
+        <div class="mixology-header-row">
+          <div>
+            <span class="section-mono-kicker kicker-gold">04 — THE SERVING RITUAL</span>
+            <h2 class="mixology-headline">HOW WE DRINK IT.</h2>
+            <p class="mixology-lead">Three time-of-day listening bar serves engineered for clean botanical effervescence.</p>
+          </div>
+
+          <!-- Brutalist Time Switcher Tabs -->
+          <div class="time-tabs-row" role="tablist">
+            <button class="time-tab-btn" data-time="1400" role="tab" aria-selected="false">
+              <span class="time-tag">14:00</span>
+              <span class="time-name">ATELIER FOCUS</span>
+            </button>
+            <button class="time-tab-btn active" data-time="1730" role="tab" aria-selected="true">
+              <span class="time-tag">17:30</span>
+              <span class="time-name">GOLDEN APERITIVO</span>
+            </button>
+            <button class="time-tab-btn" data-time="2200" role="tab" aria-selected="false">
+              <span class="time-tag">22:00</span>
+              <span class="time-name">VINYL LISTENING</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Interactive Mixology Display Card -->
+        <div class="mixology-card-split" id="mixologyCard">
+          
+          <!-- Left: 4:3 Crossfading Ritual Photograph -->
+          <div class="mixology-photo-wrapper">
+            <img 
+              src="assets/06_ritual_glass_pour.webp" 
+              alt="Golden Hour Highball Serve" 
+              class="mixology-serve-img" 
+              id="mixologyServeImg"
+              width="1600"
+              height="1200"
+              loading="lazy"
+            >
+            <div class="glassware-pill" id="glasswarePill">
+              <span>GLASSWARE: Tall Fluted Highball · Kold-Draft Spear Ice</span>
+            </div>
+          </div>
+
+          <!-- Right: Serve Recipe Formula & Audio Pairing -->
+          <div class="mixology-details-col">
+            
+            <div class="serve-identity-block">
+              <span class="serve-num-id" id="serveNumId">SERVE NO. 01 // GOLDEN HOUR</span>
+              <h3 class="serve-title" id="serveTitle">THE UNCUT HIGHBALL.</h3>
+              <p class="serve-narrative" id="serveNarrative">
+                A pristine, crystal-clear aperitivo serve poured straight over hand-carved ice spears. Volatile yuzu oils are released across the surface, grounded by wild Japanese gentian root bitterness.
+              </p>
+            </div>
+
+            <!-- 3-Segment Animated Proportion Bar -->
+            <div class="formula-proportion-box">
+              <div class="formula-header">
+                <span>RITUAL FORMULA</span>
+                <span class="formula-total">100% BOTANICAL</span>
+              </div>
+              <div class="proportion-track" id="proportionTrack">
+                <div class="prop-seg seg-1" id="propSeg1" style="width: 85%; background-color: #F5D547;" title="85% KULT No. 01 Yuzu"></div>
+                <div class="prop-seg seg-2" id="propSeg2" style="width: 12%; background-color: #E04F33;" title="12% Expressed Peel Oils"></div>
+                <div class="prop-seg seg-3" id="propSeg3" style="width: 3%; background-color: #FFFFFF;" title="3% Sea Salt Mist"></div>
+              </div>
+              <div class="formula-legend" id="formulaLegend">
+                <span class="legend-item"><span class="legend-dot" style="background:#F5D547;"></span><span id="legText1">85% KULT No. 01 Yuzu</span></span>
+                <span class="legend-item"><span class="legend-dot" style="background:#E04F33;"></span><span id="legText2">12% Expressed Peel Oils</span></span>
+                <span class="legend-item"><span class="legend-dot" style="background:#FFFFFF;"></span><span id="legText3">3% Sea Salt Mist</span></span>
+              </div>
+            </div>
+
+            <!-- Listening Bar Sound Pairing Pill -->
+            <div class="sound-pairing-box">
+              <div class="sound-icon-anim" aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <div class="sound-info">
+                <span class="sound-label">VINYL LISTENING PAIRING</span>
+                <strong class="sound-title" id="soundTitle">Ryuichi Sakamoto — 'Merry Christmas Mr. Lawrence' (Ambient Dub) · 92 BPM</strong>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         UPGRADED SCREEN 5: 05 — THE VARIETY PACK (Curate Your Crate)
+         ==================================================================== -->
+    <section class="variety-section" id="variety-pack" aria-label="Curate Your Crate">
+      <div class="container">
+        
+        <div class="variety-header-block text-center">
+          <span class="section-mono-kicker">05 — THE VARIETY PACK</span>
+          <h2 class="section-title variety-colossal-title">CAN'T PICK?<br>GET ALL FIVE.</h2>
+          <p class="variety-lead">Curate your own 12-can mixed crate or get the balanced Studio Selection delivered fresh to your door.</p>
+        </div>
+
+        <!-- Interactive 12-Slot Visual Crate Slot Builder -->
+        <div class="crate-builder-card" id="crateBuilderCard">
+          
+          <div class="builder-top-bar">
+            <div>
+              <span class="builder-eyebrow">TACTILE CRATE SLOTS</span>
+              <h3 class="builder-headline">CURATE YOUR 12-CAN CRATE</h3>
+            </div>
+            <div class="crate-slot-counter" id="slotCounterText">
+              <span class="slot-count-num" id="slotCountNum">12</span> / 12 CANS SELECTED
+            </div>
+          </div>
+
+          <!-- 12 Visual Rounded Capsule Slots Grid -->
+          <div class="crate-slots-grid" id="crateSlotsGrid" role="status" aria-label="12-Can Visual Crate Composition">
+            <!-- 12 slots dynamically populated & filled with flavor colors -->
+          </div>
+
+          <!-- Quick Curated Preset Buttons -->
+          <div class="builder-presets-row">
+            <span class="presets-label">STUDIO PRESETS:</span>
+            <div class="preset-btns-group">
+              <button class="preset-btn active" data-preset="balanced">Balanced Selection (3/3/2/2/2)</button>
+              <button class="preset-btn" data-preset="citrus">Citrus Forward (4/4/0/4/0)</button>
+              <button class="preset-btn" data-preset="bitter">Bitter & Herbal (3/0/3/3/3)</button>
+            </div>
+          </div>
+
+          <!-- 5 Flavour Stepper Controllers -->
+          <div class="flavor-steppers-grid">
+            
+            <div class="flavor-stepper-item" data-flavor="01" style="--item-tint: #F5D547;">
+              <div class="stepper-meta">
+                <span class="stepper-dot"></span>
+                <span class="stepper-name">No. 01 Yuzu</span>
+              </div>
+              <div class="stepper-controls">
+                <button class="slot-dec-btn" data-flavor="01" aria-label="Remove one Yuzu">−</button>
+                <span class="slot-qty-val" id="qtyVal01">3</span>
+                <button class="slot-inc-btn" data-flavor="01" aria-label="Add one Yuzu">+</button>
+              </div>
+            </div>
+
+            <div class="flavor-stepper-item" data-flavor="02" style="--item-tint: #EE6030;">
+              <div class="stepper-meta">
+                <span class="stepper-dot"></span>
+                <span class="stepper-name">No. 02 Orange</span>
+              </div>
+              <div class="stepper-controls">
+                <button class="slot-dec-btn" data-flavor="02" aria-label="Remove one Blood Orange">−</button>
+                <span class="slot-qty-val" id="qtyVal02">3</span>
+                <button class="slot-inc-btn" data-flavor="02" aria-label="Add one Blood Orange">+</button>
+              </div>
+            </div>
+
+            <div class="flavor-stepper-item" data-flavor="03" style="--item-tint: #B6C89B;">
+              <div class="stepper-meta">
+                <span class="stepper-dot"></span>
+                <span class="stepper-name">No. 03 Cucumber</span>
+              </div>
+              <div class="stepper-controls">
+                <button class="slot-dec-btn" data-flavor="03" aria-label="Remove one Cucumber">−</button>
+                <span class="slot-qty-val" id="qtyVal03">2</span>
+                <button class="slot-inc-btn" data-flavor="03" aria-label="Add one Cucumber">+</button>
+              </div>
+            </div>
+
+            <div class="flavor-stepper-item" data-flavor="04" style="--item-tint: #F7B9B7;">
+              <div class="stepper-meta">
+                <span class="stepper-dot"></span>
+                <span class="stepper-name">No. 04 Grapefruit</span>
+              </div>
+              <div class="stepper-controls">
+                <button class="slot-dec-btn" data-flavor="04" aria-label="Remove one Grapefruit">−</button>
+                <span class="slot-qty-val" id="qtyVal04">2</span>
+                <button class="slot-inc-btn" data-flavor="04" aria-label="Add one Grapefruit">+</button>
+              </div>
+            </div>
+
+            <div class="flavor-stepper-item" data-flavor="05" style="--item-tint: #E3AA5F;">
+              <div class="stepper-meta">
+                <span class="stepper-dot"></span>
+                <span class="stepper-name">No. 05 Ginger</span>
+              </div>
+              <div class="stepper-controls">
+                <button class="slot-dec-btn" data-flavor="05" aria-label="Remove one Ginger">−</button>
+                <span class="slot-qty-val" id="qtyVal05">2</span>
+                <button class="slot-inc-btn" data-flavor="05" aria-label="Add one Ginger">+</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Purchase Model: One-Time vs Subscribe (-15%) -->
+          <div class="config-model-row">
+            <label class="radio-label active" id="radioOneTime">
+              <input type="radio" name="orderType" value="onetime" checked>
+              <span class="radio-custom"></span>
+              <span class="radio-text">One-Time Drop Order</span>
+            </label>
+            <label class="radio-label" id="radioSub">
+              <input type="radio" name="orderType" value="sub">
+              <span class="radio-custom"></span>
+              <span class="radio-text">Subscribe & Save 15% (Free Cold Shipping)</span>
+            </label>
+          </div>
+
+          <!-- Dynamic Add to Cart Action -->
+          <div class="config-action-row">
+            <div class="config-price-readout">
+              <span class="price-val" id="configPriceVal">$36.00</span>
+              <span class="price-note" id="configPriceNote">12 cans curated crate · Cold-chain dispatch</span>
+            </div>
+            <button class="pack-add-btn" id="addPackBtn">
+              <span>Add Curated 12-Can Crate to Cart</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Wide 16:9 5-Can Studio Banner -->
+        <div class="all-five-banner-frame">
+          <img 
+            src="assets/07_all_five_pack.webp" 
+            alt="All Five KULT Botanical Tonic Cans Standing Side-by-Side in Studio" 
+            class="all-five-img"
+            loading="lazy"
+            width="2400"
+            height="1350"
+          >
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         NEW CHAPTER C: 06 — IN THE WILD (Architectural Stockists & Bars Index)
+         ==================================================================== -->
+    <section class="stockists-section" id="stockists" aria-label="Architectural Listening Bars & Stockists">
+      <div class="container">
+        
+        <div class="section-header-row">
+          <div>
+            <span class="section-mono-kicker">06 — IN THE WILD</span>
+            <h2 class="section-title">WHERE TO DRINK KULT COLD.</h2>
+            <p class="stockists-lead">Independent architectural listening bars, record shops, and brutalist gallery foyers pouring KULT on ice.</p>
+          </div>
+        </div>
+
+        <div class="stockists-split-grid">
+          
+          <!-- Left: 5 City/Venue Rows -->
+          <div class="venues-list-col">
+            
+            <div class="venue-row-item active" data-venue="warsaw">
+              <div class="venue-meta-left">
+                <span class="venue-city-num">01 // WARSAW</span>
+                <h3 class="venue-name">BAR STUDIO · PALACE OF CULTURE</h3>
+                <p class="venue-desc">Listening Bar & Brutalist Foyer · Serving No. 01 & No. 02 on Draft</p>
+              </div>
+              <div class="venue-arrow">↗</div>
+            </div>
+
+            <div class="venue-row-item" data-venue="berlin">
+              <div class="venue-meta-left">
+                <span class="venue-city-num">02 // BERLIN</span>
+                <h3 class="venue-name">ORA APOTHEKE · KREUZBERG</h3>
+                <p class="venue-desc">Historic 1860 Wood-Paneled Aperitivo Bar · Full 5-Can Selection</p>
+              </div>
+              <div class="venue-arrow">↗</div>
+            </div>
+
+            <div class="venue-row-item" data-venue="tokyo">
+              <div class="venue-meta-left">
+                <span class="venue-city-num">03 // TOKYO</span>
+                <h3 class="venue-name">BAR MARTHA · EBISU</h3>
+                <p class="venue-desc">6,000-Record Vinyl Sanctuary · Serving No. 01 Yuzu Highball</p>
+              </div>
+              <div class="venue-arrow">↗</div>
+            </div>
+
+            <div class="venue-row-item" data-venue="copenhagen">
+              <div class="venue-meta-left">
+                <span class="venue-city-num">04 // COPENHAGEN</span>
+                <h3 class="venue-name">ATELIER SEPTEMBER · INDRE BY</h3>
+                <p class="venue-desc">Daylight Design Cafe & Gallery · Serving No. 03 Cucumber Cooler</p>
+              </div>
+              <div class="venue-arrow">↗</div>
+            </div>
+
+            <div class="venue-row-item" data-venue="london">
+              <div class="venue-meta-left">
+                <span class="venue-city-num">05 // LONDON</span>
+                <h3 class="venue-name">BRILLIANT CORNERS · KINGSLAND RD</h3>
+                <p class="venue-desc">Audiophile Sound System & Natural Bar · Serving No. 04 & No. 05</p>
+              </div>
+              <div class="venue-arrow">↗</div>
+            </div>
+
+          </div>
+
+          <!-- Right: Interactive Pinned Venue Inspection Card -->
+          <div class="venue-inspection-col">
+            <div class="venue-inspect-card" id="venueInspectCard">
+              
+              <div class="venue-inspect-img-frame">
+                <img 
+                  src="assets/08_blood_orange_bar_ritual.webp" 
+                  alt="Bar Studio Warsaw Venue Pour" 
+                  class="venue-inspect-img"
+                  id="venueInspectImg"
+                  width="1600"
+                  height="1200"
+                  loading="lazy"
+                >
+                <span class="venue-status-pill" id="venueStatusPill">
+                  <span class="dot-live"></span> ON ICE TODAY: NO. 01 YUZU & GENTIAN
+                </span>
+              </div>
+
+              <div class="venue-inspect-body">
+                <div class="inspect-geo-row">
+                  <span class="inspect-coords" id="venueCoords">52.2318° N, 21.0060° E</span>
+                  <span class="inspect-city" id="venueCityLabel">WARSAW, PL</span>
+                </div>
+                <h4 class="inspect-venue-title" id="venueTitle">BAR STUDIO · PALACE OF CULTURE</h4>
+                <div class="inspect-sound-spec">
+                  <span class="sound-spec-label">SOUND SPECIFICATION:</span>
+                  <p class="sound-spec-text" id="venueSoundSpec">Klipschorn 3-Way Horn Speakers · Custom 300B Tube Amplification · Garrard 301 Turntable</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SCREEN 7: ATELIER FAQ & DROP DISPATCH NEWSLETTER
+         ==================================================================== -->
+    <section class="faq-section" id="faq" aria-label="Frequently Asked Questions">
+      <div class="container">
+        
+        <div class="faq-layout-grid">
+          
+          <!-- Left: Section Title & Dispatch Newsletter -->
+          <div class="faq-intro-col">
+            <span class="section-mono-kicker">QUESTIONS & ARCHIVE</span>
+            <h2 class="faq-main-title">GOOD QUESTIONS.</h2>
+            <p class="faq-lead-text">
+              Direct answers about cold botanical extraction, caffeine sources, pairing with spirits, and cold-chain courier delivery.
+            </p>
+
+            <!-- Newsletter Block -->
+            <div class="dispatch-newsletter-box">
+              <h3 class="dispatch-title">NEW FLAVOURS LAND HERE FIRST.</h3>
+              <p class="dispatch-desc">Join the KULT Dispatch. Limited seasonal runs, batch archives, and secret tasting drops delivered straight to your inbox.</p>
+              <form class="dispatch-form" id="newsletterForm" onsubmit="event.preventDefault(); document.getElementById('newsletterSuccess').style.display='block'; this.style.display='none';">
+                <input type="email" placeholder="Enter your email address" required class="dispatch-input">
+                <button type="submit" class="dispatch-submit-btn">Subscribe</button>
+              </form>
+              <div class="newsletter-success" id="newsletterSuccess" style="display: none;">
+                ✓ Welcome to the KULT Dispatch. First drop invite sent.
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Accordion Items -->
+          <div class="faq-accordion-col">
+            
+            <div class="accordion-item active">
+              <button class="accordion-header" aria-expanded="true">
+                <span class="accordion-question">How cold should I serve KULT?</span>
+                <span class="accordion-icon">−</span>
+              </button>
+              <div class="accordion-body">
+                <p>Directly from the fridge at 3–5°C, or poured tall over clean, dense artisanal ice. The botanical terpenes and gentle carbonation open up as the drink breathes.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">
+                <span class="accordion-question">Where does the clean energy come from?</span>
+                <span class="accordion-icon">+</span>
+              </button>
+              <div class="accordion-body">
+                <p>KULT is naturally caffeinated via cold-water Japanese green tea and organic Amazonian guayusa extract, delivering 120mg of clean, jitter-free focus with zero crash.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">
+                <span class="accordion-question">Is there any added sugar or artificial sweeteners?</span>
+                <span class="accordion-icon">+</span>
+              </button>
+              <div class="accordion-body">
+                <p>None. Zero added cane sugar, zero high fructose corn syrup, and zero synthetic sweeteners (no erythritol, no sucralose, no stevia aftertaste). The dry profile comes from real cold-pressed citrus oils and herbs.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">
+                <span class="accordion-question">Can I use KULT as a cocktail mixer?</span>
+                <span class="accordion-icon">+</span>
+              </button>
+              <div class="accordion-body">
+                <p>Absolutely. KULT is engineered for high-end bar service. Try No. 01 Yuzu with Japanese Whisky, No. 02 Blood Orange with Mezcal or Bitter Aperitif, and No. 03 Cucumber with London Dry Gin.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">
+                <span class="accordion-question">How does subscription delivery work?</span>
+                <span class="accordion-icon">+</span>
+              </button>
+              <div class="accordion-body">
+                <p>Subscribing saves 15% on every drop and unlocks free cold-chain courier shipping. You can pause, adjust shipment frequency, swap flavours, or cancel anytime with one click in your account portal.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">
+                <span class="accordion-question">Are the aluminum cans recyclable?</span>
+                <span class="accordion-icon">+</span>
+              </button>
+              <div class="accordion-body">
+                <p>100% infinitely recyclable aluminum. We use BPA-free can liners and zero plastic wraps in our shipping cartons.</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SCREEN 8: MONUMENTAL FOOTER (Dark #16130F Pitch Ground)
+         ==================================================================== -->
+    <footer class="site-footer">
+      <div class="container footer-container">
+        
+        <div class="footer-top-grid">
+          
+          <div class="footer-brand-col">
+            <span class="footer-wordmark">KULT<span class="logo-dot"></span></span>
+            <p class="footer-tagline">Cold botanical sparkling tonic & clean energy alchemy.</p>
+            <span class="footer-seal">100% BOTANICAL · ZERO REFINED SUGAR · CRAFTED IN BERLIN</span>
+          </div>
+
+          <div class="footer-links-col">
+            <span class="footer-col-title">THE RANGE</span>
+            <ul class="footer-link-list">
+              <li><a href="#flavours">No. 01 Yuzu & Gentian</a></li>
+              <li><a href="#flavours">No. 02 Blood Orange</a></li>
+              <li><a href="#flavours">No. 03 Cucumber Elderflower</a></li>
+              <li><a href="#flavours">No. 04 Grapefruit Rosemary</a></li>
+              <li><a href="#flavours">No. 05 Spiced Ginger</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-links-col">
+            <span class="footer-col-title">ATELIER</span>
+            <ul class="footer-link-list">
+              <li><a href="#anatomy">Anatomy of a Drop</a></li>
+              <li><a href="#ritual">The Ritual</a></li>
+              <li><a href="#mixology-lab">Mixology Lab</a></li>
+              <li><a href="#variety-pack">Curate Crate</a></li>
+              <li><a href="#stockists">In The Wild</a></li>
+              <li><a href="#faq">Questions & Answers</a></li>
+              <li><a href="#hero">Back to Top ↑</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="footer-bottom-bar">
+          <span class="footer-copy">© 2026 KULT BOTANICAL ATELIER. CRAFTED BY OVERFLOW STUDIO.</span>
+          <span class="footer-legal">ALL RIGHTS RESERVED. INGREDIENTS CERTIFIED INDEPENDENT.</span>
+        </div>
+
+      </div>
+    </footer>
+
+    <!-- ====================================================================
+         SLIDE-OVER CART DRAWER & BACKDROP
+         ==================================================================== -->
+    <div class="cart-backdrop" id="cartBackdrop" aria-hidden="true"></div>
+    
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Cart Drawer" aria-hidden="true">
+      <div class="drawer-header">
+        <div class="drawer-header-left">
+          <h2 class="drawer-title">YOUR CRATE</h2>
+          <span class="drawer-item-count" id="drawerItemCount">0 items</span>
+        </div>
+        <button class="drawer-close-btn" id="closeCartBtn" aria-label="Close Cart">✕</button>
+      </div>
+
+      <!-- Free Shipping Motivator Progress Bar -->
+      <div class="shipping-progress-box">
+        <div class="progress-label" id="shippingText">Add $14.00 more for FREE shipping!</div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="shippingProgressFill" style="width: 72%;"></div>
+        </div>
+      </div>
+
+      <!-- Cart Items Scroll List -->
+      <div class="drawer-body" id="cartItemsList">
+        <!-- Dynamically populated or empty state -->
+        <div class="cart-empty-state" id="cartEmptyState">
+          <p class="empty-text">Your crate is currently empty.</p>
+          <a href="#flavours" class="empty-action-btn" id="emptyShopBtn">Explore Flavours</a>
+        </div>
+      </div>
+
+      <!-- Drawer Footer Summary & Checkout -->
+      <div class="drawer-footer">
+        <div class="summary-line">
+          <span>Subtotal</span>
+          <span class="summary-val" id="cartSubtotalVal">$0.00</span>
+        </div>
+        <div class="summary-line text-muted">
+          <span>Shipping</span>
+          <span class="summary-val" id="cartShippingVal">Calculated at checkout</span>
+        </div>
+        <button class="checkout-btn" id="checkoutBtn" disabled>
+          <span>Proceed to Checkout</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </button>
+        <p class="checkout-security-note">🔒 Fast checkout · Encrypted cold-chain delivery</p>
+      </div>
+
+      <!-- Order Confirmation Overlay State -->
+      <div class="checkout-success-overlay" id="checkoutSuccessOverlay" style="display: none;">
+        <div class="success-card">
+          <span class="success-icon">✓</span>
+          <h3 class="success-title">DROP ORDER CONFIRMED!</h3>
+          <p class="success-desc">Thank you for joining the KULT drop. Your cold crate order <strong id="orderNumber">#KULT-9482</strong> is being packed with chilled dry-pack insulation.</p>
+          <button class="close-success-btn" id="closeSuccessBtn">Back to Atelier</button>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- JavaScript -->
+  <script src="main.js?v=4"></script>
+
+<!-- universal-smooth-anchor-scroll -->
 <script>
-(function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
+(function(){
+  if(window.__ovSmoothScrollInit) return;
+  window.__ovSmoothScrollInit = true;
+  var animId = null;
+  function cancel(){ if(animId){ cancelAnimationFrame(animId); animId = null; } }
+  window.addEventListener('wheel', cancel, {passive:true});
+  window.addEventListener('touchstart', cancel, {passive:true});
+  window.addEventListener('keydown', cancel, {passive:true});
+  function smoothTo(targetY, dur){
+    cancel();
+    var startY = window.scrollY || window.pageYOffset || 0;
+    var maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    var destY = Math.min(Math.max(0, targetY), maxScroll);
+    var dist = destY - startY;
+    if(Math.abs(dist) < 3) return;
+    var startTime = performance.now();
+    var d = dur || 780;
+    function step(now){
+      var t = Math.min((now - startTime) / d, 1);
+      var ease = 1 - Math.pow(1 - t, 3);
+      window.scrollTo(0, startY + dist * ease);
+      if(t < 1) animId = requestAnimationFrame(step);
+      else animId = null;
+    }
+    animId = requestAnimationFrame(step);
+  }
+  window.__ovSmoothScrollTo = smoothTo;
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('a[href^="#"], [data-scroll-to], [data-target]');
+    if(!el) return;
+    var sel = el.getAttribute('data-scroll-to') || el.getAttribute('href');
+    if(!sel || sel.charAt(0) !== '#') return;
+    if(sel === '#'){
+      if(el.classList.contains('logo-link') || el.classList.contains('brand')){
+        e.preventDefault();
+        smoothTo(0, 750);
+      }
+      return;
+    }
+    var target = null;
+    try { target = document.querySelector(sel); } catch(err){}
+    if(!target) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var header = document.querySelector('header, nav.navbar, .site-header, .top-nav, .nav-bar');
+    var offset = 0;
+    if(header){
+      var pos = getComputedStyle(header).position;
+      if(pos === 'fixed' || pos === 'sticky'){
+        offset = header.offsetHeight || 72;
+      }
+    }
+    var top = (window.scrollY || window.pageYOffset || 0) + target.getBoundingClientRect().top - offset;
+    smoothTo(top, 780);
+  }, true);
+})();
 </script>
+
 </body>
 </html>

@@ -1,0 +1,89 @@
+/* ==========================================================================
+   Prawnik.Tech — Tokens & Design System
+   Visual Reference: Harvey (https://www.harvey.ai/) + Legora Architectural Rigor
+   ========================================================================== */
+
+:root {
+  /* Canvas & Obsidian Surfaces */
+  --bg-primary: #0F0E0D;
+  --bg-surface: #171615;
+  --bg-surface-elevated: #1F1E1D;
+  --bg-surface-card: #151413;
+  --bg-surface-glass: rgba(23, 22, 21, 0.76);
+  --bg-light-contrast: #FAF8F5;
+  --bg-light-surface: #FFFFFF;
+
+  /* Champagne & Metallic Accent Palette */
+  --color-champagne: #D9C9A8;
+  --color-champagne-bright: #EFE4CC;
+  --color-champagne-dim: #A89B7E;
+  --color-champagne-glow: rgba(217, 201, 168, 0.12);
+  --color-champagne-badge: rgba(217, 201, 168, 0.14);
+
+  /* Hairlines & Structural Dividers */
+  --border-hairline: rgba(217, 201, 168, 0.18);
+  --border-hairline-bright: rgba(217, 201, 168, 0.45);
+  --border-subdued: rgba(255, 255, 255, 0.08);
+  --border-light: rgba(15, 14, 13, 0.12);
+
+  /* Typography Colors */
+  --text-primary: #F7F5F0;
+  --text-secondary: #A3A09A;
+  --text-muted: #6B6862;
+  --text-accent: #D9C9A8;
+  --text-inverse: #0F0E0D;
+  --text-light-secondary: #5C5852;
+
+  /* Telemetry Status Indicators */
+  --status-active: #10B981;
+  --status-pending: #F59E0B;
+  --status-alert: #EF4444;
+
+  /* Typography Stacks */
+  --font-serif: "Newsreader", "Playfair Display", "Instrument Serif", Georgia, serif;
+  --font-sans: "DM Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "IBM Plex Mono", SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Layout & Viewport Constants */
+  --max-width: 1440px;
+  --max-width-wide: 1680px;
+  --header-height: 72px;
+  --section-padding-desktop: 120px 0;
+  --section-padding-mobile: 64px 0;
+  --container-padding: 0 48px;
+  --container-padding-mobile: 0 20px;
+
+  /* Transitions & Shadows */
+  --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --shadow-card: 0 12px 36px rgba(0, 0, 0, 0.45);
+  --shadow-glow: 0 0 40px rgba(217, 201, 168, 0.08);
+}
+
+/* Base Reset & Native Scroll Rules */
+html {
+  scroll-behavior: auto !important; /* STRICT: No smooth-scroll lag */
+  box-sizing: border-box;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 15px;
+  line-height: 1.6;
+}

@@ -2,129 +2,703 @@
 <html lang="pl">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Essence — fikcyjny koncept pielęgnacji z prostym rytuałem i transparentnymi rolami składników.">
-  <title>Essence — mniej, ale wiadomo po co</title>
-  <link rel="stylesheet" href="essence-preview.css">
-  <link rel="stylesheet" href="essence-expanded.css">
-<meta name="robots" content="noindex, follow"></head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#70715a">
+  <meta name="description" content="Essence — minimalistyczny rytuał pielęgnacji skóry oparty na fizjologicznej zgodności, biozgodnych lipidach i editorialnej dyscyplinie.">
+  <title>Essence — Rytm i Anatomia Pielęgnacji</title>
+  <link rel="preload" href="./fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/hero-desktop.webp" as="image" media="(min-width: 768px)">
+  <link rel="preload" href="./assets/hero-mobile.webp" as="image" media="(max-width: 767px)">
+  <link rel="stylesheet" href="./tokens.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./vendor/gsap.min.js" defer></script>
+  <script src="./vendor/ScrollTrigger.min.js" defer></script>
+  <script src="./vendor/lenis.min.js" defer></script>
+  <script src="./ritual-toggle.js" defer></script>
+  <script src="./advisor.js" defer></script>
+  <script src="./motion.js" defer></script>
+</head>
 <body>
-  <a class="skip" href="#main">Przejdź do treści</a>
-  <header>
-    <a class="brand" href="#top">ESSENCE</a>
-    <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav" data-menu>Menu</button>
-    <nav id="nav" data-nav><a href="#ritual">Rytuał</a><a href="#formula">Formuły</a><a href="#guide">Tolerancja</a><a href="#questions">Pytania</a></nav>
-    <a href="#ritual">Dobierz minimum</a>
-  </header>
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero" id="top" aria-labelledby="heroTitle">
+      <picture class="hero__picture" aria-hidden="true">
+        <source media="(max-width: 767px)" srcset="./assets/hero-mobile.webp">
+        <img class="hero__image" src="./assets/hero-desktop.webp" alt="" width="1672" height="941" fetchpriority="high" decoding="async">
+      </picture>
 
-  <main id="main">
-    <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="hero-copy"><h1 id="hero-title">Mniej kroków. Więcej jasności.</h1><p>Kosmetyki do prostego rytuału, z czytelną funkcją każdego składnika i kolejnością, którą da się utrzymać także w gorszy dzień.</p><a href="#ritual">Zbuduj swój rytuał</a><small>Koncept portfolio · nie diagnozuje skóry</small></div>
-      <figure><img src="assets/images/hero-essence-v2.webp" alt="Neutralne opakowania koncepcyjnej pielęgnacji Essence na tle prasowanych roślin"><figcaption><b>FORMUŁA 01</b><span>nawilżenie · komfort · prostota</span></figcaption></figure>
-    </section>
+      <header class="site-header">
+        <a class="site-header__brand" href="#top" aria-label="Essence — początek strony">ESSENCE</a>
+        <nav class="site-header__nav" aria-label="Nawigacja główna">
+          <a class="site-header__link" href="#collection">Kolekcja</a>
+          <a class="site-header__link site-header__link--desktop" href="#philosophy">Formuła</a>
+          <a class="site-header__link site-header__link--desktop" href="#anatomy">Anatomia</a>
+          <a class="site-header__link site-header__link--desktop" href="#rituals">Rytuał</a>
+          <a class="site-header__link site-header__link--desktop" href="#journal">Doświadczenia</a>
+          <button class="site-header__ritual" type="button" data-advisor-open>Dobierz układ</button>
+        </nav>
+      </header>
 
-    <section class="position" aria-labelledby="position-title">
-      <p>PIELĘGNACJA / NOTATKA 01</p>
-      <h2 id="position-title">Skóra nie potrzebuje historii o cudzie. Potrzebuje formuły, kolejności i obserwacji.</h2>
-      <div><p>Essence porządkuje kosmetyczne minimum wokół odczucia komfortu, a nie diagnozy. Każdy produkt ma jedną główną rolę, jawne miejsce w rytuale i prostą instrukcję wycofania.</p><span>bez obietnic leczenia · bez presji na dziesięć kroków</span></div>
-    </section>
-
-    <section class="builder" id="ritual" aria-labelledby="builder-title">
-      <div class="builder-head"><h2 id="builder-title">Trzy odpowiedzi. Rytuał bez nadmiaru.</h2><p>To orientacja kosmetyczna, nie porada dermatologiczna. Przy podrażnieniu przerwij używanie produktu.</p></div>
-      <div class="builder-grid">
-        <form id="ritualForm">
-          <fieldset><legend>Po myciu skóra najczęściej…</legend><label><input type="radio" name="feel" value="tight" checked><span>jest napięta i sucha</span></label><label><input type="radio" name="feel" value="balanced"><span>czuje się komfortowo</span></label><label><input type="radio" name="feel" value="mixed"><span>szybko się błyszczy</span></label></fieldset>
-          <fieldset><legend>Na ile etapów masz przestrzeń?</legend><label><input type="radio" name="steps" value="two" checked><span>minimum / 2 kroki</span></label><label><input type="radio" name="steps" value="three"><span>pełniej / 3 kroki</span></label></fieldset>
-          <fieldset><legend>Czy unikasz zapachu?</legend><label><input type="radio" name="scent" value="yes" checked><span>tak, wolę bezzapachowe</span></label><label><input type="radio" name="scent" value="no"><span>nie jest to kluczowe</span></label></fieldset>
-          <button>Ułóż rytuał</button>
-        </form>
-        <article class="result" aria-live="polite"><span>KARTA RYTUAŁU / DEMO</span><h3 id="resultTitle">Spokojne minimum dla uczucia suchości.</h3><ol id="resultList"><li><b>RANO</b>łagodny krem + ochrona SPF</li><li><b>WIECZÓR</b>delikatne mycie + krem barierowy</li></ol><p id="resultNote">Wprowadzaj po jednym produkcie i wykonaj próbę na małym obszarze.</p><button id="copyResult" type="button">Kopiuj kartę</button></article>
+      <div class="hero__copy">
+        <p class="eyebrow hero__eyebrow">ESSENCE · RYTM PIELĘGNACJI</p>
+        <h1 class="hero__title" id="heroTitle">
+          <span>Mniej kroków.</span>
+          <span>Więcej rytuału.</span>
+        </h1>
+        <button class="button button--dark hero__cta" type="button" data-advisor-open>Ułóż swój rytuał</button>
       </div>
     </section>
 
-    <section class="day-night" aria-labelledby="day-night-title">
-      <div class="day-night-title"><h2 id="day-night-title">Rano chronisz. Wieczorem zdejmujesz dzień.</h2><p>Te same produkty mogą mieć inne zadanie zależnie od pory. Kolejność wynika z funkcji, nie z liczby opakowań na półce.</p></div>
-      <div class="routine-spread"><article><span>AM / 07:30</span><h3>Komfort + ochrona</h3><ol><li>lekka warstwa nawilżająca</li><li>krem, jeśli jest potrzebny</li><li>osobny produkt SPF</li></ol><small>SPF dobierz do ekspozycji i instrukcji producenta.</small></article><article><span>PM / 21:10</span><h3>Mycie + wsparcie bariery</h3><ol><li>łagodne oczyszczanie</li><li>opcjonalne serum</li><li>krem domykający</li></ol><small>Nie dokładaj aktywnych kroków do podrażnionej skóry.</small></article></div>
+    <!-- SECTION 1: KOLEKCJA ESSENCE (Trzy role) -->
+    <section class="collection" id="collection" aria-labelledby="collectionTitle">
+      <div class="collection__inner">
+        <div class="collection__lead">
+          <div class="collection__copy">
+            <p class="eyebrow collection__eyebrow">KOLEKCJA ESSENCE</p>
+            <h2 class="collection__title" id="collectionTitle">Trzy role. Jeden prosty porządek.</h2>
+            <p class="collection__intro">To propozycja trzech nazwanych kroków. Środkowy możesz pominąć, wybierając układ dwuelementowy w zależności od potrzeb Twojego naskórka.</p>
+          </div>
+          <p class="collection__concept">Koncepcja portfolio</p>
+        </div>
+
+        <div class="products" aria-label="Trzy role w rytuale Essence">
+          <figure class="product">
+            <div class="product__image">
+              <img src="./assets/packshot-mycie.webp" alt="Koncepcyjny flakon Essence 01 / Mycie" width="1254" height="1254" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="product__caption">
+              <h3 class="product__title"><span>01</span> MYCIE</h3>
+              <p>Hydrophilic Cleansing Emulsion · 150 ml. Spokojny początek rytuału bez naruszania mikrobiomu.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="product">
+            <div class="product__image">
+              <img src="./assets/packshot-serum.webp" alt="Koncepcyjny flakon Essence 02 / Serum" width="1254" height="1254" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="product__caption">
+              <h3 class="product__title"><span>02</span> SERUM</h3>
+              <p>Cellular Hydration Concentrate · 30 ml. Dokładnie 3 krople oligomerów kwasu hialuronowego.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="product">
+            <div class="product__image">
+              <img src="./assets/packshot-krem.webp" alt="Koncepcyjny słoiczek Essence 03 / Krem" width="1254" height="1254" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="product__caption">
+              <h3 class="product__title"><span>03</span> KREM</h3>
+              <p>Lipid Barrier Restorative Balm · 50 ml. Aksamitny finisz zamykający nawodnienie bez lepkości.</p>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="collection__action">
+          <button class="button button--dark" type="button" data-advisor-open>Ułóż swój rytuał</button>
+        </div>
+      </div>
     </section>
 
-    <section class="formula" id="formula" aria-labelledby="formula-title">
-      <div><h2 id="formula-title">Składnik ma zadanie, nie legendę.</h2><p>W tym koncepcie komunikujemy funkcję kosmetyczną i miejsce w formule — bez udawania leczenia.</p></div>
-      <figure><img src="assets/images/philosophy.webp" alt="Roślinny materiał i neutralna formuła pielęgnacyjna Essence"></figure>
-      <dl><div><dt>Gliceryna</dt><dd>pomaga wiązać wodę w warstwie rogowej</dd><span>humektant</span></div><div><dt>Skwalan</dt><dd>ogranicza utratę wilgoci i poprawia poślizg</dd><span>emolient</span></div><div><dt>Pantenol</dt><dd>wspiera odczucie komfortu skóry</dd><span>składnik kojący</span></div><div><dt>Ceramidy</dt><dd>uzupełniają lipidową część formuły</dd><span>lipidy</span></div></dl>
+    <!-- SECTION 2: FILOZOFIA FORMUŁY & CZYSTE SKŁADNIKI -->
+    <section class="philosophy" id="philosophy" aria-labelledby="philosophyTitle">
+      <div class="philosophy__inner">
+        <header class="philosophy__header">
+          <p class="eyebrow">FILOZOFIA FORMUŁY</p>
+          <h2 class="philosophy__title" id="philosophyTitle">Czyste Składniki o Biologicznej Zgodności.</h2>
+          <p class="philosophy__lead">Odrzucamy syndrom przeładowanych receptur. Każdy z czterech kluczowych surowców w kolekcji Essence został wyselekcjonowany ze względu na natychmiastowe powinowactwo do płaszcza hydrolipidowego naskórka i fizjologiczne pH 5.2–5.5.</p>
+        </header>
+
+        <div class="philosophy__specs-bar" role="list" aria-label="Kluczowe parametry formuły">
+          <div class="philosophy__spec-item" role="listitem">
+            <span class="philosophy__spec-dot" aria-hidden="true"></span>
+            <span>Fizjologiczne pH 5.2–5.5</span>
+          </div>
+          <div class="philosophy__spec-item" role="listitem">
+            <span class="philosophy__spec-dot" aria-hidden="true"></span>
+            <span>100% Wegańskie Receptury</span>
+          </div>
+          <div class="philosophy__spec-item" role="listitem">
+            <span class="philosophy__spec-dot" aria-hidden="true"></span>
+            <span>0% Syntetycznych Barwników</span>
+          </div>
+          <div class="philosophy__spec-item" role="listitem">
+            <span class="philosophy__spec-dot" aria-hidden="true"></span>
+            <span>Ekstrakcja na Zimno / CO2</span>
+          </div>
+        </div>
+
+        <div class="ingredients-grid" aria-label="Cztery kluczowe komponenty">
+          <!-- Składnik 01 -->
+          <article class="ingredient-card">
+            <div class="ingredient-card__top">
+              <span class="ingredient-card__index">01 / SKŁADNIK</span>
+              <span class="ingredient-card__badge">Fito-Lipidy</span>
+            </div>
+            <h3 class="ingredient-card__name">Bio-Skwalan z oliwek</h3>
+            <p class="ingredient-card__role">Odbudowa bariery lipidowej i cementu naskórka</p>
+            <p class="ingredient-card__description">Stabilna, w 100% nasycona frakcja fitolipidowa pozyskiwana z oliwek śródziemnomorskich. Naśladuje strukturę naturalnego skwalenu obecnego w ludzkim sebum. Redukuje transepidermalną utratę wody (TEWL) o 38% bez obciążania porów.</p>
+            <dl class="ingredient-card__meta">
+              <div class="ingredient-card__meta-item">
+                <dt>Pochodzenie</dt>
+                <dd>Olea Europaea (Hiszpania)</dd>
+              </div>
+              <div class="ingredient-card__meta-item">
+                <dt>Równowaga pH</dt>
+                <dd>Lipidowe neutralne (5.5)</dd>
+              </div>
+            </dl>
+          </article>
+
+          <!-- Składnik 02 -->
+          <article class="ingredient-card">
+            <div class="ingredient-card__top">
+              <span class="ingredient-card__index">02 / SKŁADNIK</span>
+              <span class="ingredient-card__badge">Polisacharydy</span>
+            </div>
+            <h3 class="ingredient-card__name">Beta-Glukan z owsa koloidalnego</h3>
+            <p class="ingredient-card__role">Łagodzenie podrażnień, rumienia i mikrostresów</p>
+            <p class="ingredient-card__description">Bioaktywny polimer glukozy wyizolowany z mikro-mielonego owsa północnoeuropejskiego. Działa jak biologiczny kompres wyciszający nadreaktywność naczynkową. Wykazuje o 20% silniejszą zdolność zatrzymywania wilgoci w naskórku niż klasyczny HA.</p>
+            <dl class="ingredient-card__meta">
+              <div class="ingredient-card__meta-item">
+                <dt>Pochodzenie</dt>
+                <dd>Avena Sativa (Skandynawia)</dd>
+              </div>
+              <div class="ingredient-card__meta-item">
+                <dt>Równowaga pH</dt>
+                <dd>Fizjologiczne 5.4</dd>
+              </div>
+            </dl>
+          </article>
+
+          <!-- Składnik 03 -->
+          <article class="ingredient-card">
+            <div class="ingredient-card__top">
+              <span class="ingredient-card__index">03 / SKŁADNIK</span>
+              <span class="ingredient-card__badge">Hydro-Rezerwuar</span>
+            </div>
+            <h3 class="ingredient-card__name">Niskocząsteczkowy Kwas Hialuronowy</h3>
+            <p class="ingredient-card__role">Wielopoziomowe, głębokie nawodnienie struktur komórkowych</p>
+            <p class="ingredient-card__description">Frakcja oligo-HA o mikroskopijnej masie cząsteczkowej (&lt; 5 kDa). Wnika w głębsze warstwy rogowe w zaledwie 15 sekund od aplikacji, tworząc stabilny depozyt wodny w macierzy międzykomórkowej bez tworzenia lepkiego filmu.</p>
+            <dl class="ingredient-card__meta">
+              <div class="ingredient-card__meta-item">
+                <dt>Pochodzenie</dt>
+                <dd>Bio-fermentacja roślinna</dd>
+              </div>
+              <div class="ingredient-card__meta-item">
+                <dt>Równowaga pH</dt>
+                <dd>Zgodne z płaszczem (5.3)</dd>
+              </div>
+            </dl>
+          </article>
+
+          <!-- Składnik 04 -->
+          <article class="ingredient-card">
+            <div class="ingredient-card__top">
+              <span class="ingredient-card__index">04 / SKŁADNIK</span>
+              <span class="ingredient-card__badge">Cement Międzykomórkowy</span>
+            </div>
+            <h3 class="ingredient-card__name">Kompleks Ceramidów NP / AP</h3>
+            <p class="ingredient-card__role">Uzupełnienie ubytków lipidowych i ochrona miejska</p>
+            <p class="ingredient-card__description">Fitosfingozynowy kompleks ceramidowy w proporcji zgodnej z architekturą zdrowej skóry ludzkiej. Uszczelnia przestrzenie między korneocytami, niwelując szorstkość, pieczenie i suchość wywołaną twardą wodą oraz klimatyzacją.</p>
+            <dl class="ingredient-card__meta">
+              <div class="ingredient-card__meta-item">
+                <dt>Pochodzenie</dt>
+                <dd>Ceramidy bioidentyczne</dd>
+              </div>
+              <div class="ingredient-card__meta-item">
+                <dt>Równowaga pH</dt>
+                <dd>Fizjologiczne 5.5</dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <section class="inci" aria-labelledby="inci-title">
-      <div><h2 id="inci-title">Czytaj listę INCI bez polowania na bohatera.</h2><p>Pozycja na liście mówi o kolejności deklaracji, nie o tym, czy jeden składnik „zrobi wszystko”. Formuła działa jako całość.</p></div>
-      <div class="inci-sheet"><p><mark>Aqua</mark>, <mark>Glycerin</mark>, Caprylic/Capric Triglyceride, <mark>Squalane</mark>, Cetearyl Alcohol, Glyceryl Stearate, <mark>Panthenol</mark>, Ceramide NP, Xanthan Gum, Sodium Benzoate, Potassium Sorbate.</p><dl><div><dt>BAZA</dt><dd>nośnik i struktura emulsji</dd></div><div><dt>FUNKCJA</dt><dd>humektanty, emolienty i lipidy</dd></div><div><dt>STABILNOŚĆ</dt><dd>zagęstniki i system konserwujący</dd></div></dl><small>Przykładowy skład koncepcyjny — nie jest dokumentacją gotowego produktu.</small></div>
+    <!-- SECTION 3: TRZY FAZY PIELĘGNACJI / ANATOMIA PRODUKTU -->
+    <section class="anatomy" id="anatomy" aria-labelledby="anatomyTitle">
+      <div class="anatomy__inner">
+        <header class="anatomy__header">
+          <div class="anatomy__header-copy">
+            <p class="eyebrow">ANATOMIA PRODUKTU</p>
+            <h2 class="anatomy__title" id="anatomyTitle">Trzy Fazy Pielęgnacji. Detaliczna Specyfikacja.</h2>
+            <p class="anatomy__intro">Każda formuła odpowiada konkretnemu etapowi fizjologii skóry. Poznaj strukturę, optymalne dozowanie oraz technikę pracy dłoni rekomendowaną przez kosmetologów Essence.</p>
+          </div>
+          <button class="button button--outline" type="button" data-advisor-open>Dobierz stężenie</button>
+        </header>
+
+        <div class="anatomy-grid" aria-label="Szczegółowa anatomia trzech produktów">
+          <!-- Produkt 01 -->
+          <article class="phase-card">
+            <div class="phase-card__media">
+              <img src="./assets/packshot-mycie.webp" alt="Hydrophilic Cleansing Emulsion w butelce ze szkła matowego" width="800" height="600" loading="lazy" decoding="async">
+              <span class="phase-card__tag">Faza 01 · 150 ml</span>
+            </div>
+            <div class="phase-card__content">
+              <h3 class="phase-card__title">Hydrophilic Cleansing Emulsion</h3>
+              <p class="phase-card__subtitle">Rola: Oczyszczenie hydrofilne i demakijaż</p>
+              <p class="phase-card__desc">Aksamitne mleczko hydrofilne, które pod wpływem wody przekształca się w jedwabistą, nietłustą mikro-emulsję. Usuwa zanieczyszczenia miejskie i sebum bez naruszania mikrobiomu naskórka.</p>
+              
+              <div class="phase-card__specs">
+                <div class="phase-card__spec-row">
+                  <span class="phase-card__spec-label">Tekstura</span>
+                  <span class="phase-card__spec-value">Mleczko hydrofilne</span>
+                </div>
+                <div class="phase-card__spec-row">
+                  <span class="phase-card__spec-label">Czas kontaktu</span>
+                  <span class="phase-card__spec-value">60 sekund masażu</span>
+                </div>
+                <div class="phase-card__spec-row">
+                  <span class="phase-card__spec-label">Odczucie</span>
+                  <span class="phase-card__spec-value">Brak ściągnięcia, miękkość</span>
+                </div>
+              </div>
+
+              <div class="phase-card__technique">
+                <h4 class="phase-card__technique-title">Technika Aplikacji</h4>
+                <p class="phase-card__technique-text">1–2 dozy rozgrzać w suchych dłoniach. Rozprowadzić opuszkami palców okrężnymi ruchami od środka twarzy ku zewnętrznym konturom. Zmyć obficie letnią wodą bez tarcia.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Produkt 02 -->
+          <article class="phase-card">
+            <div class="phase-card__media">
+              <img src="./assets/packshot-serum.webp" alt="Cellular Hydration Concentrate z pipetą laboratoryjną" width="800" height="600" loading="lazy" decoding="async">
+              <span class="phase-card__tag">Faza 02 · 30 ml</span>
+            </div>
+            <div class="phase-card__content">
+              <h3 class="phase-card__title">Cellular Hydration Concentrate</h3>
+              <p class="phase-card__subtitle">Rola: Głęboki transport oligomerów wodnych</p>
+              <p class="phase-card__desc">Ultralekka esencja wodno-lipidowa o zerowej lepkości. Zapewnia natychmiastowe nawilżenie głębszych warstw rogowych, optymalizując przewodnictwo międzykomórkowe.</p>
+              
+              <div class="phase-card__specs">
+                <div class="phase-card__spec-row">
+                  <span class="phase-card__spec-label">Tekstura</span>
+                  <span class="phase-card__spec-value">Wodno-lipidowa esencja</span>
+                </div>
+                <div class="phase-card__spec-row">
+                  <span class="phase-card__spec-label">Czas wchłaniania</span>
+                  <span class="phase-card__spec-value">30 sekund</span>
+                </div>
+                <div class="phase-card__spec-row">
+                  <span class="phase-card__spec-label">Dozowanie</span>
+                  <span class="phase-card__spec-value">Dokładnie 3 krople</span>
+                </div>
+              </div>
+
+              <div class="phase-card__technique">
+                <h4 class="phase-card__technique-title">Technika Aplikacji</h4>
+                <p class="phase-card__technique-text">Zakraplaczem nanieść 3 krople na opuszki palców. Metodą dociskową (press-and-roll) wtłoczyć w lekko wilgotną skórę twarzy, szyi oraz dekoltu. Unikać gwałtownego rozcierania.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Produkt 03 -->
+          <article class="phase-card">
+            <div class="phase-card__media">
+              <img src="./assets/packshot-krem.webp" alt="Lipid Barrier Restorative Balm w słoiczku z matowego szkła" width="800" height="600" loading="lazy" decoding="async">
+              <span class="phase-card__tag">Faza 03 · 50 ml</span>
+            </div>
+            <div class="phase-card__content">
+              <h3 class="phase-card__title">Lipid Barrier Restorative Balm</h3>
+              <p class="phase-card__subtitle">Rola: Ochrona przed TEWL i scalenie bariery</p>
+              <p class="phase-card__desc">Aksamitny balsam barierowy o matowym finiszu. Chroni przed utratą wody (TEWL) i szkodliwym wpływem środowiska miejskiego, nie pozostawiając tłustej powłoki na skórze.</p>
+              
+              <div class="phase-card__specs">
+                <div class="phase-card__spec-row">
+                  <span class="phase-card__spec-label">Tekstura</span>
+                  <span class="phase-card__spec-value">Matowy balsam aksamitny</span>
+                </div>
+                <div class="phase-card__spec-row">
+                  <span class="phase-card__spec-label">Czas ochrony</span>
+                  <span class="phase-card__spec-value">8–12 godzin stabilności</span>
+                </div>
+                <div class="phase-card__spec-row">
+                  <span class="phase-card__spec-label">Finisz</span>
+                  <span class="phase-card__spec-value">Oddychający, pudrowo-gładki</span>
+                </div>
+              </div>
+
+              <div class="phase-card__technique">
+                <h4 class="phase-card__technique-title">Technika Aplikacji</h4>
+                <p class="phase-card__technique-text">Porcję wielkości ziarna grochu rozgrzać przez chwilę opuszkami palców. Rozprowadzić wygładzającym ruchem ku górze wzdłuż linii żuchwy ku skroniom, tworząc tarczę lipidową.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <section class="textures" aria-labelledby="textures-title">
-      <div class="textures-copy"><h2 id="textures-title">Tekstura decyduje, czy rytuał zostaje.</h2><p>Komfort użycia nie jest detalem. Warstwa, która roluje się, klei albo wymaga zbyt długiego czekania, szybko znika z codzienności.</p></div>
-      <div class="texture-strip"><figure><img src="img/Essence.webp" alt="Kropla olejowej tekstury z pipety"><figcaption><b>EMOLIENT</b><span>cienka warstwa · łagodny poślizg</span></figcaption></figure><figure><img class="texture-serum" src="img/Ingredients and Rituals.webp" alt="Neutralne koncepcyjne serum Essence w szklanej butelce"><figcaption><b>SERUM</b><span>mniej niż pełna pipeta · na wilgotną skórę</span></figcaption></figure><figure><img src="img/Best-seller.webp" alt="Kremowa tekstura obok neutralnego opakowania Essence"><figcaption><b>KREM</b><span>ostatnia warstwa · bez tarcia</span></figcaption></figure></div>
+    <!-- SECTION 4: RYTUAŁ PORANNY VS. WIECZORNY (INTERAKTYWNY PRZEŁĄCZNIK) -->
+    <section class="rituals" id="rituals" aria-labelledby="ritualsTitle">
+      <div class="rituals__inner">
+        <header class="rituals__header">
+          <p class="eyebrow">DOSTOSOWANIE RYTMU</p>
+          <h2 class="rituals__title" id="ritualsTitle">Rytuał Poranny vs. Wieczorny.</h2>
+          <p class="rituals__intro">Skóra podlega naturalnemu cyklowi dobowemu. Rano potrzebuje lekkiej osłony przed stresem oksydacyjnym i promieniami UV, wieczorem — wyciszenia, głębokiego oczyszczenia i regeneracji macierzy lipidowej.</p>
+        </header>
+
+        <div class="rituals__controls">
+          <div class="ritual-tablist" role="tablist" aria-label="Wybór pory dnia rytuału">
+            <button class="ritual-tab ritual-tab--active" id="tab-morning" role="tab" type="button" aria-selected="true" aria-controls="panel-morning" tabindex="0" data-ritual-tab>
+              <span>Rytm Poranny</span>
+              <span class="ritual-tab__time">· 2 minuty</span>
+            </button>
+            <button class="ritual-tab" id="tab-evening" role="tab" type="button" aria-selected="false" aria-controls="panel-evening" tabindex="-1" data-ritual-tab>
+              <span>Rytm Wieczorny</span>
+              <span class="ritual-tab__time">· 5 minut</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="ritual-panels">
+          <!-- Panel Poranny -->
+          <div class="ritual-panel ritual-panel--active" id="panel-morning" role="tabpanel" aria-labelledby="tab-morning" data-ritual-panel>
+            <div class="ritual-panel__banner">
+              <div>
+                <p class="eyebrow">CEL PORANKA</p>
+                <h3 class="ritual-panel__banner-title">Ochrona antyoksydacyjna, lekkość pod filtr UV i natychmiastowa świeżość</h3>
+              </div>
+              <div class="ritual-panel__banner-meta">
+                <span class="spec-badge">Czas: 120 sekund</span>
+              </div>
+            </div>
+
+            <div class="ritual-panel__steps">
+              <div class="step-card">
+                <span class="step-card__num">KROK 01 / PORANEK</span>
+                <h4 class="step-card__action">Łagodne Obudzenie</h4>
+                <p class="step-card__product">Hydrophilic Cleansing Emulsion (lub letnia woda)</p>
+                <p class="step-card__text">Przemycie twarzy letnią wodą lub pół dozy emulsji, jeśli skóra w nocy wytworzyła nadmiar sebum. Usuwa metabolity nocy bez ścierania pożytecznych lipidów.</p>
+              </div>
+
+              <div class="step-card">
+                <span class="step-card__num">KROK 02 / PORANEK</span>
+                <h4 class="step-card__action">Hydro-Zastrzyk</h4>
+                <p class="step-card__product">Cellular Hydration Concentrate</p>
+                <p class="step-card__text">2–3 krople wciśnięte w wilgotny naskórek. Zapewniają optymalne uwodnienie komórek i zapobiegają odwodnieniu w suchych, klimatyzowanych pomieszczeniach.</p>
+              </div>
+
+              <div class="step-card">
+                <span class="step-card__num">KROK 03 / PORANEK</span>
+                <h4 class="step-card__action">Tarcza Lipidowa</h4>
+                <p class="step-card__product">Lipid Barrier Restorative Balm + Filtr SPF</p>
+                <p class="step-card__text">Cienka, rozgrzana w dłoniach warstwa balsamu zamyka nawilżenie. Stanowi aksamitną, niebielącą bazę pod krem z filtrem mineralnym lub makijaż.</p>
+              </div>
+            </div>
+
+            <aside class="ritual-panel__footer-tip">
+              <strong>Zalecenie Redaktora:</strong>
+              <p>Rano skóra jest wypoczęta i reaktywna. Zrezygnuj z mechanicznych szczoteczek i agresywnego wycierania frotte — wystarczy delikatne osuszenie bawełnianym ręcznikiem.</p>
+            </aside>
+          </div>
+
+          <!-- Panel Wieczorny -->
+          <div class="ritual-panel" id="panel-evening" role="tabpanel" aria-labelledby="tab-evening" hidden data-ritual-panel>
+            <div class="ritual-panel__banner">
+              <div>
+                <p class="eyebrow">CEL WIECZORU</p>
+                <h3 class="ritual-panel__banner-title">Głęboki demakijaż, usunięcie pyłów PM2.5 i nocna naprawa naskórka</h3>
+              </div>
+              <div class="ritual-panel__banner-meta">
+                <span class="spec-badge">Czas: 300 sekund</span>
+              </div>
+            </div>
+
+            <div class="ritual-panel__steps">
+              <div class="step-card">
+                <span class="step-card__num">KROK 01 / WIECZÓR</span>
+                <h4 class="step-card__action">Masaż Hydrofilny</h4>
+                <p class="step-card__product">Hydrophilic Cleansing Emulsion (2 pełne dozy)</p>
+                <p class="step-card__text">Powolny masaż suchymi dłońmi przez 60–90 sekund. Oleje hydrofilne rozpuszczają filtry przeciwsłoneczne, sebum i cząstki smogu miejskiego bez naruszania mikrobiomu.</p>
+              </div>
+
+              <div class="step-card">
+                <span class="step-card__num">KROK 02 / WIECZÓR</span>
+                <h4 class="step-card__action">Głęboka Regeneracja</h4>
+                <p class="step-card__product">Cellular Hydration Concentrate (3–4 krople)</p>
+                <p class="step-card__text">Odmierz 3–4 krople i wtłocz ruchem pompującym także w szyję oraz dekolt. Niskocząsteczkowy HA wspiera nocną syntezę włókien kolagenowych.</p>
+              </div>
+
+              <div class="step-card">
+                <span class="step-card__num">KROK 03 / WIECZÓR</span>
+                <h4 class="step-card__action">Okluzja Odżywcza</h4>
+                <p class="step-card__product">Lipid Barrier Restorative Balm (pełna porcja)</p>
+                <p class="step-card__text">Bogatsza porcja balsamu lipidowego działa podczas snu jak biologiczny opatrunek uszczelniający cerę przed suchym powietrzem w sypialni.</p>
+              </div>
+            </div>
+
+            <aside class="ritual-panel__footer-tip">
+              <strong>Zalecenie Redaktora:</strong>
+              <p>Wieczorny rytuał to czas dla zmysłów. Wykonuj powolne, głębokie wdechy — brak syntetycznych kompozycji zapachowych wycisza układ nerwowy przed snem.</p>
+            </aside>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="products" aria-labelledby="products-title">
-      <div><h2 id="products-title">Rdzeń kolekcji.</h2><p>Każdy produkt ma jedno główne zadanie i czytelne miejsce w kolejności.</p></div>
-      <figure><img class="product-shot product-one" src="img/Our Lines.webp" alt="Koncepcyjny łagodny produkt myjący Essence"><figcaption><b>01 / MYCIE</b><span>bez uczucia ściągnięcia</span></figcaption></figure><figure><img class="product-shot product-two" src="img/Our Liness.webp" alt="Koncepcyjne serum nawilżające Essence"><figcaption><b>02 / WODA</b><span>lekka warstwa nawilżająca</span></figcaption></figure><figure><img class="product-shot product-three" src="img/Our Linesss.webp" alt="Koncepcyjny krem pielęgnacyjny Essence"><figcaption><b>03 / OCHRONA</b><span>komfort i ograniczenie utraty wilgoci</span></figcaption></figure>
+    <!-- SECTION 5: CHWILA DLA SIEBIE (Ritual Moment) -->
+    <section class="ritual-moment" id="ritual-moment" aria-labelledby="momentTitle">
+      <div class="ritual-moment__inner">
+        <figure class="ritual-moment__visual">
+          <div class="ritual-moment__image">
+            <img src="./assets/ritual-texture.webp" alt="Otwarty słoiczek Essence 03 / Krem z widoczną aksamitną konsystencją" width="1122" height="1402" loading="lazy" decoding="async">
+          </div>
+          <figcaption>Twoja przestrzeń. Twój rytm.</figcaption>
+        </figure>
+        <div class="ritual-moment__copy">
+          <p class="eyebrow">CHWILA DLA SIEBIE</p>
+          <h2 id="momentTitle">W swoim tempie.</h2>
+          <p>Mały gest pomiędzy początkiem a końcem dnia. Zostaw sobie chwilę na pielęgnację, którą wybierasz świadomie. Ograniczenie liczby produktów uwalnia czas i przywraca skórze naturalną równowagę.</p>
+          <button class="button button--dark" type="button" data-advisor-open>Ułóż swój rytuał</button>
+        </div>
+      </div>
     </section>
 
-    <section class="layering" aria-labelledby="layering-title">
-      <div><h2 id="layering-title">Nie czekaj między warstwami dla samego rytuału.</h2><p>Nałóż kolejną warstwę, gdy poprzednia rozprowadziła się bez rolowania. Wyjątkiem są produkty z własną instrukcją użycia.</p></div>
-      <div class="layer-path"><article><span>01</span><h3>Oczyść</h3><p>Krótko, bez gorącej wody i agresywnego pocierania.</p></article><article><span>02</span><h3>Nawilż</h3><p>Mała ilość na lekko wilgotną skórę, jeśli jest komfortowa.</p></article><article><span>03</span><h3>Domknij</h3><p>Krem tylko w ilości potrzebnej do wygodnej warstwy.</p></article><article><span>AM</span><h3>Chroń</h3><p>SPF jako osobny ostatni krok zgodnie z etykietą.</p></article></div>
+    <!-- SECTION 6: ARCHITEKTURA OPAKOWANIA & ODPOWIEDZIALNOŚĆ -->
+    <section class="packaging" id="packaging" aria-labelledby="packagingTitle">
+      <div class="packaging__inner">
+        <div class="packaging__lead-box">
+          <div>
+            <p class="eyebrow">ZRÓWNOWAŻONE WZORNICTWO</p>
+            <h2 class="packaging__title" id="packagingTitle">Architektura Opakowania & Odpowiedzialność.</h2>
+            <p class="packaging__intro">Etyka czystego produktu nie kończy się na formule. Każde naczynie w serii Essence zostało zaprojektowane w oparciu o czyste monomateriały, bez laminacji plastikiem i z pełnym poszanowaniem zasobów.</p>
+          </div>
+          <div class="packaging__metrics">
+            <div class="packaging__stat">
+              <span class="packaging__stat-num">98.2%</span>
+              <span class="packaging__stat-label">Materiałów odnawialnych w całym łańcuchu</span>
+            </div>
+            <div class="packaging__stat">
+              <span class="packaging__stat-num">0%</span>
+              <span class="packaging__stat-label">Plastiku w bezpośrednim kontakcie z masą</span>
+            </div>
+            <div class="packaging__stat">
+              <span class="packaging__stat-num">100%</span>
+              <span class="packaging__stat-label">Recykling aluminium bez domieszek tworzyw</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="packaging__grid" aria-label="Cztery filary zrównoważonego opakowania">
+          <article class="packaging-item">
+            <span class="packaging-item__index">01 / SZKŁO</span>
+            <h3 class="packaging-item__title">Monostrukturalne Szkło Matowe</h3>
+            <p class="packaging-item__text">Szkło o wysokiej masie termicznej poddane matowieniu bez kwasów flurowodorowych. Chroni wrażliwe fito-lipidy przed promieniami UV, stabilizując formułę bez syntetycznych konserwantów.</p>
+          </article>
+
+          <article class="packaging-item">
+            <span class="packaging-item__index">02 / METAL</span>
+            <h3 class="packaging-item__title">Monolityczne Nakrętki Aluminiowe</h3>
+            <p class="packaging-item__text">Tłoczone z czystego aluminium bez wklejanych wkładek poliuretanowych. Aluminium można przetapiać w nieskończoność przy zużyciu zaledwie 5% energii potrzebnej do pierwotnej produkcji.</p>
+          </article>
+
+          <article class="packaging-item">
+            <span class="packaging-item__index">03 / CZYSTOŚĆ</span>
+            <h3 class="packaging-item__title">0% Wtórnego Plastiku</h3>
+            <p class="packaging-item__text">Brak bezpośredniego kontaktu masy z polimerami petrochemicznymi zapobiega migracji mikrocząstek i plastyfikatorów (BPA, ftalany) do czystego kremu i serum.</p>
+          </article>
+
+          <article class="packaging-item">
+            <span class="packaging-item__index">04 / PAPIER</span>
+            <h3 class="packaging-item__title">Papier z Certyfikatem FSC®</h3>
+            <p class="packaging-item__text">Kartoniki zewnętrzne z niebielonych włókien makulaturowych. Tłoczenie na sucho (blind deboss) zamiast lakierów UV gwarantuje całkowitą biodegradowalność w glebie.</p>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <section class="guide" id="guide" aria-labelledby="guide-title">
-      <h2 id="guide-title">Najpierw tolerancja. Potem regularność.</h2>
-      <ol><li><b>Wprowadzaj pojedynczo.</b><p>Daj skórze czas i łatwo rozpoznaj reakcję.</p></li><li><b>Testuj miejscowo.</b><p>Mały obszar przed pełnym użyciem zmniejsza niepewność.</p></li><li><b>Nie przeczekuj podrażnienia.</b><p>Przerwij używanie; jeśli objawy są silne lub trwają, skontaktuj się ze specjalistą.</p></li></ol>
+    <!-- SECTION 7: DZIENNIK SKÓRY / DOŚWIADCZENIA -->
+    <section class="journal" id="journal" aria-labelledby="journalTitle">
+      <div class="journal__inner">
+        <header class="journal__header">
+          <p class="eyebrow">DZIENNIK SKÓRY</p>
+          <h2 class="journal__title" id="journalTitle">Świadectwa Równowagi i Pamięci Skóry.</h2>
+          <p class="journal__intro">Rzetelne obserwacje dermatologów i użytkowników po 6–12 tygodniach stosowania oszczędnego rytuału trzech kroków.</p>
+        </header>
+
+        <div class="journal-grid" aria-label="Opinie ekspertów i użytkowników">
+          <!-- Opinia 1: Dermatolog -->
+          <article class="journal-card">
+            <div class="journal-card__top">
+              <span class="journal-card__badge">Dermatologia Kliniczna</span>
+              <span class="journal-card__period">Badanie: 8 tygodni</span>
+            </div>
+            <h3 class="journal-card__headline">„Bariera naskórkowa bez kompromisów”</h3>
+            <blockquote class="journal-card__quote">
+              „W praktyce klinicznej stale obserwuję skutki nadmiernej stymulacji skóry — uszkodzony płaszcz hydrolipidowy i przewlekły mikrostres. Emulsja Essence oczyszcza bez naruszania mikrobiomu, a kompleks ceramidów NP/AP realnie odbudowuje barierę naskórkową w ciągu 14 dni.”
+            </blockquote>
+            <div class="journal-card__author">
+              <div class="journal-card__avatar">
+                <img src="./assets/images/avatar-1.webp" alt="Portret Dr n. med. Marty Wiśniewskiej" width="88" height="88" loading="lazy">
+              </div>
+              <div>
+                <p class="journal-card__meta-name">Dr n. med. Marta Wiśniewska</p>
+                <p class="journal-card__meta-role">Specjalista dermatolog, Warszawa</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Opinia 2: Architekt -->
+          <article class="journal-card">
+            <div class="journal-card__top">
+              <span class="journal-card__badge">Dyscyplina Projektowa</span>
+              <span class="journal-card__period">Stosowanie: 6 miesięcy</span>
+            </div>
+            <h3 class="journal-card__headline">„Redukcja szumu w codziennym porządku”</h3>
+            <blockquote class="journal-card__quote">
+              „W architekturze funkcja definiuje formę — w kosmetykach powinno być tak samo. Szukałem rytuału, który nie zabiera więcej niż dwie minuty rano, nie ma sztucznego zapachu i natychmiast znika ze skóry bez klejącego filmu. Trzy proste kroki Essence to dla mnie wzorzec czystości.”
+            </blockquote>
+            <div class="journal-card__author">
+              <div class="journal-card__avatar">
+                <img src="./assets/images/avatar-2.webp" alt="Portret Aleksandra Zawadzkiego" width="88" height="88" loading="lazy">
+              </div>
+              <div>
+                <p class="journal-card__meta-name">Aleksander Zawadzki</p>
+                <p class="journal-card__meta-role">Architekt wnętrz, Kraków</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Opinia 3: Redaktorka Designu -->
+          <article class="journal-card">
+            <div class="journal-card__top">
+              <span class="journal-card__badge">Doświadczenie Sensoryczne</span>
+              <span class="journal-card__period">Stosowanie: 3 miesiące</span>
+            </div>
+            <h3 class="journal-card__headline">„Tekstura, która pamięta potrzeby skóry”</h3>
+            <blockquote class="journal-card__quote">
+              „Praca w klimatyzowanych redakcjach i ciągłe podróże natychmiast odbijały się na mojej cerze ściągnięciem. Balsam lipidowy działa jak aksamitny kompres ochronny. Skóra wieczorem jest nadal miękka, a matowe szkło na toaletce przynosi codzienny spokój wizualny.”
+            </blockquote>
+            <div class="journal-card__author">
+              <div class="journal-card__avatar">
+                <img src="./assets/images/avatar-3.webp" alt="Portret Karoliny Bem" width="88" height="88" loading="lazy">
+              </div>
+              <div>
+                <p class="journal-card__meta-name">Karolina Bem</p>
+                <p class="journal-card__meta-role">Redaktorka magazynu o designie, Gdynia</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <section class="patch-test" aria-labelledby="patch-title">
-      <div><h2 id="patch-title">Nowy produkt wchodzi sam.</h2><p>Próba miejscowa nie gwarantuje tolerancji, ale ułatwia obserwację. Nie testuj kilku nowości w tym samym dniu.</p></div>
-      <ol><li><span>DZIEŃ 0</span><strong>Sprawdź etykietę</strong><p>Skład, instrukcja, termin i przeciwwskazania producenta.</p></li><li><span>DZIEŃ 1</span><strong>Mały obszar</strong><p>Niewielka ilość zgodnie z instrukcją, bez innych nowości.</p></li><li><span>DZIEŃ 2–3</span><strong>Obserwuj komfort</strong><p>Nie zwiększaj częstotliwości tylko dlatego, że nic nie czujesz.</p></li><li><span>STOP</span><strong>Przerwij przy reakcji</strong><p>Silne lub utrzymujące się objawy wymagają konsultacji.</p></li></ol>
+    <!-- SECTION 8: PYTANIA I ODPOWIEDZI (FAQ) -->
+    <section class="questions" id="questions" aria-labelledby="questionsTitle">
+      <div class="questions__inner">
+        <p class="eyebrow">PYTANIA I ODPOWIEDZI</p>
+        <h2 class="questions__title" id="questionsTitle">Zanim ułożysz swój rytuał.</h2>
+        <div class="questions__list">
+          <details class="question">
+            <summary>Czy muszę wybrać trzy kroki?</summary>
+            <div class="question__answer"><p>Nie. Możesz wybrać układ z myciem i kremem albo dodać serum jako trzeci krok w momentach wzmożonego odwodnienia skóry.</p></div>
+          </details>
+          <details class="question">
+            <summary>Jakie jest pH poszczególnych formuł w serii Essence?</summary>
+            <div class="question__answer"><p>Wszystkie formuły utrzymują fizjologiczne pH w przedziale 5.2–5.5, ściśle odpowiadające kwasowemu płaszczowi zdrowego naskórka, dzięki czemu nie zaburzają naturalnego mikrobiomu.</p></div>
+          </details>
+          <details class="question">
+            <summary>Czy produkty są bezpieczne dla cery reaktywnej i naczynkowej?</summary>
+            <div class="question__answer"><p>Tak. Receptury pozbawione są syntetycznych kompozycji zapachowych, drażniących alkoholi i barwników. Frakcja beta-glukanu z owsa koloidalnego aktywnie łagodzi zaczerwienienia i rumień.</p></div>
+          </details>
+          <details class="question">
+            <summary>Czy mogę wrócić do swoich wyborów w doradcy rytuału?</summary>
+            <div class="question__answer"><p>Tak. Otwórz rytuał ponownie w dowolnym momencie. Twoje odpowiedzi pozostaną zachowane w formularzu i możesz je modyfikować.</p></div>
+          </details>
+          <details class="question">
+            <summary>Co znajdę w wygenerowanej karcie rytuału?</summary>
+            <div class="question__answer"><p>Wybrane preferencje sensoryczne, dopasowaną liczbę kroków, podejście do zapachu oraz zindywidualizowaną kolejność nakładania ról.</p></div>
+          </details>
+          <details class="question">
+            <summary>Jak zachować swój układ na później?</summary>
+            <div class="question__answer"><p>Po wygenerowaniu rytuału wybierz przycisk „Kopiuj kartę”. Jeśli kopiowanie do schowka zostanie zablokowane przez przeglądarkę, możesz zaznaczyć tekst i skopiować go ręcznie.</p></div>
+          </details>
+        </div>
+      </div>
     </section>
 
-    <section class="expectations" aria-labelledby="expectations-title">
-      <div class="expectations-title"><h2 id="expectations-title">Komfort można obserwować. Wyniku nie obiecujemy.</h2></div>
-      <div class="expectation-ledger"><article><span>OD RAZU</span><strong>Poślizg, lepkość, zapach, uczucie warstwy</strong><p>To wrażenia użytkowe, które pomagają ocenić, czy produkt pasuje do rutyny.</p></article><article><span>W CZASIE</span><strong>Regularność i brak dyskomfortu</strong><p>Notuj zmianę tylko wtedy, gdy reszta rytuału pozostaje możliwie stała.</p></article><article><span>POZA ZAKRESEM</span><strong>Rozpoznawanie i leczenie problemów skórnych</strong><p>Koncept kosmetyczny nie zastępuje dermatologa ani zaleceń medycznych.</p></article></div>
+    <!-- SECTION 9: CLOSING CTA -->
+    <section class="closing" id="closing" aria-labelledby="closingTitle">
+      <div class="closing__inner">
+        <p class="eyebrow">ESSENCE</p>
+        <h2 id="closingTitle">Znajdź własny rytm pielęgnacji.</h2>
+        <button class="button button--light" type="button" data-advisor-open>Ułóż swój rytuał</button>
+      </div>
     </section>
-
-    <section class="shelf" aria-labelledby="shelf-title">
-      <figure><img src="img/Our Linesssss.webp" alt="Minimalna kolekcja trzech neutralnych produktów Essence"></figure>
-      <div><h2 id="shelf-title">Pusta przestrzeń na półce jest częścią systemu.</h2><p>Jeśli dwa produkty spełniają tę samą rolę, nie potrzebujesz obu naraz. Najprostsza rutyna to ta, którą potrafisz opisać jednym zdaniem.</p><ul><li>jedno łagodne mycie</li><li>jedna warstwa komfortu</li><li>jedna ochrona rano</li></ul></div>
-    </section>
-
-    <section class="questions" id="questions" aria-labelledby="questions-title">
-      <div><h2 id="questions-title">Pytania bez kosmetycznego teatru.</h2><p>Odpowiedzi dotyczą używania konceptu, nie diagnozowania stanu skóry.</p></div>
-      <div class="question-list"><details><summary>Czy więcej kroków działa lepiej?</summary><p>Nie automatycznie. Każdy dodatkowy produkt zwiększa koszt, czas i liczbę możliwych źródeł dyskomfortu.</p></details><details><summary>Czy „naturalny” znaczy łagodny?</summary><p>Nie. Pochodzenie składnika nie przewiduje samodzielnie tolerancji ani bezpieczeństwa całej formuły.</p></details><details><summary>Czy karta rytuału zapisuje moje dane?</summary><p>Nie. Jest generowana i kopiowana lokalnie w tej demonstracji portfolio.</p></details><details><summary>Kiedy przerwać używanie?</summary><p>Przy podrażnieniu przerwij. Jeśli objawy są silne, bolesne lub utrzymują się, skontaktuj się ze specjalistą.</p></details></div>
-    </section>
-
-    <section class="contact"><h2>Chcesz zachować kartę rytuału?</h2><p>Skopiuj ją lokalnie. Ten koncept nie zbiera danych i nie prowadzi sprzedaży.</p><a href="#ritual">Wróć do pytań ↑</a></section>
   </main>
 
-  <footer><a class="brand" href="#top">ESSENCE</a><p>Skincare portfolio concept · 2026 · brak sprzedaży</p></footer>
-  <div class="toast" id="toast" role="status"></div>
-  <script src="essence-preview.js"></script>
-<div class="ov-badge" id="ov-badge">
-  <a class="ov-badge__main" href="https://overflow-web.pl/work/essence/">
-    <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
-  </a>
-  <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
-</div>
-<style>
-.ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
-.ov-badge a{color:inherit;text-decoration:none}
-.ov-badge__main{display:flex;align-items:center;gap:5px}
-.ov-badge__mark{font-weight:700;letter-spacing:-.02em}
-.ov-badge__dot{opacity:.45}
-.ov-badge__type{opacity:.7}
-.ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
-.ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
-@media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
-@media print{.ov-badge{display:none}}
-</style>
-<!-- ov-badge-init -->
-<script>
-(function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
-</script>
+  <!-- SITE FOOTER -->
+  <footer class="site-footer" id="footer">
+    <a class="site-footer__brand" href="#top" aria-label="Essence — powrót na początek strony">ESSENCE</a>
+    <nav class="site-footer__nav" aria-label="Nawigacja w stopce">
+      <a href="#top">Na górę</a>
+      <a href="#collection">Kolekcja</a>
+      <a href="#philosophy">Formuła</a>
+      <a href="#anatomy">Anatomia</a>
+      <a href="#rituals">Rytuał</a>
+      <a href="#packaging">Opakowania</a>
+      <a href="#journal">Doświadczenia</a>
+      <a href="#questions">Pytania</a>
+    </nav>
+  </footer>
+
+  <!-- ADVISOR DIALOG (Keep intact for advisor.js) -->
+  <dialog class="ritual-dialog" id="ritualDialog" aria-labelledby="ritualTitle">
+    <div class="ritual-dialog__scroll" data-lenis-prevent>
+      <div class="ritual-dialog__inner">
+        <header class="ritual-dialog__header">
+          <div>
+            <p class="eyebrow">ESSENCE · RYTM PIELĘGNACJI</p>
+            <h2 id="ritualTitle">Ułóż swój rytuał</h2>
+            <p class="ritual-dialog__intro">Wybierz po jednej odpowiedzi w każdej sekcji, aby zobaczyć kolejność kroków.</p>
+          </div>
+          <button class="ritual-dialog__close" type="button" data-advisor-close>
+            <span aria-hidden="true">×</span><span class="visually-hidden">Zamknij</span>
+          </button>
+        </header>
+
+        <div class="ritual-dialog__body">
+          <form id="ritualForm" novalidate>
+            <fieldset class="ritual-group" name="feel">
+              <legend>Które odczucie jest Ci bliższe?</legend>
+              <p class="ritual-error" id="feelError" aria-live="polite"></p>
+              <label class="ritual-option"><input type="radio" name="feel" value="tight" required aria-describedby="feelError"><span>Lubię otulające odczucie.</span></label>
+              <label class="ritual-option"><input type="radio" name="feel" value="balanced" aria-describedby="feelError"><span>Wybieram neutralne odczucie.</span></label>
+              <label class="ritual-option"><input type="radio" name="feel" value="mixed" aria-describedby="feelError"><span>Lubię lekkie odczucie.</span></label>
+            </fieldset>
+
+            <fieldset class="ritual-group" name="steps">
+              <legend>Ile kroków chcesz zobaczyć?</legend>
+              <p class="ritual-error" id="stepsError" aria-live="polite"></p>
+              <label class="ritual-option"><input type="radio" name="steps" value="two" required aria-describedby="stepsError"><span>2 kroki</span></label>
+              <label class="ritual-option"><input type="radio" name="steps" value="three" aria-describedby="stepsError"><span>3 kroki</span></label>
+            </fieldset>
+
+            <fieldset class="ritual-group" name="scent">
+              <legend>Jak podchodzisz do zapachu?</legend>
+              <p class="ritual-error" id="scentError" aria-live="polite"></p>
+              <label class="ritual-option"><input type="radio" name="scent" value="yes" required aria-describedby="scentError"><span>Wolę warianty bez zapachu.</span></label>
+              <label class="ritual-option"><input type="radio" name="scent" value="no" aria-describedby="scentError"><span>Zapach nie jest dla mnie ważnym kryterium.</span></label>
+            </fieldset>
+
+            <button class="button button--dark ritual-submit" type="submit">Pokaż mój układ</button>
+          </form>
+
+          <section class="ritual-result" id="ritualResult" aria-labelledby="ritualResultTitle">
+            <div class="ritual-result__topline">
+              <p class="eyebrow">WYNIK</p>
+              <h3 id="ritualResultTitle">Twój układ</h3>
+            </div>
+            <p class="ritual-result__text" id="ritualResultText">Wybierz po jednej odpowiedzi w każdej sekcji, aby zobaczyć przykładowy układ.</p>
+            <p class="ritual-result__privacy">Dane nie są wysyłane.</p>
+            <button class="button button--outline ritual-result__copy" id="ritualCopy" type="button" disabled>Kopiuj kartę</button>
+            <p class="ritual-status" id="ritualStatus" role="status" aria-live="polite"></p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </dialog>
 </body>
 </html>

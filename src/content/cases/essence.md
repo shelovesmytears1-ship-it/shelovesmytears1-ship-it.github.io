@@ -1,86 +1,103 @@
 ---
 title: Essence
-tagline: E-commerce натуральной косметики с sage palette против яркой beauty industry эстетики
-niche: E-commerce
+tagline: 'Камерная витрина ухода: предметная серия и личный ритуал.'
+niche: Skincare concept
 year: '2026'
-palette: PL-SAGE-ORGANIC
+palette: 'Olive #70715A · milk #F7F6F1 · collection #ECECE7'
 tier: 1
-accent: '#6B8456'
-bg: '#F4F4EE'
+accent: '#70715A'
+bg: '#F7F6F1'
 siteUrl: https://overflow-web.pl/essence/
-cover: /covers/essence.jpg
-screens:
-  - src: /screens/essence-m1.webp
-    kind: phone
-  - src: /screens/essence-m2.webp
-    kind: phone
-  - src: /screens/essence-m3.webp
-    kind: phone
 technologies:
   - HTML
   - CSS
   - JavaScript
-region:
-  - International
-summary: E-commerce натуральной косметики. Sage palette + organic photography против яркой «beauty industry» эстетики.
-order: 14
+  - GSAP
+  - Lenis
+region: []
+summary: 'Оливковый кампейн, светлая коллекция и интерактивный подбор из двух или трёх шагов.'
+result: 'Локальный advisor собирает три предпочтения и показывает последовательность MYCIE, SERUM и KREM для двух- или трёхшагового ритуала.'
+cover: /covers/essence.jpg
+screens:
+  - src: /screens/essence-20261029-m1.webp
+    kind: phone
+  - src: /screens/essence-20261029-m2.webp
+    kind: phone
+  - src: /screens/essence-20261029-m3.webp
+    kind: phone
+order: 99
 concept: true
 translations:
   pl:
-    tagline: E-commerce naturalnej kosmetyki z paletą sage wbrew jaskrawej estetyce branży beauty
-    summary: E-commerce naturalnej kosmetyki. Paleta sage + organic photography wbrew jaskrawej estetyce „beauty industry".
+    tagline: 'Kameralna witryna pielęgnacji: spójna seria produktowa i osobisty rytuał.'
+    summary: 'Oliwkowy kadr, jasna kolekcja i interaktywny wybór dwóch lub trzech kroków.'
+    result: 'Lokalny advisor zbiera trzy preferencje i układa role MYCIE, SERUM oraz KREM w rytuał z dwóch lub trzech kroków.'
     body: |
-      ## Kontekst
+      ## Demo Essence
+      [Otwórz demo Essence](/essence/index.html)
 
-      Sklep internetowy z naturalnymi kosmetykami — kremy, serum, oleje tłoczone na zimno; premium 40-150 $ za pozycję, odbiorcy — kobiety 28-45, które mają już dość szablonu „clean beauty". A ten jest przepełniony kliszami: pastele (róż/brzoskwinia/mięta), odręczny font, zdjęcia „przed/po", „with hyaluronic acid!" zamiast wyjaśnienia. Te osoby czytają INCI i odróżniają marketing od składu — potrzebują marki-„atlasu botanicznego", a nie cukierni.
+      ## Koncepcja i kierunek
 
-      ## Rozwiązanie
+      Essence to koncepcja portfolio: kameralna witryna pielęgnacji oparta na spójnej serii produktowej i krótkim, osobistym wyborze. Celem strony jest połączenie trzech ról kolekcji w czytelny rytuał i poprowadzenie odbiorcy od pierwszego kadru do własnego układu.
 
-      Paleta — kremowe tło i szałwiowa zieleń: od razu o botanice, nie o słodyczach. Każda karta pokazuje źródło składnika (zdjęcie rośliny, nie mockup opakowania) — to „wiemy, co w środku, i pokażemy" zamiast „trust us, it works". Quiz „dobierz pielęgnację" — miękkie wejście dla nowych odbiorców: cztery kroki → 2-3 produkty pod profil skóry; dla marki bez rozpoznawalności katalogu 30 SKU nie da się ogarnąć od zera, a quiz prowadzi za rękę.
+      Sześć skoordynowanych obrazów tworzy jeden język wizualny: oliwkowy kadr hero, jasne mlecznoszare tło kolekcji i zbliżenie tekstury. Matowe, mlecznobiałe opakowania, w tym słoiczek KREM, jasne satynowe zamknięcia i powtarzalne proporcje łączą serię. Wolna przestrzeń kieruje uwagę na przedmioty, a Inter buduje klarowną hierarchię redakcyjną. Hero ma kompozycję poziomą i pionową. Obrazy są dostarczane jako WebP bez zmiany kadru ani wymiarów.
 
-      ## Wynik
+      ## Rytuał
 
-      HTML/CSS + trochę JS na koszyk i quiz; hero — krem wśród liści, nie studyjne opakowanie; obrazy w nowoczesnych formatach pod każdy ekran; quiz i koszyk działają z klawiatury i ze screen readerem (w kosmetykach to częsta grupa). Sklep, który nie wygląda jak sklep z naturalnymi kosmetykami: rozczarowani szablonem clean beauty czytają spokojny ton jako „tu mówią poważnie".
+      Strona prowadzi od hero do kolekcji, następnie do zbliżenia tekstury, praktycznych odpowiedzi i końcowego zaproszenia. Sekcja tekstury nadaje całości spokojne tempo. Krótki blok pytań wyjaśnia wybór liczby kroków, powrót do odpowiedzi i kopiowanie wyniku.
+
+      Główne działanie to advisor w natywnym oknie dialogowym. Zbiera preferowane odczucie, liczbę kroków i podejście do zapachu. Wariant dwukrokowy pokazuje 01 MYCIE → 03 KREM; trzy kroki dodają pomiędzy nimi 02 SERUM. Karta zawiera wszystkie trzy odpowiedzi i kolejność ról. Można zmienić wybór, ponownie ułożyć kartę i skopiować jej tekst. Odpowiedzi pozostają na bieżącej stronie i są dostępne po ponownym otwarciu okna.
   en:
-    tagline: Natural cosmetics e-commerce with a sage palette, against the bright beauty-industry aesthetic
-    summary: Natural cosmetics e-commerce. Sage palette + organic photography against the bright "beauty industry" aesthetic.
+    tagline: 'An intimate skincare showcase: a considered product series and a personal ritual.'
+    summary: 'An olive campaign, a light-toned collection and an interactive choice of two or three steps.'
+    result: 'The local advisor gathers three preferences and shows MYCIE, SERUM and KREM in a two- or three-step sequence.'
     body: |
-      ## Context
+      ## Essence demo
+      [Open the Essence demo](/essence/index.html)
 
-      An online shop for natural cosmetics — creams, serums, cold-pressed oils; premium at 40-150 $ per item, audience — women 28-45 already tired of the "clean beauty" template. And that template is crammed with clichés: pastels (pink/peach/mint), a handwritten font, "before/after" photos, "with hyaluronic acid!" instead of an explanation. These people read the INCI and tell marketing from formula — they want a brand that's a "botanical reference", not a confectionery.
+      ## Concept and direction
 
-      ## The solution
+      Essence is a portfolio concept for a skincare showcase shaped around a cohesive product series and a short personal choice. The page brings three collection roles into a clear ritual and guides visitors from the opening image to a sequence of their own.
 
-      Palette — cream background and sage green: botany at once, not candy. Each card shows the ingredient's source (a photo of the plant, not a packaging mockup) — "we know what's inside, and we'll show you" instead of "trust us, it works". A "find your routine" quiz is a soft entry for a new audience: four steps → 2-3 products for a skin profile; for a brand with no recognition a 30-SKU catalog can't be grasped cold, while the quiz leads by the hand.
+      Six coordinated images set one visual language: an olive-toned product hero, a light milk-grey collection backdrop and a close-up of texture. Matte milk-white packaging, light satin caps and repeated proportions connect the series. Open space keeps the objects in focus, while Inter provides a clean editorial hierarchy. The hero has both a wide and a vertical composition. The image set is delivered as WebP without changing its framing or dimensions.
 
-      ## The outcome
+      ## The ritual
 
-      HTML/CSS + a little JS for cart and quiz; hero — a cream among leaves, not studio packaging; images in modern formats sized per screen; quiz and cart work with the keyboard and a screen reader (a common audience in cosmetics). A shop that doesn't look like a natural-cosmetics shop: people disappointed by the clean-beauty template read the calm tone as "they're serious here".
+      The page moves from hero to collection, then to a texture close-up, practical answers and a final invitation. The texture section introduces a quieter beat; the short question block explains step count, returning to choices and copying the result.
+
+      The main action is an advisor in a native dialog. It collects a preferred feel, step count and approach to scent. The two-step option shows 01 MYCIE → 03 KREM; the three-step option places 02 SERUM between them. The resulting card keeps all three answers and the role sequence. Visitors can change their choices, rebuild the card and copy its text. Answers remain on the current page and are available when the dialog is reopened.
   ua:
-    tagline: E-commerce натуральної косметики з sage palette проти яскравої beauty industry естетики
-    summary: E-commerce натуральної косметики. Sage palette + organic photography проти яскравої «beauty industry» естетики.
+    tagline: 'Камерна вітрина догляду: предметна серія та особистий ритуал.'
+    summary: 'Оливкова кампанія, світла колекція та інтерактивний вибір із двох або трьох кроків.'
+    result: 'Локальний advisor збирає три вподобання й показує послідовність MYCIE, SERUM і KREM для ритуалу з двох або трьох кроків.'
     body: |
-      ## Контекст
+      ## Демо Essence
+      [Відкрити демо Essence](/essence/index.html)
 
-      Інтернет-магазин натуральної косметики — креми, сироватки, олії холодного віджиму; преміум 40-150 $ за позицію, аудиторія — жінки 28-45, які вже втомилися від шаблону «clean beauty». А він переповнений кліше: пастель (рожевий/персиковий/м'ятний), рукописний шрифт, фото «до/після», «with hyaluronic acid!» замість пояснення. Ці люди читають INCI і відрізняють маркетинг від складу — їм потрібен бренд-«ботанічний довідник», а не кондитерська.
+      ## Концепція та напрям
 
-      ## Рішення
+      Essence — концепція для портфоліо: камерна вітрина догляду, побудована навколо цілісної предметної серії та короткого особистого вибору. Сторінка поєднує три ролі колекції у зрозумілий ритуал і веде відвідувача від першого кадру до власної послідовності.
 
-      Палітра — кремовий фон і шавлієва зелень: одразу про ботаніку, а не про цукерки. Кожна картка показує джерело інгредієнта (фото рослини, не mockup упаковки) — це «ми знаємо, що всередині, і покажемо» замість «trust us, it works». Quiz «підібрати догляд» — м'який вхід для нової аудиторії: чотири кроки → 2-3 продукти під профіль шкіри; для бренду без впізнаваності каталог із 30 SKU з нуля не осмислити, а quiz веде за руку.
+      Шість узгоджених зображень формують єдину візуальну мову: оливковий предметний hero, світле молочно-сіре тло колекції та крупний план текстури. Матові молочно-білі упаковки, світлі сатинові кришки й повторювані пропорції об’єднують серію. Вільний простір залишає предмети в центрі уваги, а Inter створює чітку редакційну ієрархію. Для hero підготовлено горизонтальну й вертикальну композиції. Зображення доставляються у WebP без зміни кадру чи розмірів.
 
-      ## Підсумок
+      ## Ритуал
 
-      HTML/CSS + трохи JS на кошик і quiz; hero — крем серед листя, не студійна упаковка; зображення в сучасних форматах під кожен екран; quiz і кошик працюють із клавіатури і зі скринрідером (у косметиці це часта аудиторія). Магазин, який не виглядає як магазин натуральної косметики: розчаровані шаблоном clean beauty читають спокійний тон як «тут говорять серйозно».
+      Сторінка переходить від hero до колекції, потім до крупного плану текстури, практичних відповідей і фінального запрошення. Текстурний розділ додає спокійний ритм; короткий блок запитань пояснює кількість кроків, повернення до вибору та копіювання результату.
+
+      Головна дія — advisor у нативному діалозі. Він збирає вподобане відчуття, кількість кроків і ставлення до запаху. Варіант із двох кроків показує 01 MYCIE → 03 KREM, а варіант із трьох додає між ними 02 SERUM. У картці зберігаються всі три відповіді та послідовність ролей. Відвідувач може змінити вибір, зібрати картку знову й скопіювати її текст. Відповіді залишаються на поточній сторінці та доступні після повторного відкриття діалогу.
 ---
 
-## Контекст
+## Демо Essence
+[Открыть демо Essence](/essence/index.html)
 
-Интернет-магазин натуральной косметики — кремы, сыворотки, масла холодного отжима; премиум 40-150 $ за позицию, аудитория — женщины 28-45, которые уже устали от «clean beauty» шаблона. А он переполнен клише: пастель (розовый/персиковый/мятный), рукописный шрифт, фото «до/после», «with hyaluronic acid!» вместо объяснения. Эти люди читают INCI и отличают маркетинг от состава — им нужен бренд-«ботанический справочник», а не кондитерская.
+## Концепция и направление
 
-## Решение
+Essence — концепция для портфолио: камерная витрина ухода, построенная вокруг предметной серии и короткого персонального выбора. Задача страницы — связать три роли коллекции в понятный ритуал и провести посетителя от первого кадра к собственному варианту.
 
-Палитра — кремовый фон и шалфейный зелёный: сразу про ботанику, а не про конфеты. Каждая карточка показывает источник ингредиента (фото растения, не mockup упаковки) — это «мы знаем, что внутри, и покажем» вместо «trust us, it works». Quiz «подобрать уход» — мягкий вход для новой аудитории: четыре шага → 2-3 продукта под профиль кожи; для бренда без узнаваемости каталог из 30 SKU с нуля не осмыслить, а quiz ведёт за руку.
+Шесть согласованных изображений задают единый визуальный голос: оливковый предметный hero, светлый молочно-серый фон коллекции и крупная фактура материала. Матовые молочно-белые упаковки, светлые сатиновые крышки и повторяющиеся пропорции поддерживают цельность серии. Свободное пространство оставляет упаковку в центре внимания, а Inter выстраивает чистую редакционную иерархию. Для hero подготовлены широкая и вертикальная композиции. Изображения доставляются в WebP без изменения кадра и размеров.
 
-## Итог
+## Ритуал
 
-HTML/CSS + немного JS на корзину и quiz; hero — крем среди листьев, не студийная упаковка; картинки в современных форматах под каждый экран; quiz и корзина работают с клавиатуры и со скринридером (в косметике это частая аудитория). Магазин, который не выглядит как магазин натуральной косметики: разочаровавшиеся в clean-beauty шаблоне читают спокойный тон как «здесь говорят серьёзно».
+Страница ведёт от hero к коллекции, затем к крупному фрагменту текстуры, практическим ответам и финальному приглашению. Текстурный раздел задаёт спокойный темп; короткий блок вопросов помогает разобраться с числом шагов, возвратом к выбору и копированием результата.
+
+Главное действие — advisor в нативном диалоге. Он собирает предпочтение по ощущению, число шагов и отношение к запаху. Вариант из двух шагов показывает 01 MYCIE → 03 KREM, а в варианте из трёх между ними появляется 02 SERUM. Итоговая карточка сохраняет все три ответа и последовательность ролей. Выбор можно изменить, пересобрать карточку и скопировать её текст; ответы остаются в рамках текущей страницы и доступны при повторном открытии диалога.

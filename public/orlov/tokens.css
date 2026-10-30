@@ -1,0 +1,73 @@
+/**
+ * ORLOV DESIGN TOKENS
+ * Direction: Kero Canon (https://kero-ai.framer.website/)
+ * Theme: Deep Obsidian, Translucent Glass, Hedvig Serif & Precision Telemetry
+ */
+
+:root {
+  /* Color Palette */
+  --bg-canvas: #0A0A0A;
+  --bg-surface: #121214;
+  --bg-glass: rgba(18, 18, 20, 0.72);
+  --bg-glass-card: rgba(22, 22, 25, 0.65);
+  --bg-glass-elevated: rgba(28, 28, 32, 0.85);
+
+  /* Hairline Borders */
+  --border-hairline: rgba(255, 255, 255, 0.08);
+  --border-hairline-hover: rgba(255, 255, 255, 0.20);
+  --border-active: rgba(245, 245, 245, 0.40);
+  --border-alert: rgba(224, 72, 54, 0.35);
+
+  /* Text Colors */
+  --text-primary: #F5F5F5;
+  --text-secondary: rgba(245, 245, 245, 0.72);
+  --text-muted: rgba(245, 245, 245, 0.45);
+  --text-dimmed: rgba(245, 245, 245, 0.25);
+  --text-watermark: rgba(250, 250, 250, 0.035);
+
+  /* CTA Tokens */
+  --cta-bg: #F5F5F5;
+  --cta-text: #0A0A0A;
+  --cta-bg-hover: #FFFFFF;
+  --cta-ghost-bg: rgba(255, 255, 255, 0.04);
+  --cta-ghost-border: rgba(255, 255, 255, 0.14);
+
+  /* Signal & Diagnostic Accents */
+  --signal-alert: #E04836;
+  --signal-alert-bg: rgba(224, 72, 54, 0.12);
+  --signal-success: #10B981;
+  --signal-success-bg: rgba(16, 185, 129, 0.12);
+  --signal-amber: #F59E0B;
+  --signal-amber-bg: rgba(245, 158, 11, 0.12);
+  --signal-blue: #3B82F6;
+  --signal-blue-bg: rgba(59, 130, 246, 0.12);
+
+  /* Typography Stacks */
+  --font-serif: 'Hedvig Letters Serif', 'Instrument Serif', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+
+  /* Font Weights */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  /* Border Radii */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-card: 16px;
+  --radius-window: 20px;
+  --radius-pill: 9999px;
+
+  /* Elevation Shadows & Blurs */
+  --glass-blur: blur(20px);
+  --glass-blur-heavy: blur(32px);
+  --shadow-window: 0 24px 64px -12px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  --shadow-card: 0 16px 40px -10px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  --shadow-glow: 0 0 32px rgba(245, 245, 245, 0.06);
+
+  /* Motion & Transitions */
+  --trans-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --trans-base: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --trans-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}

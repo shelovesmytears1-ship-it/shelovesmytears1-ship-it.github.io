@@ -1,14 +1,14 @@
 ---
 title: SMM Vanguard
-tagline: Журнал сигналов для проектирования публикаций как контролируемых экспериментов
-niche: Strategy
+tagline: Студия креативного роста и вирусных кампаний в стандарте REJOUICE
+niche: Creative Studio
 year: '2026'
-palette: SIGNAL-ROOM-ORANGE-COBALT
+palette: REJOUICE-OBSIDIAN-VERMILION
 tier: 1
-accent: '#FF5528'
-bg: '#10151D'
+accent: '#FF451A'
+bg: '#0A0A0C'
 siteUrl: https://overflow-web.pl/smm/
-cover: /covers/smm-hero.jpg
+cover: /covers/smm.jpg
 screens:
   - src: /screens/smm-m1.webp
     kind: phone
@@ -17,74 +17,76 @@ screens:
   - src: /screens/smm-m3.webp
     kind: phone
 technologies:
-  - HTML
-  - CSS
-  - JavaScript
+  - HTML5
+  - CSS3 Tokens
+  - Vanilla JS
+  - 35mm Cinema Pipeline
 region:
   - PL
-summary: Контент становится гипотезой, а лента отвечает сигналом. Система определяет предпосылку, формат и наблюдаемый эффект до публикации.
-result: 14-дневный протокол тестирования контента
-order: 18
+  - GLOBAL
+summary: Креативы как главный материал, а не сухая методология. Монументальный бренд-вордмарк на 100vh, живой 35mm шоурил, интерактивная лаборатория удержания первых 3 секунд и 14-дневный спринт валидации.
+result: Флагман креативной студии в каноне REJOUICE
+order: 99
 concept: true
 translations:
   pl:
-    tagline: Rejestr sygnału do projektowania publikacji jak kontrolowanych eksperymentów
-    summary: Treść jest hipotezą, a feed odpowiada sygnałem. System pomaga zdefiniować premisę, format i obserwowany efekt przed publikacją.
-    result: 14-dniowy protokół testu treści
+    tagline: Studio kreacji wideo, kampanii 35mm i algorytmicznego momentum w mediach społecznościowych
+    summary: Kreacja jako główny surowiec biznesowy, a nie sucha metodologia. Monumentalny wordmark na 100vh, kinowy showreel 35mm, laboratorium retencji 3 sekund oraz 14-dniowy sprint produkcyjny.
+    result: Flagowy serwis studia kreacji w standardzie REJOUICE
     body: |
       ## Kontekst
 
-      Zespoły SMM często wybierają format przed określeniem celu, a wynik oceniają przez metryki wyrwane z kontekstu. W takim procesie trudno porównywać publikacje i wyciągać decyzje.
+      Większość agencji social media traktuje publikacje jako rutynowe wypełnianie siatki postów, generując szum bez kulturowego wpływu. SMM Vanguard działa jak akcelerator wzrostu, gdzie kreacja wideo 35mm jest inżynieryjnym narzędziem konwersji.
 
       ## Rozwiązanie
 
-      Hero działa jak reżyserka sygnału: mocna typografia, 14-dniowy cykl oraz trzy etapy PREMISA, FORMAT i SYGNAŁ. Brak fotografii jest celowy. Wizualnym rdzeniem projektu jest sam protokół i jego stan.
+      Wdrożenie kanonu REJOUICE: dokładny fold-lock 100vh z monumentalnym wordmarkiem na całą szerokość ekranu, pełnoekranowy showreel z magnetycznym kursorem, interaktywny symulator retencji pierwszych 3 sekund oraz 3 pełne case study kampanii komercyjnych (Aura Botanicals, Kinetic Audio, Velo Labs).
 
       ## Wynik
 
-      Przełącznik zmienia scenariusz bez przesuwania układu. Na telefonie hierarchia tekstu i panel sterowania pozostają czytelne, dzięki czemu interfejs zachowuje charakter narzędzia.
+      144 FPS bez zacięć scrolla (scroll-behavior: auto), płynne przełączanie perspektyw hooka w czasie rzeczywistym oraz spójna estetyka głębokiego obsydianu i laserowego cynobru (#FF451A).
   en:
-    tagline: A signal log for designing publications as controlled experiments
-    summary: Content becomes a hypothesis and the feed returns a signal. The system defines premise, format and observed effect before publishing.
-    result: a 14-day content test protocol
+    tagline: High-craft creative growth & social media studio built on the REJOUICE canon
+    summary: Creative production as the core driver rather than abstract methodology. Monumental 100vh wordmark, cinematic 35mm showreel, interactive 3-second retention laboratory, and 14-day production sprint.
+    result: Flagship creative studio experience matching REJOUICE
     body: |
       ## Context
 
-      SMM teams often choose a format before the objective and judge results through metrics detached from context. Publications then become impossible to compare or improve consistently.
+      Most social media agencies treat content as decorative feed filler, creating noise without cultural or algorithmic traction. SMM Vanguard operates as a growth accelerator where 35mm video creative is an engineered performance driver.
 
       ## Solution
 
-      The first viewport becomes a signal room: large editorial typography, a 14-day cycle and three fixed stages, PREMISA, FORMAT and SYGNAŁ. Photography is intentionally absent because the protocol itself is the visual material.
+      Implementation of the REJOUICE visual canon: strict 100vh hero fold lock with an edge-to-edge wordmark, full-bleed cinematic studio showreel with a magnetic follower pill, interactive 3-second hook retention lab, and 3 rich commercial case studies (Aura Botanicals, Kinetic Audio, Velo Labs).
 
       ## Outcome
 
-      The switcher changes scenarios without shifting the layout, while mobile preserves the headline hierarchy and control surface. The result is a product interface rather than a decorative cover.
+      Zero-lag 144 FPS native scrolling, dynamic real-time retention curve simulation, and an authoritative palette of obsidian velvet and laser vermilion (#FF451A).
   ua:
-    tagline: Журнал сигналів для проєктування публікацій як контрольованих експериментів
-    summary: Контент стає гіпотезою, а стрічка відповідає сигналом. Система визначає передумову, формат і спостережуваний ефект до публікації.
-    result: 14-денний протокол тестування контенту
+    tagline: Студія креативного зростання та вірусних кампаній у стандарті REJOUICE
+    summary: Креатив як головний бізнес-матеріал, а не суха методологія. Монументальний вордмарк на 100vh, кінематографічний шоурил 35mm, лабораторія утримання перших 3 секунд та 14-денний спринт валідації.
+    result: Флагман креативної студії в каноні REJOUICE
     body: |
       ## Контекст
 
-      SMM-команди часто обирають формат раніше за завдання та оцінюють результат через метрики без контексту. Через це публікації важко порівнювати й покращувати послідовно.
+      Більшість SMM-агенцій продукують одноманітний контент без культурного резонансу. SMM Vanguard діє як акселератор зростання, де кожне відео 35mm є вивіреним інструментом конверсії.
 
       ## Рішення
 
-      Перший екран перетворено на ефірну апаратну: велика редакційна типографіка, 14-денний цикл і три фіксовані стадії PREMISA, FORMAT, SYGNAŁ. Фото навмисно не використовується, бо головним візуальним матеріалом є сам протокол.
+      Реалізація канону REJOUICE: суворий fold-lock 100vh з монументальним написом на всю ширину екрана, повноцінний шоурил з магнітним курсором, інтерактивне моделювання утримання уваги за перші 3 секунди та розгорнуті кейси комерційних кампаній.
 
       ## Підсумок
 
-      Перемикач змінює сценарій без стрибка висоти, а мобільна версія зберігає ієрархію заголовка та контрольну панель.
+      144 FPS без затримок скролу, живе динамічне оновлення кривих ретеншну та авторитетна палітра оксамитового обсидіану з лазерним кіноваром (#FF451A).
 ---
 
 ## Контекст
 
-SMM-команды часто выбирают формат раньше задачи и оценивают результат по оторванным от контекста метрикам. Из-за этого публикации невозможно сравнивать и улучшать последовательно.
+Большинство SMM-агентств производят контент ради заполнения сетки, создавая шум без культурного веса. SMM Vanguard действует как акселератор роста, где 35mm видеокреатив является инженерным инструментом конверсии.
 
 ## Решение
 
-Первый экран превращён в эфирную аппаратную: крупная редакционная типографика, 14-дневный цикл и три фиксированные стадии PREMISA, FORMAT, SYGNAŁ. Фотография намеренно не используется, потому что главным визуальным материалом является сам протокол.
+Реализация визуального канона REJOUICE: строгий fold-lock 100vh с монументальным вордмарком во всю ширину вьюпорта, полноэкранный шоурил кинопавильона с магнитным курсором, интерактивная лаборатория удержания первых 3 секунд и 3 развёрнутых кейса коммерческих дропов (Aura Botanicals, Kinetic Audio, Velo Labs).
 
 ## Итог
 
-Переключатель меняет сценарий без скачка высоты, а мобильная версия сохраняет иерархию заголовка и контрольную панель. Получился самостоятельный продуктовый интерфейс, а не декоративная обложка.
+144 FPS без задержек скролла (scroll-behavior: auto), живой расчет кривых удержания в реальном времени и выверенная палитра глубокого обсидиана с лазерным киноваром (#FF451A).

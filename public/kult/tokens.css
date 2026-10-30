@@ -1,0 +1,144 @@
+/**
+ * KULT Design Tokens & Surface Variables (Gate G2 Deliverable)
+ * Reference: Variant A1 — Tonic Drinks (https://tonic-drinks.framer.website/)
+ * Author: Antigravity (Visual Analyst & Content/IA Designer)
+ */
+
+:root {
+  /* ==========================================================================
+     1. Primary Canvas & Ink Tokens
+     ========================================================================== */
+  --bg-canvas: #F4EFE6;                 /* Warm organic cream paper */
+  --bg-canvas-subtle: #ECE6DB;          /* Muted paper for alt sections */
+  --bg-alabaster: #EAE3D5;              /* Warm stone/alabaster for Anatomy stage */
+  --bg-bar-dark: #1B1814;               /* Brutalist listening bar espresso */
+  --bg-surface-white: #FFFFFF;          /* Pure white card surface */
+  --bg-surface-dark: #16130F;           /* Ticker & dark footer ground */
+
+  --text-ink: #16130F;                  /* Primary deep charcoal drafting ink */
+  --text-secondary: #4A463F;            /* Secondary body description */
+  --text-muted: #7E786F;                /* Meta, dates, kicker labels */
+  --text-inverse: #FFFFFF;              /* Text on dark buttons & ticker */
+
+  --accent-coral: #E04F33;              /* High-impact notification/cart pip */
+  --accent-coral-hover: #C93E24;
+
+  /* ==========================================================================
+     2. The 5 Flavour World Tokens
+     ========================================================================== */
+  --flavor-01-yuzu: #F5D547;            /* NO. 01 — Yuzu & Gentian (Sunny Citron) */
+  --flavor-02-bloodorange: #EE6030;      /* NO. 02 — Blood Orange & Hibiscus */
+  --flavor-03-cucumber: #B6C89B;        /* NO. 03 — Cucumber & Elderflower (Sage) */
+  --flavor-04-grapefruit: #F7B9B7;      /* NO. 04 — Grapefruit & Rosemary (Blush) */
+  --flavor-05-ginger: #E3AA5F;          /* NO. 05 — Spiced Ginger & Lime (Amber) */
+
+  /* Active Flavor Dynamic Binding (Defaults to NO. 01 Yuzu) */
+  --flavor-current-bg: var(--flavor-01-yuzu);
+  --flavor-current-tint: rgba(245, 213, 71, 0.15);
+
+  /* ==========================================================================
+     3. Hairline, Borders & Shadows
+     ========================================================================== */
+  --line-hairline: rgba(22, 19, 15, 0.12); /* Subtle section dividers */
+  --line-solid: #16130F;                   /* Solid black datum hairlines */
+  --line-light: rgba(255, 255, 255, 0.2);  /* Dividers on dark surfaces */
+
+  --radius-none: 0px;
+  --radius-badge: 4px;
+  --radius-card: 6px;                      /* Measured 6px on flavor cards */
+  --radius-pill: 999px;                    /* CTA buttons, cart pills, tags */
+
+  --shadow-card: 0 8px 24px rgba(22, 19, 15, 0.06);
+  --shadow-card-hover: 0 16px 36px rgba(22, 19, 15, 0.12);
+  --shadow-drawer: -12px 0 40px rgba(22, 19, 15, 0.18);
+
+  /* ==========================================================================
+     4. Typography Stack & Fluid Scales
+     ========================================================================== */
+  --font-display: "Pathway Extreme", Anton, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: "Golos Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Colossal 3-Line Display (176px at 1920, 230px at 2560, scales down to 44px on mobile) */
+  --text-colossal-size: clamp(44px, 9.2vw, 230px);
+  --text-colossal-line: 0.84;
+  --text-colossal-tracking: -0.035em;
+  --text-colossal-weight: 900;
+
+  /* Section Title H2 */
+  --text-h2-size: clamp(30px, 3.8vw, 92px);
+  --text-h2-line: 0.94;
+  --text-h2-tracking: -0.02em;
+
+  /* Card Headings H3 */
+  --text-h3-size: clamp(18px, 1.3vw, 24px);
+  --text-h3-line: 1.15;
+
+  /* Body & Subhead */
+  --text-lead-size: clamp(16px, 1.1vw, 22px);
+  --text-lead-line: 1.4;
+  --text-body-size: 15px;
+  --text-body-line: 1.55;
+
+  /* Meta & Technical Spine */
+  --text-spine-size: 13px;
+  --text-spine-tracking: 0.08em;
+  --text-meta-size: 11px;
+  --text-meta-tracking: 0.06em;
+
+  /* ==========================================================================
+     5. Geometry & Layout Spacers
+     ========================================================================== */
+  --space-page-pad: clamp(16px, 2.5vw, 48px);
+  --space-section-y: clamp(70px, 8vw, 150px);
+  --space-grid-gap: clamp(12px, 1.2vw, 20px);
+
+  --container-max-desktop: 1440px;
+  --container-max-wide: 1800px;
+
+  /* 5-Card Grid Geometry */
+  --card-aspect-ratio: 2 / 3;
+  --card-width-1920: 262px;
+  --card-height-1920: 393px;
+  --card-gap-1920: 16px;
+
+  /* ==========================================================================
+     6. Transitions & Motion Easing
+     ========================================================================== */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+  --duration-flavor-swap: 0.45s;
+  --duration-cart-slide: 0.35s;
+  --duration-hover: 0.22s;
+
+  /* ==========================================================================
+     7. Strict Anti-Slop Enforcements
+     ========================================================================== */
+  /* Zero backdrop-filter blur; pure matte fallback with 1px border */
+  --drawer-matte-bg: #FFFFFF;
+  --modal-scrim: rgba(22, 19, 15, 0.55);
+}
+
+/* Strict Layout Base Guards */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+  background-color: var(--bg-canvas);
+  color: var(--text-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reduced Motion Safety */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

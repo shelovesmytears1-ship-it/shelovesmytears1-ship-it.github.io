@@ -1,69 +1,1034 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Prezfull architecture and interiors portfolio — projects explained through constraints, sections and use.">
-  <title>Prezfull — architecture in section</title>
-  <link rel="stylesheet" href="prez-preview.css">
-<meta name="robots" content="noindex, follow"></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PREZFULL — Architecture with People in Mind</title>
+  <meta name="description" content="Prezfull Atelier: We design buildings and interiors, streetscapes and landscapes, structural monoliths and wayfinding.">
+  
+  <!-- Google Fonts: Raleway & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Design Tokens & Main Stylesheet -->
+  <link rel="stylesheet" href="tokens.css?v=12">
+  <link rel="stylesheet" href="style.css?v=12">
+</head>
 <body>
+  <!-- Root Wrapper for strict horizontal clipping (scrollWidth === clientWidth) -->
+  <div class="site-wrapper">
 
-<a class="skip" href="#main">Skip to content</a>
-<header><a class="logo" href="#top">PREZFULL<span>ARCHITECTS</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainNav">Menu</button><nav id="mainNav"><a href="#work">Work</a><a href="#studio">Studio</a><a href="#process">Process</a></nav><a href="#contact">Start a brief</a></header>
-<main id="main">
-  <section class="hero" id="top"><div class="hero-copy"><h1>We design the life between the lines.</h1><p>Architecture and interiors shaped from the inside out — through movement, light, material and the practical facts of how a place will be used.</p><a href="#work">Enter the section ↓</a></div><figure><img src="images/hero.webp" width="1600" height="1067" alt="Contemporary residence integrated with the landscape"><figcaption><span>RESIDENTIAL / CONCEPT STUDY</span><b>One roof. Three thresholds.</b></figcaption></figure></section>
+    <!-- ====================================================================
+         HEADER (Above first .black-line)
+         ==================================================================== -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="header-nav-group">
+          <!-- Logo Wordmark -->
+          <a href="#hero" class="brand-logo" aria-label="PREZFULL Home">
+            PREZFULL
+          </a>
 
-  <section class="position" aria-labelledby="position-title"><h2 id="position-title">The drawing is not the project. The life inside it is.</h2><div><p>We test architecture against movement, privacy, daylight, maintenance and cost before an image becomes precious.</p><dl><div><dt>Start with</dt><dd>site, brief, budget and approvals</dd></div><div><dt>Test through</dt><dd>plan, section, model and material sample</dd></div><div><dt>Resolve for</dt><dd>construction, use and long-term care</dd></div></dl></div></section>
+          <!-- Desktop Navigation Links -->
+          <nav class="desktop-nav" aria-label="Main Navigation">
+            <ul class="nav-list">
+              <li><a href="#hero" class="nav-link active">Home</a></li>
+              <li><a href="#manifesto" class="nav-link">About us</a></li>
+              <li><a href="#works" class="nav-link">Projects</a></li>
+              <li><a href="#estimator" class="nav-link">Estimator</a></li>
+              <li><a href="#materials" class="nav-link">Materials</a></li>
+            </ul>
+          </nav>
+        </div>
 
-  <section class="section-lab" id="work"><div class="lab-title"><span>FEATURED STUDY / P—06</span><h2>A house understood four ways.</h2></div><div class="lab"><div class="lab-tabs" role="tablist"><button role="tab" aria-selected="true" data-view="brief">Brief</button><button role="tab" aria-selected="false" data-view="plan">Plan</button><button role="tab" aria-selected="false" data-view="material">Material</button><button role="tab" aria-selected="false" data-view="use">Use</button></div><figure><div class="lab-frames"><img class="lab-frame is-active" src="images/portfolio-villa.webp" alt="Villa shaped around a sheltered courtyard"><img class="lab-frame" src="images/mission-work.webp" alt="Architect reviewing a continuous residential plan" loading="lazy"><img class="lab-frame" src="images/material-study.webp" alt="Concrete, timber and pale plaster material junction study" loading="lazy"><img class="lab-frame" src="images/courtyard-use.webp" alt="Sheltered residential courtyard in everyday use" loading="lazy"></div><div class="datum" aria-hidden="true"></div></figure><article aria-live="polite"><span id="viewCode"><span class="is-active">01 / BRIEF</span><span>02 / PLAN</span><span>03 / MATERIAL</span><span>04 / USE</span></span><h3 id="viewTitle"><span class="is-active">Privacy without retreat.</span><span>One loop, no dead corridor.</span><span>Three materials carry the whole house.</span><span>The court changes with the day.</span></h3><p id="viewText"><span class="is-active">The client needed quiet from the street and openness to the garden. The plan bends around a protected court instead of hiding behind a closed façade.</span><span>Living, work and guest spaces form a continuous route around the court; thresholds widen where people naturally pause.</span><span>Board-marked concrete holds the ground, warm timber marks touch, and pale plaster carries changing daylight.</span><span>Morning work, afternoon play and evening gathering share one protected centre without making every room public.</span></p><dl><div><dt>Type</dt><dd>Private residence</dd></div><div><dt>Decision</dt><dd id="viewDecision"><span class="is-active">Court as social centre</span><span>Continuous inhabited loop</span><span>Material follows contact</span><span>Privacy by time and threshold</span></dd></div><div><dt>Status</dt><dd>Portfolio concept</dd></div></dl></article></div></section>
+        <!-- Right Header CTA Button -->
+        <div class="header-cta-wrap">
+          <a href="#contact" class="pill-btn pill-btn-primary header-cta">
+            <span>Get in touch</span>
+            <span class="btn-arrow-circle" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="8" x2="13" y2="8" />
+                <polyline points="9 4 13 8 9 12" />
+              </svg>
+            </span>
+          </a>
+        </div>
 
-  <section class="constraints" aria-labelledby="constraints-title"><div><h2 id="constraints-title">Constraints make the first drawing.</h2><p>Before form, the project is a field of facts. The demonstrative P—06 study turns four of them into one inhabitable section.</p></div><div class="constraint-drawing"><span class="street">STREET / NOISE</span><span class="sun">SOUTH LIGHT</span><span class="garden">GARDEN / OPEN EDGE</span><span class="court">SHELTERED COURT</span><i class="ground"></i><b>SECTION A—A / CONCEPT</b></div><ol><li><b>01</b><span>Shield the street edge</span></li><li><b>02</b><span>Open rooms to the garden</span></li><li><b>03</b><span>Use the court as social centre</span></li></ol></section>
+        <!-- Mobile Menu Trigger -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileNavDrawer">
+          <span class="burger-line burger-line-top"></span>
+          <span class="burger-line burger-line-mid"></span>
+          <span class="burger-line burger-line-bot"></span>
+        </button>
+      </div>
 
-  <section class="material-story" aria-labelledby="material-title"><div class="material-copy"><h2 id="material-title">Three materials. Three jobs.</h2><p>A short palette gives each material a spatial responsibility instead of turning specification into decoration.</p></div><figure><img src="images/portfolio-kitchen.webp" width="1200" height="800" loading="lazy" alt="Interior study combining timber, stone and pale plaster"><figcaption>INTERIOR STUDY / PORTFOLIO CONCEPT</figcaption></figure><div class="material-ledger"><div><span>01 / GROUND</span><b>Board-marked concrete</b><p>Thermal mass and a durable base at the court.</p></div><div><span>02 / TOUCH</span><b>Warm timber</b><p>Joinery, thresholds and surfaces held by hand.</p></div><div><span>03 / LIGHT</span><b>Pale mineral plaster</b><p>A quiet field for daylight to change across.</p></div></div></section>
+      <!-- Mobile Navigation Drawer -->
+      <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+        <nav class="mobile-nav">
+          <a href="#hero" class="mobile-nav-link active">Home</a>
+          <a href="#manifesto" class="mobile-nav-link">About us</a>
+          <a href="#works" class="mobile-nav-link">Projects</a>
+          <a href="#estimator" class="mobile-nav-link">Estimator</a>
+          <a href="#materials" class="mobile-nav-link">Materials</a>
+          <a href="#contact" class="pill-btn pill-btn-primary mobile-cta">
+            <span>Get in touch</span>
+            <span class="btn-arrow-circle" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="8" x2="13" y2="8" />
+                <polyline points="9 4 13 8 9 12" />
+              </svg>
+            </span>
+          </a>
+        </nav>
+      </div>
+    </header>
 
-  <section class="daylight" aria-labelledby="daylight-title"><div><h2 id="daylight-title">Light is scheduled by the section.</h2><p>The same court behaves differently across the day. Roof depth, opening height and material reflectance are tested together.</p></div><div class="light-sequence"><article><time>08:00</time><strong>Low east light reaches the kitchen threshold.</strong><span class="beam beam-one"></span></article><article><time>13:00</time><strong>Roof depth protects the shared room from glare.</strong><span class="beam beam-two"></span></article><article><time>19:00</time><strong>The court borrows warmth from internal surfaces.</strong><span class="beam beam-three"></span></article></div></section>
+    <!-- Top Datum Divider Line -->
+    <div class="black-line" role="separator" aria-hidden="true"></div>
 
-  <section class="works"><div><h2>Selected work, named by its central decision.</h2><p>No moodboard without a reason. Each project starts with one spatial proposition that guides hundreds of smaller choices.</p></div><figure><img src="images/portfolio-loft.webp" width="1600" height="1067" loading="lazy" alt="Open loft with sculptural stair"><figcaption><b>Loft / Vertical Commons</b><span>A stair that works as a room.</span></figcaption></figure><figure><img src="images/portfolio-office.webp" width="1600" height="1067" loading="lazy" alt="Workplace interior with flexible meeting zones"><figcaption><b>Office / Visible Collaboration</b><span>Focus at the edge, exchange at the centre.</span></figcaption></figure><figure><img src="images/portfolio-penthouse.webp" width="1600" height="1067" loading="lazy" alt="Penthouse interior with framed city views"><figcaption><b>Penthouse / Long Horizon</b><span>Circulation aligned to the view.</span></figcaption></figure></section>
+    <!-- ====================================================================
+         SCREEN 1 — HERO SECTION
+         ==================================================================== -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        
+        <!-- Hero Text Column (Left Side, intersecting image on desktop) -->
+        <div class="hero-text-col">
+          <h1 class="hero-heading">
+            <span class="h1-line-1">
+              <span class="h1-arch">ARCHITECTURE</span>
+              <span class="h1-with">with</span>
+            </span>
+            <span class="h1-line-2">
+              <span class="h1-people">PEOPLE</span>
+              <span class="h1-in">in</span>
+              <span class="h1-mind">MIND</span>
+            </span>
+          </h1>
 
-  <section class="case-detail" aria-labelledby="case-title"><figure><img src="images/portfolio-hq.webp" width="1600" height="1067" loading="lazy" alt="Workplace concept with a central collaborative spine"><figcaption>WORKPLACE / PORTFOLIO CONCEPT</figcaption></figure><div><h2 id="case-title">One workplace, read from edge to centre.</h2><p>Focused work sits beside the façade and daylight. Shared tables, review walls and short meetings collect along a central route. The plan makes collaboration visible without making every desk public.</p><dl><div><dt>Constraint</dt><dd>Deep existing floorplate</dd></div><div><dt>Section move</dt><dd>Open ceiling over the shared spine</dd></div><div><dt>Use test</dt><dd>Quiet edge / active centre</dd></div><div><dt>Status</dt><dd>Portfolio concept</dd></div></dl></div></section>
+          <div class="hero-sub-wrap">
+            <p class="hero-subcopy">
+              We design buildings and interiors; streetscapes and landscapes; structural monoliths and wayfinding.
+            </p>
 
-  <section class="studio" id="studio"><div><h2>One team from feasibility to the final junction.</h2><p>We combine architectural planning, interior design and delivery coordination. The precise scope is fixed in the proposal; specialist engineering and statutory approvals remain with named project partners.</p></div><img src="images/about-studio.webp" width="1600" height="1067" loading="lazy" alt="Architects reviewing material samples in the studio"><dl><div><dt>Architecture</dt><dd>feasibility, concept, planning and technical coordination</dd></div><div><dt>Interiors</dt><dd>spatial planning, joinery, lighting and material specification</dd></div><div><dt>Delivery</dt><dd>tender support, site observations and design intent reviews</dd></div></dl></section>
+            <div class="hero-cta-action">
+              <a href="#contact" class="pill-btn pill-btn-primary hero-btn">
+                <span>Get in touch</span>
+                <span class="btn-arrow-circle" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="8" x2="13" y2="8" />
+                    <polyline points="9 4 13 8 9 12" />
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
 
-  <section class="responsibility" aria-labelledby="responsibility-title"><div><h2 id="responsibility-title">Good coordination names every boundary.</h2><p>The appointment defines who authors, who advises and who approves. This illustrative matrix is a conversation tool, not a promise of a fixed universal scope.</p></div><div class="responsibility-table"><div><span>Spatial concept</span><b>PREZFULL</b><em>client approves</em></div><div><span>Structure &amp; services</span><b>SPECIALIST CONSULTANTS</b><em>coordinated with design</em></div><div><span>Statutory approvals</span><b>LOCAL TEAM / AUTHORITY</b><em>route confirmed per project</em></div><div><span>Construction method</span><b>CONTRACTOR</b><em>reviewed against intent</em></div></div></section>
+        <!-- Right Stepped-Pixel Architectural Image & Motion Spike -->
+        <div class="hero-image-wrap" id="heroImageWrap">
+          <picture>
+            <source srcset="assets/01_hero_stepped_rgba.webp" type="image/webp">
+            <img 
+              src="assets/01_hero_stepped_rgba.png" 
+              alt="Prezfull Atelier signature stepped architecture" 
+              class="hero-stepped-img"
+              width="576" 
+              height="550"
+              loading="eager"
+            >
+          </picture>
 
-  <section class="process" id="process"><h2>A clear sequence leaves room for discovery.</h2><ol><li><span>01</span><b>Frame</b><p>site, constraints, budget, ambition</p></li><li><span>02</span><b>Test</b><p>options before attachment</p></li><li><span>03</span><b>Resolve</b><p>plan, section, material logic</p></li><li><span>04</span><b>Coordinate</b><p>consultants and approvals</p></li><li><span>05</span><b>Specify</b><p>details and tender information</p></li><li><span>06</span><b>Observe</b><p>construction against intent</p></li></ol></section>
+          <!-- Motion Spike: Digital Dissolve Sky Grid Overlay -->
+          <div class="pixel-dissolve-grid" id="pixelDissolveGrid" aria-hidden="true">
+            <!-- 48x48px blocks dynamically generated or populated for 100% precision -->
+          </div>
 
-  <section class="deliverables" aria-labelledby="deliverables-title"><div><h2 id="deliverables-title">Every stage ends with something you can review.</h2><p>Architecture becomes easier to trust when each phase has a visible outcome and a clear approval point.</p></div><div class="deliverable-rows"><article><span>FRAME</span><b>Project brief + constraint map</b><p>What must the project solve?</p></article><article><span>TEST</span><b>Options + comparative section</b><p>Which direction earns development?</p></article><article><span>RESOLVE</span><b>Coordinated plans, sections and material logic</b><p>Does the design work as one system?</p></article><article><span>SPECIFY</span><b>Details + tender information</b><p>Is the design clear enough to price and build?</p></article><article><span>OBSERVE</span><b>Site records + design-intent reviews</b><p>Are decisions carried into construction?</p></article></div></section>
+          <!-- Bottom-Right Misty Button -->
+          <a href="#manifesto" class="hero-mist-btn" aria-label="View our works — proceed to manifesto and portfolio">
+            <span class="mist-btn-label">View our works</span>
+            <span class="mist-btn-circle" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="8" y1="3" x2="8" y2="13" />
+                <polyline points="4 9 8 13 12 9" />
+              </svg>
+            </span>
+          </a>
+        </div>
 
-  <section class="engagement" aria-labelledby="engagement-title"><div class="engagement-copy"><h2 id="engagement-title">The client is part of the design instrument.</h2><p>Approval is not a reveal at the end. Short, prepared conversations keep brief, budget and ambition aligned as the project gains detail.</p></div><div class="meeting-rhythm"><article><span>BEFORE</span><b>Issue one focused question</b><p>Share only the material needed for the next decision.</p></article><article><span>IN THE ROOM</span><b>Compare, annotate, decide</b><p>Record what changed and why.</p></article><article><span>AFTER</span><b>Confirm the consequence</b><p>Update brief, programme and responsibility.</p></article></div></section>
+      </div>
+    </section>
 
-  <section class="project-questions" aria-labelledby="questions-title"><h2 id="questions-title">A useful first meeting starts with the difficult facts.</h2><div><details><summary>What does the site already allow?</summary><p>Location, planning context, access, orientation and existing information shape the first feasibility work.</p></details><details><summary>What is fixed — and what may move?</summary><p>Budget, programme, area, procurement and non-negotiable uses should be explicit before options multiply.</p></details><details><summary>Who approves each stage?</summary><p>Name the client decision-makers and the information they need before the project proceeds.</p></details><details><summary>Which specialists are already involved?</summary><p>Engineering, planning, cost and local delivery roles affect scope and coordination from the beginning.</p></details></div></section>
+    <!-- Mid Datum Divider Line (Between Screen 1 and Screen 2) -->
+    <div class="black-line" role="separator" aria-hidden="true"></div>
 
-  <section class="contact" id="contact"><div><h2>Start with the constraints.</h2><p>This local portfolio form prepares a project summary; it does not send data.</p></div><form id="contactForm" novalidate><label>Project type<select required><option value="">Choose</option><option>Residential architecture</option><option>Interior</option><option>Workplace</option></select></label><label>Location<input required placeholder="City / country"></label><label>Working budget<input required placeholder="Range and currency"></label><button>Prepare project note</button><p id="status" role="status"></p></form></section>
-</main>
-<footer><a class="logo" href="#top">PREZFULL<span>ARCHITECTS</span></a><p>Architecture portfolio concept · 2026</p></footer>
-<script src="prez-preview.js"></script>
-<div class="ov-badge" id="ov-badge">
-  <a class="ov-badge__main" href="https://overflow-web.pl/work/prezfull/">
-    <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
-  </a>
-  <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
-</div>
-<style>
-.ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
-.ov-badge a{color:inherit;text-decoration:none}
-.ov-badge__main{display:flex;align-items:center;gap:5px}
-.ov-badge__mark{font-weight:700;letter-spacing:-.02em}
-.ov-badge__dot{opacity:.45}
-.ov-badge__type{opacity:.7}
-.ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
-.ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
-@media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
-@media print{.ov-badge{display:none}}
-</style>
-<!-- ov-badge-init -->
+    <!-- ====================================================================
+         SCREEN 2 — CHIEF ARCHITECT MANIFESTO & 5-CATEGORY SHOWCASE
+         ==================================================================== -->
+    <section class="manifesto-showcase-section" id="manifesto">
+      <div class="container">
+
+        <!-- Director Manifesto Row -->
+        <div class="director-row">
+          <!-- Left: Circular portrait + title -->
+          <div class="director-card">
+            <img 
+              src="assets/05_chief_architect.webp" 
+              alt="Marek Kowalski, Chief Architect" 
+              class="director-photo"
+              width="150"
+              height="150"
+              loading="lazy"
+            >
+            <div class="director-meta">
+              <div class="director-name">Marek Kowalski</div>
+              <div class="director-role">Chief Architect</div>
+            </div>
+          </div>
+
+          <!-- Right: Manifesto Paragraph -->
+          <div class="manifesto-quote-col">
+            <p class="manifesto-paragraph">
+              We approach architectural design as a process of managing competing interests: finding a balance between program and cost, performance and appearance, feasibility and schedule, ambition and pragmatism.
+            </p>
+          </div>
+        </div>
+
+        <!-- Interactive 5-Category Showcase Stage -->
+        <div class="showcase-stage" id="showcase">
+
+          <!-- 5 Stacked Tab Panes (Zero Layout Shift via CSS Grid 1/1) -->
+          <div class="showcase-panes-viewport">
+
+            <!-- Pane 1: Commercial (Default Active, matches arch-second.png) -->
+            <div class="showcase-pane active" data-category="commercial" id="pane-commercial">
+              <img 
+                src="assets/02_interior_living.webp" 
+                alt="Commercial Interior Project" 
+                class="showcase-img"
+                loading="eager"
+              >
+            </div>
+
+            <!-- Pane 2: Apartment complex -->
+            <div class="showcase-pane" data-category="apartment-complex" id="pane-apartment-complex">
+              <img 
+                src="assets/01_hero_exterior.webp" 
+                alt="Pavilion Horyzont Apartment Complex" 
+                class="showcase-img"
+                loading="lazy"
+              >
+            </div>
+
+            <!-- Pane 3: Apartments -->
+            <div class="showcase-pane" data-category="apartments" id="pane-apartments">
+              <img 
+                src="assets/03_dusk_courtyard.webp" 
+                alt="Courtyard Residences" 
+                class="showcase-img"
+                loading="lazy"
+              >
+            </div>
+
+            <!-- Pane 4: Offices -->
+            <div class="showcase-pane" data-category="offices" id="pane-offices">
+              <img 
+                src="assets/04_material_detail.webp" 
+                alt="Tactile Joinery Corporate Office" 
+                class="showcase-img"
+                loading="lazy"
+              >
+            </div>
+
+            <!-- Pane 5: Houses -->
+            <div class="showcase-pane" data-category="houses" id="pane-houses">
+              <img 
+                src="assets/06_blueprint_axonometric.webp" 
+                alt="Structural Blueprint Bespoke Residence" 
+                class="showcase-img"
+                loading="lazy"
+              >
+            </div>
+
+          </div>
+
+          <!-- Floating Feature Card at bottom-right of showcase -->
+          <aside class="floating-feature-card" id="floatingFeatureCard" aria-live="polite">
+            <h3 class="feature-card-title" id="featureCardTitle">Commercial</h3>
+            <p class="feature-card-desc" id="featureCardDesc">
+              Double-height timber and travertine atrium engineered for acoustics, natural daylight, and calm spatial flow.
+            </p>
+            <a href="#works" class="feature-card-btn" id="featureCardBtn">View More</a>
+          </aside>
+
+        </div>
+
+        <!-- Category Pills Row -->
+        <div class="category-pills-row">
+          <!-- 5 Pill Buttons -->
+          <div class="pills-group" role="tablist" aria-label="Project Typology Categories">
+            <button 
+              type="button" 
+              role="tab" 
+              class="pill-tab" 
+              data-category="apartment-complex" 
+              aria-selected="false"
+              aria-controls="pane-apartment-complex"
+            >
+              Apartment complex
+            </button>
+            <button 
+              type="button" 
+              role="tab" 
+              class="pill-tab active" 
+              data-category="commercial" 
+              aria-selected="true"
+              aria-controls="pane-commercial"
+            >
+              Commercial
+            </button>
+            <button 
+              type="button" 
+              role="tab" 
+              class="pill-tab" 
+              data-category="apartments" 
+              aria-selected="false"
+              aria-controls="pane-apartments"
+            >
+              Apartments
+            </button>
+            <button 
+              type="button" 
+              role="tab" 
+              class="pill-tab" 
+              data-category="offices" 
+              aria-selected="false"
+              aria-controls="pane-offices"
+            >
+              Offices
+            </button>
+            <button 
+              type="button" 
+              role="tab" 
+              class="pill-tab" 
+              data-category="houses" 
+              aria-selected="false"
+              aria-controls="pane-houses"
+            >
+              Houses
+            </button>
+          </div>
+
+          <!-- Circular Back-to-Top Button -->
+          <button type="button" class="back-to-top-circle" id="backToTopBtn" aria-label="Back to top of page">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="8" y1="13" x2="8" y2="3" />
+              <polyline points="4 7 8 3 12 7" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Datum Divider Line (Between Screen 2 and Screen 3) -->
+    <div class="black-line" role="separator" aria-hidden="true"></div>
+
+    <!-- ====================================================================
+         SCREEN 3 — SELECTED COMMISSIONS (Asymmetric Editorial Monograph)
+         ==================================================================== -->
+    <section class="section-works" id="works">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header-row reveal-item">
+          <div class="section-header-left">
+            <span class="section-kicker">01 / SELECTED COMMISSIONS (2022–2026)</span>
+            <h2 class="section-title">BUILT MONOGRAPHS</h2>
+          </div>
+          <div class="section-header-right">
+            <p class="section-lead">
+              Each architectural commission is approached as a site-specific dialogue between raw tectonic permanence and the intimate daily rituals of its inhabitants. We accept six to eight commissions per year to guarantee uncompromising rigor from zoning permit to bespoke joinery.
+            </p>
+          </div>
+        </div>
+
+        <!-- 3 Asymmetric Monograph Rows -->
+        <div class="monographs-list">
+          
+          <!-- Commission 01: 60% Image Left / 40% Specs Right -->
+          <article class="monograph-item monograph-layout-left reveal-item">
+            <div class="monograph-visual">
+              <img 
+                src="assets/01_hero_exterior.webp" 
+                alt="Pavilion Horyzont · Warsaw, PL" 
+                class="monograph-img"
+                loading="lazy"
+                width="720"
+                height="480"
+              >
+            </div>
+            <div class="monograph-content">
+              <div class="monograph-meta">
+                <span class="meta-tag">CULTURAL &amp; CIVIC</span>
+                <span class="meta-sep">·</span>
+                <span class="meta-tag">1,420 m²</span>
+                <span class="meta-sep">·</span>
+                <span class="meta-tag">COMPLETED 2026</span>
+              </div>
+              <h3 class="monograph-title">Pavilion Horyzont</h3>
+              <p class="monograph-thesis">
+                "A cantilevered board-marked concrete monolith with warm vertical European oak louvers designed to regulate solar gain across four seasons."
+              </p>
+              <div class="technical-ledger">
+                <div class="ledger-row">
+                  <span class="ledger-label">Structure</span>
+                  <span class="ledger-value">In-situ concrete &amp; glulam</span>
+                </div>
+                <div class="ledger-row">
+                  <span class="ledger-label">Daylight</span>
+                  <span class="ledger-value">South-West clerestory atrium</span>
+                </div>
+                <div class="ledger-row">
+                  <span class="ledger-label">Status</span>
+                  <span class="ledger-value">Built Commission</span>
+                </div>
+              </div>
+              <button type="button" class="monograph-action-btn" data-preset="commercial-atelier" data-area="1400">
+                Inspect Scope in Estimator →
+              </button>
+            </div>
+          </article>
+
+          <!-- Commission 02: 40% Specs Left / 60% Image Right -->
+          <article class="monograph-item monograph-layout-right reveal-item">
+            <div class="monograph-content">
+              <div class="monograph-meta">
+                <span class="meta-tag">PRIVATE RESIDENCE</span>
+                <span class="meta-sep">·</span>
+                <span class="meta-tag">540 m²</span>
+                <span class="meta-sep">·</span>
+                <span class="meta-tag">COMPLETED 2025</span>
+              </div>
+              <h3 class="monograph-title">Villa Solstice Courtyard</h3>
+              <p class="monograph-thesis">
+                "An L-shaped stone and timber residence anchored around a still thermal reflection basin that shields northern wind while opening living quarters to twilight horizons."
+              </p>
+              <div class="technical-ledger">
+                <div class="ledger-row">
+                  <span class="ledger-label">Structure</span>
+                  <span class="ledger-value">Load-bearing granite &amp; Swiss pine</span>
+                </div>
+                <div class="ledger-row">
+                  <span class="ledger-label">Acoustics</span>
+                  <span class="ledger-value">Decibel-buffered courtyard envelope</span>
+                </div>
+                <div class="ledger-row">
+                  <span class="ledger-label">Status</span>
+                  <span class="ledger-value">Built Private Commission</span>
+                </div>
+              </div>
+              <button type="button" class="monograph-action-btn" data-preset="private-residence" data-area="540">
+                Inspect Scope in Estimator →
+              </button>
+            </div>
+            <div class="monograph-visual">
+              <img 
+                src="assets/03_dusk_courtyard.webp" 
+                alt="Villa Solstice Courtyard · Lake Constance, CH" 
+                class="monograph-img"
+                loading="lazy"
+                width="720"
+                height="480"
+              >
+            </div>
+          </article>
+
+          <!-- Commission 03: 55% Image Left / 45% Specs Right -->
+          <article class="monograph-item monograph-layout-left reveal-item">
+            <div class="monograph-visual">
+              <img 
+                src="assets/02_interior_living.webp" 
+                alt="Seefeld Double-Height Atelier · Zurich, CH" 
+                class="monograph-img"
+                loading="lazy"
+                width="720"
+                height="480"
+              >
+            </div>
+            <div class="monograph-content">
+              <div class="monograph-meta">
+                <span class="meta-tag">COMMERCIAL ATELIER</span>
+                <span class="meta-sep">·</span>
+                <span class="meta-tag">680 m²</span>
+                <span class="meta-sep">·</span>
+                <span class="meta-tag">COMPLETED 2025</span>
+              </div>
+              <h3 class="monograph-title">Seefeld Double-Height Atelier</h3>
+              <p class="monograph-thesis">
+                "Double-height travertine and acoustic oak headquarters engineered for quiet spatial flow and indirect zenithal illumination."
+              </p>
+              <div class="technical-ledger">
+                <div class="ledger-row">
+                  <span class="ledger-label">Structure</span>
+                  <span class="ledger-value">Post-tensioned concrete slab &amp; steel</span>
+                </div>
+                <div class="ledger-row">
+                  <span class="ledger-label">Joinery</span>
+                  <span class="ledger-value">Millimeter-matched rift-cut oak</span>
+                </div>
+                <div class="ledger-row">
+                  <span class="ledger-label">Status</span>
+                  <span class="ledger-value">Built Commission</span>
+                </div>
+              </div>
+              <button type="button" class="monograph-action-btn" data-preset="commercial-atelier" data-area="680">
+                Inspect Scope in Estimator →
+              </button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Datum Divider Line (Between Screen 3 and Screen 4) -->
+    <div class="black-line" role="separator" aria-hidden="true"></div>
+
+    <!-- ====================================================================
+         SCREEN 4 — STRUCTURAL BLUEPRINT & SCOPE ESTIMATOR
+         ==================================================================== -->
+    <section class="section-estimator" id="estimator">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header-row reveal-item">
+          <div class="section-header-left">
+            <span class="section-kicker">02 / ARCHITECTURAL FEASIBILITY</span>
+            <h2 class="section-title">STRUCTURAL BLUEPRINT &amp; SCOPE ESTIMATOR</h2>
+          </div>
+          <div class="section-header-right">
+            <p class="section-lead">
+              Explore tectonic coordination layers and calculate programmatic budget, duration, and drawing deliverables for your plot before initial consultation.
+            </p>
+          </div>
+        </div>
+
+        <!-- 2-Column Architectural Workspace -->
+        <div class="estimator-workspace">
+          
+          <!-- Left Column: Axonometric Blueprint Viewer -->
+          <div class="blueprint-column reveal-item">
+            <div class="blueprint-board">
+              <div class="blueprint-badge">
+                <span>BIM LOD 400 · AXONOMETRIC COORDINATION</span>
+                <span class="blueprint-live-dot" aria-hidden="true"></span>
+              </div>
+              <div class="blueprint-frame">
+                <img 
+                  src="assets/06_blueprint_axonometric.webp" 
+                  alt="Architectural BIM Axonometric Blueprint" 
+                  class="blueprint-img"
+                  loading="lazy"
+                  width="600"
+                  height="450"
+                >
+              </div>
+              <!-- Tectonic Layer Switcher Buttons -->
+              <div class="tectonic-layer-tabs" role="tablist" aria-label="Tectonic Layer Inspection">
+                <button type="button" class="layer-tab active" data-layer="roof" role="tab" aria-selected="true">
+                  01 Roof Slab &amp; Cantilever
+                </button>
+                <button type="button" class="layer-tab" data-layer="envelope" role="tab" aria-selected="false">
+                  02 Timber Louver Envelope
+                </button>
+                <button type="button" class="layer-tab" data-layer="core" role="tab" aria-selected="false">
+                  03 Core Foundation &amp; Geothermal
+                </button>
+              </div>
+              <!-- Live Technical Readout -->
+              <div class="blueprint-spec-readout" id="blueprintSpecReadout" aria-live="polite">
+                <div class="spec-head">LAYER 01 SPECIFICATION</div>
+                <div class="spec-body" id="blueprintSpecText">
+                  Post-tensioned 320mm reinforced concrete slab with 4.2m monolithic cantilever overhang. U-value: 0.12 W/(m²K) with integrated concealed stormwater siphon drainage.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Estimator Controls & Live Output -->
+          <div class="estimator-controls-column reveal-item">
+            <div class="estimator-card">
+              
+              <!-- Control 1: Commission Typology -->
+              <div class="estimator-control-group">
+                <label class="control-label">01 / COMMISSION TYPOLOGY</label>
+                <div class="typology-pills" role="radiogroup" aria-label="Commission Typology">
+                  <button type="button" class="typology-pill active" data-typology="private-residence" role="radio" aria-checked="true">
+                    Private Residence
+                  </button>
+                  <button type="button" class="typology-pill" data-typology="commercial-atelier" role="radio" aria-checked="false">
+                    Commercial Atelier
+                  </button>
+                  <button type="button" class="typology-pill" data-typology="adaptive-heritage" role="radio" aria-checked="false">
+                    Adaptive Heritage
+                  </button>
+                </div>
+              </div>
+
+              <!-- Control 2: Gross Usable Area Slider -->
+              <div class="estimator-control-group">
+                <div class="slider-header">
+                  <label class="control-label" for="areaSlider">02 / GROSS USABLE FLOOR AREA</label>
+                  <div class="area-value-display">
+                    <span id="areaReadout" class="area-number">460</span>
+                    <span class="area-unit">m²</span>
+                  </div>
+                </div>
+                <input 
+                  type="range" 
+                  id="areaSlider" 
+                  class="custom-range-slider" 
+                  min="160" 
+                  max="1400" 
+                  step="20" 
+                  value="460"
+                  aria-label="Gross Usable Area in square meters"
+                >
+                <!-- Quick Preset Chips -->
+                <div class="preset-chips">
+                  <span class="chips-label">Presets:</span>
+                  <button type="button" class="chip-btn" data-preset-area="250">250 m²</button>
+                  <button type="button" class="chip-btn active" data-preset-area="460">460 m²</button>
+                  <button type="button" class="chip-btn" data-preset-area="800">800 m²</button>
+                  <button type="button" class="chip-btn" data-preset-area="1200">1,200 m²</button>
+                </div>
+              </div>
+
+              <!-- Control 3: Appointment Phases Checkboxes -->
+              <div class="estimator-control-group">
+                <label class="control-label">03 / APPOINTMENT SCOPE PHASES</label>
+                <div class="stages-checkbox-list">
+                  <label class="stage-checkbox-row disabled">
+                    <input type="checkbox" id="stage1to3" checked disabled>
+                    <span class="custom-check-mark"></span>
+                    <span class="stage-text">
+                      <strong>Stage 01–03:</strong> Concept, Zoning &amp; Building Permit (Base Architectural Mandate)
+                    </span>
+                  </label>
+                  <label class="stage-checkbox-row">
+                    <input type="checkbox" id="stage4" checked>
+                    <span class="custom-check-mark"></span>
+                    <span class="stage-text">
+                      <strong>Stage 04:</strong> Detailed Tectonic &amp; Joinery Execution Drawings (BIM LOD 400)
+                    </span>
+                  </label>
+                  <label class="stage-checkbox-row">
+                    <input type="checkbox" id="stage5" checked>
+                    <span class="custom-check-mark"></span>
+                    <span class="stage-text">
+                      <strong>Stage 05:</strong> Contractor Tender &amp; On-Site Author Supervision
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Live Output Panel (Olive) -->
+              <div class="estimator-output-panel">
+                <div class="output-grid">
+                  <div class="output-cell">
+                    <div class="output-label">ESTIMATED CONSTRUCTION BUDGET</div>
+                    <div class="output-value" id="budgetOutput">€1,220,000 – €1,410,000</div>
+                  </div>
+                  <div class="output-cell">
+                    <div class="output-label">PROJECT TIMELINE</div>
+                    <div class="output-value" id="timelineOutput">15 – 18 Months</div>
+                  </div>
+                  <div class="output-cell full-width">
+                    <div class="output-label">TECHNICAL DRAWING PACKAGE</div>
+                    <div class="output-value" id="sheetsOutput">92 Execution Sheets · BIM LOD 400</div>
+                  </div>
+                </div>
+
+                <button type="button" class="apply-brief-btn" id="applyToBriefBtn">
+                  <span class="apply-btn-label">Apply This Scope to Commission Brief</span>
+                  <span class="btn-arrow-circle" aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="8" y1="3" x2="8" y2="13" />
+                      <polyline points="4 9 8 13 12 9" />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Datum Divider Line (Between Screen 4 and Screen 5) -->
+    <div class="black-line" role="separator" aria-hidden="true"></div>
+
+    <!-- ====================================================================
+         SCREEN 5 — MATERIALITY & CONSTRUCTION PRECISION
+         ==================================================================== -->
+    <section class="section-materials" id="materials">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header-row reveal-item">
+          <div class="section-header-left">
+            <span class="section-kicker">03 / MATERIAL HONESTY</span>
+            <h2 class="section-title">THREE MATERIALS. THREE RESPONSIBILITIES.</h2>
+          </div>
+          <div class="section-header-right">
+            <p class="section-lead">
+              We refuse superficial cladding and synthetic laminates. Every texture in a Prezfull structure is structural, honest to its geological or forestry origin, and tactile to human touch.
+            </p>
+          </div>
+        </div>
+
+        <!-- 3 Equal Material Columns (Strict anti-slop, zero holes) -->
+        <div class="materials-grid">
+          
+          <!-- Card 01: The Ground -->
+          <article class="material-card reveal-item">
+            <div class="material-img-frame">
+              <img 
+                src="assets/04a_concrete_macro.webp" 
+                alt="Board-Marked Concrete Texture" 
+                class="material-img"
+                loading="lazy"
+                width="380"
+                height="280"
+              >
+            </div>
+            <div class="material-card-body">
+              <span class="material-tag">01 / THE GROUND</span>
+              <h3 class="material-title">Board-Marked Concrete</h3>
+              <div class="material-spec">Density: 2,400 kg/m³ · Thermal Inertia</div>
+              <p class="material-desc">
+                Cast in-situ against rough-sawn pine formwork, providing an unadorned structural anchor that weathers with dignity.
+              </p>
+            </div>
+          </article>
+
+          <!-- Card 02: The Touch -->
+          <article class="material-card reveal-item">
+            <div class="material-img-frame">
+              <img 
+                src="assets/04_material_detail.webp" 
+                alt="Quarter-Sawn White Oak Joinery" 
+                class="material-img"
+                loading="lazy"
+                width="380"
+                height="280"
+              >
+            </div>
+            <div class="material-card-body">
+              <span class="material-tag">02 / THE TOUCH</span>
+              <h3 class="material-title">Quarter-Sawn White Oak</h3>
+              <div class="material-spec">FSC Certified · Natural Plant Oil</div>
+              <p class="material-desc">
+                Hand-finished joinery, acoustic wall slats, and brass-inlaid thresholds designed to warm every point of human contact.
+              </p>
+            </div>
+          </article>
+
+          <!-- Card 03: The Light -->
+          <article class="material-card reveal-item">
+            <div class="material-img-frame">
+              <img 
+                src="assets/04b_travertine_macro.webp" 
+                alt="Honed Roman Travertine Stone" 
+                class="material-img"
+                loading="lazy"
+                width="380"
+                height="280"
+              >
+            </div>
+            <div class="material-card-body">
+              <span class="material-tag">03 / THE LIGHT</span>
+              <h3 class="material-title">Honed Roman Travertine</h3>
+              <div class="material-spec">Open-Pore Stone · Zero Synthetic Glaze</div>
+              <p class="material-desc">
+                Diffuses low-angle seasonal daylight deep into interior volumes while buffering ambient acoustics.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Datum Divider Line (Between Screen 5 and Screen 6) -->
+    <div class="black-line" role="separator" aria-hidden="true"></div>
+
+    <!-- ====================================================================
+         SCREEN 6 — COMMISSION BRIEF & APPOINTMENT PROTOCOL
+         ==================================================================== -->
+    <section class="section-contact" id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          
+          <!-- Left Column: Studio Protocol & Direct Commitments -->
+          <div class="contact-info-col reveal-item">
+            <span class="section-kicker">04 / COMMISSION INTAKE</span>
+            <h2 class="section-title">START A PROJECT BRIEF</h2>
+            <p class="contact-lead">
+              Prezfull accepts six to eight architectural commissions each calendar year to ensure the direct, day-to-day engagement of Chief Architect Marek Kowalski from site analysis to occupancy acceptance.
+            </p>
+
+            <div class="commitments-ledger">
+              <div class="commitment-item">
+                <div class="commitment-num">01 / PRINCIPAL-LED DESIGN</div>
+                <div class="commitment-text">Marek Kowalski personally authors all conceptual geometry, massing studies, and zoning permit strategies.</div>
+              </div>
+              <div class="commitment-item">
+                <div class="commitment-num">02 / FIXED STAGE-GATE FEE</div>
+                <div class="commitment-text">Zero scope creep surprises. All deliverables governed by clear SARP / SIA stage milestone gates and binding fee agreements.</div>
+              </div>
+              <div class="commitment-item">
+                <div class="commitment-num">03 / 72-HOUR FEASIBILITY REVIEW</div>
+                <div class="commitment-text">Submit your parcel coordinates or program brief for initial feasibility evaluation and appointment advice within 72 hours.</div>
+              </div>
+            </div>
+
+            <!-- Studio Addresses -->
+            <div class="studios-ledger">
+              <div class="studio-block">
+                <div class="studio-city">WARSAW ATELIER</div>
+                <address class="studio-address">
+                  Mokotowska 49, 00-542 Warszawa, Poland<br>
+                  <a href="tel:+48228491020" class="studio-link">+48 22 849 10 20</a>
+                </address>
+              </div>
+              <div class="studio-block">
+                <div class="studio-city">ZURICH STUDIO</div>
+                <address class="studio-address">
+                  Seefeldstrasse 124, 8008 Zürich, Switzerland<br>
+                  <a href="tel:+41442103040" class="studio-link">+41 44 210 30 40</a>
+                </address>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Clean Architectural Brief Form -->
+          <div class="contact-form-col reveal-item">
+            
+            <!-- Synced Scope Banner (populated from Estimator) -->
+            <div class="synced-scope-banner" id="syncedScopeBanner">
+              <div class="banner-pulse-dot" aria-hidden="true"></div>
+              <div class="banner-text">
+                <span class="banner-title">ACTIVE ESTIMATOR SCOPE:</span>
+                <span id="syncedScopeText">Private Residence · 460 m² · Stages 01–05</span>
+              </div>
+            </div>
+
+            <form class="commission-form" id="commissionForm" novalidate>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="briefName" class="field-label">Full Name *</label>
+                  <input type="text" id="briefName" name="name" required placeholder="e.g. Helena Branicka" class="field-input">
+                </div>
+                <div class="form-field">
+                  <label for="briefEmail" class="field-label">Email Address *</label>
+                  <input type="email" id="briefEmail" name="email" required placeholder="e.g. h.branicka@investments.eu" class="field-input">
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="briefLocation" class="field-label">Project Location (City / Plot Designation) *</label>
+                <input type="text" id="briefLocation" name="location" required placeholder="e.g. Konstancin-Jeziorna / Plot 142/8" class="field-input">
+              </div>
+
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="briefTypology" class="field-label">Typology</label>
+                  <select id="briefTypology" name="typology" class="field-select">
+                    <option value="private-residence" selected>Private Residence</option>
+                    <option value="commercial-atelier">Commercial Atelier</option>
+                    <option value="adaptive-heritage">Adaptive Heritage</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label for="briefArea" class="field-label">Target Area (m²)</label>
+                  <input type="number" id="briefArea" name="area" min="100" max="5000" value="460" class="field-input">
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="briefBudget" class="field-label">Estimated Budget Band (from Estimator)</label>
+                <input type="text" id="briefBudget" name="budget" readonly value="€1,220,000 – €1,410,000" class="field-input readonly-input">
+              </div>
+
+              <div class="form-field">
+                <label for="briefNotes" class="field-label">Site &amp; Program Notes</label>
+                <textarea id="briefNotes" name="notes" rows="3" placeholder="Describe parcel orientation, slope, desired spatial requirements, or municipal zoning constraints..." class="field-textarea"></textarea>
+              </div>
+
+              <button type="submit" class="pill-btn pill-btn-primary form-submit-btn">
+                <span>Submit Commission Brief</span>
+                <span class="btn-arrow-circle" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="8" x2="13" y2="8" />
+                    <polyline points="9 4 13 8 9 12" />
+                  </svg>
+                </span>
+              </button>
+            </form>
+
+            <!-- Success State Receipt (Hidden by default) -->
+            <div class="brief-success-state" id="briefSuccessState" style="display: none;" role="status">
+              <div class="receipt-header">
+                <div class="receipt-badge">COMMISSION BRIEF TRANSMITTED</div>
+                <div class="receipt-id">REF: PRZ-2026-084</div>
+              </div>
+              <div class="receipt-body">
+                <p class="receipt-intro">
+                  Thank you for submitting your architectural program. Your brief has been routed directly to Chief Architect Marek Kowalski's desk.
+                </p>
+                <div class="receipt-meta-box" id="receiptSummaryBox">
+                  <!-- Dynamically populated -->
+                </div>
+                <p class="receipt-note">
+                  Our studio will conduct a preliminary parcel &amp; zoning check and respond with feasibility notes within 72 hours.
+                </p>
+              </div>
+              <button type="button" class="receipt-reset-btn" id="receiptResetBtn">
+                ← Edit / Submit Another Brief
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Pre-Footer Datum Divider Line -->
+    <div class="black-line" role="separator" aria-hidden="true"></div>
+
+    <!-- ====================================================================
+         SITE FOOTER
+         ==================================================================== -->
+    <footer class="site-footer">
+      <div class="container footer-container">
+        
+        <!-- Top Row -->
+        <div class="footer-top-row">
+          <div class="footer-brand-col">
+            <a href="#hero" class="brand-logo footer-logo">PREZFULL</a>
+            <p class="footer-tagline">Architecture with People in Mind</p>
+          </div>
+          
+          <div class="footer-contact-col">
+            <div class="footer-label">STUDIO ENQUIRIES</div>
+            <a href="mailto:commissions@prezfull-architects.com" class="footer-email">
+              commissions@prezfull-architects.com
+            </a>
+            <div class="footer-cities">
+              <span>Warsaw: Mokotowska 49</span>
+              <span class="cities-sep">·</span>
+              <span>Zurich: Seefeldstrasse 124</span>
+            </div>
+          </div>
+
+          <div class="footer-action-col">
+            <button type="button" class="back-to-top-circle" id="footerBackToTop" aria-label="Back to top of page">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="8" y1="13" x2="8" y2="3" />
+                <polyline points="4 7 8 3 12 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Hairline Divider -->
+        <div class="footer-divider" role="separator" aria-hidden="true"></div>
+
+        <!-- Bottom Row -->
+        <div class="footer-bottom-row">
+          <div class="footer-legal">
+            © 2026 PREZFULL ARCHITECTS · SARP / SIA Registered Atelier · All rights reserved.
+          </div>
+          <nav class="footer-nav" aria-label="Footer Navigation">
+            <a href="#hero" class="footer-link">Home</a>
+            <a href="#manifesto" class="footer-link">About us</a>
+            <a href="#works" class="footer-link">Projects</a>
+            <a href="#estimator" class="footer-link">Estimator</a>
+            <a href="#materials" class="footer-link">Materials</a>
+            <a href="#contact" class="footer-link">Brief</a>
+          </nav>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- JavaScript -->
+  <script src="main.js?v=12"></script>
+
+<!-- universal-smooth-anchor-scroll -->
 <script>
-(function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
+(function(){
+  if(window.__ovSmoothScrollInit) return;
+  window.__ovSmoothScrollInit = true;
+  var animId = null;
+  function cancel(){ if(animId){ cancelAnimationFrame(animId); animId = null; } }
+  window.addEventListener('wheel', cancel, {passive:true});
+  window.addEventListener('touchstart', cancel, {passive:true});
+  window.addEventListener('keydown', cancel, {passive:true});
+  function smoothTo(targetY, dur){
+    cancel();
+    var startY = window.scrollY || window.pageYOffset || 0;
+    var maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    var destY = Math.min(Math.max(0, targetY), maxScroll);
+    var dist = destY - startY;
+    if(Math.abs(dist) < 3) return;
+    var startTime = performance.now();
+    var d = dur || 780;
+    function step(now){
+      var t = Math.min((now - startTime) / d, 1);
+      var ease = 1 - Math.pow(1 - t, 3);
+      window.scrollTo(0, startY + dist * ease);
+      if(t < 1) animId = requestAnimationFrame(step);
+      else animId = null;
+    }
+    animId = requestAnimationFrame(step);
+  }
+  window.__ovSmoothScrollTo = smoothTo;
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('a[href^="#"], [data-scroll-to], [data-target]');
+    if(!el) return;
+    var sel = el.getAttribute('data-scroll-to') || el.getAttribute('href');
+    if(!sel || sel.charAt(0) !== '#') return;
+    if(sel === '#'){
+      if(el.classList.contains('logo-link') || el.classList.contains('brand')){
+        e.preventDefault();
+        smoothTo(0, 750);
+      }
+      return;
+    }
+    var target = null;
+    try { target = document.querySelector(sel); } catch(err){}
+    if(!target) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var header = document.querySelector('header, nav.navbar, .site-header, .top-nav, .nav-bar');
+    var offset = 0;
+    if(header){
+      var pos = getComputedStyle(header).position;
+      if(pos === 'fixed' || pos === 'sticky'){
+        offset = header.offsetHeight || 72;
+      }
+    }
+    var top = (window.scrollY || window.pageYOffset || 0) + target.getBoundingClientRect().top - offset;
+    smoothTo(top, 780);
+  }, true);
+})();
 </script>
-</body></html>
+
+</body>
+</html>

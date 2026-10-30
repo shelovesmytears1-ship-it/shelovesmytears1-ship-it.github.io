@@ -1,72 +1,651 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="LUNEA — demonstracyjna strona atelier organizacji autorskich wesel w Polsce.">
-  <title>LUNEA — dzień zapisany światłem</title>
-  <link rel="icon" href="favicon.svg">
-  <link rel="stylesheet" href="lunea-preview.css">
-  <link rel="stylesheet" href="lunea-expanded.css">
-<meta name="robots" content="noindex, follow"></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUNEA · Atelier Planowania Ślubów</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
 
-<a class="skip" href="#main">Przejdź do treści</a>
-<header><a href="#top" class="brand">LUNEA</a><button class="menu-button" type="button" aria-expanded="false" aria-controls="siteNav">Menu</button><nav id="siteNav" aria-label="Nawigacja"><a href="#dzien">Wasz dzień</a><a href="#historie">Historie</a><a href="#wspolpraca">Współpraca</a><a href="#brief">Kontakt</a></nav><a href="#brief" class="talk">Porozmawiajmy</a></header>
-<main id="main">
-  <section class="hero" id="top"><div class="hero-photo"><img src="assets/hero-evening.webp" alt="Para w wieczornym świetle podczas przyjęcia" width="1400" height="788" fetchpriority="high"></div><div class="hero-copy"><p class="hero-kicker">WESELA AUTORSKIE / POLSKA / 2026</p><h1>Wasz dzień nie potrzebuje scenariusza. Potrzebuje <em>rytmu.</em></h1><p>Projektujemy i produkujemy autorskie wesela w Polsce, od pierwszej rozmowy do chwili, kiedy plan przestaje być potrzebny.</p><a href="#dzien">Zobacz, jak płynie dzień <span>↓</span></a></div><div class="hero-reel" aria-label="Migawki z realizacji"><figure><img src="assets/gallery-bouquet.webp" alt="Bukiet ślubny w ciepłym świetle" width="1120" height="1400" decoding="async"><figcaption>01 / CEREMONIA</figcaption></figure><figure><img src="assets/gallery-ballroom.webp" alt="Sala weselna przygotowana do przyjęcia" width="1400" height="933" decoding="async"><figcaption>02 / PRZYJĘCIE</figcaption></figure><figure><img src="assets/evening-dance.webp" alt="Taniec pary młodej podczas przyjęcia" width="1400" height="643" decoding="async"><figcaption>03 / TANIEC</figcaption></figure></div></section>
+  <!-- Header -->
+  <header class="lunea-header">
+    <div class="header-container">
+      <a href="#" class="logo">LUNEA<span>·</span>Atelier</a>
+      <nav aria-label="Nawigacja główna">
+        <ul class="nav-links">
+          <li><a href="#spaces">Przestrzenie</a></li>
+          <li><a href="#timeline">Oś dnia</a></li>
+          <li><a href="#nuance">Rzemiosło detalu</a></li>
+          <li><a href="#path">Droga</a></li>
+          <li><a href="#stories">Opowieści</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#brief">Lokalny brief</a></li>
+        </ul>
+      </nav>
+      <a href="#brief" class="header-cta">Ułóż plan dnia ↗</a>
+    </div>
+  </header>
 
-  <section class="manifesto"><h2>Nie dekorujemy dla zdjęcia.</h2><div><p>Projektujemy atmosferę, którą pamięta się przez temperaturę światła, dźwięk rozmów i sposób, w jaki przestrzeń prowadzi gości.</p><blockquote>Piękny kadr trwa sekundę. Dobry rytm utrzymuje cały dzień.</blockquote><p>Za każdym spokojnym przejściem stoją decyzje o dostawcach, czasie, dźwięku, serwisie i odpowiedzialności.</p></div></section>
+  <main>
+    <!-- Section 1: Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <span class="hero-eyebrow">LUNEA · PRYWATNE ATELIER ŚLUBNE</span>
+        <h1 class="hero-title">Dzień w Waszym rytmie.</h1>
+        <p class="hero-lead">
+          Prywatne atelier planowania ślubów, tworzące przestrzenie dla chwil bez pośpiechu, subtelnej elegancji i autentycznej obecności.
+        </p>
+        <div class="hero-actions">
+          <a href="#timeline" class="btn-primary">Ułóż plan dnia</a>
+          <a href="#brief" class="btn-secondary">Przygotuj lokalny brief</a>
+        </div>
+        <div class="hero-meta-ticker">
+          <span class="ticker-item">Sezon 2026 / 2027</span>
+          <span class="ticker-dot">·</span>
+          <span class="ticker-item">Maksymalnie 8 ślubów w roku</span>
+          <span class="ticker-dot">·</span>
+          <span class="ticker-item">Polska & Destination</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-image-frame">
+          <picture>
+            <source srcset="assets/hero-vertical.webp" type="image/webp">
+            <img src="assets/hero-vertical.jpg" alt="Lunea Atelier Ślubny — kadr z uroczystości" loading="eager" width="480" height="600">
+          </picture>
+        </div>
+      </div>
+    </section>
 
-  <section class="day" id="dzien"><div class="day-head"><h2>Jeden dzień.<br>Pięć zmian światła.</h2><p>Każda pora ma inne tempo, potrzeby gości i zadanie produkcyjne. Wybierz moment, żeby zobaczyć plan ukryty pod atmosferą.</p></div><div class="day-stage"><figure><div class="day-frames"><img class="day-frame is-active" src="assets/detail-stationery.webp" alt="Papeteria i przygotowania przed ceremonią" width="1200" height="900"><img class="day-frame" src="assets/editorial-walk.webp" alt="Para idąca na ceremonię" width="1200" height="900" loading="lazy"><img class="day-frame" src="assets/editorial-dinner.webp" alt="Kolacja weselna przy długim stole" width="1200" height="900" loading="lazy"><img class="day-frame" src="assets/evening-dance.webp" alt="Taniec w ciepłym wieczornym świetle" width="1200" height="900" loading="lazy"><img class="day-frame" src="assets/story-laugh.webp" alt="Spontaniczny moment pary pod koniec nocy" width="1200" height="900" loading="lazy"></div><figcaption id="dayCaption"><span class="is-active">10:00 · Przygotowanie</span><span>15:30 · Ceremonia</span><span>19:00 · Kolacja</span><span>22:40 · Parkiet</span><span>01:15 · Końcówka nocy</span></figcaption></figure><aside><div class="day-copy"><article class="day-panel is-active"><span>10:00</span><h3>Cisza przed pierwszym gościem.</h3><p>Papeteria, światło, ostatnie ustawienia. Zespół pracuje, żebyście nie musieli sprawdzać listy.</p></article><article class="day-panel"><span>15:30</span><h3>Ceremonia ma własny oddech.</h3><p>Wejścia, muzyka i układ przestrzeni są zsynchronizowane, ale zostawiają miejsce na prawdziwą emocję.</p></article><article class="day-panel"><span>19:00</span><h3>Stół prowadzi rozmowę.</h3><p>Światło opada, serwis zwalnia, a scenografia łączy gości zamiast odciągać od nich uwagę.</p></article><article class="day-panel"><span>22:40</span><h3>Parkiet przejmuje plan.</h3><p>Technika, bar i transport działają w tle. Rytm wieczoru należy już tylko do Was.</p></article><article class="day-panel"><span>01:15</span><h3>Zostaje to, czego nie zaplanowano.</h3><p>Ciszej, bliżej, bez punktów programu. Pilnujemy końcówki, żebyście mogli zostać w chwili.</p></article></div><div class="day-tabs" aria-label="Pory dnia"><button aria-pressed="true" data-day="0">10:00</button><button aria-pressed="false" data-day="1">15:30</button><button aria-pressed="false" data-day="2">19:00</button><button aria-pressed="false" data-day="3">22:40</button><button aria-pressed="false" data-day="4">01:15</button></div></aside></div></section>
+    <!-- Section 2: Portret Przestrzeni & Plenery (Curated Locations) -->
+    <section id="spaces" class="spaces-section">
+      <div class="section-header">
+        <span class="hero-eyebrow">PORTRET PRZESTRZENI & PLENERY</span>
+        <h2 class="section-title">Wyselekcjonowane tło dla Waszej historii.</h2>
+        <p class="section-sub">
+          Nie pracujemy w powtarzalnych salach bankietowych. Poszukujemy miejsc z duszą, surową fakturą i czystym światłem, które stają się cichym bohaterem dnia.
+        </p>
+      </div>
 
-  <section class="morning"><div><h2>Poranek jest cichy tylko dla Was.</h2><p>W tle powstają strefy, przyjeżdżają kwiaty, papeteria trafia na właściwe miejsce, a każdy dostawca potwierdza gotowość.</p><dl><div><dt>Papier</dt><dd>plan stołów, winietki, oznaczenia i ostatnia korekta nazwisk</dd></div><div><dt>Światło</dt><dd>ustawienie zastane, techniczne i moment przejścia do wieczoru</dd></div><div><dt>Serwis</dt><dd>kolejność wejścia zespołów i gotowość przed pierwszym gościem</dd></div></dl></div><figure><img src="assets/detail-flower.webp" alt="Detal kwiatów przygotowanych przed przyjęciem" width="900" height="1200" loading="lazy"></figure><figure><img src="assets/editorial-ribbon.webp" alt="Wstążka i detal papeterii ślubnej" width="900" height="1200" loading="lazy"></figure></section>
+      <div class="spaces-grid">
+        <!-- Space 01 -->
+        <article class="space-card">
+          <div class="space-image-wrapper">
+            <picture>
+              <source srcset="assets/case-orangery.webp" type="image/webp">
+              <img src="assets/case-orangery.webp" alt="Pałacowa Oranżeria — Dolny Śląsk" loading="lazy">
+            </picture>
+            <span class="space-number">01</span>
+          </div>
+          <div class="space-info">
+            <div class="space-meta-tags">
+              <span class="space-tag">Dolny Śląsk</span>
+              <span class="space-tag">do 120 gości</span>
+              <span class="space-tag">Światło dzienne</span>
+            </div>
+            <h3 class="space-title">Pałacowa Oranżeria</h3>
+            <p class="space-desc">
+              Wysokie żeliwne okna, surowy piaskowiec, naturalne światło i dzika, bujna roślinność. Dziewiętnastowieczna architektura w dialogu ze swobodną, organiczną formą.
+            </p>
+          </div>
+        </article>
 
-  <section class="ceremony"><figure><img src="assets/archive-ceremony.webp" alt="Ceremonia plenerowa z gośćmi i parą" width="1600" height="1000" loading="lazy"></figure><div><h2>Ceremonia ma własny oddech.</h2><p>Wejścia, muzyka i układ przestrzeni są zsynchronizowane, ale zostawiają miejsce na prawdziwą emocję.</p><ol><li><b>Widoczność</b><span>goście rozumieją, gdzie patrzeć i którędy przejść</span></li><li><b>Dźwięk</b><span>mikrofony i muzyka są sprawdzone przed wejściem</span></li><li><b>Plan B</b><span>decyzja pogodowa ma godzinę graniczną i właściciela</span></li></ol></div></section>
+        <!-- Space 02 -->
+        <article class="space-card">
+          <div class="space-image-wrapper">
+            <picture>
+              <source srcset="assets/editorial-walk.webp" type="image/webp">
+              <img src="assets/editorial-walk.webp" alt="Modernistyczna Willa nad Jeziorem" loading="lazy">
+            </picture>
+            <span class="space-number">02</span>
+          </div>
+          <div class="space-info">
+            <div class="space-meta-tags">
+              <span class="space-tag">Warmia & Mazury</span>
+              <span class="space-tag">do 60 gości</span>
+              <span class="space-tag">Intymność & Woda</span>
+            </div>
+            <h3 class="space-title">Modernistyczna Willa nad Jeziorem</h3>
+            <p class="space-desc">
+              Architektura minimalistyczna, stół bankietowy z surowego lnu, rzeźbiarska ceramika stołowa. Czyste linie geometrii z widokiem na bezkresny spokój jeziora o zmierzchu.
+            </p>
+          </div>
+        </article>
 
-  <section class="stories" id="historie"><div class="story-copy"><h2>Dwa miejsca. Dwa różne rytmy.</h2><p>Nie przenosimy jednego stylu między realizacjami. Materiał miejsca, pora roku i sposób świętowania wyznaczają kierunek.</p></div><figure class="tall"><img src="assets/case-lodz.webp" alt="Para przy ceglanym budynku w Łodzi" width="1365" height="2048" loading="lazy"><figcaption>Łódź · cegła, jedwab, miejski rytm</figcaption></figure><figure class="wide"><img src="assets/case-orangery.webp" alt="Przyjęcie przy długim stole w jasnej oranżerii" width="2048" height="1362" loading="lazy"><figcaption>Warszawa · kolacja w oranżerii</figcaption></figure></section>
+        <!-- Space 03 -->
+        <article class="space-card">
+          <div class="space-image-wrapper">
+            <picture>
+              <source srcset="assets/editorial-dinner.webp" type="image/webp">
+              <img src="assets/editorial-dinner.webp" alt="Kameralna Stodoła z XIX wieku" loading="lazy">
+            </picture>
+            <span class="space-number">03</span>
+          </div>
+          <div class="space-info">
+            <div class="space-meta-tags">
+              <span class="space-tag">Podkarpacie</span>
+              <span class="space-tag">do 40 gości</span>
+              <span class="space-tag">Świece & Drewno</span>
+            </div>
+            <h3 class="space-title">Kameralna Stodoła z XIX wieku</h3>
+            <p class="space-desc">
+              Intymna kolacja dla 40 najbliższych osób, setki świec z naturalnego wosku pszczelego, zapach starego drewna, ziół i chłodny wieczór pod rozgwieżdżonym niebem.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
 
-  <section class="guest-journey"><div><h2>Gość nie powinien czytać harmonogramu, żeby wiedzieć, co dalej.</h2><p>Przestrzeń, światło i obecność zespołu prowadzą bez komunikatów wygłaszanych co pięć minut.</p></div><ol><li><b>Przyjazd</b><span>czytelne wejście, szatnia i pierwsza osoba kontaktowa</span></li><li><b>Ceremonia</b><span>naturalne przejście bez cofania grupy</span></li><li><b>Kolacja</b><span>tempo serwisu zsynchronizowane z przemowami</span></li><li><b>Parkiet</b><span>technika i bar gotowe zanim zmieni się energia</span></li><li><b>Powrót</b><span>transport i ostatnie wyjazdy bez angażowania pary</span></li></ol></section>
+    <!-- Section 3: Interactive Timeline ("Oś dnia — sześć momentów") -->
+    <section id="timeline" class="timeline-section">
+      <div class="section-header">
+        <span class="hero-eyebrow">OŚ DNIA — SZEŚĆ MOMENTÓW</span>
+        <h2 class="section-title">Sześć momentów, jeden wspólny dzień.</h2>
+        <p class="section-sub">Wybierz moment, aby zobaczyć kadr oraz refleksję koncepcyjną.</p>
+      </div>
 
-  <section class="scope" id="wspolpraca"><div><h2>Spokojna głowa to konkretna odpowiedzialność.</h2><p>Zakres ustalamy na początku. Bez niejasnego „dopilnujemy wszystkiego”.</p></div><div class="scope-list"><details open><summary>Kompleksowa organizacja <span>od budżetu do końca nocy</span></summary><p>Koncepcja, budżet, miejsce, dostawcy, harmonogram, goście i pełna produkcja dnia. Orientacyjny próg całej produkcji w tej koncepcji zaczyna się od 110 000 zł.</p></details><details><summary>Kameralna celebracja <span>do 30 osób</span></summary><p>Intymna ceremonia lub kolacja, w której jakość doświadczenia jest ważniejsza niż skala.</p></details><details><summary>Koordynacja dnia <span>gdy plan już istnieje</span></summary><p>Przejmujemy komunikację z zespołem i realizację przygotowanego wcześniej planu.</p></details></div></section>
+      <!-- Timeline selector bar -->
+      <div class="timeline-selector-bar" role="tablist" aria-label="Oś dnia">
+        <button class="timeline-btn" role="tab" aria-selected="true" aria-pressed="true" data-moment="moment-preparations">
+          <span class="time">09:30</span>
+          <span class="label">Przygotowania</span>
+        </button>
+        <button class="timeline-btn" role="tab" aria-selected="false" aria-pressed="false" data-moment="moment-ceremony">
+          <span class="time">13:00</span>
+          <span class="label">Ceremonia</span>
+        </button>
+        <button class="timeline-btn" role="tab" aria-selected="false" aria-pressed="false" data-moment="moment-guests">
+          <span class="time">15:00</span>
+          <span class="label">Spotkanie gości</span>
+        </button>
+        <button class="timeline-btn" role="tab" aria-selected="false" aria-pressed="false" data-moment="moment-dinner">
+          <span class="time">18:00</span>
+          <span class="label">Kolacja</span>
+        </button>
+        <button class="timeline-btn" role="tab" aria-selected="false" aria-pressed="false" data-moment="moment-toasts-dance">
+          <span class="time">20:30</span>
+          <span class="label">Toasty i taniec</span>
+        </button>
+        <button class="timeline-btn" role="tab" aria-selected="false" aria-pressed="false" data-moment="moment-late-evening">
+          <span class="time">22:30</span>
+          <span class="label">Późny wieczór</span>
+        </button>
+      </div>
 
-  <section class="budget"><div><h2>Budżet jest projektem decyzji, nie jedną liczbą.</h2><p>Próg zależy od miejsca, liczby gości, zakresu techniki, scenografii, serwisu i logistyki. Poniższa mapa jest demonstracyjna.</p></div><div class="budget-lines"><article><b>Miejsce i gastronomia</b><span>liczba gości, serwis, noclegi, wyłączność</span></article><article><b>Projekt i oprawa</b><span>kwiaty, światło, meble, papeteria, produkcja</span></article><article><b>Ludzie i dokumentacja</b><span>muzyka, foto, film, ceremonia, obsługa</span></article><article><b>Logistyka i rezerwa</b><span>transport, montaż, pogoda, decyzje awaryjne</span></article><small>Każdy udział powstaje po briefie i rozpoznaniu miejsca; nie pokazujemy fikcyjnych procentów.</small></div></section>
+      <!-- Display Area -->
+      <div class="timeline-display-card">
+        <div class="timeline-image-container" id="timelineImageContainer">
+          <picture>
+            <source id="activeSourceWebp" srcset="assets/moment-preparations.webp" type="image/webp">
+            <source id="activeSourceJpg" srcset="assets/moment-preparations.jpg" type="image/jpeg">
+            <img id="activeMomentImage" src="assets/moment-preparations.jpg" alt="09:30 Przygotowania" loading="lazy">
+          </picture>
+        </div>
+        <div class="timeline-content-pane">
+          <div class="moment-meta">
+            <span class="moment-time-badge" id="momentTimeBadge">09:30</span>
+          </div>
+          <h3 class="moment-heading" id="momentHeading">Przygotowania</h3>
+          <p class="moment-caption" id="momentCaption">Spokojny początek dnia i czas na przygotowania.</p>
+        </div>
+      </div>
+    </section>
 
-  <section class="responsibility"><div><h2>Każda decyzja ma właściciela.</h2><p>Plan działa wtedy, gdy wiadomo, kto decyduje, kto wykonuje i do której godziny można zmienić kierunek.</p></div><div class="responsibility-table" role="table" aria-label="Przykładowa mapa odpowiedzialności"><div role="row"><b role="columnheader">OBSZAR</b><b role="columnheader">LUNEA</b><b role="columnheader">DOSTAWCA</b><b role="columnheader">PARA</b></div><div role="row"><span>harmonogram</span><span>prowadzi i aktualizuje</span><span>potwierdza gotowość</span><span>zatwierdza priorytety</span></div><div role="row"><span>pogoda</span><span>uruchamia decyzję</span><span>wykonuje wariant</span><span>zna godzinę graniczną</span></div><div role="row"><span>goście</span><span>prowadzi komunikację dnia</span><span>obsługuje swoją strefę</span><span>przekazuje wyjątki wcześniej</span></div></div></section>
+    <!-- Section 4: Rzemiosło Detalu / The Anatomy of Nuance -->
+    <section id="nuance" class="nuance-section">
+      <div class="section-header">
+        <span class="hero-eyebrow">RZEMIOSŁO DETALU · THE ANATOMY OF NUANCE</span>
+        <h2 class="section-title">Kultura mikroelementów i dotyku.</h2>
+        <p class="section-sub">
+          Piękno ślubu nie wynika z nadmiaru dekoracji, lecz z bezbłędnej kompozycji subtelności, których dotykają dłonie Waszych gości.
+        </p>
+      </div>
 
-  <section class="process"><h2>Dobry plan znika we właściwym momencie.</h2><ol><li><b>Rozmowa</b><p>priorytety, granice i budżet</p></li><li><b>Kierunek</b><p>miejsce, zakres i wspólny język wizualny</p></li><li><b>Projekt</b><p>dostawcy, umowy i kolejne decyzje</p></li><li><b>Produkcja</b><p>harmonogram, technika i logistyka</p></li><li><b>Obecność</b><p>w dniu wesela jesteśmy tam, gdzie nas nie widać</p></li></ol></section>
+      <div class="nuance-grid">
+        <!-- Nuance 01 -->
+        <div class="nuance-card">
+          <div class="nuance-image-wrapper">
+            <picture>
+              <source srcset="assets/detail-stationery.webp" type="image/webp">
+              <img src="assets/detail-stationery.webp" alt="Kaligrafia i papier czerpany" loading="lazy">
+            </picture>
+            <span class="nuance-badge">Dotyk & Faktura</span>
+          </div>
+          <div class="nuance-body">
+            <span class="nuance-num">01</span>
+            <h3 class="nuance-title">Kaligrafia & Papier Czerpany</h3>
+            <p class="nuance-desc">
+              Ręcznie rwane brzegi, naturalne pigmenty mineralne, tusz orzechowy i autorska kaligrafia. Każda papeteria traktowana jak unikalne dzieło sztuki graficznej.
+            </p>
+          </div>
+        </div>
 
-  <section class="week" id="week"><figure><img src="assets/gallery-ballroom.webp" alt="Sala przygotowana przed wejściem gości" width="1400" height="900" loading="lazy"></figure><div><h2>Ostatni tydzień nie służy do wymyślania wesela od nowa.</h2><p>Służy do zamknięcia przekazań, potwierdzenia ludzi i zabezpieczenia wariantów.</p><ul><li><b>−7 dni</b><span>finalna lista, transport, alergie, godziny dostaw</span></li><li><b>−3 dni</b><span>odprawa dostawców i wersja planu B</span></li><li><b>−1 dzień</b><span>ostatnie przekazanie odpowiedzialności zespołowi</span></li><li><b>dzień 0</b><span>para nie zarządza produkcją</span></li></ul></div></section>
+        <!-- Nuance 02 -->
+        <div class="nuance-card">
+          <div class="nuance-image-wrapper">
+            <picture>
+              <source srcset="assets/evening-dance.webp" type="image/webp">
+              <img src="assets/evening-dance.webp" alt="Scenografia światła" loading="lazy">
+            </picture>
+            <span class="nuance-badge">Ciepły Wolfram & Wosk</span>
+          </div>
+          <div class="nuance-body">
+            <span class="nuance-num">02</span>
+            <h3 class="nuance-title">Scenografia Światła</h3>
+            <p class="nuance-desc">
+              Brak agresywnych reflektorów estradowych. Pracujemy wyłącznie ciepłym wolframem, żywym ogniem setek woskowych świec i architektonicznym półmrokiem.
+            </p>
+          </div>
+        </div>
 
-  <section class="night"><img src="assets/footer-evening.webp" alt="Para na pustym parkiecie po przyjęciu" width="1600" height="1000" loading="lazy"><div><h2>A potem zostaje już tylko noc.</h2><a href="#brief">Opowiedzcie nam o swoim dniu</a></div></section>
+        <!-- Nuance 03 -->
+        <div class="nuance-card">
+          <div class="nuance-image-wrapper">
+            <picture>
+              <source srcset="assets/detail-flower.webp" type="image/webp">
+              <img src="assets/detail-flower.webp" alt="Sezonowa botanika" loading="lazy">
+            </picture>
+            <span class="nuance-badge">Lokalne Ogrody · No Foam</span>
+          </div>
+          <div class="nuance-body">
+            <span class="nuance-num">03</span>
+            <h3 class="nuance-title">Sezonowa Botanika</h3>
+            <p class="nuance-desc">
+              Lokalne kwiaty i gałęzie od zaufanych małych ogrodników, cięte w rytmie pór roku. Całkowity zakaz syntetycznych gąbek florystycznych i zero mikroplastiku.
+            </p>
+          </div>
+        </div>
 
-  <section class="faq"><div><h2>Pytania przed pierwszą rozmową.</h2><p>Odpowiedzi zależą od zakresu i miejsca, dlatego nie obiecujemy dostępności ani wyceny przed briefem.</p></div><div><details open><summary>Kiedy najlepiej zacząć współpracę?</summary><p>Im szerszy zakres i bardziej oblegany termin, tym wcześniej warto porozmawiać. Konkretna dostępność wymaga potwierdzenia.</p></details><details><summary>Czy pracujecie poza Warszawą?</summary><p>Koncepcja zakłada realizacje w Polsce. Logistyka i koszty zespołu są liczone dla konkretnego miejsca.</p></details><details><summary>Czy możemy zachować własnych dostawców?</summary><p>Tak, po sprawdzeniu zakresu, umów i odpowiedzialności. Kluczowe jest wspólne działanie w jednym harmonogramie.</p></details><details><summary>Czy próg 110 000 zł jest wyceną?</summary><p>Nie. To orientacyjna granica tej koncepcji portfolio, a nie oferta. Realny budżet powstaje po liczbie gości, miejscu i zakresie.</p></details></div></section>
+        <!-- Nuance 04 -->
+        <div class="nuance-card">
+          <div class="nuance-image-wrapper">
+            <picture>
+              <source srcset="assets/archive-ceremony.webp" type="image/webp">
+              <img src="assets/archive-ceremony.webp" alt="Akustyka i muzyka" loading="lazy">
+            </picture>
+            <span class="nuance-badge">Analog & Jazz Trio</span>
+          </div>
+          <div class="nuance-body">
+            <span class="nuance-num">04</span>
+            <h3 class="nuance-title">Akustyka & Muzyka</h3>
+            <p class="nuance-desc">
+              Akustyczne trio jazzowe do popołudniowej rozmowy, a o zmierzchu selekcja płyt winylowych i analogowe, głębokie brzmienie bez estradowego hałasu.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section class="brief" id="brief"><div><h2>Pierwsza rozmowa zaczyna się od czterech faktów.</h2><p>Formularz działa lokalnie i przygotowuje podsumowanie. Niczego nie wysyła.</p></div><form id="briefForm"><label>Planowana data<input name="date" required placeholder="np. czerwiec 2027"></label><label>Liczba gości<select name="guests" required><option value="">Wybierz</option><option>do 30</option><option>31–60</option><option>61–100</option><option>ponad 100</option></select></label><label>Orientacyjny budżet<select name="budget" required><option value="">Wybierz</option><option>110–160 tys. zł</option><option>160–240 tys. zł</option><option>240 tys. zł +</option></select></label><label>E-mail<input name="email" type="email" required placeholder="wasz@email.pl"></label><button>Przygotuj brief</button><p id="status" role="status"></p></form></section>
-</main>
-<footer><a class="brand" href="#top">LUNEA</a><p>Autorskie wesela · Polska · portfolio concept 2026</p></footer>
-<script src="lunea-preview.js"></script>
-<div class="ov-badge" id="ov-badge">
-  <a class="ov-badge__main" href="https://overflow-web.pl/work/lunea/">
-    <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
-  </a>
-  <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
-</div>
-<style>
-.ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
-.ov-badge a{color:inherit;text-decoration:none}
-.ov-badge__main{display:flex;align-items:center;gap:5px}
-.ov-badge__mark{font-weight:700;letter-spacing:-.02em}
-.ov-badge__dot{opacity:.45}
-.ov-badge__type{opacity:.7}
-.ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
-.ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
-@media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
-@media print{.ov-badge{display:none}}
-</style>
-<!-- ov-badge-init -->
-<script>
-(function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
-</script>
+    <!-- Section 5: Editorial Philosophy ("Zasada Obecności") -->
+    <section id="philosophy" class="philosophy-section">
+      <div class="philosophy-inner">
+        <span class="hero-eyebrow">FILOZOFIA LUNEA</span>
+        <blockquote class="philosophy-quote">
+          "Prawdziwy luksus to brak pośpiechu i wolność bycia w pełni obecnym z tymi, których kochamy."
+        </blockquote>
+        <div class="principles-grid">
+          <div class="principle-card">
+            <span class="principle-num">01</span>
+            <h3 class="principle-title">Dyskrecja</h3>
+            <p class="principle-desc">Działamy w tle, koordynując każdy detal z niemal niewidoczną precyzją, by para młoda czuła się swobodnie.</p>
+          </div>
+          <div class="principle-card">
+            <span class="principle-num">02</span>
+            <h3 class="principle-title">Czas bez pośpiechu</h3>
+            <p class="principle-desc">Tworzymy harmonogramy zostawiające oddech na spontaniczne rozmowy i chwile, które zapadają w pamięć.</p>
+          </div>
+          <div class="principle-card">
+            <span class="principle-num">03</span>
+            <h3 class="principle-title">Osiem dni w roku</h3>
+            <p class="principle-desc">Prowadzimy ściśle ograniczoną liczbę uroczystości, gwarantując osobiste zaangażowanie założycieli atelier.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Droga do Waszego Dnia (Collaboration Timeline) -->
+    <section id="path" class="path-section">
+      <div class="section-header">
+        <span class="hero-eyebrow">DROGA DO WASZEGO DNIA</span>
+        <h2 class="section-title">Cztery etapy spokojnej współpracy.</h2>
+        <p class="section-sub">
+          Planowanie ślubu zamieniamy w uporządkowany, twórczy proces pozbawiony pośpiechu i chaosu decyzyjnego.
+        </p>
+      </div>
+
+      <div class="path-timeline">
+        <!-- Step 1 -->
+        <div class="path-step">
+          <div class="step-marker">
+            <span class="step-num">01</span>
+            <span class="step-line"></span>
+          </div>
+          <div class="step-content">
+            <span class="step-eyebrow">Krok pierwszy</span>
+            <h3 class="step-title">Rozmowa koncepcyjna & sensoryczny moodboard</h3>
+            <p class="step-desc">
+              Spotkanie w naszym atelier lub rozmowa online przy herbacie. Definiujemy emocjonalny ton, paletę wrażeń sensorycznych, światło i kluczowe momenty, na których Wam zależy.
+            </p>
+            <div class="step-deliverable">
+              <span class="deliverable-label">Efekt etapu:</span>
+              <span class="deliverable-value">Autorski moodboard sensoryczny, schemat kolorystyczny i budżet ramowy</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="path-step">
+          <div class="step-marker">
+            <span class="step-num">02</span>
+            <span class="step-line"></span>
+          </div>
+          <div class="step-content">
+            <span class="step-eyebrow">Krok drugi</span>
+            <h3 class="step-title">Selekcja twórców & rzemieślników</h3>
+            <p class="step-desc">
+              Dobieramy artystów, którzy czują intymność: fotografowie pracujący na filmie 35mm, rzemieślnicy ceramiki stołowej, szefowie kuchni hołdujący formule farm-to-table.
+            </p>
+            <div class="step-deliverable">
+              <span class="deliverable-label">Efekt etapu:</span>
+              <span class="deliverable-value">Dedykowany zespół wykonawców, weryfikacja portfolio i negocjacje umów</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="path-step">
+          <div class="step-marker">
+            <span class="step-num">03</span>
+            <span class="step-line"></span>
+          </div>
+          <div class="step-content">
+            <span class="step-eyebrow">Krok trzeci</span>
+            <h3 class="step-title">Próba scenariusza i degustacja</h3>
+            <p class="step-desc">
+              Sprawdzamy rytm dnia w praktyce. Degustacja menu przy pełnym nakryciu stołu, dobór roczników win i budowa harmonogramu z naturalnymi przerwami na oddech.
+            </p>
+            <div class="step-deliverable">
+              <span class="deliverable-label">Efekt etapu:</span>
+              <span class="deliverable-value">Kompletny scenariusz logistyczny, próba nakrycia i plan minutowy z buforami</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="path-step">
+          <div class="step-marker">
+            <span class="step-num">04</span>
+            <span class="step-line"></span>
+          </div>
+          <div class="step-content">
+            <span class="step-eyebrow">Krok czwarty</span>
+            <h3 class="step-title">Dyskretna koordynacja w dniu ślubu</h3>
+            <p class="step-desc">
+              Nasz zespół czuwa w cieniu od świtu do wyjścia ostatnich gości. Wy nie zerkacie na zegarek — przeżywacie dzień, będąc w pełni obecnymi z bliskimi.
+            </p>
+            <div class="step-deliverable">
+              <span class="deliverable-label">Efekt etapu:</span>
+              <span class="deliverable-value">14 godzin dyskretnej obecności zespołu atelier i pełne bezpieczeństwo logistyki</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Opowieści Par / Editorial Love Stories -->
+    <section id="stories" class="stories-section">
+      <div class="section-header">
+        <span class="hero-eyebrow">OPOWIEŚCI PAR · EDITORIAL STORIES</span>
+        <h2 class="section-title">Chwile zapisane w świetle i pamięci.</h2>
+        <p class="section-sub">
+          Każda uroczystość prowadzona przez LUNEA to odrębna narracja filmowa — intymna, niewymuszona i pozbawiona pośpiechu.
+        </p>
+      </div>
+
+      <div class="stories-grid">
+        <!-- Story 01 -->
+        <article class="story-card">
+          <div class="story-visual">
+            <picture>
+              <source srcset="assets/story-lodz.webp" type="image/webp">
+              <img src="assets/story-lodz.webp" alt="Marta i Jan — Mazury" loading="lazy">
+            </picture>
+            <div class="story-badge">Warmia & Mazury</div>
+          </div>
+          <div class="story-content">
+            <div class="story-meta">
+              <span class="story-names">Marta & Jan</span>
+              <span class="story-details">48 gości · 3 dni · Sierpień</span>
+            </div>
+            <h3 class="story-heading">Trzydniowe spotkanie w leśnej posiadłości nad brzegiem jeziora</h3>
+            <blockquote class="story-quote">
+              „Chcieliśmy, aby goście zapomnieli o telefonach i poczuli się jak na letniej kolacji u starych przyjaciół. Lunea stworzyła dla nas przestrzeń czystej magii.”
+            </blockquote>
+            <p class="story-narrative">
+              Długi stół z surowego dębu ustawiony wprost na trawie pod koronami wiekowych sosen. Menu oparte na dzikich rybach i leśnych ziołach, wino lane z karafek, a o północy kąpiel w jeziorze przy świetle pochodni.
+            </p>
+          </div>
+        </article>
+
+        <!-- Story 02 -->
+        <article class="story-card">
+          <div class="story-visual">
+            <picture>
+              <source srcset="assets/story-laugh.webp" type="image/webp">
+              <img src="assets/story-laugh.webp" alt="Zofia i Aleksander — Warszawa" loading="lazy">
+            </picture>
+            <div class="story-badge">Warszawa · Śródmieście</div>
+          </div>
+          <div class="story-content">
+            <div class="story-meta">
+              <span class="story-names">Zofia & Aleksander</span>
+              <span class="story-details">34 gości · 1 noc · Październik</span>
+            </div>
+            <h3 class="story-heading">Kameralny wieczór w industrialnej oranżerii z muzyką na żywo</h3>
+            <blockquote class="story-quote">
+              „Nigdy nie sądziliśmy, że w centrum miasta można stworzyć tak intymną, niemal sakralną atmosferę. Niewidzialna reżyseria Lunea pozwoliła nam po prostu być.”
+            </blockquote>
+            <p class="story-narrative">
+              Zabytkowa żeliwna oranżeria wypełniona rzeźbiarskimi trawami i setkami cienkich świec stearynowych. Muzyka grana wyłącznie na pianinie i saksofonie, a kolacja przy świecach trwająca niespiesznie do czwartej rano.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Section 8: Pytania i Odpowiedzi / FAQ -->
+    <section id="faq" class="faq-section">
+      <div class="section-header">
+        <span class="hero-eyebrow">PYTANIA I ODPOWIEDZI · FAQ</span>
+        <h2 class="section-title">Wszystko, co warto wiedzieć przed spotkaniem.</h2>
+        <p class="section-sub">
+          Transparentność jest dla nas fundamentem zaufania. Oto odpowiedzi na najczęstsze pytania par.
+        </p>
+      </div>
+
+      <div class="faq-container">
+        <!-- FAQ Item 1 -->
+        <details class="faq-item" open>
+          <summary class="faq-question">
+            <span class="faq-q-text">Ile ślubów realizuje atelier LUNEA w jednym sezonie?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>
+              Przyjmujemy maksymalnie 8 projektów rocznie (nie więcej niż dwa w jednym miesiącu kalendarzowym). Ta rygorystyczna selekcja gwarantuje, że założyciele atelier osobiście czuwają nad każdym etapem koncepcji i produkcji, poświęcając Waszemu dniu setki godzin uważnej, rzemieślniczej pracy bez delegowania odpowiedzialności na przypadkowych stażystów.
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ Item 2 -->
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span class="faq-q-text">W jaki sposób konstruowany jest budżet i koszty współpracy?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>
+              Pracujemy w oparciu o przejrzyste, stałe wynagrodzenie (flat fee), bez jakichkolwiek prowizji czy ukrytych marż od polecanych twórców. Wszelkie rabaty branżowe uzyskane od ogrodników, fotografów czy winiarzy przekazujemy w całości parze. Budżet wydarzenia prowadzimy w formule transparentnej księgi ze stałym monitoringiem wydatków.
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ Item 3 -->
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span class="faq-q-text">Czy pracujecie z parami mieszkającymi na stałe za granicą?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>
+              Tak, ponad połowa naszych par mieszka na co dzień w Londynie, Zurychu, Berlinie czy Nowym Jorku. Całość procesu koncepcyjnego prowadzimy w elastycznej formule zdalnej (wideokonferencje, cyfrowe moodboardy, próbki papeterii i tkanin wysyłane kurierem), a spotkania na żywo planujemy podczas Waszych zaplanowanych wizyt w Polsce.
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ Item 4 -->
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span class="faq-q-text">Kiedy jest optymalny moment na rozpoczęcie współpracy?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>
+              Rekomendujemy kontakt z wyprzedzeniem od 6 do 12 miesięcy przed planowaną datą. Pozwala to na spokojny wybór wymarzonej przestrzeni i najlepszych twórców bez konieczności kompromisów. Zdarza nam się jednak realizować kameralne uroczystości z 3-miesięcznym wyprzedzeniem, o ile dysponujemy wolnym terminem w kalendarzu atelier.
+            </p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Section 9: Interactive Local Brief ("Lokalny brief — Zbierz najważniejsze ustalenia") -->
+    <section id="brief" class="brief-section">
+      <div class="section-header">
+        <span class="hero-eyebrow">LOKALNY BRIEF</span>
+        <h2 class="section-title">Zbierz najważniejsze ustalenia.</h2>
+        <p class="section-sub">Przygotuj krótkie podsumowanie koncepcji dnia.</p>
+      </div>
+
+      <div class="brief-container">
+        <!-- Form -->
+        <div class="brief-form-wrapper">
+          <h3 class="serif" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Parametry dnia</h3>
+          <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 2rem;">Wybierz wytyczne Waszego wydarzenia koncepcyjnego.</p>
+
+          <div class="brief-form">
+            <!-- 1. Data ślubu -->
+            <div class="form-group" id="formGroupDate">
+              <label class="form-label" for="weddingDate">1. Data ślubu</label>
+              <div class="date-input-wrapper">
+                <input type="date" id="weddingDate" class="form-control">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="noDateCheckbox"> Jeszcze nie wiem
+                </label>
+              </div>
+              <span class="error-message">Proszę wybrać przyszłą datę lub zaznaczyć „Jeszcze nie wiem”.</span>
+            </div>
+
+            <!-- 2. Szacowana liczba gości -->
+            <div class="form-group">
+              <label class="form-label">2. Szacowana liczba gości</label>
+              <div class="chips-grid" id="guestsChips">
+                <button type="button" class="chip" data-value="Do 30">Do 30</button>
+                <button type="button" class="chip" data-value="31–60">31–60</button>
+                <button type="button" class="chip" data-value="61–100">61–100</button>
+                <button type="button" class="chip" data-value="101–150">101–150</button>
+                <button type="button" class="chip" data-value="Ponad 150">Ponad 150</button>
+                <button type="button" class="chip" data-value="Jeszcze nie wiemy">Jeszcze nie wiemy</button>
+              </div>
+            </div>
+
+            <!-- 3. Orientacyjny budżet -->
+            <div class="form-group">
+              <label class="form-label">3. Orientacyjny budżet całego wydarzenia</label>
+              <div class="chips-grid" id="budgetChips">
+                <button type="button" class="chip" data-value="Do 30 000 zł">Do 30 000 zł</button>
+                <button type="button" class="chip" data-value="30 001–60 000 zł">30 001–60 000 zł</button>
+                <button type="button" class="chip" data-value="60 001–100 000 zł">60 001–100 000 zł</button>
+                <button type="button" class="chip" data-value="Powyżej 100 000 zł">Powyżej 100 000 zł</button>
+                <button type="button" class="chip" data-value="Jeszcze nie ustaliliśmy">Jeszcze nie ustaliliśmy</button>
+              </div>
+              <span class="form-help">To orientacyjny budżet pary, nie cena usługi LUNEA.</span>
+            </div>
+
+            <button type="button" id="generateBriefBtn" class="btn-primary" style="width: 100%;">Utwórz lokalne podsumowanie</button>
+          </div>
+        </div>
+
+        <!-- Live Summary Card -->
+        <div class="summary-card-wrapper">
+          <div class="summary-header">
+            <h3 class="summary-title serif">Podsumowanie</h3>
+            <span id="summaryStatus" class="summary-status">Niezapisane. Nie wysłano.</span>
+          </div>
+
+          <div class="summary-content">
+            <div class="summary-row">
+              <span class="summary-key">Data ślubu</span>
+              <span class="summary-val" id="sumDate">Nie wybrano</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-key">Liczba gości</span>
+              <span class="summary-val" id="sumGuests">Nie wybrano</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-key">Budżet</span>
+              <span class="summary-val" id="sumBudget">Nie wybrano</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-key">Wybrany moment</span>
+              <span class="summary-val" id="summaryMomentVal">09:30 · Przygotowania</span>
+            </div>
+          </div>
+
+          <!-- Hidden summary text field for copy -->
+          <textarea id="summaryTextarea" class="summary-textarea" readonly>LUNEA — LOKALNY BRIEF KONCEPCJI DNIA
+Kliknij "Utwórz lokalne podsumowanie", aby wygenerować tekst briefu.</textarea>
+
+          <div class="summary-actions">
+            <button type="button" id="copyBriefBtn" class="btn-primary" style="width: 100%;">Kopiuj do schowka</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="lunea-footer">
+    <div class="footer-content">
+      <div class="footer-logo">LUNEA<span>·</span>Atelier</div>
+      <p class="footer-manifesto">
+        Prywatne atelier tworzące kameralne śluby i kolacje z poszanowaniem ciszy, architektury i naturalnego światła.
+      </p>
+      <div class="footer-links">
+        <a href="#spaces">Przestrzenie</a>
+        <span>·</span>
+        <a href="#timeline">Oś dnia</a>
+        <span>·</span>
+        <a href="#nuance">Rzemiosło detalu</a>
+        <span>·</span>
+        <a href="#path">Droga</a>
+        <span>·</span>
+        <a href="#stories">Opowieści</a>
+        <span>·</span>
+        <a href="#faq">FAQ</a>
+        <span>·</span>
+        <a href="#brief">Brief</a>
+      </div>
+      <p class="footer-disclaimer">
+        Wszystkie materiały, osoby, kadry i opisy są elementami koncepcji portfolio LUNEA. Strona ma charakter pokazowy i nie stanowi oferty handlowej w rozumieniu kodeksu cywilnego.
+      </p>
+      <div class="footer-copy">
+        © 2026 LUNEA Atelier. Wszelkie prawa zastrzeżone.
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
 </body>
 </html>

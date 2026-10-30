@@ -1,75 +1,2900 @@
-<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="ModulArt — demonstracyjny konfigurator stałego domu modułowego, działki i zakresu projektu."><title>ModulArt — dom złożony z decyzji</title><link rel="stylesheet" href="mod-preview.css"><link rel="stylesheet" href="mod-expanded.css"><link rel="stylesheet" href="hero-v2.css"><meta name="robots" content="noindex, follow"></head><body>
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ModulArt — Skandynawskie Domy Modułowe CLT | Koto Design × Prefab Architecture</title>
+  <meta name="description" content="Architektoniczne domy modułowe z litego drewna CLT opalane metodą Shou Sugi Ban. Prefabrykacja w hali w 8 tygodni, montaż na działce w 96 godzin.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  
+  <!-- Typography: Plus Jakarta Sans, Playfair Display, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       TOKENS & BASE RESET (Koto Design x Prefab Architecture)
+       ========================================================================== */
+    :root {
+      --bg-canvas: #F5F1EA;
+      --bg-surface: #FAF8F5;
+      --bg-surface-subtle: #ECE6DC;
+      --bg-dark: #1E1E1C;
+      --bg-dark-surface: #272724;
+      --bg-pine: #2E352C;
+      --bg-pine-surface: #3B4438;
+      
+      --text-primary: #1E1E1C;
+      --text-secondary: #575752;
+      --text-tertiary: #84847D;
+      --text-inverse: #F5F1EA;
+      --text-inverse-muted: #B8B5AD;
+      --text-ochre: #C07A4A;
+      
+      --border-linen: #E3DDD3;
+      --border-linen-strong: #CDC5B7;
+      --border-dark: rgba(245, 241, 234, 0.12);
+      --border-dark-strong: rgba(245, 241, 234, 0.24);
+      
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-mono: 'JetBrains Mono', SFMono-Regular, Consolas, monospace;
+      
+      --container-max: 1400px;
+      --container-wide: 1560px;
+      --container-narrow: 1080px;
+      
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      
+      --shadow-subtle: 0 4px 16px rgba(30, 30, 28, 0.05);
+      --shadow-card: 0 16px 40px rgba(30, 30, 28, 0.08);
+      --shadow-elevated: 0 24px 60px rgba(30, 30, 28, 0.14);
+      
+      --ease-nordic: cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-fast: 160ms var(--ease-nordic);
+      --transition-normal: 280ms var(--ease-nordic);
+      --transition-slow: 450ms var(--ease-nordic);
+    }
+    
+    /* Zero-lag scroll rule */
+    html {
+      scroll-behavior: auto !important;
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      box-sizing: border-box;
+    }
+    
+    *, *::before, *::after {
+      box-sizing: inherit;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      line-height: 1.6;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+    
+    img, picture, svg {
+      display: block;
+      max-width: 100%;
+    }
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+    
+    .skip-to-content {
+      position: absolute;
+      top: -100px;
+      left: 16px;
+      background: var(--bg-dark);
+      color: var(--text-inverse);
+      padding: 12px 20px;
+      z-index: 10000;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: top 0.2s ease;
+    }
+    .skip-to-content:focus {
+      top: 16px;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    @media (min-width: 768px) {
+      .container {
+        padding: 0 40px;
+      }
+    }
+    @media (min-width: 1440px) {
+      .container {
+        padding: 0 60px;
+      }
+    }
+    
+    /* ==========================================================================
+       HEADER & NAVIGATION (Koto Minimalist Architecture)
+       ========================================================================== */
+    .site-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 24px 0;
+      transition: background-color var(--transition-normal);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .brand-group {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+    .brand-logo {
+      font-family: var(--font-sans);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+    .brand-sub {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.7);
+      text-transform: uppercase;
+      display: none;
+    }
+    @media (min-width: 860px) {
+      .brand-sub { display: inline-block; }
+    }
+    
+    .nav-menu {
+      display: none;
+      align-items: center;
+      gap: 28px;
+    }
+    @media (min-width: 1100px) {
+      .nav-menu { display: flex; }
+    }
+    .nav-link {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: rgba(255, 255, 255, 0.85);
+      transition: color var(--transition-fast);
+      position: relative;
+    }
+    .nav-link:hover {
+      color: #FFFFFF;
+    }
+    .nav-link span {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      opacity: 0.6;
+      margin-right: 4px;
+    }
+    
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .btn-header-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #FFFFFF;
+      padding: 10px 20px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      border-radius: var(--radius-full);
+      transition: all var(--transition-fast);
+    }
+    .btn-header-cta:hover {
+      background: #FFFFFF;
+      color: var(--bg-dark);
+      border-color: #FFFFFF;
+    }
+    
+    /* ==========================================================================
+       SCREEN 1 — EXACT 100VH HERO ON DESKTOP (2560x1310 & 1920x1080)
+       0px PEEK OF SCREEN 2 RULE
+       ========================================================================== */
+    .hero-monolith {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      color: #FFFFFF;
+      background-color: var(--bg-dark);
+      padding-bottom: 32px;
+    }
+    @media (min-width: 1024px) {
+      .hero-monolith {
+        height: 100vh;
+        max-height: 100vh;
+        overflow: hidden;
+        padding-bottom: 28px;
+        box-sizing: border-box;
+      }
+    }
+    
+    .hero-backdrop {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+    .hero-backdrop picture,
+    .hero-backdrop img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+    }
+    .hero-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(
+        180deg,
+        rgba(20, 20, 18, 0.6) 0%,
+        rgba(20, 20, 18, 0.25) 35%,
+        rgba(20, 20, 18, 0.6) 70%,
+        rgba(20, 20, 18, 0.92) 100%
+      );
+    }
+    
+    .hero-foreground {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      margin-top: auto;
+      padding-top: 100px;
+    }
+    
+    .hero-kicker-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #E2DFD2;
+      background: rgba(30, 30, 28, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 18px;
+      backdrop-filter: blur(8px);
+    }
+    .hero-kicker-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--text-ochre);
+      display: inline-block;
+    }
+    
+    .hero-title {
+      font-family: var(--font-sans);
+      font-size: clamp(2.2rem, 4.2vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+      max-width: 960px;
+    }
+    .hero-title em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      color: #FAF8F5;
+    }
+    
+    .hero-desc {
+      font-size: clamp(0.95rem, 1.25vw, 1.1rem);
+      line-height: 1.55;
+      font-weight: 300;
+      color: rgba(245, 241, 234, 0.88);
+      max-width: 680px;
+      margin-bottom: 24px;
+    }
+    
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .btn-hero-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #FFFFFF;
+      color: var(--bg-dark);
+      padding: 13px 26px;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: all var(--transition-fast);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+    .btn-hero-primary:hover {
+      background: #FAF8F5;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(0, 0, 0, 0.35);
+    }
+    .btn-hero-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(30, 30, 28, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
+      padding: 13px 24px;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 500;
+      backdrop-filter: blur(8px);
+      transition: all var(--transition-fast);
+    }
+    .btn-hero-secondary:hover {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: #FFFFFF;
+    }
+    
+    /* Live Model Quick Switcher on Screen 1 */
+    .hero-model-deck {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      background: rgba(18, 18, 16, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 12px;
+      border-radius: var(--radius-lg);
+    }
+    @media (min-width: 768px) {
+      .hero-model-deck {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+    }
+    .hero-model-card {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid transparent;
+      text-align: left;
+      transition: all var(--transition-fast);
+      cursor: pointer;
+    }
+    .hero-model-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .hero-model-card.active {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+    .hero-card-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: #C07A4A;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .hero-card-name {
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: #FFFFFF;
+    }
+    .hero-card-meta {
+      font-size: 0.75rem;
+      color: rgba(245, 241, 234, 0.7);
+    }
+    
+    /* ==========================================================================
+       CHAPTER 02 — THE KOTO DIFFERENCE & ARCHITECTURAL METRICS
+       ========================================================================== */
+    .section-difference {
+      padding: 100px 0;
+      background: var(--bg-canvas);
+      border-bottom: 1px solid var(--border-linen);
+    }
+    @media (min-width: 900px) {
+      .section-difference {
+        padding: 130px 0;
+      }
+    }
+    
+    .section-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 16px;
+      display: block;
+    }
+    
+    .difference-split {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: start;
+      margin-bottom: 70px;
+    }
+    @media (min-width: 960px) {
+      .difference-split {
+        grid-template-columns: 1.15fr 1fr;
+        gap: 60px;
+      }
+    }
+    
+    .difference-headline {
+      font-family: var(--font-sans);
+      font-size: clamp(2rem, 3.2vw, 2.9rem);
+      font-weight: 300;
+      line-height: 1.18;
+      letter-spacing: -0.025em;
+      color: var(--text-primary);
+    }
+    .difference-headline strong {
+      font-weight: 600;
+      color: var(--bg-dark);
+    }
+    .difference-headline em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--text-ochre);
+    }
+    
+    .difference-essay {
+      font-size: 1.02rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .difference-essay p strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    
+    /* Telemetry Counters Grid */
+    .telemetry-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      border-top: 1px solid var(--border-linen);
+      padding-top: 50px;
+    }
+    @media (min-width: 640px) {
+      .telemetry-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1024px) {
+      .telemetry-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    
+    .telemetry-card {
+      padding: 24px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-linen);
+      border-radius: var(--radius-md);
+      transition: transform var(--transition-fast), border-color var(--transition-fast);
+    }
+    .telemetry-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-linen-strong);
+    }
+    .telemetry-number {
+      font-family: var(--font-sans);
+      font-size: 2.8rem;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+    .telemetry-unit {
+      font-size: 1.3rem;
+      color: var(--text-ochre);
+      font-weight: 400;
+    }
+    .telemetry-label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .telemetry-desc {
+      font-size: 0.78rem;
+      color: var(--text-tertiary);
+      line-height: 1.45;
+    }
+    
+    /* ==========================================================================
+       CHAPTER 03 — INTERACTIVE MODEL MONOGRAPH & SVG FLOORPLAN INSPECTOR
+       ========================================================================== */
+    .section-models {
+      padding: 100px 0;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-linen);
+    }
+    @media (min-width: 900px) {
+      .section-models {
+        padding: 130px 0;
+      }
+    }
+    
+    .models-header {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    @media (min-width: 860px) {
+      .models-header {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+    }
+    
+    .models-title {
+      font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+    }
+    .models-title strong {
+      font-weight: 600;
+    }
+    
+    /* Interactive Model Tabs */
+    .model-tabs {
+      display: inline-flex;
+      background: var(--bg-surface-subtle);
+      padding: 4px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-linen);
+      gap: 4px;
+    }
+    .model-tab-btn {
+      padding: 10px 20px;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: all var(--transition-fast);
+    }
+    .model-tab-btn.active {
+      background: var(--bg-dark);
+      color: var(--text-inverse);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Model Monograph Display Area */
+    .model-stage {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-linen);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+    }
+    @media (min-width: 1080px) {
+      .model-stage {
+        grid-template-columns: 1.15fr 1fr;
+        padding: 36px;
+        gap: 44px;
+      }
+    }
+    
+    /* Visual side */
+    .model-visual-col {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .model-image-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #20201E;
+    }
+    .model-image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity var(--transition-normal);
+    }
+    .model-image-badge {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      background: rgba(30, 30, 28, 0.8);
+      backdrop-filter: blur(8px);
+      color: #FFFFFF;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    
+    .model-specs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    @media (min-width: 540px) {
+      .model-specs-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    .spec-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-linen);
+      padding: 14px 16px;
+      border-radius: var(--radius-sm);
+    }
+    .spec-box small {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-tertiary);
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .spec-box strong {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    
+    .model-pricing-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      background: var(--bg-surface-subtle);
+      border: 1px solid var(--border-linen);
+      padding: 18px 24px;
+      border-radius: var(--radius-md);
+    }
+    .pricing-text small {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: var(--text-tertiary);
+    }
+    .pricing-text strong {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .btn-model-order {
+      background: var(--bg-dark);
+      color: var(--text-inverse);
+      padding: 10px 22px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border-radius: var(--radius-full);
+      transition: background var(--transition-fast);
+    }
+    .btn-model-order:hover {
+      background: #000000;
+    }
+    
+    /* Floorplan side */
+    .model-plan-col {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .plan-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-linen);
+      padding-bottom: 12px;
+    }
+    .plan-title {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    .plan-scale {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-tertiary);
+    }
+    
+    /* Interactive SVG Container */
+    .blueprint-svg-wrap {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: #FAF7F0;
+      border: 1px solid var(--border-linen);
+      border-radius: var(--radius-md);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+    .blueprint-svg-wrap svg {
+      width: 100%;
+      height: 100%;
+    }
+    
+    /* Clickable Room Hover & Active in SVG */
+    .svg-room {
+      cursor: pointer;
+      transition: fill 0.2s ease, stroke 0.2s ease;
+    }
+    .svg-room:hover {
+      fill: rgba(192, 122, 74, 0.22) !important;
+      stroke: var(--text-ochre) !important;
+    }
+    .svg-room.active {
+      fill: rgba(192, 122, 74, 0.35) !important;
+      stroke: var(--text-ochre) !important;
+      stroke-width: 2px !important;
+    }
+    
+    /* Room Inspector Detail Box */
+    .room-inspector-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-linen);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .inspector-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .inspector-room-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .inspector-room-area {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-ochre);
+    }
+    .inspector-room-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    
+    /* ==========================================================================
+       CHAPTER 04 — INTERACTIVE CLT WALL & THERMAL CUTAWAY (340 MM)
+       ========================================================================== */
+    .section-cutaway {
+      padding: 100px 0;
+      background: var(--bg-canvas);
+      border-bottom: 1px solid var(--border-linen);
+    }
+    @media (min-width: 900px) {
+      .section-cutaway {
+        padding: 130px 0;
+      }
+    }
+    
+    .cutaway-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    @media (min-width: 980px) {
+      .cutaway-layout {
+        grid-template-columns: 1fr 1.1fr;
+        gap: 60px;
+      }
+    }
+    
+    .cutaway-info h2 {
+      font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .cutaway-info p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    
+    /* Interactive Layer Stack */
+    .layer-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .layer-item {
+      padding: 14px 18px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-linen);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .layer-item:hover {
+      background: #FFFFFF;
+      border-color: var(--border-linen-strong);
+      transform: translateX(4px);
+    }
+    .layer-item.active {
+      background: var(--bg-dark);
+      color: var(--text-inverse);
+      border-color: var(--bg-dark);
+      transform: translateX(6px);
+    }
+    .layer-item.active .layer-num {
+      color: var(--text-ochre);
+    }
+    .layer-item.active .layer-thick {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .layer-name-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .layer-num {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-tertiary);
+      font-weight: 500;
+    }
+    .layer-title {
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+    .layer-thick {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-tertiary);
+    }
+    
+    /* Cutaway Detail Visual Card */
+    .cutaway-diagram-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-linen);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .diagram-visual-layers {
+      height: 180px;
+      display: flex;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-linen);
+    }
+    .vis-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .vis-bar-1 { width: 12%; background: #262624; color: #FAF8F5; }
+    .vis-bar-2 { width: 10%; background: #D6D0C4; color: #333333; }
+    .vis-bar-3 { width: 38%; background: #8C7B62; color: #FAF8F5; }
+    .vis-bar-4 { width: 28%; background: #E2B878; color: #2E2518; }
+    .vis-bar-5 { width: 12%; background: #F3E5CB; color: #4A3A25; }
+    
+    .vis-bar.active {
+      filter: brightness(1.15);
+      outline: 3px solid var(--text-ochre);
+      outline-offset: -3px;
+    }
+    
+    .cutaway-layer-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .layer-meta-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+    .meta-layer-name {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .meta-layer-badge {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-ochre);
+      font-weight: 600;
+    }
+    .meta-layer-desc {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    
+    .cutaway-physics-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .physics-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      background: var(--bg-surface-subtle);
+      border: 1px solid var(--border-linen);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+    }
+    
+    /* ==========================================================================
+       CHAPTER 05 — 4-STEP OFF-SITE FACTORY PIPELINE (VARIANT C PREFAB DEPTH)
+       ========================================================================== */
+    .section-pipeline {
+      padding: 100px 0;
+      background: var(--bg-dark);
+      color: var(--text-inverse);
+      position: relative;
+    }
+    @media (min-width: 900px) {
+      .section-pipeline {
+        padding: 130px 0;
+      }
+    }
+    
+    .pipeline-header {
+      margin-bottom: 60px;
+    }
+    .pipeline-header .section-kicker {
+      color: #C07A4A;
+    }
+    .pipeline-title {
+      font-size: clamp(2rem, 3.2vw, 2.9rem);
+      font-weight: 300;
+      letter-spacing: -0.025em;
+      color: #FFFFFF;
+      max-width: 800px;
+      line-height: 1.2;
+    }
+    
+    .pipeline-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 768px) {
+      .pipeline-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1200px) {
+      .pipeline-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    
+    .pipeline-card {
+      background: var(--bg-dark-surface);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all var(--transition-fast);
+    }
+    .pipeline-card:hover {
+      border-color: var(--border-dark-strong);
+      transform: translateY(-4px);
+    }
+    
+    .pipeline-img-wrap {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      position: relative;
+      background: #121210;
+      overflow: hidden;
+    }
+    .pipeline-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .pipeline-card:hover .pipeline-img-wrap img {
+      transform: scale(1.04);
+    }
+    
+    .pipeline-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-grow: 1;
+    }
+    .pipeline-step-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .pipeline-num {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--text-ochre);
+      font-weight: 600;
+    }
+    .pipeline-timeline {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+    .pipeline-step-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      line-height: 1.3;
+    }
+    .pipeline-step-desc {
+      font-size: 0.85rem;
+      color: var(--text-inverse-muted);
+      line-height: 1.55;
+    }
+    
+    /* ==========================================================================
+       CHAPTER 06 — INTERACTIVE PACKAGE & OFF-GRID CONFIGURATOR
+       ========================================================================== */
+    .section-configurator {
+      padding: 100px 0;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-linen);
+    }
+    @media (min-width: 900px) {
+      .section-configurator {
+        padding: 130px 0;
+      }
+    }
+    
+    .config-title {
+      font-size: clamp(1.9rem, 3vw, 2.6rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .config-subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin-bottom: 40px;
+    }
+    
+    .config-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    @media (min-width: 1080px) {
+      .config-layout {
+        grid-template-columns: 1.3fr 1fr;
+        gap: 50px;
+      }
+    }
+    
+    .config-form-col {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    
+    .config-block {
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-linen);
+      border-radius: var(--radius-md);
+      padding: 24px;
+    }
+    .config-block-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .config-block-num {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-ochre);
+      font-weight: 600;
+    }
+    
+    .config-options-group {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    @media (min-width: 580px) {
+      .config-options-group.three-col {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .config-options-group.two-col {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    .config-opt-card {
+      border: 1px solid var(--border-linen);
+      background: var(--bg-surface);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .config-opt-card:hover {
+      border-color: var(--border-linen-strong);
+    }
+    .config-opt-card.selected {
+      background: var(--bg-dark);
+      color: var(--text-inverse);
+      border-color: var(--bg-dark);
+    }
+    .config-opt-card.selected .opt-price {
+      color: #E2B878;
+    }
+    .config-opt-card.selected .opt-desc {
+      color: var(--text-inverse-muted);
+    }
+    
+    .opt-name {
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+    .opt-price {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-ochre);
+    }
+    .opt-desc {
+      font-size: 0.76rem;
+      color: var(--text-tertiary);
+      line-height: 1.4;
+    }
+    
+    /* Configurator Summary Floating Panel */
+    .config-summary-card {
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-linen);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      position: sticky;
+      top: 32px;
+    }
+    .summary-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border-linen);
+      padding-bottom: 12px;
+    }
+    
+    .summary-line-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.88rem;
+    }
+    .summary-line-item span {
+      color: var(--text-secondary);
+    }
+    .summary-line-item strong {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    
+    .summary-total-box {
+      border-top: 2px solid var(--border-linen-strong);
+      padding-top: 18px;
+      margin-top: 8px;
+    }
+    .summary-total-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 4px;
+    }
+    .summary-total-amount {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+    
+    .energy-rating-badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-pine);
+      color: #FFFFFF;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      font-size: 0.82rem;
+    }
+    .energy-tag {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 700;
+      background: #48BB78;
+      color: #1A202C;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    
+    .btn-sync-to-plot {
+      background: var(--bg-dark);
+      color: var(--text-inverse);
+      padding: 14px 24px;
+      border-radius: var(--radius-full);
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-align: center;
+      transition: background var(--transition-fast);
+      display: block;
+      width: 100%;
+    }
+    .btn-sync-to-plot:hover {
+      background: #000000;
+    }
+    
+    /* ==========================================================================
+       CHAPTER 07 — PLOT VERIFICATION & ARCHITECTURAL BRIEF
+       ========================================================================== */
+    .section-plot {
+      padding: 100px 0;
+      background: var(--bg-canvas);
+      border-bottom: 1px solid var(--border-linen);
+    }
+    @media (min-width: 900px) {
+      .section-plot {
+        padding: 130px 0;
+      }
+    }
+    
+    .plot-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    @media (min-width: 980px) {
+      .plot-layout {
+        grid-template-columns: 1fr 1.3fr;
+        gap: 60px;
+      }
+    }
+    
+    .plot-info h2 {
+      font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .plot-info p {
+      font-size: 0.98rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    
+    .plot-audit-checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .plot-audit-checklist li {
+      font-size: 0.88rem;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      color: var(--text-primary);
+    }
+    .check-icon {
+      color: var(--text-ochre);
+      font-weight: bold;
+    }
+    
+    .plot-config-prefill {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-linen);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      font-size: 0.85rem;
+    }
+    .plot-config-prefill strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--text-primary);
+    }
+    
+    /* Form */
+    .plot-form {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-linen);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .form-group-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 600px) {
+      .form-group-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-field label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+    }
+    .form-field input,
+    .form-field select {
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-linen);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-size: 0.92rem;
+      font-family: inherit;
+      color: var(--text-primary);
+      transition: border-color var(--transition-fast);
+    }
+    .form-field input:focus,
+    .form-field select:focus {
+      outline: none;
+      border-color: var(--bg-dark);
+    }
+    
+    .form-checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+    .form-checkbox-row input {
+      margin-top: 3px;
+    }
+    
+    .btn-submit-plot {
+      background: var(--bg-dark);
+      color: var(--text-inverse);
+      padding: 14px 28px;
+      border-radius: var(--radius-full);
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: all var(--transition-fast);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-submit-plot:hover {
+      background: #000000;
+    }
+    
+    .plot-submit-feedback {
+      display: none;
+      background: var(--bg-surface-subtle);
+      border: 1px solid var(--border-linen);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-top: 10px;
+    }
+    .plot-submit-feedback.visible {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* ==========================================================================
+       CHAPTER 08 — ARCHITECTURAL COLOPHON & FOOTER
+       ========================================================================== */
+    .site-footer {
+      background: var(--bg-dark);
+      color: var(--text-inverse);
+      padding: 80px 0 100px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1.5fr 1fr 1fr;
+      }
+    }
+    
+    .footer-brand h3 {
+      font-size: 1.25rem;
+      letter-spacing: 0.16em;
+      margin-bottom: 12px;
+    }
+    .footer-brand p {
+      font-size: 0.88rem;
+      color: var(--text-inverse-muted);
+      line-height: 1.6;
+      max-width: 360px;
+    }
+    
+    .footer-col h4 {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #C07A4A;
+      margin-bottom: 16px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--text-inverse-muted);
+      transition: color var(--transition-fast);
+    }
+    .footer-links a:hover {
+      color: #FFFFFF;
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid var(--border-dark);
+      padding-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.4);
+    }
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+    
+    /* OVERFLOW BADGE */
+    .ov-badge {
+      position: fixed;
+      left: 14px;
+      bottom: 14px;
+      z-index: 2147483000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(18, 18, 16, 0.88);
+      color: #fff;
+      font: 500 11px/1.1 var(--font-sans);
+      letter-spacing: .02em;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 6px 24px rgba(0,0,0,.25);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .ov-badge__main {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: #fff;
+    }
+    .ov-badge__dot { opacity: 0.5; }
+    .ov-badge__type { opacity: 0.75; }
+    .ov-badge__cta {
+      color: #E2B878;
+      font-weight: 600;
+      padding-left: 4px;
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body>
 
-<a class="skip" href="#main">Przejdź do treści</a><header><a class="brand" href="#top">MODUL/ART</a><button class="menu-button" type="button" aria-expanded="false" aria-controls="siteNav" data-menu>Menu</button><nav id="siteNav" data-nav><a href="#build">Układ</a><a href="#readiness">Działka</a><a href="#sequence">Proces</a></nav><a href="#contact">Sprawdź projekt</a></header><main id="main">
-<section class="hero" id="top">
-  <picture class="hero-media">
-    <source media="(max-width:600px)" srcset="images/hero-mobile.webp">
-    <img src="images/hero.webp" alt="Koncepcyjny stały dom modułowy w leśnym otoczeniu" width="1400" height="781" fetchpriority="high">
-  </picture>
-  <div class="hero-scrim" aria-hidden="true"></div>
-  <div class="hero-frame">
-    <div class="hero-register"><span>MODULART / SYSTEM M-03</span><span>KONCEPCJA / 74 M²*</span></div>
-    <div class="hero-copy"><h1>Dom składa się z modułów. <em>Projekt: z decyzji.</em></h1><p>Najpierw układ, działka i zakres odpowiedzialności. Dopiero potem termin, cena i produkcja.</p></div>
-    <div class="hero-rail">
-      <div class="rail-total"><span>UKŁAD / M-03</span><strong>74 m²*</strong><small>3 moduły / 2 sypialnie</small></div>
-      <div class="rail-modules">
-        <a href="#build"><span>01</span><b>LIVING</b><small>32 m²*</small></a>
-        <a href="#build"><span>02</span><b>NIGHT</b><small>28 m²*</small></a>
-        <a href="#build"><span>03</span><b>WORK</b><small>14 m²*</small></a>
+  <a class="skip-to-content" href="#main-content">Przejdź do treści głównej</a>
+
+  <!-- SITE HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <div class="brand-group">
+          <a href="#top" class="brand-logo">MODUL/ART</a>
+          <span class="brand-sub">Nordic Timber Architecture</span>
+        </div>
+        
+        <nav class="nav-menu" aria-label="Główna nawigacja">
+          <a href="#difference" class="nav-link"><span>01</span>Dlaczego CLT</a>
+          <a href="#models" class="nav-link"><span>02</span>Modele & Rzuty</a>
+          <a href="#cutaway" class="nav-link"><span>03</span>Przekrój 340mm</a>
+          <a href="#pipeline" class="nav-link"><span>04</span>Fabryka Off-Site</a>
+          <a href="#configurator" class="nav-link"><span>05</span>Kalkulator</a>
+          <a href="#plot" class="nav-link"><span>06</span>Weryfikacja działki</a>
+        </nav>
+        
+        <div class="header-actions">
+          <a href="#plot" class="btn-header-cta">Konsultacja działki →</a>
+        </div>
       </div>
-      <a class="rail-cta" href="#build">Złóż pierwszy układ <span aria-hidden="true">→</span></a>
     </div>
-    <p class="hero-note">*Wizualizacja i układ demonstracyjne. Projekt wymaga dostosowania do działki.</p>
+  </header>
+
+  <main id="main-content">
+    
+    <!-- ========================================================================
+         SCREEN 1 — HERO MONOLITH (100vh Exact on Desktop, Zero-Peek Rule)
+         ======================================================================== -->
+    <section class="hero-monolith" id="top">
+      <div class="hero-backdrop">
+        <picture>
+          <source srcset="assets/01_hero_koto_cabin_dusk.webp" type="image/webp">
+          <img src="assets/01_hero_koto_cabin_dusk.jpg" alt="Skandynawski dom modułowy z drewna CLT o zmierzchu w sosnowym lesie" fetchpriority="high">
+        </picture>
+        <div class="hero-scrim" aria-hidden="true"></div>
+      </div>
+      
+      <div class="hero-foreground">
+        <div class="container">
+          <div class="hero-kicker-tag">
+            <span class="hero-kicker-dot"></span>
+            Architektura przestrzeni · Lite drewno CLT · Off-Site
+          </div>
+          
+          <h1 class="hero-title">
+            Zaprojektowany przez naturę.<br>
+            <em>Zbudowany w hali w 8 tygodni.</em>
+          </h1>
+          
+          <p class="hero-desc">
+            Architektura skandynawska w standardzie pasywnym. Domy modułowe z drewna opalanego Shou Sugi Ban i alpejskiego świerku CLT. Od adaptacji działki po montaż dźwigiem w 96 godzin.
+          </p>
+          
+          <div class="hero-cta-group">
+            <a href="#configurator" class="btn-hero-primary">Skonfiguruj dom modułowy ↓</a>
+            <a href="#models" class="btn-hero-secondary">Obejrzyj rzuty i specyfikację →</a>
+          </div>
+          
+          <!-- Live Model Quick-Switcher Deck -->
+          <div class="hero-model-deck" role="tablist" aria-label="Szybki wybór modeli">
+            <div class="hero-model-card" role="tab" tabindex="0" data-target-model="m01" aria-selected="false">
+              <span class="hero-card-tag">MODEL M-01</span>
+              <strong class="hero-card-name">Solitude · 48 m²</strong>
+              <span class="hero-card-meta">Bez pozwolenia do 70 m² · od 390 000 zł</span>
+            </div>
+            
+            <div class="hero-model-card active" role="tab" tabindex="0" data-target-model="m02" aria-selected="true">
+              <span class="hero-card-tag">MODEL M-02 (Flagowy)</span>
+              <strong class="hero-card-name">Horizon · 84 m²</strong>
+              <span class="hero-card-meta">Całoroczny dom rodzinny · od 640 000 zł</span>
+            </div>
+            
+            <div class="hero-model-card" role="tab" tabindex="0" data-target-model="m03" aria-selected="false">
+              <span class="hero-card-tag">MODEL M-03</span>
+              <strong class="hero-card-name">Courtyard · 128 m²</strong>
+              <span class="hero-card-meta">Rezydencja modułowa z patio · od 980 000 zł</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CHAPTER 02 — THE KOTO DIFFERENCE & ARCHITECTURAL METRICS
+         ======================================================================== -->
+    <section class="section-difference" id="difference">
+      <div class="container">
+        <span class="section-kicker">02 / ARCHITEKTURA, NIE KONTENER</span>
+        
+        <div class="difference-split">
+          <h2 class="difference-headline">
+            Architektura z litego drewna.<br>
+            Dom, który <em>starzeje się ze szlachetnością</em>.
+          </h2>
+          
+          <div class="difference-essay">
+            <p>
+              Większość tzw. «domów modułowych» na rynku to stalowe ramy kontenerowe lub pośpieszne szkielety z wełną mineralną, które po kilku sezonach cierpią na mostki termiczne i degradację przegród.
+            </p>
+            <p>
+              <strong>ModulArt tworzy całoroczne rezydencje w technologii CLT (Cross-Laminated Timber).</strong> Każdy moduł to samonośna, sztywna bryła z krzyżowo klejonego litego świerku o grubości przegrody do 340 mm. Połączona z izolacją z włókna drzewnego Steico i ręcznie opalaną elewacją Shou Sugi Ban, tworzy dom o parametrach budynku pasywnego.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Telemetry Counters -->
+        <div class="telemetry-grid">
+          <div class="telemetry-card">
+            <div class="telemetry-number">58 <span class="telemetry-unit">+</span></div>
+            <div class="telemetry-label">Dostarczonych domów</div>
+            <p class="telemetry-desc">Zrealizowanych w Polsce, Szwecji, Norwegii i Niemczech.</p>
+          </div>
+          
+          <div class="telemetry-card">
+            <div class="telemetry-number">92 <span class="telemetry-unit">%</span></div>
+            <div class="telemetry-label">Prefabrykacji w hali</div>
+            <p class="telemetry-desc">Konstrukcja, instalacje i wykończenie w kontrolowanym mikroklimacie.</p>
+          </div>
+          
+          <div class="telemetry-card">
+            <div class="telemetry-number">4 <span class="telemetry-unit">dni</span></div>
+            <div class="telemetry-label">Montażu na działce</div>
+            <p class="telemetry-desc">Od przyjazdu transportu po hermetyczne zamknięcie bryły.</p>
+          </div>
+          
+          <div class="telemetry-card">
+            <div class="telemetry-number">0.13 <span class="telemetry-unit">U</span></div>
+            <div class="telemetry-label">W/m²K przegrody</div>
+            <p class="telemetry-desc">Standard pasywny z przesunięciem fazowym ciepła ponad 11 godzin.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CHAPTER 03 — INTERACTIVE MODEL MONOGRAPH & SVG FLOORPLAN INSPECTOR
+         ======================================================================== -->
+    <section class="section-models" id="models">
+      <div class="container">
+        <div class="models-header">
+          <div>
+            <span class="section-kicker">03 / MONOGRAFIA MODELI I RZUTY</span>
+            <h2 class="models-title">Wybierz <strong>skalę swojego domu</strong></h2>
+          </div>
+          
+          <!-- Interactive Selector Tabs -->
+          <div class="model-tabs" role="tablist">
+            <button class="model-tab-btn" data-model="m01" role="tab" aria-selected="false">M-01 Solitude (48 m²)</button>
+            <button class="model-tab-btn active" data-model="m02" role="tab" aria-selected="true">M-02 Horizon (84 m²)</button>
+            <button class="model-tab-btn" data-model="m03" role="tab" aria-selected="false">M-03 Courtyard (128 m²)</button>
+          </div>
+        </div>
+        
+        <!-- Dynamic Model Stage -->
+        <div class="model-stage" id="model-stage">
+          
+          <!-- Left: Visual & Key Specs -->
+          <div class="model-visual-col">
+            <div class="model-image-frame">
+              <img id="model-main-img" src="assets/01_hero_koto_cabin_dusk.webp" alt="Wizualizacja modelu domu">
+              <span class="model-image-badge" id="model-badge">M-02 HORIZON · 84 M² NETTO</span>
+            </div>
+            
+            <div class="model-specs-grid">
+              <div class="spec-box">
+                <small>POWIERZCHNIA</small>
+                <strong id="spec-area">84 m²</strong>
+              </div>
+              <div class="spec-box">
+                <small>LOGISTYKA</small>
+                <strong id="spec-modules">2 moduły</strong>
+              </div>
+              <div class="spec-box">
+                <small>CZAS FABRYKI</small>
+                <strong id="spec-time">7 tygodni</strong>
+              </div>
+              <div class="spec-box">
+                <small>STANDARD</small>
+                <strong id="spec-standard">Pasywny A+++</strong>
+              </div>
+            </div>
+            
+            <div class="model-pricing-card">
+              <div class="pricing-text">
+                <small>ORIENTACYJNY KOSZT PREFABRYKACJI</small>
+                <strong id="spec-price">od 640 000 PLN brutto</strong>
+              </div>
+              <a href="#configurator" class="btn-model-order">Dopasuj w kalkulatorze →</a>
+            </div>
+          </div>
+          
+          <!-- Right: Architectural SVG Floorplan Inspector -->
+          <div class="model-plan-col">
+            <div class="plan-header">
+              <span class="plan-title" id="plan-title">RZUT ARCHITEKTONICZNY / MODEL M-02</span>
+              <span class="plan-scale">SKALA 1:75 · KLIKNIJ POMIESZCZENIE</span>
+            </div>
+            
+            <div class="blueprint-svg-wrap" id="blueprint-container">
+              <!-- SVG dynamically rendered by JS -->
+            </div>
+            
+            <!-- Room Inspector Output Drawer -->
+            <div class="room-inspector-panel" id="room-inspector">
+              <div class="inspector-head">
+                <span class="inspector-room-name" id="insp-name">Salon z jadalnią i kuchnią</span>
+                <span class="inspector-room-area" id="insp-area">38.4 m²</span>
+              </div>
+              <p class="inspector-room-desc" id="insp-desc">
+                Otwarta przestrzeń dzienna z panoramicznym narożnym oknem HS z widokiem na taras, sufitem katedralnym i miejscem na żeliwny piec wolnostojący.
+              </p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CHAPTER 04 — INTERACTIVE CLT WALL & THERMAL CUTAWAY (340 MM)
+         ======================================================================== -->
+    <section class="section-cutaway" id="cutaway">
+      <div class="container">
+        <span class="section-kicker">04 / FIZYKA BUDOWLI I ANATOMIA ŚCIANY</span>
+        
+        <div class="cutaway-layout">
+          <!-- Text & Layer Stack -->
+          <div class="cutaway-info">
+            <h2>Przekrój przegrody CLT <strong>340 mm</strong></h2>
+            <p>
+              Brak folii polietylenowych, brak syntetycznych pianek PUR. Ściana ModulArt to oddychająca, dyfuzyjnie otwarta konstrukcja z litego drewna i włókien drzewnych o potężnej bezwładności cieplnej.
+            </p>
+            
+            <div class="layer-stack" id="layer-stack">
+              <div class="layer-item active" data-layer="0">
+                <div class="layer-name-wrap">
+                  <span class="layer-num">01</span>
+                  <span class="layer-title">Opalany modrzew Shou Sugi Ban</span>
+                </div>
+                <span class="layer-thick">24 mm</span>
+              </div>
+              
+              <div class="layer-item" data-layer="1">
+                <div class="layer-name-wrap">
+                  <span class="layer-num">02</span>
+                  <span class="layer-title">Wentylowana szczelina + membrana UV</span>
+                </div>
+                <span class="layer-thick">30 mm</span>
+              </div>
+              
+              <div class="layer-item" data-layer="2">
+                <div class="layer-name-wrap">
+                  <span class="layer-num">03</span>
+                  <span class="layer-title">Włókno drzewne Steico Protect</span>
+                </div>
+                <span class="layer-thick">200 mm</span>
+              </div>
+              
+              <div class="layer-item" data-layer="3">
+                <div class="layer-name-wrap">
+                  <span class="layer-num">04</span>
+                  <span class="layer-title">Konstrukcja nośna CLT C24 świerk</span>
+                </div>
+                <span class="layer-thick">100 mm</span>
+              </div>
+              
+              <div class="layer-item" data-layer="4">
+                <div class="layer-name-wrap">
+                  <span class="layer-num">05</span>
+                  <span class="layer-title">Sklejka brzozowa klasy A</span>
+                </div>
+                <span class="layer-thick">12 mm</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Visual Cutaway Diagram -->
+          <div class="cutaway-diagram-card">
+            <div class="diagram-visual-layers">
+              <div class="vis-bar vis-bar-1 active" data-layer="0">01</div>
+              <div class="vis-bar vis-bar-2" data-layer="1">02</div>
+              <div class="vis-bar vis-bar-3" data-layer="2">03 Steico 200mm</div>
+              <div class="vis-bar vis-bar-4" data-layer="3">04 CLT 100mm</div>
+              <div class="vis-bar vis-bar-5" data-layer="4">05</div>
+            </div>
+            
+            <div class="cutaway-layer-meta">
+              <div class="layer-meta-head">
+                <h3 class="meta-layer-name" id="meta-name">01. Opalany modrzew Shou Sugi Ban</h3>
+                <span class="meta-layer-badge" id="meta-thick">Grubość: 24 mm</span>
+              </div>
+              <p class="meta-layer-desc" id="meta-desc">
+                Tradycyjna japońska technika ogniowej karbonizacji drewna Yakisugi. Zwęglona warstwa zamyka pory drewna, chroniąc je przed wilgocią, pleśnią, owadami i promieniami UV bez użycia chemicznych lakierów. Trwałość ponad 80 lat.
+              </p>
+              
+              <div class="cutaway-physics-tags">
+                <span class="physics-tag" id="tag-lambda">Przewodność λ: 0.13 W/(m·K)</span>
+                <span class="physics-tag" id="tag-phase">Przesunięcie fazowe: 11.4 h</span>
+                <span class="physics-tag" id="tag-sound">Izolacja akustyczna: Rw 48 dB</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CHAPTER 05 — 4-STEP OFF-SITE FACTORY PIPELINE (VARIANT C PREFAB)
+         ======================================================================== -->
+    <section class="section-pipeline" id="pipeline">
+      <div class="container">
+        <div class="pipeline-header">
+          <span class="section-kicker">05 / PROCES PRODUKCJI OFF-SITE</span>
+          <h2 class="pipeline-title">Od hali fabrycznej do lasu w <strong>4 precyzyjnych krokach</strong></h2>
+        </div>
+        
+        <div class="pipeline-grid">
+          <!-- Step 1 -->
+          <div class="pipeline-card">
+            <div class="pipeline-img-wrap">
+              <img src="assets/06_crane_foundation_assembly.webp" alt="Fundamenty śrubowe Krinner" loading="lazy">
+            </div>
+            <div class="pipeline-body">
+              <div class="pipeline-step-meta">
+                <span class="pipeline-num">KROK 01</span>
+                <span class="pipeline-timeline">TYDZIEŃ 1–2</span>
+              </div>
+              <h3 class="pipeline-step-name">Adaptacja działki i fundamenty śrubowe</h3>
+              <p class="pipeline-step-desc">
+                Badania geotechniczne i bezbetonowe fundamenty śrubowe Krinner wkręcane w 1 dzień. Zero ingerencji w system korzeniowy drzew i zero błota na działce.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Step 2 -->
+          <div class="pipeline-card">
+            <div class="pipeline-img-wrap">
+              <img src="assets/05_factory_cnc_precision.webp" alt="Prefabrykacja CNC w hali" loading="lazy">
+            </div>
+            <div class="pipeline-body">
+              <div class="pipeline-step-meta">
+                <span class="pipeline-num">KROK 02</span>
+                <span class="pipeline-timeline">TYDZIEŃ 3–7</span>
+              </div>
+              <h3 class="pipeline-step-name">Prefabrykacja CNC w suchej hali</h3>
+              <p class="pipeline-step-desc">
+                Cyfrowe cięcie płyt CLT z dokładnością do 1 mm. Montaż 3-szybowej stolarki okiennej, instalacji podtynkowych i wykończenia sklejkowego bez deszczu i mrozu.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Step 3 -->
+          <div class="pipeline-card">
+            <div class="pipeline-img-wrap">
+              <img src="assets/02_model_solitude_lake.webp" alt="Transport modułów" loading="lazy">
+            </div>
+            <div class="pipeline-body">
+              <div class="pipeline-step-meta">
+                <span class="pipeline-num">KROK 03</span>
+                <span class="pipeline-timeline">TYDZIEŃ 8</span>
+              </div>
+              <h3 class="pipeline-step-name">Nocny transport niskopodwoziowy</h3>
+              <p class="pipeline-step-desc">
+                Zabezpieczone moduły podróżują na naczepach niskopodwoziowych z licencjonowanym pilotażem bezpośrednio na przygotowaną platformę manewrową na działce.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Step 4 -->
+          <div class="pipeline-card">
+            <div class="pipeline-img-wrap">
+              <img src="assets/06_crane_foundation_assembly.webp" alt="Montaż dźwigiem w 96 godzin" loading="lazy">
+            </div>
+            <div class="pipeline-body">
+              <div class="pipeline-step-meta">
+                <span class="pipeline-num">KROK 04</span>
+                <span class="pipeline-timeline">DZIEŃ 1–4</span>
+              </div>
+              <h3 class="pipeline-step-name">Montaż dźwigiem w 96 godzin</h3>
+              <p class="pipeline-step-desc">
+                Dźwig 100t precyzyjnie osadza moduły na fundamentach. Hermetyzacja styków uszczelkami EPDM, spięcie instalacji plug-and-play i oddanie kluczy inwestorowi.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CHAPTER 06 — INTERACTIVE PACKAGE & OFF-GRID CONFIGURATOR
+         ======================================================================== -->
+    <section class="section-configurator" id="configurator">
+      <div class="container">
+        <span class="section-kicker">06 / KALKULATOR INWESTYCJI</span>
+        <h2 class="config-title">Skonfiguruj <strong>specyfikację i pakiet</strong></h2>
+        <p class="config-subtitle">
+          Wybierz model, standard wykończenia wnętrz oraz pakiet energetyczny. Kalkulator natychmiast przelicza całkowity szacunkowy koszt i bilans energetyczny.
+        </p>
+        
+        <div class="config-layout">
+          <!-- Left Controls -->
+          <div class="config-form-col">
+            
+            <!-- Step 1: Model Choice -->
+            <div class="config-block">
+              <h3 class="config-block-title">
+                <span class="config-block-num">01</span>
+                Wybór modelu domu
+              </h3>
+              <div class="config-options-group three-col">
+                <div class="config-opt-card" data-cfg-type="model" data-cfg-val="m01" data-cfg-price="390000">
+                  <span class="opt-name">M-01 Solitude</span>
+                  <span class="opt-price">390 000 zł</span>
+                  <span class="opt-desc">48 m² · 1 moduł · bez pozwolenia</span>
+                </div>
+                
+                <div class="config-opt-card selected" data-cfg-type="model" data-cfg-val="m02" data-cfg-price="640000">
+                  <span class="opt-name">M-02 Horizon</span>
+                  <span class="opt-price">640 000 zł</span>
+                  <span class="opt-desc">84 m² · 2 moduły · całoroczny</span>
+                </div>
+                
+                <div class="config-opt-card" data-cfg-type="model" data-cfg-val="m03" data-cfg-price="980000">
+                  <span class="opt-name">M-03 Courtyard</span>
+                  <span class="opt-price">980 000 zł</span>
+                  <span class="opt-desc">128 m² · 3 moduły · z patio</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Step 2: Interior Finish -->
+            <div class="config-block">
+              <h3 class="config-block-title">
+                <span class="config-block-num">02</span>
+                Standard wykończenia wnętrza
+              </h3>
+              <div class="config-options-group two-col">
+                <div class="config-opt-card" data-cfg-type="finish" data-cfg-val="shell" data-cfg-price="0">
+                  <span class="opt-name">Stan deweloperski CLT</span>
+                  <span class="opt-price">+0 zł</span>
+                  <span class="opt-desc">Ściany CLT zaimpregnowane, stolarka 3-szybowa, instalacje doprowadzone</span>
+                </div>
+                
+                <div class="config-opt-card selected" data-cfg-type="finish" data-cfg-val="turnkey" data-cfg-price="220000">
+                  <span class="opt-name">Pod klucz Koto Standard</span>
+                  <span class="opt-price">+220 000 zł</span>
+                  <span class="opt-desc">Sklejka brzozowa, dębowa podłoga, łazienka w mikrocemencie, piec żeliwny</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Step 3: Off-Grid Energy Package -->
+            <div class="config-block">
+              <h3 class="config-block-title">
+                <span class="config-block-num">03</span>
+                Autonomia energetyczna i OZE
+              </h3>
+              <div class="config-options-group two-col">
+                <div class="config-opt-card" data-cfg-type="energy" data-cfg-val="standard" data-cfg-price="0">
+                  <span class="opt-name">Standard sieciowy</span>
+                  <span class="opt-price">+0 zł</span>
+                  <span class="opt-desc">Rekuperacja z odzyskiem ciepła Zehnder + grzejniki niskotemperaturowe</span>
+                </div>
+                
+                <div class="config-opt-card selected" data-cfg-type="energy" data-cfg-val="offgrid" data-cfg-price="95000">
+                  <span class="opt-name">Pakiet Autonomiczny Off-Grid</span>
+                  <span class="opt-price">+95 000 zł</span>
+                  <span class="opt-desc">Pompa ciepła powietrze-woda + PV 8kWp + Magazyn Energii 15kWh</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Step 4: Plot Logistics -->
+            <div class="config-block">
+              <h3 class="config-block-title">
+                <span class="config-block-num">04</span>
+                Dojazd i warunki działki
+              </h3>
+              <div class="config-options-group two-col">
+                <div class="config-opt-card selected" data-cfg-type="logistics" data-cfg-val="standard" data-cfg-price="28000">
+                  <span class="opt-name">Dojazd standardowy</span>
+                  <span class="opt-price">+28 000 zł</span>
+                  <span class="opt-desc">Dojazd asfaltowy / utwardzony, teren płaski, praca dźwigu do 25m</span>
+                </div>
+                
+                <div class="config-opt-card" data-cfg-type="logistics" data-cfg-val="complex" data-cfg-price="48000">
+                  <span class="opt-name">Teren leśny / trudny</span>
+                  <span class="opt-price">+48 000 zł</span>
+                  <span class="opt-desc">Wąska droga leśna, skarpa, dźwig 100t o wysięgu 45m z podkładami</span>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          
+          <!-- Right Summary Card -->
+          <div class="config-summary-col">
+            <div class="config-summary-card">
+              <h3 class="summary-title">Podsumowanie konfiguracji</h3>
+              
+              <div class="summary-line-item">
+                <span>Model domu:</span>
+                <strong id="sum-model-name">M-02 Horizon (84 m²)</strong>
+              </div>
+              
+              <div class="summary-line-item">
+                <span>Cena bazy CLT:</span>
+                <strong id="sum-model-price">640 000 zł</strong>
+              </div>
+              
+              <div class="summary-line-item">
+                <span>Standard wykończenia:</span>
+                <strong id="sum-finish-price">+220 000 zł</strong>
+              </div>
+              
+              <div class="summary-line-item">
+                <span>Pakiet energetyczny:</span>
+                <strong id="sum-energy-price">+95 000 zł</strong>
+              </div>
+              
+              <div class="summary-line-item">
+                <span>Logistyka i montaż:</span>
+                <strong id="sum-logistics-price">+28 000 zł</strong>
+              </div>
+              
+              <div class="energy-rating-badge">
+                <span class="energy-tag">A+++</span>
+                <div>
+                  <strong>Bilans zeroenergetyczny</strong><br>
+                  <small>Roczny koszt ogrzewania: ~0 zł z PV i pompą</small>
+                </div>
+              </div>
+              
+              <div class="summary-total-box">
+                <div class="summary-total-label">Szacunkowa łączna inwestycja</div>
+                <div class="summary-total-amount" id="sum-total">983 000 zł</div>
+              </div>
+              
+              <a href="#plot" class="btn-sync-to-plot" id="btn-sync-config">Przejdź do weryfikacji działki ↓</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CHAPTER 07 — PLOT VERIFICATION & ARCHITECTURAL BRIEF
+         ======================================================================== -->
+    <section class="section-plot" id="plot">
+      <div class="container">
+        <span class="section-kicker">07 / WERYFIKACJA DZIAŁKI</span>
+        
+        <div class="plot-layout">
+          <div class="plot-info">
+            <h2>Sprawdź swoją działkę <strong>przed rozpoczęciem projektu</strong></h2>
+            <p>
+              Nie każdy dom modułowy wjedzie na każdą działkę. Promień skrętu zestawu o długości 18 metrów, linie napowietrzne oraz nośność gruntu to kryteria, które weryfikujemy bezpłatnie na podstawie danych geodezyjnych.
+            </p>
+            
+            <ul class="plot-audit-checklist">
+              <li><span class="check-icon">✓</span> Analiza dojazdu naczepy w Systemie Informacji Przestrzennej (GIS)</li>
+              <li><span class="check-icon">✓</span> Weryfikacja strefy pracy i podpór dźwigu kołowego</li>
+              <li><span class="check-icon">✓</span> Ocena możliwości posadowienia na śrubach Krinner bez betonu</li>
+              <li><span class="check-icon">✓</span> Sprawdzenie zgodności z MPZP lub Warunkami Zabudowy (WZ)</li>
+            </ul>
+            
+            <div class="plot-config-prefill">
+              <strong>Aktualnie skonfigurowano:</strong>
+              <span id="plot-selected-desc">Model M-02 Horizon (84 m²) · Pod klucz Koto · Pakiet Off-Grid</span>
+            </div>
+          </div>
+          
+          <!-- Plot Form -->
+          <form class="plot-form" id="plot-inquiry-form" onsubmit="return false;">
+            <div class="form-group-row">
+              <div class="form-field">
+                <label for="plot-number">Numer działki i obręb</label>
+                <input type="text" id="plot-number" required placeholder="np. 142401_1.0003.124/2">
+              </div>
+              
+              <div class="form-field">
+                <label for="plot-muni">Gmina / Miejscowość</label>
+                <input type="text" id="plot-muni" required placeholder="np. Szklarska Poręba, dolnośląskie">
+              </div>
+            </div>
+            
+            <div class="form-group-row">
+              <div class="form-field">
+                <label for="client-name">Imię i nazwisko</label>
+                <input type="text" id="client-name" required placeholder="Jan Kowalski">
+              </div>
+              
+              <div class="form-field">
+                <label for="client-phone">Numer telefonu</label>
+                <input type="tel" id="client-phone" required placeholder="+48 600 000 000">
+              </div>
+            </div>
+            
+            <div class="form-group-row">
+              <div class="form-field">
+                <label for="client-email">Adres e-mail</label>
+                <input type="email" id="client-email" required placeholder="jan@kowalski.pl">
+              </div>
+              
+              <div class="form-field">
+                <label for="plot-timeline">Planowany termin montażu</label>
+                <select id="plot-timeline">
+                  <option value="3m">Najbliższe 3–6 miesięcy</option>
+                  <option value="6m" selected>W tym roku (6–12 miesięcy)</option>
+                  <option value="12m">Kolejny rok</option>
+                </select>
+              </div>
+            </div>
+            
+            <label class="form-checkbox-row">
+              <input type="checkbox" id="plot-legal" checked>
+              <span>Posiadam wypis z MPZP lub prawomocne Warunki Zabudowy dla tej działki</span>
+            </label>
+            
+            <button type="button" class="btn-submit-plot" id="btn-submit-audit">
+              Zamów bezpłatną analizę działki →
+            </button>
+            
+            <div class="plot-submit-feedback" id="plot-feedback">
+              <strong style="color: #2E352C; display: block; margin-bottom: 6px;">✓ Zgłoszenie przyjęte pomyślnie!</strong>
+              <p style="font-size: 0.88rem; color: #575752; line-height: 1.5;">
+                Nasz architekt sprawdzi parametry działki <strong id="fb-plot-num"></strong> w geoportalu pod kątem wjazdu naczepy i dojazdu dźwigu dla wybranego modelu <strong id="fb-model-name"></strong>. Karta dojazdu zostanie przesłana na wskazany adres e-mail w ciągu 24h roboczych.
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CHAPTER 08 — ARCHITECTURAL COLOPHON & FOOTER
+         ======================================================================== -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <h3>MODUL/ART</h3>
+            <p>
+              Projektowanie i prefabrykacja całorocznych domów z drewna CLT w standardzie skandynawskim. Produkcja off-site w Bydgoszczy, montaż w całej Europie.
+            </p>
+          </div>
+          
+          <div class="footer-col">
+            <h4>Kolekcja domów</h4>
+            <ul class="footer-links">
+              <li><a href="#models" data-footer-model="m01">M-01 Solitude · 48 m²</a></li>
+              <li><a href="#models" data-footer-model="m02">M-02 Horizon · 84 m²</a></li>
+              <li><a href="#models" data-footer-model="m03">M-03 Courtyard · 128 m²</a></li>
+              <li><a href="#cutaway">Technologia CLT & Steico</a></li>
+              <li><a href="#pipeline">4 Kroki Fabryki Off-Site</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-col">
+            <h4>Kontakt & Showhouse</h4>
+            <ul class="footer-links">
+              <li><a href="tel:+48587123456">+48 58 712 34 56</a></li>
+              <li><a href="mailto:kontakt@modulart-timber.pl">kontakt@modulart-timber.pl</a></li>
+              <li><span>Showhouse: ul. Leśna Przystań 12, Gdynia</span></li>
+              <li><span>Hala produkcyjna: Park Przemysłowy, Bydgoszcz</span></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <span>© 2026 ModulArt Timber Architecture Sp. z o.o. Wszelkie prawa zastrzeżone.</span>
+          <span>Koncepcja architektoniczna i wdrożenie: Koto Design × Prefab Architecture Synthesis.</span>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- OVERFLOW BADGE -->
+  <div class="ov-badge" id="ov-badge">
+    <a class="ov-badge__main" href="https://overflow-web.pl/work/modulart/">
+      <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">case #8</span>
+    </a>
+    <a class="ov-badge__cta" href="#plot">brief ↗</a>
   </div>
-</section>
 
-<section class="builder" id="build"><div class="builder-head"><h2>Dodaj przestrzeń tylko wtedy, gdy ma zadanie.</h2><p>Konfigurator jest demonstracją. Powierzchnia i zakres cenowy są orientacyjne, bez działki, przyłączy, transportu i formalności.</p></div><div class="machine"><div class="controls"><button data-module="living"><b>+ LIVING</b><span>kuchnia, jadalnia, salon · 32 m²</span></button><button data-module="night"><b>+ NIGHT</b><span>2 sypialnie, łazienka · 28 m²</span></button><button data-module="work"><b>+ WORK</b><span>gabinet / gościnny · 14 m²</span></button><button id="reset" class="reset">Wyczyść układ</button><p id="moduleStatus" role="status">Układ zawiera 2 moduły.</p></div><div class="plan"><div class="plan-top"><span>RZUT ROBOCZY / M‑<b id="count">02</b></span><span>SKALA POGLĄDOWA</span></div><div id="modules" aria-live="polite"></div><div class="plan-meta"><p><small>POWIERZCHNIA</small><b id="area">60 m²</b></p><p><small>UŻYTKOWNICY</small><b id="people">2–4 osoby</b></p><p><small>RANGE / DEMO</small><b id="price">540–690 tys. zł</b></p></div></div></div></section>
+  <!-- ========================================================================
+       APPLICATION JAVASCRIPT (MODELS, SVG FLOORPLANS, CLT CUTAWAY, CONFIGURATOR)
+       ======================================================================== -->
+  <script>
+    (function() {
+      'use strict';
 
-<section class="use-cases" aria-labelledby="use-title"><div><h2 id="use-title">Ten sam system. Inny dzień życia.</h2><p>Układ zaczyna się od sposobu używania domu, nie od maksymalnej liczby metrów.</p></div><div class="case-strip"><article><span>M‑01 / 46 M²*</span><strong>Dom dla dwojga</strong><p>Wspólna strefa, jedna sypialnia i wydzielone miejsce pracy.</p></article><article><span>M‑02 / 60 M²*</span><strong>Codzienność rodziny</strong><p>Living i Night tworzą prosty podział dnia i odpoczynku.</p></article><article><span>M‑03 / 74 M²*</span><strong>Praca i goście</strong><p>Dodatkowy moduł może działać jako gabinet albo pokój okresowy.</p></article></div><small>*warianty demonstracyjne, wymagają projektu do działki</small></section>
+      // ------------------------------------------------------------------------
+      // DATA: MODELS CATALOG & SVG BLUEPRINTS
+      // ------------------------------------------------------------------------
+      const MODELS_DATA = {
+        m01: {
+          id: 'm01',
+          name: 'M-01 Solitude',
+          area: '48 m²',
+          modules: '1 moduł (14.5 × 3.8 m)',
+          time: '6 tygodni',
+          standard: 'Pasywny A+++',
+          priceBase: 390000,
+          priceText: 'od 390 000 PLN brutto',
+          badge: 'M-01 SOLITUDE · 48 M² NETTO',
+          img: 'assets/02_model_solitude_lake.webp',
+          desc: 'Kompaktowy całoroczny dom na zgłoszenie (do 70 m² powierzchni zabudowy). Zaprojektowany jako leśny azyl, studio twórcze lub dom weekendowy z panoramicznym narożnym oknem na jezioro.',
+          rooms: [
+            { id: 'm1_salon', name: 'Salon z aneksem kuchennym', area: '24.5 m²', desc: 'Strefa dzienna z panoramicznym oknem narożnym, piecem żeliwnym i wyjściem na zadaszony taras.' },
+            { id: 'm1_bed', name: 'Sypialnia z widokiem', area: '14.2 m²', desc: 'Prywatna przestrzeń z zabudową z naturalnej sklejki brzozowej i miejscem na podwójne łóżko 160×200.' },
+            { id: 'm1_bath', name: 'Łazienka spa', area: '5.8 m²', desc: 'Wykończona szarym mikrocementem, z prysznicem walk-in i ukrytą armaturą w kolorze czarnym matowym.' },
+            { id: 'm1_tech', name: 'Wiatrołap i szafa techniczna', area: '3.5 m²', desc: 'Kompaktowa rekuperacja Zehnder, bojler pompy ciepła i szafa gospodarcza.' }
+          ],
+          svg: `
+            <svg viewBox="0 0 600 360" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Rzut M-01">
+              <!-- Grid Background Lines -->
+              <defs>
+                <pattern id="gridM1" width="30" height="30" patternUnits="userSpaceOnUse">
+                  <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#E3DDD3" stroke-width="0.5"/>
+                </pattern>
+              </defs>
+              <rect width="600" height="360" fill="url(#gridM1)" opacity="0.6"/>
+              
+              <!-- Outer House Module Boundary -->
+              <rect x="50" y="60" width="500" height="240" fill="#FAF8F5" stroke="#1E1E1C" stroke-width="4"/>
+              
+              <!-- Dimension markers -->
+              <text x="300" y="45" font-family="'JetBrains Mono', monospace" font-size="11" fill="#84847D" text-anchor="middle">14.50 m</text>
+              <text x="30" y="185" font-family="'JetBrains Mono', monospace" font-size="11" fill="#84847D" text-anchor="middle" transform="rotate(-90 30 185)">3.80 m</text>
+              
+              <!-- Room 1: Salon + Aneks (x: 50, y: 60, w: 280, h: 240) -->
+              <rect class="svg-room active" data-room-idx="0" x="54" y="64" width="272" height="232" fill="#EFECE5" stroke="#2A2A28" stroke-width="1.5"/>
+              <text x="190" y="170" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="600" fill="#1E1E1C" text-anchor="middle">01. SALON + ANEKS</text>
+              <text x="190" y="195" font-family="'JetBrains Mono', monospace" font-size="12" fill="#C07A4A" text-anchor="middle">24.5 m²</text>
+              
+              <!-- Internal Wall -->
+              <line x1="330" y1="60" x2="330" y2="300" stroke="#1E1E1C" stroke-width="3"/>
+              
+              <!-- Room 2: Sypialnia (x: 330, y: 60, w: 220, h: 140) -->
+              <rect class="svg-room" data-room-idx="1" x="334" y="64" width="212" height="132" fill="#EFECE5" stroke="#2A2A28" stroke-width="1.5"/>
+              <text x="440" y="125" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="600" fill="#1E1E1C" text-anchor="middle">02. SYPIALNIA</text>
+              <text x="440" y="148" font-family="'JetBrains Mono', monospace" font-size="11" fill="#C07A4A" text-anchor="middle">14.2 m²</text>
+              
+              <!-- Dividing Wall between Bed & Bath/Tech -->
+              <line x1="330" y1="200" x2="550" y2="200" stroke="#1E1E1C" stroke-width="2"/>
+              <line x1="450" y1="200" x2="450" y2="300" stroke="#1E1E1C" stroke-width="2"/>
+              
+              <!-- Room 3: Łazienka (x: 330, y: 200, w: 120, h: 100) -->
+              <rect class="svg-room" data-room-idx="2" x="334" y="204" width="112" height="92" fill="#EFECE5" stroke="#2A2A28" stroke-width="1.5"/>
+              <text x="390" y="246" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#1E1E1C" text-anchor="middle">03. ŁAZIENKA</text>
+              <text x="390" y="266" font-family="'JetBrains Mono', monospace" font-size="10" fill="#C07A4A" text-anchor="middle">5.8 m²</text>
+              
+              <!-- Room 4: Wiatrołap / Tech (x: 450, y: 200, w: 100, h: 100) -->
+              <rect class="svg-room" data-room-idx="3" x="454" y="204" width="92" height="92" fill="#EFECE5" stroke="#2A2A28" stroke-width="1.5"/>
+              <text x="500" y="246" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#1E1E1C" text-anchor="middle">04. TECH</text>
+              <text x="500" y="266" font-family="'JetBrains Mono', monospace" font-size="10" fill="#C07A4A" text-anchor="middle">3.5 m²</text>
+              
+              <!-- Windows / Glass Sliding indications -->
+              <rect x="60" y="56" width="120" height="8" fill="#48BB78" stroke="#1E1E1C" stroke-width="1"/>
+              <rect x="546" y="80" width="8" height="60" fill="#48BB78" stroke="#1E1E1C" stroke-width="1"/>
+              
+              <!-- North Compass -->
+              <g transform="translate(540, 30)">
+                <circle cx="15" cy="15" r="14" fill="#FAF8F5" stroke="#84847D" stroke-width="1"/>
+                <polygon points="15,4 19,16 11,16" fill="#1E1E1C"/>
+                <text x="15" y="2" font-family="'JetBrains Mono', monospace" font-size="8" fill="#1E1E1C" text-anchor="middle">N</text>
+              </g>
+            </svg>
+          `
+        },
+        m02: {
+          id: 'm02',
+          name: 'M-02 Horizon',
+          area: '84 m²',
+          modules: '2 moduły (po 12.0 × 3.8 m)',
+          time: '7 tygodni',
+          standard: 'Pasywny A+++',
+          priceBase: 640000,
+          priceText: 'od 640 000 PLN brutto',
+          badge: 'M-02 HORIZON · 84 M² NETTO',
+          img: 'assets/01_hero_koto_cabin_dusk.webp',
+          desc: 'Flagowy model ModulArt dla rodziny 2+2. Dwa połączone moduły tworzą klarowny podział na strefę dzienną (Living z jadalnią i oknem na las) oraz nocną (dwie sypialnie, duża łazienka, pralnia).',
+          rooms: [
+            { id: 'm2_living', name: 'Strefa dzienna Living & Kitchen', area: '38.4 m²', desc: 'Wysoki sufit katedralny, potrójne przeszklenie HS o długości 6 metrów otwierające się na drewniany taras.' },
+            { id: 'm2_master', name: 'Sypialnia Master', area: '16.2 m²', desc: 'Narożne przeszklenie z widokiem na korony drzew, wbudowana garderoba ze sklejki brzozowej.' },
+            { id: 'm2_bed2', name: 'Sypialnia 2 / Gabinet pracy', area: '12.8 m²', desc: 'Elastyczny pokój dla dziecka lub domowe biuro z biurkiem z litego dębu i wyciszoną ścianą CLT.' },
+            { id: 'm2_bath', name: 'Łazienka rodzinna', area: '7.6 m²', desc: 'Wanna wolnostojąca z kompozytu, prysznic walk-in, podwójna umywalka, podłoga z naturalnego łupka.' },
+            { id: 'm2_hall', name: 'Wiatrołap i spiżarnia', area: '9.0 m²', desc: 'Szafy wnękowe z siedziskiem, wejście do stacji pomp i centrali rekuperacyjnej Zehnder.' }
+          ],
+          svg: `
+            <svg viewBox="0 0 600 360" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Rzut M-02">
+              <defs>
+                <pattern id="gridM2" width="30" height="30" patternUnits="userSpaceOnUse">
+                  <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#E3DDD3" stroke-width="0.5"/>
+                </pattern>
+              </defs>
+              <rect width="600" height="360" fill="url(#gridM2)" opacity="0.6"/>
+              
+              <!-- Outer House (2 parallel modules connected) -->
+              <!-- Module A (Living): x: 50, y: 50, w: 260, h: 260 -->
+              <rect x="50" y="50" width="260" height="260" fill="#FAF8F5" stroke="#1E1E1C" stroke-width="4"/>
+              
+              <!-- Module B (Night): x: 310, y: 50, w: 240, h: 260 -->
+              <rect x="310" y="50" width="240" height="260" fill="#FAF8F5" stroke="#1E1E1C" stroke-width="4"/>
+              
+              <!-- Factory Joint (Hermetic EPDM connection) -->
+              <line x1="310" y1="50" x2="310" y2="310" stroke="#C07A4A" stroke-dasharray="4 4" stroke-width="2"/>
+              <text x="310" y="42" font-family="'JetBrains Mono', monospace" font-size="9" fill="#C07A4A" text-anchor="middle">STYK MODUŁÓW</text>
+              
+              <!-- Room 1: Living (all of Module A) -->
+              <rect class="svg-room active" data-room-idx="0" x="54" y="54" width="252" height="252" fill="#EFECE5" stroke="#2A2A28" stroke-width="1.5"/>
+              <text x="180" y="170" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="600" fill="#1E1E1C" text-anchor="middle">01. LIVING & KUCHNIA</text>
+              <text x="180" y="195" font-family="'JetBrains Mono', monospace" font-size="12" fill="#C07A4A" text-anchor="middle">38.4 m²</text>
+              
+              <!-- Room 2: Sypialnia Master (top of Module B) -->
+              <rect class="svg-room" data-room-idx="1" x="314" y="54" width="232" height="110" fill="#EFECE5" stroke="#2A2A28" stroke-width="1.5"/>
+              <text x="430" y="105" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#1E1E1C" text-anchor="middle">02. MASTER BEDROOM</text>
+              <text x="430" y="125" font-family="'JetBrains Mono', monospace" font-size="11" fill="#C07A4A" text-anchor="middle">16.2 m²</text>
+              <line x1="310" y1="168" x2="550" y2="168" stroke="#1E1E1C" stroke-width="2"/>
+              
+              <!-- Room 3: Sypialnia 2 (bottom right of Module B) -->
+              <rect class="svg-room" data-room-idx="2" x="424" y="172" width="122" height="134" fill="#EFECE5" stroke="#2A2A28" stroke-width="1.5"/>
+              <text x="485" y="235" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#1E1E1C" text-anchor="middle">03. POKÓJ 2</text>
+              <text x="485" y="255" font-family="'JetBrains Mono', monospace" font-size="10" fill="#C07A4A" text-anchor="middle">12.8 m²</text>
+              <line x1="420" y1="168" x2="420" y2="310" stroke="#1E1E1C" stroke-width="2"/>
+              
+              <!-- Room 4: Łazienka (middle left of Module B) -->
+              <rect class="svg-room" data-room-idx="3" x="314" y="172" width="102" height="74" fill="#EFECE5" stroke="#2A2A28" stroke-width="1.5"/>
+              <text x="365" y="210" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="#1E1E1C" text-anchor="middle">04. ŁAZIENKA</text>
+              <text x="365" y="226" font-family="'JetBrains Mono', monospace" font-size="9" fill="#C07A4A" text-anchor="middle">7.6 m²</text>
+              <line x1="310" y1="250" x2="420" y2="250" stroke="#1E1E1C" stroke-width="2"/>
+              
+              <!-- Room 5: Wiatrołap & Hol -->
+              <rect class="svg-room" data-room-idx="4" x="314" y="254" width="102" height="52" fill="#EFECE5" stroke="#2A2A28" stroke-width="1.5"/>
+              <text x="365" y="280" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="#1E1E1C" text-anchor="middle">05. HOL</text>
+              <text x="365" y="294" font-family="'JetBrains Mono', monospace" font-size="9" fill="#C07A4A" text-anchor="middle">9.0 m²</text>
+              
+              <!-- Large Windows -->
+              <rect x="56" y="306" width="160" height="8" fill="#48BB78" stroke="#1E1E1C" stroke-width="1"/>
+              <rect x="46" y="100" width="8" height="120" fill="#48BB78" stroke="#1E1E1C" stroke-width="1"/>
+              <rect x="546" y="70" width="8" height="60" fill="#48BB78" stroke="#1E1E1C" stroke-width="1"/>
+              
+              <!-- North Compass -->
+              <g transform="translate(540, 25)">
+                <circle cx="15" cy="15" r="14" fill="#FAF8F5" stroke="#84847D" stroke-width="1"/>
+                <polygon points="15,4 19,16 11,16" fill="#1E1E1C"/>
+                <text x="15" y="2" font-family="'JetBrains Mono', monospace" font-size="8" fill="#1E1E1C" text-anchor="middle">N</text>
+              </g>
+            </svg>
+          `
+        },
+        m03: {
+          id: 'm03',
+          name: 'M-03 Courtyard',
+          area: '128 m²',
+          modules: '3 moduły w układzie L',
+          time: '8 tygodni',
+          standard: 'Pasywny A+++',
+          priceBase: 980000,
+          priceText: 'od 980 000 PLN brutto',
+          badge: 'M-03 COURTYARD · 128 M² NETTO',
+          img: 'assets/03_model_residence_courtyard.webp',
+          desc: 'Reprezentacyjna parterowa rezydencja modułowa w układzie litery L. Dwa skrzydła otaczają zaciszny żwirowy dziedziniec z tarasem modrzewiowym, zapewniając pełną prywatność i rozległe widoki na przyrodę.',
+          rooms: [
+            { id: 'm3_living', name: 'Główne skrzydło dzienne', area: '54.0 m²', desc: 'Spektakularny salon z jadalnią, wyspą kuchenną z czarnego granitu i przeszkleniami na dwie strony świata.' },
+            { id: 'm3_private', name: 'Skrzydło sypialniane (3 sypialnie)', area: '46.0 m²', desc: 'Odseparowane skrzydło nocne: sypialnia główna z garderobą walk-in oraz dwa pokoje gościnne / dziecięce.' },
+            { id: 'm3_spa', name: 'Łazienka Master & Sauna fińska', area: '14.0 m²', desc: 'Prywatna strefa wellness z przeszkloną sauną ze świerku skandynawskiego i wanną widokową.' },
+            { id: 'm3_guest_bath', name: 'Łazienka gościnna & Pralnia', area: '8.0 m²', desc: 'Druga pełna łazienka z prysznicem oraz wydzielona pralnia z rekuperacją.' },
+            { id: 'm3_patio', name: 'Osłonięty dziedziniec / Patio', area: '32.0 m²', desc: 'Prywatny taras w załamaniu bryły z żwirowym ogrodem, klonem i oświetleniem architektonicznym.' }
+          ],
+          svg: `
+            <svg viewBox="0 0 600 360" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Rzut M-03">
+              <defs>
+                <pattern id="gridM3" width="30" height="30" patternUnits="userSpaceOnUse">
+                  <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#E3DDD3" stroke-width="0.5"/>
+                </pattern>
+              </defs>
+              <rect width="600" height="360" fill="url(#gridM3)" opacity="0.6"/>
+              
+              <!-- L-Shaped Layout: Wing 1 (horizontal top), Wing 2 (vertical left) -->
+              <!-- Wing 1 (Main Living): x: 50, y: 50, w: 320, h: 140 -->
+              <rect x="50" y="50" width="320" height="140" fill="#FAF8F5" stroke="#1E1E1C" stroke-width="4"/>
+              
+              <!-- Wing 2 (Bedrooms): x: 50, y: 190, w: 140, h: 140 -->
+              <rect x="50" y="190" width="140" height="140" fill="#FAF8F5" stroke="#1E1E1C" stroke-width="4"/>
+              
+              <!-- Module 3 extension (Spa / Master): x: 370, y: 50, w: 180, h: 140 -->
+              <rect x="370" y="50" width="180" height="140" fill="#FAF8F5" stroke="#1E1E1C" stroke-width="4"/>
+              
+              <!-- Inner Courtyard Gravel / Wood Deck: x: 190, y: 190, w: 360, h: 140 -->
+              <rect class="svg-room" data-room-idx="4" x="194" y="194" width="352" height="132" fill="#E8E2D5" stroke="#C07A4A" stroke-dasharray="6 6" stroke-width="1.5"/>
+              <text x="370" y="250" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="600" fill="#575752" text-anchor="middle">05. PRYWATNE PATIO / DZIEDZINIEC</text>
+              <text x="370" y="272" font-family="'JetBrains Mono', monospace" font-size="11" fill="#C07A4A" text-anchor="middle">32.0 m² (taras drewniany + żwir)</text>
+              
+              <!-- Room 1: Wing 1 Living -->
+              <rect class="svg-room active" data-room-idx="0" x="54" y="54" width="312" height="132" fill="#EFECE5" stroke="#2A2A28" stroke-width="1.5"/>
+              <text x="210" y="115" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="600" fill="#1E1E1C" text-anchor="middle">01. SKRZYDŁO DZIENNE (LIVING)</text>
+              <text x="210" y="138" font-family="'JetBrains Mono', monospace" font-size="12" fill="#C07A4A" text-anchor="middle">54.0 m²</text>
+              
+              <!-- Room 2: Wing 2 Bedrooms -->
+              <rect class="svg-room" data-room-idx="1" x="54" y="194" width="132" height="132" fill="#EFECE5" stroke="#2A2A28" stroke-width="1.5"/>
+              <text x="120" y="255" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#1E1E1C" text-anchor="middle">02. SYPIALNIE</text>
+              <text x="120" y="275" font-family="'JetBrains Mono', monospace" font-size="11" fill="#C07A4A" text-anchor="middle">46.0 m²</text>
+              
+              <!-- Room 3: Spa & Sauna (top right) -->
+              <rect class="svg-room" data-room-idx="2" x="374" y="54" width="92" height="132" fill="#EFECE5" stroke="#2A2A28" stroke-width="1.5"/>
+              <text x="420" y="115" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#1E1E1C" text-anchor="middle">03. SPA</text>
+              <text x="420" y="135" font-family="'JetBrains Mono', monospace" font-size="10" fill="#C07A4A" text-anchor="middle">14.0 m²</text>
+              
+              <!-- Room 4: Guest Bath / Laundry -->
+              <rect class="svg-room" data-room-idx="3" x="470" y="54" width="76" height="132" fill="#EFECE5" stroke="#2A2A28" stroke-width="1.5"/>
+              <text x="508" y="115" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="#1E1E1C" text-anchor="middle">04. TECH</text>
+              <text x="508" y="135" font-family="'JetBrains Mono', monospace" font-size="9" fill="#C07A4A" text-anchor="middle">8.0 m²</text>
+              
+              <!-- Glass Windows onto Courtyard -->
+              <rect x="54" y="182" width="312" height="6" fill="#48BB78" stroke="#1E1E1C" stroke-width="1"/>
+              <rect x="186" y="194" width="6" height="132" fill="#48BB78" stroke="#1E1E1C" stroke-width="1"/>
+              
+              <!-- North Compass -->
+              <g transform="translate(540, 25)">
+                <circle cx="15" cy="15" r="14" fill="#FAF8F5" stroke="#84847D" stroke-width="1"/>
+                <polygon points="15,4 19,16 11,16" fill="#1E1E1C"/>
+                <text x="15" y="2" font-family="'JetBrains Mono', monospace" font-size="8" fill="#1E1E1C" text-anchor="middle">N</text>
+              </g>
+            </svg>
+          `
+        }
+      };
 
-<section class="anatomy" aria-labelledby="anatomy-title"><div class="anatomy-visual"><span class="roof">DACH / WARSTWY*</span><span class="frame">KONSTRUKCJA*</span><span class="service">INSTALACJE W MODULE*</span><span class="floor">PODŁOGA / POŁĄCZENIE*</span><b>MODUŁ<br>M‑02</b><small>*specyfikacja do potwierdzenia</small></div><div><h2 id="anatomy-title">Moduł jest częścią budynku, nie gotowym budynkiem.</h2><p>Fabryka może zamknąć konstrukcję i znaczną część instalacji. Fundament, połączenia, teren i formalny odbiór nadal należą do całej inwestycji.</p><dl><div><dt>W fabryce</dt><dd>powtarzalna kontrola warstw i instalacji modułu</dd></div><div><dt>Na styku</dt><dd>połączenia modułów, szczelność i ciągłość instalacji</dd></div><div><dt>Na działce</dt><dd>fundament, media, dojazd, odwodnienie i otoczenie</dd></div></dl></div></section>
+      // ------------------------------------------------------------------------
+      // DATA: CLT 340MM WALL CUTAWAY LAYERS
+      // ------------------------------------------------------------------------
+      const LAYERS_DATA = [
+        {
+          name: '01. Opalany modrzew Shou Sugi Ban',
+          thick: 'Grubość: 24 mm',
+          desc: 'Tradycyjna japońska technika ogniowej karbonizacji drewna Yakisugi. Zwęglona wierzchnia warstwa zamyka pory drewna, chroniąc je przed wilgocią, pleśnią, insektami i promieniami UV bez użycia syntetycznych lakierów. Żywotność ponad 80 lat.',
+          lambda: 'Przewodność λ: 0.13 W/(m·K)',
+          phase: 'Przesunięcie fazowe: 11.4 h',
+          sound: 'Izolacja akustyczna: Rw 48 dB'
+        },
+        {
+          name: '02. Wentylowana szczelina powietrzna + membrana UV',
+          thick: 'Grubość: 30 mm',
+          desc: 'Ciągła szczelina wentylacyjna podkonstrukcji ze specjalną membraną dyfuzyjną odporną na promieniowanie UV. Umożliwia swobodną cyrkulację powietrza, natychmiastowe odprowadzanie wilgoci i zapobiega kondensacji pary wodnej.',
+          lambda: 'Opór cieplny R: 0.18 (m²·K)/W',
+          phase: 'Wentylacja grawitacyjna podwójna',
+          sound: 'Tłumienie szumów wiatru'
+        },
+        {
+          name: '03. Naturalna izolacja drzewna Steico Protect / Flex',
+          thick: 'Grubość: 200 mm',
+          desc: 'Ekologiczne płyty z włókien drzewnych o potężnej pojemności cieplnej (2100 J/kg·K). Gwarantują przesunięcie fazowe ciepła powyżej 11 godzin: latem chronią wnętrze przed nagrzewaniem, a zimą akumulują ciepło, minimalizując zużycie energii.',
+          lambda: 'Przewodność λ: 0.036 W/(m·K)',
+          phase: 'Pojemność cieplna: 2100 J/(kg·K)',
+          sound: 'Tłumienie fal akustycznych Steico'
+        },
+        {
+          name: '04. Konstrukcja nośna CLT C24 ze świerku alpejskiego',
+          thick: 'Grubość: 100 mm',
+          desc: 'Krzyżowo klejone płyty z litego drewna iglastego (Cross-Laminated Timber). Ekstremalna nośność i sztywność przestrzenna. Naturalna szczelność powietrzna (Blower Door n50 < 0.6 h⁻¹), odporność ogniowa REI 60 i pochłanianie CO₂.',
+          lambda: 'Przewodność λ: 0.12 W/(m·K)',
+          phase: 'Sztywność sejsmiczna CLT',
+          sound: 'Masa powierzchniowa: 48 kg/m²'
+        },
+        {
+          name: '05. Wykończenie wnętrza: bezsęczna sklejka brzozowa',
+          thick: 'Grubość: 12 mm',
+          desc: 'Aksamitna w dotyku sklejka brzozowa klasy A zabezpieczona naturalnym woskiem twardym OSMO. Hipoalergiczna, antystatyczna, reguluje mikroklimat i wilgotność w pomieszczeniach bez płyt gipsowo-kartonowych.',
+          lambda: 'Przewodność λ: 0.15 W/(m·K)',
+          phase: 'Klasa A bezsęczna (Interior Grade)',
+          sound: 'Naturalny rezonans akustyczny'
+        }
+      ];
 
-<section class="readiness" id="readiness"><div><h2>Fabryka może być gotowa. Działka jeszcze nie.</h2><p>Termin zależy od tego, czy decyzje i prace przygotowawcze są domknięte przed startem produkcji.</p></div><form id="readyForm"><label><input type="checkbox"><span>Dostępna analiza MPZP / WZ</span></label><label><input type="checkbox"><span>Znane warunki gruntowe</span></label><label><input type="checkbox"><span>Uzgodniony dostęp transportowy</span></label><label><input type="checkbox"><span>Potwierdzone przyłącza</span></label><p id="readyStatus" role="status">0 / 4 punktów gotowości. Termin nie może być jeszcze szacowany.</p></form></section>
+      // ------------------------------------------------------------------------
+      // MODEL SELECTION & SVG INTERACTION
+      // ------------------------------------------------------------------------
+      let currentModelKey = 'm02';
 
-<section class="site-work" aria-labelledby="site-title"><div><h2 id="site-title">Prace na działce biegną własnym torem.</h2><p>Ich zakres nie znika dlatego, że moduły powstają poza placem budowy.</p></div><div class="site-register"><p><span>S‑01</span><b>Badanie i przygotowanie terenu</b><em>przed projektem fundamentu</em></p><p><span>S‑02</span><b>Fundament i przepusty</b><em>zgodnie z projektem do działki</em></p><p><span>S‑03</span><b>Przyłącza i odwodnienie</b><em>zakres lokalny, warunki operatorów</em></p><p><span>S‑04</span><b>Droga i plac montażowy</b><em>nośność, promień skrętu, miejsce dźwigu</em></p><p><span>S‑05</span><b>Połączenia i roboty końcowe</b><em>po osadzeniu modułów</em></p></div></section>
+      function renderModel(modelKey) {
+        currentModelKey = modelKey;
+        const data = MODELS_DATA[modelKey];
+        if (!data) return;
 
-<section class="responsibility"><h2>Jedna inwestycja. Trzy pola odpowiedzialności.</h2><div><article><b>FABRYKA</b><p>konstrukcja, przegrody, instalacje w module, kontrola jakości</p></article><article><b>DZIAŁKA</b><p>fundament, przyłącza, dostęp, odwodnienie i prace zewnętrzne</p></article><article><b>FORMALNOŚCI</b><p>projekt do działki, uzgodnienia, pozwolenia i odbiory</p></article></div></section>
+        // Update Text & Specs
+        document.getElementById('model-badge').textContent = data.badge;
+        document.getElementById('model-main-img').src = data.img;
+        document.getElementById('spec-area').textContent = data.area;
+        document.getElementById('spec-modules').textContent = data.modules;
+        document.getElementById('spec-time').textContent = data.time;
+        document.getElementById('spec-standard').textContent = data.standard;
+        document.getElementById('spec-price').textContent = data.priceText;
+        document.getElementById('plan-title').textContent = `RZUT ARCHITEKTONICZNY / MODEL ${data.name.toUpperCase()}`;
 
-<section class="factory" aria-labelledby="factory-title"><div><h2 id="factory-title">Kontrola jakości następuje przed zamknięciem warstwy.</h2><p>Lista pokazuje logikę odbiorów fabrycznych, nie deklaruje realnej certyfikacji.</p></div><ol><li><span>RAMA</span><b>geometria i połączenia konstrukcyjne</b><em>ZAPIS DEMO</em></li><li><span>INSTALACJE</span><b>trasy, próby i punkty styku modułów</b><em>ZAPIS DEMO</em></li><li><span>PRZEGRODY</span><b>ciągłość warstw przed zamknięciem</b><em>ZAPIS DEMO</em></li><li><span>WYKOŃCZENIE</span><b>powierzchnie zabezpieczone do transportu</b><em>ZAPIS DEMO</em></li></ol></section>
+        // Update SVG
+        const container = document.getElementById('blueprint-container');
+        container.innerHTML = data.svg;
 
-<section class="gallery" aria-label="Materiały koncepcyjne do rozmowy projektowej"><figure><img src="images/interior.webp" alt="Koncepcyjne wnętrze domu modułowego" width="1200" height="900" loading="lazy"><figcaption>WĘZEŁ 01 / CIĄGŁOŚĆ MATERIAŁU / KONCEPCJA</figcaption><span>sprawdzić połączenie podłogi i zabudowy</span></figure><figure><img src="images/gallery-1.webp" alt="Koncepcyjny modułowy dom widziany z góry na działce" width="1200" height="900" loading="lazy"><figcaption>DZIAŁKA 01 / DOJAZD I ORIENTACJA / KONCEPCJA</figcaption><span>zweryfikować trasę, słońce i strefę dźwigu</span></figure></section>
+        // Wire Clickable SVG Rooms
+        const rooms = container.querySelectorAll('.svg-room');
+        rooms.forEach((el) => {
+          el.addEventListener('click', function() {
+            rooms.forEach(r => r.classList.remove('active'));
+            this.classList.add('active');
+            const roomIdx = parseInt(this.getAttribute('data-room-idx'), 10);
+            const rData = data.rooms[roomIdx];
+            if (rData) {
+              document.getElementById('insp-name').textContent = rData.name;
+              document.getElementById('insp-area').textContent = rData.area;
+              document.getElementById('insp-desc').textContent = rData.desc;
+            }
+          });
+        });
 
-<section class="envelope" aria-labelledby="envelope-title"><div class="envelope-copy"><h2 id="envelope-title">Parametry powstają z warstw, nie z zielonej etykiety.</h2><p>Przed ofertą potrzebne są potwierdzone materiały, współczynniki, mostki na połączeniach i obliczenia dla konkretnej lokalizacji.</p></div><div class="envelope-images"><figure><img src="images/gallery-4.webp" alt="Detal koncepcyjnej elewacji domu modułowego" width="1000" height="900" loading="lazy"><figcaption>ELEWACJA / KONCEPCJA</figcaption></figure><figure><img src="images/gallery-2.webp" alt="Nocny widok koncepcyjnego modułu z dużym przeszkleniem" width="1000" height="900" loading="lazy"><figcaption>PRZESZKLENIE / NOC / KONCEPCJA</figcaption></figure></div><dl><div><dt>Ściana</dt><dd>układ i współczynnik po obliczeniach</dd></div><div><dt>Połączenie</dt><dd>ciągłość izolacji między modułami</dd></div><div><dt>Okno</dt><dd>parametr, montaż i orientacja względem stron świata</dd></div><div><dt>Energia</dt><dd>projektowana charakterystyka, nie marketingowa obietnica</dd></div></dl></section>
+        // Set Default Room Info (first room)
+        if (data.rooms && data.rooms[0]) {
+          document.getElementById('insp-name').textContent = data.rooms[0].name;
+          document.getElementById('insp-area').textContent = data.rooms[0].area;
+          document.getElementById('insp-desc').textContent = data.rooms[0].desc;
+        }
 
-<section class="transport" aria-labelledby="transport-title"><figure><img src="images/story-wide.webp" alt="Koncepcyjny dom modułowy przygotowany do osadzenia w terenie" width="1600" height="900" loading="lazy"></figure><div><h2 id="transport-title">Dom musi dojechać, skręcić i zostać podniesiony.</h2><p>Wymiary modułu są także problemem logistycznym. Trasa, ograniczenia drogowe, nośność gruntu i promień pracy dźwigu są częścią weryfikacji działki.</p><ol><li><b>Trasa</b><span>szerokość, wysokość, skręty, ograniczenia</span></li><li><b>Wjazd</b><span>brama, nachylenie, nośność nawierzchni</span></li><li><b>Dźwig</b><span>miejsce podpór, zasięg, kolizje napowietrzne</span></li><li><b>Pogoda</b><span>warunki dopuszczające bezpieczny montaż</span></li></ol></div></section>
+        // Sync Tabs
+        document.querySelectorAll('.model-tab-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.getAttribute('data-model') === modelKey);
+          btn.setAttribute('aria-selected', btn.getAttribute('data-model') === modelKey);
+        });
 
-<section class="sequence" id="sequence"><h2>Termin zaczyna się po zamknięciu danych wejściowych.</h2><ol><li><span>01</span><b>Weryfikacja działki</b><p>prawo, grunt, media, transport</p></li><li><span>02</span><b>Projekt do działki</b><p>układ, fundament, branże</p></li><li><span>03</span><b>Zamrożenie zakresu</b><p>specyfikacja i budżet</p></li><li><span>04</span><b>Produkcja</b><p>moduły i kontrola fabryczna</p></li><li><span>05</span><b>Prace terenowe</b><p>równolegle, jeśli projekt pozwala</p></li><li><span>06</span><b>Montaż i odbiór</b><p>po gotowości działki</p></li></ol></section>
+        // Sync Hero cards
+        document.querySelectorAll('.hero-model-card').forEach(card => {
+          const match = card.getAttribute('data-target-model') === modelKey;
+          card.classList.toggle('active', match);
+          card.setAttribute('aria-selected', match);
+        });
 
-<section class="cost-boundary" aria-labelledby="cost-title"><div><h2 id="cost-title">Cena modułów nie jest ceną całej inwestycji.</h2><p>Zakres demonstracyjny rozdziela trzy koszyki, zanim pojawi się liczba.</p></div><div><article><span>PAKIET FABRYCZNY*</span><b>moduły, określone wykończenie, zabezpieczenie</b></article><article><span>ZALEŻNE OD DZIAŁKI</span><b>fundament, media, teren, transport i dźwig</b></article><article><span>POZA DEMO</span><b>grunt, opłaty, finansowanie, wyposażenie ruchome</b></article><small>*dokładny zakres wymaga specyfikacji i oferty</small></div></section>
+        // Sync Configurator Model Card
+        document.querySelectorAll('[data-cfg-type="model"]').forEach(c => {
+          c.classList.toggle('selected', c.getAttribute('data-cfg-val') === modelKey);
+        });
 
-<section class="questions" aria-labelledby="questions-title"><div><h2 id="questions-title">Pytania przed wyborem modelu.</h2><p>Odpowiedzi opisują logikę konceptu, nie realne warunki sprzedaży.</p></div><div><details><summary>Czy dom może stanąć na każdej działce?</summary><p>Nie. Plan miejscowy lub warunki zabudowy, grunt, dostęp, media i lokalne wymogi muszą zostać sprawdzone.</p></details><details><summary>Czy cena z konfiguratora jest ofertą?</summary><p>Nie. To ilustracyjny zakres oparty wyłącznie na powierzchni modułów i bez kosztów zależnych od działki.</p></details><details><summary>Czy produkcja zawsze trwa 90 dni?</summary><p>Nie podajemy takiej obietnicy. Harmonogram można ustalać dopiero po projekcie, decyzjach, formalnościach i potwierdzeniu dostępności.</p></details><details><summary>Czy modułowy znaczy mobilny?</summary><p>Ten koncept dotyczy stałego budynku. Transport modułów jest etapem budowy, nie obietnicą późniejszego przenoszenia domu.</p></details></div></section>
+        recalculateConfigurator();
+      }
 
-<section class="contact" id="contact"><div><h2>Przynieś działkę i potrzeby, nie gotowy katalog marzeń.</h2><p>Formularz lokalny: niczego nie wysyła.</p></div><form id="contactForm"><label>Lokalizacja<input required placeholder="gmina / miejscowość"></label><label>Status działki<select required><option value="">Wybierz</option><option>Mam działkę</option><option>Analizuję zakup</option><option>Dopiero szukam</option></select></label><button>Przygotuj rozmowę</button><p id="status" role="status"></p></form></section>
-</main><footer><a class="brand" href="#top">MODUL/ART</a><p>Modular home portfolio concept · 2026</p></footer><script src="mod-preview.js"></script><div class="ov-badge" id="ov-badge">
-  <a class="ov-badge__main" href="https://overflow-web.pl/work/modulart/">
-    <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
-  </a>
-  <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
-</div>
-<style>
-.ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
-.ov-badge a{color:inherit;text-decoration:none}
-.ov-badge__main{display:flex;align-items:center;gap:5px}
-.ov-badge__mark{font-weight:700;letter-spacing:-.02em}
-.ov-badge__dot{opacity:.45}
-.ov-badge__type{opacity:.7}
-.ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
-.ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
-@media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
-@media print{.ov-badge{display:none}}
-</style>
-<!-- ov-badge-init -->
+      // Wire Model Tab Buttons
+      document.querySelectorAll('.model-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const m = btn.getAttribute('data-model');
+          renderModel(m);
+        });
+      });
+
+      // Wire Hero Model Deck Cards
+      document.querySelectorAll('.hero-model-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const target = card.getAttribute('data-target-model');
+          renderModel(target);
+          const modelsSec = document.getElementById('models');
+          if (modelsSec) {
+            modelsSec.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+
+      // Wire Footer Model Links
+      document.querySelectorAll('[data-footer-model]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const target = link.getAttribute('data-footer-model');
+          renderModel(target);
+        });
+      });
+
+      // ------------------------------------------------------------------------
+      // CLT CUTAWAY INTERACTION
+      // ------------------------------------------------------------------------
+      function selectCutawayLayer(idx) {
+        const layer = LAYERS_DATA[idx];
+        if (!layer) return;
+
+        document.getElementById('meta-name').textContent = layer.name;
+        document.getElementById('meta-thick').textContent = layer.thick;
+        document.getElementById('meta-desc').textContent = layer.desc;
+        document.getElementById('tag-lambda').textContent = layer.lambda;
+        document.getElementById('tag-phase').textContent = layer.phase;
+        document.getElementById('tag-sound').textContent = layer.sound;
+
+        document.querySelectorAll('.layer-item').forEach((item, i) => {
+          item.classList.toggle('active', i === idx);
+        });
+        document.querySelectorAll('.vis-bar').forEach((bar, i) => {
+          bar.classList.toggle('active', i === idx);
+        });
+      }
+
+      document.querySelectorAll('.layer-item').forEach(item => {
+        item.addEventListener('click', function() {
+          const idx = parseInt(this.getAttribute('data-layer'), 10);
+          selectCutawayLayer(idx);
+        });
+      });
+
+      document.querySelectorAll('.vis-bar').forEach(bar => {
+        bar.addEventListener('click', function() {
+          const idx = parseInt(this.getAttribute('data-layer'), 10);
+          selectCutawayLayer(idx);
+        });
+      });
+
+      // ------------------------------------------------------------------------
+      // CONFIGURATOR CALCULATOR
+      // ------------------------------------------------------------------------
+      let cfgState = {
+        model: 'm02',
+        finish: 'turnkey',
+        energy: 'offgrid',
+        logistics: 'standard'
+      };
+
+      function recalculateConfigurator() {
+        const mData = MODELS_DATA[cfgState.model];
+        let basePrice = mData ? mData.priceBase : 640000;
+
+        let finishPrice = 0;
+        if (cfgState.finish === 'turnkey') {
+          if (cfgState.model === 'm01') finishPrice = 140000;
+          else if (cfgState.model === 'm02') finishPrice = 220000;
+          else if (cfgState.model === 'm03') finishPrice = 310000;
+        }
+
+        let energyPrice = 0;
+        if (cfgState.energy === 'offgrid') {
+          if (cfgState.model === 'm01') energyPrice = 75000;
+          else if (cfgState.model === 'm02') energyPrice = 95000;
+          else if (cfgState.model === 'm03') energyPrice = 125000;
+        }
+
+        let logPrice = (cfgState.logistics === 'complex') ? 48000 : 28000;
+
+        const total = basePrice + finishPrice + energyPrice + logPrice;
+
+        // Update Summary DOM
+        document.getElementById('sum-model-name').textContent = `${mData.name} (${mData.area})`;
+        document.getElementById('sum-model-price').textContent = `${basePrice.toLocaleString('pl-PL')} zł`;
+        document.getElementById('sum-finish-price').textContent = finishPrice > 0 ? `+${finishPrice.toLocaleString('pl-PL')} zł` : '0 zł';
+        document.getElementById('sum-energy-price').textContent = energyPrice > 0 ? `+${energyPrice.toLocaleString('pl-PL')} zł` : '0 zł';
+        document.getElementById('sum-logistics-price').textContent = `+${logPrice.toLocaleString('pl-PL')} zł`;
+        document.getElementById('sum-total').textContent = `${total.toLocaleString('pl-PL')} zł`;
+
+        // Update plot brief info
+        const finishName = cfgState.finish === 'turnkey' ? 'Pod klucz Koto' : 'Stan deweloperski CLT';
+        const energyName = cfgState.energy === 'offgrid' ? 'Pakiet Off-Grid OZE' : 'Standard sieciowy';
+        document.getElementById('plot-selected-desc').textContent = `${mData.name} (${mData.area}) · ${finishName} · ${energyName} · ${total.toLocaleString('pl-PL')} zł brutto`;
+      }
+
+      // Wire Configurator Options
+      document.querySelectorAll('.config-opt-card').forEach(card => {
+        card.addEventListener('click', function() {
+          const type = this.getAttribute('data-cfg-type');
+          const val = this.getAttribute('data-cfg-val');
+
+          // Deselect siblings
+          document.querySelectorAll(`[data-cfg-type="${type}"]`).forEach(c => c.classList.remove('selected'));
+          this.classList.add('selected');
+
+          cfgState[type] = val;
+
+          if (type === 'model') {
+            renderModel(val);
+          } else {
+            recalculateConfigurator();
+          }
+        });
+      });
+
+      // ------------------------------------------------------------------------
+      // PLOT CONSULTATION FORM SUBMIT SIMULATION
+      // ------------------------------------------------------------------------
+      const submitBtn = document.getElementById('btn-submit-audit');
+      const feedback = document.getElementById('plot-feedback');
+
+      if (submitBtn) {
+        submitBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const plotNum = document.getElementById('plot-number').value.trim() || '142401_1.0003.124/2';
+          const muni = document.getElementById('plot-muni').value.trim() || 'Lokalizacja klienta';
+          const name = document.getElementById('client-name').value.trim();
+          const phone = document.getElementById('client-phone').value.trim();
+
+          document.getElementById('fb-plot-num').textContent = `${plotNum} (${muni})`;
+          document.getElementById('fb-model-name').textContent = MODELS_DATA[cfgState.model].name;
+
+          feedback.classList.add('visible');
+          submitBtn.textContent = '✓ Analiza zamówiona';
+          submitBtn.style.background = '#2E352C';
+        });
+      }
+
+      // Initialize with Model M-02
+      renderModel('m02');
+      selectCutawayLayer(0);
+
+    })();
+  </script>
+
+<!-- universal-smooth-anchor-scroll -->
 <script>
-(function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
+(function(){
+  if(window.__ovSmoothScrollInit) return;
+  window.__ovSmoothScrollInit = true;
+  var animId = null;
+  function cancel(){ if(animId){ cancelAnimationFrame(animId); animId = null; } }
+  window.addEventListener('wheel', cancel, {passive:true});
+  window.addEventListener('touchstart', cancel, {passive:true});
+  window.addEventListener('keydown', cancel, {passive:true});
+  function smoothTo(targetY, dur){
+    cancel();
+    var startY = window.scrollY || window.pageYOffset || 0;
+    var maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    var destY = Math.min(Math.max(0, targetY), maxScroll);
+    var dist = destY - startY;
+    if(Math.abs(dist) < 3) return;
+    var startTime = performance.now();
+    var d = dur || 780;
+    function step(now){
+      var t = Math.min((now - startTime) / d, 1);
+      var ease = 1 - Math.pow(1 - t, 3);
+      window.scrollTo(0, startY + dist * ease);
+      if(t < 1) animId = requestAnimationFrame(step);
+      else animId = null;
+    }
+    animId = requestAnimationFrame(step);
+  }
+  window.__ovSmoothScrollTo = smoothTo;
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('a[href^="#"], [data-scroll-to], [data-target]');
+    if(!el) return;
+    var sel = el.getAttribute('data-scroll-to') || el.getAttribute('href');
+    if(!sel || sel.charAt(0) !== '#') return;
+    if(sel === '#'){
+      if(el.classList.contains('logo-link') || el.classList.contains('brand')){
+        e.preventDefault();
+        smoothTo(0, 750);
+      }
+      return;
+    }
+    var target = null;
+    try { target = document.querySelector(sel); } catch(err){}
+    if(!target) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var header = document.querySelector('header, nav.navbar, .site-header, .top-nav, .nav-bar');
+    var offset = 0;
+    if(header){
+      var pos = getComputedStyle(header).position;
+      if(pos === 'fixed' || pos === 'sticky'){
+        offset = header.offsetHeight || 72;
+      }
+    }
+    var top = (window.scrollY || window.pageYOffset || 0) + target.getBoundingClientRect().top - offset;
+    smoothTo(top, 780);
+  }, true);
+})();
 </script>
-</body></html>
+
+</body>
+</html>

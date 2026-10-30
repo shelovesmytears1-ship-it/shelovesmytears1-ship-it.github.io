@@ -1,72 +1,962 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Touché — demonstracyjna strona mobilnego rytuału relaksacyjnego w domu.">
-  <title>Touché — rytuał przyjeżdża do Ciebie</title>
-  <link rel="icon" href="favicon.svg">
-  <link rel="stylesheet" href="touche-preview.css">
-  <link rel="stylesheet" href="touche-expanded.css">
-<meta name="robots" content="noindex, follow"></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Touché — Autorskie Menu Masażu i Rytuałów Ciała w Twoim Domu</title>
+  <meta name="description" content="Prywatne rytuały masażu i cichej regeneracji w Twoim domu na terenie Warszawy. Niespieszny dotyk, ciepły olejek botaniczny 38°C i wyciszenie.">
+  
+  <!-- Preconnect & Fonts with Polish Latin-Ext Subsets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
 
-<a class="skip" href="#main">Przejdź do treści</a>
-<header><a class="brand" href="#top">Touché</a><button class="menu-button" type="button" aria-expanded="false" aria-controls="siteNav">Menu</button><nav id="siteNav" aria-label="Nawigacja"><a href="#choose">Dobierz rytuał</a><a href="#menu">Menu</a><a href="#arrival">Wizyta</a><a href="#booking">Kontakt</a></nav><a href="#booking">Przygotuj rezerwację</a></header>
-<main id="main">
-  <section class="hero" id="top"><figure><img src=".img/Hero Section.webp" alt="Stół do masażu przygotowany w domowym salonie" width="1600" height="900" fetchpriority="high"></figure><div class="hero-copy"><h1>Rytuał przyjeżdża do Ciebie. Dom zostaje domem.</h1><p>Mobilny masaż i pielęgnacja ciała z jasnym przebiegiem wizyty, przygotowaniem przestrzeni i możliwością dobrania intensywności.</p><a href="#choose">Dobierz swoją godzinę ciszy</a><small>Portfolio concept · usługa relaksacyjna, nie medyczna</small></div><div class="hero-menu" aria-label="Menu rytuałów"><p>MENU / 2026</p><a href="#menu"><span>01</span><b>Dotyk Ukojenia</b><small>60 / 90 min</small></a><a href="#menu"><span>02</span><b>Równowaga</b><small>60 / 90 min</small></a><a href="#menu"><span>03</span><b>Głębszy Rytm</b><small>90 min</small></a></div></section>
+  <!-- ========================================================================
+       TOP TRANSLUCENT HEADER
+       ======================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="#hero" class="brand-logo" aria-label="Touché Strona Główna">
+        <span class="logo-text">TOUCHÉ</span>
+        <span class="logo-sub">DOMOWE SANKTUARIUM</span>
+      </a>
 
-  <section class="home-promise"><h2>Nie budujemy gabinetu w Twoim salonie.</h2><div><p>Potrzebujemy bezpiecznego miejsca na stół, dostępu do łazienki i chwili bez pośpiechu. Światło, zapach i dźwięk dopasowujemy do domu, zamiast przykrywać go scenografią.</p><dl><div><dt>Przywozimy</dt><dd>sprzęt, czyste tekstylia, podkład i uzgodniony kosmetyk</dd></div><div><dt>Ty wybierasz</dt><dd>ciszę lub muzykę, intensywność i obszary pomijane</dd></div><div><dt>Dom zachowuje</dt><dd>swój rytm, prywatność i znajome otoczenie</dd></div></dl></div></section>
+      <nav class="main-nav" aria-label="Nawigacja główna">
+        <a href="#hero" class="nav-link">Początek</a>
+        <a href="#sanctuary" class="nav-link">Filozofia</a>
+        <a href="#menu" class="nav-link">Menu Rytuałów</a>
+        <a href="#mapa-napiec" class="nav-link">Mapa Napięć</a>
+        <a href="#olejki-i-dom" class="nav-link">Olejki & Zmysły</a>
+        <a href="#wizyta" class="nav-link">Wizyta</a>
+        <a href="#strefy" class="nav-link">Dojazd</a>
+      </nav>
 
-  <section class="choose" id="choose"><div class="choose-head"><h2>Najpierw wybierz, jak chcesz czuć się podczas rytuału.</h2><p>Selektor nie diagnozuje i nie zastępuje konsultacji medycznej. Przy przeciwwskazaniach zapytaj lekarza przed rezerwacją.</p></div><div class="tray"><form id="ritualForm"><fieldset><legend>Intensywność dotyku</legend><label><input type="radio" name="pressure" value="soft" checked><span>delikatna</span></label><label><input type="radio" name="pressure" value="medium"><span>średnia</span></label><label><input type="radio" name="pressure" value="deep"><span>wyraźna</span></label></fieldset><fieldset><legend>Czas</legend><label><input type="radio" name="duration" value="60" checked><span>60 minut</span></label><label><input type="radio" name="duration" value="90"><span>90 minut</span></label></fieldset><fieldset><legend>Atmosfera</legend><label><input type="radio" name="mood" value="quiet" checked><span>cisza</span></label><label><input type="radio" name="mood" value="sound"><span>spokojna muzyka</span></label></fieldset><button type="submit">Ułóż wizytę</button></form><article aria-live="polite"><span>KARTA RYTUAŁU / DEMO</span><h3 id="ritualTitle">Dotyk Ukojenia · 60 min</h3><p id="ritualText">Płynny, delikatny rytm i spokojne tempo. Bez rozmowy poza krótkim ustaleniem komfortu.</p><dl><div><dt>Przyjazd</dt><dd>15 min przed rytuałem</dd></div><div><dt>Potrzebujesz</dt><dd>około 2 × 3 m wolnej przestrzeni</dd></div><div><dt>Przywozimy</dt><dd>stół, czyste tekstylia, podkład i olej</dd></div><div><dt>Orientacyjnie</dt><dd id="ritualPrice">260 zł · portfolio demo</dd></div></dl><button id="copyRitual" type="button">Kopiuj kartę</button></article></div></section>
+      <div class="header-actions">
+        <a href="#rezerwacja" class="btn btn-header" id="headerCtaBtn">Zarezerwuj sesję</a>
+      </div>
+    </div>
+  </header>
 
-  <section class="menu" id="menu"><div><h2>Trzy rytuały. Każdy z inną dynamiką.</h2><p>Intensywność potwierdzamy przed rozpoczęciem i można ją zmienić w trakcie.</p></div><article><span>Dotyk miękki</span><h3>Dotyk Ukojenia</h3><p>Płynna, delikatna praca dla osób, które chcą zwolnić i odpocząć.</p><b>60 / 90 min</b></article><article><span>Dotyk średni</span><h3>Równowaga</h3><p>Spokojne tempo i więcej uwagi dla wybranych obszarów ciała.</p><b>60 / 90 min</b></article><article><span>Dotyk wyraźny</span><h3>Głębszy Rytm</h3><p>Wyraźniejszy ucisk w granicach komfortu; nadal usługa relaksacyjna.</p><b>90 min</b></article></section>
+  <main id="mainContent">
 
-  <section class="pressure-language"><div><h2>Intensywność ma język, nie skalę bólu.</h2><p>„Mocniej” i „delikatniej” można powiedzieć w każdej chwili. Komfort nie jest testem wytrzymałości.</p></div><div class="pressure-scale"><article><b>Delikatna</b><span>powolny, miękki rytm</span><em>dobry wybór, gdy priorytetem jest wyciszenie</em></article><article><b>Średnia</b><span>stabilny, wyczuwalny nacisk</span><em>z możliwością pracy spokojniej na wybranych obszarach</em></article><article><b>Wyraźna</b><span>głębszy kontakt bez przekraczania komfortu</span><em>nie jest terapią ani leczeniem bólu</em></article></div></section>
+    <!-- ========================================================================
+         CHAPTER 1: 100VH FULL-BLEED 50/50 TACTILE MACRO DIPTYCH HERO
+         ======================================================================== -->
+    <section class="chapter chapter-hero" id="hero">
+      <div class="hero-diptych-grid">
+        <!-- Left Pane: Tactile Hands with Golden Oil -->
+        <div class="hero-pane hero-pane-left">
+          <picture>
+            <source srcset="assets/01_hero_left_tactile_hands.webp" type="image/webp">
+            <img src="assets/01_hero_left_tactile_hands.jpg" alt="Ciepły dotyk dłoni terapeuty z organicznym olejkiem na skórze" class="hero-bg-img" width="1200" height="1600" loading="eager" fetchpriority="high">
+          </picture>
+          <div class="hero-pane-overlay"></div>
+        </div>
 
-  <section class="atmosphere"><figure><img src=".img/Atmosphere.webp" alt="Świece ustawione na kamiennej tacy" width="900" height="1200" loading="lazy"></figure><div><h2>Atmosfera nie musi udawać hotelu.</h2><p>Wystarczy ciepłe pomieszczenie, chwila bez powiadomień i miejsce na bezpieczne rozłożenie stołu.</p></div><figure><img src=".img/Softness of fabrics.webp" alt="Czyste białe tekstylia przygotowane do rytuału" width="900" height="1200" loading="lazy"></figure></section>
+        <!-- Right Pane: Serene Resting Woman on Belgian Linen -->
+        <div class="hero-pane hero-pane-right">
+          <picture>
+            <source srcset="assets/02_hero_right_sensory_calm.webp" type="image/webp">
+            <img src="assets/02_hero_right_sensory_calm.jpg" alt="Spokojna kobieta na stole do masażu w miękkim lnianym prześcieradle" class="hero-bg-img" width="1200" height="1600" loading="eager" fetchpriority="high">
+          </picture>
+          <div class="hero-pane-overlay"></div>
+        </div>
+      </div>
 
-  <section class="space-check"><div><h2>Przygotuj miejsce, nie scenografię.</h2><p>Zaznacz elementy, żeby sprawdzić gotowość przestrzeni. To lokalna checklista, niczego nie wysyła.</p></div><form id="spaceForm"><label><input type="checkbox"><span>około 2 × 3 m wolnej podłogi</span></label><label><input type="checkbox"><span>ciepłe pomieszczenie bez przeciągu</span></label><label><input type="checkbox"><span>dostęp do łazienki i bieżącej wody</span></label><label><input type="checkbox"><span>wyciszony telefon i domofon na czas rytuału</span></label><p id="spaceStatus" role="status">Przestrzeń: 0 z 4 punktów gotowe.</p></form></section>
+      <!-- Center Spanning Editorial Title across the seam -->
+      <div class="hero-center-stage">
+        <h1 class="hero-title">
+          <span class="hero-word">Dotyk</span>
+          <span class="hero-slash">/</span>
+          <span class="hero-word">rytuał</span>
+          <span class="hero-slash">/</span>
+          <span class="hero-word">spokój</span>
+        </h1>
+      </div>
 
-  <section class="arrival" id="arrival"><div><h2>Od dzwonka do ciszy, bez niespodzianek.</h2><p>Wizyta ma własny rytm i jasne granice.</p></div><ol><li><span>−15</span><b>Przyjazd</b><p>wniesienie i przygotowanie stołu</p></li><li><span>−05</span><b>Ustalenie komfortu</b><p>intensywność, obszary pomijane, przeciwwskazania</p></li><li><span>00</span><b>Rytuał</b><p>czas usługi liczony od rozpoczęcia</p></li><li><span>+10</span><b>Złożenie przestrzeni</b><p>pakowanie sprzętu i krótka informacja po wizycie</p></li></ol></section>
+      <!-- Bottom Hero Editorial Bar -->
+      <div class="hero-bottom-bar">
+        <div class="hero-bar-left">
+          <span class="hero-bullet"></span>
+          <span class="hero-left-label">Oddech & równowaga</span>
+        </div>
 
-  <section class="arrival-tray"><div><h2>Wszystko, co dotyka skóry, ma swoje miejsce.</h2><p>Taca przyjazdu porządkuje sprzęt, tekstylia, kosmetyk i wybory atmosfery przed rozpoczęciem.</p></div><figure><img src=".img/Marquee Gallery.webp" alt="Olej spływający na gładkie kamienie w ciepłym świetle" width="900" height="1200" loading="lazy"><figcaption>kosmetyk uzgodniony przed użyciem</figcaption></figure><ul><li><b>Stół</b><span>stabilny, rozkładany i przygotowany na miejscu</span></li><li><b>Tekstylia</b><span>świeży komplet dla jednej wizyty</span></li><li><b>Podkład</b><span>jednorazowy lub przygotowany zgodnie z zakresem usługi</span></li><li><b>Kosmetyk</b><span>skład i zapach potwierdzone przed rytuałem</span></li></ul></section>
+        <div class="hero-bar-center">
+          <p class="hero-center-caption">AUTORSKIE MENU MASAŻU I RYTUAŁÓW CIAŁA W TWOIM DOMU — DOPASOWANE DO KAŻDEJ WIZYTY.</p>
+        </div>
 
-  <section class="hygiene"><h2>Higiena jest protokołem, nie obietnicą w stopce.</h2><dl><div><dt>Przed wizytą</dt><dd>czysty komplet tekstyliów i przygotowane akcesoria</dd></div><div><dt>Między wizytami</dt><dd>stół i powierzchnie kontaktowe dezynfekowane</dd></div><div><dt>Na miejscu</dt><dd>higiena dłoni przed rozpoczęciem i po zakończeniu</dd></div><div><dt>Po wizycie</dt><dd>tekstylia zabezpieczone do osobnego transportu</dd></div></dl></section>
+        <div class="hero-bar-right">
+          <span class="quick-pills-label">Szybki wybór:</span>
+          <div class="quick-ritual-pills" role="group" aria-label="Szybki wybór rytuału">
+            <button type="button" class="quick-pill" data-quick-ritual="relaxation" aria-label="Wybierz Dotyk Ukojenia">01. Ukojenie</button>
+            <button type="button" class="quick-pill" data-quick-ritual="deep-tissue" aria-label="Wybierz Głębszy Rytm">02. Głębszy Rytm</button>
+            <button type="button" class="quick-pill" data-quick-ritual="hot-stone" aria-label="Wybierz Ciepły Bazalt">03. Ciepły Bazalt</button>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section class="boundaries"><figure><img src=".img/RelaxFace.webp" alt="Spokojna twarz osoby odpoczywającej z zamkniętymi oczami" width="900" height="1200" loading="lazy"></figure><div><h2>Zgoda nie kończy się po rozpoczęciu.</h2><p>Możesz zmienić intensywność, poprosić o pominięcie obszaru, przerwać rytuał albo zrezygnować z zapachu czy muzyki.</p><div class="boundary-notes"><p><b>Przed wizytą</b> zgłoś ciążę, infekcję, gorączkę, świeży uraz, zabieg lub stan wymagający konsultacji.</p><p><b>W razie wątpliwości</b> skonsultuj możliwość skorzystania z usługi z lekarzem przed rezerwacją.</p><p><b>Zakres</b> Touché oferuje relaks, nie diagnozę, fizjoterapię ani leczenie bólu.</p></div></div></section>
+    <!-- ========================================================================
+         CHAPTER 2: WITAJ W TOUCHÉ — EDITORIAL SANCTUARY INTRO
+         ======================================================================== -->
+    <section class="chapter chapter-sanctuary" id="sanctuary">
+      <span id="o-nas"></span>
+      <div class="container sanctuary-inner">
+        <header class="section-header text-center">
+          <span class="kicker kicker-coral">PRYWATNE RYTUAŁY DLA CIAŁA, SKÓRY I CICHEJ REGENERACJI W DOMU</span>
+          <h2 class="display-title display-coral">Witaj w Touché</h2>
+        </header>
 
-  <section class="coverage"><div><h2>Najpierw adres. Potem obietnica przyjazdu.</h2><p>Demonstracyjna koncepcja zakłada wizyty w Warszawie. Dokładny zasięg, czas dojazdu i ewentualny koszt trzeba potwierdzić dla konkretnego adresu.</p></div><div class="coverage-map" aria-label="Schematyczna mapa weryfikacji dojazdu"><span>ADRES</span><i></i><span>TRASA</span><i></i><span>PARKOWANIE / WEJŚCIE</span><i></i><strong>POTWIERDZENIE</strong></div></section>
+        <div class="sanctuary-centerpiece">
+          <div class="sanctuary-photo-frame">
+            <picture>
+              <source srcset="assets/03_welcome_home_sanctuary.webp" type="image/webp">
+              <img src="assets/03_welcome_home_sanctuary.jpg" alt="Jasny salon warszawskiego apartamentu przekształcony w prywatne sanktuarium spa" class="sanctuary-img" width="1600" height="1200" loading="lazy">
+            </picture>
+            <div class="sanctuary-badge">WARSZAWA · MOBILNY RYTUAŁ</div>
+          </div>
 
-  <section class="faq"><div><h2>Najczęstsze pytania przed wizytą.</h2><p>Jeśli odpowiedź zależy od zdrowia, adresu lub warunków w domu, potwierdzamy ją indywidualnie.</p></div><div><details open><summary>Czy muszę mieć własny stół?</summary><p>Nie. Stół i podstawowe wyposażenie przyjeżdżają z osobą wykonującą usługę.</p></details><details><summary>Czy mogę wybrać kosmetyk bez zapachu?</summary><p>Tak, dostępność i skład trzeba potwierdzić przed wizytą, szczególnie przy alergiach i wrażliwej skórze.</p></details><details><summary>Czy usługa pomoże na ból?</summary><p>Touché nie diagnozuje ani nie leczy. Przy bólu, urazie lub niepokojących objawach właściwa jest konsultacja medyczna.</p></details><details><summary>Czy zwierzę może zostać w pokoju?</summary><p>Dla bezpieczeństwa sprzętu i spokoju rytuału najlepiej przygotować zwierzęciu wygodne miejsce w innym pomieszczeniu.</p></details></div></section>
+          <div class="sanctuary-quote-wrap">
+            <blockquote class="sanctuary-quote">
+              „Niespieszne sesje, precyzyjnie dobrany nacisk dłoni i czyste wykończenie. Twój dom zamienia się w ciche sanktuarium na 90 minut — bez dojazdów i pośpiechu miasta.”
+            </blockquote>
+            <p class="sanctuary-author">— Zespół terapeutów manualnych Touché</p>
+          </div>
+        </div>
 
-  <section class="booking-summary"><figure><img src=".img/Booking Visual.webp" alt="Przygotowanie wyposażenia do mobilnej wizyty masażu" width="1500" height="2000" loading="lazy"></figure><div><h2>Przed terminem potwierdzamy cztery rzeczy.</h2><ol><li>wybrany rytuał i czas;</li><li>adres, wejście i możliwość zaparkowania;</li><li>przeciwwskazania oraz kosmetyk;</li><li>warunki przygotowania przestrzeni.</li></ol><p>Dopiero pełne potwierdzenie oznacza uzgodnioną wizytę.</p></div></section>
+        <div class="sanctuary-triad">
+          <div class="triad-item">
+            <span class="triad-num">01</span>
+            <h3 class="triad-title">Bez dojazdów i pośpiechu</h3>
+            <p class="triad-desc">Po zakończonym masażu nie zakładasz płaszcza i nie stoisz w warszawskich korkach. Zostajesz w miękkim szlafroku we własnym fotelu.</p>
+          </div>
+          <div class="triad-item">
+            <span class="triad-num">02</span>
+            <h3 class="triad-title">Pełne wyposażenie gabinetu</h3>
+            <p class="triad-desc">Przywozimy stabilny stół z dębowym stelażem, podgrzewane prześcieradła z belgijskiego lnu, ręczniki waffle i podgrzewacz olejków.</p>
+          </div>
+          <div class="triad-item">
+            <span class="triad-num">03</span>
+            <h3 class="triad-title">Higiena protokołowa</h3>
+            <p class="triad-desc">Jednorazowe naturalne włókniny, dezynfekcja klasy medycznej przed wejściem i bezszelestne rozłożenie w 10 minut.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section class="booking" id="booking"><div><h2>Przygotuj wizytę, zanim wybierzesz termin.</h2><p>Formularz lokalny. Nie wysyła danych i nie rezerwuje terminu.</p></div><form id="bookingForm"><label>Dzielnica lub okolica<input required placeholder="np. Mokotów"></label><label>Preferowany dzień<input required placeholder="np. sobota po 17"></label><label>E-mail<input type="email" required placeholder="ty@email.pl"></label><label>Ważna informacja<textarea placeholder="np. schody, parking, brak zapachu"></textarea></label><button>Przygotuj zapytanie</button><p id="status" role="status"></p></form></section>
-</main>
-<footer><a class="brand" href="#top">Touché</a><p>Mobile SPA portfolio concept · Warszawa · 2026</p></footer>
-<script src="touche-preview.js"></script>
-<div class="ov-badge" id="ov-badge">
-  <a class="ov-badge__main" href="https://overflow-web.pl/work/touche/">
-    <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
-  </a>
-  <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
-</div>
-<style>
-.ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
-.ov-badge a{color:inherit;text-decoration:none}
-.ov-badge__main{display:flex;align-items:center;gap:5px}
-.ov-badge__mark{font-weight:700;letter-spacing:-.02em}
-.ov-badge__dot{opacity:.45}
-.ov-badge__type{opacity:.7}
-.ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
-.ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
-@media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
-@media print{.ov-badge{display:none}}
-</style>
-<!-- ov-badge-init -->
+    <!-- ========================================================================
+         CHAPTER 3: PEŁNE MENU RYTUAŁÓW (ASYMMETRIC EDITORIAL GRID + DURATION SYNC)
+         ======================================================================== -->
+    <section class="chapter chapter-menu" id="menu">
+      <span id="rytualy"></span>
+      <div class="container">
+        <header class="section-header text-center">
+          <span class="kicker kicker-dark">RYTUAŁY TOUCHÉ</span>
+          <h2 class="display-title display-coral">Pełne menu</h2>
+          <p class="section-lead">Cztery autorskie sesje z bezpłatnym dojazdem na terenie Warszawy. Wybierz długość sesji, aby dopasować tempo.</p>
+        </header>
+
+        <!-- Duration Switcher Filter Bar -->
+        <div class="duration-filter-bar" role="tablist" aria-label="Wybór długości sesji">
+          <button type="button" class="duration-pill active" data-duration="90" role="tab" aria-selected="true">
+            <span class="dur-name">90 MIN</span>
+            <span class="dur-tag">Zalecane · Pełna harmonia</span>
+          </button>
+          <button type="button" class="duration-pill" data-duration="60" role="tab" aria-selected="false">
+            <span class="dur-name">60 MIN</span>
+            <span class="dur-tag">Esencja wyciszenia</span>
+          </button>
+          <button type="button" class="duration-pill" data-duration="120" role="tab" aria-selected="false">
+            <span class="dur-name">120 MIN</span>
+            <span class="dur-tag">Głęboka immersja</span>
+          </button>
+        </div>
+
+        <!-- 4 Detailed Tactile Ritual Cards -->
+        <div class="rituals-grid">
+          
+          <!-- Card 01: Dotyk Ukojenia -->
+          <article class="ritual-card" data-ritual-id="relaxation">
+            <div class="card-media">
+              <picture>
+                <source srcset="assets/01_hero_left_tactile_hands.webp" type="image/webp">
+                <img src="assets/01_hero_left_tactile_hands.jpg" alt="Dotyk Ukojenia masaż relaksacyjny" class="card-img" width="800" height="600" loading="lazy">
+              </picture>
+              <div class="card-media-tags">
+                <span class="media-tag">01 / RELAKS</span>
+                <span class="media-tag pressure-indicator" title="Nacisk 2 na 5">Nacisk: ●●○○○</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-head">
+                <h3 class="card-title">Dotyk Ukojenia</h3>
+                <div class="card-pricing">
+                  <span class="card-duration" data-slot="duration">90 MIN</span>
+                  <span class="card-price" data-slot="price">400 PLN</span>
+                </div>
+              </div>
+              <p class="card-subtitle">Masaż Relaksacyjny, Oddech & Drenaż Zmysłów</p>
+              <p class="card-description">
+                Płynne, otulające chwyty dłoni i przedramion o niskim i średnim nacisku. Wycisza układ współczulny, obniża poziom kortyzolu i przywraca naturalny, głęboki rytm oddechu przeponowego.
+              </p>
+              <div class="card-focus-pills">
+                <span class="focus-pill">Układ nerwowy</span>
+                <span class="focus-pill">Kark & barki</span>
+                <span class="focus-pill">Redukcja kortyzolu</span>
+                <span class="focus-pill">Olej migdałowy 38°C</span>
+              </div>
+              <div class="card-action">
+                <button type="button" class="btn btn-card-select ritual-select-btn" data-select-ritual="relaxation" data-ritual="relaxation">
+                  <span>Wybierz rytuał i przejdź do rezerwacji</span>
+                  <span class="btn-arrow">→</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 02: Głębszy Rytm -->
+          <article class="ritual-card" data-ritual-id="deep-tissue">
+            <div class="card-media">
+              <picture>
+                <source srcset="assets/04_ritual_deep_tissue.webp" type="image/webp">
+                <img src="assets/04_ritual_deep_tissue.jpg" alt="Głębszy Rytm masaż Deep Tissue i powięziowy" class="card-img" width="800" height="600" loading="lazy">
+              </picture>
+              <div class="card-media-tags">
+                <span class="media-tag">02 / TERAPIA</span>
+                <span class="media-tag pressure-indicator" title="Nacisk 4 na 5">Nacisk: ●●●●○</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-head">
+                <h3 class="card-title">Głębszy Rytm</h3>
+                <div class="card-pricing">
+                  <span class="card-duration" data-slot="duration">90 MIN</span>
+                  <span class="card-price" data-slot="price">440 PLN</span>
+                </div>
+              </div>
+              <p class="card-subtitle">Deep Tissue, Myofascial Release & Praca z Napięciem</p>
+              <p class="card-description">
+                Powolna, anatomiczna praca w głąb pasm powięziowych i brzuśców mięśniowych. Rozkleja sklejone struktury wokół łopatek, kręgosłupa i bioder bez wywoływania obronnego skurczu ciała.
+              </p>
+              <div class="card-focus-pills">
+                <span class="focus-pill">Pasma powięziowe</span>
+                <span class="focus-pill">Między łopatkami</span>
+                <span class="focus-pill">Lędźwie & biodra</span>
+                <span class="focus-pill">Cedr atlaski & rozmaryn</span>
+              </div>
+              <div class="card-action">
+                <button type="button" class="btn btn-card-select ritual-select-btn" data-select-ritual="deep-tissue" data-ritual="deep-tissue">
+                  <span>Wybierz rytuał i przejdź do rezerwacji</span>
+                  <span class="btn-arrow">→</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 03: Ciepły Bazalt -->
+          <article class="ritual-card" data-ritual-id="hot-stone">
+            <div class="card-media">
+              <picture>
+                <source srcset="assets/05_ritual_warm_basalt.webp" type="image/webp">
+                <img src="assets/05_ritual_warm_basalt.jpg" alt="Ciepły Bazalt rytuał gorących kamieni wulkanicznych" class="card-img" width="800" height="600" loading="lazy">
+              </picture>
+              <div class="card-media-tags">
+                <span class="media-tag">03 / CIEPŁO</span>
+                <span class="media-tag pressure-indicator" title="Nacisk 3 na 5">Nacisk: ●●●○○</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-head">
+                <h3 class="card-title">Ciepły Bazalt</h3>
+                <div class="card-pricing">
+                  <span class="card-duration" data-slot="duration">90 MIN</span>
+                  <span class="card-price" data-slot="price">460 PLN</span>
+                </div>
+              </div>
+              <p class="card-subtitle">Rytuał Gorących Kamieni Wulkanicznych 50°C</p>
+              <p class="card-description">
+                Czarne kamienie bazaltowe akumulujące głębokie ciepło wulkaniczne. W połączeniu z bogatym olejem z pestek moreli rozgrzewają mięśnie przykręgosłupowe i przynoszą natychmiastowe ukojenie.
+              </p>
+              <div class="card-focus-pills">
+                <span class="focus-pill">Termoterapia 50°C</span>
+                <span class="focus-pill">Wzdłuż kręgosłupa</span>
+                <span class="focus-pill">Głębokie rozluźnienie</span>
+                <span class="focus-pill">Lawenda prowansalska</span>
+              </div>
+              <div class="card-action">
+                <button type="button" class="btn btn-card-select ritual-select-btn" data-select-ritual="hot-stone" data-ritual="hot-stone">
+                  <span>Wybierz rytuał i przejdź do rezerwacji</span>
+                  <span class="btn-arrow">→</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 04: Harmonia Twarzy i Szyi (Kobido) -->
+          <article class="ritual-card" data-ritual-id="kobido">
+            <div class="card-media">
+              <picture>
+                <source srcset="assets/06_ritual_kobido_face.webp" type="image/webp">
+                <img src="assets/06_ritual_kobido_face.jpg" alt="Harmonia Twarzy i Szyi japoński rytuał Kobido" class="card-img" width="800" height="600" loading="lazy">
+              </picture>
+              <div class="card-media-tags">
+                <span class="media-tag">04 / KOBIDO</span>
+                <span class="media-tag pressure-indicator" title="Nacisk 3 na 5">Nacisk: ●●●○○</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-head">
+                <h3 class="card-title">Harmonia Twarzy & Szyi</h3>
+                <div class="card-pricing">
+                  <span class="card-duration" data-slot="duration">75 MIN</span>
+                  <span class="card-price" data-slot="price">390 PLN</span>
+                </div>
+              </div>
+              <p class="card-subtitle">Japoński Rytuał Kobido, Czepiec & Drenaż Limfatyczny</p>
+              <p class="card-description">
+                Starożytna technika liftingu manualnego. Szybkie, rytmiczne szczypanie i wygładzanie mięśni mimicznych, dekoltu i szyi połączone z relaksacją czepca ścięgnistego i żuchwy (bruksizm).
+              </p>
+              <div class="card-focus-pills">
+                <span class="focus-pill">Lifting manualny</span>
+                <span class="focus-pill">Bruksizm & żuchwa</span>
+                <span class="focus-pill">Skronie & czepiec</span>
+                <span class="focus-pill">Drenaż limfatyczny</span>
+              </div>
+              <div class="card-action">
+                <button type="button" class="btn btn-card-select ritual-select-btn" data-select-ritual="kobido" data-ritual="kobido">
+                  <span>Wybierz rytuał i przejdź do rezerwacji</span>
+                  <span class="btn-arrow">→</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CHAPTER 4: ANATOMIA DOTYKU — MAPA NAPIĘĆ I KALIBRACJA NACISKU
+         ======================================================================== -->
+    <section class="chapter chapter-tension" id="mapa-napiec">
+      <span id="anatomia"></span>
+      <div class="container">
+        <header class="section-header text-center">
+          <span class="kicker kicker-dark">INTERAKTYWNY DOBÓR INTENSYWNOŚCI</span>
+          <h2 class="display-title display-coral">Anatomia Dotyku</h2>
+          <p class="section-lead">Wskaż strefę, w której Twoje ciało kumuluje zmęczenie i wybierz optymalną siłę nacisku dłoni.</p>
+        </header>
+
+        <div class="tension-interactive-stage">
+          <!-- Left Controls Column -->
+          <div class="tension-controls">
+            <h3 class="controls-heading">1. Strefa największego napięcia</h3>
+            <div class="tension-zones-grid" role="radiogroup" aria-label="Wybór strefy napięcia">
+              
+              <button type="button" class="zone-card active" data-zone="neck" role="radio" aria-checked="true">
+                <span class="zone-letter">A</span>
+                <div class="zone-info">
+                  <h4 class="zone-title">Kark, Potylica i Żuchwa</h4>
+                  <p class="zone-context">Wielogodzinna praca przy monitorze, zaciskanie zębów, spłycony oddech.</p>
+                  <span class="zone-recommendation">Rekomendacja: Głębszy Rytm / Kobido</span>
+                </div>
+              </button>
+
+              <button type="button" class="zone-card" data-zone="shoulders" role="radio" aria-checked="false">
+                <span class="zone-letter">B</span>
+                <div class="zone-info">
+                  <h4 class="zone-title">Barki i Między Łopatkami</h4>
+                  <p class="zone-context">Uczucie ciężaru, sztywność czworobocznego, ograniczenie ruchomości klatki.</p>
+                  <span class="zone-recommendation">Rekomendacja: Głębszy Rytm (Deep Tissue)</span>
+                </div>
+              </button>
+
+              <button type="button" class="zone-card" data-zone="lumbar" role="radio" aria-checked="false">
+                <span class="zone-letter">C</span>
+                <div class="zone-info">
+                  <h4 class="zone-title">Odcinek Lędźwiowy i Biodra</h4>
+                  <p class="zone-context">Przeciążenia posturalne, napięcie mięśni biodrowo-lędźwiowych, ucisk.</p>
+                  <span class="zone-recommendation">Rekomendacja: Ciepły Bazalt / Deep Tissue</span>
+                </div>
+              </button>
+
+              <button type="button" class="zone-card" data-zone="nervous" role="radio" aria-checked="false">
+                <span class="zone-letter">D</span>
+                <div class="zone-info">
+                  <h4 class="zone-title">Pełne Wyciszenie Układu Nerwowego</h4>
+                  <p class="zone-context">Chroniczny stres, gonitwa myśli, bezsenność, potrzeba wyłączenia bodźców.</p>
+                  <span class="zone-recommendation">Rekomendacja: Dotyk Ukojenia (Relaks)</span>
+                </div>
+              </button>
+            </div>
+
+            <!-- Pressure Level Slider / Pills -->
+            <div class="pressure-calibrator">
+              <div class="pressure-head">
+                <h3 class="controls-heading">2. Kalibracja siły nacisku dłoni</h3>
+                <span class="pressure-badge" id="pressureBadgeLabel">Poziom 3 / 5 — Umiarkowany</span>
+              </div>
+              <div class="pressure-buttons" role="group" aria-label="Wybór poziomu nacisku">
+                <button type="button" class="pressure-btn" data-pressure="1">
+                  <span class="p-num">1</span>
+                  <span class="p-name">Drenaż</span>
+                </button>
+                <button type="button" class="pressure-btn" data-pressure="2">
+                  <span class="p-num">2</span>
+                  <span class="p-name">Otulający</span>
+                </button>
+                <button type="button" class="pressure-btn active" data-pressure="3">
+                  <span class="p-num">3</span>
+                  <span class="p-name">Umiarkowany</span>
+                </button>
+                <button type="button" class="pressure-btn" data-pressure="4">
+                  <span class="p-num">4</span>
+                  <span class="p-name">Głęboki</span>
+                </button>
+                <button type="button" class="pressure-btn" data-pressure="5">
+                  <span class="p-num">5</span>
+                  <span class="p-name">Intensywny</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Real-Time Specification Card -->
+          <div class="tension-spec-card" id="tensionSpecCard">
+            <div class="spec-card-head">
+              <span class="spec-chip">SPECYFIKACJA TECHNIKI</span>
+              <h4 class="spec-title" id="specTitle">Praca z Karkiem i Potylicą</h4>
+            </div>
+
+            <div class="spec-metrics-list">
+              <div class="spec-metric">
+                <span class="metric-label">Docelowa głębokość:</span>
+                <span class="metric-val" id="specDepth">Warstwa powięzi głębokiej & czworoboczny</span>
+              </div>
+              <div class="spec-metric">
+                <span class="metric-label">Tempo ruchów:</span>
+                <span class="metric-val" id="specCadence">14 powolnych chwytów / min</span>
+              </div>
+              <div class="spec-metric">
+                <span class="metric-label">Temperatura olejku:</span>
+                <span class="metric-val" id="specTemp">38.5°C (podgrzewacz ceramiczny)</span>
+              </div>
+              <div class="spec-metric">
+                <span class="metric-label">Sugerowany rytuał:</span>
+                <span class="metric-val highlight" id="specSuggestedRitual">Głębszy Rytm (Deep Tissue)</span>
+              </div>
+            </div>
+
+            <div class="spec-summary-box">
+              <p class="spec-desc-text" id="specDescription">
+                Sesja rozpocznie się od wyciszenia oddechu i rozgrzania tkanek, po czym terapeuta przejdzie do powolnej trakcji potylicy i rozluźnienia mięśni podpotylicznych.
+              </p>
+            </div>
+
+            <button type="button" class="btn btn-apply-config" id="applyConfigBtn">
+              <span>Zastosuj tę konfigurację w formularzu</span>
+              <span class="btn-arrow">↓</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CHAPTER 5: ALCHEMIA ZMYSŁÓW — OLEJKI BOTANICZNE 38°C I AKUSTYKA
+         ======================================================================== -->
+    <section class="chapter chapter-apothecary" id="olejki-i-dom">
+      <span id="sensoryka"></span>
+      <div class="container">
+        <header class="section-header text-center">
+          <span class="kicker kicker-light">ALCHEMIA ZMYSŁÓW</span>
+          <h2 class="display-title display-light">Olejki Botaniczne 38°C i Akustyka</h2>
+          <p class="section-lead text-light-muted">Zapach i dźwięk to połowa regeneracji. Wybierz nutę aromaterapeutyczną i tło dźwiękowe Twojej sesji.</p>
+        </header>
+
+        <div class="apothecary-grid">
+          <!-- Still Life Image -->
+          <div class="apothecary-visual">
+            <picture>
+              <source srcset="assets/07_apothecary_oils_linen.webp" type="image/webp">
+              <img src="assets/07_apothecary_oils_linen.jpg" alt="Naturalne butelki z olejkami ze szkła aptecznego na surowym trawertynie z lnianymi ręcznikami" class="apothecary-img" width="1600" height="1000" loading="lazy">
+            </picture>
+            <div class="apothecary-caption">
+              <span>CZYSTE EKSTRAKTY ROŚLINNE TŁOCZONE NA ZIMNO · ZERO SYNTETYCZNYCH ZAPACHÓW</span>
+            </div>
+          </div>
+
+          <!-- Sensory Customizer Controls -->
+          <div class="apothecary-controls">
+            
+            <!-- Warm Oil Formula Selection -->
+            <div class="sensory-group">
+              <h3 class="sensory-group-title">1. Ciepły olejek bazowy (38°C)</h3>
+              <div class="sensory-options-list" role="radiogroup" aria-label="Wybór olejku">
+                
+                <label class="sensory-option active">
+                  <input type="radio" name="oilChoice" value="cedar-bergamot" checked>
+                  <div class="option-content">
+                    <span class="option-name">Cedr Atlaski, Bergamotka & Słodki Migdał</span>
+                    <span class="option-notes">Drzewny, uziemiający profil. Idealny do pracy powięziowej i głębokiego uspokojenia.</span>
+                  </div>
+                </label>
+
+                <label class="sensory-option">
+                  <input type="radio" name="oilChoice" value="lavender-neroli">
+                  <div class="option-content">
+                    <span class="option-name">Dzika Lawenda z Prowansji & Kwiat Neroli</span>
+                    <span class="option-notes">Kojący, wieczorny aromat redukujący napięcie psychiczne i ułatwiający zasypianie.</span>
+                  </div>
+                </label>
+
+                <label class="sensory-option">
+                  <input type="radio" name="oilChoice" value="ginger-rosemary">
+                  <div class="option-content">
+                    <span class="option-name">Biały Imbir, Rozmaryn & Jojoba</span>
+                    <span class="option-notes">Lekko rozgrzewający, pobudzający mikrokrążenie i regenerację powysiłkową.</span>
+                  </div>
+                </label>
+
+                <label class="sensory-option">
+                  <input type="radio" name="oilChoice" value="pure-almond">
+                  <div class="option-content">
+                    <span class="option-name">Czysty Olej ze Słodkich Migdałów (Bezzapachowy)</span>
+                    <span class="option-notes">100% hipoalergiczny, certyfikowany bio-olej dla skóry wrażliwej i kobiet w ciąży.</span>
+                  </div>
+                </label>
+
+              </div>
+            </div>
+
+            <!-- Acoustic Atmosphere Selection -->
+            <div class="sensory-group">
+              <h3 class="sensory-group-title">2. Tło akustyczne sesji</h3>
+              <div class="acoustic-pills-row" role="radiogroup" aria-label="Wybór tła dźwiękowego">
+                <button type="button" class="acoustic-pill active" data-sound="ambient-52hz" role="radio" aria-checked="true">
+                  <span class="sound-icon">♫</span>
+                  <span class="sound-name">Ambient 52 Hz (Sakamoto / Eno)</span>
+                </button>
+                <button type="button" class="acoustic-pill" data-sound="pure-silence" role="radio" aria-checked="false">
+                  <span class="sound-icon">○</span>
+                  <span class="sound-name">Cisza absolutna (Tylko oddech)</span>
+                </button>
+                <button type="button" class="acoustic-pill" data-sound="rain-forest" role="radio" aria-checked="false">
+                  <span class="sound-icon">≋</span>
+                  <span class="sound-name">Analogowy szum deszczu i lasu</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Live Sensory Status -->
+            <div class="sensory-status-bar">
+              <span class="sensory-status-label">AKTYWNA FORMUŁA ZMYSŁOWA:</span>
+              <span class="sensory-status-val" id="activeSensoryFormula">Cedr Atlaski & Bergamotka · Ambient 52 Hz</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CHAPTER 6: JAK DOM STAJE SIĘ SANKTUARIUM — 4-STEP TIMELINE
+         ======================================================================== -->
+    <section class="chapter chapter-timeline" id="wizyta">
+      <span id="jak-dzialamy"></span>
+      <div class="container">
+        <header class="section-header text-center">
+          <span class="kicker kicker-dark">PROSTOTA I SPOKÓJ</span>
+          <h2 class="display-title display-coral">Jak dom staje się sanktuarium</h2>
+          <p class="section-lead">Nie musisz niczego aranżować ani sprzątać. Cały proces został zaprojektowany tak, abyś mógł natychmiast odpocząć.</p>
+        </header>
+
+        <div class="timeline-grid">
+          
+          <div class="timeline-card">
+            <div class="timeline-step">01</div>
+            <h3 class="timeline-title">Przestrzeń (2.2m × 1.5m)</h3>
+            <p class="timeline-desc">Wystarczy kawałek wolnej podłogi w sypialni lub salonie. Terapeuta wnosi lekki, stabilny stół dębowy, świeże prześcieradła i podgrzewacz.</p>
+            <span class="timeline-meta">Wymagana przestrzeń: minimalna</span>
+          </div>
+
+          <div class="timeline-card">
+            <div class="timeline-step">02</div>
+            <h3 class="timeline-title">Przygotowanie (10 min)</h3>
+            <p class="timeline-desc">Bezszelestne rozłożenie sprzętu, podłączenie podgrzewacza olejku do 38°C, włączenie wybranego tła audio i krótki wywiad zdrowotny.</p>
+            <span class="timeline-meta">Czas przygotowania nie skraca masażu</span>
+          </div>
+
+          <div class="timeline-card">
+            <div class="timeline-step">03</div>
+            <h3 class="timeline-title">Rytuał właściwy (60–120 min)</h3>
+            <p class="timeline-desc">Zero dzwonków, zero pośpiechu. Płynna sekwencja technik manualnych, pełne poszanowanie prywatności i intymności w Twoim wnętrzu.</p>
+            <span class="timeline-meta">100% czasu na stole</span>
+          </div>
+
+          <div class="timeline-card">
+            <div class="timeline-step">04</div>
+            <h3 class="timeline-title">Czyste zakończenie</h3>
+            <p class="timeline-desc">Ciepły napar ziołowy, spakowanie sprzętu w 5 minut i bezszelestne wyjście. Zostajesz w łóżku lub na sofie w miękkim szlafroku.</p>
+            <span class="timeline-meta">Zero powrotu w korkach</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CHAPTER 7: STREFY DOJAZDU W WARSZAWIE
+         ======================================================================== -->
+    <section class="chapter chapter-districts" id="strefy">
+      <span id="standard"></span>
+      <div class="container">
+        <header class="section-header text-center">
+          <span class="kicker kicker-dark">DOJAZD W CENIE RYTUAŁU</span>
+          <h2 class="display-title display-coral">Strefy dojazdu w Warszawie</h2>
+          <p class="section-lead">Dojazd terapeuty na terenie całej Warszawy jest bezpłatny. Wybierz swoją dzielnicę, aby sprawdzić czas dotarcia.</p>
+        </header>
+
+        <div class="districts-wrapper">
+          <div class="district-pills-row" role="group" aria-label="Wybierz dzielnicę Warszawy">
+            <button type="button" class="district-pill active" data-district="Mokotów">Mokotów</button>
+            <button type="button" class="district-pill" data-district="Śródmieście / Powiśle">Śródmieście / Powiśle</button>
+            <button type="button" class="district-pill" data-district="Żoliborz">Żoliborz</button>
+            <button type="button" class="district-pill" data-district="Wola">Wola</button>
+            <button type="button" class="district-pill" data-district="Saska Kępa">Saska Kępa</button>
+            <button type="button" class="district-pill" data-district="Wilanów">Wilanów</button>
+            <button type="button" class="district-pill" data-district="Ursynów">Ursynów</button>
+            <button type="button" class="district-pill" data-district="Ochota">Ochota</button>
+          </div>
+
+          <div class="district-info-card" id="districtInfoCard">
+            <div class="district-info-left">
+              <span class="district-label">WYBRANA DZIELNICA:</span>
+              <h3 class="district-name" id="districtName">Mokotów</h3>
+              <p class="district-details" id="districtDetails">Standardowy czas dotarcia terapeuty: 45–60 minut. Bezpłatny dojazd w obrębie całej dzielnicy.</p>
+            </div>
+            <div class="district-info-right">
+              <button type="button" class="btn btn-district-sync" id="districtSyncBtn">
+                <span>Wpisz tę dzielnicę do formularza</span>
+                <span class="btn-arrow">↓</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CHAPTER 8: PRZYGOTUJ REZERWACJĘ — TWO-WAY SYNCHRONIZED BOOKING ENGINE
+         ======================================================================== -->
+    <section class="chapter chapter-booking" id="rezerwacja">
+      <div class="container">
+        <header class="section-header text-center">
+          <span class="kicker kicker-dark">SYNCHRONIZACJA ZMYSŁÓW I TERMINU</span>
+          <h2 class="display-title display-coral">Przygotuj rezerwację</h2>
+          <p class="section-lead">Każdy wybrany parametr — rytuał, siła nacisku, olejek i dzielnica — został już naniesiony na Twoją kartę sesji.</p>
+        </header>
+
+        <div class="booking-split-layout">
+          
+          <!-- Left Column: Live Summary Pass -->
+          <aside class="booking-summary-pass" aria-label="Podsumowanie wybranej sesji">
+            <div class="pass-header">
+              <span class="pass-brand">TOUCHÉ · KARTA SESJI DOMOWEJ</span>
+              <span class="pass-status">DO ZATWIERDZENIA</span>
+            </div>
+
+            <div class="pass-body">
+              
+              <div class="pass-row">
+                <span class="pass-row-label">WYBRANY RYTUAŁ</span>
+                <span class="pass-row-val pass-highlight" id="passRitualName">Głębszy Rytm (Deep Tissue)</span>
+              </div>
+
+              <div class="pass-row">
+                <span class="pass-row-label">CZAS TRWANIA & CENA</span>
+                <span class="pass-row-val" id="passDurationAndPrice">90 MIN · 440 PLN (Dojazd w cenie)</span>
+              </div>
+
+              <div class="pass-row">
+                <span class="pass-row-label">STREFA & KALIBRACJA NACISKU</span>
+                <span class="pass-row-val" id="passPressureAndZone">Poziom 3/5 · Kark i Potylica</span>
+              </div>
+
+              <div class="pass-row">
+                <span class="pass-row-label">CIEPŁY OLEJEK 38°C & DŹWIĘK</span>
+                <span class="pass-row-val" id="passSensory">Cedr Atlaski & Bergamotka · Ambient 52 Hz</span>
+              </div>
+
+              <div class="pass-row">
+                <span class="pass-row-label">DZIELNICA WARSZAWY</span>
+                <span class="pass-row-val" id="passDistrict">Mokotów</span>
+              </div>
+
+            </div>
+
+            <div class="pass-footer">
+              <div class="pass-guarantee">
+                <span class="check-icon">✓</span>
+                <span class="guarantee-text">Płatność po zakończonym rytuale (Karta, BLIK, Gotówka). Rezygnacja bez kosztów do 4 godzin przed wizytą.</span>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Right Column: Booking Form -->
+          <div class="booking-form-wrap">
+            <form id="bookingForm" class="booking-form" novalidate>
+              
+              <div class="form-row form-grid-2">
+                <div class="form-group">
+                  <label for="bookingRitualSelect">Rytuał masażu <span class="req">*</span></label>
+                  <select id="bookingRitualSelect" name="ritual" class="form-select" required>
+                    <option value="relaxation">01 / Dotyk Ukojenia (Masaż Relaksacyjny)</option>
+                    <option value="deep-tissue" selected>02 / Głębszy Rytm (Deep Tissue & Powięzi)</option>
+                    <option value="hot-stone">03 / Ciepły Bazalt (Gorące Kamienie)</option>
+                    <option value="kobido">04 / Harmonia Twarzy (Japoński Kobido)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="bookingDurationSelect">Długość sesji <span class="req">*</span></label>
+                  <select id="bookingDurationSelect" name="duration" class="form-select" required>
+                    <option value="60">60 MIN — Esencja wyciszenia</option>
+                    <option value="90" selected>90 MIN — Zalecane (Pełna harmonia)</option>
+                    <option value="120">120 MIN — Głęboka immersja</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row form-grid-2">
+                <div class="form-group">
+                  <label for="bookingPressureSelect">Siła nacisku dłoni</label>
+                  <select id="bookingPressureSelect" name="pressure" class="form-select">
+                    <option value="1">Poziom 1 — Subtelny drenaż</option>
+                    <option value="2">Poziom 2 — Otulający, relaksujący</option>
+                    <option value="3" selected>Poziom 3 — Zbalansowany, umiarkowany</option>
+                    <option value="4">Poziom 4 — Głęboki (Deep Tissue)</option>
+                    <option value="5">Poziom 5 — Intensywna praca powięziowa</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="bookingOilSelect">Ciepły olejek botaniczny (38°C)</label>
+                  <select id="bookingOilSelect" name="oil" class="form-select">
+                    <option value="cedar-bergamot" selected>Cedr Atlaski, Bergamotka & Migdał</option>
+                    <option value="lavender-neroli">Dzika Lawenda z Prowansji & Neroli</option>
+                    <option value="ginger-rosemary">Biały Imbir, Rozmaryn & Jojoba</option>
+                    <option value="pure-almond">Czysty Olej Migdałowy (Bezzapachowy)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row form-grid-2">
+                <div class="form-group">
+                  <label for="bookingDateInput">Preferowany dzień <span class="req">*</span></label>
+                  <input type="date" id="bookingDateInput" name="date" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="bookingTimeSelect">Przedział godzinowy <span class="req">*</span></label>
+                  <select id="bookingTimeSelect" name="time" class="form-select" required>
+                    <option value="morning">Poranek (09:00 – 12:00)</option>
+                    <option value="afternoon" selected>Popołudnie (12:00 – 16:00)</option>
+                    <option value="evening">Wieczór (16:00 – 20:00)</option>
+                    <option value="late">Późny wieczór (20:00 – 22:30)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row form-grid-2">
+                <div class="form-group">
+                  <label for="bookingDistrictInput">Dzielnica i ulica w Warszawie <span class="req">*</span></label>
+                  <input type="text" id="bookingDistrictInput" name="district" class="form-input" placeholder="np. Mokotów, ul. Puławska" value="Mokotów" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="bookingPhoneInput">Numer telefonu do kontaktu <span class="req">*</span></label>
+                  <input type="tel" id="bookingPhoneInput" name="phone" class="form-input" placeholder="+48 ___ ___ ___" required>
+                </div>
+              </div>
+
+              <div class="form-row form-grid-2">
+                <div class="form-group">
+                  <label for="bookingNameInput">Imię i nazwisko <span class="req">*</span></label>
+                  <input type="text" id="bookingNameInput" name="name" class="form-input" placeholder="Twoje imię" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="bookingEmailInput">Adres e-mail <span class="req">*</span></label>
+                  <input type="email" id="bookingEmailInput" name="email" class="form-input" placeholder="twoj@email.pl" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="bookingNotesInput">Wskazówki dla terapeuty (kontuzje, piętro, parking, kody do bramy)</label>
+                <textarea id="bookingNotesInput" name="notes" class="form-textarea" rows="2" placeholder="np. 3 piętro z windą, brama kod 1234, skupienie na karku"></textarea>
+              </div>
+
+              <div class="form-submit-row">
+                <button type="submit" class="btn btn-submit-booking" id="submitBookingBtn">
+                  <span>Potwierdź rezerwację rytuału</span>
+                  <span class="btn-arrow">→</span>
+                </button>
+                <p class="submit-note">Nasz koordynator potwierdzi termin w ciągu 15 minut SMS-em.</p>
+              </div>
+
+            </form>
+
+            <!-- Success Confirmation State (Hidden initially) -->
+            <div class="booking-confirmation" id="bookingConfirmation" style="display: none;" role="alert">
+              <div class="confirmation-icon">✓</div>
+              <h3 class="confirmation-title">Rezerwacja została przyjęta</h3>
+              <p class="confirmation-code">Kod referencyjny Twojej sesji: <strong id="confirmationCode">#TOUCHE-2048</strong></p>
+              <div class="confirmation-summary-card" id="confirmationSummary">
+                <!-- Injected via main.js -->
+              </div>
+              <p class="confirmation-footer">
+                Wysłaliśmy potwierdzenie na Twój adres e-mail oraz SMS z numerem bezpośrednim do przydzielonego terapeuty manualnego.
+              </p>
+              <button type="button" class="btn btn-new-booking" id="newBookingBtn">Złóż kolejną rezerwację</button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       STICKY BOTTOM RITUAL BAR (Appears on scroll past hero)
+       ======================================================================== -->
+  <aside class="sticky-ritual-bar" id="stickyRitualBar" aria-hidden="true">
+    <div class="sticky-bar-inner">
+      <div class="sticky-bar-info">
+        <span class="sticky-label">WYBRANY RYTUAŁ:</span>
+        <span class="sticky-title" id="stickyBarTitle">Głębszy Rytm (Deep Tissue)</span>
+        <span class="sticky-sep">·</span>
+        <span class="sticky-price" id="stickyBarPrice">90 min · 440 PLN</span>
+      </div>
+      <div class="sticky-bar-action">
+        <a href="#rezerwacja" class="btn btn-sticky-finish">
+          <span>Dokończ rezerwację</span>
+          <span class="btn-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">TOUCHÉ</span>
+        <p class="footer-motto">Autorskie menu masażu i cichej regeneracji w Twoim domu. Warszawa.</p>
+      </div>
+
+      <div class="footer-nav">
+        <div class="footer-col">
+          <span class="col-title">Rytuały</span>
+          <a href="#menu">Dotyk Ukojenia</a>
+          <a href="#menu">Głębszy Rytm</a>
+          <a href="#menu">Ciepły Bazalt</a>
+          <a href="#menu">Harmonia Kobido</a>
+        </div>
+        <div class="footer-col">
+          <span class="col-title">Doświadczenie</span>
+          <a href="#sanctuary">Filozofia</a>
+          <a href="#mapa-napiec">Mapa Napięć</a>
+          <a href="#olejki-i-dom">Olejki Botaniczne</a>
+          <a href="#wizyta">Standard Wizyty</a>
+        </div>
+        <div class="footer-col">
+          <span class="col-title">Kontakt</span>
+          <a href="tel:+48220000000">+48 22 000 00 00</a>
+          <a href="mailto:rytual@touche-spa.pl">rytual@touche-spa.pl</a>
+          <span>Codziennie: 08:00 – 23:00</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <span>© 2026 Touché Spa. Wszelkie prawa zastrzeżone. Warszawa.</span>
+        <span>Standard Marea Spa Canon · Zero Scroll Lag · Native 144fps</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+
+<!-- universal-smooth-anchor-scroll -->
 <script>
-(function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
+(function(){
+  if(window.__ovSmoothScrollInit) return;
+  window.__ovSmoothScrollInit = true;
+  var animId = null;
+  function cancel(){ if(animId){ cancelAnimationFrame(animId); animId = null; } }
+  window.addEventListener('wheel', cancel, {passive:true});
+  window.addEventListener('touchstart', cancel, {passive:true});
+  window.addEventListener('keydown', cancel, {passive:true});
+  function smoothTo(targetY, dur){
+    cancel();
+    var startY = window.scrollY || window.pageYOffset || 0;
+    var maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    var destY = Math.min(Math.max(0, targetY), maxScroll);
+    var dist = destY - startY;
+    if(Math.abs(dist) < 3) return;
+    var startTime = performance.now();
+    var d = dur || 780;
+    function step(now){
+      var t = Math.min((now - startTime) / d, 1);
+      var ease = 1 - Math.pow(1 - t, 3);
+      window.scrollTo(0, startY + dist * ease);
+      if(t < 1) animId = requestAnimationFrame(step);
+      else animId = null;
+    }
+    animId = requestAnimationFrame(step);
+  }
+  window.__ovSmoothScrollTo = smoothTo;
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('a[href^="#"], [data-scroll-to], [data-target]');
+    if(!el) return;
+    var sel = el.getAttribute('data-scroll-to') || el.getAttribute('href');
+    if(!sel || sel.charAt(0) !== '#') return;
+    if(sel === '#'){
+      if(el.classList.contains('logo-link') || el.classList.contains('brand')){
+        e.preventDefault();
+        smoothTo(0, 750);
+      }
+      return;
+    }
+    var target = null;
+    try { target = document.querySelector(sel); } catch(err){}
+    if(!target) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var header = document.querySelector('header, nav.navbar, .site-header, .top-nav, .nav-bar');
+    var offset = 0;
+    if(header){
+      var pos = getComputedStyle(header).position;
+      if(pos === 'fixed' || pos === 'sticky'){
+        offset = header.offsetHeight || 72;
+      }
+    }
+    var top = (window.scrollY || window.pageYOffset || 0) + target.getBoundingClientRect().top - offset;
+    smoothTo(top, 780);
+  }, true);
+})();
 </script>
+
 </body>
 </html>

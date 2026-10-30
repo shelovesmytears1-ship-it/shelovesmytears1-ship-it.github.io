@@ -1,273 +1,604 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Концепт сайту Нікіти Орлова: аудит і перебудова автоворонок та чат-ботів.">
-  <title>Нікіта Орлов — діагностика та збірка воронок</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="orlov-preview.css">
-<meta name="robots" content="noindex, follow"></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ORLOV — Архітектура системного продажу та автоворонок високого чека</title>
+  <meta name="description" content="Судово-маркетинговий аудит та проєктування преміальних конверсійних маршрутів для B2B-компаній і чеків від $1,500. Повертаємо до 45% втраченої маржі.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-  
-  <a class="skip" href="#diagnostic">До діагностики</a>
-  <header class="header">
-    <a class="logo" href="#top" aria-label="На початок">ORLOV<span>/ funnel systems</span></a>
-    <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav" data-menu-button>Меню <i aria-hidden="true"></i></button>
-    <nav id="nav" data-nav aria-label="Головна навігація">
-      <a href="#diagnostic">Діагностика</a>
-      <a href="#work">Робота</a>
-      <a href="#proof">Докази</a>
-      <a class="nav-cta" href="#contact">Запросити розбір</a>
-    </nav>
+
+  <!-- Atmospheric Background Grid & Watermark -->
+  <div class="bg-grid-overlay"></div>
+  <div class="watermark-text">GROWTH ARCHITECTURE</div>
+
+  <!-- Navigation Bar -->
+  <header class="site-nav">
+    <div class="container">
+      <div class="nav-inner">
+        <div class="nav-brand">
+          <a href="#hero" class="brand-logo">ORLOV</a>
+          <span class="brand-badge">SYSTEM ARCHITECT</span>
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#diagnostics" class="nav-link">Діагностика</a></li>
+            <li><a href="#simulator" class="nav-link">Симулятор витоків</a></li>
+            <li><a href="#cases" class="nav-link">Кейс B2B</a></li>
+            <li><a href="#protocol" class="nav-link">Протокол</a></li>
+            <li><a href="#author" class="nav-link">Про автора</a></li>
+          </ul>
+        </nav>
+        <a href="#diagnostic-application" class="btn-pill-primary nav-cta">
+          Замовити аудит
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
   </header>
 
-  <main id="top">
-    <section class="hero" aria-labelledby="hero-title">
-      <img src="hero-generated.webp" alt="Робоча стіна з картою воронки, роздруківками, нотатками та червоним маршрутом.">
-      <div class="hero-shade" aria-hidden="true"></div>
-      <div class="hero-paper">
-        <p class="concept">Портфоліо-концепт · дані потребують верифікації</p>
-        <h1 id="hero-title">Не будуйте бота,<br>поки не знаєте,<br><em>де саме тече.</em></h1>
-        <p>Розбираю шлях від реклами до розмови з менеджером. Знаходжу втрату контексту, пріоритезую зміни й збираю воронку без обіцянок «гарантованого ROMI».</p>
-        <div class="hero-actions">
-          <a class="button button-red" href="#diagnostic">Знайти ймовірний розрив</a>
-          <a class="plain-link" href="#work">Як проходить робота →</a>
+  <!-- ========================================================
+       SCREEN 1: HERO (Strict 100vh Full-Bleed Kero Atmospheric Horizon)
+       ======================================================== -->
+  <section class="hero-section" id="hero">
+    <!-- Full-Bleed 100vh Kero Mountain Mist Background -->
+    <div class="hero-backdrop-media" aria-hidden="true">
+      <img src="assets/01_kero_hero_mist_horizon.jpg" alt="" class="hero-backdrop-img">
+      <div class="hero-backdrop-vignette"></div>
+      <div class="hero-backdrop-mist-glow"></div>
+    </div>
+
+    <!-- Center-Stage Kero Editorial Copy Over Mountain Sky -->
+    <div class="container hero-header-block">
+      <div class="mono-tag hero-anim-item" style="--anim-delay: 0.05s;">
+        <span class="status-dot-green"></span>
+        FORENSIC FUNNEL ARCHITECTURE · СЛОТИ НА ЛИСТОПАД: 2 З 3
+      </div>
+      <h1 class="hero-title hero-anim-item" style="--anim-delay: 0.14s;">
+        Архітектура системного продажу,<br>де трафік не витікає крізь сито.
+      </h1>
+      <p class="hero-subtitle hero-anim-item" style="--anim-delay: 0.24s;">
+        Проєктую преміальні конверсійні маршрути та автоворонки для B2B-компаній і чеків від $1,500. Повертаю до 45% втраченої маржі без нарощування рекламного бюджету.
+      </p>
+      <div class="hero-actions hero-anim-item" style="--anim-delay: 0.34s;">
+        <a href="#simulator" class="btn-pill-primary">
+          Розрахувати витік у симуляторі
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#cases" class="btn-pill-ghost">
+          Переглянути монографію кейсу
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom Kero Glass Telemetry Dock Emerging From Mountain Mist -->
+    <div class="container hero-bottom-stage hero-anim-item" style="--anim-delay: 0.44s;">
+      <div class="kero-telemetry-dock">
+        <!-- Left Frosted Glass Card -->
+        <div class="glass-widget glass-widget-left">
+          <div class="widget-label">
+            <span>Вхідний потік трафіку</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div class="widget-value-row">
+            <div class="widget-value" id="widget-left-val">3,840 лідів/міс</div>
+            <svg class="widget-sparkline" width="76" height="26" viewBox="0 0 76 26" fill="none">
+              <path d="M2 20C14 19 18 11 28 13C38 15 44 6 56 8C64 9 69 3 74 4" stroke="rgba(255,255,255,0.75)" stroke-width="1.75" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="widget-meta" id="widget-left-meta">
+            CPL: $14.20 · <span class="badge-tag-danger">Нецільовий шум 62%</span>
+          </div>
+        </div>
+
+        <!-- Center Interactive Node Switcher + Partner Trust Bar -->
+        <div class="kero-center-command">
+          <div class="kero-command-caption">ІНЖЕНЕРНИЙ КОНТУР АВТОВОРОНКИ (ОБЕРІТЬ ВУЗОЛ)</div>
+          <div class="hero-node-switcher">
+            <button class="node-tab active" data-node="1">01. Архітектура кваліфікатора</button>
+            <button class="node-tab" data-node="2">02. Асинхронний коридор</button>
+            <button class="node-tab" data-node="3">03. CRM-скоринг сейлзів</button>
+          </div>
+          <div class="kero-partner-strip">
+            <span class="partner-strip-label">B2B ЕКСПЕРТИЗА:</span>
+            <span class="partner-logo-chip">VORTEX SaaS</span>
+            <span class="partner-dot">·</span>
+            <span class="partner-logo-chip">KRONOS CAPITAL</span>
+            <span class="partner-dot">·</span>
+            <span class="partner-logo-chip">NEXUS ERP</span>
+            <span class="partner-dot">·</span>
+            <span class="partner-logo-chip">ALFA FINTECH</span>
+          </div>
+        </div>
+
+        <!-- Right Frosted Glass Card -->
+        <div class="glass-widget glass-widget-right">
+          <div class="widget-label">
+            <span>Точка зламу (Кваліфікація)</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+          <div class="widget-value-row">
+            <div class="widget-value" id="widget-right-val">3.1% ➔ 8.4%</div>
+            <span class="widget-delta-pill">+171% CR</span>
+          </div>
+          <div class="widget-meta" id="widget-right-meta">
+            Збережена маржа: <span class="badge-tag-success">+$48,600/міс</span>
+          </div>
         </div>
       </div>
-      <div class="break-pin" aria-hidden="true"><span>РОЗРИВ</span><strong>?</strong></div>
-    </section>
+    </div>
+  </section>
 
-    <section class="premise">
-      <p>Трафік — не воронка.</p>
-      <p>Бот — не стратегія.</p>
-      <p>Карта має показати, що людина знала, відчувала й робила на кожному кроці.</p>
-    </section>
+  <!-- ========================================================
+       CHAPTER 02: 3-COLUMN GLASS DIAGNOSTIC ARCHITECTURE
+       ======================================================== -->
+  <section class="section" id="diagnostics">
+    <div class="container">
+      <span class="section-kicker">[ 02 // СИСТЕМНА ДІАГНОСТИКА ]</span>
+      <h2 class="section-title">Три критичні точки розриву, де ваш трафік спалює капітал</h2>
+      <p class="section-desc">
+        Більшість компаній намагаються розв'язати проблему падіння маржі заливанням додаткового бюджету в рекламу. На практиці гроші зникають у трьох структурних щілинах воронки:
+      </p>
 
-    <section class="leak-types" aria-labelledby="leak-types-title">
-      <div class="section-lead">
-        <h2 id="leak-types-title">Воронка рідко ламається в одному місці.</h2>
-        <p>Одна й та сама цифра «мало заявок» може означати чотири різні проблеми. Спочатку розділяємо симптоми, і лише потім обираємо інструмент.</p>
-      </div>
-      <div class="leak-ledger">
-        <article><strong>Не той вхід</strong><p>Реклама обіцяє одне, а перша дія веде в інший контекст.</p><span>Дивимось: повідомлення → перший екран</span></article>
-        <article><strong>Зависока ціна кроку</strong><p>Людину просять думати, писати або довіряти раніше, ніж вона готова.</p><span>Дивимось: CTA → очікуваний результат</span></article>
-        <article><strong>Стертий намір</strong><p>Сценарій однаковий для всіх і не зберігає причину звернення.</p><span>Дивимось: питання → гілки → вихід</span></article>
-        <article><strong>Втрачена передача</strong><p>Менеджер отримує контакт без відповідей, очікувань і наступного кроку.</p><span>Дивимось: CRM → SLA → власник</span></article>
-      </div>
-    </section>
-
-    <section class="diagnostic" id="diagnostic" aria-labelledby="diagnostic-title">
-      <div class="diagnostic-copy">
-        <h2 id="diagnostic-title">Покажіть симптом.<br>Карта знайде місце для перевірки.</h2>
-        <p>Три питання формують стартову гіпотезу. Це демонстрація логіки розбору, а не автоматичний аудит і не бізнес-порада.</p>
-      </div>
-
-      <div class="case-wall" data-diagnostic>
-        <div class="journey" aria-label="Шлях ліда">
-          <div class="route-line" aria-hidden="true"><span data-route-progress></span></div>
-          <button class="route-node is-active" type="button" data-node="attention"><span>Реклама</span><small>контекст входу</small></button>
-          <button class="route-node" type="button" data-node="promise"><span>Офер</span><small>обіцянка</small></button>
-          <button class="route-node" type="button" data-node="dialogue"><span>Діалог</span><small>кваліфікація</small></button>
-          <button class="route-node" type="button" data-node="handoff"><span>Продаж</span><small>передача</small></button>
+      <div class="diagnostic-grid">
+        <!-- Card 1 -->
+        <div class="diagnostic-card">
+          <div>
+            <div class="card-num">ВУЗОЛ ВИТОКУ // 01</div>
+            <div class="card-metric-block">
+              <div class="metric-big">82%</div>
+              <div class="metric-caption">КЛІКІВ ЗНИКАЮТЬ БЕЗ МІКРО-КВАЛІФІКАЦІЇ</div>
+            </div>
+            <h3 class="card-headline">Сліпий вхід без попередньої фільтрації чека</h3>
+            <p class="card-body-text">
+              Трафік потрапляє на широку форму заявки або загальний чат-бот. Сейлз-команда витрачає до 70% робочого часу на дзвінки людям, які фізично не мають бюджету на ваш продукт $2,000+.
+            </p>
+          </div>
+          <div class="solution-box">
+            <div class="solution-box-title">РІШЕННЯ ORLOV</div>
+            <div class="solution-box-desc">Діагностичний інтерактивний фільтр із селектором масштабу бізнесу перед контактом.</div>
+          </div>
         </div>
 
-        <form class="diagnostic-form" data-diagnostic-form>
-          <fieldset>
-            <legend>Де ви бачите проблему зараз?</legend>
-            <label><input type="radio" name="symptom" value="attention" checked><span>Клікають мало або не ті люди</span></label>
-            <label><input type="radio" name="symptom" value="promise"><span>Переходять, але не починають діалог</span></label>
-            <label><input type="radio" name="symptom" value="dialogue"><span>Починають, але не доходять до заявки</span></label>
-            <label><input type="radio" name="symptom" value="handoff"><span>Заявки є, але продажі слабкі</span></label>
-          </fieldset>
-          <fieldset>
-            <legend>Що у вас уже вимірюється?</legend>
-            <label><input type="radio" name="data" value="events" checked><span>Події та конверсії по кроках</span></label>
-            <label><input type="radio" name="data" value="top"><span>Тільки кліки й фінальні заявки</span></label>
-            <label><input type="radio" name="data" value="none"><span>Майже нічого</span></label>
-          </fieldset>
-          <fieldset>
-            <legend>Хто відповідає після заявки?</legend>
-            <label><input type="radio" name="handoff" value="owner" checked><span>Є конкретний менеджер і SLA</span></label>
-            <label><input type="radio" name="handoff" value="mixed"><span>По-різному, залежить від дня</span></label>
-          </fieldset>
+        <!-- Card 2 -->
+        <div class="diagnostic-card">
+          <div>
+            <div class="card-num">ВУЗОЛ ВИТОКУ // 02</div>
+            <div class="card-metric-block">
+              <div class="metric-big">4.2 дні</div>
+              <div class="metric-caption">СЕРЕДНЯ ЗАТРИМКА ПЕРШОГО ДОТИКУ</div>
+            </div>
+            <h3 class="card-headline">Інформаційне сито та втрата температурного контексту</h3>
+            <p class="card-body-text">
+              Між залишенням заявки та стратегічною сесією лід перебуває у вакуумі. За 72 години він охолоджується, починає шукати альтернативи в Google і купує у того, хто надав конкретний інженерний розбір першим.
+            </p>
+          </div>
+          <div class="solution-box">
+            <div class="solution-box-title">РІШЕННЯ ORLOV</div>
+            <div class="solution-box-desc">Асинхронний контентний коридор: 3 артефакти до дзвінка, які знімають 80% заперечень.</div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="diagnostic-card">
+          <div>
+            <div class="card-num">ВУЗОЛ ВИТОКУ // 03</div>
+            <div class="card-metric-block">
+              <div class="metric-big">37%</div>
+              <div class="metric-caption">ЗЛИТИХ УГОД НА ЕТАПІ ПІТЧУ</div>
+            </div>
+            <h3 class="card-headline">Провал передачі даних у відділ продажів</h3>
+            <p class="card-body-text">
+              Менеджер виходить на зустріч "наосліп" і починає розмову з банального "Розкажіть про ваш бізнес". Клієнт дратується, відчуваючи непрофесіоналізм, і закривається у відповідях.
+            </p>
+          </div>
+          <div class="solution-box">
+            <div class="solution-box-title">РІШЕННЯ ORLOV</div>
+            <div class="solution-box-desc">Автоматичний скоринг-паспорт клієнта в CRM із готовою гіпотезою для закриття угоди.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       CHAPTER 03: INTERACTIVE FUNNEL LEAK SIMULATOR
+       ======================================================== -->
+  <section class="section" id="simulator">
+    <div class="container">
+      <span class="section-kicker">[ 03 // СИМУЛЯТОР ВИТОКІВ ]</span>
+      <h2 class="section-title">Скільки маржі ваш бізнес втрачає просто зараз?</h2>
+      <p class="section-desc">
+        Введіть ваші поточні показники маркетингу, щоб отримати математичну оцінку недоотриманого капіталу через неоптимізовану архітектуру маршруту:
+      </p>
+
+      <div class="simulator-panel">
+        <div class="sim-controls">
+          <!-- Slider 1 -->
+          <div class="sim-control-group">
+            <div class="control-header">
+              <span class="control-label">Щомісячний бюджет на рекламу</span>
+              <span class="control-value-display" id="disp-budget">$12,000</span>
+            </div>
+            <input type="range" id="range-budget" min="2000" max="50000" step="1000" value="12000">
+          </div>
+
+          <!-- Slider 2 -->
+          <div class="sim-control-group">
+            <div class="control-header">
+              <span class="control-label">Середній чек угоди</span>
+              <span class="control-value-display" id="disp-ticket">$3,500</span>
+            </div>
+            <input type="range" id="range-ticket" min="1000" max="25000" step="500" value="3500">
+          </div>
+
+          <!-- Slider 3 -->
+          <div class="sim-control-group">
+            <div class="control-header">
+              <span class="control-label">Поточна конверсія (лід ➔ успішна оплата)</span>
+              <span class="control-value-display" id="disp-conv">2.4%</span>
+            </div>
+            <input type="range" id="range-conv" min="1.0" max="8.0" step="0.2" value="2.4">
+          </div>
+        </div>
+
+        <!-- Output Card -->
+        <div class="sim-output-card">
+          <div>
+            <div class="sim-output-header">РЕЗУЛЬТАТ МАТЕМАТИЧНОГО МОДЕЛЮВАННЯ</div>
+            <div class="leak-number-box">
+              <div class="leak-label">Орієнтовний щомісячний витік маржі:</div>
+              <div class="leak-amount" id="out-leak-monthly">$18,480/міс</div>
+            </div>
+            <div class="leak-annual-box">
+              <span class="leak-annual-title">Втрачений капітал за 12 місяців:</span>
+              <span class="leak-annual-val" id="out-leak-annual">$221,760/рік</span>
+            </div>
+          </div>
+
+          <button class="btn-pill-primary sim-action-btn" id="btn-transfer-sim">
+            Перенести розрахунок у заявку
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       CHAPTER 04: DISSECTED CASE MONOGRAPH
+       ======================================================== -->
+  <section class="section" id="cases">
+    <div class="container">
+      <span class="section-kicker">[ 04 // МОНОГРАФІЯ КЕЙСУ ]</span>
+      <h2 class="section-title">Кейс: B2B SaaS та міжнародний логістичний консалтинг</h2>
+      <p class="section-desc">
+        Повна анатомія реструктуризації воронки для клієнта із середнім чеком $4,500. Як скорочення зайвих кроків та впровадження CRM-паспортизації збільшило вихідну маржу в 4.2 рази.
+      </p>
+
+      <div class="case-monograph-card">
+        <!-- Header Bar -->
+        <div class="monograph-header-bar">
+          <div class="monograph-client-info">
+            <span class="mono-tag">B2B LOGISTICS & ENTERPRISE CONTRACTS</span>
+            <span class="client-tag">ХРОНОЛОГІЯ: 14 ДНІВ СПРИНТУ</span>
+          </div>
+          <div class="toggle-switch-container">
+            <button class="toggle-opt-btn" id="toggle-before">ДО ВТРУЧАННЯ</button>
+            <button class="toggle-opt-btn active" id="toggle-after">ПІСЛЯ ORLOV</button>
+          </div>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="monograph-content-grid">
+          <div class="monograph-visual-pane">
+            <img src="assets/03_signal_corridor_architecture.jpg" alt="Case Architecture Corridor" class="monograph-img">
+          </div>
+          <div class="monograph-stats-pane">
+            <div>
+              <div class="stats-quad-grid">
+                <div class="stat-item-box">
+                  <div class="stat-item-label">Вартість залучення (CPL)</div>
+                  <div class="stat-item-val" id="case-cpl">$38.50</div>
+                  <div class="stat-item-delta">-16.3% оптимізація</div>
+                </div>
+                <div class="stat-item-box">
+                  <div class="stat-item-label">Конверсія в кваліф-сесію</div>
+                  <div class="stat-item-val" id="case-conv">11.8%</div>
+                  <div class="stat-item-delta">+187% зростання</div>
+                </div>
+                <div class="stat-item-box">
+                  <div class="stat-item-label">Довжина циклу угоди</div>
+                  <div class="stat-item-val" id="case-cycle">14 днів</div>
+                  <div class="stat-item-delta">Скорочення в 2.7x</div>
+                </div>
+                <div class="stat-item-box">
+                  <div class="stat-item-label">Виручка каденції</div>
+                  <div class="stat-item-val" id="case-rev">$172,400</div>
+                  <div class="stat-item-delta" id="case-delta-rev">+4.2× приріст чистої маржі</div>
+                </div>
+              </div>
+
+              <!-- Dossier Artifacts -->
+              <div class="dossier-artifacts-list">
+                <div class="dossier-pill-item">
+                  <span>1. Інтерактивний кваліфікатор логістичного тоннажу (Framer)</span>
+                  <span class="mono-tag">ВПРОВАДЖЕНО</span>
+                </div>
+                <div class="dossier-pill-item">
+                  <span>2. Асинхронний whitepaper "Калькулятор митних ризиків EU"</span>
+                  <span class="mono-tag">ВПРОВАДЖЕНО</span>
+                </div>
+                <div class="dossier-pill-item">
+                  <span>3. Автоматичний скоринг-паспорт ліда в HubSpot</span>
+                  <span class="mono-tag">ВПРОВАДЖЕНО</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       CHAPTER 05: 14-DAY FORENSIC AUDIT PROTOCOL
+       ======================================================== -->
+  <section class="section" id="protocol">
+    <div class="container">
+      <span class="section-kicker">[ 05 // ПРОТОКОЛ РОБОТИ ]</span>
+      <h2 class="section-title">14-денний інженерний спринт: від витоків до запуску</h2>
+      <p class="section-desc">
+        Фіксований термін, прозорі щоденні артефакти та виключно вимірювані метрики на кожному етапі співпраці:
+      </p>
+
+      <div class="protocol-timeline">
+        <div class="timeline-step-card">
+          <div class="step-marker">01</div>
+          <span class="step-days-tag">ДНІ 01 — 03</span>
+          <h3 class="step-title">Судово-маркетинговий аудит</h3>
+          <p class="step-desc">
+            Декомпозиція поточної воронки, аудит 30+ записів дзвінків сейлзів, виявлення точних координат відвалу лідів та складання карти витоків.
+          </p>
+        </div>
+
+        <div class="timeline-step-card">
+          <div class="step-marker">02</div>
+          <span class="step-days-tag">ДНІ 04 — 07</span>
+          <h3 class="step-title">Проєктування нової архітектури</h3>
+          <p class="step-desc">
+            Розробка логіки мікро-кваліфікатора, створення сценаріїв асинхронного прогріву та написання контентних артефактів для закриття заперечень.
+          </p>
+        </div>
+
+        <div class="timeline-step-card">
+          <div class="step-marker">03</div>
+          <span class="step-days-tag">ДНІ 08 — 11</span>
+          <h3 class="step-title">Збірка та технічна інтеграція</h3>
+          <p class="step-desc">
+            Верстка інтерфейсів, підключення CRM (HubSpot / Pipedrive), налаштування вебхуків, наскрізної аналітики та автоматичного скорингу лідів.
+          </p>
+        </div>
+
+        <div class="timeline-step-card">
+          <div class="step-marker">04</div>
+          <span class="step-days-tag">ДНІ 12 — 14</span>
+          <h3 class="step-title">Стрес-тест і запуск трафіку</h3>
+          <p class="step-desc">
+            Калібрування команди сейлзів за новими скриптами, запуск тестового трафіку, вимірювання первинної конверсії та фінальна фіксація результату.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       CHAPTER 06: ABOUT THE ARCHITECT
+       ======================================================== -->
+  <section class="section" id="author">
+    <div class="container">
+      <span class="section-kicker">[ 06 // АВТОР СИСТЕМИ ]</span>
+      <h2 class="section-title">Хто проєктує вашу систему росту</h2>
+      
+      <div class="architect-profile-split" style="margin-top: 36px;">
+        <div class="architect-photo-frame">
+          <img src="assets/04_founder_advisor_portrait.jpg" alt="Андрій Орлов — Архітектор автоворонок" class="architect-photo">
+          <div class="architect-badge-floating">ANDRII ORLOV · PRINCIPAL ARCHITECT</div>
+        </div>
+
+        <div class="architect-bio-content">
+          <div>
+            <h3 class="architect-name">Андрій Орлов</h3>
+            <div class="architect-title">Архітектор систем росту та автоворонок високого чека</div>
+          </div>
+          <p class="architect-philosophy">
+            7+ років у системному B2B-маркетингу та інженерії продажів. Замість "магії вебінарів" та крикливих інфо-обіцянок — сухий аналіз даних, усунення тертя та точне позиціонування чека $1,500 – $25,000.
+          </p>
+          <div class="principles-list">
+            <div class="principle-item">
+              <span class="principle-icon">✓</span>
+              <span><strong>Жодного нецільового трафіку:</strong> дорогі години ваших найкращих сейлзів витрачаються виключно на прогрітих клієнтів із підтвердженим бюджетом.</span>
+            </div>
+            <div class="principle-item">
+              <span class="principle-icon">✓</span>
+              <span><strong>Відстежуваність кожного цента:</strong> наскрізний зв'язок між кліком по оголошенню та фінальним зарахуванням на банківський рахунок.</span>
+            </div>
+            <div class="principle-item">
+              <span class="principle-icon">✓</span>
+              <span><strong>Продаж через авторитет, а не тиск:</strong> клієнт приходить на дзвінок уже переконаним завдяки попередньо надісланим артефактам.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       CHAPTER 07: EXECUTIVE APPLICATION
+       ======================================================== -->
+  <section class="section" id="diagnostic-application">
+    <div class="container">
+      <div class="application-panel">
+        <div class="app-bg-glow"></div>
+        <span class="section-kicker">[ 07 // СТРАТЕГІЧНИЙ ДОТИК ]</span>
+        <h2 class="section-title">Забронювати сесію судово-маркетингової діагностики</h2>
+        <p class="section-desc">
+          Ми особисто розберемо вашу поточну воронку, покажемо точні координати витоку маржі та підготуємо інженерний план оптимізації.
+        </p>
+
+        <form id="diagnostic-form" class="app-form-grid">
+          <div class="form-field-wrapper">
+            <label class="form-label" for="form-name">Ім'я та прізвище</label>
+            <input type="text" id="form-name" class="form-input" placeholder="Олександр Ковальчук" required>
+          </div>
+
+          <div class="form-field-wrapper">
+            <label class="form-label" for="form-role">Ваша посада в компанії</label>
+            <input type="text" id="form-role" class="form-input" placeholder="CEO / Співзасновник / CMO" required>
+          </div>
+
+          <div class="form-field-wrapper">
+            <label class="form-label" for="form-company">Сайт або назва компанії</label>
+            <input type="text" id="form-company" class="form-input" placeholder="company-name.com" required>
+          </div>
+
+          <div class="form-field-wrapper">
+            <label class="form-label" for="form-contact">Telegram або WhatsApp для зв'язку</label>
+            <input type="text" id="form-contact" class="form-input" placeholder="@founder_direct" required>
+          </div>
+
+          <div class="form-field-wrapper">
+            <label class="form-label" for="form-budget">Поточний щомісячний бюджет на трафік</label>
+            <input type="text" id="form-budget" class="form-input" value="$12,000">
+          </div>
+
+          <div class="form-field-wrapper">
+            <label class="form-label" for="form-ticket">Середній чек послуги / контракту</label>
+            <input type="text" id="form-ticket" class="form-input" value="$3,500">
+          </div>
+
+          <div class="form-field-wrapper form-group-full">
+            <label class="form-label" style="margin-bottom: 8px;">Головний вузол болю у поточному маршруті клієнта:</label>
+            <div class="pain-points-grid">
+              <label class="pain-choice-label">
+                <input type="radio" name="pain" value="drop" checked>
+                <span>Низька конверсія на вході</span>
+              </label>
+              <label class="pain-choice-label">
+                <input type="radio" name="pain" value="unqualified">
+                <span>Багато нецільових 'туристів'</span>
+              </label>
+              <label class="pain-choice-label">
+                <input type="radio" name="pain" value="cycle">
+                <span>Затягнутий цикл угоди (>30 днів)</span>
+              </label>
+              <label class="pain-choice-label">
+                <input type="radio" name="pain" value="scale">
+                <span>Неможливо масштабувати бюджет</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-submit-row">
+            <button type="submit" class="btn-pill-primary" style="font-size: 15px; padding: 16px 32px; width: 100%;">
+              Надіслати дані на судово-маркетингову діагностику (Залишилось 2 слоти)
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <div class="nda-notice">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              STRICT NDA · КОНФІДЕНЦІЙНІСТЬ ФІНАНСОВИХ ДАНИХ ТА АНАЛІТИКИ ГАРАНТОВАНА
+            </div>
+          </div>
         </form>
 
-        <aside class="verdict" aria-live="polite">
-          <div class="verdict-head"><span>Стартова гіпотеза</span><span data-verdict-id>F-01</span></div>
-          <h3 data-verdict-title>Перевірити відповідність реклами першому екрану</h3>
-          <p data-verdict-copy>Порівняйте обіцянку в оголошенні з першою дією воронки. Розрив часто виникає ще до бота: людина приходить по одному, а бачить інше.</p>
-          <div class="verdict-check"><span>На розбір:</span><strong data-verdict-check>креативи · офер · перший екран · джерела</strong></div>
-          <a class="button button-red" href="#contact">Запросити ручний розбір</a>
-        </aside>
+        <div id="form-success-notice" style="display: none; text-align: center; padding: 48px 24px;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(16, 185, 129, 0.15); border: 1px solid #10B981; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; color: #10B981;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3 style="font-family: var(--font-serif); font-size: 28px; color: #FFFFFF; margin-bottom: 12px;">Заявку успішно прийнято</h3>
+          <p style="font-size: 15px; color: var(--text-secondary); max-width: 540px; margin: 0 auto; line-height: 1.6;">
+            Андрій Орлов особисто проведе попередній скоринг ваших даних і вийде на зв'язок у Telegram/WhatsApp протягом 4 годин для узгодження часу сесії.
+          </p>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="observation" aria-labelledby="observation-title">
-      <div class="observation-copy">
-        <h2 id="observation-title">Не «падає конверсія». Ось що ми реально бачили.</h2>
-        <p>Робочий розбір починається з фактів, які можна відтворити. Інтерпретації йдуть окремо, щоб не видати припущення за причину.</p>
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">ORLOV</div>
+        <div class="footer-copy">© 2026 ANDRII ORLOV. PRECISION FUNNEL ENGINEERING & FORENSICS.</div>
+        <div class="footer-back-to-top" id="back-to-top">↑ ВГОРУ</div>
       </div>
-      <div class="observation-sheet" role="table" aria-label="Приклад журналу спостережень">
-        <div class="observation-row observation-head" role="row"><span>Крок</span><span>Спостереження</span><span>Статус</span></div>
-        <div class="observation-row" role="row"><span>AD → LP</span><strong>У креативі «аудит», на сторінці — «безкоштовна консультація»</strong><em>зафіксовано</em></div>
-        <div class="observation-row" role="row"><span>LP → BOT</span><strong>Після CTA немає пояснення, скільки триватиме сценарій</strong><em>зафіксовано</em></div>
-        <div class="observation-row" role="row"><span>BOT → CRM</span><strong>Відповідь про бюджет не передається в картку ліда</strong><em>перевірити</em></div>
-        <div class="observation-row" role="row"><span>CRM → SALES</span><strong>Час першої відповіді не має одного власника</strong><em>перевірити</em></div>
-      </div>
-      <p class="concept-note">Приклад структури, не реальні дані клієнта.</p>
-    </section>
+    </div>
+  </footer>
 
-    <section class="work" id="work" aria-labelledby="work-title">
-      <div class="work-intro">
-        <h2 id="work-title">Спочатку карта.<br>Потім збірка.</h2>
-        <p>Один відповідальний за логіку від першого повідомлення до передачі в продаж. Підрядники підключаються лише там, де потрібна окрема спеціалізація.</p>
-      </div>
-      <div class="work-sequence">
-        <article><span>AUDIT</span><h3>Відновити реальний шлях</h3><p>Джерела трафіку, повідомлення, події, CRM, діалоги менеджерів і точки, де зникає контекст.</p><small>Вихід: карта втрат і список даних, яких бракує</small></article>
-        <article><span>LOGIC</span><h3>Вибрати найважливіший розрив</h3><p>Гіпотези ранжуються за впливом, доказовістю та вартістю перевірки — не за ефектністю інструмента.</p><small>Вихід: пріоритетний сценарій і критерій успіху</small></article>
-        <article><span>BUILD</span><h3>Переписати й зібрати ділянку</h3><p>Офер, повідомлення, кваліфікація, лендинг, бот, аналітика й передача в CRM як один ланцюг.</p><small>Вихід: робочий маршрут і документація</small></article>
-        <article><span>LEARN</span><h3>Запустити та зафіксувати урок</h3><p>Після запуску — не «магічний ROMI», а перевірка обраного критерію та наступне рішення.</p><small>Вихід: журнал змін і наступний пріоритет</small></article>
-      </div>
-    </section>
+  <script src="main.js"></script>
 
-    <section class="handoff" aria-labelledby="handoff-title">
-      <div class="handoff-title-wrap">
-        <h2 id="handoff-title">Лід не має починати історію вдруге.</h2>
-        <p>Передача в продаж — окремий продукт усередині воронки. Вона повинна переносити не лише телефон, а й контекст рішення.</p>
-      </div>
-      <div class="handoff-route">
-        <article><span>01</span><h3>Намір</h3><p>З якої обіцянки прийшла людина і що саме хоче змінити.</p></article>
-        <article><span>02</span><h3>Кваліфікація</h3><p>Відповіді, що справді змінюють наступний крок, а не заповнюють CRM.</p></article>
-        <article><span>03</span><h3>Очікування</h3><p>Що станеться далі, хто відповість і в який робочий проміжок.</p></article>
-        <article><span>04</span><h3>Власник</h3><p>Одна відповідальна роль, видимий статус і правило повернення.</p></article>
-      </div>
-    </section>
-
-    <section class="boundaries" aria-labelledby="boundaries-title">
-      <h2 id="boundaries-title">Що збирається разом. Що не маскується ботом.</h2>
-      <div class="boundary-columns">
-        <div><h3>У контурі роботи</h3><ul><li>офер і послідовність повідомлень</li><li>логіка кваліфікації та гілок</li><li>лендинг або потрібний фрагмент</li><li>події, CRM-поля та передача</li><li>критерій перевірки після запуску</li></ul></div>
-        <div><h3>Потрібне окреме рішення</h3><ul><li>відсутній попит на продукт</li><li>неузгоджена економіка пропозиції</li><li>немає команди для обробки заявок</li><li>юридичні та privacy-вимоги</li><li>повна заміна CRM або data warehouse</li></ul></div>
-      </div>
-    </section>
-
-    <section class="measurement" aria-labelledby="measurement-title">
-      <div class="measurement-statement"><h2 id="measurement-title">Одна зміна.<br>Один критерій.<br>Один журнал.</h2></div>
-      <div class="measurement-plan">
-        <article><span>До запуску</span><strong>Фіксуємо базову поведінку</strong><p>Період, сегмент, маршрут, визначення події та прогалини в даних.</p></article>
-        <article><span>Під час</span><strong>Не змішуємо кілька причин</strong><p>Виносимо одну гіпотезу в контрольований фрагмент шляху.</p></article>
-        <article><span>Після</span><strong>Записуємо рішення, не перемогу</strong><p>Залишити, повернути, переробити або зібрати більше доказів.</p></article>
-      </div>
-    </section>
-
-    <section class="collaboration" aria-labelledby="collaboration-title">
-      <div class="collaboration-copy"><h2 id="collaboration-title">Розбір потребує доступу, а не презентації.</h2><p>Щоб відновити шлях, потрібні люди, які бачать його з різних боків. Нижче — мінімальний склад робочої кімнати.</p></div>
-      <div class="role-matrix">
-        <div><strong>Власник продукту</strong><span>ціна рішення, межі оферу</span></div>
-        <div><strong>Маркетинг</strong><span>джерела, креативи, кампанії</span></div>
-        <div><strong>Продажі</strong><span>якість лідів, заперечення, SLA</span></div>
-        <div><strong>Орлов</strong><span>карта, гіпотеза, логіка, збірка</span></div>
-      </div>
-      <p class="collaboration-note">Не обов’язково збирати всіх на кожну зустріч. Важливо, щоб їхні дані не суперечили одне одному мовчки.</p>
-    </section>
-
-    <section class="formats" aria-labelledby="formats-title">
-      <h2 id="formats-title">Два способи почати.</h2>
-      <div class="format-grid">
-        <article>
-          <div class="format-head"><span>Окремий етап</span><strong>від 35 000 ₴</strong></div>
-          <h3>Аудит і карта воронки</h3>
-          <p>Для проєкту, де вже є трафік, бот або CRM, але немає спільної картини втрат.</p>
-          <ul><li>карта поточного шляху</li><li>пріоритетні гіпотези</li><li>план перевірок і вимірювання</li><li>зустріч із розбором</li></ul>
-          <small>У вихідному брифі: 5–7 днів. Ціну та строк перевірити перед публікацією.</small>
-        </article>
-        <article class="format-main">
-          <div class="format-head"><span>Повний цикл</span><strong>від 140 000 ₴</strong></div>
-          <h3>Від діагностики до запуску</h3>
-          <p>Коли потрібно не лише знайти розрив, а перебудувати весь пов’язаний фрагмент.</p>
-          <ul><li>усе з аудиту</li><li>сценарії, тексти, бот і лендинг</li><li>CRM та наскрізні події</li><li>запуск, передача й супровід</li></ul>
-          <small>У вихідному брифі: 4–6 тижнів. Склад уточнюється після аудиту.</small>
-        </article>
-      </div>
-    </section>
-
-    <section class="case-file" aria-labelledby="case-file-title">
-      <div class="case-index"><span>CASE / TEMPLATE</span><strong>Як виглядає доказовий кейс</strong></div>
-      <div class="case-file-copy">
-        <h2 id="case-file-title">Не «зробили +47%». Спочатку покажіть, що змінилось.</h2>
-        <p>Публічний кейс має дозволити читачеві відрізнити внесок роботи від сезонності, бюджету чи іншої команди. Поки матеріалів немає, сайт чесно показує структуру майбутнього доказу.</p>
-      </div>
-      <div class="case-anatomy">
-        <article><span>A</span><strong>Контекст</strong><p>Продукт, сегмент, період і вихідний маршрут.</p></article>
-        <article><span>B</span><strong>Розрив</strong><p>Спостереження, дані та відхилені альтернативи.</p></article>
-        <article><span>C</span><strong>Втручання</strong><p>Що змінили, а що навмисно залишили сталим.</p></article>
-        <article><span>D</span><strong>Наслідок</strong><p>Критерій, джерело, обмеження й наступне рішення.</p></article>
-      </div>
-    </section>
-
-    <section class="proof" id="proof" aria-labelledby="proof-title">
-      <div>
-        <h2 id="proof-title">Результат — це папка доказів, а не велика цифра.</h2>
-        <p>У вихідній версії є сильні кейси та відгуки, але для публічного сайту їм бракує посилань і матеріалів. Цей блок перетворює проблему на конкретний список заміни.</p>
-      </div>
-      <div class="evidence-file">
-        <div class="evidence-row"><span>До запуску додати</span><strong>скриншот джерела метрики</strong><i>обов’язково</i></div>
-        <div class="evidence-row"><span>До запуску додати</span><strong>період, бюджет і базову точку</strong><i>обов’язково</i></div>
-        <div class="evidence-row"><span>До запуску додати</span><strong>роль Орлова в результаті</strong><i>обов’язково</i></div>
-        <div class="evidence-row"><span>До запуску додати</span><strong>посилання або контакт для верифікації</strong><i>за згодою</i></div>
-        <div class="evidence-row is-ready"><span>Вже є в концепті</span><strong>метод, формат, межі й робочий процес</strong><i>показано</i></div>
-      </div>
-    </section>
-
-    <section class="questions" aria-labelledby="questions-title">
-      <div><h2 id="questions-title">Питання до початку.</h2><p>Короткі відповіді на те, що зазвичай з’ясовується вже після невдалого «давайте просто зробимо бота».</p></div>
-      <div class="question-list">
-        <details><summary>Чи можна почати без аналітики?</summary><p>Так, але першим результатом буде план вимірювання і список невідомого. Без цього причини не можна називати фактами.</p></details>
-        <details><summary>Чи обов’язково перебудовувати всю воронку?</summary><p>Ні. Робота навмисно звужується до фрагмента, де є достатньо доказів і впливу.</p></details>
-        <details><summary>Хто пише тексти й збирає інтеграції?</summary><p>У повному форматі це входить у погоджений контур. Окремі спеціалісти підключаються там, де потрібна профільна експертиза.</p></details>
-        <details><summary>Коли можна говорити про результат?</summary><p>Після погодженого періоду спостереження, з джерелом даних, базовою точкою й описаними обмеженнями.</p></details>
-      </div>
-    </section>
-
-    <section class="contact" id="contact" aria-labelledby="contact-title">
-      <div><h2 id="contact-title">Покажіть карту.<br>Я поставлю незручні питання.</h2><p>Локальна форма портфоліо: дані нікуди не надсилаються і не зберігаються.</p></div>
-      <form data-form novalidate>
-        <label for="name">Ім’я</label><input id="name" name="name" autocomplete="name" required placeholder="Як до вас звертатися">
-        <label for="contact-field">Telegram або email</label><input id="contact-field" name="contact" required placeholder="@username або you@team.com">
-        <label for="symptom">Де, на вашу думку, губиться шлях?</label><textarea id="symptom" name="symptom" rows="3" placeholder="Один симптом — без презентації на 20 слайдів"></textarea>
-        <button class="button button-paper" type="submit">Запросити тестовий розбір</button>
-        <p class="form-message" data-form-message>Демо не відправляє дані.</p>
-      </form>
-    </section>
-  </main>
-
-  <footer><span>ORLOV / FUNNEL SYSTEMS</span><p>Портфоліо-концепт · комерційні дані потребують перевірки</p><a href="#top">На початок ↑</a></footer>
-  <script src="a11y-floor.js"></script>
-  <script src="orlov-preview.js"></script>
-<div class="ov-badge" id="ov-badge">
-  <a class="ov-badge__main" href="https://overflow-web.pl/work/orlov/">
-    <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
-  </a>
-  <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
-</div>
-<style>
-.ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
-.ov-badge a{color:inherit;text-decoration:none}
-.ov-badge__main{display:flex;align-items:center;gap:5px}
-.ov-badge__mark{font-weight:700;letter-spacing:-.02em}
-.ov-badge__dot{opacity:.45}
-.ov-badge__type{opacity:.7}
-.ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
-.ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
-@media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
-@media print{.ov-badge{display:none}}
-</style>
-<!-- ov-badge-init -->
+<!-- universal-smooth-anchor-scroll -->
 <script>
-(function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
+(function(){
+  if(window.__ovSmoothScrollInit) return;
+  window.__ovSmoothScrollInit = true;
+  var animId = null;
+  function cancel(){ if(animId){ cancelAnimationFrame(animId); animId = null; } }
+  window.addEventListener('wheel', cancel, {passive:true});
+  window.addEventListener('touchstart', cancel, {passive:true});
+  window.addEventListener('keydown', cancel, {passive:true});
+  function smoothTo(targetY, dur){
+    cancel();
+    var startY = window.scrollY || window.pageYOffset || 0;
+    var maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    var destY = Math.min(Math.max(0, targetY), maxScroll);
+    var dist = destY - startY;
+    if(Math.abs(dist) < 3) return;
+    var startTime = performance.now();
+    var d = dur || 780;
+    function step(now){
+      var t = Math.min((now - startTime) / d, 1);
+      var ease = 1 - Math.pow(1 - t, 3);
+      window.scrollTo(0, startY + dist * ease);
+      if(t < 1) animId = requestAnimationFrame(step);
+      else animId = null;
+    }
+    animId = requestAnimationFrame(step);
+  }
+  window.__ovSmoothScrollTo = smoothTo;
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('a[href^="#"], [data-scroll-to], [data-target]');
+    if(!el) return;
+    var sel = el.getAttribute('data-scroll-to') || el.getAttribute('href');
+    if(!sel || sel.charAt(0) !== '#') return;
+    if(sel === '#'){
+      if(el.classList.contains('logo-link') || el.classList.contains('brand')){
+        e.preventDefault();
+        smoothTo(0, 750);
+      }
+      return;
+    }
+    var target = null;
+    try { target = document.querySelector(sel); } catch(err){}
+    if(!target) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var header = document.querySelector('header, nav.navbar, .site-header, .top-nav, .nav-bar');
+    var offset = 0;
+    if(header){
+      var pos = getComputedStyle(header).position;
+      if(pos === 'fixed' || pos === 'sticky'){
+        offset = header.offsetHeight || 72;
+      }
+    }
+    var top = (window.scrollY || window.pageYOffset || 0) + target.getBoundingClientRect().top - offset;
+    smoothTo(top, 780);
+  }, true);
+})();
 </script>
+
 </body>
 </html>

@@ -1,66 +1,719 @@
-<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="DISPERSIA — fictional unisex fashion concept focused on silhouette, fit and material."><title>DISPERSIA — The Moving Pattern</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="dispersia-preview.css"><link rel="stylesheet" href="dispersia-expanded.css"><meta name="robots" content="noindex, follow"></head><body>
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DISPERSIA — The Moving Pattern | Editorial AW26</title>
+  <meta name="description" content="DISPERSIA — Architektoniczna moda niezależna AW26. Płaszcz Ciszy, geometria kroju, badanie ruchu i fizyka szlachetnych tkanin bez kompromisów.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<a class="skip" href="#collection">Do kolekcji</a><header><a class="logo" href="#top">DISPERSIA</a><nav><a href="#collection">Kolekcja</a><a href="#fit">Dopasowanie</a><a href="#proof">Materiały</a></nav><button class="bag-button" type="button" data-bag-open>Koszyk <span data-bag-count>0</span></button></header>
-<main id="top"><section class="hero" aria-labelledby="hero-title">
-  <picture class="hero-media">
-    <source media="(max-width:600px)" srcset="images/dispersia-hero-v2.webp">
-    <img src="images/col-ss2025-hero.webp" alt="DISPERSIA concept campaign, three models in a concrete hall." width="1400" height="764" fetchpriority="high">
-  </picture>
-  <div class="hero-wash" aria-hidden="true"></div>
-  <div class="hero-inner">
-    <div class="hero-masthead">
-      <span class="hero-issue">SS26 / ISSUE 01</span>
-      <h1 id="hero-title" class="hero-wordmark">DISPERSIA</h1>
-      <span class="hero-season">SILHOUETTE / MOVEMENT</span>
+  <!-- FIXED MICRO-NAV (12PX UPPERCASE - ACNE STUDIOS CANON) -->
+  <header class="site-header" role="banner">
+    <div class="nav-brand">
+      <a href="#hero">DISPERSIA</a>
+      <span class="season-pill mono">AW26</span>
     </div>
-    <div class="hero-foot">
-      <div class="hero-copy">
-        <p class="hero-kicker">Fikcyjna marka · portfolio concept</p>
-        <p class="hero-line">Ubranie nie kończy się na sylwetce. Zaczyna się od ruchu.</p>
-        <a class="hero-cta" href="#collection">Zobacz lookbook <span aria-hidden="true">→</span></a>
+
+    <nav class="nav-links" aria-label="Główna nawigacja">
+      <a href="#kolekcja">Kolekcja [06]</a>
+      <a href="#kalibrator">Anatomia Proporcji</a>
+      <a href="#anatomia">Przekrój Szwów</a>
+      <a href="#fizyka">Fizyka Tkanin</a>
+      <a href="#atelier">Prywatne Atelier</a>
+    </nav>
+
+    <div class="nav-actions">
+      <span class="mono micro" style="color: #777;">WAW 14:20 CET</span>
+      <button class="cart-trigger-btn" id="cartTrigger" type="button" aria-label="Otwórz koszyk">
+        <span>Koszyk</span>
+        <span class="cart-badge-count mono" data-cart-count>0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- SCREEN 1: 50/50 RUNWAY DIPTYCH HERO (100VH EXACT DESKTOP) -->
+    <section class="hero-runway" id="hero" aria-label="Runway Editorial Diptych">
+      <!-- Left Pane: Płaszcz Ciszy -->
+      <div class="diptych-pane pane-left">
+        <img src="assets/01_hero_runway_coat_left.webp" alt="Model w wełnianym trenchu Płaszcz Ciszy — kampania DISPERSIA AW26" width="1200" height="1600" fetchpriority="high">
+        <button class="garment-hotspot hotspot-left" data-target-id="disp-01" type="button">
+          <span class="hotspot-pulse" aria-hidden="true"></span>
+          <span>01. Płaszcz Ciszy · 620 g/m²</span>
+        </button>
       </div>
-      <div class="hero-looks" aria-label="Lookbook">
-        <a href="#collection"><img src="images/hero-look-01.webp" alt="Płaszcz Ciszy — concept look." width="180" height="240" loading="lazy"><span>01 / Płaszcz Ciszy</span></a>
-        <a href="#collection"><img src="images/hero-look-02.webp" alt="Sukienka Ruchu — concept look." width="180" height="240" loading="lazy"><span>02 / Sukienka Ruchu</span></a>
-        <a href="#collection"><img src="images/hero-look-03.webp" alt="Marynarka Formy — concept look." width="180" height="240" loading="lazy"><span>03 / Marynarka Formy</span></a>
+
+      <!-- Vertical Seam Hairline -->
+      <div class="diptych-seam" aria-hidden="true"></div>
+
+      <!-- Right Pane: Marynarka Formy w Ruchu -->
+      <div class="diptych-pane pane-right">
+        <img src="assets/02_hero_runway_silhouette_right.webp" alt="Sylwetka w ruchu w garniturze Marynarka Formy — kampania DISPERSIA AW26" width="1200" height="1600" fetchpriority="high">
+        <button class="garment-hotspot hotspot-right" data-target-id="disp-02" type="button">
+          <span class="hotspot-pulse" aria-hidden="true"></span>
+          <span>02. Marynarka Formy · 480 g/m²</span>
+        </button>
+      </div>
+
+      <!-- Centered Monolithic Wordmark Overlay -->
+      <div class="hero-wordmark-overlay">
+        <h1 class="hero-wordmark-title">DISPERSIA</h1>
+        <p class="hero-wordmark-sub">The Moving Pattern · AW26 Issue 01</p>
+      </div>
+
+      <!-- Bottom Status Bar -->
+      <div class="hero-bottom-bar">
+        <span>Kontrolowana przestrzeń między ciałem a tkaniną</span>
+        <a href="#kolekcja">Eksploruj kolekcję ↓</a>
+        <span class="mono">Stockholm / Warszawa</span>
+      </div>
+    </section>
+
+    <!-- CHAPTER 02: EDGE-TO-EDGE RUNWAY LOOKBOOK MATRIX -->
+    <section class="fashion-section" id="kolekcja" aria-labelledby="kolekcja-heading">
+      <div class="section-header-bar">
+        <div>
+          <span class="section-tagline">Katalog Kolekcji AW26</span>
+          <h2 class="section-main-heading" id="kolekcja-heading">Monolityczna Matryca Ubrań</h2>
+        </div>
+        <p class="caption" style="color: #666; max-width: 440px;">
+          Każda rzecz jest nazwanym obiektem architektonicznym. Żadnych przypadkowych kodów SKU — tylko czysta konstrukcja i naturalny ciężar włókna.
+        </p>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="lookbook-filter-bar" role="tablist" aria-label="Filtry sylwetek">
+        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">Wszystkie [06]</button>
+        <button class="filter-btn" data-filter="okrycia" role="tab" aria-selected="false">Okrycia Wierzchnie [02]</button>
+        <button class="filter-btn" data-filter="struktura" role="tab" aria-selected="false">Struktura & Krawiectwo [02]</button>
+        <button class="filter-btn" data-filter="ruch" role="tab" aria-selected="false">Płynny Ruch [02]</button>
+      </div>
+
+      <!-- Lookbook 4-Column Grid -->
+      <div class="lookbook-matrix" id="lookbookGrid">
+        <!-- Dynamically rendered by app.js -->
+      </div>
+    </section>
+
+    <!-- CHAPTER 03: INTERACTIVE SILHOUETTE & PROPORTION CALIBRATOR -->
+    <section class="fashion-section" id="kalibrator" aria-labelledby="kalibrator-heading">
+      <div class="section-header-bar">
+        <div>
+          <span class="section-tagline">Anatomia Przestrzeni</span>
+          <h2 class="section-main-heading" id="kalibrator-heading">Ile ciszy ma zostać między tkaniną a ciałem?</h2>
+        </div>
+        <span class="mono caption cobalt-text">Kalibrator Proporcji v2.6</span>
+      </div>
+
+      <div class="calibrator-container">
+        <!-- Controls -->
+        <div class="calibrator-controls">
+          <div>
+            <span class="caption" style="color: #888; display: block; margin-bottom: 10px;">01. Wybierz intencję sylwetki</span>
+            <div class="calibrator-tabs">
+              <button class="cal-tab active" data-sil="arch" type="button">
+                <div class="cal-tab-head">
+                  <span>01 / Architektoniczna</span>
+                  <span class="mono micro">+12 CM LUZU</span>
+                </div>
+                <p class="cal-tab-desc">Stabilna konstrukcja ramion, prostopadły spadek tkaniny, precyzyjne odcięcie od linii tułowia.</p>
+              </button>
+
+              <button class="cal-tab" data-sil="fluid" type="button">
+                <div class="cal-tab-head">
+                  <span>02 / Płynna Kinetka</span>
+                  <span class="mono micro">+16 CM LUZU</span>
+                </div>
+                <p class="cal-tab-desc">Opadający szew raglanowy, miękka reakcja na podmuch powietrza, wolna przestrzeń pod pachą.</p>
+              </button>
+
+              <button class="cal-tab" data-sil="oversize" type="button">
+                <div class="cal-tab-head">
+                  <span>03 / Oversize Monolit</span>
+                  <span class="mono micro">+24 CM LUZU</span>
+                </div>
+                <p class="cal-tab-desc">Maksymalna objętość tkaniny tworząca autonomiczną mikro-architekturę wokół sylwetki.</p>
+              </button>
+            </div>
+          </div>
+
+          <!-- Sliders -->
+          <div class="calibrator-sliders">
+            <div class="slider-group">
+              <div class="slider-header">
+                <span>Wzrost sylwetki</span>
+                <span class="mono cobalt-text" id="heightValDisplay">178 CM</span>
+              </div>
+              <input type="range" class="slider-range-input" id="heightSlider" min="160" max="198" value="178">
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-header">
+                <span>Rozmiar bazowy</span>
+                <span class="mono" style="color: #777;">XS — XL</span>
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <button class="size-pill cal-size-pill" data-size="XS">XS</button>
+                <button class="size-pill cal-size-pill" data-size="S">S</button>
+                <button class="size-pill cal-size-pill active" data-size="M">M</button>
+                <button class="size-pill cal-size-pill" data-size="L">L</button>
+                <button class="size-pill cal-size-pill" data-size="XL">XL</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Display Output -->
+        <div class="calibrator-display">
+          <div class="cal-output-card">
+            <span class="cal-output-badge mono">Obliczona Formuła Cięcia</span>
+            <h3 class="cal-output-title" id="calTargetName">Płaszcz Ciszy</h3>
+            <p style="font-size: 13px; color: #666; margin-top: 6px;">
+              Proporcja gwarantuje naturalne układanie się fałd bez ciągnięcia tkaniny w krokach i siadzie.
+            </p>
+
+            <div class="cal-metrics-grid">
+              <div class="cal-metric-item">
+                <span class="cal-metric-label">Luz w klatce</span>
+                <span class="cal-metric-value cobalt-text" id="outEase">+16 cm</span>
+              </div>
+              <div class="cal-metric-item">
+                <span class="cal-metric-label">Kąt spadku poły</span>
+                <span class="cal-metric-value" id="outAngle">14°</span>
+              </div>
+              <div class="cal-metric-item">
+                <span class="cal-metric-label">Długość rękawa</span>
+                <span class="cal-metric-value" id="outSleeve">102%</span>
+              </div>
+              <div class="cal-metric-item">
+                <span class="cal-metric-label">Kod krojczy</span>
+                <span class="cal-metric-value mono" id="outCode">DISP-SZ-F-M-REG</span>
+              </div>
+            </div>
+
+            <button class="cal-cta-btn" id="applySizeBtn" type="button">
+              Dodaj Płaszcz Ciszy w tym rozmiarze do koszyka →
+            </button>
+          </div>
+
+          <div style="padding-top: 20px; font-size: 11px; color: #888; text-transform: uppercase;">
+            <span>Tolerancja manofaktury: ±0.4 cm · Certyfikacja Biella Wool Council</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 04: GARMENT CUTAWAY & SEAM ANATOMY -->
+    <section class="fashion-section" id="anatomia" aria-labelledby="anatomia-heading">
+      <div class="section-header-bar">
+        <div>
+          <span class="section-tagline">Inżynieria Rzemiosła</span>
+          <h2 class="section-main-heading" id="anatomia-heading">Konstrukcja ma wyjaśniać bryłę</h2>
+        </div>
+        <span class="mono caption" style="color: #666;">Kliknij węzły krawieckie [01–05]</span>
+      </div>
+
+      <div class="anatomy-stage">
+        <!-- Visual with clickable pins -->
+        <div class="anatomy-visual-pane">
+          <img src="assets/01_hero_runway_coat_left.webp" alt="Przekrój krawiecki Płaszcz Ciszy" id="anatomyImage" width="1200" height="1600">
+          
+          <button class="anatomy-node-pin pin-1 active" data-node="1" aria-label="Węzeł 01: Ramię raglanowe">01</button>
+          <button class="anatomy-node-pin pin-2" data-node="2" aria-label="Węzeł 02: Wełna 620g">02</button>
+          <button class="anatomy-node-pin pin-3" data-node="3" aria-label="Węzeł 03: Plisa wiatrowa">03</button>
+          <button class="anatomy-node-pin pin-4" data-node="4" aria-label="Węzeł 04: Szew francuski">04</button>
+          <button class="anatomy-node-pin pin-5" data-node="5" aria-label="Węzeł 05: Kołnierz stójkowy">05</button>
+        </div>
+
+        <!-- Info List -->
+        <div class="anatomy-info-pane">
+          <div class="anatomy-node-list">
+            <button class="anatomy-item-btn active" data-node="1">
+              <span class="anatomy-item-title">01. Pływające ramię raglanowe</span>
+              <p class="anatomy-item-body">Brak szwu naramiennego zapobiega załamywaniu się sylwetki przy unoszeniu rąk. Rękaw płynnie przechodzi w karczek.</p>
+            </button>
+
+            <button class="anatomy-item-btn" data-node="2">
+              <span class="anatomy-item-title">02. Podwójny splot wełny 620 g/m²</span>
+              <p class="anatomy-item-body">Tkana w Bielli dwustronna wełna czesankowa. Tkanina sama utrzymuje pionową bryłę bez użycia syntetycznych klejonek.</p>
+            </button>
+
+            <button class="anatomy-item-btn" data-node="3">
+              <span class="anatomy-item-title">03. Ukryta plisa wiatrowa</span>
+              <p class="anatomy-item-body">Zapięcie na naturalne rogowe guziki schowane pod podwójną warstwą tkaniny. Tworzy monolityczną taflę chroniącą przed chłodem.</p>
+            </button>
+
+            <button class="anatomy-item-btn" data-node="4">
+              <span class="anatomy-item-title">04. Szew kopertowy bez podszewki</span>
+              <p class="anatomy-item-body">Wszystkie wewnętrzne brzegi wykończone taśmą z czystego jedwabiu habotai. Ubranie od spodu jest tak samo czyste jak na zewnątrz.</p>
+            </button>
+
+            <button class="anatomy-item-btn" data-node="5">
+              <span class="anatomy-item-title">05. Ręcznie formowany kołnierz</span>
+              <p class="anatomy-item-body">Trójwymiarowy profil stójki parowany pod kątem 75°. Działa jak architektoniczny bufor termiczny wokół szyi.</p>
+            </button>
+          </div>
+
+          <div style="padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.08); font-size: 11px; color: #777; text-transform: uppercase;">
+            <span>Archiwum konstrukcyjne Atelier Stockholm · Seria limitowana 120 egzemplarzy</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 05: FABRIC PHYSICS & MICRO-CLIMATE LAB -->
+    <section class="fashion-section" id="fizyka" aria-labelledby="fizyka-heading">
+      <div class="section-header-bar">
+        <div>
+          <span class="section-tagline">Laboratorium Materiałowe</span>
+          <h2 class="section-main-heading" id="fizyka-heading">Trzy Temperatury Ruchu</h2>
+        </div>
+        <span class="caption mono" style="color: #666;">Pomiary gęstości, opadania i akustyki</span>
+      </div>
+
+      <div class="physics-lab-grid">
+        <!-- Fabric 01 -->
+        <article class="physics-card">
+          <div class="physics-fabric-header">
+            <span class="physics-fabric-origin">Biella, Włochy · Zima</span>
+            <h3 class="physics-fabric-name">Wełna Dziewicza 620g</h3>
+            <p style="font-size: 12px; color: #666; margin-top: 4px;">Zwarty podwójny splot diagonalny z naturalną sprężystością włókien.</p>
+          </div>
+
+          <div class="physics-meter-list">
+            <div class="meter-row">
+              <div class="meter-labels">
+                <span>Wiatroszczelność</span>
+                <span class="mono">92%</span>
+              </div>
+              <div class="meter-track"><div class="meter-fill" style="width: 92%;"></div></div>
+            </div>
+            <div class="meter-row">
+              <div class="meter-labels">
+                <span>Płynność opadania</span>
+                <span class="mono">65%</span>
+              </div>
+              <div class="meter-track"><div class="meter-fill" style="width: 65%;"></div></div>
+            </div>
+            <div class="meter-row">
+              <div class="meter-labels">
+                <span>Oddychalność</span>
+                <span class="mono">84%</span>
+              </div>
+              <div class="meter-track"><div class="meter-fill" style="width: 84%;"></div></div>
+            </div>
+            <div class="meter-row">
+              <div class="meter-labels">
+                <span>Akustyka / Cisza</span>
+                <span class="mono cobalt-text">99%</span>
+              </div>
+              <div class="meter-track"><div class="meter-fill" style="width: 99%;"></div></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Fabric 02 -->
+        <article class="physics-card">
+          <div class="physics-fabric-header">
+            <span class="physics-fabric-origin">Como, Włochy · Całoroczna</span>
+            <h3 class="physics-fabric-name">Surowy Jedwab & Len 240g</h3>
+            <p style="font-size: 12px; color: #666; margin-top: 4px;">Nieregularny splot płócienny o chłodnym dotyku i wysokiej reakcji na krok.</p>
+          </div>
+
+          <div class="physics-meter-list">
+            <div class="meter-row">
+              <div class="meter-labels">
+                <span>Wiatroszczelność</span>
+                <span class="mono">45%</span>
+              </div>
+              <div class="meter-track"><div class="meter-fill" style="width: 45%;"></div></div>
+            </div>
+            <div class="meter-row">
+              <div class="meter-labels">
+                <span>Płynność opadania</span>
+                <span class="mono cobalt-text">98%</span>
+              </div>
+              <div class="meter-track"><div class="meter-fill" style="width: 98%;"></div></div>
+            </div>
+            <div class="meter-row">
+              <div class="meter-labels">
+                <span>Oddychalność</span>
+                <span class="mono">96%</span>
+              </div>
+              <div class="meter-track"><div class="meter-fill" style="width: 96%;"></div></div>
+            </div>
+            <div class="meter-row">
+              <div class="meter-labels">
+                <span>Akustyka / Cisza</span>
+                <span class="mono">82%</span>
+              </div>
+              <div class="meter-track"><div class="meter-fill" style="width: 82%;"></div></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Fabric 03 -->
+        <article class="physics-card">
+          <div class="physics-fabric-header">
+            <span class="physics-fabric-origin">Osaka, Japonia · Przejściowa</span>
+            <h3 class="physics-fabric-name">Bawełna Techniczna 380g</h3>
+            <p style="font-size: 12px; color: #666; margin-top: 4px;">Gęsto tkana przędza o wysokiej pamięci kształtu i geometrycznym łamaniu fałd.</p>
+          </div>
+
+          <div class="physics-meter-list">
+            <div class="meter-row">
+              <div class="meter-labels">
+                <span>Wiatroszczelność</span>
+                <span class="mono">78%</span>
+              </div>
+              <div class="meter-track"><div class="meter-fill" style="width: 78%;"></div></div>
+            </div>
+            <div class="meter-row">
+              <div class="meter-labels">
+                <span>Płynność opadania</span>
+                <span class="mono">40%</span>
+              </div>
+              <div class="meter-track"><div class="meter-fill" style="width: 40%;"></div></div>
+            </div>
+            <div class="meter-row">
+              <div class="meter-labels">
+                <span>Oddychalność</span>
+                <span class="mono">72%</span>
+              </div>
+              <div class="meter-track"><div class="meter-fill" style="width: 72%;"></div></div>
+            </div>
+            <div class="meter-row">
+              <div class="meter-labels">
+                <span>Akustyka / Cisza</span>
+                <span class="mono">91%</span>
+              </div>
+              <div class="meter-track"><div class="meter-fill" style="width: 91%;"></div></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Macro Inspection Strip -->
+      <div class="macro-inspection-strip">
+        <div class="macro-img-wrap">
+          <img src="assets/04_macro_wool_weave_texture.webp" alt="Makro zbliżenie splotu włoskiej wełny i rogowego guzika" width="1600" height="1000" loading="lazy">
+        </div>
+        <div class="macro-copy-wrap">
+          <span class="mono caption cobalt-text">Mikroskopia Optyczna 1:1</span>
+          <h3 style="font-size: 22px; text-transform: uppercase; font-weight: 600;">Dotyk poprzedza decyzję</h3>
+          <p style="font-size: 13px; color: #555; line-height: 1.6;">
+            Nie używamy poliestrowych wypełniaczy ani impregnacji chemicznych. Hydrofobowość wełny dziewiczej wynika z naturalnej zawartości lanoliny w runie merynosów. Każda partia poddawana jest próbom parowym przed rozkrojem.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 06: ATELIER CARE & LONGEVITY PROTOCOL -->
+    <section class="fashion-section" aria-labelledby="care-heading">
+      <div class="section-header-bar">
+        <div>
+          <span class="section-tagline">Protokół Długowieczności</span>
+          <h2 class="section-main-heading" id="care-heading">Pielęgnacja jako część projektu</h2>
+        </div>
+        <span class="caption mono" style="color: #666;">Dożywotnia Gwarancja Szwów</span>
+      </div>
+
+      <div class="care-protocol-grid">
+        <article class="care-step-item">
+          <span class="care-step-num">01 / PAROWANIE</span>
+          <h3 class="care-step-title">Parownica zamiast żelazka</h3>
+          <p class="care-step-desc">Gorący strumień pary rozpręża ściśnięte włókna wełny i eliminuje zagniecenia bez prasowania na płasko.</p>
+        </article>
+
+        <article class="care-step-item">
+          <span class="care-step-num">02 / SZCZOTKOWANIE</span>
+          <h3 class="care-step-title">Końskie włosie po powrocie</h3>
+          <p class="care-step-desc">Krótkie przeczesanie powierzchni z włosem usuwa pył miejski i zamyka łuski przędzy przed odpoczynkiem.</p>
+        </article>
+
+        <article class="care-step-item">
+          <span class="care-step-num">03 / ODDECH</span>
+          <h3 class="care-step-title">48h przerwy między noszeniami</h3>
+          <p class="care-step-desc">Naturalna wełna potrzebuje dwóch dób na szerokim wieszaku cedrowym, by powrócić do pierwotnego profilu.</p>
+        </article>
+
+        <article class="care-step-item">
+          <span class="care-step-num">04 / ATELIER SERWIS</span>
+          <h3 class="care-step-title">Bezpłatna renowacja krawędzi</h3>
+          <p class="care-step-desc">Wymiana guzików rogowych i naprawa lamówek jedwabnych bezterminowo w salonach Warszawa i Stockholm.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CHAPTER 07: PRIVATE SHOWROOM & MADE-TO-MEASURE APPOINTMENT -->
+    <section class="fashion-section" id="atelier" aria-labelledby="atelier-heading">
+      <div class="section-header-bar">
+        <div>
+          <span class="section-tagline">Prywatne Przymiarki</span>
+          <h2 class="section-main-heading" id="atelier-heading">Atelier Warszawa / Stockholm</h2>
+        </div>
+        <span class="caption mono cobalt-text">Wizyty 1-na-1 z krawcem</span>
+      </div>
+
+      <div class="showroom-container">
+        <!-- Showroom Info -->
+        <div class="showroom-info">
+          <div>
+            <span class="caption" style="color: #888; display: block; margin-bottom: 12px;">Wybierz przestrzeń</span>
+            <div class="atelier-cards-grid">
+              <div class="atelier-card active" data-city="Warszawa">
+                <span class="atelier-card-city">Warszawa</span>
+                <p class="atelier-card-addr">ul. Mokotowska 42<br>00-543 Warszawa</p>
+                <span class="mono micro cobalt-text" style="margin-top: 8px; display: block;">Pn–Sb · 11:00–19:00</span>
+              </div>
+
+              <div class="atelier-card" data-city="Stockholm">
+                <span class="atelier-card-city">Stockholm</span>
+                <p class="atelier-card-addr">Biblioteksgatan 11<br>111 46 Stockholm</p>
+                <span class="mono micro cobalt-text" style="margin-top: 8px; display: block;">Tis–Lör · 11:00–18:00</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="font-size: 13px; color: #555; line-height: 1.6;">
+            <p>Prywatna przymiarka trwa 60 minut. Krawiec atelier zdejmuje indywidualne miary sylwetki, prezentuje próbniki tkanin z Bielli i Como oraz dopasowuje długość rękawów i połów przed ostatecznym wykończeniem.</p>
+          </div>
+
+          <div style="font-size: 11px; color: #888; text-transform: uppercase;">
+            <span>Bez zobowiązania zakupu · Kawa & woda mineralna w cenie spotkania</span>
+          </div>
+        </div>
+
+        <!-- Booking Form -->
+        <div class="showroom-form-wrap">
+          <form class="appointment-form" id="appointmentForm">
+            <input type="hidden" id="bookingCityInput" value="Warszawa">
+
+            <div class="form-group">
+              <label class="form-label" for="clientNameInput">Imię i Nazwisko</label>
+              <input type="text" class="form-input" id="clientNameInput" placeholder="np. Joanna Kowalska" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="clientEmailInput">Adres e-mail</label>
+              <input type="email" class="form-input" id="clientEmailInput" placeholder="kontakt@domena.pl" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="clientPhoneInput">Numer telefonu</label>
+              <input type="tel" class="form-input" id="clientPhoneInput" placeholder="+48 600 000 000" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="serviceSelect">Rodzaj konsultacji</label>
+              <select class="form-select" id="serviceSelect">
+                <option value="fitting">Przymiarka Kolekcji AW26 (60 min)</option>
+                <option value="mtm">Indywidualne Dopasowanie Made-to-Measure (90 min)</option>
+                <option value="care">Serwis Pielęgnacyjny i Naprawa Ubrania (30 min)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="dateSelect">Preferowana data</label>
+              <input type="date" class="form-input" id="dateSelect" required>
+            </div>
+
+            <button type="submit" class="form-submit-btn">
+              Zarezerwuj prywatne spotkanie →
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- QUICK VIEW MODAL -->
+  <div class="quick-view-modal" id="quickViewModal" role="dialog" aria-modal="true" aria-labelledby="qvName">
+    <div class="quick-view-content">
+      <button class="quick-view-close" id="quickViewClose" aria-label="Zamknij podgląd">×</button>
+      <div style="background: #F0EFEA;">
+        <img src="assets/01_hero_runway_coat_left.webp" id="qvImage" alt="Podgląd sylwetki" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+      <div style="padding: clamp(24px, 4vw, 40px); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <span class="mono micro cobalt-text" id="qvCode">01 / OKRYCIE</span>
+          <h3 id="qvName" style="font-size: 24px; text-transform: uppercase; margin-top: 6px;">Płaszcz Ciszy</h3>
+          <p class="mono" id="qvWeight" style="font-size: 12px; color: #777; margin-top: 4px;">620 g/m²</p>
+          <p id="qvDesc" style="font-size: 13px; color: #555; margin-top: 14px; line-height: 1.5;"></p>
+          <div style="margin-top: 16px; padding: 12px; background: #F8F7F4; border-radius: 2px;">
+            <span class="caption" style="display: block; color: #888;">Skład przędzy:</span>
+            <span id="qvComp" style="font-size: 12px; font-weight: 500;"></span>
+          </div>
+        </div>
+        <div style="padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.1); margin-top: 24px; display: flex; align-items: center; justify-content: space-between;">
+          <span class="mono" id="qvPrice" style="font-size: 18px; font-weight: 700;">3 450 PLN</span>
+          <button class="form-submit-btn" id="qvAddBtn" style="margin: 0; padding: 10px 20px;">Dodaj do koszyka</button>
+        </div>
       </div>
     </div>
   </div>
-</section>
-<section class="statement"><p>Forma bez granic.</p><p>Nie wybieraj płci. Wybierz proporcję, ciężar i przestrzeń wokół ciała.</p></section>
-<section class="collection" id="collection" aria-labelledby="collection-title"><div class="collection-head"><h1 id="collection-title">Jeden element.<br>Pełna informacja.</h1><p>Kolekcja jest fikcyjna. Wymiary, skład i ceny są demonstracyjne — interakcja pokazuje, jak sklep powinien pomagać wybrać, nie tylko wyglądać.</p></div><div class="garment-stage" data-stage><div class="garment-image"><figure data-garment-figure><img src="images/dp-coat.webp" alt="Płaszcz Ciszy — concept product image."><figcaption>CONCEPT IMAGE / GARMENT 01</figcaption></figure><div class="measure measure-v"><span data-length>128 cm</span></div><div class="measure measure-h"><span data-width>68 cm</span></div></div><div class="garment-sheet"><div class="sheet-id"><span data-index>GARMENT 01 / 06</span><span data-price>3 899 zł</span></div><h2 data-name>Płaszcz Ciszy</h2><p data-desc>Miękka bryła o obniżonej linii ramion. Ciężar tkaniny prowadzi pion, a szeroki rękaw zostawia miejsce na warstwę.</p><dl><div><dt>Materiał*</dt><dd data-material>wełna 80% / len 20% · 420 g/m²</dd></div><div><dt>Ruch</dt><dd data-movement>długi krok · pełny rękaw · warstwa pod spodem</dd></div><div><dt>Pielęgnacja*</dt><dd data-care>czyszczenie specjalistyczne · wietrzyć między użyciami</dd></div></dl><form class="size-form" data-size-form><fieldset><legend>Wybierz rozmiar demonstracyjny</legend><label><input type="radio" name="size" value="XS"><span>XS</span></label><label><input type="radio" name="size" value="S"><span>S</span></label><label><input type="radio" name="size" value="M"><span>M</span></label><label><input type="radio" name="size" value="L"><span>L</span></label></fieldset><button type="submit">Dodaj lokalnie</button><p data-size-message>Brak płatności i rezerwacji.</p></form></div></div><div class="garment-tabs" role="tablist" aria-label="Garments"><button class="active" role="tab" aria-selected="true" data-garment="0">01 Płaszcz</button><button role="tab" aria-selected="false" data-garment="1">02 Koszula</button><button role="tab" aria-selected="false" data-garment="2">03 Sukienka</button><button role="tab" aria-selected="false" data-garment="3">04 Spodnie</button><button role="tab" aria-selected="false" data-garment="4">05 Golf</button><button role="tab" aria-selected="false" data-garment="5">06 Marynarka</button></div></section>
-<section class="fit" id="fit" aria-labelledby="fit-title"><div><h2 id="fit-title">Ile ciszy ma zostać między tkaniną a ciałem?</h2><p>Wybierz preferowany luz. To prosty demonstracyjny przewodnik, nie dobór rozmiaru bez rzeczywistych wymiarów produktu.</p></div><form data-fit-form><label><input type="radio" name="ease" value="close"><span>Bliżej ciała</span><small>warstwa bazowa · mniej objętości</small></label><label><input type="radio" name="ease" value="intended" checked><span>Intencja projektu</span><small>pełna bryła · swobodny ruch</small></label><label><input type="radio" name="ease" value="layered"><span>Na warstwy</span><small>sweter / marynarka pod spodem</small></label></form><aside><span>Wskazówka demo</span><strong data-fit-result>Wybierz swój zwykły rozmiar dla zamierzonej, luźnej proporcji.</strong><small>Przed publikacją zastąpić tabelą rzeczywistych wymiarów każdej sztuki.</small></aside></section>
-<section class="proportion" aria-labelledby="proportion-title"><div class="proportion-copy"><h2 id="proportion-title">Rozmiar to kod. Proporcja jest decyzją.</h2><p>Ta sama litera może opisywać zupełnie inną bryłę. Dlatego karta ubrania powinna pokazywać rzeczywisty obwód, długość, linię ramienia i przewidziany luz — osobno dla każdego rozmiaru.</p></div><div class="pattern-map" aria-label="Demonstracyjna mapa proporcji płaszcza"><span class="pattern-body">PŁASZCZ / M</span><i class="line shoulder"><b>RAMIĘ 54 CM*</b></i><i class="line chest"><b>KLATKA 136 CM*</b></i><i class="line length"><b>DŁUGOŚĆ 128 CM*</b></i><i class="line ease"><b>LUZ +18 CM*</b></i><small>*wartości demonstracyjne, nie tabela produkcyjna</small></div></section>
-<section class="movement" aria-labelledby="movement-title"><div><h2 id="movement-title">Ubranie zaczyna się poruszać dopiero poza packshotem.</h2><p>Obszerny rękaw, krok, siad i warstwa pod spodem są częścią fasonu. Sekwencja pokazuje zmianę bryły, nie obiecuje parametrów, których jeszcze nie przetestowano.</p></div><div class="movement-strip"><figure><img src="images/ed-ls-grid-1.webp" alt="Fikcyjne studium ruchu sylwetki, ujęcie pierwsze."><figcaption>KROK / PRZÓD</figcaption></figure><figure><img src="images/ed-ls-grid-3.webp" alt="Fikcyjne studium ruchu sylwetki, ujęcie drugie."><figcaption>OBRÓT / BOK</figcaption></figure><figure><img src="images/ed-ls-grid-5.webp" alt="Fikcyjne studium ruchu sylwetki, ujęcie trzecie."><figcaption>WARSTWA / TYŁ</figcaption></figure></div></section>
-<section class="material-archive" aria-labelledby="material-title"><div><h2 id="material-title">Materiał nie kończy się na nazwie włókna.</h2><p>Skład jest dopiero początkiem. Przed sprzedażą potrzebne są masa, splot, chwyt, prześwit, podatność na zagniecenia i instrukcja pielęgnacji potwierdzona próbą.</p></div><div class="material-ledger"><article><span>WEŁNA + LEN*</span><strong>420 g/m²</strong><p>Zwarty splot, miękki pion, widoczna praca zagniecenia.</p></article><article><span>LEN*</span><strong>190 g/m²</strong><p>Suchy chwyt, naturalny prześwit, szybka reakcja na ruch.</p></article><article><span>WISKOZA + LEN*</span><strong>230 g/m²</strong><p>Płynna powierzchnia, miękki bok, ciężar skupiony przy dole.</p></article><small>*opisy demonstracyjne — wymagają danych dostawcy i prób</small></div></section>
-<section class="editorial"><div class="editorial-word">BADANIE<br>ŚWIATŁA</div><img src="images/ed-ls-2.webp" alt="DISPERSIA fictional Light Study editorial."><img src="images/ed-ls-3.webp" alt="Detail from the fictional DISPERSIA editorial."><p>Lazurowe Wybrzeże / fikcyjny editorial<br>Poranne światło · len · kamień</p></section>
-<section class="construction" aria-labelledby="construction-title"><div class="construction-image"><img src="images/blazer-construction.webp" alt="Marynarka Przesunięta, fikcyjny detal konstrukcji."><span>CONSTRUCTION STUDY / DEMO</span></div><div><h2 id="construction-title">Konstrukcja ma wyjaśniać bryłę.</h2><dl><div><dt>Ramię</dt><dd>Obniżone, bez deklarowania niewidocznego wkładu konstrukcyjnego.</dd></div><div><dt>Zapięcie</dt><dd>Przesunięte względem osi, aby objętość układała się asymetrycznie.</dd></div><div><dt>Kieszeń</dt><dd>Umieszczona w linii cięcia; pozycja wymaga pomiaru produkcyjnego.</dd></div><div><dt>Dół</dt><dd>Ciężar i podwinięcie powinny zostać pokazane na zbliżeniu produktu.</dd></div></dl></div></section>
-<section class="layers" aria-labelledby="layers-title"><h2 id="layers-title">Jedna garderoba. Trzy temperatury.</h2><div class="layer-sequence"><article><span>18–22°C / DEMO</span><strong>Koszula + spodnie</strong><p>Objętość zostaje przy łokciu i biodrze; koszula działa jako warstwa zewnętrzna.</p></article><article><span>10–17°C / DEMO</span><strong>Golf + marynarka</strong><p>Bliska baza zostawia miejsce na miękką konstrukcję ramienia.</p></article><article><span>3–9°C / DEMO</span><strong>Golf + koszula + płaszcz</strong><p>Przed publikacją trzeba sprawdzić obwód pachy i rękawa dla pełnej warstwy.</p></article></div></section>
-<section class="studio-grid" aria-labelledby="studio-title"><div><h2 id="studio-title">Badanie światła, nie dekoracja kampanii.</h2><p>Dziewięć kadrów sprawdza matowość, prześwit i zachowanie konturu w ostrym oraz rozproszonym świetle.</p></div><figure><img src="images/ed-ls-grid-2.webp" alt="Studium światła na ciemnej tkaninie."></figure><figure><img src="images/ed-ls-grid-4.webp" alt="Studium światła na jasnej tkaninie."></figure><figure><img src="images/ed-ls-grid-6.webp" alt="Studium konturu ubrania."></figure><figure><img src="images/ed-ls-grid-7.webp" alt="Studium faktury materiału."></figure><figure><img src="images/ed-ls-grid-8.webp" alt="Studium ruchu materiału."></figure><figure><img src="images/ed-ls-grid-9.webp" alt="Studium warstw sylwetki."></figure></section>
-<section class="care-lab" aria-labelledby="care-title"><div><h2 id="care-title">Pielęgnacja jest częścią projektu ubrania.</h2><p>Symbol na metce nie wystarcza. Każdy materiał potrzebuje potwierdzonego scenariusza prania, suszenia, prasowania i przechowywania.</p></div><ol><li><b>Po noszeniu</b><span>Wietrzenie i kontrola zabrudzeń przed automatycznym praniem.</span></li><li><b>Próba</b><span>Test temperatury, detergentu i zmiany wymiaru na materiale produkcyjnym.</span></li><li><b>Suszenie</b><span>Pozycja dobrana do masy mokrej tkaniny i podatności na rozciąganie.</span></li><li><b>Naprawa</b><span>Zapas nici, guzików i sposób dostępu do elementów konstrukcyjnych.</span></li></ol></section>
-<section class="size-truth" aria-labelledby="size-title"><h2 id="size-title">Co musi znaleźć się przy każdym rozmiarze.</h2><div><p><span>A</span>Obwód ubrania, nie tylko zakres ciała</p><p><span>B</span>Długość mierzona od konkretnego punktu</p><p><span>C</span>Wymiary osoby na zdjęciu i noszony rozmiar</p><p><span>D</span>Zakres ruchu sprawdzony w pozycji stojącej i siedzącej</p><p><span>E</span>Tolerancja produkcyjna i sposób pomiaru</p></div></section>
-<section class="questions" aria-labelledby="questions-title"><div><h2 id="questions-title">Przed dodaniem do koszyka demo.</h2><p>Odpowiedzi nie zastępują rzeczywistych tabel, stanów magazynowych ani polityki sklepu.</p></div><div><details><summary>Czy kolekcja jest unisex?</summary><p>To fikcyjna kolekcja organizowana według sylwetki, nie płci. Realny produkt nadal potrzebuje pełnej tabeli wymiarów i zdjęć na różnych osobach.</p></details><details><summary>Czy skład materiału jest potwierdzony?</summary><p>Nie. Składy i gramatury są autorską treścią demonstracyjną i muszą zostać zastąpione danymi dostawcy.</p></details><details><summary>Czy mogę kupić ubranie?</summary><p>Nie. Koszyk działa wyłącznie lokalnie jako demonstracja stanu interfejsu; checkout i rezerwacja są wyłączone.</p></details><details><summary>Jak wybrać rozmiar?</summary><p>Przewodnik pokazuje logikę preferowanego luzu. Bez rzeczywistych wymiarów ubrania nie daje wiarygodnej rekomendacji zakupowej.</p></details></div></section>
-<section class="proof" id="proof"><h2>Przed prawdziwym sklepem.</h2><div><p><span>01</span> Rzeczywisty skład, pochodzenie i masa tkaniny</p><p><span>02</span> Wymiary ubrania w każdym rozmiarze</p><p><span>03</span> Wymiary modela i rozmiar na zdjęciu</p><p><span>04</span> Testowana pielęgnacja i trwałość</p><p><span>05</span> Stan magazynu, dostawa, zwroty i podatki</p><p><span>06</span> Checkout, regulamin i prywatność</p></div></section></main>
-<aside class="bag" data-bag aria-hidden="true" aria-label="Demo bag"><div class="bag-head"><h2>Koszyk demonstracyjny</h2><button type="button" data-bag-close aria-label="Zamknij koszyk">×</button></div><p class="bag-note">Nic nie zostanie kupione ani zarezerwowane.</p><div data-bag-items><p class="bag-empty">Koszyk jest pusty.</p></div><button class="bag-checkout" type="button" disabled data-checkout>Checkout niedostępny w koncepcie</button></aside><div class="bag-backdrop" data-bag-backdrop></div><footer><span>DISPERSIA / FORM UNBOUND</span><p>Fikcyjna marka · ceny i specyfikacje demo · brak checkoutu</p><a href="#top">Do góry ↑</a></footer><script src="a11y-floor.js"></script><script src="dispersia-preview.js"></script><div class="ov-badge" id="ov-badge">
-  <a class="ov-badge__main" href="https://overflow-web.pl/work/dispersia/">
-    <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
-  </a>
-  <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
-</div>
-<style>
-.ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
-.ov-badge a{color:inherit;text-decoration:none}
-.ov-badge__main{display:flex;align-items:center;gap:5px}
-.ov-badge__mark{font-weight:700;letter-spacing:-.02em}
-.ov-badge__dot{opacity:.45}
-.ov-badge__type{opacity:.7}
-.ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
-.ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
-@media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
-@media print{.ov-badge{display:none}}
-</style>
-<!-- ov-badge-init -->
+
+  <!-- SLIDE-OVER DEMO CART DRAWER -->
+  <div class="cart-drawer-backdrop" id="cartBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Koszyk zamówienia">
+    <div class="cart-drawer-header">
+      <span class="cart-drawer-title">Koszyk Zamówienia AW26</span>
+      <button class="cart-close-btn" id="cartClose" aria-label="Zamknij koszyk">×</button>
+    </div>
+
+    <div class="cart-drawer-items" id="cartItemsList">
+      <!-- Items dynamically injected by app.js -->
+    </div>
+
+    <div class="cart-drawer-footer">
+      <div class="cart-summary-line">
+        <span>Dostawa Kurierska (DHL Express)</span>
+        <span class="mono">BEZPŁATNA</span>
+      </div>
+      <div class="cart-summary-line">
+        <span>Suma częściowa</span>
+        <span class="mono" id="cartSubtotal">0 PLN</span>
+      </div>
+      <div class="cart-summary-total">
+        <span>Razem brutto</span>
+        <span class="mono cobalt-text" id="cartTotal">0 PLN</span>
+      </div>
+      <button class="cart-checkout-btn" id="checkoutBtn" type="button">
+        Przejdź do kasy (Symulacja Demo) →
+      </button>
+      <span class="micro" style="text-align: center; color: #999;">
+        Koncepcyjne demo dla portfolio Overflow · Brak rzeczywistych płatności
+      </span>
+    </div>
+  </aside>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-top-row">
+      <div>
+        <div class="footer-brand">DISPERSIA</div>
+        <p style="font-size: 12px; color: #888; margin-top: 6px; letter-spacing: 0.05em; text-transform: uppercase;">
+          The Moving Pattern · Niezależny dom mody architektonicznej
+        </p>
+      </div>
+
+      <div class="footer-nav-cols">
+        <div class="footer-col">
+          <strong>Kolekcje</strong>
+          <a href="#kolekcja">Kolekcja AW26</a>
+          <a href="#kolekcja">Okrycia Wierzchnie</a>
+          <a href="#kolekcja">Krawiectwo Strukturalne</a>
+        </div>
+        <div class="footer-col">
+          <strong>Architektura</strong>
+          <a href="#kalibrator">Kalkulator Proporcji</a>
+          <a href="#anatomia">Anatomia Szwów</a>
+          <a href="#fizyka">Fizyka Tkanin</a>
+        </div>
+        <div class="footer-col">
+          <strong>Atelier</strong>
+          <a href="#atelier">Atelier Warszawa</a>
+          <a href="#atelier">Atelier Stockholm</a>
+          <a href="#atelier">Prywatna Przymiarka</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom-row">
+      <span>© 2026 DISPERSIA. Wszystkie prawa zastrzeżone.</span>
+      <span>Projekt koncepcyjny dla Overflow Portfolio</span>
+      <a href="#hero" style="color: #FFF; border-bottom: 1px solid #666;">Do góry ↑</a>
+    </div>
+  </footer>
+
+  <!-- OVERFLOW PORTFOLIO BADGE -->
+  <div class="ov-badge" id="ov-badge">
+    <a class="ov-badge__main" href="https://overflow-web.pl/work/dispersia/">
+      <span class="ov-badge__mark">overflow</span><span class="ov-badge__dot">·</span><span class="ov-badge__type">koncept</span>
+    </a>
+    <a class="ov-badge__cta" href="https://overflow-web.pl/contact/">kontakt ↗</a>
+  </div>
+  <style>
+  .ov-badge{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:999px;background:rgba(12,12,14,.82);color:#fff;font:500 11px/1.1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.25)}
+  .ov-badge a{color:inherit;text-decoration:none}
+  .ov-badge__main{display:flex;align-items:center;gap:5px}
+  .ov-badge__mark{font-weight:700;letter-spacing:-.02em}
+  .ov-badge__dot{opacity:.45}
+  .ov-badge__type{opacity:.7}
+  .ov-badge__cta{padding-left:8px;border-left:1px solid rgba(255,255,255,.22);opacity:.85}
+  .ov-badge__main:hover,.ov-badge__cta:hover{opacity:1}
+  @media(max-width:600px){.ov-badge{left:10px;bottom:10px;padding:6px 8px;font-size:10px}}
+  @media print{.ov-badge{display:none}}
+  </style>
+  <script>
+  (function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
+  </script>
+
+  <script src="app.js"></script>
+
+<!-- universal-smooth-anchor-scroll -->
 <script>
-(function(){var b=document.getElementById('ov-badge');if(!b)return;b.style.transition='opacity .3s ease';var t=function(){var s=window.scrollY>420;b.style.opacity=s?'1':'0';b.style.pointerEvents=s?'auto':'none';};t();window.addEventListener('scroll',t,{passive:true});})();
+(function(){
+  if(window.__ovSmoothScrollInit) return;
+  window.__ovSmoothScrollInit = true;
+  var animId = null;
+  function cancel(){ if(animId){ cancelAnimationFrame(animId); animId = null; } }
+  window.addEventListener('wheel', cancel, {passive:true});
+  window.addEventListener('touchstart', cancel, {passive:true});
+  window.addEventListener('keydown', cancel, {passive:true});
+  function smoothTo(targetY, dur){
+    cancel();
+    var startY = window.scrollY || window.pageYOffset || 0;
+    var maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    var destY = Math.min(Math.max(0, targetY), maxScroll);
+    var dist = destY - startY;
+    if(Math.abs(dist) < 3) return;
+    var startTime = performance.now();
+    var d = dur || 780;
+    function step(now){
+      var t = Math.min((now - startTime) / d, 1);
+      var ease = 1 - Math.pow(1 - t, 3);
+      window.scrollTo(0, startY + dist * ease);
+      if(t < 1) animId = requestAnimationFrame(step);
+      else animId = null;
+    }
+    animId = requestAnimationFrame(step);
+  }
+  window.__ovSmoothScrollTo = smoothTo;
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('a[href^="#"], [data-scroll-to], [data-target]');
+    if(!el) return;
+    var sel = el.getAttribute('data-scroll-to') || el.getAttribute('href');
+    if(!sel || sel.charAt(0) !== '#') return;
+    if(sel === '#'){
+      if(el.classList.contains('logo-link') || el.classList.contains('brand')){
+        e.preventDefault();
+        smoothTo(0, 750);
+      }
+      return;
+    }
+    var target = null;
+    try { target = document.querySelector(sel); } catch(err){}
+    if(!target) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var header = document.querySelector('header, nav.navbar, .site-header, .top-nav, .nav-bar');
+    var offset = 0;
+    if(header){
+      var pos = getComputedStyle(header).position;
+      if(pos === 'fixed' || pos === 'sticky'){
+        offset = header.offsetHeight || 72;
+      }
+    }
+    var top = (window.scrollY || window.pageYOffset || 0) + target.getBoundingClientRect().top - offset;
+    smoothTo(top, 780);
+  }, true);
+})();
 </script>
-</body></html>
+
+</body>
+</html>
