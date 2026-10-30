@@ -1,0 +1,14 @@
+---
+import StudioLayout from '../../layouts/StudioLayout.astro';
+import BriefForm from '../../components/studio/BriefForm.astro';
+
+const lang = 'ua' as const;
+---
+
+<StudioLayout
+  title="overflow — Форма запуску проєкту (Старт замовлення)"
+  description="Офіційна форма запуску One-Page сайту під ключ для майстрів та сервісних компаній."
+  lang={lang}
+>
+  <BriefForm lang={lang} />
+</StudioLayout>

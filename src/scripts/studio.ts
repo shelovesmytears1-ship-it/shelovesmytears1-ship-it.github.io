@@ -666,6 +666,11 @@ if (!reduce && fine) {
 
     document.querySelectorAll<HTMLElement>('[data-cursor], .nav-links a, .lang a, .theme-toggle').forEach((el) => {
       el.addEventListener('mouseenter', () => {
+        if (el.closest('.hdr')) {
+          document.body.classList.remove('previewing');
+          document.querySelector<HTMLElement>('.work-preview')?.classList.remove('show');
+          document.querySelector<HTMLElement>('.work-preview-btn')?.classList.remove('show');
+        }
         const word = labelFor(el);
         if (labelEl) labelEl.textContent = word;
         cur.classList.add('hover');
@@ -754,17 +759,37 @@ if (!reduce && fine) {
     // internally manages scroll position and always returns current viewport
     // coordinates. Called from the main raf (after lenis.raf) so the DOM
     // positions are already updated for the current frame.
+    const hdr = document.querySelector<HTMLElement>('.hdr');
     const syncFromPoint = (animate: boolean) => {
+      // 1. If cursor is in or above the sticky header, immediately dismiss row preview
+      const hdrBottom = hdr ? hdr.getBoundingClientRect().bottom : 80;
+      if (my <= hdrBottom + 6) {
+        setRow(-1, animate);
+        return;
+      }
+      // 2. If element under cursor is inside header, mobile nav or footer, dismiss preview
+      const elAtPoint = document.elementFromPoint(mx, my);
+      if (elAtPoint && (elAtPoint.closest('.hdr') || elAtPoint.closest('.mnav') || elAtPoint.closest('.ftr'))) {
+        setRow(-1, animate);
+        return;
+      }
       let found: HTMLElement | null = null;
       for (const row of rows) {
         const r = row.getBoundingClientRect();
-        if (my >= r.top && my <= r.bottom && mx >= r.left && mx <= r.right) {
+        const effectiveTop = Math.max(r.top, hdrBottom);
+        if (my >= effectiveTop && my <= r.bottom && mx >= r.left && mx <= r.right) {
           found = row;
           break;
         }
       }
       setRow(found ? rows.indexOf(found) : -1, animate);
     };
+
+    if (hdr) {
+      hdr.addEventListener('mouseenter', () => setRow(-1, false));
+    }
+    document.addEventListener('mouseleave', () => setRow(-1, false));
+    window.addEventListener('blur', () => setRow(-1, false));
 
     addEventListener('mousemove', (e) => {
       mx = e.clientX; my = e.clientY;

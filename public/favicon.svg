@@ -1,15 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#FAFAF6"/>
-  <text x="6" y="22"
-        font-family="Georgia, 'Times New Roman', serif"
-        font-size="20"
-        font-weight="400"
-        fill="#1A140E"
-        letter-spacing="-0.05em">o</text>
-  <text x="18" y="22"
-        font-family="Georgia, 'Times New Roman', serif"
-        font-size="20"
-        font-weight="400"
-        fill="#B25814"
-        letter-spacing="-0.05em">⁄</text>
+  <rect width="32" height="32" rx="7.5" fill="#0D0E15"/>
+  <rect x="0.5" y="0.5" width="31" height="31" rx="7" fill="none" stroke="rgba(255,255,255,0.08)"/>
+  <!-- Faceted isometric polyhedron with cobalt accent facet -->
+  <polygon points="16,6 25,12 25,20 16,26 7,20 7,12" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linejoin="round"/>
+  <polygon points="16,6 25,12 16,16" fill="rgba(255,255,255,0.15)" stroke="#FFFFFF" stroke-width="1.6"/>
+  <polygon points="7,12 16,6 16,16" fill="rgba(255,255,255,0.08)" stroke="#FFFFFF" stroke-width="1.6"/>
+  <polygon points="16,16 25,12 25,20 16,26" fill="#2B55FF" stroke="#2B55FF" stroke-width="1.6" stroke-linejoin="round"/>
+  <polygon points="7,12 16,16 16,26 7,20" fill="rgba(43,85,255,0.3)" stroke="#FFFFFF" stroke-width="1.6" stroke-linejoin="round"/>
 </svg>

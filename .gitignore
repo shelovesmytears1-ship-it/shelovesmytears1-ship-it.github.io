@@ -36,7 +36,7 @@ qa_verify_*
 test_*
 update_*
 capture_*
-docs/
-scripts/
+/docs/
+/scripts/
 public/screens/_capture_fresh_report.json
 public/covers/_eval/

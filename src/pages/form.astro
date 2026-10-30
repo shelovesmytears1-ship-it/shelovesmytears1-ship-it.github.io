@@ -1,0 +1,14 @@
+---
+import StudioLayout from '../layouts/StudioLayout.astro';
+import BriefForm from '../components/studio/BriefForm.astro';
+
+const lang = 'pl' as const;
+---
+
+<StudioLayout
+  title="overflow — Formularz wdrożeniowy (Start zlecenia)"
+  description="Oficjalny formularz startowy wdrożenia strony www dla wykonawców i firm usługowych."
+  lang={lang}
+>
+  <BriefForm lang={lang} />
+</StudioLayout>
