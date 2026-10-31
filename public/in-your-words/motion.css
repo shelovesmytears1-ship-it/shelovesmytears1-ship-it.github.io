@@ -1,0 +1,205 @@
+html { scroll-behavior: smooth; }
+:root { --header-height: 6.2rem; }
+
+section[id] { scroll-margin-top: calc(var(--header-height, 6rem) + 1rem); }
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--paper);
+}
+
+.reading-progress {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.reading-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--terra);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.site-nav__link::after {
+  height: 1px;
+  transition: transform 420ms var(--ease-out);
+}
+
+.site-nav__link[aria-current="location"] { color: var(--terra); }
+.site-nav__link[aria-current="location"]::after { transform: scaleX(1); }
+
+.button--primary {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.button--primary::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: var(--terra);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 620ms var(--ease-out);
+}
+
+.button--primary > span,
+.button--primary > svg {
+  position: relative;
+  z-index: 1;
+}
+
+.button--primary:hover::before,
+.button--primary:focus-visible::before { transform: scaleX(1); }
+
+.button--primary:hover .button__icon,
+.button--primary:focus-visible .button__icon {
+  transform: translateX(4px);
+}
+
+.hero-visual__frame { transform-origin: 65% 50%; }
+.hero-visual__portrait { transition: scale 680ms var(--ease-out); }
+.adam-photo__clip img { transition: scale 680ms var(--ease-out); }
+
+.direction {
+  position: relative;
+  overflow: hidden;
+}
+
+.direction::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: var(--terra);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 460ms var(--ease-out);
+}
+
+.direction__number {
+  transition: color 360ms var(--ease-out), transform 360ms var(--ease-out);
+}
+
+.lesson-tabs {
+  position: relative;
+  --tab-offset: 0px;
+  --tab-width: calc((100% - 3rem) / 3);
+}
+
+.lesson-tab {
+  flex: 1 1 0;
+  text-align: center;
+}
+
+.lesson-tab::after { display: none; }
+
+.lesson-tabs::after {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: var(--tab-width);
+  height: 2px;
+  background: var(--terra);
+  content: "";
+  transform: translateX(var(--tab-offset));
+  transition: transform 340ms var(--ease-out);
+}
+
+.lesson-paper {
+  height: 24rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.adam-photo__clip {
+  overflow: hidden;
+}
+
+.faq-answer { overflow: hidden; }
+
+.faq-answer > p {
+  max-width: 50rem;
+  padding: 0 2.5rem 1.25rem 0;
+  color: var(--ink);
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+
+.faq-item summary span::after {
+  transition: transform 340ms var(--ease-out);
+}
+
+.form-field {
+  position: relative;
+  transition: color 240ms var(--ease-out);
+}
+
+.form-field::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: var(--terra);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 360ms var(--ease-out);
+}
+
+.form-field:focus-within { color: var(--terra); }
+.form-field:focus-within::after { transform: scaleX(1); }
+
+.form-preview {
+  transform-origin: top left;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .adam-photo:hover .adam-photo__clip img { scale: 1.025; }
+  .hero-visual:hover .hero-visual__portrait { scale: 1.015; }
+  .direction:hover::before,
+  .direction:focus-within::before { transform: scaleX(1); }
+  .direction:hover .direction__number,
+  .direction:focus-within .direction__number {
+    color: var(--blue);
+    transform: translateY(-3px);
+  }
+}
+
+@media (max-width: 760px) {
+  .lesson-paper {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    display: block;
+  }
+}
+
+@media (max-width: 1020px) { :root { --header-height: 5.75rem; } }
+@media (max-width: 420px) { :root { --header-height: 5.2rem; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  .hero-visual__portrait,
+  .adam-photo__clip img { transition: none; }
+  .adam-photo:hover .adam-photo__clip img,
+  .hero-visual:hover .hero-visual__portrait { scale: 1; }
+  .button--primary::before,
+  .direction::before { display: none; }
+}

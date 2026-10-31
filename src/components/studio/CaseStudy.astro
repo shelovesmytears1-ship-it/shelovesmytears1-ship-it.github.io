@@ -11,7 +11,10 @@ interface Props { lang?: Lang; entry: CollectionEntry<'cases'>; variant?: 'studi
 const { lang = 'pl', entry, variant = 'studio' } = Astro.props;
 const c = getNewDirectionCopy(lang);
 const d = entry.data;
-const projectUrl = getProjectUrl(entry);
+const demoUrl = getProjectUrl(entry);
+const projectUrl = entry.slug === 'in-your-words'
+  ? `${demoUrl}?lang=${lang === 'ru' || lang === 'en' ? lang : 'pl'}`
+  : demoUrl;
 const segment = variant === 'studio' ? '' : `/${variant}`;
 const root = lang === 'pl' ? segment : `/${lang}${segment}`;
 const p = (slug: string) => `${root}/${slug}/`;

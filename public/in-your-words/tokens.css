@@ -1,0 +1,22 @@
+:root {
+  color-scheme: light;
+  --paper: #FFFAF1;
+  --paper-soft: #F5EEE2;
+  --blue-paper: #EAF0F2;
+  --terra: #954C2E;
+  --terra-deep: #7F3F27;
+  --blue: #254D70;
+  --blue-deep: #1C3E5C;
+  --ink: #28323A;
+  --muted: #61707A;
+  --line-terra: rgba(149, 76, 46, 0.34);
+  --line-blue: rgba(37, 77, 112, 0.28);
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-sans: "DM Sans", "Aptos", "Segoe UI", sans-serif;
+  --page-gutter: clamp(1.25rem, 4.1vw, 5rem);
+  --content-max: 1840px;
+  --ease-out: cubic-bezier(0.2, 0.75, 0.25, 1);
+  --motion-fast: 180ms var(--ease-out);
+  --motion-base: 280ms var(--ease-out);
+  --focus-ring: 3px solid #254D70;
+}

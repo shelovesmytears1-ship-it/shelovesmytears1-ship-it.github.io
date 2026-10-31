@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="page-start.js?v=reload-6"></script>
+    <meta name="theme-color" content="#FFFAF1">
+    <meta name="description" content="Koncepcyjna strona indywidualnych rozmów po angielsku dla dorosłych.">
+    <meta name="robots" content="noindex, nofollow">
+    <title>in your words — angielski do życia</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="vendor/lenis.css?v=languages-5">
+    <link rel="stylesheet" href="tokens.css?v=languages-5">
+    <link rel="stylesheet" href="style.css?v=languages-5">
+    <link rel="stylesheet" href="motion.css?v=languages-5">
+    <link rel="stylesheet" href="journey.css?v=languages-5">
+    <link rel="stylesheet" href="i18n.css?v=languages-5">
+    <script src="vendor/gsap.min.js?v=languages-5" defer></script>
+    <script src="vendor/ScrollTrigger.min.js?v=languages-5" defer></script>
+    <script src="vendor/SplitText.min.js?v=languages-5" defer></script>
+    <script src="vendor/lenis.min.js?v=languages-5" defer></script>
+    <script src="translations.js?v=languages-5" defer></script>
+    <script src="i18n.js?v=languages-5" defer></script>
+    <script src="app.js?v=languages-5" defer></script>
+    <script src="motion.js?v=languages-5" defer></script>
+    <script src="journey.js?v=languages-5" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Przejdź do treści</a>
+    <div class="site-shell" id="top" tabindex="-1">
+      <header class="site-header">
+        <div class="site-header__inner page-width">
+          <a class="brand" href="#top" aria-label="in your words — strona główna">
+            <span class="brand__name">in your words</span>
+            <span class="brand__rule" aria-hidden="true"></span>
+          </a>
+          <button class="menu-toggle" type="button" aria-label="Otwórz menu" aria-expanded="false" aria-controls="site-navigation" data-menu-toggle>
+            <span class="menu-toggle__lines" aria-hidden="true"></span>
+          </button>
+          <nav class="site-nav" id="site-navigation" aria-label="Nawigacja główna">
+            <a class="site-nav__link" href="#sytuacje">Sytuacje</a>
+            <a class="site-nav__link" href="#lekcja">Lekcja</a>
+            <a class="site-nav__link" href="#adam">Adam</a>
+            <a class="site-nav__link" href="#plan">Ścieżka</a>
+            <a class="site-nav__link" href="#spotkania">Oferta</a>
+            <a class="site-nav__link" href="#kontakt">Kontakt</a>
+          </nav>
+          <nav class="header-note language-switcher" aria-label="Wybierz język">
+            <a href="?lang=pl" lang="pl" hreflang="pl" data-language="pl" aria-label="Polski">PL</a>
+            <a href="?lang=ru" lang="ru" hreflang="ru" data-language="ru" aria-label="Русский">RU</a>
+            <a href="?lang=en" lang="en" hreflang="en" data-language="en" aria-label="English">EN</a>
+          </nav>
+        </div>
+        <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+      </header>
+      <main id="main" tabindex="-1">
+        <div class="intro-screen">
+          <section class="hero page-width" aria-labelledby="hero-title" data-testid="hero">
+            <div class="hero__copy">
+              <p class="eyebrow">
+                <span>INDYWIDUALNIE</span><span class="eyebrow__slash" aria-hidden="true">/</span>
+                <span>ONLINE</span><span class="eyebrow__slash" aria-hidden="true">/</span>
+                <span>DLA DOROSŁYCH</span><span class="eyebrow__rule" aria-hidden="true"></span>
+              </p>
+              <h1 class="hero__title" id="hero-title">
+                <span>Angielski do życia.</span>
+                <em>Nie tylko do ćwiczeń.</em>
+              </h1>
+              <div class="hero__intro">
+                <p>Indywidualne rozmowy online po angielsku dla dorosłych.</p>
+                <p>Ćwicz sytuacje z pracy, podróży i codzienności — wokół tego, co chcesz powiedzieć.</p>
+              </div>
+              <p class="hero__helper">Zobacz przykład rozmowy, a potem opowiedz, czego potrzebujesz.</p>
+              <div class="hero__actions">
+                <a class="button button--primary" href="#kontakt">
+                  <span>Poznajmy się</span>
+                  <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                </a>
+                <a class="text-action" href="#lekcja">
+                  <span>Zobacz przykład lekcji</span>
+                  <svg class="text-action__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                </a>
+              </div>
+            </div>
+            <figure class="hero-visual">
+              <div class="hero-visual__frame">
+                <img class="hero-visual__portrait" src="assets/tutor.png" alt="Wygenerowany portret fikcyjnego lektora Adama" width="1024" height="1280" fetchpriority="high">
+                <div class="notebook-preview">
+                  <img src="assets/notebook.png" alt="Przykładowy fragment notatki z lekcji" width="1450" height="968">
+                  <span class="notebook-preview__label">PRZYKŁADOWA NOTATKA</span>
+                </div>
+              </div>
+              <figcaption class="hero-visual__caption">
+                <span class="hero-visual__caption-name">Adam Wolski <span>· fikcyjny lektor</span></span>
+                <span class="hero-visual__caption-copy">Angielski, który towarzyszy Ci w prawdziwych rozmowach.</span>
+              </figcaption>
+            </figure>
+          </section>
+        </div>
+
+        <section class="recognition-section" id="sytuacje" aria-labelledby="recognition-title" tabindex="-1">
+          <div class="recognition-section__inner page-width">
+            <div class="recognition-head">
+              <p class="section-kicker"><span>01</span> MOŻE ZNASZ TEN MOMENT</p>
+              <h2 class="section-title" id="recognition-title">Znasz to<br><em>uczucie?</em></h2>
+              <p>Wiesz, co chcesz powiedzieć. Czasem najtrudniej znaleźć pierwsze zdanie.</p>
+            </div>
+            <ol class="recognition-list">
+              <li class="recognition-row">
+                <span class="recognition-row__number" aria-hidden="true">01</span>
+                <p class="recognition-row__context">W PRACY</p>
+                <div>
+                  <h3>Zdanie masz już w głowie.</h3>
+                  <p>Zanim uznasz je za wystarczająco dobre, rozmowa idzie dalej.</p>
+                </div>
+              </li>
+              <li class="recognition-row">
+                <span class="recognition-row__number" aria-hidden="true">02</span>
+                <p class="recognition-row__context">W PODRÓŻY</p>
+                <div>
+                  <h3>Proste pytanie robi się skomplikowane.</h3>
+                  <p>W myślach pojawiają się trzy wersje — i żadna nie brzmi dość pewnie.</p>
+                </div>
+              </li>
+              <li class="recognition-row">
+                <span class="recognition-row__number" aria-hidden="true">03</span>
+                <p class="recognition-row__context">NA CO DZIEŃ</p>
+                <div>
+                  <h3>Brakuje Ci naturalnego początku.</h3>
+                  <p>Masz myśl, którą chcesz się podzielić. Szukasz tylko słów, by wejść w rozmowę.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+          <a class="recognition-link" href="#lekcja">Zobacz, jak może zacząć się rozmowa <span aria-hidden="true">↘</span></a>
+        </section>
+
+        <section class="lesson-lab" id="lekcja" aria-labelledby="lesson-title" tabindex="-1">
+          <div class="lesson-lab__inner page-width">
+            <div class="lesson-lab__intro">
+              <p class="section-kicker"><span>02</span> ZOBACZ, JAK TO DZIAŁA</p>
+              <h2 class="section-title" id="lesson-title">Zwykła sytuacja. Prawdziwa rozmowa.</h2>
+              <p class="lesson-lab__lead">Zaczynamy od tego, co chcesz powiedzieć. Potem ćwiczymy rozmowę i zapisujemy zwroty, do których możesz wrócić.</p>
+            </div>
+            <div class="lesson-lab__layout">
+              <div class="lesson-demo">
+                <div class="lesson-demo__topline">
+                  <span>PRZYKŁADOWY FRAGMENT LEKCJI</span>
+                  <span aria-hidden="true" data-tab-count>01 / 03</span>
+                </div>
+                <div class="lesson-tabs" role="tablist" aria-label="Wybierz sytuację do przećwiczenia">
+                  <button class="lesson-tab" id="tab-travel" type="button" role="tab" aria-selected="true" aria-controls="lesson-panel" tabindex="0" data-scenario="travel">W podróży</button>
+                  <button class="lesson-tab" id="tab-work" type="button" role="tab" aria-selected="false" aria-controls="lesson-panel" tabindex="-1" data-scenario="work">W pracy</button>
+                  <button class="lesson-tab" id="tab-everyday" type="button" role="tab" aria-selected="false" aria-controls="lesson-panel" tabindex="-1" data-scenario="everyday">Na co dzień</button>
+                </div>
+                <div class="lesson-paper" id="lesson-panel" role="tabpanel" aria-labelledby="tab-travel" tabindex="0" aria-live="polite" data-testid="lesson-panel">
+                  <p class="lesson-paper__context" data-scenario-context>Chcesz przełożyć rezerwację na piątek.</p>
+                  <div class="lesson-dialogue">
+                    <div class="lesson-line">
+                      <span class="lesson-line__speaker">TY</span>
+                      <p><span class="lesson-line__english" lang="en" data-line-one>Could I move my booking to Friday?</span><span class="lesson-line__translation" lang="pl" data-translation-one>Czy mogę przełożyć rezerwację na piątek?</span></p>
+                    </div>
+                    <div class="lesson-line lesson-line--reply">
+                      <span class="lesson-line__speaker">ADAM</span>
+                      <p><span class="lesson-line__english" lang="en" data-line-two>Let me check what's available.</span><span class="lesson-line__translation" lang="pl" data-translation-two>Sprawdzę, jakie są możliwości.</span></p>
+                    </div>
+                  </div>
+                  <details class="phrase-detail">
+                    <summary>Zwrot do zapamiętania</summary>
+                    <p><span lang="en" data-phrase>Could I move…?</span><span class="phrase-detail__translation" lang="pl" data-phrase-translation>Czy mogę przełożyć…?</span></p>
+                  </details>
+                </div>
+              </div>
+              <aside class="lesson-side" aria-label="Przykładowy przebieg spotkania">
+                <p class="lesson-side__eyebrow">NA SPOTKANIU</p>
+                <ol class="lesson-steps">
+                  <li><span>01</span><p>Twoja sytuacja</p></li>
+                  <li><span>02</span><p>Rozmowa</p></li>
+                  <li><span>03</span><p>Przydatne zwroty</p></li>
+                </ol>
+                <p class="lesson-side__note">Krótka notatka pomaga wrócić do tego, co chcesz powiedzieć.</p>
+                <a class="resource-download" href="assets/in-your-words-lesson-notes.pdf" target="_blank" rel="noopener" download data-resource-pdf>
+                  <span>Przykładowa notatka · PDF, 2 strony</span><span aria-hidden="true">↓</span>
+                </a>
+                <a class="text-action" href="#kontakt">Porozmawiajmy o Twojej sytuacji <span aria-hidden="true">↗</span></a>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <section class="adam-section" id="adam" aria-labelledby="adam-title" tabindex="-1">
+          <div class="adam-section__inner page-width">
+            <figure class="adam-photo">
+              <div class="adam-photo__clip">
+                <img src="assets/adam-working.png" alt="Fikcyjny lektor Adam przygotowuje notatki w swoim gabinecie" width="1536" height="1024" loading="lazy" decoding="async">
+              </div>
+              <figcaption>ADAM WOLSKI <span>· POSTAĆ FIKCYJNA</span></figcaption>
+            </figure>
+            <div class="adam-copy">
+              <p class="section-kicker"><span>03</span> POZNAJMY SIĘ</p>
+              <h2 class="section-title" id="adam-title">Cześć, jestem Adam.</h2>
+              <p class="adam-copy__thought">Nie musisz mieć idealnego zdania, żeby zacząć rozmowę.</p>
+              <h3 class="adam-method__title">Najpierw sens. Potem poprawka.</h3>
+              <p>Na indywidualnych spotkaniach online rozmawiamy o sytuacjach, które chcesz przećwiczyć — od rozmowy w pracy po pytanie o drogę. Zaczynamy od Twojego celu, a tematy i tempo dobieramy do rozmowy.</p>
+              <p>Najpierw pozwalam Ci dokończyć myśl. Potem wybieramy jedno miejsce, które warto powiedzieć jaśniej, i próbujemy jeszcze raz. Gdy brakuje słowa, szukamy prostszego opisu albo pytania, które pomoże podtrzymać rozmowę.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="roadmap-section" id="plan" aria-labelledby="roadmap-title" tabindex="-1">
+          <div class="roadmap-section__inner page-width">
+            <div class="roadmap-intro">
+              <p class="section-kicker"><span>04</span> PIERWSZE KROKI</p>
+              <h2 class="section-title" id="roadmap-title">Od pierwszego zdania do własnej rozmowy.</h2>
+              <p>Zaczynamy od Twojej sytuacji, ćwiczymy rozmowę i wracamy do tego, co chcesz powiedzieć. Temat i tempo możesz zmieniać po drodze.</p>
+            </div>
+            <div class="roadmap-layout">
+              <div class="roadmap-steps" role="tablist" aria-label="Cztery kroki przykładowej ścieżki">
+                <span class="roadmap-progress" aria-hidden="true"><span data-journey-progress></span></span>
+                <button class="roadmap-step" id="roadmap-tab-1" type="button" role="tab" aria-selected="true" aria-controls="roadmap-panel" tabindex="0" data-roadmap-step="0"><span>01</span><span>Poznajemy Twój cel</span></button>
+                <button class="roadmap-step" id="roadmap-tab-2" type="button" role="tab" aria-selected="false" aria-controls="roadmap-panel" tabindex="-1" data-roadmap-step="1"><span>02</span><span>Ćwiczymy na głos</span></button>
+                <button class="roadmap-step" id="roadmap-tab-3" type="button" role="tab" aria-selected="false" aria-controls="roadmap-panel" tabindex="-1" data-roadmap-step="2"><span>03</span><span>Porządkujemy to, co ważne</span></button>
+                <button class="roadmap-step" id="roadmap-tab-4" type="button" role="tab" aria-selected="false" aria-controls="roadmap-panel" tabindex="-1" data-roadmap-step="3"><span>04</span><span>Zabierasz język do życia</span></button>
+              </div>
+              <article class="roadmap-panel" id="roadmap-panel" role="tabpanel" aria-labelledby="roadmap-tab-1" tabindex="0" aria-live="polite">
+                <p class="roadmap-panel__number" data-roadmap-number>01</p>
+                <div class="roadmap-panel__copy">
+                  <p class="roadmap-panel__eyebrow">OD CZEGO ZACZNIEMY</p>
+                  <h3 data-roadmap-title>Poznajemy Twój cel.</h3>
+                  <p data-roadmap-body>Spotkanie w pracy? Wyjazd? Zwykła rozmowa przy kawie? Wybieramy sytuację z Twojego życia i ustalamy, co chcesz w niej powiedzieć.</p>
+                  <div class="roadmap-takeaway"><span>NA WYNOS</span><p data-roadmap-takeaway>Konkretny temat zamiast kolejnego rozdziału do odhaczenia.</p></div>
+                </div>
+              </article>
+            </div>
+            <p class="roadmap-note">Twój cel nadaje kierunek. Tempo ustalamy wspólnie.</p>
+          </div>
+        </section>
+
+        <section class="offer-section" id="spotkania" aria-labelledby="offer-title" tabindex="-1">
+          <div class="offer-section__inner page-width">
+            <div class="offer-section__heading">
+              <p class="section-kicker"><span>05</span> SPOTKANIA 1:1 · ONLINE</p>
+              <h2 class="section-title" id="offer-title">Jeden temat. Własne tempo.</h2>
+              <p>Dwa przykładowe sposoby pracy wokół sytuacji, którą chcesz przećwiczyć.</p>
+              <p class="offer-concept-note">Przykładowa oferta w projekcie koncepcyjnym.</p>
+            </div>
+            <div class="format-list">
+              <article class="format-row" data-format-row="single">
+                <p class="format-row__index">01</p>
+                <div class="format-row__copy">
+                  <h3>Regularna praktyka 1:1</h3>
+                  <p>Każde spotkanie skupia się na wybranej sytuacji. Ćwiczymy przydatne zwroty i robimy krótką notatkę — w rytmie, który wybierzesz.</p>
+                  <p class="format-row__meta">Jeden temat na spotkanie · online</p>
+                </div>
+                <p class="format-row__price">120 <span>zł</span><small>60 minut · za spotkanie</small></p>
+                <a class="text-action" href="#kontakt" data-format-choice="single">Wybieram ten format <span aria-hidden="true">↗</span></a>
+              </article>
+              <article class="format-row" data-format-row="focused">
+                <p class="format-row__index">02</p>
+                <div class="format-row__copy">
+                  <h3>Przygotowanie do konkretnej sytuacji</h3>
+                  <p>Trzy spotkania wokół jednego celu — na przykład rozmowy rekrutacyjnej, prezentacji lub wyjazdu.</p>
+                  <p class="format-row__meta">3 spotkania · online</p>
+                </div>
+                <p class="format-row__price">360 <span>zł</span><small>3 × 60 min · 120 zł za spotkanie</small></p>
+                <a class="text-action" href="#kontakt" data-format-choice="focused">Wybieram ten format <span aria-hidden="true">↗</span></a>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="faq-section" id="pytania" aria-labelledby="faq-title" tabindex="-1">
+          <div class="faq-section__inner page-width">
+            <div class="faq-intro">
+              <p class="section-kicker"><span>06</span> PRAKTYCZNIE</p>
+              <h2 class="section-title" id="faq-title">Zanim zaczniemy.</h2>
+              <p>Kilka krótkich odpowiedzi, które pomogą Ci ocenić, czy taka forma jest dla Ciebie.</p>
+            </div>
+            <div class="faq-list">
+              <details class="faq-item">
+                <summary>Czy te spotkania są dla początkujących?<span aria-hidden="true"></span></summary>
+                <div class="faq-answer"><p>Ten przykładowy program jest pomyślany dla dorosłych, którzy znają już podstawy i chcą więcej mówić. Podczas rozmowy zapoznawczej ustalamy, czy taka forma pasuje do Twoich potrzeb.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary>Czy muszę przygotować własny temat?<span aria-hidden="true"></span></summary>
+                <div class="faq-answer"><p>Nie. Możesz przynieść swoją sytuację albo wybrać temat wspólnie z Adamem.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary>Czy będziemy pracować nad gramatyką?<span aria-hidden="true"></span></summary>
+                <div class="faq-answer"><p>Tak, kiedy pomaga ona wyrazić to, co chcesz powiedzieć. Wracamy do niej na przykładach z rozmowy.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary>Co przygotować do spotkania online?<span aria-hidden="true"></span></summary>
+                <div class="faq-answer"><p>Urządzenie z kamerą i mikrofonem, stabilne połączenie oraz spokojne miejsce do rozmowy.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary>Jak wygląda pierwszy krok?<span aria-hidden="true"></span></summary>
+                <div class="faq-answer"><p>Najpierw krótko rozmawiamy o Twoich celach i o tym, jakie sytuacje chcesz przećwiczyć. Potem dobieramy temat pierwszego spotkania.</p></div>
+              </details>
+            </div>
+          </div>
+        </section>
+
+        <section class="contact-section" id="kontakt" aria-labelledby="contact-title" tabindex="-1">
+          <div class="contact-section__inner page-width">
+            <div class="contact-copy">
+              <p class="section-kicker"><span>07</span> NASTĘPNY KROK</p>
+              <h2 class="section-title" id="contact-title">Od jakiej rozmowy zaczniemy?</h2>
+              <p>Opisz jednym zdaniem sytuację, w której chcesz używać angielskiego. Możesz wpisać przykładowe dane i sprawdzić podgląd wiadomości.</p>
+            </div>
+            <div class="contact-form-wrap">
+              <form class="contact-form" id="contact-form" data-testid="contact-form">
+                <p class="contact-form__demo" id="form-demo-note">DEMO · Dane nie są wysyłane ani zapisywane. Użyj przykładowych danych.</p>
+                <label class="form-field">
+                  <span>Przykładowe imię</span>
+                  <input name="name" autocomplete="name" maxlength="80" placeholder="np. Anna" required disabled>
+                </label>
+                <label class="form-field">
+                  <span>Przykładowy e-mail</span>
+                  <input type="email" name="email" autocomplete="email" maxlength="254" placeholder="np. anna@example.com" required disabled>
+                </label>
+                <label class="form-field">
+                  <span>O czym chcesz porozmawiać?</span>
+                  <textarea name="message" rows="3" minlength="8" maxlength="500" placeholder="np. Chcę ćwiczyć rozmowy na spotkaniach." required disabled></textarea>
+                </label>
+                <button class="button button--primary contact-form__submit" type="submit" disabled>
+                  <span>Zobacz podgląd wiadomości</span>
+                  <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                </button>
+                <p class="form-prefill-status" data-form-prefill-status role="status" aria-live="polite"></p>
+              </form>
+              <div class="form-preview" id="form-preview" hidden aria-live="polite" tabindex="-1">
+                <p class="form-preview__label">PODGLĄD PRZYKŁADOWEGO ZAPYTANIA</p>
+                <div id="form-preview-content"></div>
+                <p class="form-preview__notice">To tylko podgląd. Wiadomość nie została wysłana ani zapisana.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer page-width">
+        <a class="site-footer__brand" href="#top">in your words</a>
+        <nav class="site-footer__nav" aria-label="Nawigacja w stopce">
+          <a href="#sytuacje">Sytuacje</a>
+          <a href="#lekcja">Lekcja</a>
+          <a href="#adam">Adam</a>
+          <a href="#plan">Ścieżka</a>
+          <a href="#spotkania">Oferta</a>
+          <a href="#pytania">Pytania</a>
+          <a href="#kontakt">Kontakt</a>
+        </nav>
+        <p class="site-footer__note">
+          <span>PROJEKT KONCEPCYJNY</span>
+          Adam Wolski jest postacią fikcyjną. Program i ceny pokazują przykładową ofertę.
+        </p>
+        <a class="site-footer__link" href="https://overflow-web.pl" target="_blank" rel="noreferrer">
+          Overflow Web
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg>
+        </a>
+      </footer>
+    </div>
+  </body>
+</html>
