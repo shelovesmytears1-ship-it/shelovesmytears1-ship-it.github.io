@@ -1,13 +1,13 @@
 ---
 title: Alona Polski Centrum
-tagline: 'Образовательная LMS-платформа школы польского языка — курсы, домашки и переключение 3 ролей'
+tagline: 'Pełna platforma do nauki polskiego — szkoła, lektorzy, uczniowie i rodziny'
 niche: EdTech
 year: '2025'
 palette: WARM-CREAM-INDIGO
 tier: 1
 accent: '#4F46E5'
 bg: '#F9FAFB'
-siteUrl: https://overflow-web.pl/alona/
+siteUrl: https://alona-demo-overflow.vercel.app/
 cover: /covers/edtech.jpg
 screens:
   - src: /screens/alona-m1.webp
@@ -17,85 +17,91 @@ screens:
   - src: /screens/alona-m3.webp
     kind: phone
 technologies:
-  - React
-  - TypeScript
-  - Tailwind CSS
+  - React 19
   - Vite
-role: 'проектирование UX/UI · frontend LMS · архитектура данных · интерактивное 3-ролевое демо'
+  - Node.js
+  - PostgreSQL
+  - Supabase Storage
+role: 'архітектура · React-приложение · изолированная демобаза · интерфейс PL/EN/RU'
 region:
   - PL
-summary: 'Реальная образовательная LMS-платформа для учебного центра польского языка в Гданьске. Полный цикл взаимодействия: Дневник ученика, Зона родителей и Кабинет преподавателя с интерактивным переключением ролей без авторизации.'
-result: 'готовая платформа: интерактивный 3-ролевой демо-режим (Ученик · Родитель · Преподаватель)'
+summary: 'Полноценная демоплатформа с отдельной базой, вымышленной школой и кабинетами владельца, нескольких преподавателей, учеников и родителей. Польский, английский и русский.'
+result: 'Два старта · четыре роли · девять типов игр · три языка'
 stat:
-  value: '3 роли'
-  label: 'интерактивного демо-доступа — клиент мгновенно исследует платформу глазами ученика, родителя и преподавателя'
+  value: '4'
+  label: 'кабинета для владельца школы, преподавателей, учеников и родителей'
 order: 0
 concept: false
 translations:
   pl:
-    tagline: 'Platforma edukacyjna LMS szkoły języka polskiego — kursy, zadania domowe i 3 zintegrowane role'
-    summary: 'Prawdziwa platforma edukacyjna LMS dla centrum języka polskiego w Gdańsku. Zintegrowany ekosystem trzech ról: Dziennik Ucznia, Strefa Rodzica oraz Panel Nauczyciela z natychmiastowym przełączaniem w showcase.'
-    result: 'gotowa platforma: w pełni funkcjonalny tryb demonstracyjny 3 ról bez logowania'
-    role: 'projektowanie UX/UI · frontend LMS · architektura danych · interaktywny showcase'
-    statLabel: 'role w interaktywnym demo — natychmiastowy wgląd w perspektywę ucznia, rodzica i lektora'
+    tagline: 'Pełna platforma do nauki języka polskiego — szkoła, lektorzy, uczniowie i rodziny'
+    summary: 'Kompletna platforma demonstracyjna z oddzielną bazą, fikcyjną szkołą i panelami właściciela, kilku nauczycieli, uczniów oraz rodziców. Polski, angielski i rosyjski.'
+    result: 'Dwa sposoby rozpoczęcia · cztery role · dziewięć typów gier · trzy języki'
+    role: 'architektura · aplikacja React · odizolowana baza demo · interfejs PL/EN/RU'
+    statLabel: 'panele dla właściciela szkoły, nauczycieli, uczniów i rodziców'
     body: |
-      ## Kontekst wdrożenia produkcyjnego
+      ## Pełna szkoła w osobnej piaskownicy
 
-      Centrum edukacyjne nauki języka polskiego w Gdańsku (Alona Polski Centrum) potrzebowało dedykowanej platformy LMS dla kursantów, ich rodziców oraz kadry pedagogicznej. Typowe komercyjne platformy były zbyt przeładowane dla młodych uczniów lub wymuszały kosztowny model subskrypcyjny per-seat. Celem wdrożenia było stworzenie szybkiego, przejrzystego systemu opartego na autentycznym rytmie nauki: od interaktywnych ćwiczeń wymowy po transparentną komunikację z rodzicami.
+      ALONA to platforma do prowadzenia szkoły językowej i nauki polskiego. Wersja portfolio działa jako osobny projekt z własną bazą PostgreSQL i prywatnym magazynem plików. Każdy odwiedzający dostaje własną, 24-godzinną piaskownicę. Dane są fikcyjne i oddzielone od produkcji.
 
-      ## Architektura i Trzy Role
+      ## Dwa sposoby rozpoczęcia
 
-      Zbudowaliśmy responsywną platformę internetową w oparciu o React, architekturę tokenów CSS i zoptymalizowany silnik stanów. System realizuje trzy dedykowane perspektywy:
+      **Gotowa szkoła** zawiera przykładowego właściciela, kilku lektorów, grupy, uczniów, rodzica z dwojgiem dzieci i powiązane materiały. **Pusta szkoła** zaczyna się od właściciela i podstawowych ustawień. Demo można w dowolnej chwili zresetować albo uruchomić od nowa.
 
-      1. **Dziennik Ucznia (Maksymilian):** Harmonogram lekcji, zadania domowe z ćwiczeniami wymowy (dwuznaki, akcent), gry edukacyjne oraz bezpośrednie połączenie z pokojem Google Meet.
-      2. **Strefa Rodzica (Pani Marta):** Pełny wgląd w postępy dziecka — frekwencja (95%), status oddanych zadań domowych (średnia 5.0), bezpośrednie notatki od lektora oraz kontrola rozliczeń czesnego.
-      3. **Panel Nauczyciela (Pani Alona):** Pulpit lektora z listą grup, kolejką prac domowych do sprawdzenia, grafikami dostępności oraz bazą materiałów dydaktycznych.
+      ## Cztery role, wspólne procesy
 
-      ## Interaktywny Showcase w Portfolio
+      Właściciel zarządza szkołą i zespołem. Nauczyciele prowadzą grupy, planują zajęcia, publikują materiały i sprawdzają prace domowe. Uczniowie realizują zadania oraz grają w dziewięć typów ćwiczeń. Rodzic może przełączać się między powiązanymi dziećmi, śledzić postępy, terminy i rozliczenia oraz pisać do nauczycieli.
 
-      W portfolio Overflow Web platforma została wzbogacona o natychmiastowy przełącznik ról dostępny w pływającym kontrolerze oraz w menu użytkownika. Pozwala to każdemu odwiedzającemu sprawdzić działanie platformy z dowolnej perspektywy bez konieczności rejestracji.
+      Zaproszenia, potwierdzenia i odzyskiwanie dostępu trafiają do wewnętrznej skrzynki demo. Płatności i linki do spotkań są przykładowe — platforma nie obciąża kart i nie wysyła prawdziwych wiadomości.
+
+      ## Polski, angielski i rosyjski
+
+      Interfejs i przykładowe treści szkoły można przełączać bez utraty bieżącej pracy. Język polski pozostaje językiem ćwiczeń. Wybierz szkołę z przykładami albo zacznij od pustej, a potem swobodnie sprawdź każdy panel.
   en:
-    tagline: 'Educational LMS platform for a Polish language school — courses, homework and 3-role showcase'
-    summary: 'Real-world LMS platform built for a Polish language center in Gdańsk. Integrated ecosystem across three distinct roles: Student Journal, Parent Zone, and Teacher Dashboard with instant switcher.'
-    result: 'live platform: interactive 3-role demo mode without authentication'
-    role: 'UX/UI design · LMS frontend · data architecture · interactive 3-role demo'
-    statLabel: 'interactive roles in demo — explore instantly as student, parent, or teacher'
+    tagline: 'A complete Polish learning platform for schools, teachers, students and families'
+    summary: 'A full platform demo with a separate database, fictional school and dashboards for the owner, multiple teachers, students and parents. Available in Polish, English and Russian.'
+    result: 'Two ways to start · four roles · nine game types · three languages'
+    role: 'architecture · React application · isolated demo database · PL/EN/RU interface'
+    statLabel: 'dashboards for the school owner, teachers, students and parents'
     body: |
-      ## Production Context
+      ## A complete school in its own sandbox
 
-      A dedicated Polish language center in Gdańsk (Alona Polski Centrum) required a custom LMS platform tailored for kids, teens, parents, and educators. Off-the-shelf software was too complex for children and carried expensive per-user monthly fees. The requirement was a lightweight, friendly platform supporting homework delivery, pronunciation exercises, and parent transparency.
+      ALONA is a platform for running a language school and teaching Polish. The portfolio demo runs as a separate project with its own PostgreSQL database and private file storage. Each visitor receives a personal sandbox that lasts 24 hours. All school and learner data is fictional and isolated from production.
 
-      ## Architecture & Three Roles
+      ## Two ways to start
 
-      We engineered a modern web application using React and modular CSS tokens. The application operates across three integrated perspectives:
+      **Sample school** includes an owner, several teachers, groups, students, a parent with two children and connected learning materials. **Empty school** starts with an owner and essential settings. Visitors can reset the demo or start over at any time.
 
-      1. **Student Journal (Maksymilian):** Lesson schedule, interactive homework with pronunciation drills, gamified progress, and 1-click Google Meet classroom access.
-      2. **Parent Zone (Pani Marta):** Complete visibility into attendance records (95%), homework completion rates, tutor feedback, and tuition billing status.
-      3. **Teacher Dashboard (Pani Alona):** Comprehensive control center for groups, homework grading queue, availability slots, and learning materials.
+      ## Four roles, connected workflows
 
-      ## Interactive Portfolio Showcase
+      The owner manages the school and team. Teachers run groups, schedule lessons, share materials and review homework. Students complete assignments and play nine types of learning games. Parents can switch between linked children, follow progress, schedule and payment records, and message teachers.
 
-      For client presentation, we implemented an interactive 3-role switcher in the floating dock and navbar, allowing instant role preview without login credentials.
+      Invitations, email verification and password recovery go to an internal demo inbox. Payments and meeting links are examples; the platform does not charge cards or send real emails.
+
+      ## Polish, English and Russian
+
+      Switch the interface and sample school content without losing current work. Polish remains the language being taught. Start with sample data or a blank school, then explore every role.
   ua:
-    tagline: 'Освітня LMS-платформа школи польської мови — курси, домашки та перемикання 3 ролей'
-    summary: 'Реальна освітня LMS-платформа для навчального центру польської мови в Гданську. Інтегрована екосистема трьох ролей: Щоденник учня, Зона батьків та Кабінет викладача.'
-    result: 'готова платформа: інтерактивний демо-режим 3 ролей без авторизації'
-    role: 'проектування UX/UI · frontend LMS · архітектура даних · інтерактивне 3-ролеве демо'
-    statLabel: 'ролі в інтерактивному демо — миттєвий огляд з погляду учня, батьків та викладача'
+    tagline: 'Повна платформа для вивчення польської мови — школа, викладачі, учні та родини'
+    summary: 'Повноцінна демоплатформа з окремою базою даних, вигаданою школою та кабінетами власника, кількох викладачів, учнів і батьків. Польська, англійська та російська.'
+    result: 'Два способи почати · чотири ролі · дев’ять типів ігор · три мови'
+    role: 'архітектура · застосунок React · ізольована демобаза · інтерфейс PL/EN/RU'
+    statLabel: 'кабінети власника школи, викладачів, учнів і батьків'
     body: |
-      ## Контекст реального впровадження
+      ## Повна школа в окремій пісочниці
 
-      Навчальний центр польської мови в Гданську (Alona Polski Centrum) потребував спеціалізованої LMS-платформи для учнів, батьків та викладачів. Готові комерційні платформи були надто перевантаженими для дітей і вимагали високої щомісячної підписки за кожного користувача. Завданням було створити легку, дружню систему для уроків, домашніх завдань і прозорого контролю успішності.
+      ALONA — платформа для мовної школи та вивчення польської. Демоверсія працює як окремий проєкт із власною базою PostgreSQL і приватним сховищем файлів. Кожен відвідувач отримує персональну пісочницю на 24 години. Дані школи й учнів вигадані та ізольовані від production.
 
-      ## Три інтегровані ролі
+      ## Два способи почати
 
-      Платформа реалізує три повноцінні кабінети:
+      **Готова школа** містить власника, кількох викладачів, групи, учнів, батька чи матір із двома дітьми та пов’язані навчальні матеріали. **Порожня школа** починається з власника й основних налаштувань. Демоверсію можна будь-коли скинути або запустити заново.
 
-      1. **Щоденник учня (Максиміліан):** Розклад, домашні завдання з польської вимови, інтерактивні вправи та підключення до Google Meet.
-      2. **Зона батьків (Пані Марта):** Відвідуваність (95%), оцінки за домашні завдання, коментарі викладача та статус оплати навчання.
-      3. **Кабінет викладача (Пані Альона):** Управління групами, черга перевірки завдань, розклад доступних годин і навчальні програми.
+      ## Чотири ролі та спільні процеси
 
-      ## Інтерактивне демо в портфоліо
+      Власник керує школою та командою. Викладачі ведуть групи, планують заняття, публікують матеріали й перевіряють домашні завдання. Учні виконують завдання та грають у дев’ять типів навчальних ігор. Батьки можуть перемикатися між пов’язаними дітьми, стежити за прогресом і платежами та писати викладачам.
 
-      У портфоліо реалізовано плаваючий віджет та меню у шапці, що дозволяють клієнтам миттєво перемикатися між усіма трьома ролями без введення пароля.
----
+      Запрошення, підтвердження пошти й відновлення доступу надходять до внутрішньої демоскриньки. Платежі й посилання на зустрічі демонстраційні — платформа не списує гроші та не надсилає справжні листи.
+
+      ## Польська, англійська та російська
+
+      Перемикайте мову інтерфейсу й прикладів, не втрачаючи поточну роботу. Польська залишається мовою навчання. Оберіть школу з прикладами або почніть із порожньої та дослідіть усі ролі.

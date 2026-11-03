@@ -30,12 +30,19 @@ export function getCaseDemoFolder(slug: string): string {
  * routes directly to the local demo file: /${folder}/index.html.
  * This guarantees local testing on localhost stays local.
  */
-export function getProjectUrl(entry: { slug: string; data: { siteUrl?: string } }): string {
+export function getProjectUrl(entry: { slug: string; data: { siteUrl?: string } }, lang: Lang = 'pl'): string {
   const folder = getCaseDemoFolder(entry.slug);
   const siteUrl = entry.data.siteUrl;
+  const isDev = Boolean(import.meta.env.DEV);
+
+  if (entry.slug === 'edtech') {
+    const target = isDev ? 'http://127.0.0.1:4173/' : siteUrl;
+    if (!target) return withBase(`/${folder}/index.html`);
+    const locale = lang === 'en' || lang === 'ru' ? lang : 'pl';
+    return `${target}${target.includes('?') ? '&' : '?'}lang=${locale}`;
+  }
 
   const isInternal = !siteUrl || siteUrl.includes('overflow-web.pl');
-  const isDev = Boolean(import.meta.env.DEV);
 
   if (isDev || isInternal) {
     return withBase(`/${folder}/index.html`);
