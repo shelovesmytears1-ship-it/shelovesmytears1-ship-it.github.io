@@ -8,7 +8,7 @@ tier: 1
 accent: '#0018A8'
 bg: '#FFFFFF'
 siteUrl: https://overflow-web.pl/dispersia/
-cover: /covers/dispersia.jpg
+cover: /covers/dispersia.webp
 screens:
   - src: /screens/dispersia-m1.webp
     kind: phone

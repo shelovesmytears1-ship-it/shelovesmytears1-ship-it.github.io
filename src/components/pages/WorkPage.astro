@@ -70,7 +70,7 @@ const filters = [
               <picture>
                 <source
                   type="image/webp"
-                  srcset={`${withBase(c.data.cover.replace(/^\/covers\/(.+)\.jpe?g$/i, '/covers/4k/$1.webp'))} 3840w, ${withBase(c.data.cover.replace(/\.jpe?g$/i, '.webp'))} 1280w`}
+                  srcset={`${withBase(c.data.cover.replace(/^\/covers\/(.+)\.(jpe?g|webp)$/i, '/covers/4k/$1.webp'))} 3840w, ${withBase(c.data.cover.replace(/\.(jpe?g|webp)$/i, '.webp'))} 1280w`}
                   sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw"
                 />
                 <img

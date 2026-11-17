@@ -8,7 +8,7 @@ tier: 1
 accent: '#FF451A'
 bg: '#0A0A0C'
 siteUrl: https://overflow-web.pl/smm/
-cover: /covers/smm.jpg
+cover: /covers/smm.webp
 screens:
   - src: /screens/smm-m1.webp
     kind: phone

@@ -37,7 +37,7 @@ const projectSummary = (project: (typeof cases)[number]) => {
             <picture>
               <source
                 type="image/webp"
-                srcset={`${withBase(project.data.cover.replace(/^\/covers\/(.+)\.jpe?g$/i, '/covers/4k/$1.webp'))} 3840w, ${withBase(project.data.cover.replace(/\.jpe?g$/i, '.webp'))} 1280w`}
+                srcset={`${withBase(project.data.cover.replace(/^\/covers\/(.+)\.(jpe?g|webp)$/i, '/covers/4k/$1.webp'))} 3840w, ${withBase(project.data.cover.replace(/\.(jpe?g|webp)$/i, '.webp'))} 1280w`}
                 sizes="(min-width: 801px) 65vw, 100vw"
               />
               <img src={withBase(project.data.cover)} alt="" width="3840" height="2400" loading="lazy" decoding="async" />

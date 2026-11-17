@@ -17,7 +17,7 @@ technologies:
 region: []
 summary: 'Оливковый кампейн, светлая коллекция и интерактивный подбор из двух или трёх шагов.'
 result: 'Локальный advisor собирает три предпочтения и показывает последовательность MYCIE, SERUM и KREM для двух- или трёхшагового ритуала.'
-cover: /covers/essence.jpg
+cover: /covers/essence.webp
 screens:
   - src: /screens/essence-20261029-m1.webp
     kind: phone

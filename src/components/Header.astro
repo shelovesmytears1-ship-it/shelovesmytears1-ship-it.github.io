@@ -188,7 +188,9 @@ const locales = getAllLocales(lang, pathname);
   const themeBtnDrawer = document.getElementById('theme-toggle-drawer');
 
   function applyTheme(theme: 'light' | 'dark') {
+    const scheme = theme === 'dark' ? 'dark' : 'light';
     html.setAttribute('data-theme', theme);
+    html.style.colorScheme = scheme;
     try { localStorage.setItem('theme', theme); } catch (e) { /* private mode */ }
     /* Update mobile drawer label text */
     document.querySelectorAll<HTMLElement>('.theme-toggle__label').forEach(el => {
@@ -196,7 +198,9 @@ const locales = getAllLocales(lang, pathname);
       const dark = el.dataset.themeLabelDark || 'Dark';
       el.textContent = theme === 'dark' ? dark : light;
     });
-    /* Update meta theme-color */
+    /* Update meta color-scheme and theme-color */
+    const csMeta = document.querySelector('meta[name="color-scheme"]');
+    if (csMeta) csMeta.setAttribute('content', scheme);
     const meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.setAttribute('content', theme === 'dark' ? '#1A1B1E' : '#FAFAF6');
   }

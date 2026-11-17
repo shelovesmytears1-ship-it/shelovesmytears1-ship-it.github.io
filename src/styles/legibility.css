@@ -25,7 +25,7 @@
 .lang a,
 .ftr,
 .ftr span {
-  font-size: 12px !important;
+  font-size: 0.75rem !important;
 }
 
 /* the case-study chip is also a tap target — give it the 44px height on touch */

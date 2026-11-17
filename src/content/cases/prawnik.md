@@ -8,7 +8,7 @@ tier: 1
 accent: '#D9C9A8'
 bg: '#0F0E0D'
 siteUrl: https://overflow-web.pl/prawnik/
-cover: /covers/prawnik.jpg
+cover: /covers/prawnik.webp
 screens:
   - src: /screens/prawnik-m1.webp
     kind: phone

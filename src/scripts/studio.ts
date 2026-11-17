@@ -15,7 +15,14 @@ import Lenis from 'lenis';
 
 const isBot = typeof navigator !== 'undefined' && /Lighthouse|Googlebot|HeadlessChrome|PageSpeed/i.test(navigator.userAgent);
 const isMobile = typeof window !== 'undefined' && window.innerWidth <= 820;
-const reduce = isBot || isMobile || matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reducedMotionQuery = matchMedia('(prefers-reduced-motion: reduce)');
+let reducedMotion = isBot || isMobile || reducedMotionQuery.matches;
+reducedMotionQuery.addEventListener('change', (e) => {
+  reducedMotion = isBot || isMobile || e.matches;
+  if (reducedMotion) {
+    document.querySelectorAll<HTMLVideoElement>('video[data-inview]').forEach((v) => v.pause());
+  }
+});
 const fine = !isMobile && matchMedia('(hover: hover) and (pointer: fine)').matches;
 
 
@@ -77,7 +84,7 @@ document.querySelectorAll<HTMLElement>('.sec-head h2, .page-hero h1, .contact h2
    at a high threshold, so the motion plays while the paragraph is already in
    view instead of finishing off-screen. */
 document.querySelectorAll<HTMLElement>('[data-lead]').forEach((el) => {
-  if (reduce) return;
+  if (reducedMotion) return;
   const words = (el.textContent || '').trim().split(/\s+/).filter(Boolean);
   el.replaceChildren();
   words.forEach((w, i) => {
@@ -182,6 +189,8 @@ const burger = document.getElementById('burger');
 const mnav = document.getElementById('mnav');
 const mnavClose = document.getElementById('mnav-close');
 if (burger && mnav) {
+  const mainEl = document.getElementById('main');
+  const footerEl = document.querySelector<HTMLElement>('.ftr');
   const setMenu = (open: boolean, restoreFocus = false) => {
     document.body.classList.toggle('menu-open', open);
     burger.setAttribute('aria-expanded', String(open));
@@ -195,9 +204,13 @@ if (burger && mnav) {
     if (open) {
       mnav.removeAttribute('inert');
       hdr?.setAttribute('inert', '');
+      mainEl?.setAttribute('inert', '');
+      footerEl?.setAttribute('inert', '');
     } else {
       mnav.setAttribute('inert', '');
       hdr?.removeAttribute('inert');
+      mainEl?.removeAttribute('inert');
+      footerEl?.removeAttribute('inert');
     }
     if (open) mnavClose?.focus({ preventScroll: true });
     else if (restoreFocus) burger.focus({ preventScroll: true });
@@ -253,7 +266,7 @@ if (clocks.length) {
 /* ---- device videos: play only while on screen, never in the background ---- */
 const vids = Array.from(document.querySelectorAll<HTMLVideoElement>('video[data-inview]'));
 if (vids.length) {
-  const play = (v: HTMLVideoElement) => { if (!reduce) v.play().catch(() => {}); };
+  const play = (v: HTMLVideoElement) => { if (!reducedMotion) v.play().catch(() => {}); };
   const vObs = new IntersectionObserver(
     (entries) => entries.forEach((e) => {
       const v = e.target as HTMLVideoElement;
@@ -273,7 +286,7 @@ if (vids.length) {
    visible until hero3d has rendered its first frame. */
 const hero3d = document.getElementById('hero3d');
 const isDesktop = matchMedia('(min-width: 821px) and (hover: hover)').matches;
-if (hero3d && !reduce && isDesktop && !isBot) {
+if (hero3d && !reducedMotion && isDesktop && !isBot) {
   const loadHero3D = () => {
     import('./hero3d').then((m) => m.initHero3D(hero3d)).catch(() => {});
   };
@@ -289,7 +302,7 @@ if (hero3d && !reduce && isDesktop && !isBot) {
 /* ---- 3D coverflow carousel (lazy chunk, desktop + motion only) ---- */
 const gallery = document.getElementById('gallery3d');
 if (gallery) {
-  if (!reduce && matchMedia('(min-width: 821px)').matches) {
+  if (!reducedMotion && matchMedia('(min-width: 821px)').matches) {
     const cap = document.getElementById('gallery3d-cap');
     const galObs = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
@@ -313,7 +326,7 @@ let pvFrameFn: (() => void) | null = null;
 let scrollDirty = true;
 
 /* Everything below is enhancement only. */
-if (!reduce) {
+if (!reducedMotion) {
   /* ---- Lenis smooth scroll ---- */
   const lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 1 });
   const footer = document.querySelector('.ftr');
@@ -358,27 +371,6 @@ if (!reduce) {
      costs no reflow. */
   const arcs = Array.from(document.querySelectorAll<HTMLElement>('[data-collapse]'));
 
-  const applyParallax = () => {
-    const vh = innerHeight;
-    for (const p of pItems) {
-      if (!p.on) continue;
-      const r = p.el.getBoundingClientRect();
-      // -1 when the element sits below the fold, +1 once it is above it
-      const progress = 1 - (r.top + r.height / 2) / (vh / 2 + r.height / 2);
-      const y = p.speed ? progress * p.speed * -22 : 0;
-      const rot = p.rotate ? progress * p.rotate : 0;
-      p.el.style.transform =
-        `translate3d(0,${y.toFixed(2)}px,0)` + (rot ? ` rotate(${rot.toFixed(2)}deg)` : '');
-    }
-    for (const el of arcs) {
-      const base = parseFloat(el.dataset.collapse || '0');
-      const top = el.getBoundingClientRect().top;
-      if (top > vh || top < -vh) continue;
-      const p = Math.min(1, Math.max(0, (vh - top) / (vh * 0.55)));
-      el.style.height = `${(base * (1 - p)).toFixed(2)}vh`;
-    }
-  };
-
   /* ---- scroll-highlight verbs: the column rises, each word ignites at the
      band, then dissolves behind the Work heading that slides in on top.
      Driven here (not CSS background-clip) because a fixed-attachment gradient
@@ -395,43 +387,6 @@ if (!reduce) {
   // BAND matches --vband in studio.css; FADE_* are in word-height units
   const BAND = 0.55, FADE_IN = 1.4, FADE_OUT = 1.6;
 
-  const driveVerbs = () => {
-    if (!verbsOn || !verbsStage || !verbsList) return;
-    const rect = verbsStage.getBoundingClientRect();
-    const travel = verbsStage.offsetHeight - innerHeight;
-    if (travel <= 0) return;
-    const raw = -rect.top / travel;            // unclamped, can exceed [0,1]
-    const prog = Math.min(1, Math.max(0, raw));
-    const n = verbItems.length;
-    const liH = verbItems[0].getBoundingClientRect().height || 96;
-
-    // slide the column so each word sits on the band at prog = i/(n-1)
-    const offset = innerHeight * BAND - liH * 0.5 - prog * (n - 1) * liH;
-    verbsList.style.transform = `translate3d(0,${offset.toFixed(2)}px,0)`;
-
-    // per-word opacity: fade in from below the band, dissolve out above it
-    for (let i = 0; i < n; i++) {
-      const target = n > 1 ? i / (n - 1) : 0.5;
-      const dist = (prog - target) * (n - 1); // <0 below band, >0 above
-      let a: number;
-      if (dist <= -FADE_IN) a = 0;
-      else if (dist < 0) a = 1 + dist / FADE_IN;
-      else if (dist < FADE_OUT) a = 1 - dist / FADE_OUT;
-      else a = 0;
-      verbItems[i].style.opacity = Math.max(0.08, Math.min(1, a)).toFixed(3);
-    }
-
-    // ghost step number — shows which verb is currently active
-    if (ghostNum) {
-      const activeIdx = Math.round(prog * (n - 1));
-      const next = String(activeIdx + 1).padStart(2, '0');
-      if (ghostNum.textContent !== next) ghostNum.textContent = next;
-    }
-
-    // heading slides in once the first word is up, out once the stage is passed
-    if (verbsHead) verbsHead.classList.toggle('is-on', raw > 0.08 && raw < 1);
-  };
-
   /* ---- scroll-driven lead color sweep ----
      Every RAF frame we read each word's viewport position and map it to a
      0%→100% mix of --muted→--accent via a CSS custom property. No transition
@@ -443,86 +398,129 @@ if (!reduce) {
   }
 
   const leadWords = Array.from(document.querySelectorAll<HTMLElement>('.lead-word'));
-  const driveLeadSweep = () => {
-    if (!leadWords.length || !aboutVisible) return;
-    const band = innerHeight * 0.6;
-    const zone = 72;
-    for (const word of leadWords) {
-      const r = word.getBoundingClientRect();
-      const t = Math.max(0, Math.min(1, (band - (r.top + r.height * 0.5)) / zone + 0.5));
-      word.style.setProperty('--t', `${(t * 100).toFixed(1)}%`);
-    }
-  };
-
-  /* ---- marquee that reverses with the scroll direction ----
-     The strip loops by exactly one unit width, which only looks seamless while
-     the strip is longer than the viewport. Two hardcoded copies were not: one
-     copy measured ~920px against a 1345px viewport, so the tail cleared the
-     screen and left a gap. Clone until the strip outruns the viewport instead. */
-  const mq = document.querySelector<HTMLElement>('.marquee');
-  const mqTrack = mq?.querySelector<HTMLElement>('.mq-track') ?? null;
-  const mqUnit = mqTrack?.querySelector<HTMLElement>('.mq-unit') ?? null;
-  let mqX = 0, mqDir = 1, mqUnitW = 0;
-
-  const buildMarquee = () => {
-    if (!mqTrack || !mqUnit) return;
-    mqTrack.querySelectorAll('.mq-unit.clone').forEach((n) => n.remove());
-    mqUnitW = mqUnit.getBoundingClientRect().width;
-    if (!mqUnitW) return;
-    const copies = Math.ceil(innerWidth / mqUnitW) + 1;
-    for (let i = 1; i < copies; i++) {
-      const clone = mqUnit.cloneNode(true) as HTMLElement;
-      clone.classList.add('clone');
-      mqTrack.appendChild(clone);
-    }
-  };
-
-  if (mqTrack && mqUnit) {
-    buildMarquee();
-    addEventListener('resize', buildMarquee);
-    // webfonts change the unit width once they land
-    document.fonts?.ready.then(buildMarquee).catch(() => {});
-  }
-
-  let marqueeVisible = false;
-  if (mq) {
-    new IntersectionObserver(([e]) => { marqueeVisible = e.isIntersecting; }, { rootMargin: '10% 0px' }).observe(mq);
-  }
 
   scrollDirty = true;
-  let lastY = 0;
 
   const updateScrollEffects = () => {
-    applyParallax();
-    driveVerbs();
-    driveLeadSweep();
+    // --- Phase 1: Batch all DOM reads before any style/layout writes ---
+    const vh = window.innerHeight;
+    const docH = document.documentElement.scrollHeight - vh;
+    const scrollY = lenis.scroll || window.scrollY;
+    const scrollP = docH > 0 ? scrollY / docH : 0;
+
+    const parallaxReads: Array<{ item: PItem; top: number; height: number }> = [];
+    const collapseReads: Array<{ el: HTMLElement; base: number; top: number }> = [];
+    let verbsRead: { rectTop: number; travel: number; liH: number } | null = null;
+    const leadReads: Array<{ el: HTMLElement; top: number; height: number }> = [];
+
+    if (!reducedMotion) {
+      for (const p of pItems) {
+        if (!p.on) continue;
+        const r = p.el.getBoundingClientRect();
+        parallaxReads.push({ item: p, top: r.top, height: r.height });
+      }
+      for (const el of arcs) {
+        const base = parseFloat(el.dataset.collapse || '0');
+        const top = el.getBoundingClientRect().top;
+        if (top > vh || top < -vh) continue;
+        collapseReads.push({ el, base, top });
+      }
+      if (verbsOn && verbsStage && verbsList) {
+        const rect = verbsStage.getBoundingClientRect();
+        const travel = verbsStage.offsetHeight - vh;
+        if (travel > 0) {
+          const liH = verbItems[0].getBoundingClientRect().height || 96;
+          verbsRead = { rectTop: rect.top, travel, liH };
+        }
+      }
+      if (leadWords.length && aboutVisible) {
+        for (const word of leadWords) {
+          const r = word.getBoundingClientRect();
+          leadReads.push({ el: word, top: r.top, height: r.height });
+        }
+      }
+    }
+
+    // --- Phase 2: Batch all DOM writes ---
+    for (const { item: p, top, height } of parallaxReads) {
+      // -1 when the element sits below the fold, +1 once it is above it
+      const progress = 1 - (top + height / 2) / (vh / 2 + height / 2);
+      const y = p.speed ? progress * p.speed * -22 : 0;
+      const rot = p.rotate ? progress * p.rotate : 0;
+      p.el.style.transform =
+        `translate3d(0,${y.toFixed(2)}px,0)` + (rot ? ` rotate(${rot.toFixed(2)}deg)` : '');
+    }
+
+    for (const { el, base, top } of collapseReads) {
+      const p = Math.min(1, Math.max(0, (vh - top) / (vh * 0.55)));
+      el.style.height = `${(base * (1 - p)).toFixed(2)}vh`;
+    }
+
+    if (verbsRead && verbsList) {
+      const raw = -verbsRead.rectTop / verbsRead.travel; // unclamped, can exceed [0,1]
+      const prog = Math.min(1, Math.max(0, raw));
+      const n = verbItems.length;
+
+      // slide the column so each word sits on the band at prog = i/(n-1)
+      const offset = vh * BAND - verbsRead.liH * 0.5 - prog * (n - 1) * verbsRead.liH;
+      verbsList.style.transform = `translate3d(0,${offset.toFixed(2)}px,0)`;
+
+      // per-word opacity: fade in from below the band, dissolve out above it
+      for (let i = 0; i < n; i++) {
+        const target = n > 1 ? i / (n - 1) : 0.5;
+        const dist = (prog - target) * (n - 1); // <0 below band, >0 above
+        let a: number;
+        if (dist <= -FADE_IN) a = 0;
+        else if (dist < 0) a = 1 + dist / FADE_IN;
+        else if (dist < FADE_OUT) a = 1 - dist / FADE_OUT;
+        else a = 0;
+        verbItems[i].style.opacity = Math.max(0.08, Math.min(1, a)).toFixed(3);
+      }
+
+      // ghost step number — shows which verb is currently active
+      if (ghostNum) {
+        const activeIdx = Math.round(prog * (n - 1));
+        const next = String(activeIdx + 1).padStart(2, '0');
+        if (ghostNum.textContent !== next) ghostNum.textContent = next;
+      }
+
+      // heading slides in once the first word is up, out once the stage is passed
+      if (verbsHead) verbsHead.classList.toggle('is-on', raw > 0.08 && raw < 1);
+    }
+
+    if (leadReads.length) {
+      const band = vh * 0.6;
+      const zone = 72;
+      for (const { el, top, height } of leadReads) {
+        const t = Math.max(0, Math.min(1, (band - (top + height * 0.5)) / zone + 0.5));
+        el.style.setProperty('--t', `${(t * 100).toFixed(1)}%`);
+      }
+    }
 
     // Scroll Progress
-    const scrollH = document.documentElement.scrollHeight - innerHeight;
-    const scrollP = scrollH > 0 ? (lenis.scroll || window.scrollY) / scrollH : 0;
     document.documentElement.style.setProperty('--scroll-p', scrollP.toFixed(4));
 
     // Velocity Skew
-    const v = lenis.velocity || 0;
-    const skew = Math.max(-10, Math.min(10, v * 0.15));
-    const pvViewport = document.querySelector<HTMLElement>('.work-preview-viewport');
-    if (pvViewport) pvViewport.style.transform = `skewY(${skew.toFixed(2)}deg)`;
-    
-    document.querySelectorAll<HTMLElement>('.gallery-mobile-card').forEach((el) => {
-      el.style.transform = `skewY(${-skew.toFixed(2)}deg)`;
-    });
+    if (!reducedMotion) {
+      const v = lenis.velocity || 0;
+      const skew = Math.max(-10, Math.min(10, v * 0.15));
+      const pvViewport = document.querySelector<HTMLElement>('.work-preview-viewport');
+      if (pvViewport) pvViewport.style.transform = `skewY(${skew.toFixed(2)}deg)`;
+
+      document.querySelectorAll<HTMLElement>('.gallery-mobile-card').forEach((el) => {
+        el.style.transform = `skewY(${-skew.toFixed(2)}deg)`;
+      });
+    }
 
     // ----- 4. Scroll-to-top ring -----
     const scrollRingEl = document.querySelector<SVGCircleElement>('.ring-progress');
     const scrollTopBtn = document.querySelector<HTMLButtonElement>('.scroll-top-btn');
-    const scrollH2 = document.documentElement.scrollHeight - innerHeight;
-    const scrollPct2 = scrollH2 > 0 ? (lenis.scroll || window.scrollY) / scrollH2 : 0;
     if (scrollRingEl) {
       const circumference = 289;
-      scrollRingEl.style.strokeDashoffset = String(circumference - circumference * scrollPct2);
+      scrollRingEl.style.strokeDashoffset = String(circumference - circumference * scrollP);
     }
     if (scrollTopBtn) {
-      const showScrollTop = (lenis.scroll || window.scrollY) > 200 && !footerVisible;
+      const showScrollTop = scrollY > 200 && !footerVisible;
       scrollTopBtn.classList.toggle('is-visible', showScrollTop);
       scrollTopBtn.classList.toggle('footer-visible', footerVisible);
     }
@@ -537,28 +535,14 @@ if (!reduce) {
       scrollDirty = isMoving;
     }
 
-    // ----- 5. Velocity Marquee (only when visible) -----
-    if (marqueeVisible && mqTrack && mqUnitW) {
-      const vel = Math.abs(lenis.velocity || 0);
-      const speed = 0.55 + vel * 0.12;
-      const skew = Math.max(-5, Math.min(5, (lenis.velocity || 0) * 0.08));
-      mqX -= speed * mqDir;
-      if (mqX <= -mqUnitW) mqX += mqUnitW;
-      if (mqX > 0) mqX -= mqUnitW;
-      mqTrack.style.transform = `translate3d(${mqX.toFixed(2)}px,0,0) skewX(${skew.toFixed(2)}deg)`;
-    }
-
     pvFrameFn?.();
 
     requestAnimationFrame(raf);
   };
   requestAnimationFrame(raf);
 
-  lenis.on('scroll', ({ scroll }: { scroll: number }) => {
+  lenis.on('scroll', () => {
     scrollDirty = true;
-    const dir = scroll > lastY ? 1 : scroll < lastY ? -1 : mqDir;
-    mqDir = dir;
-    lastY = scroll;
   });
 
   // ----- 4. Scroll-to-top click handler -----
@@ -580,7 +564,7 @@ if (!reduce) {
   });
 }
 
-if (!reduce && fine) {
+if (!reducedMotion && fine) {
   /* ---- 3. Glow spotlight behind cursor ---- */
   const glowEl = document.createElement('div');
   glowEl.className = 'glow-cursor';
@@ -589,6 +573,10 @@ if (!reduce && fine) {
   let glowRunning = false;
 
   const glowLoop = () => {
+    if (reducedMotion) {
+      glowRunning = false;
+      return;
+    }
     const dx = gtx - gx;
     const dy = gty - gy;
     if (Math.abs(dx) < 0.2 && Math.abs(dy) < 0.2) {
@@ -620,6 +608,10 @@ if (!reduce && fine) {
     let curRunning = false;
 
     const curLoop = () => {
+      if (reducedMotion) {
+        curRunning = false;
+        return;
+      }
       const dx = tx - cx;
       const dy = ty - cy;
       if (Math.abs(dx) < 0.2 && Math.abs(dy) < 0.2) {
@@ -820,6 +812,7 @@ if (!reduce && fine) {
 
     b.addEventListener('mouseenter', () => b.classList.add('pull'));
     b.addEventListener('mousemove', (e) => {
+      if (reducedMotion) return;
       const r = b.getBoundingClientRect();
       const nx = (e.clientX - (r.left + r.width / 2)) / r.width;
       const ny = (e.clientY - (r.top + r.height / 2)) / r.height;

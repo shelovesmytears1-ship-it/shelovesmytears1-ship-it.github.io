@@ -8,7 +8,7 @@ tier: 1
 accent: '#E11D48'
 bg: '#FFFFFF'
 siteUrl: https://overflow-web.pl/booking/
-cover: /covers/schedulehub.jpg
+cover: /covers/schedulehub.webp
 screens:
   - src: /screens/schedulehub-m1.webp
     kind: phone

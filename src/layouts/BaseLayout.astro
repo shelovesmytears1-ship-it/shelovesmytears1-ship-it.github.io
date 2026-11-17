@@ -45,7 +45,11 @@ const canonical = new URL(pathname, Astro.site).toString();
         var saved = localStorage.getItem('theme');
         var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         var theme = saved || (prefersDark ? 'dark' : 'light');
+        var scheme = theme === 'dark' ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = scheme;
+        var csMeta = document.querySelector('meta[name="color-scheme"]');
+        if (csMeta) csMeta.setAttribute('content', scheme);
         var meta = document.querySelector('meta[name="theme-color"]');
         if (meta) meta.setAttribute('content', theme === 'dark' ? '#1A1B1E' : '#FAFAF6');
       } catch (e) { /* SSG fallback: light */ }

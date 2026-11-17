@@ -113,7 +113,7 @@ const statAfterIndex = sections.length > 1 ? 0 : -1;
           <picture>
             <source
               type="image/webp"
-              srcset={`${withBase(d.cover.replace(/^\/covers\/(.+)\.jpe?g$/i, '/covers/4k/$1.webp'))} 3840w, ${withBase(d.cover.replace(/\.jpe?g$/i, '.webp'))} 1280w`}
+              srcset={`${withBase(d.cover.replace(/^\/covers\/(.+)\.(jpe?g|webp)$/i, '/covers/4k/$1.webp'))} 3840w, ${withBase(d.cover.replace(/\.(jpe?g|webp)$/i, '.webp'))} 1280w`}
               sizes="(min-width: 1280px) 1200px, 100vw"
             />
             <img

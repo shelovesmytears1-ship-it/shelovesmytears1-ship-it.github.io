@@ -8,7 +8,7 @@ tier: 1
 accent: '#0D7A5F'
 bg: '#FAFAFA'
 siteUrl: https://overflow-web.pl/denty/
-cover: /covers/denty.jpg
+cover: /covers/denty.webp
 screens:
   - src: /screens/denty-m1.webp
     kind: phone

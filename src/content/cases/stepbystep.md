@@ -8,7 +8,7 @@ tier: 1
 accent: '#C85B3C'
 bg: '#FBF3EC'
 siteUrl: https://overflow-web.pl/stepbystep/
-cover: /covers/stepbystep.jpg
+cover: /covers/stepbystep.webp
 screens:
   - src: /screens/stepbystep-m1.webp
     kind: phone

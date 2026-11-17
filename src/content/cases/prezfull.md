@@ -8,7 +8,7 @@ tier: 1
 accent: '#495340'
 bg: '#FAF5F0'
 siteUrl: https://overflow-web.pl/prezfull/
-cover: /covers/prezfull.jpg
+cover: /covers/prezfull.webp
 screens:
   - src: /screens/prezfull-m1.webp
     kind: phone

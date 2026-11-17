@@ -8,7 +8,7 @@ tier: 1
 accent: '#4F46E5'
 bg: '#F9FAFB'
 siteUrl: https://alona-demo-overflow.vercel.app/
-cover: /covers/edtech.jpg
+cover: /covers/edtech.webp
 screens:
   - src: /screens/alona-m1.webp
     kind: phone

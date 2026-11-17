@@ -8,7 +8,7 @@ tier: 1
 accent: '#F5F5F5'
 bg: '#0A0A0A'
 siteUrl: https://overflow-web.pl/orlov/
-cover: /covers/orlov.jpg
+cover: /covers/orlov.webp
 screens:
   - src: /screens/orlov-m1.webp
     kind: phone

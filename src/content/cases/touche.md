@@ -8,7 +8,7 @@ tier: 1
 accent: '#E86B63'
 bg: '#F9F4EE'
 siteUrl: https://overflow-web.pl/touche/
-cover: /covers/touche.jpg
+cover: /covers/touche.webp
 screens:
   - src: /screens/touche-m1.webp
     kind: phone

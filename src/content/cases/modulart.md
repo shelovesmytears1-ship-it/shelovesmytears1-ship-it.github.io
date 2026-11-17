@@ -8,7 +8,7 @@ tier: 1
 accent: '#C07A4A'
 bg: '#F5F1EA'
 siteUrl: https://overflow-web.pl/modulart/
-cover: /covers/modulart-hero.jpg
+cover: /covers/modulart-hero.webp
 screens:
   - src: /screens/modulart-m1.webp
     kind: phone

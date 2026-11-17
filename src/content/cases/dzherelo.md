@@ -8,7 +8,7 @@ tier: 1
 accent: '#9E472A'
 bg: '#EDE5D5'
 siteUrl: https://overflow-web.pl/dzherelo/
-cover: /covers/dzherelo.jpg
+cover: /covers/dzherelo.webp
 screens:
   - src: /screens/dzherelo-m1.webp
     kind: phone

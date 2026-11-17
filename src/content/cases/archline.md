@@ -8,7 +8,7 @@ tier: 1
 accent: '#8C6D3F'
 bg: '#F5F1E5'
 siteUrl: https://overflow-web.pl/archline/
-cover: /covers/archline.jpg
+cover: /covers/archline.webp
 screens:
   - src: /screens/archline-m1.webp
     kind: phone

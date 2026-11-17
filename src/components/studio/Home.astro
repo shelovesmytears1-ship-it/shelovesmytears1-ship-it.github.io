@@ -86,10 +86,10 @@ const verbsSrText = verbsSrByLang[lang] ?? verbsSrByLang.en;
   <div class="wrap hero-inner">
     <div class="hero-lead">
     <p class="eye">{c.home.meta} · {c.home.location}</p>
-    <h1>
+    <h1 aria-label={`${c.home.heroTitle} ${c.home.heroAccent} ${c.home.heroTail}`}>
       {heroWords.map((it, i) => (
         <>
-          <span class="word"><span class={it.a ? 'accent' : ''} style={`transition-delay:${0.045 * i}s`}>{it.w}</span></span>{' '}
+          <span class="word" aria-hidden="true"><span class={it.a ? 'accent' : ''} style={`transition-delay:${0.045 * i}s`}>{it.w}</span></span>{' '}
         </>
       ))}
     </h1>

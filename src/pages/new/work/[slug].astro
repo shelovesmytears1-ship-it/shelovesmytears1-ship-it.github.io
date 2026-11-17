@@ -45,7 +45,7 @@ const projectUrl = getProjectUrl(entry, lang);
         <picture>
           <source
             type="image/webp"
-            srcset={`${withBase(entry.data.cover.replace(/^\/covers\/(.+)\.jpe?g$/i, '/covers/4k/$1.webp'))} 3840w, ${withBase(entry.data.cover.replace(/\.jpe?g$/i, '.webp'))} 1280w`}
+            srcset={`${withBase(entry.data.cover.replace(/^\/covers\/(.+)\.(jpe?g|webp)$/i, '/covers/4k/$1.webp'))} 3840w, ${withBase(entry.data.cover.replace(/\.(jpe?g|webp)$/i, '.webp'))} 1280w`}
             sizes="(min-width: 1280px) 1200px, 100vw"
           />
           <img src={withBase(entry.data.cover)} alt={`${c.case.coverAlt} ${entry.data.title}`} width="3840" height="2400" fetchpriority="high" />

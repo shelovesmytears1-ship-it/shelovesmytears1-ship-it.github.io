@@ -23,18 +23,18 @@ const errorMsg     = { pl: 'Coś poszło nie tak. Napisz bezpośrednio.', ru: '�
   <div class="c-form-wrap" data-reveal>
     <form id="c-contact-form" class="c-form" name="contact" method="POST">
       <input type="hidden" name="form-name" value="contact" />
-      <p hidden><label>{ct.honeypot}<input name="bot-field" /></label></p>
-      <label class="c-field"><span>{ct.name}</span><input type="text" name="name" required /></label>
-      <label class="c-field"><span>{ct.channel}</span><input type="text" name="channel" required /></label>
-      <label class="c-field"><span>{ct.type}</span>
-        <select name="type">{ct.options.map((o) => (<option>{o}</option>))}</select>
+      <p hidden><label>{ct.honeypot}<input type="text" name="bot-field" tabindex="-1" aria-hidden="true" autocomplete="off" /></label></p>
+      <label class="c-field" for="c-name"><span>{ct.name}</span><input id="c-name" type="text" name="name" autocomplete="name" required /></label>
+      <label class="c-field" for="c-contact"><span>{ct.channel}</span><input id="c-contact" type="text" name="channel" autocomplete="off" required /></label>
+      <label class="c-field" for="c-type"><span>{ct.type}</span>
+        <select id="c-type" name="type">{ct.options.map((o) => (<option>{o}</option>))}</select>
       </label>
-      <label class="c-field"><span>{ct.message}</span><textarea name="message" rows="4" placeholder={ct.messagePlaceholder} required></textarea></label>
+      <label class="c-field" for="c-message"><span>{ct.message}</span><textarea id="c-message" name="message" rows="4" placeholder={ct.messagePlaceholder} required></textarea></label>
       <button class="btn magnetic" type="submit" data-cursor><span class="btn-text">{ct.submit} →</span></button>
       <p class="c-error" id="c-form-error" hidden>{errorMsg}</p>
     </form>
 
-    <div class="c-success" id="c-contact-success" hidden aria-live="polite">
+    <div class="c-success" id="c-contact-success" hidden role="status" aria-live="polite" tabindex="-1">
       <span class="c-success__icon" aria-hidden="true">✓</span>
       <p class="c-success__title">{successTitle}</p>
       <p class="c-success__body">{successBody}</p>
@@ -63,6 +63,7 @@ const errorMsg     = { pl: 'Coś poszło nie tak. Napisz bezpośrednio.', ru: '�
 
     try {
       const fd = new FormData(form!);
+      if (fd.get('bot-field')) return;
       const cName = fd.get('name') || '';
       const cChannel = fd.get('channel') || '';
       const cType = fd.get('type') || '';
@@ -84,7 +85,10 @@ const errorMsg     = { pl: 'Coś poszło nie tak. Napisz bezpośrednio.', ru: '�
         }),
       });
       if (form) form.hidden = true;
-      if (success) success.hidden = false;
+      if (success) {
+        success.hidden = false;
+        success.focus({ preventScroll: true });
+      }
     } catch {
       if (errorEl) errorEl.hidden = false;
       if (btn) btn.disabled = false;

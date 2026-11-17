@@ -8,7 +8,7 @@ const heroCases = cases.filter((entry) => ['dispersia', 'lunea', 'denty'].includ
 const featuredCases = cases.slice(0, 6);
 const stageCases = heroCases.length === 3 ? heroCases : cases.slice(0, 3);
 const coverSrcset = (cover: string) =>
-  `${withBase(cover.replace(/^\/covers\/(.+)\.jpe?g$/i, '/covers/4k/$1.webp'))} 3840w, ${withBase(cover.replace(/\.jpe?g$/i, '.webp'))} 1280w`;
+  `${withBase(cover.replace(/^\/covers\/(.+)\.(jpe?g|webp)$/i, '/covers/4k/$1.webp'))} 3840w, ${withBase(cover.replace(/\.(jpe?g|webp)$/i, '.webp'))} 1280w`;
 ---
 
 <!doctype html>

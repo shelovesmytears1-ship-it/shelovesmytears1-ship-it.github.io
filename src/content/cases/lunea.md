@@ -8,7 +8,7 @@ tier: 1
 accent: '#B8976C'
 bg: '#FBF9F5'
 siteUrl: https://overflow-web.pl/lunea/
-cover: /covers/lunea.jpg
+cover: /covers/lunea.webp
 screens:
   - src: /screens/lunea-m1.webp
     kind: phone

@@ -8,7 +8,7 @@ tier: 1
 accent: '#8A3FFC'
 bg: '#3A4C58'
 siteUrl: https://overflow-web.pl/freshclean/
-cover: /covers/freshclean.jpg
+cover: /covers/freshclean.webp
 screens:
   - src: /screens/freshclean-m1.webp
     kind: phone
