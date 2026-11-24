@@ -61,7 +61,10 @@ function initCompareSlider() {
 
   function setSliderPosition(percentage) {
     const clamped = Math.max(0, Math.min(100, percentage));
-    clip.style.width = `${clamped}%`;
+    const rightInset = 100 - clamped;
+    clip.style.width = '100%';
+    clip.style.clipPath = `inset(0 ${rightInset}% 0 0)`;
+    clip.style.webkitClipPath = `inset(0 ${rightInset}% 0 0)`;
     handle.style.left = `${clamped}%`;
     handle.setAttribute('aria-valuenow', Math.round(clamped));
   }
